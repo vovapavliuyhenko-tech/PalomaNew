@@ -1,0 +1,97 @@
+/**
+ * Canonical Paloma design tokens — single source per brand TZ.
+ * Legacy aliases are mapped in globals.css (:root @theme).
+ */
+:root {
+  --paloma-orange: #f0522b;
+  --paloma-burgundy: #7a1e1e;
+  --paloma-white: #fffdf8;
+  --paloma-coal: #282828;
+  --paloma-rose: #e296b2;
+  /** Розовый персик — только акцент, не доминирующий фон */
+  --paloma-peach: #feecde;
+
+  /* Семантика PRD / PROJECT_RULES (алиасы к палитре Paloma) */
+  --color-cream: var(--paloma-white);
+  --color-ink: var(--paloma-coal);
+  --color-bordeaux: var(--paloma-burgundy);
+  --color-orange: var(--paloma-orange);
+  --color-rose: var(--paloma-rose);
+  --color-peach: var(--paloma-peach);
+
+  /* Boutique palette (PRD) */
+  --color-bg-ivory: var(--paloma-white);
+  --color-bg-milk: color-mix(in srgb, var(--paloma-white) 93%, var(--paloma-coal) 4%);
+  --color-text-graphite: var(--paloma-coal);
+  --color-text-muted: color-mix(in srgb, var(--paloma-coal) 46%, transparent);
+  --color-accent-burgundy: var(--paloma-burgundy);
+  --color-accent-soft: color-mix(in srgb, var(--paloma-burgundy) 12%, var(--paloma-white));
+  --color-border-token-prd: color-mix(in srgb, var(--paloma-coal) 11%, transparent);
+  --color-accent-floral: color-mix(in srgb, var(--paloma-rose) 35%, var(--paloma-white));
+
+  --section-lg: 120px;
+  --section-md: 80px;
+  --section-mobile: 56px;
+  --pad-x-lg: 60px;
+  --pad-x: 40px;
+  --pad-x-mobile: 16px;
+  --container: 1440px;
+
+  --container-max: 1440px;
+  /** Единый gutter: 32–64 desktop, меньше на узких экранах */
+  --container-gutter: clamp(20px, 4vw, 64px);
+  --container-padding-desktop: 64px;
+  --container-padding-tablet: 32px;
+  --container-padding-mobile: 16px;
+
+  --section-py-desktop: clamp(96px, 10vw, 140px);
+  --section-py-compact: clamp(56px, 8vw, 96px);
+
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 140px;
+
+  --space-xxs: var(--space-2xs);
+  --space-xxl: var(--space-3xl);
+  --space-xxxl: var(--space-4xl);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --radius-card: 22px;
+  --radius-button: 20px;
+
+  --shadow-soft: 0 4px 28px rgba(40, 40, 40, 0.055);
+  --shadow-card: 0 16px 48px rgba(40, 40, 40, 0.072);
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 0.2s;
+  --dur-base: 0.35s;
+  --dur-slow: 0.6s;
+
+  --z-base: 0;
+  --z-above: 10;
+  --z-nav: 100;
+  --z-header: 110;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-cursor: 5000;
+  --z-loader: 10000;
+
+  --bp-mobile-sm: 360px;
+  --bp-mobile: 375px;
+  --bp-tablet: 768px;
+  --bp-desktop-sm: 1200px;
+  --bp-desktop: 1440px;
+
+  --grid-columns: 12;
+}
