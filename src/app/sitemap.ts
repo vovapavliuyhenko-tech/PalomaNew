@@ -29,6 +29,9 @@ const STATIC = [
   "/consent",
 ] as const;
 
+/** Static export (GitHub Pages): metadata route должен быть явно статическим. */
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.siteUrl.replace(/\/$/, "");
   const now = new Date();

@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 
+/** Сборка статики под GitHub Pages (`PALOMA` как имя репозитория → префикс `/PALOMA`). */
+const isGhPagesExport = process.env.PALOMA_STATIC_EXPORT === "1";
+
 function supabaseHost(): string | null {
   try {
     const raw = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
@@ -13,7 +16,16 @@ function supabaseHost(): string | null {
 const supabaseHostParsed = supabaseHost();
 
 const nextConfig: NextConfig = {
+  ...(isGhPagesExport
+    ? {
+        output: "export" as const,
+        basePath: "/PALOMA",
+        assetPrefix: "/PALOMA/",
+        trailingSlash: true,
+      }
+    : {}),
   async redirects() {
+    if (isGhPagesExport) return [];
     return [
       { source: "/cafe", destination: "/coffee", permanent: true },
       { source: "/weddings", destination: "/wedding", permanent: true },
@@ -21,6 +33,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    ...(isGhPagesExport ? { unoptimized: true } : { formats: ["image/avif", "image/webp"] }),
     remotePatterns: [
       { protocol: "https", hostname: "cdn.sanity.io" },
       { protocol: "https", hostname: "images.unsplash.com" },
@@ -28,7 +41,6 @@ const nextConfig: NextConfig = {
         ? [{ protocol: "https" as const, hostname: supabaseHostParsed }]
         : []),
     ],
-    formats: ["image/avif", "image/webp"],
   },
   experimental: {
     optimizeCss: false,

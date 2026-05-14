@@ -3,8 +3,6 @@ import { createSupabaseServiceClient } from "@/lib/supabase/admin";
 import DeliveryRowEditor from "./DeliveryRowEditor";
 import NewDeliveryZoneForm from "./NewDeliveryZoneForm";
 
-export const dynamic = "force-dynamic";
-
 function svc() {
   try {
     return createSupabaseServiceClient();

@@ -3,8 +3,6 @@ import { createSupabaseServiceClient } from "@/lib/supabase/admin";
 import CategoryRowEditor from "./CategoryRowEditor";
 import NewCategoryForm from "./NewCategoryForm";
 
-export const dynamic = "force-dynamic";
-
 function svc() {
   try {
     return createSupabaseServiceClient();

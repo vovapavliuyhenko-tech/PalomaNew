@@ -6,8 +6,6 @@ import { createSupabaseServiceClient } from "@/lib/supabase/admin";
 import CafeRowEditor from "./CafeRowEditor";
 import NewCafeItemForm from "./NewCafeItemForm";
 
-export const dynamic = "force-dynamic";
-
 function svc() {
   try {
     return createSupabaseServiceClient();

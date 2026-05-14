@@ -10,9 +10,6 @@ import { getCoffeeMenuBootstrap } from "@/lib/catalog/getCoffeeMenu";
 import { getCatalogBootstrap } from "@/lib/catalog/getCatalogBootstrap";
 import ProductCard from "@/components/catalog/ProductCard";
 
-/** Supabase может отключаться — принудительная дина́мика сохраняет актуальное меню после правок каталога. */
-export const dynamic = "force-dynamic";
-
 const COFFEE_HERO =
   "https://images.unsplash.com/photo-1534687941688-651ccaafbff8?w=1920&q=85";
 

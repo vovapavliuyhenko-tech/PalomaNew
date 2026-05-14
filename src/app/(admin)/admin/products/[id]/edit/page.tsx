@@ -7,8 +7,6 @@ import ProductImagesSection, {
 } from "../../ProductImagesSection";
 import { createSupabaseServiceClient } from "@/lib/supabase/admin";
 
-export const dynamic = "force-dynamic";
-
 function svc() {
   try {
     return createSupabaseServiceClient();

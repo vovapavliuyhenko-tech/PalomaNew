@@ -3,8 +3,6 @@ import Link from "next/link";
 import NewProductForm from "../NewProductForm";
 import { createSupabaseServiceClient } from "@/lib/supabase/admin";
 
-export const dynamic = "force-dynamic";
-
 function svc() {
   try {
     return createSupabaseServiceClient();
