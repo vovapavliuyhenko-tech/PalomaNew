@@ -366,6 +366,14 @@
   margin-bottom: 32px;
 }
 
+.cart-checkout-errors {
+  background: rgba(107, 31, 42, 0.08);
+  border-left: 3px solid var(--color-accent);
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--color-accent);
+}
 .cart-modal {
   position: fixed;
   inset: 0;
@@ -373,26 +381,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 24px;
 }
 .cart-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(20, 14, 12, 0.6);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
 }
 .cart-modal__panel {
   position: relative;
   z-index: 1;
   background: var(--color-bg);
-  width: min(560px, 92vw);
-  padding: clamp(32px, 4vw, 56px);
+  border-radius: 16px;
+  width: min(440px, 92vw);
+  padding: clamp(40px, 5vw, 56px) clamp(32px, 4vw, 48px);
   text-align: center;
 }
 .cart-modal__title {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 52px);
+  font-family: var(--ital);
+  font-size: clamp(32px, 5vw, 48px);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
   margin-bottom: 16px;
 }
 .cart-modal__text {
@@ -404,10 +415,53 @@
 .cart-modal__actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .cart-modal__btn {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+.cart-modal__actions .btn--dark.cart-modal__btn {
+  background: var(--color-text);
+  color: #fff;
+  border-color: var(--color-text);
+}
+.cart-modal__actions .btn--dark.cart-modal__btn:hover {
+  background: #2a2a2a;
+}
+.cart-modal__actions .btn--outline.cart-modal__btn {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+.cart-modal__actions .btn--outline.cart-modal__btn:hover {
+  background: var(--color-text);
+  color: #fff;
+}
+.cart-modal__actions .btn--ghost.cart-modal__btn {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-text-muted);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+.cart-modal__actions .btn--ghost.cart-modal__btn:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
 }
 
 .btn--outline {

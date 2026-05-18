@@ -608,11 +608,10 @@
   }
 }
 
-/* ── COFFEE STORY (sticky scenes) ──────────────────────── */
+/* ── COFFEE STORY (b/w + color inset) ─────────────────── */
 
 .coffee-story {
   position: relative;
-  overflow-x: hidden;
 }
 
 .coffee-story__scene {
@@ -622,6 +621,9 @@
   min-height: 100svh;
   width: 100%;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr min(34vw, 380px);
+  align-items: stretch;
 }
 
 .coffee-story__scene[data-scene="1"] {
@@ -640,108 +642,121 @@
   z-index: 4;
 }
 
-.coffee-story__bg {
+.coffee-story__bg-bw {
   position: absolute;
   inset: 0;
-  filter: grayscale(1);
   background-size: cover;
   background-position: center;
+  filter: grayscale(1) contrast(1.1);
   z-index: 0;
 }
 
-.coffee-story__bg--1 {
-  background: linear-gradient(135deg, #3a3028 0%, #6a5848 50%, #9a8878 100%);
+.coffee-story__bg-bw--1 {
+  background: linear-gradient(160deg, #3a2a1f, #1a0e08);
 }
 
-.coffee-story__bg--2 {
-  background: linear-gradient(160deg, #2a2018 0%, #5a4838 50%, #8a7868 100%);
+.coffee-story__bg-bw--2 {
+  background: linear-gradient(160deg, #2a2018, #0a0806);
 }
 
-.coffee-story__bg--3 {
-  background: linear-gradient(145deg, #1a1008 0%, #4a3828 50%, #7a6858 100%);
+.coffee-story__bg-bw--3 {
+  background: linear-gradient(160deg, #4a3828, #1a1008);
 }
 
-.coffee-story__bg--4 {
-  background: linear-gradient(155deg, #0a0800 0%, #3a2818 50%, #6a5848 100%);
+.coffee-story__bg-bw--4 {
+  background: linear-gradient(160deg, #1a1210, #060402);
 }
 
-.coffee-story__layer {
+.coffee-story__overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.coffee-story__left {
+  position: relative;
   z-index: 2;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.25) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+  padding: clamp(40px, 5vw, 80px) clamp(40px, 5vw, 80px);
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  grid-column: 1;
 }
 
-.coffee-story__content {
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-  padding: clamp(40px, 5vw, 80px) clamp(24px, 5vw, 80px);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: flex-end;
-  gap: clamp(32px, 4vw, 64px);
-  color: var(--color-white);
-}
-
-.coffee-story__scene-num {
-  display: block;
-  font-size: 12px;
-  letter-spacing: 0.3em;
-  opacity: 0.7;
-  margin-bottom: 20px;
-}
-
-.coffee-story__copy {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 52px);
+.coffee-story__num {
+  font-family: var(--ital);
+  font-size: clamp(80px, 12vw, 180px);
   font-weight: 300;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  max-width: 600px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.18);
+  margin-bottom: 16px;
 }
 
-.coffee-story__mini-image {
-  width: clamp(140px, 18vw, 260px);
+.coffee-story__text {
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 420px;
+  font-weight: 300;
+}
+
+.coffee-story__text strong {
+  display: block;
+  font-weight: 500;
+  font-size: clamp(16px, 1.4vw, 20px);
+  margin-bottom: 8px;
+  color: #fff;
+  font-style: normal;
+}
+
+.coffee-story__right {
+  position: relative;
+  z-index: 2;
+  padding: 40px 40px 40px 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  grid-column: 2;
+}
+
+.coffee-story__mini {
+  width: 100%;
   aspect-ratio: 3 / 4;
-  flex-shrink: 0;
   overflow: hidden;
-  filter: grayscale(1);
-  opacity: 0.85;
-  align-self: flex-end;
+  background-size: cover;
+  background-position: center;
 }
 
-.coffee-story__mini-image--1 {
-  background: linear-gradient(180deg, #6a5848 0%, #3a2818 100%);
+.coffee-story__mini--1 {
+  background: linear-gradient(160deg, #c4a8b4, #7a4850);
 }
 
-.coffee-story__mini-image--2 {
-  background: linear-gradient(180deg, #5a4838 0%, #2a1808 100%);
+.coffee-story__mini--2 {
+  background: linear-gradient(160deg, #d4b894, #5a3820);
 }
 
-.coffee-story__mini-image--3 {
-  background: linear-gradient(180deg, #4a3828 0%, #1a0800 100%);
+.coffee-story__mini--3 {
+  background: linear-gradient(160deg, #e0d4bc, #7a6248);
 }
 
-.coffee-story__mini-image--4 {
-  background: linear-gradient(180deg, #3a2818 0%, #0a0000 100%);
+.coffee-story__mini--4 {
+  background: linear-gradient(160deg, #b8a090, #4a3020);
 }
 
 @media (max-width: 768px) {
-  .coffee-story__content {
+  .coffee-story__scene {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 
-  .coffee-story__mini-image {
-    width: 50%;
-    align-self: auto;
+  .coffee-story__right {
+    display: none;
+  }
+
+  .coffee-story__left {
+    grid-column: 1;
   }
 }
 

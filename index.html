@@ -33,21 +33,17 @@
         <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
         <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
         <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
-        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
-        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
-        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз на Энгельса, 74</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
         <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
-        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA flowers coffee you</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
       </div>
               <div class="top-marquee__content" aria-hidden="true">
         <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
         <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
         <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
-        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
-        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
-        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз на Энгельса, 74</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
         <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
-        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA flowers coffee you</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
       </div>
     </div>
   </div>
@@ -227,8 +223,9 @@
 
         <div class="site-header__actions">
           <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
-          <button type="button" class="site-header__icon" aria-label="Избранное" data-cursor="hover">
+          <button type="button" class="site-header__icon site-header__icon--wishlist" aria-label="Избранное" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+            <span class="header-wishlist-count" hidden aria-hidden="true">0</span>
           </button>
           <a href="cart.html" class="site-header__icon site-header__icon--cart site-header__cart" aria-label="Корзина" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
@@ -259,21 +256,18 @@
   </div>
 
   <main id="main">
-    <section class="hero-scene" id="hero" aria-label="PALOMA — главный экран">
-      <div class="hero-scene__bg" id="heroBg" aria-hidden="true">
-        <div
-          class="hero-scene__bg-placeholder"
-          style="background: radial-gradient(1100px 600px at 75% 40%, rgba(240, 82, 43, 0.08), transparent 70%), linear-gradient(180deg, var(--ivory), #fbf1dc);">
-        </div>
+    <section class="paloma-hero" id="hero" aria-label="Главная">
+      <div class="paloma-hero__bg" aria-hidden="true">
+        <!-- TODO: replace with real PALOMA photo -->
+        <img src="images/paloma/hero/hero-main.jpg" alt="" class="paloma-hero__bg-img" width="1920" height="1080" loading="eager" fetchpriority="high" onerror="this.style.opacity='0';this.style.visibility='hidden'">
+        <div class="paloma-hero__bg-ph" style="background:linear-gradient(160deg,#c4a8b4 0%,#7a4850 35%,#2e1018 100%);" aria-hidden="true"></div>
       </div>
-      <p class="hero-scene__word" aria-label="PALOMA">PALOMA</p>
-      <div class="hero-scene__giraffe" id="heroGiraffe" aria-hidden="true">
-        <img src="assets/images/giraffe.svg" alt="" width="360" height="720" draggable="false" loading="lazy" />
+      <div class="paloma-hero__overlay" aria-hidden="true"></div>
+      <div class="paloma-hero__content">
+        <p class="paloma-hero__offer">Цветы, кофе и подарки в одном пространстве PALOMA</p>
+        <h1 class="paloma-hero__wordmark" aria-label="PALOMA">PALOMA</h1>
       </div>
-      <div class="hero-scene__cta">
-        <a href="catalog.html" class="btn btn--primary">Перейти в каталог <span class="btn-arrow" aria-hidden="true">↗</span></a>
-        <a href="coffee.html" class="btn btn--ghost">Смотреть кофейню</a>
-      </div>
+      <a href="catalog.html" class="paloma-hero__cta" aria-label="Перейти в каталог">В КАТАЛОГ</a>
     </section>
 
     <section class="showcase" id="showcase" aria-labelledby="showcase-heading">
@@ -285,7 +279,7 @@
         </header>
       </div>
 
-      <div class="showcase__grid" id="showcaseGrid">
+      <div class="showcase__grid home-showcase__grid catalog-grid" id="showcaseGrid">
           <article
             class="product-card"
             data-id="1"
@@ -673,243 +667,173 @@
       </div>
     </section>
 
-    <section class="about-video" id="aboutVideo">
-      <div class="about-video__media">
-        <div class="about-video__placeholder">
-          <span class="about-video__placeholder-label">VIDEO</span>
+    <div class="curtain-blocks-wrapper" id="curtainStory">
+      <div class="curtain-block curtain-block--1">
+        <div class="curtain-block__bg curtain-block__bg--1" aria-hidden="true">
+          <!-- TODO: replace with real PALOMA photo -->
+        </div>
+        <div class="curtain-block__overlay" aria-hidden="true"></div>
+        <div class="curtain-block__card">
+          <span class="curtain-block__num" aria-hidden="true">01</span>
+          <h2 class="curtain-block__title">Букет в настроение</h2>
+          <div class="curtain-block__mini-photo" aria-hidden="true">
+            <!-- TODO: replace with real PALOMA photo -->
+          </div>
+          <p class="curtain-block__text">Соберём композицию под повод, палитру и человека.</p>
+          <a href="catalog.html" class="btn btn--dark curtain-block__cta">Выбрать букет</a>
         </div>
       </div>
-      <div class="about-video__overlay"></div>
-
-      <div class="about-video__square">
-        <span class="about-video__square-inner"></span>
-      </div>
-
-      <div class="about-video__caption">
-        <p class="about-video__text">
-          PALOMA — цветочный бутик и кофейня в Новороссийске. Мы собираем букеты как маленькие истории: с вниманием к сезону, настроению и деталям. Можно зайти за букетом, остаться на кофе и уехать с хорошим послевкусием дня.
-        </p>
-      </div>
-    </section>
-
-    <section class="about-story" id="aboutStory">
-      <article class="about-story__scene" data-scene="1">
-        <div class="about-story__bg about-story__bg--flowers"></div>
-        <div class="about-story__content">
-          <div class="about-story__text">
-            <span class="about-story__num">01</span>
-            <h3 class="about-story__heading">Цветы</h3>
-            <p class="about-story__copy">Мы собираем букеты не по шаблону, а по настроению: сезон, цвет, фактура и повод складываются в живую композицию.</p>
-          </div>
-          <div class="about-story__mini">
-            <div class="about-story__mini-img about-story__mini-img--flowers"></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="about-story__scene" data-scene="2">
-        <div class="about-story__bg about-story__bg--cafe"></div>
-        <div class="about-story__content">
-          <div class="about-story__text">
-            <span class="about-story__num">02</span>
-            <h3 class="about-story__heading">Кофейня</h3>
-            <p class="about-story__copy">PALOMA — это место, где можно забрать букет, остаться на кофе и замедлиться среди цветов, растений и света.</p>
-          </div>
-          <div class="about-story__mini">
-            <div class="about-story__mini-img about-story__mini-img--cafe"></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="about-story__scene" data-scene="3">
-        <div class="about-story__bg about-story__bg--details"></div>
-        <div class="about-story__content">
-          <div class="about-story__text">
-            <span class="about-story__num">03</span>
-            <h3 class="about-story__heading">Детали</h3>
-            <p class="about-story__copy">Ленты, открытки, упаковка, фото перед отправкой и бережная доставка — всё собрано вокруг ощущения заботы.</p>
-          </div>
-          <div class="about-story__mini">
-            <div class="about-story__mini-img about-story__mini-img--details"></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="about-story__scene" data-scene="4">
-        <div class="about-story__bg about-story__bg--studio"></div>
-        <div class="about-story__content">
-          <div class="about-story__text">
-            <span class="about-story__num">04</span>
-            <h3 class="about-story__heading">Офлайн-точка</h3>
-            <p class="about-story__copy">Мы находимся в Новороссийске на ул. Энгельса, 74. Можно приехать за букетом, выбрать подарок и остаться на кофе.</p>
-          </div>
-          <div class="about-story__mini">
-            <div class="about-story__mini-img about-story__mini-img--studio"></div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <section class="process" id="processSection">
-      <div class="process__header">
-        <span class="process__label">[ Этапы работы ]</span>
-        <h2 class="process__title">
-          Как мы собираем букет:<br>
-          <em>от заявки до свежей композиции</em>
-        </h2>
-      </div>
-
-      <div class="process__viewport" id="processViewport">
-        <div class="process__track" id="processTrack">
-          <article class="process-card">
-            <span class="process-card__num">01</span>
-            <h3 class="process-card__title">Заявка и настроение</h3>
-            <p class="process-card__desc">Уточняем повод, палитру, бюджет и способ получения — в мессенджере или по телефону.</p>
-          </article>
-          <article class="process-card">
-            <span class="process-card__num">02</span>
-            <h3 class="process-card__title">Подбор цветов</h3>
-            <p class="process-card__desc">Выбираем свежие сорта дня с учётом сезона, оттенков и характера букета.</p>
-          </article>
-          <article class="process-card">
-            <span class="process-card__num">03</span>
-            <h3 class="process-card__title">Сборка композиции</h3>
-            <p class="process-card__desc">Флорист собирает объём, фактуру и баланс, чтобы букет выглядел живым и выразительным.</p>
-          </article>
-          <article class="process-card">
-            <span class="process-card__num">04</span>
-            <h3 class="process-card__title">Упаковка и детали</h3>
-            <p class="process-card__desc">Добавляем ленты PALOMA, открытку, кофе или десерт — если хочется сделать подарок теплее.</p>
-          </article>
-          <article class="process-card">
-            <span class="process-card__num">05</span>
-            <h3 class="process-card__title">Доставка или самовывоз</h3>
-            <p class="process-card__desc">Отправляем фото перед выездом, бережно передаём курьеру или ждём вас в студии.</p>
-          </article>
+      <div class="curtain-block curtain-block--2">
+        <div class="curtain-block__bg curtain-block__bg--2" aria-hidden="true"></div>
+        <div class="curtain-block__overlay" aria-hidden="true"></div>
+        <div class="curtain-block__card">
+          <span class="curtain-block__num" aria-hidden="true">02</span>
+          <h2 class="curtain-block__title">Кофе к букету</h2>
+          <div class="curtain-block__mini-photo" aria-hidden="true"></div>
+          <p class="curtain-block__text">Добавьте латте, какао или десерт — маленькая деталь делает подарок теплее.</p>
+          <a href="coffee.html" class="btn btn--dark curtain-block__cta">Смотреть кофейню</a>
         </div>
       </div>
-    </section>
-
-    <section class="paloma-location">
-      <div class="paloma-location__inner">
-        <div class="paloma-location__media">
-          <div class="paloma-location__placeholder" style="background: linear-gradient(160deg,#c4a882,#8a6248);" aria-hidden="true"></div>
+      <div class="curtain-block curtain-block--3">
+        <div class="curtain-block__bg curtain-block__bg--3" aria-hidden="true"></div>
+        <div class="curtain-block__overlay" aria-hidden="true"></div>
+        <div class="curtain-block__card">
+          <span class="curtain-block__num" aria-hidden="true">03</span>
+          <h2 class="curtain-block__title">Цветы для события</h2>
+          <div class="curtain-block__mini-photo" aria-hidden="true"></div>
+          <p class="curtain-block__text">Оформим столы, арку, welcome-зону или пространство цветами — без организации мероприятия, только флористика.</p>
+          <a href="weddings.html" class="btn btn--dark curtain-block__cta">Рассчитать цветочное оформление</a>
         </div>
-        <div class="paloma-location__content">
-          <span class="paloma-location__eyebrow">[ Офлайн-точка ]</span>
-          <h2 class="paloma-location__title">PALOMA на Энгельса</h2>
-          <p class="paloma-location__text">
-            Зайдите за букетом, останьтесь на кофе и выберите подарок на месте.
-          </p>
-          <div class="paloma-location__actions">
-            <a href="https://yandex.ru/maps/?text=Новороссийск+Энгельса+74" target="_blank" rel="noopener" class="btn btn--dark" data-cursor="hover">Построить маршрут</a>
-            <a href="coffee.html" class="btn btn--outline" data-cursor="hover">Смотреть кофейню</a>
+      </div>
+    </div>
+
+    <section class="process-section" id="processSection" aria-label="Как мы работаем">
+      <header class="process-section__header">
+        <div class="process-section__left">
+          <span class="process-section__eyebrow">как мы работаем</span>
+          <h2 class="process-section__big-title">КАК МЫ<br>СОБИРАЕМ<br>БУКЕТ</h2>
+          <p class="process-section__intro">От заявки до передачи — каждый шаг с вниманием к деталям и настроению.</p>
+        </div>
+      </header>
+      <div class="process-viewport" id="processViewport">
+        <div class="process-track" id="processTrack">
+          <div class="process-step">
+            <div class="process-step__inner">
+              <div class="process-step__num">01/<br>ЗАЯВКА И<br>НАСТРОЕНИЕ</div>
+              <div class="process-step__photo-wrap" aria-hidden="true">
+                <!-- TODO: replace with real PALOMA photo -->
+                <div class="process-step__photo" style="background:linear-gradient(135deg,#c4a8b4,#7a4850);"></div>
+              </div>
+              <p class="process-step__text">Уточняем повод, палитру, бюджет и способ получения — в мессенджере или по телефону.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__inner">
+              <div class="process-step__num">02/<br>ПОДБОР<br>ЦВЕТОВ</div>
+              <div class="process-step__photo-wrap" aria-hidden="true">
+                <div class="process-step__photo" style="background:linear-gradient(135deg,#d4bcc8,#8a5858);"></div>
+              </div>
+              <p class="process-step__text">Выбираем свежие сорта дня с учётом сезона, оттенков и характера букета.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__inner">
+              <div class="process-step__num">03/<br>СБОРКА<br>КОМПОЗИЦИИ</div>
+              <div class="process-step__photo-wrap" aria-hidden="true">
+                <div class="process-step__photo" style="background:linear-gradient(135deg,#b4a4c4,#6a4870);"></div>
+              </div>
+              <p class="process-step__text">Флорист собирает объём, фактуру и баланс, чтобы букет выглядел живым и выразительным.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__inner">
+              <div class="process-step__num">04/<br>УПАКОВКА<br>И ДЕТАЛИ</div>
+              <div class="process-step__photo-wrap" aria-hidden="true">
+                <div class="process-step__photo" style="background:linear-gradient(135deg,#c8b4a8,#7a5448);"></div>
+              </div>
+              <p class="process-step__text">Добавляем ленты, открытку, кофе или десерт — если хочется сделать подарок теплее.</p>
+            </div>
+          </div>
+          <div class="process-step process-step--final">
+            <div class="process-step__inner">
+              <div class="process-step__num">05/<br>ПЕРЕДАЧА</div>
+              <div class="process-step__photo-wrap" aria-hidden="true">
+                <div class="process-step__photo" style="background:linear-gradient(135deg,#b8a4b0,#6a4860);"></div>
+              </div>
+              <p class="process-step__text">Отправляем фото по запросу, передаём курьеру или ждём вас в PALOMA на Энгельса.</p>
+              <a href="catalog.html" class="process-step__cta btn btn--dark">Выбрать букет</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="reviews" id="reviews" aria-labelledby="reviews-heading">
-      <div class="reviews__container">
-        <header class="reviews__header">
-          <span class="reviews__eyebrow">[ Отзывы ]</span>
-          <h2 class="reviews__title" id="reviews-heading">Что говорят клиенты</h2>
-        </header>
-
-        <div class="reviews__slider" id="reviewsSlider">
-          <div class="reviews__slide is-active" data-slide="0">
-            <div class="reviews__image">
-              <div class="reviews__image-placeholder" style="background: linear-gradient(135deg, #c9806e, #6b3528);"></div>
-            </div>
-            <div class="reviews__content">
-              <h3 class="reviews__quote-title">«Букет получился нежнее, чем я представляла»</h3>
-              <p class="reviews__text">Я просто описала настроение и повод, а команда PALOMA собрала композицию, которая выглядела очень живой и дорогой. Отдельно понравилось, что перед доставкой прислали фото.</p>
-              <div class="reviews__signature">— Анна</div>
-            </div>
+    <section class="reviews-section" id="reviews" aria-label="Отзывы">
+      <div class="reviews-section__inner">
+        <div class="reviews-section__top">
+          <div class="reviews-section__meta">
+            <span class="reviews-section__label">отзывы</span>
+            <h2 class="reviews-section__title" id="reviews-heading">ЧТО ГОВОРЯТ<br>О НАС КЛИЕНТЫ</h2>
           </div>
-
-          <div class="reviews__slide" data-slide="1">
-            <div class="reviews__image">
-              <div class="reviews__image-placeholder" style="background: linear-gradient(135deg, #5c4434, #2a1d14);"></div>
-            </div>
-            <div class="reviews__content">
-              <h3 class="reviews__quote-title">«Забрала букет и осталась на кофе»</h3>
-              <p class="reviews__text">Очень красивое место. Заказ был готов вовремя, упаковка аккуратная, ленты PALOMA — отдельная любовь. Взяла кофе с собой и ушла с ощущением маленького праздника.</p>
-              <div class="reviews__signature">— Мария</div>
-            </div>
-          </div>
-
-          <div class="reviews__slide" data-slide="2">
-            <div class="reviews__image">
-              <div class="reviews__image-placeholder" style="background: linear-gradient(135deg, #d4b594, #6e5236);"></div>
-            </div>
-            <div class="reviews__content">
-              <h3 class="reviews__quote-title">«Оформили камерный ужин без лишней суеты»</h3>
-              <p class="reviews__text">Мы обсудили палитру и настроение, дальше команда всё взяла на себя. Цветы выглядели естественно, не перегруженно и очень стильно.</p>
-              <div class="reviews__signature">— Екатерина</div>
-            </div>
+          <div class="reviews-section__arrows" aria-label="Навигация по отзывам">
+            <button type="button" class="reviews-arrow reviews-arrow--prev" id="reviewsPrev" aria-label="Назад">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="reviews-arrow reviews-arrow--next" id="reviewsNext" aria-label="Вперёд">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
           </div>
         </div>
-
-        <div class="reviews__controls">
-          <button type="button" class="reviews__arrow review-arrow" id="reviewsPrev" aria-label="Предыдущий отзыв">
-            <svg width="24" height="14" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 7H1M1 7l6-6M1 7l6 6"/></svg>
-          </button>
-          <div class="reviews__dots" id="reviewsDots">
-            <button type="button" class="reviews__dot is-active" data-dot="0" aria-label="Слайд 1"></button>
-            <button type="button" class="reviews__dot" data-dot="1" aria-label="Слайд 2"></button>
-            <button type="button" class="reviews__dot" data-dot="2" aria-label="Слайд 3"></button>
+        <div class="reviews-carousel" id="reviewsCarousel" aria-live="polite">
+          <div class="reviews-track" id="reviewsTrack">
+            <article class="review-slide">
+              <div class="review-slide__photo" aria-hidden="true">
+                <!-- TODO: replace with real PALOMA review photo -->
+                <div class="review-slide__ph" style="background:linear-gradient(160deg,#c4a8b4,#7a4850);"></div>
+              </div>
+              <div class="review-slide__body">
+                <blockquote class="review-slide__quote">Букет получился очень нежным и свежим. Особенно понравилось, что можно было сразу добавить кофе и открытку — подарок выглядел полностью собранным.</blockquote>
+                <p class="review-slide__detail">Букет на день рождения, доставка по Новороссийску.</p>
+                <p class="review-slide__brand">PALOMA</p>
+              </div>
+            </article>
+            <article class="review-slide">
+              <div class="review-slide__photo" aria-hidden="true">
+                <div class="review-slide__ph" style="background:linear-gradient(160deg,#d4bcc8,#8a5858);"></div>
+              </div>
+              <div class="review-slide__body">
+                <blockquote class="review-slide__quote">Заказ оформили быстро, прислали фото перед доставкой и всё привезли вовремя. Очень спокойный и красивый сервис.</blockquote>
+                <p class="review-slide__detail">Доставка букета, интервал 12:00–15:00.</p>
+                <p class="review-slide__brand">PALOMA</p>
+              </div>
+            </article>
+            <article class="review-slide">
+              <div class="review-slide__photo" aria-hidden="true">
+                <div class="review-slide__ph" style="background:linear-gradient(160deg,#b4a4c4,#6a4870);"></div>
+              </div>
+              <div class="review-slide__body">
+                <blockquote class="review-slide__quote">PALOMA — это не просто букет. Это настроение: цветы, кофе, упаковка и ощущение, что всё сделано с вниманием.</blockquote>
+                <p class="review-slide__detail">Цветочная подписка, регулярная доставка.</p>
+                <p class="review-slide__brand">PALOMA</p>
+              </div>
+            </article>
+            <article class="review-slide">
+              <div class="review-slide__photo" aria-hidden="true">
+                <div class="review-slide__ph" style="background:linear-gradient(160deg,#c8b4a8,#7a5448);"></div>
+              </div>
+              <div class="review-slide__body">
+                <blockquote class="review-slide__quote">Очень красиво, свежо и аккуратно. Видно, что букет собирали не шаблонно, а под человека и повод.</blockquote>
+                <p class="review-slide__detail">Авторская композиция, самовывоз на Энгельса.</p>
+                <p class="review-slide__brand">PALOMA</p>
+              </div>
+            </article>
           </div>
-          <button type="button" class="reviews__arrow review-arrow" id="reviewsNext" aria-label="Следующий отзыв">
-            <svg width="24" height="14" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h22M23 7l-6-6M23 7l-6 6"/></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq" id="faq" aria-labelledby="faq-heading">
-      <div class="faq__container">
-        <header class="faq__header">
-          <span class="faq__eyebrow">[ Вопрос-ответ ]</span>
-          <h2 class="faq__title" id="faq-heading">FAQ</h2>
-        </header>
-
-        <div class="faq__list">
-          <div class="faq-row" data-image="1" tabindex="0">
-            <div class="faq-row__q">Можно ли заказать букет день в день?</div>
-            <div class="faq-row__a">Да, готовые букеты из онлайн-витрины можно заказать быстрее всего. Если нужен индивидуальный — уточним наличие цветов и соберём в похожем настроении.</div>
-          </div>
-          <div class="faq-row" data-image="2" tabindex="0">
-            <div class="faq-row__q">Вы отправляете фото перед доставкой?</div>
-            <div class="faq-row__a">Да, по запросу отправим фото готового букета перед выездом курьера.</div>
-          </div>
-          <div class="faq-row" data-image="3" tabindex="0">
-            <div class="faq-row__q">Можно добавить кофе или десерт к букету?</div>
-            <div class="faq-row__a">Да, к заказу можно добавить кофе, десерт, открытку или вазу.</div>
-          </div>
-          <div class="faq-row" data-image="4" tabindex="0">
-            <div class="faq-row__q">Цветы могут отличаться от фото?</div>
-            <div class="faq-row__a">Незначительно — сезонные цветы могут меняться, но мы сохраняем настроение, палитру и характер композиции.</div>
-          </div>
-          <div class="faq-row" data-image="5" tabindex="0">
-            <div class="faq-row__q">Можно забрать заказ самостоятельно?</div>
-            <div class="faq-row__a">Да, самовывоз доступен из PALOMA на ул. Энгельса, 74.</div>
-          </div>
-        </div>
-
-        <div class="faq__hover-images" id="faqHoverImages" aria-hidden="true">
-          <div class="faq__hover-image" data-img="1"></div>
-          <div class="faq__hover-image" data-img="2"></div>
-          <div class="faq__hover-image" data-img="3"></div>
-          <div class="faq__hover-image" data-img="4"></div>
-          <div class="faq__hover-image" data-img="5"></div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer" id="contacts">
-    <img src="assets/images/giraffe.svg" alt="" class="site-footer__giraffe-silhouette" width="160" height="320" loading="lazy" />
     <div class="site-footer__inner">
       <div class="site-footer__grid">
         <div class="site-footer__col site-footer__col--brand">

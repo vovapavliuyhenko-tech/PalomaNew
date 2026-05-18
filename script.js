@@ -509,9 +509,19 @@
         modalComposition.textContent = currentProduct.composition;
       if (modalPairs) modalPairs.textContent = currentProduct.pairs || "—";
 
-      const mainImg = card.querySelector(".product-card__image--main");
-      if (modalMainImg && mainImg)
-        modalMainImg.style.background = getComputedStyle(mainImg).background;
+      const mainImg =
+        card.querySelector(".product-card__image--main") ||
+        card.querySelector(".product-card__img--main");
+      if (modalMainImg && mainImg) {
+        if (mainImg.tagName === "IMG") {
+          const u = mainImg.currentSrc || mainImg.src;
+          modalMainImg.style.background = u
+            ? `url(${JSON.stringify(u)}) center/cover no-repeat`
+            : "";
+        } else {
+          modalMainImg.style.background = getComputedStyle(mainImg).background;
+        }
+      }
 
       thumbs.forEach((t, i) =>
         t.classList.toggle("is-active", i === 0)
@@ -537,11 +547,20 @@
         "click",
         (e) => {
           e.stopPropagation();
-          const main = card.querySelector(".product-card__image--main");
+          const main =
+            card.querySelector(".product-card__image--main") ||
+            card.querySelector(".product-card__img--main");
           const rawCat = (card.dataset.category || "")
             .trim()
             .split(/\s+/)
             .filter(Boolean);
+          let bg = "";
+          if (main) {
+            if (main.tagName === "IMG") {
+              const u = main.currentSrc || main.src;
+              bg = u ? `url(${u}) center/cover` : "";
+            } else bg = getComputedStyle(main).background;
+          }
           window.PalomaCart?.add({
             id:
               card.dataset.id +
@@ -552,7 +571,7 @@
             addons: [],
             price: parseInt(card.dataset.price, 10) || 0,
             qty: 1,
-            bg: main ? getComputedStyle(main).background : "",
+            bg,
             category: rawCat[0] || "",
           });
         }
@@ -566,7 +585,11 @@
         }
       );
 
-      card.addEventListener("click", () => openModal(card));
+      card.addEventListener("click", (ev) => {
+        if (ev.target.closest(".product-card__wishlist")) return;
+        if (ev.target.closest(".product-card__actions")) return;
+        openModal(card);
+      });
     });
 
     modal.querySelectorAll("[data-close]").forEach((el) => {
@@ -712,6 +735,8 @@
       );
       btn.hidden = true;
       btn.setAttribute("aria-expanded", "true");
+      window.PalomaWishlist?.injectButtons?.();
+      window.PalomaWishlist?.updateUi?.();
       window.palomaRebindCursorHovers?.();
     });
   })();
@@ -765,7 +790,7 @@
     );
 
     const hoverSelectors =
-      'a, button, .product-card, .faq-row, .review-arrow, .category-card, .catalog-nav-item, .filter-chip, .filter-btn, .site-header__icon--cart, .site-header__icon, .quantity-btn, .cart-item__remove, .product-modal__close, .size-pill, .product-modal__thumb, .cart-drawer__close, .cart-drawer__checkout, .client-nav-card, .faq-tab, .faq-acc__head, .info-card, .hscroll-card, .hscroll-section__arrow, .menu-item, .menu-item__add, .coffee-hero__link, .w-package-card__cta, .w-portfolio__case-link, .w-service-row, [data-cursor="hover"]';
+      'a, button, .product-card, .faq-row, .review-arrow, .reviews-arrow, .product-card__wishlist, .category-card, .catalog-nav-item, .filter-chip, .filter-btn, .site-header__icon--cart, .site-header__icon, .quantity-btn, .cart-item__remove, .product-modal__close, .size-pill, .product-modal__thumb, .cart-drawer__close, .cart-drawer__checkout, .client-nav-card, .faq-tab, .faq-acc__head, .info-card, .hscroll-card, .hscroll-section__arrow, .menu-item, .menu-item__add, .coffee-hero__link, .w-package-card__cta, .w-portfolio__case-link, .w-service-row, .process-step__cta, .curtain-block__cta, [data-cursor="hover"]';
 
     function onEnter() {
       cursor.classList.add("is-hovering");
@@ -819,15 +844,49 @@
     });
   })();
 
-  /* Отзывы — слайдер */
-  (function initReviewsSlider() {
+  /* Отзывы — карусель (reviews track) + legacy fade-слайдер */
+  (function initReviewsCarousel() {
+    const track = document.getElementById("reviewsTrack");
+    const prevBtn = document.getElementById("reviewsPrev");
+    const nextBtn = document.getElementById("reviewsNext");
+    if (track) {
+      const slides = track.querySelectorAll(".review-slide");
+      const total = slides.length;
+      if (total) {
+        let cur = 0;
+        const go = (i) => {
+          cur = (i + total) % total;
+          track.style.transform = `translateX(${-cur * 100}%)`;
+        };
+        prevBtn?.addEventListener("click", () => go(cur - 1));
+        nextBtn?.addEventListener("click", () => go(cur + 1));
+        let sx = 0;
+        track.addEventListener(
+          "touchstart",
+          (e) => {
+            sx = e.touches[0].clientX;
+          },
+          { passive: true }
+        );
+        track.addEventListener(
+          "touchend",
+          (e) => {
+            const dx = e.changedTouches[0].clientX - sx;
+            if (Math.abs(dx) > 50) go(dx < 0 ? cur + 1 : cur - 1);
+          },
+          { passive: true }
+        );
+        return;
+      }
+    }
+
     const slider = document.getElementById("reviewsSlider");
     if (!slider) return;
 
     const slides = slider.querySelectorAll(".reviews__slide");
     const dots = document.querySelectorAll(".reviews__dot");
-    const prevBtn = document.getElementById("reviewsPrev");
-    const nextBtn = document.getElementById("reviewsNext");
+    const prevLegacy = document.getElementById("reviewsPrev");
+    const nextLegacy = document.getElementById("reviewsNext");
 
     let current = 0;
     const total = slides.length;
@@ -863,11 +922,11 @@
       autoplayInterval = setInterval(next, 6000);
     }
 
-    prevBtn?.addEventListener("click", () => {
+    prevLegacy?.addEventListener("click", () => {
       prev();
       resetAutoplay();
     });
-    nextBtn?.addEventListener("click", () => {
+    nextLegacy?.addEventListener("click", () => {
       next();
       resetAutoplay();
     });
@@ -891,6 +950,7 @@
   const siteHeader = document.getElementById("siteHeader");
   if (siteHeader) {
     const heroEl =
+      document.querySelector(".paloma-hero") ||
       document.querySelector(".hero-scene") ||
       document.querySelector(".hero") ||
       document.querySelector(".coffee-hero") ||
@@ -992,6 +1052,8 @@
     );
     showMoreBtn.setAttribute("aria-expanded", "true");
     showMoreBtn.hidden = true;
+    window.PalomaWishlist?.injectButtons?.();
+    window.PalomaWishlist?.updateUi?.();
     window.palomaRebindCursorHovers?.();
   });
 
@@ -1020,7 +1082,7 @@
         vpEl.style.height = "auto";
         trackEl
           .querySelectorAll(
-            ".process-card,.coffee-process__card,.w-process__card",
+            ".process-card,.coffee-process__card,.w-process__card,.process-step",
           )
           .forEach((c) => {
             c.style.scrollSnapAlign = "start";
@@ -1055,71 +1117,17 @@
     });
   })();
 
-  /* FAQ */
-  const faqList = document.querySelector(".faq__list");
-  const faqRows = document.querySelectorAll(".faq-row");
-  const faqHoverImages = document.querySelectorAll(".faq__hover-image");
-
-  function showFaqHover(id) {
-    faqHoverImages.forEach((img) => img.classList.remove("is-active"));
-    document
-      .querySelector(`.faq__hover-image[data-img="${id}"]`)
-      ?.classList.add("is-active");
-  }
-
-  function hideFaqHover() {
-    faqHoverImages.forEach((img) => img.classList.remove("is-active"));
-  }
-
-  if (faqList) {
-    faqRows.forEach((row) => {
-      row.addEventListener("mouseenter", () =>
-        showFaqHover(row.dataset.image)
-      );
-      row.addEventListener("mouseleave", (e) => {
-        const to = e.relatedTarget;
-        if (to instanceof Node && faqList.contains(to)) {
-          const next = to.closest(".faq-row");
-          if (next && next !== row) showFaqHover(next.dataset.image);
-          return;
-        }
-        hideFaqHover();
-      });
-    });
-
-    faqList.addEventListener("focusin", (e) => {
-      const row = e.target.closest(".faq-row");
-      if (row) showFaqHover(row.dataset.image);
-    });
-
-    faqList.addEventListener("focusout", () => {
-      requestAnimationFrame(() => {
-        if (!faqList.contains(document.activeElement)) {
-          hideFaqHover();
-        }
-      });
-    });
-  }
-
-  /* Hero-сцена: scale фона + жираф */
-  (function initHeroScene() {
-    const bg = document.getElementById("heroBg");
-    const giraffe = document.getElementById("heroGiraffe");
-    const hero = document.querySelector(".hero-scene");
-    if (!bg || !hero) return;
+  /* Hero: лёгкий scale фона (PALOMA) */
+  (function initPalomaHeroParallax() {
+    const hero = document.querySelector(".paloma-hero");
+    const bg = hero?.querySelector(".paloma-hero__bg");
+    if (!hero || !bg) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let raf;
     function update() {
-      const scrollY = window.scrollY;
       const heroH = hero.offsetHeight || 1;
-      const progress = Math.min(scrollY / heroH, 1);
-      const scale = 1 + progress * 0.08;
-      bg.style.transform = `scale(${scale})`;
-
-      if (giraffe && progress > 0.3) {
-        const extra = ((progress - 0.3) / 0.7) * 20;
-        giraffe.style.transform = `translateX(${42 + extra}vw)`;
-      }
+      const progress = Math.min(window.scrollY / heroH, 1);
+      bg.style.transform = `scale(${1 + progress * 0.06})`;
     }
     window.addEventListener(
       "scroll",
@@ -1127,9 +1135,78 @@
         if (raf) cancelAnimationFrame(raf);
         raf = requestAnimationFrame(update);
       },
-      { passive: true },
+      { passive: true }
     );
     update();
+  })();
+
+  /* Избранное — localStorage */
+  (function initWishlist() {
+    const KEY = "paloma_wishlist";
+    function load() {
+      try {
+        return JSON.parse(localStorage.getItem(KEY) || "[]");
+      } catch {
+        return [];
+      }
+    }
+    function save(ids) {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(ids));
+      } catch {
+        /* ignore */
+      }
+    }
+    function injectButtons() {
+      document.querySelectorAll(".product-card").forEach((card) => {
+        const media = card.querySelector(".product-card__media");
+        if (!media || media.querySelector(".product-card__wishlist")) return;
+        const id = String(card.dataset.id || "").trim();
+        if (id) card.setAttribute("data-product-id", id);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "product-card__wishlist";
+        btn.setAttribute("aria-label", "В избранное");
+        btn.innerHTML =
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>';
+        media.insertBefore(btn, media.firstChild);
+      });
+    }
+    function updateUi() {
+      const ids = load();
+      document.querySelectorAll(".product-card__wishlist").forEach((btn) => {
+        const card = btn.closest("[data-product-id]");
+        const id = card?.getAttribute("data-product-id");
+        if (id) btn.classList.toggle("is-active", ids.includes(id));
+      });
+      const n = ids.length;
+      document.querySelectorAll(".header-wishlist-count").forEach((el) => {
+        el.textContent = n > 9 ? "9+" : String(n);
+        el.hidden = n === 0;
+        el.setAttribute("aria-hidden", n === 0 ? "true" : "false");
+      });
+    }
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".product-card__wishlist");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const card = btn.closest("[data-product-id]");
+      const id = card?.getAttribute("data-product-id");
+      if (!id) return;
+      let ids = load();
+      if (ids.includes(id)) ids = ids.filter((i) => i !== id);
+      else ids.push(id);
+      save(ids);
+      updateUi();
+      btn.style.transform = "scale(1.2)";
+      setTimeout(() => {
+        btn.style.transform = "";
+      }, 200);
+    });
+    injectButtons();
+    updateUi();
+    window.PalomaWishlist = { load, save, updateUi, injectButtons };
   })();
 
   (function initProductCardReveal() {
@@ -1161,7 +1238,7 @@
     if (typeof IntersectionObserver !== "function") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const els = document.querySelectorAll(
-      ".showcase__header, .process__header, .faq__header, .reviews__header, .paloma-location__content"
+      ".showcase__header, .process__header, .process-section__header, .reviews__header, .reviews-section__top, .paloma-location__content"
     );
     if (!els.length) return;
     const io = new IntersectionObserver(
@@ -1184,7 +1261,7 @@
     });
     const st = document.createElement("style");
     st.textContent =
-      ".showcase__header.is-revealed,.process__header.is-revealed,.faq__header.is-revealed,.reviews__header.is-revealed,.paloma-location__content.is-revealed{opacity:1!important;transform:none!important}";
+      ".showcase__header.is-revealed,.process__header.is-revealed,.process-section__header.is-revealed,.reviews__header.is-revealed,.reviews-section__top.is-revealed,.paloma-location__content.is-revealed{opacity:1!important;transform:none!important}";
     document.head.appendChild(st);
   })();
 

@@ -252,8 +252,13 @@
     const errors = [];
     if (!d.name) errors.push("Укажите имя");
     if (!d.phone) errors.push("Укажите телефон");
-    if (d.delivery === "courier" && !d.address)
-      errors.push("Укажите адрес доставки");
+    if (!d.delivery) errors.push("Выберите способ доставки");
+    if (d.delivery === "courier") {
+      if (!d.address) errors.push("Укажите адрес доставки");
+      if (!d.date) errors.push("Укажите дату доставки");
+      if (!d.interval) errors.push("Выберите интервал доставки");
+    }
+    if (!d.payment) errors.push("Выберите способ оплаты");
     return errors;
   }
 
@@ -330,9 +335,20 @@
     const d = collectFormData();
     const err = validate(d);
     if (err.length) {
-      alert("Пожалуйста, заполните:\n" + err.join("\n"));
+      let errEl = document.getElementById("cartCheckoutErrors");
+      if (!errEl) {
+        errEl = document.createElement("div");
+        errEl.id = "cartCheckoutErrors";
+        errEl.className = "cart-checkout-errors";
+        errEl.setAttribute("role", "alert");
+        submitBtn.parentElement?.insertBefore(errEl, submitBtn);
+      }
+      errEl.textContent = err[0];
+      errEl.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
+    document.getElementById("cartCheckoutErrors")?.remove();
+
     const items = getItems();
     lastEncodedMessage = encodeURIComponent(
       window.PalomaCart && typeof window.PalomaCart.generateMessage === "function"
