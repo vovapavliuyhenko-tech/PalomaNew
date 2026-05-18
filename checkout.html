@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#FBF6E8">
+  <title>Оформление заказа — PALOMA</title>
+  <meta name="description" content="Проверка сценария оплаты: тестовая страница оформления заказа PALOMA">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">`n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="clients.css">
+</head>
+<body class="checkout-page">
+  <a href="#main" class="skip-link">К содержимому</a>
+
+  <header class="checkout-bar">
+    <div class="checkout-bar__inner">
+      <a href="catalog.html" class="checkout-bar__link" data-cursor="hover">← Каталог</a>
+      <a href="index.html" class="checkout-bar__brand" lang="en">PALOMA</a>
+      <a href="payment.html" class="checkout-bar__link" data-cursor="hover">Оплата</a>
+    </div>
+  </header>
+
+  <main id="main" class="checkout-shell">
+    <div id="checkoutEmpty" class="checkout-empty">
+      <h1 class="checkout-shell__title">Корзина пуста</h1>
+      <p class="checkout-muted">Добавьте букет в корзину и снова нажмите «Оформить заказ».</p>
+      <a href="catalog.html" class="btn btn--dark" data-cursor="hover">Перейти в каталог</a>
+    </div>
+
+    <div id="checkoutFlow" class="checkout-flow is-hidden">
+      <h1 class="checkout-shell__title">Оформление и оплата</h1>
+      <p class="checkout-intro">
+        На сайте включён локальный тест: вы увидите шаг с оплатой, как на боевой версии после подключения ЮKassa через бекенд. Деньги списаны не будут.
+      </p>
+
+      <section class="checkout-card" aria-labelledby="checkout-sum-title">
+        <h2 id="checkout-sum-title" class="checkout-card__title">Ваш заказ</h2>
+        <ul id="checkoutLines" class="checkout-lines"></ul>
+        <div class="checkout-total-row">
+          <span>Итого</span>
+          <strong id="checkoutGrandTotal">0 ₽</strong>
+        </div>
+        <p class="checkout-muted checkout-note">Доставка рассчитается отдельно при подтверждении заказа.</p>
+      </section>
+
+      <section class="checkout-card" aria-labelledby="checkout-contact-title">
+        <h2 id="checkout-contact-title" class="checkout-card__title">Контакт</h2>
+        <label class="checkout-field">
+          <span class="checkout-field__label">Телефон</span>
+          <input type="tel" id="checkoutPhone" class="checkout-input" placeholder="+7 900 000-00-00" autocomplete="tel" inputmode="tel">
+        </label>
+        <label class="checkout-field">
+          <span class="checkout-field__label">Имя</span>
+          <input type="text" id="checkoutName" class="checkout-input" placeholder="Как к вам обращаться" autocomplete="name">
+        </label>
+      </section>
+
+      <button type="button" class="btn btn--dark checkout-primary" id="checkoutOpenPay" data-cursor="hover">
+        Перейти к оплате
+      </button>
+    </div>
+
+    <div id="checkoutSuccess" class="checkout-success is-hidden">
+      <h1 class="checkout-shell__title">Оплата прошла (тест)</h1>
+      <p class="checkout-intro">Заказ помечен оплаченным в демонстрационном режиме. Корзина очищена.</p>
+      <div class="checkout-success__actions">
+        <a href="catalog.html" class="btn btn--dark" data-cursor="hover">В каталог</a>
+        <a href="payment.html" class="btn btn--ghost checkout-success__secondary" data-cursor="hover">Как платим на боевом сайте</a>
+      </div>
+    </div>
+  </main>
+
+  <div class="checkout-overlay" id="checkoutPayOverlay" hidden data-checkout-overlay aria-hidden="true">
+    <div class="checkout-sheet" role="dialog" aria-labelledby="checkoutPayTitle" aria-modal="true" tabindex="-1">
+      <button type="button" class="checkout-sheet__close" id="checkoutSheetClose" aria-label="Закрыть" data-cursor="hover">×</button>
+      <h2 id="checkoutPayTitle" class="checkout-sheet__head">ЮKassa — тест страницы</h2>
+      <p class="checkout-sheet__lead">
+        Реальный платёж создаётся на сервере магазина и переводится на защищённую страницу ЮKassa.
+        Это упрощённая муляж-форма: номер карты никуда не отправляется.
+      </p>
+      <label class="checkout-field">
+        <span class="checkout-field__label">Номер карты</span>
+        <input type="text" class="checkout-input checkout-input--mock" readonly value="5544 **** **** ****" aria-readonly="true">
+      </label>
+      <div class="checkout-sheet__methods">
+        <span class="checkout-pill">Карта</span>
+        <span class="checkout-pill">ЮKassa</span>
+      </div>
+      <button type="button" class="btn btn--dark checkout-primary" id="checkoutConfirmFake" data-cursor="hover">
+        Оплатить <span id="checkoutPayBtnSum">—</span>
+      </button>
+      <p class="checkout-muted checkout-sheet__foot">Не закрывая окно дождитесь подтверждения.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    (function initCheckoutFlow() {
+      const emptyEl = document.getElementById("checkoutEmpty");
+      const flowEl = document.getElementById("checkoutFlow");
+      const successEl = document.getElementById("checkoutSuccess");
+      const linesEl = document.getElementById("checkoutLines");
+      const totalEl = document.getElementById("checkoutGrandTotal");
+      const openPayBtn = document.getElementById("checkoutOpenPay");
+      const overlay = document.getElementById("checkoutPayOverlay");
+      const sheetClose = document.getElementById("checkoutSheetClose");
+      const confirmFake = document.getElementById("checkoutConfirmFake");
+      const payBtnSum = document.getElementById("checkoutPayBtnSum");
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      let lines = [];
+
+      function readCartLines() {
+        if (typeof window.PalomaCart !== "undefined" && typeof PalomaCart.getItems === "function") {
+          return PalomaCart.getItems();
+        }
+        try {
+          const raw = JSON.parse(localStorage.getItem("paloma_cart_v1") || "[]");
+          return Array.isArray(raw) ? raw : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function sum(linesArr) {
+        return linesArr.reduce((s, i) => s + (Number(i.price) || 0) * (Number(i.qty) || 1), 0);
+      }
+
+      function renderLines() {
+        if (!linesEl || !totalEl) return;
+
+        linesEl.innerHTML =
+          lines.length === 0
+            ? '<li class="checkout-line checkout-line--muted">Нет позиций</li>'
+            : lines
+                .map(
+                  (i) => `
+              <li class="checkout-line">
+                <span class="checkout-line__name">${escapeHtml(i.name)}<span class="checkout-line__meta">Размер ${escapeHtml(String(i.size || "S"))} × ${Number(i.qty) || 1}</span></span>
+                <span class="checkout-line__sum">${(
+                  i.price * i.qty
+                ).toLocaleString("ru-RU")} ₽</span>
+              </li>`
+                )
+                .join("");
+
+        const total = sum(lines);
+        totalEl.textContent = total.toLocaleString("ru-RU") + " ₽";
+        if (payBtnSum) payBtnSum.textContent = total.toLocaleString("ru-RU") + " ₽";
+      }
+
+      function openOverlay() {
+        if (!overlay) return;
+        overlay.hidden = false;
+        overlay.setAttribute("aria-hidden", "false");
+        document.documentElement.style.overflow = "hidden";
+        const sheet = overlay.querySelector(".checkout-sheet");
+        sheet?.focus({ preventScroll: true });
+      }
+
+      function closeOverlay() {
+        if (!overlay) return;
+        overlay.hidden = true;
+        overlay.setAttribute("aria-hidden", "true");
+        document.documentElement.style.overflow = "";
+        openPayBtn?.focus({ preventScroll: true });
+      }
+
+      lines = readCartLines();
+
+      if (lines.length === 0) {
+        emptyEl?.classList.remove("is-hidden");
+        flowEl?.classList.add("is-hidden");
+        successEl?.classList.add("is-hidden");
+        return;
+      }
+
+      emptyEl?.classList.add("is-hidden");
+      flowEl?.classList.remove("is-hidden");
+      successEl?.classList.add("is-hidden");
+
+      renderLines();
+
+      openPayBtn?.addEventListener("click", () => {
+        openOverlay();
+      });
+
+      sheetClose?.addEventListener("click", closeOverlay);
+
+      overlay?.addEventListener("click", (e) => {
+        if (e.target === overlay) closeOverlay();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay && overlay.hidden === false) {
+          e.preventDefault();
+          closeOverlay();
+        }
+      });
+
+      confirmFake?.addEventListener("click", async () => {
+        const prevInner = confirmFake.innerHTML;
+        confirmFake.disabled = true;
+        confirmFake.textContent = "Подождите…";
+        await new Promise((r) => setTimeout(r, 900));
+
+        closeOverlay();
+
+        try {
+          if (typeof PalomaCart !== "undefined" && PalomaCart.emptyCart)
+            PalomaCart.emptyCart();
+          else localStorage.removeItem("paloma_cart_v1");
+        } catch (e2) {}
+
+        flowEl?.classList.add("is-hidden");
+        successEl?.classList.remove("is-hidden");
+
+        confirmFake.disabled = false;
+        confirmFake.innerHTML = prevInner;
+      });
+    })();
+  </script>
+</body>
+</html>

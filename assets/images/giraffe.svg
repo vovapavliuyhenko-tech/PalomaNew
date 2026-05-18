@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 720" fill="none" role="img" aria-label="PALOMA giraffe">
+  <defs>
+    <linearGradient id="giraffeSkin" x1="180" y1="40" x2="180" y2="680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8F2"/>
+      <stop offset="1" stop-color="#FEECDE"/>
+    </linearGradient>
+    <linearGradient id="giraffeSpot" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#E296B2" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#E296B2" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <!-- Neck & head -->
+  <path fill="url(#giraffeSkin)" stroke="#C97A94" stroke-width="4" stroke-linejoin="round"
+    d="M186 56c16-36 52-52 88-42 24 8 40 32 44 60 4 26-6 54-28 72-10 8-22 14-36 16 6 52 4 108-10 162-14 50-40 96-74 134 36 22 66 54 84 94 20 44 22 96 6 144H52c-12-40-10-86 12-122 22-38 58-64 100-76 2-88-8-184 18-268-16-12-26-32-28-54-4-36 18-70 50-82z"/>
+  <!-- Ear -->
+  <path fill="url(#giraffeSkin)" stroke="#C97A94" stroke-width="3" stroke-linejoin="round"
+    d="M248 48c18-8 36 4 42 24 6 18-4 38-22 46-14 6-30 2-40-10"/>
+  <!-- Snout -->
+  <ellipse cx="278" cy="118" rx="22" ry="18" fill="#FFF8F2" stroke="#C97A94" stroke-width="3"/>
+  <!-- Spots -->
+  <ellipse cx="210" cy="220" rx="28" ry="36" fill="url(#giraffeSpot)" transform="rotate(-8 210 220)"/>
+  <ellipse cx="170" cy="320" rx="32" ry="40" fill="url(#giraffeSpot)" transform="rotate(6 170 320)"/>
+  <ellipse cx="200" cy="430" rx="26" ry="34" fill="url(#giraffeSpot)" transform="rotate(-4 200 430)"/>
+  <ellipse cx="150" cy="520" rx="30" ry="38" fill="url(#giraffeSpot)" transform="rotate(10 150 520)"/>
+  <!-- Legs hint -->
+  <path stroke="#C97A94" stroke-width="4" stroke-linecap="round" d="M120 620c-8 40-4 68 8 92M220 612c6 44 2 72-10 96"/>
+</svg>

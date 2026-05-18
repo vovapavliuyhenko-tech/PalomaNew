@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FBF6E8">
+  <title>PALOMA — Flowers Coffee You</title>
+  <meta name="description" content="PALOMA — цветочный бутик и кофейня в Новороссийске. Свежие букеты, кофе к букету, доставка день в день.">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="clients.css">
+</head>
+<body class="is-home">
+  <a href="#main" class="skip-link">К содержимому</a>
+
+  <div class="paloma-loader" id="palomaLoader" aria-hidden="true">
+    <div class="paloma-loader__inner">
+      <p class="paloma-loader__word">PALOMA</p>
+      <div class="paloma-loader__line" aria-hidden="true"></div>
+    </div>
+    <div class="paloma-loader__curtain paloma-loader__curtain--t"></div>
+    <div class="paloma-loader__curtain paloma-loader__curtain--b"></div>
+  </div>
+
+
+<div class="site-top" id="siteTop">
+  <div class="top-marquee" aria-hidden="false">
+    <div class="top-marquee__track">
+              <div class="top-marquee__content">
+        <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+      </div>
+              <div class="top-marquee__content" aria-hidden="true">
+        <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+        <button type="button" class="site-header__menu-toggle" id="menuToggle" data-cursor="hover" aria-expanded="false" aria-controls="mobileNav" aria-label="Открыть меню">
+          <span class="site-header__menu-lines" aria-hidden="true"></span>
+        </button>
+
+        <a href="#hero" class="site-header__logo">
+          <span class="site-header__logo-word">PALOMA</span>
+          <span class="site-header__logo-tag">flowers · coffee · you</span>
+        </a>
+
+        <nav class="site-header__nav" aria-label="Основная навигация">
+          <div class="site-header__dropdown-wrap site-header__dropdown-wrap--catalog" data-dropdown="catalog">
+            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerMain" data-cursor="hover">
+              Каталог
+              <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+            </button>
+            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerMain">
+              <div class="catalog-dropdown__inner">
+                <div class="catalog-dropdown__grid">
+
+                  <a href="catalog.html?cat=online"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="2" y="3" width="20" height="14" rx="1"/>
+                        <path d="M8 21h8M12 17v4"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Онлайн-витрина</span>
+                      <span class="catalog-nav-item__sub">Готовые букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=season"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/>
+                        <path d="M12 14v7"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Самый сезон</span>
+                      <span class="catalog-nav-item__sub">Сезонные цветы</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=best"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2l3 6.5H21l-5.5 4 2 6.5L12 15l-5.5 4 2-6.5L3 8.5h6z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Бестселлеры</span>
+                      <span class="catalog-nav-item__sub">Чаще всего выбирают</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=comp"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="12" cy="12" r="9"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Композиции</span>
+                      <span class="catalog-nav-item__sub">Цветочные формы</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=mono"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2a5 5 0 015 5c0 4-5 9-5 9S7 11 7 7a5 5 0 015-5z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Моно и дуобукеты</span>
+                      <span class="catalog-nav-item__sub">Один или два вида цветов</span>
+                    </div>
+                  </a>
+
+                  <a href="weddings.html"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Свадебные</span>
+                      <span class="catalog-nav-item__sub">Букеты и оформление</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=vases"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M7 22h10M8 22V8l4-6 4 6v14"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Вазы и подарки</span>
+                      <span class="catalog-nav-item__sub">Дополнения к букету</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=sub"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M4 4v5h5M20 20v-5h-5"/>
+                        <path d="M20 9A8 8 0 005.3 5.3M4 15a8 8 0 0014.7 3.7"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Цветочная подписка</span>
+                      <span class="catalog-nav-item__sub">Регулярные букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=events"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="3" y="5" width="18" height="16" rx="1"/>
+                        <path d="M3 9h18M8 3v4M16 3v4"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Оформление события цветами</span>
+                      <span class="catalog-nav-item__sub">Цветочное оформление</span>
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="coffee.html" class="site-header__link">Кофейня</a>
+          <a href="weddings.html" class="site-header__link">Свадьбы</a>
+
+          <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
+          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerMain" data-cursor="hover">
+            Клиентам
+            <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+
+          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerMain">
+            <div class="clients-dropdown__inner">
+              <div class="clients-dropdown__grid">
+                <a href="delivery.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h13v10H3zM16 10h4l2 3v4h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Доставка</div><div class="client-nav-card__desc">Зоны, сроки и стоимость</div></div></a>
+                <a href="payment.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 11h20"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оплата</div><div class="client-nav-card__desc">Онлайн через ЮKassa</div></div></a>
+                <a href="care.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/><path d="M12 14v7"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Уход за букетом</div><div class="client-nav-card__desc">7 дней свежести и больше</div></div></a>
+                <a href="faq.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 4"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Вопрос-ответ</div><div class="client-nav-card__desc">Частые вопросы</div></div></a>
+                <a href="wedding-piggy-bank.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Свадебная копилка</div><div class="client-nav-card__desc">Этапы подготовки</div></div></a>
+                <a href="events.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Мероприятия</div><div class="client-nav-card__desc">Оформление событий</div></div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="contacts.html" class="site-header__link">Контакты</a>
+        <a href="blog.html" class="site-header__link">Блог</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
+          <button type="button" class="site-header__icon" aria-label="Избранное" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+          </button>
+          <a href="cart.html" class="site-header__icon site-header__icon--cart site-header__cart" aria-label="Корзина" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
+            <span class="site-header__cart-count is-empty">0</span>
+          </a>
+        </div>
+      </div>
+
+    <div class="site-header__backdrop" id="menuBackdrop" aria-hidden="true"></div>
+    <nav class="site-header__mobile-panel" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
+      <div class="site-header__mobile-inner">
+        <a href="catalog.html" class="site-header__mobile-link">Каталог</a>
+        <a href="coffee.html" class="site-header__mobile-link">Кофейня</a>
+        <a href="weddings.html" class="site-header__mobile-link">Свадьбы</a>
+        <span class="site-header__mobile-section-title">Клиентам</span>
+        <a href="delivery.html" class="site-header__mobile-link">Доставка</a>
+        <a href="payment.html" class="site-header__mobile-link">Оплата</a>
+        <a href="care.html" class="site-header__mobile-link">Уход за букетом</a>
+        <a href="faq.html" class="site-header__mobile-link">Вопрос-ответ</a>
+        <a href="wedding-piggy-bank.html" class="site-header__mobile-link">Свадебная копилка</a>
+        <a href="events.html" class="site-header__mobile-link">Мероприятия</a>
+        <a href="contacts.html" class="site-header__mobile-link">Контакты</a>
+        <a href="blog.html" class="site-header__mobile-link">Блог</a>
+        <a href="tel:+78612000000" class="site-header__mobile-phone">+7 (861) 200-00-00</a>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <main id="main">
+    <section class="hero-scene" id="hero" aria-label="PALOMA — главный экран">
+      <div class="hero-scene__bg" id="heroBg" aria-hidden="true">
+        <div
+          class="hero-scene__bg-placeholder"
+          style="background: radial-gradient(1100px 600px at 75% 40%, rgba(240, 82, 43, 0.08), transparent 70%), linear-gradient(180deg, var(--ivory), #fbf1dc);">
+        </div>
+      </div>
+      <p class="hero-scene__word" aria-label="PALOMA">PALOMA</p>
+      <div class="hero-scene__giraffe" id="heroGiraffe" aria-hidden="true">
+        <img src="assets/images/giraffe.svg" alt="" width="360" height="720" draggable="false" loading="lazy" />
+      </div>
+      <div class="hero-scene__cta">
+        <a href="catalog.html" class="btn btn--primary">Перейти в каталог <span class="btn-arrow" aria-hidden="true">↗</span></a>
+        <a href="coffee.html" class="btn btn--ghost">Смотреть кофейню</a>
+      </div>
+    </section>
+
+    <section class="showcase" id="showcase" aria-labelledby="showcase-heading">
+      <div class="container">
+        <header class="showcase__header">
+          <span class="showcase__eyebrow">Онлайн-витрина</span>
+          <h2 class="showcase__title" id="showcase-heading">Готовы сегодня</h2>
+          <p class="showcase__lead">Букеты, которые мы соберём и привезём день в день</p>
+        </header>
+      </div>
+
+      <div class="showcase__grid" id="showcaseGrid">
+          <article
+            class="product-card"
+            data-id="1"
+            data-name="Камелия"
+            data-price="3500"
+            data-category="bestsellers"
+            data-desc="Романтичный авторский букет, который выглядит как событие для двоих: мягкая палитра, воздух и несколько живых акцентов."
+            data-composition="Розы, эустома, гипсофила"
+            data-pairs="Идеально подойдёт к кофе раф или ванильному капкейку."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <span class="product-card__badge">Хит</span>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Камелия</div>
+                <div class="product-card__hover-price">3 500 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Камелия</h3>
+              <p class="product-card__desc">Розы, эустома, гипсофила</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">3 500 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card"
+            data-id="2"
+            data-name="Прованс"
+            data-price="2800"
+            data-category="season"
+            data-desc="Уютное настроение юга: светлые тона и лёгкая травянистость, как выходные в деревне среди цветущих балок."
+            data-composition="Лаванда, оливковые ветви"
+            data-pairs="К чашке лунго с листом лимона или круассан с миндалём."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <span class="product-card__badge">Сезон</span>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Прованс</div>
+                <div class="product-card__hover-price">2 800 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Прованс</h3>
+              <p class="product-card__desc">Лаванда, оливковые ветви</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">2 800 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card"
+            data-id="3"
+            data-name="Айвори"
+            data-price="5200"
+            data-category="compositions"
+            data-desc="Светлый объём без тяжести — для подарков, где важнее нежность, чем кричащий цвет."
+            data-composition="Белые пионы, ранункулюсы"
+            data-pairs="К латте с миндальным молоком или чизкейку с ягодами."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Айвори</div>
+                <div class="product-card__hover-price">5 200 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Айвори</h3>
+              <p class="product-card__desc">Белые пионы, ранункулюсы</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">5 200 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card"
+            data-id="4"
+            data-name="Бордо"
+            data-price="4100"
+            data-category="bestsellers"
+            data-desc="Глубина и камерность: классический силуэт с насыщенными оттенками и текстурой акцентов."
+            data-composition="Бордовые розы, ягоды"
+            data-pairs="К фильтру с шоколадной нотой или десерту с малиной."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <span class="product-card__badge">Хит</span>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Бордо</div>
+                <div class="product-card__hover-price">4 100 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Бордо</h3>
+              <p class="product-card__desc">Бордовые розы, ягоды</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">4 100 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card"
+            data-id="5"
+            data-name="Утро"
+            data-price="2400"
+            data-category="mono"
+            data-desc="Коротко и ясно: свежая весенняя энергия в узком высоком силуэте."
+            data-composition="Тюльпаны, мускари"
+            data-pairs="К капучино с корицей или яблочному соку с имбирём."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <span class="product-card__badge">Сезон</span>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Утро</div>
+                <div class="product-card__hover-price">2 400 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Утро</h3>
+              <p class="product-card__desc">Тюльпаны, мускари</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">2 400 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card"
+            data-id="6"
+            data-name="Гранат"
+            data-price="3900"
+            data-category="season"
+            data-desc="Насыщенные глубокие акценты и холодная зелень — смелость без крика."
+            data-composition="Гранатовые цветы, эвкалипт"
+            data-pairs="К черничному фильтру или лимонному томатному десерту."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Гранат</div>
+                <div class="product-card__hover-price">3 900 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Гранат</h3>
+              <p class="product-card__desc">Гранатовые цветы, эвкалипт</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">3 900 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card"
+            data-id="7"
+            data-name="Ваниль"
+            data-price="3200"
+            data-category="wedding"
+            data-desc="Спокойный тёплый тон для важной даты: мягкие переливы без лишней пышности."
+            data-composition="Кремовые розы, хлопок"
+            data-pairs="К классику с экстрактором апельсина или малиновому макару."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Ваниль</div>
+                <div class="product-card__hover-price">3 200 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Ваниль</h3>
+              <p class="product-card__desc">Кремовые розы, хлопок</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">3 200 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card"
+            data-id="8"
+            data-name="Шёлк"
+            data-price="6400"
+            data-category="compositions"
+            data-desc="Скульптурность и дорогая тишина: долгоиграющий характер в элегантной подаче."
+            data-composition="Орхидеи, антуриум"
+            data-pairs="К эспрессо-тоника или финиковому брауни."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <span class="product-card__badge">Новинка</span>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Шёлк</div>
+                <div class="product-card__hover-price">6 400 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Шёлк</h3>
+              <p class="product-card__desc">Орхидеи, антуриум</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">6 400 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card is-hidden"
+            data-id="9"
+            data-name="Дюна"
+            data-price="2100"
+            data-category="vases"
+            data-desc="Сухое тепло и спокойные линии: букет, который сохранится как память о сезоне."
+            data-composition="Сухоцветы, пшеница"
+            data-pairs="К кофе колд брю или карамельному брауни."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Дюна</div>
+                <div class="product-card__hover-price">2 100 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Дюна</h3>
+              <p class="product-card__desc">Сухоцветы, пшеница</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">2 100 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card is-hidden"
+            data-id="10"
+            data-name="Сицилия"
+            data-price="3600"
+            data-category="season"
+            data-desc="Солнечный характер с лёгким полевым акцентом — для смелых встреч и открытых балконов."
+            data-composition="Подсолнухи, чертополох"
+            data-pairs="К лимонаду базилик-безалк или сицилийскому капучино."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <span class="product-card__badge">Сезон</span>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Сицилия</div>
+                <div class="product-card__hover-price">3 600 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Сицилия</h3>
+              <p class="product-card__desc">Подсолнухи, чертополох</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">3 600 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card is-hidden"
+            data-id="11"
+            data-name="Терракот"
+            data-price="2900"
+            data-category="online"
+            data-desc="Структурный авторский акцент: теплая охра и текстура листвы для повседневного торжества."
+            data-composition="Хризантемы, физалис"
+            data-pairs="К фильтру с ноткой обжарки ореха или сырному кекку."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Терракот</div>
+                <div class="product-card__hover-price">2 900 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Терракот</h3>
+              <p class="product-card__desc">Хризантемы, физалис</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">2 900 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="product-card is-hidden"
+            data-id="12"
+            data-name="Морриган"
+            data-price="5800"
+            data-category="bestsellers"
+            data-desc="Драма и загадочность без визуального шума — для особых историй между двумя людьми."
+            data-composition="Тёмные розы, ягоды, дуб"
+            data-pairs="К классику с содовой или вишнёвому пирожному."
+          >
+            <div class="product-card__media">
+              <div class="product-card__image product-card__image--main"></div>
+              <div class="product-card__image product-card__image--hover"></div>
+              <span class="product-card__badge">Новинка</span>
+              <div class="product-card__hover-info">
+                <div class="product-card__hover-name">Морриган</div>
+                <div class="product-card__hover-price">5 800 ₽</div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Морриган</h3>
+              <p class="product-card__desc">Тёмные розы, ягоды, дуб</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">5 800 ₽</span>
+              </div>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--light">Подробнее</button>
+                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      <div class="container">
+        <div class="showcase__more">
+          <button type="button" class="btn btn--ghost" id="showMoreBtn" aria-expanded="false" aria-controls="showcaseGrid">Смотреть ещё</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-video" id="aboutVideo">
+      <div class="about-video__media">
+        <div class="about-video__placeholder">
+          <span class="about-video__placeholder-label">VIDEO</span>
+        </div>
+      </div>
+      <div class="about-video__overlay"></div>
+
+      <div class="about-video__square">
+        <span class="about-video__square-inner"></span>
+      </div>
+
+      <div class="about-video__caption">
+        <p class="about-video__text">
+          PALOMA — цветочный бутик и кофейня в Новороссийске. Мы собираем букеты как маленькие истории: с вниманием к сезону, настроению и деталям. Можно зайти за букетом, остаться на кофе и уехать с хорошим послевкусием дня.
+        </p>
+      </div>
+    </section>
+
+    <section class="about-story" id="aboutStory">
+      <article class="about-story__scene" data-scene="1">
+        <div class="about-story__bg about-story__bg--flowers"></div>
+        <div class="about-story__content">
+          <div class="about-story__text">
+            <span class="about-story__num">01</span>
+            <h3 class="about-story__heading">Цветы</h3>
+            <p class="about-story__copy">Мы собираем букеты не по шаблону, а по настроению: сезон, цвет, фактура и повод складываются в живую композицию.</p>
+          </div>
+          <div class="about-story__mini">
+            <div class="about-story__mini-img about-story__mini-img--flowers"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="about-story__scene" data-scene="2">
+        <div class="about-story__bg about-story__bg--cafe"></div>
+        <div class="about-story__content">
+          <div class="about-story__text">
+            <span class="about-story__num">02</span>
+            <h3 class="about-story__heading">Кофейня</h3>
+            <p class="about-story__copy">PALOMA — это место, где можно забрать букет, остаться на кофе и замедлиться среди цветов, растений и света.</p>
+          </div>
+          <div class="about-story__mini">
+            <div class="about-story__mini-img about-story__mini-img--cafe"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="about-story__scene" data-scene="3">
+        <div class="about-story__bg about-story__bg--details"></div>
+        <div class="about-story__content">
+          <div class="about-story__text">
+            <span class="about-story__num">03</span>
+            <h3 class="about-story__heading">Детали</h3>
+            <p class="about-story__copy">Ленты, открытки, упаковка, фото перед отправкой и бережная доставка — всё собрано вокруг ощущения заботы.</p>
+          </div>
+          <div class="about-story__mini">
+            <div class="about-story__mini-img about-story__mini-img--details"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="about-story__scene" data-scene="4">
+        <div class="about-story__bg about-story__bg--studio"></div>
+        <div class="about-story__content">
+          <div class="about-story__text">
+            <span class="about-story__num">04</span>
+            <h3 class="about-story__heading">Офлайн-точка</h3>
+            <p class="about-story__copy">Мы находимся в Новороссийске на ул. Энгельса, 74. Можно приехать за букетом, выбрать подарок и остаться на кофе.</p>
+          </div>
+          <div class="about-story__mini">
+            <div class="about-story__mini-img about-story__mini-img--studio"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="process" id="processSection">
+      <div class="process__header">
+        <span class="process__label">[ Этапы работы ]</span>
+        <h2 class="process__title">
+          Как мы собираем букет:<br>
+          <em>от заявки до свежей композиции</em>
+        </h2>
+      </div>
+
+      <div class="process__viewport" id="processViewport">
+        <div class="process__track" id="processTrack">
+          <article class="process-card">
+            <span class="process-card__num">01</span>
+            <h3 class="process-card__title">Заявка и настроение</h3>
+            <p class="process-card__desc">Уточняем повод, палитру, бюджет и способ получения — в мессенджере или по телефону.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-card__num">02</span>
+            <h3 class="process-card__title">Подбор цветов</h3>
+            <p class="process-card__desc">Выбираем свежие сорта дня с учётом сезона, оттенков и характера букета.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-card__num">03</span>
+            <h3 class="process-card__title">Сборка композиции</h3>
+            <p class="process-card__desc">Флорист собирает объём, фактуру и баланс, чтобы букет выглядел живым и выразительным.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-card__num">04</span>
+            <h3 class="process-card__title">Упаковка и детали</h3>
+            <p class="process-card__desc">Добавляем ленты PALOMA, открытку, кофе или десерт — если хочется сделать подарок теплее.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-card__num">05</span>
+            <h3 class="process-card__title">Доставка или самовывоз</h3>
+            <p class="process-card__desc">Отправляем фото перед выездом, бережно передаём курьеру или ждём вас в студии.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="paloma-location">
+      <div class="paloma-location__inner">
+        <div class="paloma-location__media">
+          <div class="paloma-location__placeholder" style="background: linear-gradient(160deg,#c4a882,#8a6248);" aria-hidden="true"></div>
+        </div>
+        <div class="paloma-location__content">
+          <span class="paloma-location__eyebrow">[ Офлайн-точка ]</span>
+          <h2 class="paloma-location__title">PALOMA на Энгельса</h2>
+          <p class="paloma-location__text">
+            Зайдите за букетом, останьтесь на кофе и выберите подарок на месте.
+          </p>
+          <div class="paloma-location__actions">
+            <a href="https://yandex.ru/maps/?text=Новороссийск+Энгельса+74" target="_blank" rel="noopener" class="btn btn--dark" data-cursor="hover">Построить маршрут</a>
+            <a href="coffee.html" class="btn btn--outline" data-cursor="hover">Смотреть кофейню</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews" aria-labelledby="reviews-heading">
+      <div class="reviews__container">
+        <header class="reviews__header">
+          <span class="reviews__eyebrow">[ Отзывы ]</span>
+          <h2 class="reviews__title" id="reviews-heading">Что говорят клиенты</h2>
+        </header>
+
+        <div class="reviews__slider" id="reviewsSlider">
+          <div class="reviews__slide is-active" data-slide="0">
+            <div class="reviews__image">
+              <div class="reviews__image-placeholder" style="background: linear-gradient(135deg, #c9806e, #6b3528);"></div>
+            </div>
+            <div class="reviews__content">
+              <h3 class="reviews__quote-title">«Букет получился нежнее, чем я представляла»</h3>
+              <p class="reviews__text">Я просто описала настроение и повод, а команда PALOMA собрала композицию, которая выглядела очень живой и дорогой. Отдельно понравилось, что перед доставкой прислали фото.</p>
+              <div class="reviews__signature">— Анна</div>
+            </div>
+          </div>
+
+          <div class="reviews__slide" data-slide="1">
+            <div class="reviews__image">
+              <div class="reviews__image-placeholder" style="background: linear-gradient(135deg, #5c4434, #2a1d14);"></div>
+            </div>
+            <div class="reviews__content">
+              <h3 class="reviews__quote-title">«Забрала букет и осталась на кофе»</h3>
+              <p class="reviews__text">Очень красивое место. Заказ был готов вовремя, упаковка аккуратная, ленты PALOMA — отдельная любовь. Взяла кофе с собой и ушла с ощущением маленького праздника.</p>
+              <div class="reviews__signature">— Мария</div>
+            </div>
+          </div>
+
+          <div class="reviews__slide" data-slide="2">
+            <div class="reviews__image">
+              <div class="reviews__image-placeholder" style="background: linear-gradient(135deg, #d4b594, #6e5236);"></div>
+            </div>
+            <div class="reviews__content">
+              <h3 class="reviews__quote-title">«Оформили камерный ужин без лишней суеты»</h3>
+              <p class="reviews__text">Мы обсудили палитру и настроение, дальше команда всё взяла на себя. Цветы выглядели естественно, не перегруженно и очень стильно.</p>
+              <div class="reviews__signature">— Екатерина</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews__controls">
+          <button type="button" class="reviews__arrow review-arrow" id="reviewsPrev" aria-label="Предыдущий отзыв">
+            <svg width="24" height="14" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 7H1M1 7l6-6M1 7l6 6"/></svg>
+          </button>
+          <div class="reviews__dots" id="reviewsDots">
+            <button type="button" class="reviews__dot is-active" data-dot="0" aria-label="Слайд 1"></button>
+            <button type="button" class="reviews__dot" data-dot="1" aria-label="Слайд 2"></button>
+            <button type="button" class="reviews__dot" data-dot="2" aria-label="Слайд 3"></button>
+          </div>
+          <button type="button" class="reviews__arrow review-arrow" id="reviewsNext" aria-label="Следующий отзыв">
+            <svg width="24" height="14" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h22M23 7l-6-6M23 7l-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq" aria-labelledby="faq-heading">
+      <div class="faq__container">
+        <header class="faq__header">
+          <span class="faq__eyebrow">[ Вопрос-ответ ]</span>
+          <h2 class="faq__title" id="faq-heading">FAQ</h2>
+        </header>
+
+        <div class="faq__list">
+          <div class="faq-row" data-image="1" tabindex="0">
+            <div class="faq-row__q">Можно ли заказать букет день в день?</div>
+            <div class="faq-row__a">Да, готовые букеты из онлайн-витрины можно заказать быстрее всего. Если нужен индивидуальный — уточним наличие цветов и соберём в похожем настроении.</div>
+          </div>
+          <div class="faq-row" data-image="2" tabindex="0">
+            <div class="faq-row__q">Вы отправляете фото перед доставкой?</div>
+            <div class="faq-row__a">Да, по запросу отправим фото готового букета перед выездом курьера.</div>
+          </div>
+          <div class="faq-row" data-image="3" tabindex="0">
+            <div class="faq-row__q">Можно добавить кофе или десерт к букету?</div>
+            <div class="faq-row__a">Да, к заказу можно добавить кофе, десерт, открытку или вазу.</div>
+          </div>
+          <div class="faq-row" data-image="4" tabindex="0">
+            <div class="faq-row__q">Цветы могут отличаться от фото?</div>
+            <div class="faq-row__a">Незначительно — сезонные цветы могут меняться, но мы сохраняем настроение, палитру и характер композиции.</div>
+          </div>
+          <div class="faq-row" data-image="5" tabindex="0">
+            <div class="faq-row__q">Можно забрать заказ самостоятельно?</div>
+            <div class="faq-row__a">Да, самовывоз доступен из PALOMA на ул. Энгельса, 74.</div>
+          </div>
+        </div>
+
+        <div class="faq__hover-images" id="faqHoverImages" aria-hidden="true">
+          <div class="faq__hover-image" data-img="1"></div>
+          <div class="faq__hover-image" data-img="2"></div>
+          <div class="faq__hover-image" data-img="3"></div>
+          <div class="faq__hover-image" data-img="4"></div>
+          <div class="faq__hover-image" data-img="5"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contacts">
+    <img src="assets/images/giraffe.svg" alt="" class="site-footer__giraffe-silhouette" width="160" height="320" loading="lazy" />
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__col site-footer__col--brand">
+          <div class="site-footer__brand-logo">PALOMA</div>
+          <p class="site-footer__brand-desc">Цветочный бутик и кофейня в Новороссийске. Цветы, кофе и забота в одном месте.</p>
+        </div>
+
+        <div class="site-footer__col">
+          <h4 class="site-footer__col-title">Каталог</h4>
+          <ul class="site-footer__list">
+            <li><a href="coffee.html">PALOMA Coffee</a></li>
+            <li><a href="weddings.html">Свадебная флористика</a></li>
+            <li><a href="catalog.html?cat=online">Онлайн-витрина</a></li>
+            <li><a href="catalog.html?cat=best">Букеты</a></li>
+            <li><a href="catalog.html?cat=comp">Композиции</a></li>
+            <li><a href="catalog.html?cat=mono">Монобукеты</a></li>
+            <li><a href="catalog.html?cat=vases">Вазы и подарки</a></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <h4 class="site-footer__col-title">Клиентам</h4>
+          <ul class="site-footer__list">
+            <li><a href="delivery.html">Доставка</a></li>
+            <li><a href="payment.html">Оплата</a></li>
+            <li><a href="care.html">Уход за букетом</a></li>
+            <li><a href="faq.html">Вопрос-ответ</a></li>
+            <li><a href="blog.html">Журнал</a></li>
+            <li><a href="wedding-piggy-bank.html">Свадебная копилка</a></li>
+            <li><a href="events.html">Мероприятия</a></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <h4 class="site-footer__col-title">Контакты</h4>
+          <ul class="site-footer__list">
+            <li>Новороссийск,<br>ул. Энгельса, 74</li>
+            <li><a href="tel:+78612000000">+7 (861) 200-00-00</a></li>
+            <li><a href="https://wa.me/79180000000" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a href="https://t.me/paloma_novorossiysk" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+            <li><a href="https://www.instagram.com/paloma_novorossiysk/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <span class="site-footer__copyright">© 2026 PALOMA Flowers Coffee You</span>
+        <div class="site-footer__legal">
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="offer.html">Оферта</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="site-footer__wordmark" aria-hidden="true">PALOMA</p>
+  </footer>
+
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <div class="product-modal__backdrop" data-close></div>
+    <div class="product-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="product-modal__close" aria-label="Закрыть" data-close data-cursor="hover">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <div class="product-modal__grid">
+        <div class="product-modal__gallery">
+          <div class="product-modal__main-img" id="modalMainImg"></div>
+          <div class="product-modal__thumbs" id="modalThumbs">
+            <button type="button" class="product-modal__thumb is-active" aria-label="Вид 1"></button>
+            <button type="button" class="product-modal__thumb" aria-label="Вид 2"></button>
+            <button type="button" class="product-modal__thumb" aria-label="Вид 3"></button>
+          </div>
+        </div>
+
+        <div class="product-modal__info">
+          <div class="product-modal__category">Букеты</div>
+          <h2 class="product-modal__title" id="modalTitle">—</h2>
+          <div class="product-modal__price" id="modalPrice">—</div>
+
+          <p class="product-modal__desc" id="modalDesc">—</p>
+
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Состав</div>
+            <div class="product-modal__composition" id="modalComposition">—</div>
+          </div>
+
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Размер</div>
+            <div class="product-modal__sizes">
+              <button type="button" class="size-pill is-active" data-size="S" data-mod="0">S</button>
+              <button type="button" class="size-pill" data-size="M" data-mod="800">M</button>
+              <button type="button" class="size-pill" data-size="L" data-mod="1600">L</button>
+              <button type="button" class="size-pill" data-size="XL" data-mod="2800">XL</button>
+            </div>
+          </div>
+
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Дополнения</div>
+            <div class="product-modal__addons">
+              <label class="addon"><input type="checkbox" data-addon-price="350"> Открытка <span>+350 ₽</span></label>
+              <label class="addon"><input type="checkbox" data-addon-price="1200"> Ваза <span>+1 200 ₽</span></label>
+              <label class="addon"><input type="checkbox" data-addon-price="320"> Кофе с собой <span>+320 ₽</span></label>
+            </div>
+          </div>
+
+          <div class="product-modal__pairs" id="modalPairs">—</div>
+
+          <button type="button" class="btn btn--dark product-modal__add" id="modalAddToCart" data-cursor="hover">В корзину — <span id="modalTotal">3 500 ₽</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-drawer__backdrop" data-cart-close></div>
+    <aside class="cart-drawer__panel">
+      <header class="cart-drawer__header">
+        <h3 class="cart-drawer__title">Корзина</h3>
+        <button type="button" class="cart-drawer__close" data-cart-close aria-label="Закрыть" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+
+      <div class="cart-drawer__body" id="cartBody"></div>
+
+      <div class="cart-drawer__empty" id="cartEmpty">
+        <p>В корзине пока пусто.</p>
+        <button type="button" class="btn btn--light" data-cart-close>Продолжить покупки</button>
+      </div>
+
+      <footer class="cart-drawer__footer" id="cartFooter">
+        <div class="cart-drawer__row">
+          <span>Подытог</span>
+          <span id="cartSubtotal">0 ₽</span>
+        </div>
+        <div class="cart-drawer__row cart-drawer__row--muted">
+          <span>Доставка</span>
+          <span>рассчитаем при оформлении</span>
+        </div>
+        <div class="cart-drawer__row cart-drawer__row--total">
+          <span>Итого</span>
+          <span id="cartTotal">0 ₽</span>
+        </div>
+        <button type="button" class="btn btn--dark cart-drawer__checkout" id="cartCheckout" data-cursor="hover">Оформить заказ</button>
+      </footer>
+    </aside>
+  </div>
+
+  <div class="custom-cursor" id="customCursor" aria-hidden="true">
+    <div class="custom-cursor__dot"></div>
+    <div class="custom-cursor__ring"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="clients.js"></script>
+</body>
+</html>
