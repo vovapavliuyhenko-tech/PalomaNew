@@ -1,0 +1,135 @@
+  <main class="contacts-page" id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="breadcrumbs__inner">
+        <ol class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="index.html" itemprop="item"><span itemprop="name">Главная</span></a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li class="breadcrumbs__sep" aria-hidden="true">/</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">Контакты</span>
+            <meta itemprop="position" content="2">
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <section class="contacts-hero">
+      <div class="contacts-hero__inner">
+        <span class="contacts-hero__eyebrow">[ Контакты ]</span>
+        <h1 class="contacts-hero__title">Контакты</h1>
+        <p class="contacts-hero__lead">
+          Зайдите за букетом, останьтесь на кофе и выберите подарок на месте.
+        </p>
+      </div>
+    </section>
+
+    <section class="contacts-studio" aria-labelledby="contacts-studio-heading">
+      <div class="contacts-studio__inner">
+        <div class="contacts-studio__visual">
+          <div class="contacts-studio__photo" role="img" aria-label="Офлайн-точка PALOMA на ул. Энгельса"></div>
+          <span class="contacts-studio__photo-badge">PALOMA · flowers · coffee</span>
+        </div>
+
+        <div class="contacts-studio__panel">
+          <h2 class="contacts-studio__brand" id="contacts-studio-heading">PALOMA на Энгельса</h2>
+          <p class="contacts-studio__subtitle">Цветочный бутик и кофейня · Новороссийск</p>
+
+          <ul class="contacts-studio__rows">
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">Адрес</span>
+              <span>Новороссийск, ул. Энгельса, 74</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">Телефон</span>
+              <a href="tel:+78612000000">+7 (861) 200-00-00</a>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">График</span>
+              <span>Ежедневно, 9:00 – 21:00</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">Мессенджеры</span>
+              <div class="contacts-studio__messengers">
+                <a href="https://t.me/paloma_novorossiysk" target="_blank" rel="noopener noreferrer" data-cursor="hover">Telegram</a>
+                <a href="https://wa.me/79180000000" target="_blank" rel="noopener noreferrer" data-cursor="hover">WhatsApp</a>
+              </div>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">Email</span>
+              <a href="mailto:hello@paloma.ru">hello@paloma.ru</a>
+            </li>
+          </ul>
+
+          <div class="contacts-studio__cta-row">
+            <a
+              href="https://yandex.ru/maps/?text=Новороссийск%2C+ул.+Энгельса%2C+74"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--dark"
+              data-cursor="hover"
+            >Построить маршрут</a>
+            <a href="coffee.html" class="btn btn--outline" data-cursor="hover">Смотреть кофейню</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts-map-section" aria-labelledby="contacts-map-heading">
+      <div class="contacts-map-section__inner">
+        <header class="contacts-map-section__header">
+          <h2 class="contacts-map-section__title" id="contacts-map-heading">Как нас найти</h2>
+          <a
+            href="https://yandex.ru/maps/?text=Новороссийск%2C+ул.+Энгельса%2C+74"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contacts-map-section__link"
+            data-cursor="hover"
+          >Открыть в Яндекс Картах</a>
+        </header>
+        <div class="contacts-map-frame">
+          <!-- Подключите embed из конструктора Яндекс Карт при необходимости -->
+          <iframe
+            title="Карта — PALOMA, ул. Энгельса, 74"
+            src="https://yandex.ru/map-widget/v1/?ll=37.769000%2C44.723500&amp;z=17&amp;pt=37.769000%2C44.723500%2Cpm2rdm"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts-form-section" id="contacts-form" aria-labelledby="contacts-form-heading">
+      <div class="contacts-form-section__inner">
+        <header class="contacts-form-section__header">
+          <span class="contacts-form-section__eyebrow">[ Напишите нам ]</span>
+          <h2 class="contacts-form-section__title" id="contacts-form-heading">Есть вопрос?</h2>
+          <p class="contacts-form-section__lead">Ответим в мессенджере или по телефону в рабочее время студии.</p>
+        </header>
+
+        <form class="contacts-form" id="contactsForm" novalidate>
+          <div class="contacts-form__field">
+            <label class="contacts-form__label" for="cf-name">Имя</label>
+            <input class="contacts-form__input" type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Как к вам обращаться" />
+          </div>
+          <div class="contacts-form__field">
+            <label class="contacts-form__label" for="cf-phone">Телефон</label>
+            <input class="contacts-form__input" type="tel" id="cf-phone" name="phone" autocomplete="tel" required placeholder="+7 ___ ___ __ __" />
+          </div>
+          <div class="contacts-form__field contacts-form__field--full">
+            <label class="contacts-form__label" for="cf-question">Вопрос</label>
+            <textarea class="contacts-form__input contacts-form__textarea" id="cf-question" name="question" required placeholder="Заказ, доставка, оформление события…"></textarea>
+          </div>
+          <div class="contacts-form__field contacts-form__field--full">
+            <button type="submit" class="btn btn--dark contacts-form__submit" data-cursor="hover">Отправить</button>
+          </div>
+          <p class="contacts-form__note">Нажимая «Отправить», вы соглашаетесь с <a href="privacy.html">политикой конфиденциальности</a>.</p>
+          <div class="contacts-form__success" id="contactsFormSuccess" hidden>
+            <p>Спасибо! Мы получили сообщение и свяжемся с вами в ближайшее время.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>

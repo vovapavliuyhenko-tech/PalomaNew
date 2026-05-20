@@ -1,0 +1,267 @@
+/* PALOMA — анимации (preloader, cursor, reveal, waves) */
+
+/* ── Preloader v2 ── */
+.paloma-loader--v2 {
+  background: var(--burgundy);
+  color: var(--ivory);
+}
+
+.paloma-loader--v2 .paloma-loader__curtain,
+.paloma-loader--v2 .paloma-loader__line {
+  display: none !important;
+}
+
+.paloma-loader__stage {
+  position: relative;
+  width: min(72vw, 320px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.paloma-loader__orbit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.paloma-loader__orbit-spin {
+  transform-origin: 120px 120px;
+  animation: palomaOrbitSpin 18s linear infinite;
+}
+
+.paloma-loader__orbit-text {
+  fill: var(--ivory);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+
+.paloma-loader__logo {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 12px;
+  animation: palomaLoaderLogoIn 1s var(--ease-cinema) 0.15s both;
+}
+
+.paloma-loader--v2 .paloma-loader__word {
+  font-family: var(--serif);
+  font-size: clamp(40px, 8vw, 64px);
+  letter-spacing: 0.22em;
+  color: var(--ivory);
+  margin: 0 0 10px;
+  animation: none;
+}
+
+.paloma-loader__tag {
+  font-family: var(--sans);
+  font-size: clamp(10px, 2vw, 12px);
+  letter-spacing: 0.32em;
+  text-transform: lowercase;
+  color: rgba(251, 246, 232, 0.82);
+  margin: 0;
+}
+
+.paloma-loader__shutter {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: var(--burgundy);
+  transform: translateY(100%);
+  transition: transform 850ms var(--ease-cinema);
+}
+
+.paloma-loader--v2.is-leaving .paloma-loader__shutter {
+  transform: translateY(0);
+}
+
+.paloma-loader--v2.is-leaving .paloma-loader__stage {
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.paloma-loader--v2.is-leaving {
+  pointer-events: none;
+}
+
+.paloma-loader--v2.is-gone {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 300ms ease, visibility 0s linear 300ms;
+}
+
+.paloma-loader--v2.paloma-loader--quick .paloma-loader__logo {
+  animation-duration: 0.55s;
+}
+
+.paloma-loader--v2.paloma-loader--quick .paloma-loader__shutter {
+  transition-duration: 580ms;
+}
+
+.paloma-loader--v2.paloma-loader--quick.is-gone {
+  transition-duration: 180ms;
+}
+
+@keyframes palomaOrbitSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes palomaLoaderLogoIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Custom cursor (desktop) ── */
+body.paloma-cursor-on .custom-cursor {
+  mix-blend-mode: normal;
+}
+
+body.paloma-cursor-on .custom-cursor__dot {
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  background: var(--burgundy);
+}
+
+body.paloma-cursor-on .custom-cursor__ring {
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border: 1px solid rgba(107, 15, 26, 0.35);
+  background: rgba(251, 246, 232, 0.08);
+}
+
+body.paloma-cursor-on .custom-cursor.is-hovering .custom-cursor__ring {
+  border-color: rgba(107, 15, 26, 0.55);
+  background: rgba(107, 15, 26, 0.06);
+}
+
+body.paloma-cursor-on .cursor-trail-dot {
+  background: rgba(107, 15, 26, 0.22);
+  mix-blend-mode: normal;
+}
+
+/* ── Section waves ── */
+.paloma-wave {
+  display: block;
+  width: 100%;
+  line-height: 0;
+  margin: 0;
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+
+.paloma-wave svg {
+  width: 100%;
+  max-width: 100%;
+  height: clamp(28px, 4.5vw, 52px);
+  display: block;
+  overflow: hidden;
+}
+
+.paloma-wave--to-milk path {
+  fill: var(--milk);
+}
+
+.paloma-wave--to-ivory path {
+  fill: var(--ivory);
+}
+
+.paloma-wave--to-paper path {
+  fill: var(--paper);
+}
+
+/* ── Scroll reveal ── */
+.paloma-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.75s var(--ease-soft),
+    transform 0.75s var(--ease-soft);
+}
+
+.paloma-reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.paloma-reveal--delay-1 {
+  transition-delay: 0.08s;
+}
+.paloma-reveal--delay-2 {
+  transition-delay: 0.16s;
+}
+.paloma-reveal--delay-3 {
+  transition-delay: 0.24s;
+}
+
+/* Hero parallax layer */
+.hero__bg,
+.hero__bg-img,
+.hero__bg-ph,
+.e-hero__placeholder,
+.coffee-hero__placeholder {
+  will-change: transform;
+  transform: scale(1);
+  transform-origin: center center;
+}
+
+/* Horizontal scroll polish */
+.hscroll-section__track,
+.process-section__track,
+.coffee-process__track {
+  scroll-behavior: smooth;
+}
+
+/* Curtain blocks — reveal см. initCurtainBlocks() в script.js */
+
+@media (prefers-reduced-motion: reduce) {
+  .paloma-loader__orbit-spin {
+    animation: none;
+  }
+
+  .paloma-loader__logo {
+    animation: none;
+  }
+
+  .paloma-loader__shutter {
+    transition-duration: 0.01ms;
+  }
+
+  .paloma-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero__bg,
+  .hero__bg-img,
+  .hero__bg-ph {
+    transform: none !important;
+  }
+
+  .hscroll-section__track {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 1024px), (hover: none) {
+  .paloma-wave {
+    display: none;
+  }
+}

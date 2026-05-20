@@ -3,232 +3,714 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url=cart.html">
+  <link rel="canonical" href="cart.html">
   <meta name="theme-color" content="#FBF6E8">
   <title>Оформление заказа — PALOMA</title>
-  <meta name="description" content="Проверка сценария оплаты: тестовая страница оформления заказа PALOMA">
+  <meta name="description" content="Оформление заказа PALOMA: доставка и оплата букетов, кофе и подарков.">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">`n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="preloader.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="paloma-animations.css">
+<link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="catalog.css">
+  <link rel="stylesheet" href="checkout.css">
   <link rel="stylesheet" href="clients.css">
+  <link rel="stylesheet" href="paloma-responsive.css">
+  <link rel="stylesheet" href="cursor.css">
 </head>
 <body class="checkout-page">
-  <a href="#main" class="skip-link">К содержимому</a>
+<a href="#main" class="skip-link">К содержимому</a>
 
-  <header class="checkout-bar">
-    <div class="checkout-bar__inner">
-      <a href="catalog.html" class="checkout-bar__link" data-cursor="hover">← Каталог</a>
-      <a href="index.html" class="checkout-bar__brand" lang="en">PALOMA</a>
-      <a href="payment.html" class="checkout-bar__link" data-cursor="hover">Оплата</a>
+  <div class="pl" id="palomaLoader" aria-hidden="true" role="status" aria-label="Загрузка PALOMA">
+  <div class="pl__curtain pl__curtain--top" aria-hidden="true"></div>
+  <div class="pl__curtain pl__curtain--bot" aria-hidden="true"></div>
+  <div class="pl__scene" aria-hidden="true">
+    <div class="pl__ring-wrap" aria-hidden="true">
+      <svg class="pl__ring-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <path id="plCirclePath" d="M 160,160 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0" />
+        </defs>
+        <text class="pl__ring-text">
+          <textPath href="#plCirclePath" xlink:href="#plCirclePath" startOffset="0%" textLength="741" lengthAdjust="spacing">
+            PALOMA&nbsp;•&nbsp;FLOWERS&nbsp;•&nbsp;COFFEE&nbsp;•&nbsp;YOU&nbsp;•&nbsp;НОВОРОССИЙСК&nbsp;•&nbsp;
+          </textPath>
+        </text>
+      </svg>
     </div>
-  </header>
-
-  <main id="main" class="checkout-shell">
-    <div id="checkoutEmpty" class="checkout-empty">
-      <h1 class="checkout-shell__title">Корзина пуста</h1>
-      <p class="checkout-muted">Добавьте букет в корзину и снова нажмите «Оформить заказ».</p>
-      <a href="catalog.html" class="btn btn--dark" data-cursor="hover">Перейти в каталог</a>
-    </div>
-
-    <div id="checkoutFlow" class="checkout-flow is-hidden">
-      <h1 class="checkout-shell__title">Оформление и оплата</h1>
-      <p class="checkout-intro">
-        На сайте включён локальный тест: вы увидите шаг с оплатой, как на боевой версии после подключения ЮKassa через бекенд. Деньги списаны не будут.
+    <div class="pl__logo-wrap">
+      <p class="pl__wordmark" aria-label="PALOMA">PALOMA</p>
+      <p class="pl__tagline" aria-label="flowers coffee you">
+        <span>flowers</span>
+        <span aria-hidden="true">·</span>
+        <span>coffee</span>
+        <span aria-hidden="true">·</span>
+        <span>you</span>
       </p>
-
-      <section class="checkout-card" aria-labelledby="checkout-sum-title">
-        <h2 id="checkout-sum-title" class="checkout-card__title">Ваш заказ</h2>
-        <ul id="checkoutLines" class="checkout-lines"></ul>
-        <div class="checkout-total-row">
-          <span>Итого</span>
-          <strong id="checkoutGrandTotal">0 ₽</strong>
-        </div>
-        <p class="checkout-muted checkout-note">Доставка рассчитается отдельно при подтверждении заказа.</p>
-      </section>
-
-      <section class="checkout-card" aria-labelledby="checkout-contact-title">
-        <h2 id="checkout-contact-title" class="checkout-card__title">Контакт</h2>
-        <label class="checkout-field">
-          <span class="checkout-field__label">Телефон</span>
-          <input type="tel" id="checkoutPhone" class="checkout-input" placeholder="+7 900 000-00-00" autocomplete="tel" inputmode="tel">
-        </label>
-        <label class="checkout-field">
-          <span class="checkout-field__label">Имя</span>
-          <input type="text" id="checkoutName" class="checkout-input" placeholder="Как к вам обращаться" autocomplete="name">
-        </label>
-      </section>
-
-      <button type="button" class="btn btn--dark checkout-primary" id="checkoutOpenPay" data-cursor="hover">
-        Перейти к оплате
-      </button>
     </div>
+  </div>
+</div>
 
-    <div id="checkoutSuccess" class="checkout-success is-hidden">
-      <h1 class="checkout-shell__title">Оплата прошла (тест)</h1>
-      <p class="checkout-intro">Заказ помечен оплаченным в демонстрационном режиме. Корзина очищена.</p>
-      <div class="checkout-success__actions">
-        <a href="catalog.html" class="btn btn--dark" data-cursor="hover">В каталог</a>
-        <a href="payment.html" class="btn btn--ghost checkout-success__secondary" data-cursor="hover">Как платим на боевом сайте</a>
+<div class="site-top" id="siteTop">
+    <div class="top-marquee" aria-hidden="false">
+      <div class="top-marquee__track">
+                <div class="top-marquee__content">
+        <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+      </div>
+              <div class="top-marquee__content" aria-hidden="true">
+        <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+      </div>
       </div>
     </div>
+
+    <header class="site-header" id="siteHeader">
+      <div class="site-header__inner">
+        <button type="button" class="site-header__menu-toggle" id="menuToggle" data-cursor="hover" aria-expanded="false" aria-controls="mobileNav" aria-label="Открыть меню">
+          <span class="site-header__menu-lines" aria-hidden="true"></span>
+        </button>
+
+        <a href="index.html" class="site-header__logo">
+          <span class="site-header__logo-word">PALOMA</span>
+          <span class="site-header__logo-tag">flowers · coffee · you</span>
+        </a>
+
+        <nav class="site-header__nav" aria-label="Основная навигация">
+          <div class="site-header__dropdown-wrap site-header__dropdown-wrap--catalog" data-dropdown="catalog">
+            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerCart" data-cursor="hover">
+              Каталог
+              <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+            </button>
+            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerCart">
+              <div class="catalog-dropdown__inner">
+                <div class="catalog-dropdown__grid">
+
+                  <a href="catalog.html?cat=online"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="2" y="3" width="20" height="14" rx="1"/>
+                        <path d="M8 21h8M12 17v4"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Онлайн-витрина</span>
+                      <span class="catalog-nav-item__sub">Готовые букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=season"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/>
+                        <path d="M12 14v7"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Самый сезон</span>
+                      <span class="catalog-nav-item__sub">Сезонные цветы</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=best"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2l3 6.5H21l-5.5 4 2 6.5L12 15l-5.5 4 2-6.5L3 8.5h6z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Бестселлеры</span>
+                      <span class="catalog-nav-item__sub">Чаще всего выбирают</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=comp"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="12" cy="12" r="9"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Композиции</span>
+                      <span class="catalog-nav-item__sub">Цветочные формы</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=mono"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2a5 5 0 015 5c0 4-5 9-5 9S7 11 7 7a5 5 0 015-5z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Моно и дуобукеты</span>
+                      <span class="catalog-nav-item__sub">Один или два вида цветов</span>
+                    </div>
+                  </a>
+
+                  <a href="weddings.html"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Свадебные</span>
+                      <span class="catalog-nav-item__sub">Букеты и оформление</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=vases"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M7 22h10M8 22V8l4-6 4 6v14"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Вазы и подарки</span>
+                      <span class="catalog-nav-item__sub">Дополнения к букету</span>
+                    </div>
+                  </a>
+
+                  <a href="subscription.html"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M4 4v5h5M20 20v-5h-5"/>
+                        <path d="M20 9A8 8 0 005.3 5.3M4 15a8 8 0 0014.7 3.7"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Цветочная подписка</span>
+                      <span class="catalog-nav-item__sub">Регулярные букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=events"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="3" y="5" width="18" height="16" rx="1"/>
+                        <path d="M3 9h18M8 3v4M16 3v4"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Оформление события цветами</span>
+                      <span class="catalog-nav-item__sub">Цветочное оформление</span>
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="coffee.html" class="site-header__link">Кофейня</a>
+          <a href="event-decoration.html" class="site-header__link">Оформление</a>
+
+          <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
+          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerCatalog" data-cursor="hover">
+            Клиентам
+            <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+
+          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerCatalog">
+            <div class="clients-dropdown__inner">
+              <div class="clients-dropdown__grid">
+                <a href="delivery.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h13v10H3zM16 10h4l2 3v4h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Доставка</div><div class="client-nav-card__desc">Зоны, сроки и стоимость</div></div></a>
+                <a href="payment.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 11h20"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оплата</div><div class="client-nav-card__desc">Онлайн через ЮKassa</div></div></a>
+                <a href="care.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/><path d="M12 14v7"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Уход за букетом</div><div class="client-nav-card__desc">7 дней свежести и больше</div></div></a>
+                <a href="faq.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 4"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Вопрос-ответ</div><div class="client-nav-card__desc">Частые вопросы</div></div></a>
+                <a href="wedding-piggy-bank.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Свадебная копилка</div><div class="client-nav-card__desc">Этапы подготовки</div></div></a>
+                <a href="event-decoration.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оформление мероприятий</div><div class="client-nav-card__desc">Цветочный декор событий</div></div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="contacts.html" class="site-header__link">Контакты</a>
+        <a href="blog.html" class="site-header__link">Блог</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
+          <a href="wishlist.html" class="site-header__icon site-header__icon--wishlist" aria-label="Избранное" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+            <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
+          </a>
+          <a href="cart.html" class="site-header__icon site-header__icon--cart site-header__cart"
+        aria-label="Корзина" aria-current="page" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
+            <span class="site-header__cart-count site-header__badge cart-count" id="cartCount" data-cart-count style="display:none" aria-hidden="true">0</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="site-header__backdrop" id="menuBackdrop" aria-hidden="true"></div>
+      <nav class="site-header__mobile-panel" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
+        <div class="site-header__mobile-inner">
+          <a href="catalog.html" class="site-header__mobile-link">Каталог</a>
+          <a href="coffee.html" class="site-header__mobile-link">Кофейня</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление</a>
+          <span class="site-header__mobile-section-title">Клиентам</span>
+          <a href="delivery.html" class="site-header__mobile-link">Доставка</a>
+          <a href="payment.html" class="site-header__mobile-link">Оплата</a>
+          <a href="care.html" class="site-header__mobile-link">Уход за букетом</a>
+          <a href="faq.html" class="site-header__mobile-link">Вопрос-ответ</a>
+          <a href="wedding-piggy-bank.html" class="site-header__mobile-link">Свадебная копилка</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление мероприятий</a>
+          <a href="contacts.html" class="site-header__mobile-link">Контакты</a>
+          <a href="blog.html" class="site-header__mobile-link">Блог</a>
+          <a href="wishlist.html" class="site-header__mobile-link">Избранное</a>
+          <a href="tel:+78612000000" class="site-header__mobile-phone">+7 (861) 200-00-00</a>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+    
+  <main class="checkout-main" id="main" aria-label="Оформление заказа">
+
+    <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки">
+      <div class="catalog-breadcrumbs__inner">
+        <ol class="catalog-breadcrumbs__list">
+          <li><a href="index.html">Главная</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="cart.html">Корзина</a></li>
+          <li aria-hidden="true">/</li>
+          <li><span aria-current="page">Оформление заказа</span></li>
+        </ol>
+      </div>
+    </nav>
+
+    <div id="paymentFailedBanner" class="checkout-error-banner" role="alert" hidden>
+      <span>Оплата не прошла. Попробуйте ещё раз или выберите другой способ оплаты.</span>
+      <button type="button" class="checkout-error-banner__close" id="paymentFailedClose" aria-label="Закрыть">×</button>
+    </div>
+
+    <div id="checkoutEmpty" class="checkout-empty" hidden>
+      <div>
+        <h1 class="checkout-empty__title">Корзина пуста</h1>
+        <p class="checkout-empty__text">
+          Добавьте букет, кофе или подарок в корзину, чтобы оформить заказ.
+        </p>
+        <a href="catalog.html" class="btn btn--dark" data-cursor="hover">Перейти в каталог</a>
+      </div>
+    </div>
+
+    <div id="checkoutLayout" class="checkout-inner">
+      <h1 class="checkout-title">Оформление заказа</h1>
+
+      <div class="checkout-grid">
+        <form id="checkoutForm" class="checkout-form" novalidate>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">01</span>
+              Данные заказчика
+            </legend>
+            <div class="checkout-fields">
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-name">
+                  Имя <span class="checkout-field__req" aria-hidden="true">*</span>
+                </label>
+                <input class="checkout-field__input" type="text" id="cf-name" name="name"
+                       placeholder="Как к вам обращаться" autocomplete="name" required>
+                <p class="checkout-field__error" id="cf-name-error" hidden></p>
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-phone">
+                  Телефон <span class="checkout-field__req" aria-hidden="true">*</span>
+                </label>
+                <input class="checkout-field__input" type="tel" id="cf-phone" name="phone"
+                       placeholder="+7 ___ ___ __ __" autocomplete="tel" inputmode="tel" required>
+                <p class="checkout-field__error" id="cf-phone-error" hidden></p>
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-email">Email</label>
+                <input class="checkout-field__input" type="email" id="cf-email" name="email"
+                       placeholder="email@example.com" autocomplete="email">
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-messenger">Мессенджер</label>
+                <input class="checkout-field__input" type="text" id="cf-messenger" name="messenger"
+                       placeholder="@username или номер WhatsApp">
+                <p class="checkout-field__hint">Telegram или WhatsApp — по желанию</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">02</span>
+              Получатель
+            </legend>
+            <div class="checkout-recipient-toggle" role="radiogroup" aria-label="Кто получит заказ">
+              <label class="checkout-toggle-btn">
+                <input type="radio" name="recipient-type" value="self" checked>
+                <span>Заказываю для себя</span>
+              </label>
+              <label class="checkout-toggle-btn">
+                <input type="radio" name="recipient-type" value="other">
+                <span>Другой получатель</span>
+              </label>
+            </div>
+            <div id="recipientOtherFields" class="checkout-fields" hidden>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-rec-name">Имя получателя</label>
+                <input class="checkout-field__input" type="text" id="cf-rec-name" name="recipient_name"
+                       placeholder="Имя" autocomplete="name">
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-rec-phone">Телефон получателя</label>
+                <input class="checkout-field__input" type="tel" id="cf-rec-phone" name="recipient_phone"
+                       placeholder="+7 ___ ___ __ __" autocomplete="tel">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">03</span>
+              Способ получения
+            </legend>
+            <div class="checkout-delivery-options" role="radiogroup" aria-label="Способ получения">
+              <label class="checkout-delivery-card">
+                <input type="radio" name="delivery" value="pickup" checked>
+                <span class="checkout-delivery-card__inner">
+                  <span class="checkout-delivery-card__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 21s-7-4.5-7-11a7 7 0 1114 0c0 6.5-7 11-7 11z"/>
+                      <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>Самовывоз</strong>
+                    <span>Новороссийск, ул. Энгельса, 74</span>
+                  </div>
+                </span>
+              </label>
+              <label class="checkout-delivery-card">
+                <input type="radio" name="delivery" value="courier">
+                <span class="checkout-delivery-card__inner">
+                  <span class="checkout-delivery-card__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <rect x="1" y="6" width="15" height="10" rx="1"/>
+                      <path d="M16 10h4l2 4v2h-6V10zM6 18a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>Доставка курьером</strong>
+                    <span>По Новороссийску и ближайшим районам</span>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <p class="checkout-field__error" id="delivery-error" hidden></p>
+            <div id="courierFields" class="checkout-courier-fields" hidden>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-address">
+                  Адрес доставки <span class="checkout-field__req" aria-hidden="true">*</span>
+                </label>
+                <input class="checkout-field__input" type="text" id="cf-address" name="address"
+                       placeholder="Улица, дом, квартира">
+                <p class="checkout-field__error" id="cf-address-error" hidden>Укажите адрес доставки</p>
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-courier-comment">Комментарий курьеру</label>
+                <input class="checkout-field__input" type="text" id="cf-courier-comment" name="courier_comment"
+                       placeholder="Домофон, этаж, ориентир">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">04</span>
+              Дата и время
+            </legend>
+            <div class="checkout-fields">
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-date">
+                  Дата <span class="checkout-field__req" aria-hidden="true">*</span>
+                </label>
+                <input class="checkout-field__input" type="date" id="cf-date" name="delivery_date" required>
+                <p class="checkout-field__error" id="cf-date-error" hidden></p>
+              </div>
+            </div>
+            <p class="checkout-field__label checkout-field__label--interval">
+              Интервал доставки <span class="checkout-field__req" aria-hidden="true">*</span>
+            </p>
+            <div id="checkoutIntervals" class="checkout-intervals" role="radiogroup" aria-label="Интервал доставки">
+              <label class="checkout-interval-btn">
+                <input type="radio" name="interval" value="10-13">
+                <span>10:00–13:00</span>
+              </label>
+              <label class="checkout-interval-btn">
+                <input type="radio" name="interval" value="13-16">
+                <span>13:00–16:00</span>
+              </label>
+              <label class="checkout-interval-btn">
+                <input type="radio" name="interval" value="16-19">
+                <span>16:00–19:00</span>
+              </label>
+              <label class="checkout-interval-btn">
+                <input type="radio" name="interval" value="19-22">
+                <span>19:00–22:00</span>
+              </label>
+            </div>
+            <p class="checkout-field__error" id="cf-interval-error" hidden></p>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">05</span>
+              Открытка и комментарий
+            </legend>
+            <div class="checkout-field">
+              <label class="checkout-field__label" for="cf-card-text">Текст открытки</label>
+              <textarea class="checkout-field__input checkout-field__input--textarea" id="cf-card-text"
+                        name="card_text" rows="3" maxlength="500"
+                        placeholder="Текст для открытки — необязательно"></textarea>
+              <p class="checkout-field__hint"><span id="cardTextCount">0</span> / 500</p>
+            </div>
+            <div class="checkout-field">
+              <label class="checkout-field__label" for="cf-comment">Комментарий к заказу</label>
+              <textarea class="checkout-field__input checkout-field__input--textarea" id="cf-comment"
+                        name="comment" rows="3"
+                        placeholder="Пожелания, нюансы, особые запросы"></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">06</span>
+              Способ оплаты
+            </legend>
+            <div class="checkout-payment-methods" role="radiogroup" aria-label="Способ оплаты">
+              <label class="checkout-payment-card">
+                <input type="radio" name="payment" value="bank_card" checked>
+                <span class="checkout-payment-card__inner">
+                  <span class="checkout-payment-card__icons" aria-hidden="true">
+                    <span class="checkout-payment-card__badge">VISA</span>
+                    <span class="checkout-payment-card__badge">MC</span>
+                  </span>
+                  <div>
+                    <strong>Банковская карта</strong>
+                    <span>Оплата через ЮKassa</span>
+                  </div>
+                </span>
+              </label>
+              <label class="checkout-payment-card">
+                <input type="radio" name="payment" value="sbp">
+                <span class="checkout-payment-card__inner">
+                  <span class="checkout-payment-card__icons" aria-hidden="true">
+                    <span class="checkout-payment-card__badge checkout-payment-card__badge--sbp">СБП</span>
+                  </span>
+                  <div>
+                    <strong>СБП</strong>
+                    <span>Быстрый платёж по QR-коду</span>
+                  </div>
+                </span>
+              </label>
+              <label class="checkout-payment-card">
+                <input type="radio" name="payment" value="yandex_pay">
+                <span class="checkout-payment-card__inner">
+                  <span class="checkout-payment-card__icons" aria-hidden="true">
+                    <span class="checkout-payment-card__badge checkout-payment-card__badge--ya">Pay</span>
+                  </span>
+                  <div>
+                    <strong>Яндекс Пэй</strong>
+                    <span>Оплата в приложении Яндекса</span>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <p class="checkout-field__error" id="payment-error" hidden></p>
+          </fieldset>
+
+          <div class="checkout-submit-mobile">
+            <button type="button" class="btn btn--dark checkout-submit-btn" id="checkoutSubmitMobile" data-cursor="hover">
+              Оплатить заказ
+            </button>
+          </div>
+        </form>
+
+        <aside class="checkout-summary" aria-labelledby="checkoutSummaryTitle">
+          <h2 class="checkout-summary__title" id="checkoutSummaryTitle">Ваш заказ</h2>
+          <div class="checkout-summary__items" id="checkoutSummaryItems"></div>
+          <div class="checkout-summary__totals">
+            <div class="checkout-summary__row">
+              <span>Подытог</span>
+              <span id="checkoutSubtotal">0 ₽</span>
+            </div>
+            <div class="checkout-summary__row checkout-summary__row--delivery">
+              <span>Доставка</span>
+              <span>уточним</span>
+            </div>
+            <div class="checkout-summary__row checkout-summary__row--total">
+              <span>Итого</span>
+              <strong class="checkout-summary__total" id="checkoutTotal">0 ₽</strong>
+            </div>
+          </div>
+          <button type="button" class="btn btn--dark checkout-summary__pay-btn" id="checkoutSubmitDesktop" data-cursor="hover">
+            Оплатить заказ
+          </button>
+          <p class="checkout-summary__security">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="5" y="11" width="14" height="10" rx="2"/>
+              <path d="M8 11V8a4 4 0 018 0v3"/>
+            </svg>
+            Безопасная оплата через ЮKassa
+          </p>
+          <a href="cart.html" class="checkout-summary__back-link" data-cursor="hover">← Вернуться в корзину</a>
+        </aside>
+      </div>
+    </div>
+
+    <div id="checkoutLoading" class="checkout-loading" hidden aria-live="polite" aria-busy="true">
+      <div class="checkout-loading__inner">
+        <div class="checkout-loading__spinner" aria-hidden="true"></div>
+        <p id="checkoutLoadingText">Загрузка...</p>
+      </div>
+    </div>
+
   </main>
 
-  <div class="checkout-overlay" id="checkoutPayOverlay" hidden data-checkout-overlay aria-hidden="true">
-    <div class="checkout-sheet" role="dialog" aria-labelledby="checkoutPayTitle" aria-modal="true" tabindex="-1">
-      <button type="button" class="checkout-sheet__close" id="checkoutSheetClose" aria-label="Закрыть" data-cursor="hover">×</button>
-      <h2 id="checkoutPayTitle" class="checkout-sheet__head">ЮKassa — тест страницы</h2>
-      <p class="checkout-sheet__lead">
-        Реальный платёж создаётся на сервере магазина и переводится на защищённую страницу ЮKassa.
-        Это упрощённая муляж-форма: номер карты никуда не отправляется.
-      </p>
-      <label class="checkout-field">
-        <span class="checkout-field__label">Номер карты</span>
-        <input type="text" class="checkout-input checkout-input--mock" readonly value="5544 **** **** ****" aria-readonly="true">
-      </label>
-      <div class="checkout-sheet__methods">
-        <span class="checkout-pill">Карта</span>
-        <span class="checkout-pill">ЮKassa</span>
+<footer class="site-footer site-footer--light" id="contacts">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a href="index.html" class="site-footer__brand-logo">PALOMA</a>
+          <p class="site-footer__brand-tag">flowers · coffee · you</p>
+          <p class="site-footer__brand-desc">Цветочный бутик и кофейня в Новороссийске</p>
+        </div>
+
+        <nav class="site-footer__nav" aria-label="Навигация в подвале">
+          <h4 class="site-footer__col-title">Навигация</h4>
+          <ul class="site-footer__nav-list">
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="coffee.html">Кофейня</a></li>
+            <li><a href="event-decoration.html">Оформление</a></li>
+            <li><a href="delivery.html">Клиентам</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="blog.html">Блог</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__contacts">
+          <h4 class="site-footer__col-title">Контакты</h4>
+          <ul class="site-footer__list">
+            <li><a href="tel:+78612000000">+7 (861) 200-00-00</a></li>
+            <li><a href="https://t.me/paloma_novorossiysk" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+            <li><a href="https://wa.me/79180000000" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li>Новороссийск, ул. Энгельса, 74</li>
+          </ul>
+        </div>
       </div>
-      <button type="button" class="btn btn--dark checkout-primary" id="checkoutConfirmFake" data-cursor="hover">
-        Оплатить <span id="checkoutPayBtnSum">—</span>
+
+      <div class="site-footer__bottom">
+        <span class="site-footer__copyright">© 2026 PALOMA Flowers Coffee You</span>
+        <div class="site-footer__legal">
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="offer.html">Оферта</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__wordmark-wrap" aria-hidden="true">
+      <p class="site-footer__wordmark" id="footerWordmark">PALOMA</p>
+    </div>
+  </footer>
+
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <div class="product-modal__backdrop" data-close></div>
+    <div class="product-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="product-modal__close" aria-label="Закрыть" data-close data-cursor="hover">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
-      <p class="checkout-muted checkout-sheet__foot">Не закрывая окно дождитесь подтверждения.</p>
+      <div class="product-modal__grid">
+        <div class="product-modal__gallery">
+          <div class="product-modal__main-img" id="modalMainImg"></div>
+          <div class="product-modal__thumbs" id="modalThumbs">
+            <button type="button" class="product-modal__thumb is-active" aria-label="Вид 1"></button>
+            <button type="button" class="product-modal__thumb" aria-label="Вид 2"></button>
+            <button type="button" class="product-modal__thumb" aria-label="Вид 3"></button>
+          </div>
+        </div>
+        <div class="product-modal__info">
+          <div class="product-modal__category">Букеты</div>
+          <h2 class="product-modal__title" id="modalTitle">—</h2>
+          <div class="product-modal__price" id="modalPrice">—</div>
+          <p class="product-modal__desc" id="modalDesc">—</p>
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Состав</div>
+            <div class="product-modal__composition" id="modalComposition">—</div>
+          </div>
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Размер</div>
+            <div class="product-modal__sizes">
+              <button type="button" class="size-pill is-active" data-size="S" data-mod="0">S</button>
+              <button type="button" class="size-pill" data-size="M" data-mod="800">M</button>
+              <button type="button" class="size-pill" data-size="L" data-mod="1600">L</button>
+              <button type="button" class="size-pill" data-size="XL" data-mod="2800">XL</button>
+            </div>
+          </div>
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Дополнения</div>
+            <div class="product-modal__addons">
+              <label class="addon"><input type="checkbox" data-addon-price="350"> Открытка <span>+350 ₽</span></label>
+              <label class="addon"><input type="checkbox" data-addon-price="1200"> Ваза <span>+1 200 ₽</span></label>
+              <label class="addon"><input type="checkbox" data-addon-price="320"> Кофе с собой <span>+320 ₽</span></label>
+            </div>
+          </div>
+          <div class="product-modal__pairs" id="modalPairs">—</div>
+          <button type="button" class="btn btn--dark product-modal__add" id="modalAddToCart" data-cursor="hover">В корзину — <span id="modalTotal">3 500 ₽</span></button>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="custom-cursor" id="customCursor" aria-hidden="true">
+    <div class="custom-cursor__dot"></div>
+    <div class="custom-cursor__ring"></div>
+  </div>
+
+    <script src="paloma-products.js"></script>
+  <script src="catalog-data.js"></script>
+  <script src="preloader.js"></script>
+  <script src="cart-core.js"></script>
+  <script src="payment-config.js"></script>
   <script src="script.js"></script>
-  <script>
-    (function initCheckoutFlow() {
-      const emptyEl = document.getElementById("checkoutEmpty");
-      const flowEl = document.getElementById("checkoutFlow");
-      const successEl = document.getElementById("checkoutSuccess");
-      const linesEl = document.getElementById("checkoutLines");
-      const totalEl = document.getElementById("checkoutGrandTotal");
-      const openPayBtn = document.getElementById("checkoutOpenPay");
-      const overlay = document.getElementById("checkoutPayOverlay");
-      const sheetClose = document.getElementById("checkoutSheetClose");
-      const confirmFake = document.getElementById("checkoutConfirmFake");
-      const payBtnSum = document.getElementById("checkoutPayBtnSum");
+  <script src="paloma-animations.js"></script>
+  <script src="paloma-media-paths.js"></script>
+  <script src="paloma-media.js"></script>
 
-      function escapeHtml(s) {
-        return String(s)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/"/g, "&quot;");
-      }
-
-      let lines = [];
-
-      function readCartLines() {
-        if (typeof window.PalomaCart !== "undefined" && typeof PalomaCart.getItems === "function") {
-          return PalomaCart.getItems();
-        }
-        try {
-          const raw = JSON.parse(localStorage.getItem("paloma_cart_v1") || "[]");
-          return Array.isArray(raw) ? raw : [];
-        } catch (e) {
-          return [];
-        }
-      }
-
-      function sum(linesArr) {
-        return linesArr.reduce((s, i) => s + (Number(i.price) || 0) * (Number(i.qty) || 1), 0);
-      }
-
-      function renderLines() {
-        if (!linesEl || !totalEl) return;
-
-        linesEl.innerHTML =
-          lines.length === 0
-            ? '<li class="checkout-line checkout-line--muted">Нет позиций</li>'
-            : lines
-                .map(
-                  (i) => `
-              <li class="checkout-line">
-                <span class="checkout-line__name">${escapeHtml(i.name)}<span class="checkout-line__meta">Размер ${escapeHtml(String(i.size || "S"))} × ${Number(i.qty) || 1}</span></span>
-                <span class="checkout-line__sum">${(
-                  i.price * i.qty
-                ).toLocaleString("ru-RU")} ₽</span>
-              </li>`
-                )
-                .join("");
-
-        const total = sum(lines);
-        totalEl.textContent = total.toLocaleString("ru-RU") + " ₽";
-        if (payBtnSum) payBtnSum.textContent = total.toLocaleString("ru-RU") + " ₽";
-      }
-
-      function openOverlay() {
-        if (!overlay) return;
-        overlay.hidden = false;
-        overlay.setAttribute("aria-hidden", "false");
-        document.documentElement.style.overflow = "hidden";
-        const sheet = overlay.querySelector(".checkout-sheet");
-        sheet?.focus({ preventScroll: true });
-      }
-
-      function closeOverlay() {
-        if (!overlay) return;
-        overlay.hidden = true;
-        overlay.setAttribute("aria-hidden", "true");
-        document.documentElement.style.overflow = "";
-        openPayBtn?.focus({ preventScroll: true });
-      }
-
-      lines = readCartLines();
-
-      if (lines.length === 0) {
-        emptyEl?.classList.remove("is-hidden");
-        flowEl?.classList.add("is-hidden");
-        successEl?.classList.add("is-hidden");
-        return;
-      }
-
-      emptyEl?.classList.add("is-hidden");
-      flowEl?.classList.remove("is-hidden");
-      successEl?.classList.add("is-hidden");
-
-      renderLines();
-
-      openPayBtn?.addEventListener("click", () => {
-        openOverlay();
-      });
-
-      sheetClose?.addEventListener("click", closeOverlay);
-
-      overlay?.addEventListener("click", (e) => {
-        if (e.target === overlay) closeOverlay();
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && overlay && overlay.hidden === false) {
-          e.preventDefault();
-          closeOverlay();
-        }
-      });
-
-      confirmFake?.addEventListener("click", async () => {
-        const prevInner = confirmFake.innerHTML;
-        confirmFake.disabled = true;
-        confirmFake.textContent = "Подождите…";
-        await new Promise((r) => setTimeout(r, 900));
-
-        closeOverlay();
-
-        try {
-          if (typeof PalomaCart !== "undefined" && PalomaCart.emptyCart)
-            PalomaCart.emptyCart();
-          else localStorage.removeItem("paloma_cart_v1");
-        } catch (e2) {}
-
-        flowEl?.classList.add("is-hidden");
-        successEl?.classList.remove("is-hidden");
-
-        confirmFake.disabled = false;
-        confirmFake.innerHTML = prevInner;
-      });
-    })();
-  </script>
+  <script src="wishlist.js"></script>
+  <script src="checkout.js"></script>
+  <script src="clients.js"></script>
+  <script src="cursor.js"></script>
 </body>
 </html>

@@ -1,0 +1,307 @@
+  <main class="checkout-main" id="main" aria-label="Оформление заказа">
+
+    <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки">
+      <div class="catalog-breadcrumbs__inner">
+        <ol class="catalog-breadcrumbs__list">
+          <li><a href="index.html">Главная</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="cart.html">Корзина</a></li>
+          <li aria-hidden="true">/</li>
+          <li><span aria-current="page">Оформление заказа</span></li>
+        </ol>
+      </div>
+    </nav>
+
+    <div id="paymentFailedBanner" class="checkout-error-banner" role="alert" hidden>
+      <span>Оплата не прошла. Попробуйте ещё раз или выберите другой способ оплаты.</span>
+      <button type="button" class="checkout-error-banner__close" id="paymentFailedClose" aria-label="Закрыть">×</button>
+    </div>
+
+    <div id="checkoutEmpty" class="checkout-empty" hidden>
+      <div>
+        <h1 class="checkout-empty__title">Корзина пуста</h1>
+        <p class="checkout-empty__text">
+          Добавьте букет, кофе или подарок в корзину, чтобы оформить заказ.
+        </p>
+        <a href="catalog.html" class="btn btn--dark" data-cursor="hover">Перейти в каталог</a>
+      </div>
+    </div>
+
+    <div id="checkoutLayout" class="checkout-inner">
+      <h1 class="checkout-title">Оформление заказа</h1>
+
+      <div class="checkout-grid">
+        <form id="checkoutForm" class="checkout-form" novalidate>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">01</span>
+              Данные заказчика
+            </legend>
+            <div class="checkout-fields">
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-name">
+                  Имя <span class="checkout-field__req" aria-hidden="true">*</span>
+                </label>
+                <input class="checkout-field__input" type="text" id="cf-name" name="name"
+                       placeholder="Как к вам обращаться" autocomplete="name" required>
+                <p class="checkout-field__error" id="cf-name-error" hidden></p>
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-phone">
+                  Телефон <span class="checkout-field__req" aria-hidden="true">*</span>
+                </label>
+                <input class="checkout-field__input" type="tel" id="cf-phone" name="phone"
+                       placeholder="+7 ___ ___ __ __" autocomplete="tel" inputmode="tel" required>
+                <p class="checkout-field__error" id="cf-phone-error" hidden></p>
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-email">Email</label>
+                <input class="checkout-field__input" type="email" id="cf-email" name="email"
+                       placeholder="email@example.com" autocomplete="email">
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-messenger">Мессенджер</label>
+                <input class="checkout-field__input" type="text" id="cf-messenger" name="messenger"
+                       placeholder="@username или номер WhatsApp">
+                <p class="checkout-field__hint">Telegram или WhatsApp — по желанию</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">02</span>
+              Получатель
+            </legend>
+            <div class="checkout-recipient-toggle" role="radiogroup" aria-label="Кто получит заказ">
+              <label class="checkout-toggle-btn">
+                <input type="radio" name="recipient-type" value="self" checked>
+                <span>Заказываю для себя</span>
+              </label>
+              <label class="checkout-toggle-btn">
+                <input type="radio" name="recipient-type" value="other">
+                <span>Другой получатель</span>
+              </label>
+            </div>
+            <div id="recipientOtherFields" class="checkout-fields" hidden>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-rec-name">Имя получателя</label>
+                <input class="checkout-field__input" type="text" id="cf-rec-name" name="recipient_name"
+                       placeholder="Имя" autocomplete="name">
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-rec-phone">Телефон получателя</label>
+                <input class="checkout-field__input" type="tel" id="cf-rec-phone" name="recipient_phone"
+                       placeholder="+7 ___ ___ __ __" autocomplete="tel">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">03</span>
+              Способ получения
+            </legend>
+            <div class="checkout-delivery-options" role="radiogroup" aria-label="Способ получения">
+              <label class="checkout-delivery-card">
+                <input type="radio" name="delivery" value="pickup" checked>
+                <span class="checkout-delivery-card__inner">
+                  <span class="checkout-delivery-card__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 21s-7-4.5-7-11a7 7 0 1114 0c0 6.5-7 11-7 11z"/>
+                      <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>Самовывоз</strong>
+                    <span>Новороссийск, ул. Энгельса, 74</span>
+                  </div>
+                </span>
+              </label>
+              <label class="checkout-delivery-card">
+                <input type="radio" name="delivery" value="courier">
+                <span class="checkout-delivery-card__inner">
+                  <span class="checkout-delivery-card__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <rect x="1" y="6" width="15" height="10" rx="1"/>
+                      <path d="M16 10h4l2 4v2h-6V10zM6 18a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>Доставка курьером</strong>
+                    <span>По Новороссийску и ближайшим районам</span>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <p class="checkout-field__error" id="delivery-error" hidden></p>
+            <div id="courierFields" class="checkout-courier-fields" hidden>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-address">
+                  Адрес доставки <span class="checkout-field__req" aria-hidden="true">*</span>
+                </label>
+                <input class="checkout-field__input" type="text" id="cf-address" name="address"
+                       placeholder="Улица, дом, квартира">
+                <p class="checkout-field__error" id="cf-address-error" hidden>Укажите адрес доставки</p>
+              </div>
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-courier-comment">Комментарий курьеру</label>
+                <input class="checkout-field__input" type="text" id="cf-courier-comment" name="courier_comment"
+                       placeholder="Домофон, этаж, ориентир">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">04</span>
+              Дата и время
+            </legend>
+            <div class="checkout-fields">
+              <div class="checkout-field">
+                <label class="checkout-field__label" for="cf-date">
+                  Дата <span class="checkout-field__req" aria-hidden="true">*</span>
+                </label>
+                <input class="checkout-field__input" type="date" id="cf-date" name="delivery_date" required>
+                <p class="checkout-field__error" id="cf-date-error" hidden></p>
+              </div>
+            </div>
+            <p class="checkout-field__label checkout-field__label--interval">
+              Интервал доставки <span class="checkout-field__req" aria-hidden="true">*</span>
+            </p>
+            <div id="checkoutIntervals" class="checkout-intervals" role="radiogroup" aria-label="Интервал доставки">
+              <label class="checkout-interval-btn">
+                <input type="radio" name="interval" value="10-13">
+                <span>10:00–13:00</span>
+              </label>
+              <label class="checkout-interval-btn">
+                <input type="radio" name="interval" value="13-16">
+                <span>13:00–16:00</span>
+              </label>
+              <label class="checkout-interval-btn">
+                <input type="radio" name="interval" value="16-19">
+                <span>16:00–19:00</span>
+              </label>
+              <label class="checkout-interval-btn">
+                <input type="radio" name="interval" value="19-22">
+                <span>19:00–22:00</span>
+              </label>
+            </div>
+            <p class="checkout-field__error" id="cf-interval-error" hidden></p>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">05</span>
+              Открытка и комментарий
+            </legend>
+            <div class="checkout-field">
+              <label class="checkout-field__label" for="cf-card-text">Текст открытки</label>
+              <textarea class="checkout-field__input checkout-field__input--textarea" id="cf-card-text"
+                        name="card_text" rows="3" maxlength="500"
+                        placeholder="Текст для открытки — необязательно"></textarea>
+              <p class="checkout-field__hint"><span id="cardTextCount">0</span> / 500</p>
+            </div>
+            <div class="checkout-field">
+              <label class="checkout-field__label" for="cf-comment">Комментарий к заказу</label>
+              <textarea class="checkout-field__input checkout-field__input--textarea" id="cf-comment"
+                        name="comment" rows="3"
+                        placeholder="Пожелания, нюансы, особые запросы"></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset class="checkout-section">
+            <legend class="checkout-section__title">
+              <span class="checkout-section__num">06</span>
+              Способ оплаты
+            </legend>
+            <div class="checkout-payment-methods" role="radiogroup" aria-label="Способ оплаты">
+              <label class="checkout-payment-card">
+                <input type="radio" name="payment" value="bank_card" checked>
+                <span class="checkout-payment-card__inner">
+                  <span class="checkout-payment-card__icons" aria-hidden="true">
+                    <span class="checkout-payment-card__badge">VISA</span>
+                    <span class="checkout-payment-card__badge">MC</span>
+                  </span>
+                  <div>
+                    <strong>Банковская карта</strong>
+                    <span>Оплата через ЮKassa</span>
+                  </div>
+                </span>
+              </label>
+              <label class="checkout-payment-card">
+                <input type="radio" name="payment" value="sbp">
+                <span class="checkout-payment-card__inner">
+                  <span class="checkout-payment-card__icons" aria-hidden="true">
+                    <span class="checkout-payment-card__badge checkout-payment-card__badge--sbp">СБП</span>
+                  </span>
+                  <div>
+                    <strong>СБП</strong>
+                    <span>Быстрый платёж по QR-коду</span>
+                  </div>
+                </span>
+              </label>
+              <label class="checkout-payment-card">
+                <input type="radio" name="payment" value="yandex_pay">
+                <span class="checkout-payment-card__inner">
+                  <span class="checkout-payment-card__icons" aria-hidden="true">
+                    <span class="checkout-payment-card__badge checkout-payment-card__badge--ya">Pay</span>
+                  </span>
+                  <div>
+                    <strong>Яндекс Пэй</strong>
+                    <span>Оплата в приложении Яндекса</span>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <p class="checkout-field__error" id="payment-error" hidden></p>
+          </fieldset>
+
+          <div class="checkout-submit-mobile">
+            <button type="button" class="btn btn--dark checkout-submit-btn" id="checkoutSubmitMobile" data-cursor="hover">
+              Оплатить заказ
+            </button>
+          </div>
+        </form>
+
+        <aside class="checkout-summary" aria-labelledby="checkoutSummaryTitle">
+          <h2 class="checkout-summary__title" id="checkoutSummaryTitle">Ваш заказ</h2>
+          <div class="checkout-summary__items" id="checkoutSummaryItems"></div>
+          <div class="checkout-summary__totals">
+            <div class="checkout-summary__row">
+              <span>Подытог</span>
+              <span id="checkoutSubtotal">0 ₽</span>
+            </div>
+            <div class="checkout-summary__row checkout-summary__row--delivery">
+              <span>Доставка</span>
+              <span>уточним</span>
+            </div>
+            <div class="checkout-summary__row checkout-summary__row--total">
+              <span>Итого</span>
+              <strong class="checkout-summary__total" id="checkoutTotal">0 ₽</strong>
+            </div>
+          </div>
+          <button type="button" class="btn btn--dark checkout-summary__pay-btn" id="checkoutSubmitDesktop" data-cursor="hover">
+            Оплатить заказ
+          </button>
+          <p class="checkout-summary__security">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="5" y="11" width="14" height="10" rx="2"/>
+              <path d="M8 11V8a4 4 0 018 0v3"/>
+            </svg>
+            Безопасная оплата через ЮKassa
+          </p>
+          <a href="cart.html" class="checkout-summary__back-link" data-cursor="hover">← Вернуться в корзину</a>
+        </aside>
+      </div>
+    </div>
+
+    <div id="checkoutLoading" class="checkout-loading" hidden aria-live="polite" aria-busy="true">
+      <div class="checkout-loading__inner">
+        <div class="checkout-loading__spinner" aria-hidden="true"></div>
+        <p id="checkoutLoadingText">Загрузка...</p>
+      </div>
+    </div>
+
+  </main>

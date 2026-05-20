@@ -1,0 +1,159 @@
+  <main id="main" class="sub-main">
+    <section class="sub-hero" aria-labelledby="sub-hero-heading">
+      <div class="sub-hero__media" role="presentation" aria-hidden="true">
+        <div class="sub-hero__placeholder"></div>
+      </div>
+      <div class="sub-hero__content">
+        <span class="sub-hero__eyebrow">[ Подписка ]</span>
+        <h1 class="sub-hero__title" id="sub-hero-heading">Цветочная подписка PALOMA</h1>
+        <p class="sub-hero__lead">
+          Регулярные букеты для дома, офиса или подарка — в выбранном ритме.
+        </p>
+        <a href="#sub-configurator" class="btn btn--dark sub-hero__cta" data-cursor="hover">
+          Оформить подписку
+        </a>
+      </div>
+    </section>
+
+    <section class="sub-configurator" id="sub-configurator" aria-labelledby="sub-config-heading">
+      <div class="sub-configurator__inner">
+        <header class="sub-configurator__header">
+          <span class="sub-configurator__eyebrow">[ Настройка ]</span>
+          <h2 class="sub-configurator__title" id="sub-config-heading">Соберите подписку</h2>
+        </header>
+
+        <div class="sub-configurator__layout">
+          <form class="sub-configurator__form" id="subConfigurator" action="#" novalidate>
+            <fieldset class="sub-config__group" data-sub-group="size">
+              <legend class="sub-config__legend">Размер букета</legend>
+              <div class="sub-config__options">
+                <button type="button" class="sub-config__option" data-sub-option="S" aria-pressed="false">S</button>
+                <button type="button" class="sub-config__option" data-sub-option="M" aria-pressed="false">M</button>
+                <button type="button" class="sub-config__option" data-sub-option="L" aria-pressed="false">L</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="sub-config__group" data-sub-group="period">
+              <legend class="sub-config__legend">Период</legend>
+              <div class="sub-config__options">
+                <button type="button" class="sub-config__option" data-sub-option="1" aria-pressed="false">1 месяц</button>
+                <button type="button" class="sub-config__option" data-sub-option="3" aria-pressed="false">3 месяца</button>
+                <button type="button" class="sub-config__option" data-sub-option="6" aria-pressed="false">6 месяцев</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="sub-config__group" data-sub-group="frequency">
+              <legend class="sub-config__legend">Частота</legend>
+              <div class="sub-config__options">
+                <button type="button" class="sub-config__option" data-sub-option="weekly" aria-pressed="false">1 раз в неделю</button>
+                <button type="button" class="sub-config__option" data-sub-option="biweekly" aria-pressed="false">1 раз в 2 недели</button>
+                <button type="button" class="sub-config__option" data-sub-option="monthly" aria-pressed="false">1 раз в месяц</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="sub-config__group" data-sub-group="fulfillment">
+              <legend class="sub-config__legend">Способ получения</legend>
+              <div class="sub-config__options sub-config__options--two">
+                <button type="button" class="sub-config__option" data-sub-option="pickup" aria-pressed="false">Самовывоз</button>
+                <button type="button" class="sub-config__option" data-sub-option="delivery" aria-pressed="false">Доставка</button>
+              </div>
+            </fieldset>
+          </form>
+
+          <aside class="sub-configurator__summary" aria-live="polite">
+            <p class="sub-configurator__summary-label">Итого за период</p>
+            <p class="sub-configurator__total" id="subTotalPrice">—</p>
+            <p class="sub-configurator__summary-line" id="subSummaryLine"></p>
+            <button type="button" class="btn btn--dark sub-configurator__pay" id="subPayBtn" data-cursor="hover">
+              Оплатить подписку
+            </button>
+            <p class="sub-configurator__note">
+              После нажатия подписка попадёт в корзину — дальше общее оформление заказа.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="sub-steps" aria-labelledby="sub-steps-heading">
+      <div class="sub-steps__inner">
+        <header class="sub-steps__header">
+          <span class="sub-steps__eyebrow">[ Как это работает ]</span>
+          <h2 class="sub-steps__title" id="sub-steps-heading">Четыре шага</h2>
+        </header>
+        <ol class="sub-steps__list">
+          <li class="sub-steps__item">
+            <span class="sub-steps__num" aria-hidden="true">01</span>
+            <p class="sub-steps__text">Вы выбираете формат.</p>
+          </li>
+          <li class="sub-steps__item">
+            <span class="sub-steps__num" aria-hidden="true">02</span>
+            <p class="sub-steps__text">Мы собираем сезонный букет.</p>
+          </li>
+          <li class="sub-steps__item">
+            <span class="sub-steps__num" aria-hidden="true">03</span>
+            <p class="sub-steps__text">Доставляем или готовим к самовывозу.</p>
+          </li>
+          <li class="sub-steps__item">
+            <span class="sub-steps__num" aria-hidden="true">04</span>
+            <p class="sub-steps__text">Вы наслаждаетесь цветами без лишних забот.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sub-faq" aria-labelledby="sub-faq-heading">
+      <div class="sub-faq__inner">
+        <header class="sub-faq__header">
+          <span class="sub-faq__eyebrow">[ Вопрос-ответ ]</span>
+          <h2 class="sub-faq__title" id="sub-faq-heading">FAQ по подписке</h2>
+        </header>
+        <div class="sub-faq__list">
+          <div class="faq-acc">
+            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover">
+              <span class="faq-acc__q">Можно ли изменить дату?</span>
+              <span class="faq-acc__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg>
+              </span>
+            </button>
+            <div class="faq-acc__body" role="region">
+              <p class="faq-acc__a">Да — напишите нам за 2–3 дня до ближайшей доставки, и мы согласуем новый день в рамках вашего ритма.</p>
+            </div>
+          </div>
+          <div class="faq-acc">
+            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover">
+              <span class="faq-acc__q">Можно ли подарить подписку?</span>
+              <span class="faq-acc__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg>
+              </span>
+            </button>
+            <div class="faq-acc__body" role="region">
+              <p class="faq-acc__a">Конечно. Оформите подписку на себя и укажите в комментарии к заказу имя получателя и контакт для связи.</p>
+            </div>
+          </div>
+          <div class="faq-acc">
+            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover">
+              <span class="faq-acc__q">Можно ли выбрать палитру?</span>
+              <span class="faq-acc__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg>
+              </span>
+            </button>
+            <div class="faq-acc__body" role="region">
+              <p class="faq-acc__a">Мы ориентируемся на сезон и ваши пожелания: нежная, яркая или монохромная гамма — обсудим после оформления.</p>
+            </div>
+          </div>
+          <div class="faq-acc">
+            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover">
+              <span class="faq-acc__q">Что делать, если я уезжаю?</span>
+              <span class="faq-acc__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg>
+              </span>
+            </button>
+            <div class="faq-acc__body" role="region">
+              <p class="faq-acc__a">Можно перенести доставки на период после возвращения или передать букеты близким — напишите заранее, мы подстроим график.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

@@ -12,397 +12,6 @@
       modalOpen || cartOpen ? "hidden" : "";
   }
 
-  /* Loader PALOMA Blueprint */
-  (function initPalomaLoader() {
-    const loader = document.getElementById("palomaLoader");
-    if (!loader) return;
-
-    const doneKey = "paloma_loader_done";
-    const legacyKeys = ["paloma_pl_done", "paloma_loader_seen"];
-    const already =
-      sessionStorage.getItem(doneKey) ||
-      legacyKeys.some((k) => sessionStorage.getItem(k));
-    if (already) {
-      loader.style.display = "none";
-      return;
-    }
-
-    document.body.classList.add("loader-lock");
-
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    function finish() {
-      legacyKeys.forEach((k) => sessionStorage.setItem(k, "1"));
-      sessionStorage.setItem(doneKey, "1");
-      document.body.classList.remove("loader-lock");
-      syncBodyOverflow();
-    }
-
-    if (reducedMotion) {
-      setTimeout(() => {
-        loader.style.opacity = "0";
-        loader.style.transition = "opacity 500ms ease";
-        setTimeout(() => {
-          loader.style.display = "none";
-          finish();
-        }, 520);
-      }, 700);
-      return;
-    }
-
-    const MIN_MS = 1200;
-    const startTime = Date.now();
-
-    function hideLoader() {
-      const elapsed = Date.now() - startTime;
-      const wait = Math.max(0, MIN_MS - elapsed);
-      setTimeout(() => {
-        loader.classList.add("is-leaving");
-        setTimeout(() => {
-          loader.style.display = "none";
-          finish();
-        }, 720);
-      }, wait);
-    }
-
-    const fallback = setTimeout(hideLoader, 2500);
-
-    if (document.readyState === "complete") {
-      clearTimeout(fallback);
-      hideLoader();
-    } else {
-      window.addEventListener(
-        "load",
-        () => {
-          clearTimeout(fallback);
-          hideLoader();
-        },
-        { once: true }
-      );
-    }
-  })();
-
-  /* Корзина v3 (миграция с paloma_cart_v1) */
-  window.PalomaCart = (function () {
-    const STORAGE_KEY = "paloma_cart_v3";
-    const LEGACY_KEY = "paloma_cart_v1";
-
-    try {
-      if (!localStorage.getItem(STORAGE_KEY) && localStorage.getItem(LEGACY_KEY)) {
-        localStorage.setItem(STORAGE_KEY, localStorage.getItem(LEGACY_KEY));
-      }
-    } catch (e) {
-      /* ignore */
-    }
-
-    let items = [];
-    try {
-      items = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-      if (!Array.isArray(items)) items = [];
-    } catch (e) {
-      items = [];
-    }
-
-    const drawer = document.getElementById("cartDrawer");
-    const bodyEl = document.getElementById("cartBody");
-    const emptyEl = document.getElementById("cartEmpty");
-    const footerEl = document.getElementById("cartFooter");
-    const subtotalEl = document.getElementById("cartSubtotal");
-    const totalEl = document.getElementById("cartTotal");
-    const checkoutBtn = document.getElementById("cartCheckout");
-
-    function escHtml(s) {
-      return String(s)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-    }
-
-    function save() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    }
-
-    function calcTotal(arr) {
-      return arr.reduce((s, i) => s + i.price * (i.qty || 1), 0);
-    }
-
-    function setCartCountHeader() {
-      const count = items.reduce((s, i) => s + (i.qty || 1), 0);
-      document
-        .querySelectorAll(".site-header__cart-count, #cartCount")
-        .forEach((el) => {
-          el.textContent = count > 0 ? String(count) : "0";
-          el.classList.toggle("is-empty", count === 0);
-        });
-    }
-
-    function render() {
-      if (!bodyEl || !footerEl || !emptyEl) {
-        setCartCountHeader();
-        return;
-      }
-
-      if (items.length === 0) {
-        bodyEl.innerHTML = "";
-        bodyEl.style.display = "none";
-        footerEl.classList.remove("is-visible");
-        emptyEl.classList.remove("is-hidden");
-        if (subtotalEl) subtotalEl.textContent = "0 ₽";
-        if (totalEl) totalEl.textContent = "0 ₽";
-        setCartCountHeader();
-        return;
-      }
-
-      emptyEl.classList.add("is-hidden");
-      bodyEl.style.display = "block";
-      footerEl.classList.add("is-visible");
-
-      bodyEl.innerHTML = items
-        .map((item) => {
-          const id = escHtml(item.id);
-          const qty = item.qty || 1;
-          const meta =
-            (item.size && item.size !== "—"
-              ? `Размер ${escHtml(item.size)}`
-              : "") +
-            (item.addons && item.addons.length
-              ? ` · ${escHtml(item.addons.filter(Boolean).join(", "))}`
-              : "");
-          return `
-        <div class="cart-item" data-id="${id}">
-          <div class="cart-item__img" style="background: ${item.bg || "var(--color-bg-alt)"};"></div>
-          <div class="cart-item__info">
-            <div class="cart-item__name">${escHtml(item.name)}</div>
-            <div class="cart-item__meta">${meta || " "}</div>
-            <div class="cart-item__bottom">
-              <span class="cart-item__price">${(
-                item.price * qty
-              ).toLocaleString("ru-RU")} ₽</span>
-              <div class="cart-item__qty">
-                <button type="button" class="quantity-btn" data-action="dec" data-cart-id="${id}" aria-label="Меньше">−</button>
-                <span class="cart-item__qty-val">${qty}</span>
-                <button type="button" class="quantity-btn" data-action="inc" data-cart-id="${id}" aria-label="Больше">+</button>
-              </div>
-            </div>
-          </div>
-          <button type="button" class="cart-item__remove" data-action="remove" data-cart-id="${id}" aria-label="Удалить">×</button>
-        </div>`;
-        })
-        .join("");
-
-      const subtotal = calcTotal(items);
-      if (subtotalEl)
-        subtotalEl.textContent = subtotal.toLocaleString("ru-RU") + " ₽";
-      if (totalEl)
-        totalEl.textContent = subtotal.toLocaleString("ru-RU") + " ₽";
-      setCartCountHeader();
-    }
-
-    function add(item) {
-      const id = String(item.id);
-      const existing = items.find((i) => i.id === id);
-      const qtyAdd = item.qty || 1;
-      const clean = {
-        id,
-        name: item.name || "Товар",
-        size: item.size || "S",
-        addons: Array.isArray(item.addons)
-          ? item.addons.filter(Boolean)
-          : [],
-        price: Number(item.price) || 0,
-        qty: qtyAdd,
-        bg: item.bg || "",
-        category: item.category || "",
-      };
-      if (existing) existing.qty = (existing.qty || 1) + qtyAdd;
-      else items.push(clean);
-      save();
-      render();
-      open();
-    }
-
-    function remove(idx) {
-      items.splice(idx, 1);
-      save();
-      render();
-    }
-
-    function reloadFromStorage() {
-      try {
-        items = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-        if (!Array.isArray(items)) items = [];
-      } catch {
-        items = [];
-      }
-      render();
-    }
-
-    function removeById(id) {
-      const idx = items.findIndex((i) => i.id === id);
-      if (idx !== -1) remove(idx);
-    }
-
-    function bumpQtyById(id, delta) {
-      const it = items.find((i) => i.id === id);
-      if (!it) return;
-      const next = (it.qty || 1) + delta;
-      if (next < 1) removeById(id);
-      else {
-        it.qty = next;
-        save();
-        render();
-      }
-    }
-
-    function getItems() {
-      return items.map((i) => ({
-        ...i,
-        addons: Array.isArray(i.addons) ? [...i.addons] : [],
-      }));
-    }
-
-    function emptyCart() {
-      items = [];
-      save();
-      render();
-    }
-
-    function open() {
-      drawer?.classList.add("is-open");
-      if (drawer) drawer.setAttribute("aria-hidden", "false");
-      document
-        .getElementById("cartOpenBtn")
-        ?.setAttribute("aria-expanded", "true");
-      syncBodyOverflow();
-    }
-
-    function close() {
-      drawer?.classList.remove("is-open");
-      if (drawer) drawer.setAttribute("aria-hidden", "true");
-      document
-        .getElementById("cartOpenBtn")
-        ?.setAttribute("aria-expanded", "false");
-      syncBodyOverflow();
-    }
-
-    function generateMessage(formData) {
-      const d = formData || {};
-      const list = getItems();
-      const total = calcTotal(list);
-      const lines = list.map((i) => {
-        let line = `• ${i.name} × ${i.qty || 1} — ${(
-          i.price * (i.qty || 1)
-        ).toLocaleString("ru-RU")} ₽`;
-        const bits = [];
-        if (i.size && i.size !== "—") bits.push(`размер ${i.size}`);
-        if (i.addons && i.addons.length)
-          bits.push(i.addons.filter(Boolean).join(", "));
-        if (bits.length) line += ` (${bits.join("; ")})`;
-        return line;
-      });
-
-      const delivMap = {
-        pickup: "Самовывоз — Энгельса, 74",
-        ask: "Уточнить у получателя",
-        courier: "Курьером",
-      };
-
-      const payMap = {
-        card: "Карта или СБП через ЮKassa",
-        transfer: "Перевод после подтверждения",
-        cash: "Наличные/карта при самовывозе",
-        prepay: "Предоплата — свадебная флористика / оформление цветами",
-      };
-
-      const contactMap = {
-        telegram: "Telegram",
-        whatsapp: "WhatsApp",
-        call: "Звонок",
-        nocontact: "Не связываться без необходимости",
-      };
-
-      return [
-        "🌸 Заказ PALOMA flowers coffee you",
-        "",
-        "📦 Состав:",
-        lines.join("\n"),
-        "",
-        `💰 Итого: ${total.toLocaleString("ru-RU")} ₽`,
-        "",
-        `👤 Заказчик: ${d.name || "—"}`,
-        `📞 Телефон: ${d.phone || "—"}`,
-        d.telegram ? `✈️ Telegram: ${d.telegram}` : "",
-        d.email ? `📧 Email: ${d.email}` : "",
-        `💬 Связь: ${contactMap[d.contactMethod] || d.contactMethod || "—"}`,
-        "",
-        d.recipientName
-          ? `🎁 Получатель: ${d.recipientName} ${d.recipientPhone || ""}`.trim()
-          : "",
-        "",
-        `🚚 Доставка: ${delivMap[d.delivery] || d.delivery || "—"}`,
-        d.delivery === "courier" && d.address
-          ? `📍 Адрес: ${d.address}`
-          : "",
-        d.delivery === "courier" && d.date ? `📅 Дата: ${d.date}` : "",
-        d.delivery === "courier" && d.interval
-          ? `🕐 Интервал: ${d.interval}`
-          : "",
-        "",
-        `💳 Оплата: ${payMap[d.payment] || d.payment || "—"}`,
-        d.cardText ? `💌 Открытка: ${d.cardText}` : "",
-        d.comment ? `📝 Комментарий: ${d.comment}` : "",
-      ]
-        .filter((l) => l !== "")
-        .join("\n");
-    }
-
-    document.querySelectorAll("[data-cart-close]").forEach((el) => {
-      el.addEventListener("click", close);
-    });
-
-    bodyEl?.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-action]");
-      if (!btn) return;
-      const cid = btn.getAttribute("data-cart-id");
-      if (!cid) return;
-      const action = btn.dataset.action;
-      if (action === "inc") bumpQtyById(cid, 1);
-      if (action === "dec") bumpQtyById(cid, -1);
-      if (action === "remove") removeById(cid);
-    });
-
-    checkoutBtn?.addEventListener("click", () => {
-      if (items.length === 0) return;
-      close();
-      window.location.assign("cart.html");
-    });
-
-    document.getElementById("cartOpenBtn")?.addEventListener("click", (e) => {
-      e.preventDefault();
-      open();
-    });
-
-    render();
-
-    return {
-      add,
-      open,
-      close,
-      remove,
-      getItems,
-      emptyCart,
-      reloadFromStorage,
-      removeById,
-      bumpQtyById,
-      calcTotal: () => calcTotal(items),
-      render,
-      generateMessage,
-    };
-  })();
-
   /* Dropdown «Каталог» — desktop hover + aria, touch ≤1024 */
   (function initCatalogDropdown() {
     const wrap = document.querySelector(
@@ -577,6 +186,11 @@
         }
       );
 
+      const inCatalog = !!card.closest(".catalog-grid");
+      const inRelated = !!card.closest(".product-related");
+      const inShowcase = !!card.closest("#showcaseGrid");
+
+      if (!inCatalog && !inRelated && !inShowcase) {
       card.querySelector(".btn.btn--light")?.addEventListener(
         "click",
         (e) => {
@@ -590,6 +204,18 @@
         if (ev.target.closest(".product-card__actions")) return;
         openModal(card);
       });
+      } else if (inCatalog || inRelated) {
+        card.addEventListener("click", (ev) => {
+          if (ev.target.closest(".product-card__wishlist")) return;
+          if (ev.target.closest("[data-add-to-cart]")) return;
+          if (ev.target.closest(".btn.btn--dark")) return;
+          if (ev.target.closest("a")) return;
+          const productId = card.dataset.id;
+          if (productId) {
+            location.href = `product.html?id=${encodeURIComponent(productId)}`;
+          }
+        });
+      }
     });
 
     modal.querySelectorAll("[data-close]").forEach((el) => {
@@ -660,6 +286,7 @@
 
   /* Страница каталога: фильтры */
   (function initCatalogFilters() {
+    if (document.getElementById("catalogFilters")) return;
     const filters = document.querySelectorAll(
       "#catalogFiltersBar .filter-chip, #catalogFiltersBar .filter-btn",
     );
@@ -741,224 +368,205 @@
     });
   })();
 
-  /* Кастомный курсор — desktop + лёгкий trail */
-  (function initCustomCursor() {
-    const cursor = document.getElementById("customCursor");
-    if (!cursor) return;
+  /* Отзывы — editorial-карусель (главная) */
+  (function initReviews() {
+    "use strict";
 
-    const ring = cursor.querySelector(".custom-cursor__ring");
-    if (!ring) return;
-
-    const noMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const isTouch =
-      window.matchMedia("(hover: none), (pointer: coarse)").matches ||
-      window.innerWidth < 1025;
-    if (isTouch || noMotion) return;
-
-    document.body.classList.add("custom-cursor-enabled");
-
-    const TRAIL_N = 8;
-    const trail = [];
-    for (let i = 0; i < TRAIL_N; i++) {
-      const dot = document.createElement("div");
-      dot.className = "cursor-trail-dot";
-      dot.style.opacity = String((1 - i / TRAIL_N) * 0.35);
-      document.body.appendChild(dot);
-      trail.push({ el: dot, x: -200, y: -200 });
-    }
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let ringX = 0;
-    let ringY = 0;
-    let ringInit = true;
-
-    document.addEventListener(
-      "mousemove",
-      (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        if (ringInit) {
-          ringX = mouseX;
-          ringY = mouseY;
-          ringInit = false;
-        }
-      },
-      { passive: true }
-    );
-
-    const hoverSelectors =
-      'a, button, .product-card, .faq-row, .review-arrow, .reviews-arrow, .product-card__wishlist, .category-card, .catalog-nav-item, .filter-chip, .filter-btn, .site-header__icon--cart, .site-header__icon, .quantity-btn, .cart-item__remove, .product-modal__close, .size-pill, .product-modal__thumb, .cart-drawer__close, .cart-drawer__checkout, .client-nav-card, .faq-tab, .faq-acc__head, .info-card, .hscroll-card, .hscroll-section__arrow, .menu-item, .menu-item__add, .coffee-hero__link, .w-package-card__cta, .w-portfolio__case-link, .w-service-row, .process-step__cta, .curtain-block__cta, [data-cursor="hover"]';
-
-    function onEnter() {
-      cursor.classList.add("is-hovering");
-    }
-    function onLeave() {
-      cursor.classList.remove("is-hovering");
-    }
-
-    function bindHovers() {
-      document.querySelectorAll(hoverSelectors).forEach((el) => {
-        el.removeEventListener("mouseenter", onEnter);
-        el.removeEventListener("mouseleave", onLeave);
-        el.addEventListener("mouseenter", onEnter);
-        el.addEventListener("mouseleave", onLeave);
-      });
-    }
-
-    bindHovers();
-    window.palomaRebindCursorHovers = bindHovers;
-
-    function tick() {
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      const hovering = cursor.classList.contains("is-hovering");
-      const scale = hovering ? 1.8 : 1;
-      cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-      ring.style.transform = `translate3d(${ringX - mouseX}px, ${
-        ringY - mouseY
-      }px, 0) scale(${scale})`;
-
-      for (let i = TRAIL_N - 1; i > 0; i--) {
-        trail[i].x += (trail[i - 1].x - trail[i].x) * 0.28;
-        trail[i].y += (trail[i - 1].y - trail[i].y) * 0.28;
-        trail[i].el.style.left = trail[i].x + "px";
-        trail[i].el.style.top = trail[i].y + "px";
-      }
-      trail[0].x += (mouseX - trail[0].x) * 0.3;
-      trail[0].y += (mouseY - trail[0].y) * 0.3;
-      trail[0].el.style.left = trail[0].x + "px";
-      trail[0].el.style.top = trail[0].y + "px";
-
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-
-    document.addEventListener("mouseleave", () => {
-      cursor.style.opacity = "0";
-    });
-    document.addEventListener("mouseenter", () => {
-      cursor.style.opacity = "1";
-    });
-  })();
-
-  /* Отзывы — карусель (reviews track) + legacy fade-слайдер */
-  (function initReviewsCarousel() {
     const track = document.getElementById("reviewsTrack");
     const prevBtn = document.getElementById("reviewsPrev");
     const nextBtn = document.getElementById("reviewsNext");
-    if (track) {
-      const slides = track.querySelectorAll(".review-slide");
-      const total = slides.length;
-      if (total) {
-        let cur = 0;
-        const go = (i) => {
-          cur = (i + total) % total;
-          track.style.transform = `translateX(${-cur * 100}%)`;
-        };
-        prevBtn?.addEventListener("click", () => go(cur - 1));
-        nextBtn?.addEventListener("click", () => go(cur + 1));
-        let sx = 0;
+    const dotsEl = document.getElementById("reviewsDots");
+    const carousel = track?.closest(".reviews__carousel");
+
+    if (!track) return;
+
+    const slides = Array.from(track.querySelectorAll(".review-card"));
+    const total = slides.length;
+    let current = 0;
+    let startX = 0;
+    let isDragging = false;
+    let mouseDown = false;
+
+    if (total === 0) return;
+
+    if (dotsEl) {
+      slides.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.className = "reviews__dot" + (i === 0 ? " is-active" : "");
+        dot.type = "button";
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-label", `Отзыв ${i + 1} из ${total}`);
+        dot.setAttribute("aria-selected", i === 0 ? "true" : "false");
+        dot.dataset.index = String(i);
+        dot.addEventListener("click", () => goTo(i));
+        dotsEl.appendChild(dot);
+      });
+    }
+
+    function getSlideOffset(index) {
+      if (index === 0) return 0;
+
+      let offset = 0;
+      for (let i = 0; i < index; i++) {
+        const slide = slides[i];
+        const style = window.getComputedStyle(slide);
+        offset +=
+          slide.offsetWidth +
+          (parseFloat(style.marginLeft) || 0) +
+          (parseFloat(style.marginRight) || 0);
+      }
+      return offset;
+    }
+
+    function goTo(index) {
+      current = Math.max(0, Math.min(index, total - 1));
+
+      const offset = getSlideOffset(current);
+      track.style.transform = `translateX(-${offset}px)`;
+
+      if (carousel) {
+        carousel.setAttribute(
+          "aria-label",
+          `Отзыв ${current + 1} из ${total}`,
+        );
+      }
+
+      if (dotsEl) {
+        dotsEl.querySelectorAll(".reviews__dot").forEach((dot, i) => {
+          const active = i === current;
+          dot.classList.toggle("is-active", active);
+          dot.setAttribute("aria-selected", active.toString());
+        });
+      }
+
+      if (prevBtn) prevBtn.disabled = current === 0;
+      if (nextBtn) nextBtn.disabled = current === total - 1;
+    }
+
+    prevBtn?.addEventListener("click", () => goTo(current - 1));
+    nextBtn?.addEventListener("click", () => goTo(current + 1));
+
         track.addEventListener(
           "touchstart",
           (e) => {
-            sx = e.touches[0].clientX;
+        startX = e.touches[0].clientX;
+        isDragging = false;
           },
-          { passive: true }
+      { passive: true },
         );
+
         track.addEventListener(
-          "touchend",
+      "touchmove",
           (e) => {
-            const dx = e.changedTouches[0].clientX - sx;
-            if (Math.abs(dx) > 50) go(dx < 0 ? cur + 1 : cur - 1);
-          },
-          { passive: true }
-        );
-        return;
+        if (Math.abs(e.touches[0].clientX - startX) > 8) isDragging = true;
+      },
+      { passive: true },
+    );
+
+    track.addEventListener(
+      "touchend",
+      (e) => {
+        if (!isDragging) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 48) {
+          goTo(dx < 0 ? current + 1 : current - 1);
+        }
+        isDragging = false;
+      },
+      { passive: true },
+    );
+
+    track.addEventListener("mousedown", (e) => {
+      if (e.button !== 0) return;
+      startX = e.clientX;
+      isDragging = false;
+      mouseDown = true;
+      track.style.cursor = "grabbing";
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!mouseDown) return;
+      if (Math.abs(e.clientX - startX) > 8) isDragging = true;
+    });
+
+    window.addEventListener("mouseup", (e) => {
+      if (!mouseDown) return;
+      const dx = e.clientX - startX;
+      if (isDragging && Math.abs(dx) > 48) {
+        goTo(dx < 0 ? current + 1 : current - 1);
       }
-    }
+      mouseDown = false;
+      isDragging = false;
+      track.style.cursor = "";
+    });
 
-    const slider = document.getElementById("reviewsSlider");
-    if (!slider) return;
-
-    const slides = slider.querySelectorAll(".reviews__slide");
-    const dots = document.querySelectorAll(".reviews__dot");
-    const prevLegacy = document.getElementById("reviewsPrev");
-    const nextLegacy = document.getElementById("reviewsNext");
-
-    let current = 0;
-    const total = slides.length;
-    let autoplayInterval;
-
-    const motionOk = !window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    function goTo(index) {
-      current = (index + total) % total;
-      slides.forEach((s, i) =>
-        s.classList.toggle("is-active", i === current)
-      );
-      dots.forEach((d, i) =>
-        d.classList.toggle("is-active", i === current)
-      );
-    }
-
-    function next() {
-      goTo(current + 1);
-    }
-    function prev() {
+    const section = track.closest(".reviews");
+    section?.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
       goTo(current - 1);
     }
-
-    function resetAutoplay() {
-      clearInterval(autoplayInterval);
-      if (motionOk) startAutoplay();
-    }
-
-    function startAutoplay() {
-      autoplayInterval = setInterval(next, 6000);
-    }
-
-    prevLegacy?.addEventListener("click", () => {
-      prev();
-      resetAutoplay();
-    });
-    nextLegacy?.addEventListener("click", () => {
-      next();
-      resetAutoplay();
-    });
-    dots.forEach((d) => {
-      d.addEventListener("click", () => {
-        goTo(parseInt(d.dataset.dot, 10));
-        resetAutoplay();
-      });
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        goTo(current + 1);
+      }
+      if (e.key === "Home") {
+        e.preventDefault();
+        goTo(0);
+      }
+      if (e.key === "End") {
+        e.preventDefault();
+        goTo(total - 1);
+      }
     });
 
-    if (motionOk) {
-      startAutoplay();
-      slider.addEventListener("mouseenter", () =>
-        clearInterval(autoplayInterval)
-      );
-      slider.addEventListener("mouseleave", () => startAutoplay());
-    }
+    let resizeTimer;
+    window.addEventListener(
+      "resize",
+      () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => {
+          const noAnim = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+          ).matches;
+          if (noAnim) track.style.transition = "none";
+          goTo(current);
+          if (noAnim) {
+            requestAnimationFrame(() => {
+              track.style.transition = "";
+            });
+          }
+        }, 100);
+      },
+      { passive: true },
+    );
+
+    goTo(0);
+    window.PalomaReviews = {
+      goTo,
+      total,
+      getCurrent: () => current,
+    };
   })();
 
   /* Header: скролл */
   const siteHeader = document.getElementById("siteHeader");
   if (siteHeader) {
     const heroEl =
-      document.querySelector(".paloma-hero") ||
+      document.getElementById("homeHero") ||
+      document.getElementById("hero") ||
       document.querySelector(".hero-scene") ||
-      document.querySelector(".hero") ||
       document.querySelector(".coffee-hero") ||
       document.querySelector(".w-hero");
 
     function onHeaderScroll() {
       if (!heroEl) {
         siteHeader.classList.add("is-scrolled");
+        return;
+      }
+      if (heroEl.id === "homeHero") {
+        const heroBottom = heroEl.getBoundingClientRect().bottom;
+        siteHeader.classList.toggle("is-scrolled", heroBottom <= 72);
         return;
       }
       if (window.scrollY > 60) siteHeader.classList.add("is-scrolled");
@@ -1042,27 +650,12 @@
     );
   })();
 
-  /* Showcase — показать скрытые карточки */
-  const showMoreBtn = document.getElementById("showMoreBtn");
-  const hiddenCards = document.querySelectorAll(".product-card.is-hidden");
-
-  showMoreBtn?.addEventListener("click", () => {
-    hiddenCards.forEach((card) =>
-      card.classList.remove("is-hidden")
-    );
-    showMoreBtn.setAttribute("aria-expanded", "true");
-    showMoreBtn.hidden = true;
-    window.PalomaWishlist?.injectButtons?.();
-    window.PalomaWishlist?.updateUi?.();
-    window.palomaRebindCursorHovers?.();
-  });
-
-  /* Горизонтальные process-секции (главная, кофейня, свадьбы) */
+  /* Горизонтальные process-секции (кофейня, свадьбы, events) */
   (function initHorizontalProcesses() {
     const configs = [
-      { viewportId: "processViewport", trackId: "processTrack" },
       { viewportId: "coffeeProcessViewport", trackId: "coffeeProcessTrack" },
       { viewportId: "wProcessViewport", trackId: "wProcessTrack" },
+      { viewportId: "eProcessViewport", trackId: "eProcessTrack" },
     ];
 
     const isMobile = () => window.innerWidth <= 768;
@@ -1082,7 +675,7 @@
         vpEl.style.height = "auto";
         trackEl
           .querySelectorAll(
-            ".process-card,.coffee-process__card,.w-process__card,.process-step",
+            ".process-card,.coffee-process__card,.w-process__card,.e-process__card,.process-step",
           )
           .forEach((c) => {
             c.style.scrollSnapAlign = "start";
@@ -1117,153 +710,7 @@
     });
   })();
 
-  /* Hero: лёгкий scale фона (PALOMA) */
-  (function initPalomaHeroParallax() {
-    const hero = document.querySelector(".paloma-hero");
-    const bg = hero?.querySelector(".paloma-hero__bg");
-    if (!hero || !bg) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf;
-    function update() {
-      const heroH = hero.offsetHeight || 1;
-      const progress = Math.min(window.scrollY / heroH, 1);
-      bg.style.transform = `scale(${1 + progress * 0.06})`;
-    }
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (raf) cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(update);
-      },
-      { passive: true }
-    );
-    update();
-  })();
-
-  /* Избранное — localStorage */
-  (function initWishlist() {
-    const KEY = "paloma_wishlist";
-    function load() {
-      try {
-        return JSON.parse(localStorage.getItem(KEY) || "[]");
-      } catch {
-        return [];
-      }
-    }
-    function save(ids) {
-      try {
-        localStorage.setItem(KEY, JSON.stringify(ids));
-      } catch {
-        /* ignore */
-      }
-    }
-    function injectButtons() {
-      document.querySelectorAll(".product-card").forEach((card) => {
-        const media = card.querySelector(".product-card__media");
-        if (!media || media.querySelector(".product-card__wishlist")) return;
-        const id = String(card.dataset.id || "").trim();
-        if (id) card.setAttribute("data-product-id", id);
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "product-card__wishlist";
-        btn.setAttribute("aria-label", "В избранное");
-        btn.innerHTML =
-          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>';
-        media.insertBefore(btn, media.firstChild);
-      });
-    }
-    function updateUi() {
-      const ids = load();
-      document.querySelectorAll(".product-card__wishlist").forEach((btn) => {
-        const card = btn.closest("[data-product-id]");
-        const id = card?.getAttribute("data-product-id");
-        if (id) btn.classList.toggle("is-active", ids.includes(id));
-      });
-      const n = ids.length;
-      document.querySelectorAll(".header-wishlist-count").forEach((el) => {
-        el.textContent = n > 9 ? "9+" : String(n);
-        el.hidden = n === 0;
-        el.setAttribute("aria-hidden", n === 0 ? "true" : "false");
-      });
-    }
-    document.addEventListener("click", (e) => {
-      const btn = e.target.closest(".product-card__wishlist");
-      if (!btn) return;
-      e.preventDefault();
-      e.stopPropagation();
-      const card = btn.closest("[data-product-id]");
-      const id = card?.getAttribute("data-product-id");
-      if (!id) return;
-      let ids = load();
-      if (ids.includes(id)) ids = ids.filter((i) => i !== id);
-      else ids.push(id);
-      save(ids);
-      updateUi();
-      btn.style.transform = "scale(1.2)";
-      setTimeout(() => {
-        btn.style.transform = "";
-      }, 200);
-    });
-    injectButtons();
-    updateUi();
-    window.PalomaWishlist = { load, save, updateUi, injectButtons };
-  })();
-
-  (function initProductCardReveal() {
-    const cards = document.querySelectorAll(".product-card");
-    if (!cards.length) return;
-    if (typeof IntersectionObserver !== "function") {
-      cards.forEach((el) => el.classList.add("is-revealed"));
-      return;
-    }
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      cards.forEach((el) => el.classList.add("is-revealed"));
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e, i) => {
-          if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add("is-revealed"), i * 80);
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    cards.forEach((el) => io.observe(el));
-  })();
-
-  (function initSectionRevealLite() {
-    if (typeof IntersectionObserver !== "function") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const els = document.querySelectorAll(
-      ".showcase__header, .process__header, .process-section__header, .reviews__header, .reviews-section__top, .paloma-location__content"
-    );
-    if (!els.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-revealed");
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
-    els.forEach((el) => {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(40px)";
-      el.style.transition =
-        "opacity 600ms var(--ease-soft, cubic-bezier(.22,1,.36,1)), transform 600ms var(--ease-soft, cubic-bezier(.22,1,.36,1))";
-      io.observe(el);
-    });
-    const st = document.createElement("style");
-    st.textContent =
-      ".showcase__header.is-revealed,.process__header.is-revealed,.process-section__header.is-revealed,.reviews__header.is-revealed,.reviews-section__top.is-revealed,.paloma-location__content.is-revealed{opacity:1!important;transform:none!important}";
-    document.head.appendChild(st);
-  })();
+  /* Избранное — см. wishlist.js (window.PalomaWishlist) */
 
   /* Активный пункт меню */
   (function markActiveNav() {
@@ -1322,7 +769,7 @@
 
     const drawerEl = document.getElementById("cartDrawer");
     if (drawerEl?.classList.contains("is-open")) {
-      window.PalomaCart.close();
+      window.PalomaCart?.closeDrawer?.() || window.PalomaCart?.close?.();
       return;
     }
 
@@ -1349,3 +796,807 @@
 
   syncBodyOverflow();
 })();
+
+/* Subscription promo — см. initHomeSubscriptionPromo() */
+
+/* ══════════════════════════════════════════
+   HOME HERO — scroll scale background
+   ══════════════════════════════════════════ */
+function initHomeHeroMotion() {
+  "use strict";
+
+  const hero = document.getElementById("homeHero");
+  const media = document.getElementById("homeHeroMedia");
+
+  if (!hero || !media) return;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (reduceMotion) {
+    media.style.transform = "scale(1)";
+    return;
+  }
+
+  let ticking = false;
+
+  function updateHeroScale() {
+    const rect = hero.getBoundingClientRect();
+    const heroHeight = hero.offsetHeight || window.innerHeight;
+    const progress = Math.min(Math.max(-rect.top / heroHeight, 0), 1);
+    const scale = 1 + progress * 0.18;
+
+    media.style.transform = `scale(${scale})`;
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateHeroScale);
+  }
+
+  updateHeroScale();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", updateHeroScale);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SHOWCASE — онлайн-витрина главной страницы
+   ═══════════════════════════════════════════════════════ */
+(function initShowcase() {
+  "use strict";
+
+  const showcaseGrid = document.getElementById("showcaseGrid");
+  if (!showcaseGrid) return;
+
+  const products = window.PALOMA_CATALOG?.getAll?.() || [];
+  if (!products.length) return;
+
+  const onlineProducts = products.filter((p) =>
+    p.categories?.includes("online"),
+  );
+  const showcaseProducts = (
+    onlineProducts.length >= 4 ? onlineProducts : products
+  ).slice(0, 8);
+
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function badgeClass(label) {
+    const map = {
+      Хит: "product-card__badge--hit",
+      HIT: "product-card__badge--hit",
+      Сезон: "product-card__badge--season",
+      SEASON: "product-card__badge--season",
+      Новинка: "product-card__badge--new",
+      NEW: "product-card__badge--new",
+    };
+    return map[label] || "product-card__badge--hit";
+  }
+
+  function getBadgeLabel(product) {
+    const raw = (window.PALOMA_PRODUCTS || []).find((p) => p.id === product.id);
+    return raw?.badge || null;
+  }
+
+  function renderCard(product, wishIds) {
+    const isWished = wishIds.includes(String(product.id));
+    const slug = product.slug || product.id;
+    const badgeLabel = getBadgeLabel(product);
+    const hoverBg = product.placeholderBgHover || product.placeholderBg;
+
+    let badgeHtml = "";
+    if (badgeLabel) {
+      badgeHtml = `<span class="product-card__badge ${badgeClass(badgeLabel)}"
+                        aria-label="${esc(badgeLabel)}">
+                     ${esc(badgeLabel)}
+                   </span>`;
+    }
+
+    let mediaContent = "";
+    if (product.image) {
+      mediaContent = `
+        <img class="product-card__img product-card__img--main"
+             src="${esc(product.image)}"
+             alt="${esc(product.name)}"
+             loading="lazy"
+             onerror="this.style.display='none'">
+        ${
+          product.imageHover
+            ? `<img class="product-card__img product-card__img--hover"
+                    src="${esc(product.imageHover)}"
+                    alt="" loading="lazy" aria-hidden="true">`
+            : ""
+        }
+        <div class="product-card__ph"
+             style="background:${esc(product.placeholderBg)};"
+             aria-hidden="true"></div>`;
+    } else {
+      mediaContent = `
+        <div class="product-card__ph"
+             style="background:${esc(product.placeholderBg)};"
+             aria-hidden="true"></div>
+        <div class="product-card__ph product-card__ph--hover"
+             style="background:${esc(hoverBg)};"
+             aria-hidden="true"></div>`;
+    }
+
+    const article = document.createElement("article");
+    article.className = "product-card";
+    article.dataset.id = product.id;
+    article.dataset.productId = product.id;
+    article.dataset.productName = product.name;
+    article.dataset.productPrice = String(product.price);
+    article.dataset.productBg = product.placeholderBg || "";
+    article.dataset.productImage = product.image || "";
+    article.dataset.productCat = product.category || product.categories?.[0] || "";
+
+    article.innerHTML = `
+      <div class="product-card__media">
+        ${mediaContent}
+        <a href="product.html?slug=${encodeURIComponent(slug)}"
+           class="product-card__media-link"
+           aria-label="Перейти на страницу ${esc(product.name)}"
+           tabindex="-1"
+           aria-hidden="true"></a>
+        ${badgeHtml}
+        <button
+          class="product-card__wishlist${isWished ? " is-active" : ""}"
+          data-product-id="${esc(String(product.id))}"
+          data-wishlist-btn="${esc(String(product.id))}"
+          aria-label="${isWished ? "Убрать из избранного" : "Добавить в избранное"}"
+          aria-pressed="${isWished}"
+          type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-card__body">
+        <a href="product.html?slug=${encodeURIComponent(slug)}"
+           class="product-card__name-link">
+          <h3 class="product-card__name">${esc(product.name)}</h3>
+        </a>
+        ${
+          product.description
+            ? `<p class="product-card__desc">${esc(product.description)}</p>`
+            : ""
+        }
+        <p class="product-card__price">
+          ${Number(product.price).toLocaleString("ru-RU")} ₽
+        </p>
+        <div class="product-card__btns">
+          <a href="product.html?slug=${encodeURIComponent(slug)}"
+             class="product-card__btn product-card__btn--detail"
+             aria-label="Подробнее о ${esc(product.name)}">
+            Подробнее
+          </a>
+          <button
+            class="product-card__btn product-card__btn--cart"
+            data-add-to-cart
+            type="button"
+            aria-label="Добавить ${esc(product.name)} в корзину">
+            В корзину
+          </button>
+        </div>
+      </div>
+    `;
+
+    return article;
+  }
+
+  function initReveal(container) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      container.querySelectorAll(".product-card").forEach((c) => {
+        c.classList.add("is-visible", "is-revealed");
+        c.style.transitionDelay = "0ms";
+      });
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible", "is-revealed");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -32px 0px" },
+    );
+
+    container.querySelectorAll(".product-card").forEach((el) => {
+      io.observe(el);
+    });
+  }
+
+  function fillGrid(grid, list) {
+    const wishIds = window.PalomaWishlist?.load?.() || [];
+    const fragment = document.createDocumentFragment();
+
+    list.forEach((product, i) => {
+      const card = renderCard(product, wishIds);
+      card.style.transitionDelay = `${Math.min(i * 60, 480)}ms`;
+      fragment.appendChild(card);
+    });
+    grid.appendChild(fragment);
+    initReveal(grid);
+  }
+
+  function bindCartClicks(grid) {
+    grid.addEventListener("click", (e) => {
+      const cartBtn = e.target.closest("[data-add-to-cart]");
+      if (!cartBtn) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const card = cartBtn.closest("[data-product-id]");
+      if (!card) return;
+
+      const bgEl = card.querySelector(".product-card__ph");
+      const bg = bgEl ? getComputedStyle(bgEl).background : "";
+
+      const item = {
+        id: `${card.dataset.productId}-quick-m-${card.dataset.productPrice || "0"}`,
+        name: card.dataset.productName || "Товар",
+        price: parseInt(card.dataset.productPrice, 10) || 0,
+        qty: 1,
+        bg,
+        image: card.dataset.productImage || "",
+        category: card.dataset.productCat || "",
+        size: "M",
+        addons: [],
+      };
+
+      window.PalomaCart?.add(item);
+
+      const orig = cartBtn.textContent;
+      cartBtn.textContent = "✓";
+      cartBtn.classList.add("is-added");
+      cartBtn.disabled = true;
+      window.setTimeout(() => {
+        cartBtn.textContent = orig;
+        cartBtn.classList.remove("is-added");
+        cartBtn.disabled = false;
+      }, 1400);
+    });
+  }
+
+  fillGrid(showcaseGrid, showcaseProducts);
+  bindCartClicks(showcaseGrid);
+
+  window.PalomaWishlist?.syncButtons?.();
+  window.palomaRebindCursorHovers?.();
+})();
+
+/* ════════════════════════════════════════════════════════
+   ГОРИЗОНТАЛЬНЫЙ ПРОЦЕСС — исправленная механика
+   ════════════════════════════════════════════════════════ */
+(function initProcessScroll() {
+  "use strict";
+
+  const viewport = document.getElementById("processViewport");
+  const track = document.getElementById("processTrack");
+  if (!viewport || !track) return;
+
+  const isMobile = () => window.innerWidth <= 768;
+  const noMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (isMobile() || noMotion) {
+    viewport.style.height = "auto";
+    return;
+  }
+
+  let raf;
+  let lastProgress = -1;
+
+  function setup() {
+    if (isMobile() || noMotion) return;
+
+    requestAnimationFrame(() => {
+      const trackW = track.scrollWidth;
+      const visibleW = window.innerWidth;
+      const maxT = Math.max(0, trackW - visibleW);
+
+      if (maxT === 0) {
+        viewport.style.height = "100vh";
+        viewport.dataset.maxT = "0";
+        return;
+      }
+
+      const viewportH = maxT + window.innerHeight;
+      viewport.style.height = viewportH + "px";
+      viewport.dataset.maxT = String(maxT);
+      lastProgress = -1;
+    });
+  }
+
+  function update() {
+    if (isMobile() || noMotion) {
+      track.style.transform = "";
+      return;
+    }
+
+    const maxT = parseFloat(viewport.dataset.maxT) || 0;
+    if (maxT === 0) return;
+
+    const rect = viewport.getBoundingClientRect();
+    const dist = viewport.offsetHeight - window.innerHeight;
+    if (dist <= 0) return;
+
+    const scrolled = Math.max(0, -rect.top);
+    const progress = Math.min(1, scrolled / dist);
+
+    if (Math.abs(progress - lastProgress) < 0.0002) {
+      raf = requestAnimationFrame(update);
+      return;
+    }
+    lastProgress = progress;
+
+    track.style.transform = `translateX(${-(progress * maxT)}px)`;
+  }
+
+  let resizeTimer;
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      if (isMobile() || noMotion) {
+        viewport.style.height = "auto";
+        track.style.transform = "";
+        if (raf) cancelAnimationFrame(raf);
+        raf = null;
+        return;
+      }
+      lastProgress = -1;
+      setup();
+    }, 120);
+  }
+
+  function startLoop() {
+    if (raf) cancelAnimationFrame(raf);
+    function loop() {
+      update();
+      raf = requestAnimationFrame(loop);
+    }
+    raf = requestAnimationFrame(loop);
+  }
+
+  setup();
+  startLoop();
+  window.addEventListener("resize", onResize, { passive: true });
+  window.addEventListener("beforeunload", () => {
+    if (raf) cancelAnimationFrame(raf);
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   CURTAIN BLOCKS — reveal карточек + parallax фона
+   ═══════════════════════════════════════════════════════ */
+(function initCurtainBlocks() {
+  "use strict";
+
+  const curtains = document.querySelectorAll(".curtain");
+  if (!curtains.length) return;
+
+  const noMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (!noMotion) {
+    const style = document.createElement("style");
+    style.textContent = `
+      .curtain__card {
+        opacity: 0;
+        transform: translateX(20px);
+        transition:
+          opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .curtain__card.is-revealed {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      @media (max-width: 768px) {
+        .curtain__card {
+          transform: translateY(16px);
+        }
+        .curtain__card.is-revealed {
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const card = entry.target.querySelector(".curtain__card");
+          if (!card) return;
+
+          if (entry.isIntersecting) {
+            window.setTimeout(() => {
+              card.classList.add("is-revealed");
+            }, 80);
+          } else {
+            const rect = entry.target.getBoundingClientRect();
+            if (rect.top > 0) {
+              card.classList.remove("is-revealed");
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -10% 0px",
+      },
+    );
+
+    curtains.forEach((curtain) => io.observe(curtain));
+  }
+
+  if (noMotion) return;
+
+  let raf = null;
+  const activeBlocks = new Set();
+
+  const bgObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          activeBlocks.add(entry.target);
+          if (!raf) startBgLoop();
+        } else {
+          activeBlocks.delete(entry.target);
+          if (activeBlocks.size === 0 && raf) {
+            cancelAnimationFrame(raf);
+            raf = null;
+          }
+        }
+      });
+    },
+    { threshold: 0, rootMargin: "10% 0px 10% 0px" },
+  );
+
+  curtains.forEach((c) => bgObserver.observe(c));
+
+  function startBgLoop() {
+    function loop() {
+      activeBlocks.forEach((curtain) => {
+        const bg = curtain.querySelector(".curtain__bg");
+        if (!bg) return;
+
+        const rect = curtain.getBoundingClientRect();
+        const h = curtain.offsetHeight;
+        const vh = window.innerHeight;
+        const progress = 1 - rect.bottom / (h + vh);
+        const clamped = Math.max(0, Math.min(1, progress));
+        const scale = 1 + clamped * 0.06;
+        bg.style.transform = `scale(${scale})`;
+      });
+      raf = requestAnimationFrame(loop);
+    }
+    raf = requestAnimationFrame(loop);
+  }
+
+  window.addEventListener("beforeunload", () => {
+    if (raf) cancelAnimationFrame(raf);
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   HOME REDESIGN — reveal, about scroll
+   ═══════════════════════════════════════════════════════ */
+function initHomeReveal() {
+  "use strict";
+
+  if (!document.body.classList.contains("is-home")) return;
+
+  const nodes = document.querySelectorAll(".home-reveal");
+  if (!nodes.length) return;
+
+  const noMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (noMotion || typeof IntersectionObserver !== "function") {
+    nodes.forEach((el) => el.classList.add("is-revealed"));
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-revealed");
+        io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+  );
+
+  nodes.forEach((el) => io.observe(el));
+}
+
+function initHomeAboutHorizontalScroll() {
+  "use strict";
+
+  const section = document.getElementById("homeAboutScroll");
+  const track = document.getElementById("homeAboutTrack");
+
+  if (!section || !track) return;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+
+  let raf = null;
+  let maxTranslate = 0;
+  let sectionTop = 0;
+  let scrollDistance = 0;
+  let enabled = false;
+
+  function measure() {
+    const viewportW = window.innerWidth;
+    const viewportH = window.innerHeight;
+
+    if (!enabled || reduceMotion || mobileQuery.matches) {
+      section.style.height = "auto";
+      track.style.transform = "none";
+      scrollDistance = 0;
+      return;
+    }
+
+    section.style.height = `${viewportH}px`;
+
+    requestAnimationFrame(() => {
+      const trackW = track.scrollWidth;
+      maxTranslate = Math.max(0, trackW - viewportW);
+      scrollDistance = maxTranslate;
+      section.style.height = `${viewportH + scrollDistance}px`;
+      sectionTop = section.offsetTop;
+      update();
+    });
+  }
+
+  function update() {
+    if (!enabled || reduceMotion || mobileQuery.matches) return;
+
+    const rect = section.getBoundingClientRect();
+    const scrolled = Math.max(0, Math.min(scrollDistance, -rect.top));
+
+    track.style.transform = `translate3d(${-scrolled}px, 0, 0)`;
+    raf = null;
+  }
+
+  function requestUpdate() {
+    if (raf) return;
+    raf = window.requestAnimationFrame(update);
+  }
+
+  function enableDesktop() {
+    enabled = !reduceMotion && !mobileQuery.matches;
+
+    if (!enabled) {
+      section.style.height = "auto";
+      track.style.transform = "none";
+      return;
+    }
+
+    measure();
+  }
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", measure);
+
+  if (typeof mobileQuery.addEventListener === "function") {
+    mobileQuery.addEventListener("change", enableDesktop);
+  } else if (typeof mobileQuery.addListener === "function") {
+    mobileQuery.addListener(enableDesktop);
+  }
+
+  enableDesktop();
+}
+
+function initHomeAboutScroll() {
+  initHomeAboutHorizontalScroll();
+}
+
+function initHomeSubscriptionPromo() {
+  "use strict";
+
+  const section = document.getElementById("homeSubscriptionPromo");
+  if (!section) return;
+
+  const bg = document.getElementById("homeSubscriptionPromoBg");
+  const card = document.getElementById("homeSubscriptionPromoCard");
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (card) {
+    if (reduceMotion) {
+      card.classList.add("is-visible");
+    } else {
+      const cardObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            card.classList.toggle("is-visible", entry.isIntersecting);
+          });
+        },
+        {
+          threshold: 0.22,
+          rootMargin: "0px 0px -80px 0px",
+        },
+      );
+
+      cardObserver.observe(card);
+    }
+  }
+
+  if (!bg || reduceMotion) return;
+
+  let raf = null;
+  let isActive = false;
+  let lastY = null;
+
+  function updateParallax() {
+    const rect = section.getBoundingClientRect();
+    const sectionH = section.offsetHeight || window.innerHeight;
+    const viewH = window.innerHeight;
+
+    const progress = 1 - rect.bottom / (sectionH + viewH);
+    const clamped = Math.max(0, Math.min(1, progress));
+    const translateY = 8 - clamped * 16;
+    const rounded = Math.round(translateY * 100) / 100;
+
+    if (rounded !== lastY) {
+      bg.style.transform = `translateY(${rounded}%)`;
+      lastY = rounded;
+    }
+
+    if (isActive) {
+      raf = window.requestAnimationFrame(updateParallax);
+    }
+  }
+
+  function start() {
+    if (raf) return;
+    isActive = true;
+    raf = window.requestAnimationFrame(updateParallax);
+  }
+
+  function stop() {
+    isActive = false;
+
+    if (raf) {
+      window.cancelAnimationFrame(raf);
+      raf = null;
+    }
+  }
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          start();
+        } else {
+          stop();
+        }
+      });
+    },
+    {
+      rootMargin: "20% 0px 20% 0px",
+      threshold: 0,
+    },
+  );
+
+  sectionObserver.observe(section);
+}
+
+function initHomeSubscriptionParallax() {
+  initHomeSubscriptionPromo();
+}
+
+function initProductCarousels() {
+  "use strict";
+
+  const carousels = document.querySelectorAll("[data-product-carousel]");
+  if (!carousels.length) return;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  carousels.forEach((section) => {
+    const viewport = section.querySelector("[data-carousel-viewport]");
+    const track = section.querySelector("[data-carousel-track]");
+    const prevBtn = section.querySelector("[data-carousel-prev]");
+    const nextBtn = section.querySelector("[data-carousel-next]");
+    const progress = section.querySelector("[data-carousel-progress]");
+
+    if (!viewport || !track) return;
+
+    let raf = null;
+
+    function getScrollStep() {
+      const firstCard = track.querySelector(".home-product-card");
+      if (!firstCard) return viewport.clientWidth;
+
+      const cardRect = firstCard.getBoundingClientRect();
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+
+      return cardRect.width + gap;
+    }
+
+    function updateState() {
+      const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+      const current = viewport.scrollLeft;
+      const progressValue = maxScroll > 0 ? (current / maxScroll) * 100 : 100;
+
+      if (progress) {
+        progress.style.width = `${Math.max(0, Math.min(100, progressValue))}%`;
+      }
+
+      if (prevBtn) {
+        prevBtn.classList.toggle("is-disabled", current <= 2);
+      }
+
+      if (nextBtn) {
+        nextBtn.classList.toggle("is-disabled", current >= maxScroll - 2);
+      }
+
+      raf = null;
+    }
+
+    function requestUpdate() {
+      if (raf) return;
+      raf = window.requestAnimationFrame(updateState);
+    }
+
+    function scrollByCards(direction) {
+      viewport.scrollBy({
+        left: getScrollStep() * direction,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => scrollByCards(-1));
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => scrollByCards(1));
+    }
+
+    viewport.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    updateState();
+  });
+}
+
+function initHomeShowcaseCarousel() {
+  initProductCarousels();
+}
+
+if (document.body.classList.contains("is-home")) {
+  initHomeHeroMotion();
+  initHomeReveal();
+  initProductCarousels();
+  initHomeAboutScroll();
+  initHomeSubscriptionPromo();
+}

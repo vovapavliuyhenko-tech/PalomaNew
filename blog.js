@@ -2,6 +2,7 @@
   "use strict";
 
   const articles = window.PALOMA_BLOG || [];
+  const tag = "div";
 
   function escHtml(s) {
     return String(s)
@@ -27,65 +28,38 @@
     return new URLSearchParams(window.location.search).get(name) || "";
   }
 
+  function cardHtml(art, large) {
+    const largeClass = large ? " blog-card--large" : "";
+    return (
+      `<article class="blog-card${largeClass}">` +
+      `<a class="blog-card__image" href="blog-article.html?id=${escHtml(art.id)}"` +
+      ` aria-label="${escHtml(art.title)}" style="background: ${escHtml(art.bg)};" data-cursor="hover">` +
+      `<span class="blog-card__cat">${escHtml(art.categoryLabel)}</span></a>` +
+      `<${tag} class="blog-card__body">` +
+      `<h3 class="blog-card__title"><a href="blog-article.html?id=${escHtml(art.id)}">${escHtml(art.title)}</a></h3>` +
+      `<p class="blog-card__excerpt">${escHtml(art.excerpt)}</p>` +
+      `<${tag} class="blog-card__meta"><time datetime="${escHtml(art.date)}">${formatDate(art.date)}</time>` +
+      `<span>${escHtml(art.readTime)}</span></${tag}>` +
+      `<a class="blog-card__link" href="blog-article.html?id=${escHtml(art.id)}" data-cursor="hover">Читать</a>` +
+      `</${tag}></article>`
+    );
+  }
+
   function initBlogPage() {
-    const featuredEl = document.getElementById("blogFeatured");
     const gridEl = document.getElementById("blogGrid");
     const filters = document.querySelectorAll("[data-blog-cat]");
-    if (!featuredEl && !gridEl) return;
-
-    let currentCat = "all";
-
-    function renderFeatured() {
-      if (!featuredEl) return;
-      const art = articles.find((a) => a.featured);
-      if (!art) {
-        featuredEl.innerHTML = "";
-        featuredEl.style.display = "none";
-        return;
-      }
-      featuredEl.style.display = "";
-      featuredEl.innerHTML = `
-        <div class="blog-featured__inner">
-          <a class="blog-featured__image"
-             href="blog-article.html?id=${escHtml(art.id)}"
-             aria-label="${escHtml(art.title)}"
-             style="background: ${escHtml(art.bg)};">
-          </a>
-          <div class="blog-featured__body">
-            <span class="blog-featured__cat">${escHtml(art.categoryLabel)}</span>
-            <h2 class="blog-featured__title">
-              <a href="blog-article.html?id=${escHtml(art.id)}">
-                ${escHtml(art.title)}
-              </a>
-            </h2>
-            <p class="blog-featured__excerpt">${escHtml(art.excerpt)}</p>
-            <div class="blog-featured__meta">
-              <span>${formatDate(art.date)}</span>
-              <span>${escHtml(art.readTime)}</span>
-            </div>
-            <a class="blog-featured__link"
-               href="blog-article.html?id=${escHtml(art.id)}">
-              Читать →
-            </a>
-          </div>
-        </div>`;
-    }
+    if (!gridEl) return;
 
     function renderGrid(cat) {
-      if (!gridEl) return;
       const list =
         cat === "all"
-          ? articles.filter((a) => !a.featured)
-          : articles.filter((a) => a.category === cat && !a.featured);
+          ? [...articles]
+          : articles.filter((a) => a.category === cat);
 
       if (!list.length) {
-        gridEl.innerHTML = `
-          <div class="blog-empty">
-            <p>В этой рубрике пока нет статей.</p>
-            <button type="button" class="btn btn--outline" data-blog-cat="all">
-              Посмотреть все
-            </button>
-          </div>`;
+        gridEl.innerHTML =
+          `<${tag} class="blog-empty"><p>В этой рубрике пока нет статей.</p>` +
+          `<button type="button" class="btn btn--outline" data-blog-cat="all">Все материалы</button></${tag}>`;
         gridEl
           .querySelector('[data-blog-cat="all"]')
           ?.addEventListener("click", () => setFilter("all"));
@@ -93,61 +67,24 @@
       }
 
       gridEl.innerHTML = list
-        .map(
-          (art, i) => `
-        <article class="blog-card${i === 0 ? " blog-card--large" : ""}">
-          <a class="blog-card__image"
-             href="blog-article.html?id=${escHtml(art.id)}"
-             aria-label="${escHtml(art.title)}"
-             style="background: ${escHtml(art.bg)};">
-            <span class="blog-card__cat">${escHtml(art.categoryLabel)}</span>
-          </a>
-          <div class="blog-card__body">
-            <h3 class="blog-card__title">
-              <a href="blog-article.html?id=${escHtml(art.id)}">
-                ${escHtml(art.title)}
-              </a>
-            </h3>
-            <p class="blog-card__excerpt">${escHtml(art.excerpt)}</p>
-            <div class="blog-card__meta">
-              <span>${formatDate(art.date)}</span>
-              <span>${escHtml(art.readTime)}</span>
-            </div>
-            <a class="blog-card__link"
-               href="blog-article.html?id=${escHtml(art.id)}">
-              Читать →
-            </a>
-          </div>
-        </article>`
-        )
+        .map((art, i) => cardHtml(art, i === 0))
         .join("");
+
       window.palomaRebindCursorHovers?.();
     }
 
     function setFilter(cat) {
-      currentCat = cat;
       filters.forEach((f) =>
-        f.classList.toggle("is-active", f.dataset.blogCat === cat)
+        f.classList.toggle("is-active", f.dataset.blogCat === cat),
       );
       renderGrid(cat);
     }
 
     filters.forEach((f) =>
-      f.addEventListener("click", () =>
-        setFilter(f.dataset.blogCat || "all")
-      )
+      f.addEventListener("click", () => setFilter(f.dataset.blogCat || "all")),
     );
 
-    renderFeatured();
     renderGrid("all");
-
-    const subForm = document.getElementById("blogSubscribeForm");
-    const subSuccess = document.getElementById("blogSubscribeSuccess");
-    subForm?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      subForm.style.display = "none";
-      if (subSuccess) subSuccess.hidden = false;
-    });
   }
 
   function initArticlePage() {
@@ -163,90 +100,48 @@
       return;
     }
 
-    document.title = `${art.title} — Журнал PALOMA`;
+    document.title = `${art.title} — Блог PALOMA`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", art.excerpt);
+
     const breadTitle = document.getElementById("articleBreadcrumbTitle");
     if (breadTitle) breadTitle.textContent = art.title;
 
-    const related = articles
-      .filter((a) => a.category === art.category && a.id !== art.id)
-      .slice(0, 3);
+    const related = articles.filter((a) => a.id !== art.id).slice(0, 3);
 
     const relatedHtml = related.length
-      ? `
-      <section class="article-related">
-        <div class="article-related__inner">
-          <h2 class="article-related__title">Читайте также</h2>
-          <div class="article-related__grid">
-            ${related
-              .map(
-                (r) => `
-              <article class="blog-card">
-                <a class="blog-card__image"
-                   href="blog-article.html?id=${escHtml(r.id)}"
-                   style="background: ${escHtml(r.bg)};"
-                   aria-label="${escHtml(r.title)}">
-                  <span class="blog-card__cat">${escHtml(r.categoryLabel)}</span>
-                </a>
-                <div class="blog-card__body">
-                  <h3 class="blog-card__title">
-                    <a href="blog-article.html?id=${escHtml(r.id)}">
-                      ${escHtml(r.title)}
-                    </a>
-                  </h3>
-                  <p class="blog-card__excerpt">${escHtml(r.excerpt)}</p>
-                  <a class="blog-card__link"
-                     href="blog-article.html?id=${escHtml(r.id)}">
-                    Читать →
-                  </a>
-                </div>
-              </article>`
-              )
-              .join("")}
-          </div>
-        </div>
-      </section>`
+      ? `<section class="article-related" aria-labelledby="article-related-heading">
+          <${tag} class="article-related__inner">
+            <h2 class="article-related__title" id="article-related-heading">Читайте также</h2>
+            <${tag} class="article-related__grid">${related.map((r) => cardHtml(r, false)).join("")}</${tag}>
+          </${tag}>
+        </section>`
       : "";
 
-    contentEl.innerHTML = `
-      <section class="article-hero">
-        <div class="article-hero__inner">
+    contentEl.innerHTML =
+      `<section class="article-hero">
+        <${tag} class="article-hero__inner">
           <span class="article-hero__cat">${escHtml(art.categoryLabel)}</span>
           <h1 class="article-hero__title">${escHtml(art.title)}</h1>
-          <div class="article-hero__meta">
-            <span>${formatDate(art.date)}</span>
+          <${tag} class="article-hero__meta">
+            <time datetime="${escHtml(art.date)}">${formatDate(art.date)}</time>
             <span>${escHtml(art.readTime)} чтения</span>
-          </div>
-        </div>
-        <div class="article-hero__image"
-             style="background: ${escHtml(art.bg)};"
-             role="img"
-             aria-label="${escHtml(art.alt || art.title)}">
-        </div>
+          </${tag}>
+        </${tag}>
+        <${tag} class="article-hero__image" style="background: ${escHtml(art.bg)};"
+             role="img" aria-label="${escHtml(art.alt || art.title)}"></${tag}>
       </section>
-
-      <div class="article-body">
-        <div class="article-body__inner">${art.content}</div>
-      </div>
-
+      <${tag} class="article-body"><${tag} class="article-body__inner">${art.content}</${tag}></${tag}>
       ${relatedHtml}
-
       <section class="article-cta">
-        <div class="article-cta__inner">
+        <${tag} class="article-cta__inner">
           <h2 class="article-cta__title">Выбрать букет</h2>
-          <p class="article-cta__text">
-            Заглядывайте в каталог или задайте вопрос флористу —
-            поможем с выбором.
-          </p>
-          <div class="article-cta__actions">
-            <a href="catalog.html" class="btn btn--dark">
-              Перейти в каталог
-            </a>
-            <a href="https://wa.me/79180000000" target="_blank"
-               rel="noopener" class="btn btn--outline">
-              Задать вопрос
-            </a>
-          </div>
-        </div>
+          <p class="article-cta__text">Загляните в каталог или напишите нам — поможем с выбором.</p>
+          <${tag} class="article-cta__actions">
+            <a href="catalog.html" class="btn btn--dark" data-cursor="hover">В каталог</a>
+            <a href="https://wa.me/79180000000" target="_blank" rel="noopener" class="btn btn--outline" data-cursor="hover">Задать вопрос</a>
+          </${tag}>
+        </${tag}>
       </section>`;
 
     window.palomaRebindCursorHovers?.();

@@ -1,71 +1,102 @@
+/* PALOMA Coffee — coffee.html */
 (function () {
   "use strict";
 
-  /* Меню: фильтр по категориям */
-  (function initCoffeeMenuFilter() {
-    const chips = document.querySelectorAll(
-      ".coffee-menu-filters .filter-chip",
-    );
-    const items = document.querySelectorAll(".coffee-menu-grid .menu-item");
-    if (!chips.length || !items.length) return;
+  const MENU = window.PALOMA_COFFEE_MENU || [];
+  const grid = document.getElementById("coffeeMenuGrid");
+  const filters = document.getElementById("coffeeMenuFilters");
+  const hoverSlot = document.getElementById("menuHoverPhotoSlot");
 
-    chips.forEach((chip) => {
-      chip.addEventListener("click", () => {
-        const cat = chip.dataset.menuCat || "all";
-        chips.forEach((c) =>
-          c.classList.toggle("is-active", c === chip),
-        );
-        items.forEach((item) => {
-          const itemCat = item.dataset.menuCategory || "";
-          const show =
-            cat === "all" || itemCat === cat;
-          item.classList.toggle("is-hidden", !show);
-        });
+  renderMenu("all");
+  initFilters();
+  initMenuHoverPhoto();
+  initCoffeeVideoFallback();
+
+  function renderMenu(cat) {
+    if (!grid) return;
+
+    const items =
+      cat === "all" ? MENU : MENU.filter((i) => i.category === cat);
+
+    grid.innerHTML = items
+      .map(
+        (item) => `
+      <article class="menu-item"
+               data-photo-bg="${esc(item.bg)}"
+               data-menu-category="${esc(item.category)}"
+               data-id="${esc(item.id)}"
+               data-name="${esc(item.name)}"
+               data-price="${item.price}">
+        <div class="menu-item__body">
+          <div class="menu-item__info">
+            <h3 class="menu-item__name">${esc(item.name)}</h3>
+            <p class="menu-item__desc">${esc(item.desc)}</p>
+            <span class="menu-item__volume">${esc(item.volume)}</span>
+          </div>
+          <div class="menu-item__right">
+            <span class="menu-item__price">${item.price.toLocaleString("ru-RU")} ₽</span>
+            <button type="button" class="menu-item__add btn btn--coffee"
+                    data-add-to-cart
+                    aria-label="Добавить ${esc(item.name)} в корзину">В корзину</button>
+          </div>
+        </div>
+      </article>`,
+      )
+      .join("");
+
+    bindHoverItems();
+  }
+
+  function initFilters() {
+    if (!filters) return;
+
+    filters.addEventListener("click", (e) => {
+      const chip = e.target.closest("[data-menu-cat]");
+      if (!chip) return;
+      filters.querySelectorAll(".filter-chip").forEach((c) => {
+        c.classList.toggle("is-active", c === chip);
+        c.setAttribute("aria-pressed", c === chip ? "true" : "false");
       });
+      renderMenu(chip.dataset.menuCat || "all");
     });
-  })();
+  }
 
-  /* Добавление из меню — см. script.js (делегирование) */
-  (function initCoffeeBeanRotation() {
-    const bean = document.getElementById("coffeeBeanDecor");
-    if (!bean) return;
+  function initMenuHoverPhoto() {
+    if (!hoverSlot) return;
 
-    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mql.matches) return;
-
-    const section = bean.closest(".coffee-menu-section");
-    if (!section) return;
-
-    function onScroll() {
-      const rect = section.getBoundingClientRect();
-      const denom = rect.height + window.innerHeight;
-      let progress =
-        denom > 0 ? (-rect.top + window.innerHeight * 0.2) / denom : 0;
-      progress = Math.max(0, Math.min(1, progress));
-      const deg = progress * 180;
-      bean.style.transform = `translateY(-50%) rotate(${deg}deg)`;
+    const mql = window.matchMedia("(hover: none), (pointer: coarse)");
+    if (mql.matches) {
+      hoverSlot.hidden = true;
+      return;
     }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    onScroll();
-  })();
+    bindHoverItems();
+  }
 
-  (function initCoffeeVideoFallback() {
+  function bindHoverItems() {
+    const img = hoverSlot?.querySelector(".menu-hover-photo__img");
+    if (!img || !hoverSlot) return;
+
+    document.querySelectorAll(".coffee-menu-grid .menu-item").forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        img.style.background =
+          item.dataset.photoBg || "linear-gradient(135deg, #5c3d28, #8a6248)";
+        hoverSlot.classList.add("is-visible");
+      });
+      item.addEventListener("mouseleave", () => {
+        hoverSlot.classList.remove("is-visible");
+      });
+    });
+  }
+
+  function initCoffeeVideoFallback() {
     function bind(video, fallback) {
       if (!video || !fallback) return;
-
       const hide = () => fallback.classList.add("is-hidden");
       const show = () => fallback.classList.remove("is-hidden");
-
-      const hasSource =
-        video.querySelector("source[src]") ||
-        (video.getAttribute("src") && video.getAttribute("src").length > 0);
+      const hasSource = video.querySelector("source[src]");
       if (!hasSource) return;
-
-      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-        hide();
-      }
+      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) hide();
       video.addEventListener("loadeddata", hide, { once: true });
       video.addEventListener("error", show, { once: true });
     }
@@ -78,53 +109,19 @@
       document.querySelector(".coffee-hero__mini-video"),
       document.querySelector(".coffee-hero__mini-placeholder"),
     );
-  })();
 
-  (function initMenuHoverPhoto() {
-    const photo = document.createElement("div");
-    photo.className = "menu-hover-photo";
-    photo.innerHTML = '<div class="menu-hover-photo__img"></div>';
-    document.body.appendChild(photo);
-
-    const photoImg = photo.querySelector(".menu-hover-photo__img");
-    const mql = window.matchMedia("(hover: none), (pointer: coarse)");
-    if (mql.matches) return;
-
-    let targetX = 0;
-    let targetY = 0;
-    let curX = 0;
-    let curY = 0;
-    let rafPhoto;
-
-    document.addEventListener(
-      "mousemove",
-      (e) => {
-        targetX = e.clientX + 28;
-        targetY = e.clientY - 80;
-      },
-      { passive: true },
-    );
-
-    function animPhoto() {
-      curX += (targetX - curX) * 0.14;
-      curY += (targetY - curY) * 0.14;
-      photo.style.left = curX + "px";
-      photo.style.top = curY + "px";
-      rafPhoto = requestAnimationFrame(animPhoto);
-    }
-    animPhoto();
-
-    document.querySelectorAll(".menu-item[data-photo-bg]").forEach((item) => {
-      item.addEventListener("mouseenter", () => {
-        const bg =
-          item.dataset.photoBg ||
-          "linear-gradient(135deg, #5c3d28, #8a6248)";
-        if (photoImg) photoImg.style.background = bg;
-        photo.classList.add("is-visible");
-      });
-      item.addEventListener("mouseleave", () => {
-        photo.classList.remove("is-visible");
-      });
+    document.querySelectorAll(".coffee-curtain__video").forEach((video) => {
+      const wrap = video.closest(".coffee-curtain__bg");
+      const fallback = wrap?.querySelector(".coffee-curtain__bg-placeholder");
+      bind(video, fallback);
     });
-  })();
+  }
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
 })();

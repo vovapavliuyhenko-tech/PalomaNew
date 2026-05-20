@@ -1,0 +1,451 @@
+/* checkout.css — оформление заказа PALOMA */
+.checkout-page .checkout-main {
+  min-height: 60vh;
+  padding-top: var(--paloma-header-offset, calc(52px + 88px));
+}
+
+.checkout-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36vh;
+  padding: 48px 24px;
+  text-align: center;
+}
+.checkout-empty__title {
+  font-family: var(--font-display, "Italiana", serif);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.checkout-empty__text {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  margin-bottom: 28px;
+}
+
+.checkout-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(107, 15, 26, 0.08);
+  border-left: 3px solid var(--color-accent, #6b0f1a);
+  font-size: 14px;
+  color: var(--color-accent, #6b0f1a);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.checkout-error-banner__close {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.checkout-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px) clamp(16px, 3vw, 48px);
+}
+.checkout-title {
+  font-family: var(--font-display, "Italiana", serif);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 0.94;
+  margin: 0 0 clamp(24px, 3vw, 40px);
+}
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkout-section {
+  border: none;
+  padding: 0;
+  margin: 0 0 clamp(28px, 4vw, 44px);
+}
+.checkout-section__title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-line, rgba(27, 26, 24, 0.1));
+}
+.checkout-section__num {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--color-accent, #6b0f1a);
+}
+
+.checkout-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .checkout-fields {
+    grid-template-columns: 1fr;
+  }
+}
+.checkout-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.checkout-field__label {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.checkout-field__req {
+  color: var(--color-accent, #6b0f1a);
+}
+.checkout-field__input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(27, 26, 24, 0.22);
+  padding: 10px 0;
+  font-size: 15px;
+  width: 100%;
+  transition: border-color 0.25s;
+}
+.checkout-field__input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--color-accent, #6b0f1a);
+}
+.checkout-field__input.is-error {
+  border-bottom-color: #c0392b;
+}
+.checkout-field__input--textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+.checkout-field__hint {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.checkout-field__error {
+  font-size: 12px;
+  color: #c0392b;
+  margin: 0;
+}
+
+.checkout-recipient-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.checkout-toggle-btn {
+  cursor: pointer;
+}
+.checkout-toggle-btn input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.checkout-toggle-btn span {
+  display: block;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(27, 26, 24, 0.22);
+  font-size: 13px;
+}
+.checkout-toggle-btn input:checked + span {
+  background: var(--color-text);
+  color: #fff;
+  border-color: var(--color-text);
+}
+
+.checkout-delivery-options,
+.checkout-payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkout-delivery-card,
+.checkout-payment-card {
+  cursor: pointer;
+}
+.checkout-delivery-card input,
+.checkout-payment-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.checkout-delivery-card__inner,
+.checkout-payment-card__inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid rgba(27, 26, 24, 0.18);
+  border-radius: 4px;
+  transition: border-color 0.22s, background 0.22s;
+}
+.checkout-delivery-card__inner div:last-child,
+.checkout-payment-card__inner div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.checkout-delivery-card__inner strong,
+.checkout-payment-card__inner strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+.checkout-delivery-card__inner span,
+.checkout-payment-card__inner span {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.checkout-delivery-card input:checked + .checkout-delivery-card__inner,
+.checkout-payment-card input:checked + .checkout-payment-card__inner {
+  border-color: var(--color-text);
+  background: var(--color-bg-alt, #f2efe8);
+}
+.checkout-delivery-card__icon {
+  color: var(--color-accent, #6b0f1a);
+}
+.checkout-courier-fields {
+  margin-top: 16px;
+}
+
+.checkout-intervals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.checkout-interval-btn {
+  cursor: pointer;
+}
+.checkout-interval-btn input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.checkout-interval-btn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+  border: 1px solid rgba(27, 26, 24, 0.22);
+  border-radius: 3px;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 12px;
+}
+.checkout-interval-btn input:checked + span {
+  background: var(--color-text);
+  color: #fff;
+  border-color: var(--color-text);
+}
+
+.checkout-payment-card__icons {
+  display: flex;
+  gap: 4px;
+}
+.checkout-payment-card__badge {
+  padding: 3px 7px;
+  border-radius: 3px;
+  background: var(--color-bg-alt);
+  border: 1px solid rgba(27, 26, 24, 0.1);
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 9px;
+  font-weight: 700;
+}
+.checkout-payment-card__badge--sbp {
+  background: #1f7edc;
+  color: #fff;
+  border-color: #1f7edc;
+}
+.checkout-payment-card__badge--ya {
+  background: #fc3f1d;
+  color: #fff;
+  border-color: #fc3f1d;
+}
+
+.checkout-submit-mobile {
+  display: none;
+}
+@media (max-width: 960px) {
+  .checkout-submit-mobile {
+    display: block;
+    margin-top: 8px;
+  }
+}
+.checkout-submit-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 18px;
+}
+
+.checkout-summary {
+  position: sticky;
+  top: 96px;
+  background: var(--color-bg-alt, #f2efe8);
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: 4px;
+}
+@media (max-width: 960px) {
+  .checkout-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .checkout-form {
+    order: 1;
+  }
+
+  .checkout-summary {
+    position: static;
+    order: 2;
+  }
+}
+.checkout-summary__title {
+  font-family: var(--font-display, "Italiana", serif);
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.checkout-summary__items {
+  border-top: 1px solid rgba(27, 26, 24, 0.1);
+}
+.checkout-summary__item {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(27, 26, 24, 0.08);
+  align-items: center;
+}
+.checkout-summary__item-media {
+  width: 48px;
+  height: 56px;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.checkout-summary__item-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.checkout-summary__item-name {
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.checkout-summary__item-qty {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.checkout-summary__item-price {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.checkout-summary__totals {
+  border-top: 1px solid rgba(27, 26, 24, 0.1);
+  margin-bottom: 20px;
+}
+.checkout-summary__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(27, 26, 24, 0.06);
+  font-size: 14px;
+}
+.checkout-summary__row--delivery span:last-child {
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+.checkout-summary__row--total {
+  border-bottom: none;
+  padding-top: 14px;
+  font-weight: 600;
+}
+.checkout-summary__total {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 22px;
+}
+.checkout-summary__pay-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+@media (max-width: 960px) {
+  .checkout-summary__pay-btn {
+    display: none;
+  }
+}
+.checkout-summary__security {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+.checkout-summary__back-link {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.checkout-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: rgba(250, 248, 244, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkout-loading__inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.checkout-loading__spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(27, 26, 24, 0.22);
+  border-top-color: var(--color-text);
+  border-radius: 50%;
+  animation: checkoutSpin 0.8s linear infinite;
+}
+@keyframes checkoutSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .checkout-loading__spinner {
+    animation: none;
+  }
+}

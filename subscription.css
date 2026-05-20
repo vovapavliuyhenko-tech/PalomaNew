@@ -1,0 +1,5 @@
+/* subscription.html — основные стили в styles.css (SUBSCRIPTION PAGE) */
+
+body.subscription-page {
+  overflow-x: clip;
+}

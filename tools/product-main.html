@@ -1,0 +1,58 @@
+  <main id="main" class="product-page">
+    <div class="container product-page__container">
+      <nav class="product-page__crumbs" aria-label="Хлебные крошки">
+        <a href="index.html">Главная</a>
+        <span aria-hidden="true">/</span>
+        <a href="catalog.html">Каталог</a>
+        <span aria-hidden="true">/</span>
+        <span id="crumbCurrent">—</span>
+      </nav>
+
+      <div class="product-page__layout">
+        <div class="product-page__gallery">
+          <div class="product-page__main-img" id="prodMainImg" role="img" aria-label="Фото товара"></div>
+          <div class="product-page__thumbs" id="prodThumbs"></div>
+        </div>
+
+        <div class="product-page__info">
+          <div class="product-page__category" id="prodCategory">—</div>
+          <h1 class="product-page__title" id="prodTitle">—</h1>
+          <div class="product-page__price" id="prodPrice">—</div>
+
+          <p class="product-page__desc" id="prodDesc">—</p>
+          <p class="product-page__pairs" id="prodPairs" hidden>—</p>
+
+          <section class="product-page__section">
+            <div class="product-page__section-title">Состав</div>
+            <div class="product-page__composition" id="prodComposition">—</div>
+          </section>
+
+          <section class="product-page__section" id="prodSizesSection" hidden>
+            <div class="product-page__section-title">Размер</div>
+            <div class="product-page__sizes" id="prodSizes"></div>
+          </section>
+
+          <section class="product-page__section" id="prodAddonsSection" hidden>
+            <div class="product-page__section-title">Дополнения</div>
+            <div class="product-page__addons" id="prodAddons"></div>
+          </section>
+
+          <div class="product-page__total">
+            <span class="product-page__total-label">Итого:</span>
+            <span class="product-page__total-value" id="prodTotal">—</span>
+          </div>
+
+          <button type="button" class="btn btn--dark btn--full" id="prodAddToCart">
+            Добавить в корзину
+          </button>
+
+          <a href="catalog.html" class="product-page__back">← Вернуться в каталог</a>
+        </div>
+      </div>
+
+      <div class="product-page__notfound" id="prodNotFound" hidden>
+        <h2>Товар не найден</h2>
+        <p>Возможно, ссылка устарела. <a href="catalog.html">Перейти в каталог →</a></p>
+      </div>
+    </div>
+  </main>

@@ -10,21 +10,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="preloader.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="paloma-animations.css">
+<link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="catalog.css">
   <link rel="stylesheet" href="clients.css">
+  <link rel="stylesheet" href="paloma-responsive.css">
+  <link rel="stylesheet" href="cursor.css">
 </head>
 <body>
   <a href="#main" class="skip-link">К содержимому</a>
 
-  <div class="paloma-loader" id="palomaLoader" aria-hidden="true">
-    <div class="paloma-loader__inner">
-      <p class="paloma-loader__word">PALOMA</p>
-      <div class="paloma-loader__line" aria-hidden="true"></div>
+  <div class="pl" id="palomaLoader" aria-hidden="true" role="status" aria-label="Загрузка PALOMA">
+  <div class="pl__curtain pl__curtain--top" aria-hidden="true"></div>
+  <div class="pl__curtain pl__curtain--bot" aria-hidden="true"></div>
+  <div class="pl__scene" aria-hidden="true">
+    <div class="pl__ring-wrap" aria-hidden="true">
+      <svg class="pl__ring-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <path id="plCirclePath" d="M 160,160 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0" />
+        </defs>
+        <text class="pl__ring-text">
+          <textPath href="#plCirclePath" xlink:href="#plCirclePath" startOffset="0%" textLength="741" lengthAdjust="spacing">
+            PALOMA&nbsp;•&nbsp;FLOWERS&nbsp;•&nbsp;COFFEE&nbsp;•&nbsp;YOU&nbsp;•&nbsp;НОВОРОССИЙСК&nbsp;•&nbsp;
+          </textPath>
+        </text>
+      </svg>
     </div>
-    <div class="paloma-loader__curtain paloma-loader__curtain--t"></div>
-    <div class="paloma-loader__curtain paloma-loader__curtain--b"></div>
+    <div class="pl__logo-wrap">
+      <p class="pl__wordmark" aria-label="PALOMA">PALOMA</p>
+      <p class="pl__tagline" aria-label="flowers coffee you">
+        <span>flowers</span>
+        <span aria-hidden="true">·</span>
+        <span>coffee</span>
+        <span aria-hidden="true">·</span>
+        <span>you</span>
+      </p>
+    </div>
   </div>
-
+</div>
 
 <div class="site-top" id="siteTop">
     <div class="top-marquee" aria-hidden="false">
@@ -167,7 +192,7 @@
                     </div>
                   </a>
 
-                  <a href="catalog.html?cat=sub"
+                  <a href="subscription.html"
                      class="catalog-nav-item" data-cursor="hover">
                     <div class="catalog-nav-item__icon" aria-hidden="true">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
@@ -200,7 +225,7 @@
             </div>
           </div>
           <a href="coffee.html" class="site-header__link">Кофейня</a>
-          <a href="weddings.html" class="site-header__link">Свадьбы</a>
+          <a href="event-decoration.html" class="site-header__link">Оформление</a>
 
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
           <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerCatalog" data-cursor="hover">
@@ -216,7 +241,7 @@
                 <a href="care.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/><path d="M12 14v7"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Уход за букетом</div><div class="client-nav-card__desc">7 дней свежести и больше</div></div></a>
                 <a href="faq.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 4"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Вопрос-ответ</div><div class="client-nav-card__desc">Частые вопросы</div></div></a>
                 <a href="wedding-piggy-bank.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Свадебная копилка</div><div class="client-nav-card__desc">Этапы подготовки</div></div></a>
-                <a href="events.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Мероприятия</div><div class="client-nav-card__desc">Оформление событий</div></div></a>
+                <a href="event-decoration.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оформление мероприятий</div><div class="client-nav-card__desc">Цветочный декор событий</div></div></a>
               </div>
             </div>
           </div>
@@ -227,13 +252,16 @@
 
         <div class="site-header__actions">
           <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
-          <button type="button" class="site-header__icon" aria-label="Избранное" data-cursor="hover">
+          <a href="wishlist.html" class="site-header__icon site-header__icon--wishlist" aria-label="Избранное" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
-          </button>
-          <a href="cart.html" class="site-header__icon site-header__icon--cart site-header__cart" aria-label="Корзина" data-cursor="hover">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
-            <span class="site-header__cart-count is-empty">0</span>
+            <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
           </a>
+          <button type="button" class="site-header__icon site-header__icon--cart site-header__cart"
+        id="cartOpenBtn" data-cart-open
+        aria-label="Корзина" aria-expanded="false" aria-controls="cartDrawer" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
+            <span class="site-header__cart-count site-header__badge cart-count" id="cartCount" data-cart-count style="display:none" aria-hidden="true">0</span>
+          </button>
         </div>
       </div>
 
@@ -242,16 +270,17 @@
         <div class="site-header__mobile-inner">
           <a href="catalog.html" class="site-header__mobile-link">Каталог</a>
           <a href="coffee.html" class="site-header__mobile-link">Кофейня</a>
-          <a href="weddings.html" class="site-header__mobile-link">Свадьбы</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление</a>
           <span class="site-header__mobile-section-title">Клиентам</span>
           <a href="delivery.html" class="site-header__mobile-link">Доставка</a>
           <a href="payment.html" class="site-header__mobile-link">Оплата</a>
           <a href="care.html" class="site-header__mobile-link">Уход за букетом</a>
           <a href="faq.html" class="site-header__mobile-link">Вопрос-ответ</a>
           <a href="wedding-piggy-bank.html" class="site-header__mobile-link">Свадебная копилка</a>
-          <a href="events.html" class="site-header__mobile-link">Мероприятия</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление мероприятий</a>
           <a href="contacts.html" class="site-header__mobile-link">Контакты</a>
           <a href="blog.html" class="site-header__mobile-link">Блог</a>
+          <a href="wishlist.html" class="site-header__mobile-link">Избранное</a>
           <a href="tel:+78612000000" class="site-header__mobile-phone">+7 (861) 200-00-00</a>
         </div>
       </nav>
@@ -260,228 +289,46 @@
 
   <main id="main" class="catalog-page">
 
-    <div class="catalog-filters catalog-filters-bar" id="catalogFiltersBar" aria-label="Фильтры каталога">
-      <div class="catalog-filters__inner catalog-filters-bar__inner">
-        <button type="button" class="filter-btn filter-chip chip is-active" data-cat="all">Все</button>
-        <button type="button" class="filter-btn filter-chip chip" data-cat="online">Онлайн-витрина</button>
-        <button type="button" class="filter-btn filter-chip chip" data-cat="season">Самый сезон</button>
-        <button type="button" class="filter-btn filter-chip chip" data-cat="best">Бестселлеры</button>
-        <button type="button" class="filter-btn filter-chip chip" data-cat="comp">Цветочные композиции</button>
-        <button type="button" class="filter-btn filter-chip chip" data-cat="mono">Моно и дуобукеты</button>
-        <button type="button" class="filter-btn filter-chip chip" data-cat="wedding">Свадебные</button>
-        <button type="button" class="filter-btn filter-chip chip" data-cat="vases">Вазы и подарки</button>
-        <button type="button" class="filter-btn filter-chip chip" data-cat="sub">Цветочная подписка</button>
-        <button type="button" class="filter-btn filter-chip chip" data-cat="events">Оформление события</button>
-      </div>
+  <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки">
+    <div class="catalog-breadcrumbs__inner">
+      <ol class="catalog-breadcrumbs__list">
+        <li><a href="index.html">Главная</a></li>
+        <li aria-hidden="true">/</li>
+        <li><span aria-current="page">Каталог</span></li>
+      </ol>
     </div>
+  </nav>
 
-    <section class="catalog-products catalog-section" id="catalog-products">
-      <div class="catalog-products__inner">
-        <div class="catalog-grid" id="catalogGrid">
-          <article class="product-card" data-id="c1" data-name="Камелия" data-price="3500" data-category="bestsellers" data-composition="Розы, эустома, гипсофила" data-desc="Романтичный авторский букет, который выглядит как событие для двоих." data-pairs="Идеально к капучино.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #d4a59a, #8b4f3f);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #c4948a, #6b3a2a);"></div>
-              <span class="product-card__badge">Хит</span>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Камелия</div><div class="product-card__hover-price">3 500 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Камелия</h3><p class="product-card__desc">Розы, эустома, гипсофила</p>
-              <div class="product-card__footer"><span class="product-card__price">3 500 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+  <div class="catalog-hero">
+    <div class="catalog-hero__inner">
+      <h1 class="catalog-hero__title">Каталог</h1>
               </div>
             </div>
-          </article>
 
-          <article class="product-card" data-id="c2" data-name="Прованс" data-price="2800" data-category="season" data-composition="Лаванда, оливковые ветви" data-desc="Уютное настроение юга: светлые тона и лёгкая травянистость." data-pairs="К лунго с лимоном.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #b8c9a8, #4f6a42);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #9eb88c, #3d5534);"></div>
-              <span class="product-card__badge">Сезон</span>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Прованс</div><div class="product-card__hover-price">2 800 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Прованс</h3><p class="product-card__desc">Лаванда, оливковые ветви</p>
-              <div class="product-card__footer"><span class="product-card__price">2 800 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
+  <div class="catalog-filters-wrap" id="catalogFiltersWrap">
+    <div class="catalog-filters" id="catalogFilters" role="group" aria-label="Фильтры каталога">
+      <button type="button" class="catalog-filter-btn is-active" data-filter="all" aria-pressed="true">Все</button>
+      <button type="button" class="catalog-filter-btn" data-filter="online" aria-pressed="false">Онлайн-витрина</button>
+      <button type="button" class="catalog-filter-btn" data-filter="season" aria-pressed="false">Самый сезон</button>
+      <button type="button" class="catalog-filter-btn" data-filter="bestsellers" aria-pressed="false">Бестселлеры</button>
+      <button type="button" class="catalog-filter-btn" data-filter="compositions" aria-pressed="false">Композиции</button>
+      <button type="button" class="catalog-filter-btn" data-filter="mono" aria-pressed="false">Моно</button>
+      <button type="button" class="catalog-filter-btn" data-filter="wedding" aria-pressed="false">Свадебные</button>
+      <button type="button" class="catalog-filter-btn" data-filter="vases" aria-pressed="false">Вазы и подарки</button>
+      <button type="button" class="catalog-filter-btn" data-filter="subscription" aria-pressed="false">Подписка</button>
+      <button type="button" class="catalog-filter-btn" data-filter="events" aria-pressed="false">Оформление</button>
               </div>
             </div>
-          </article>
 
-          <article class="product-card" data-id="c3" data-name="Айвори" data-price="5200" data-category="compositions events" data-composition="Белые пионы, ранункулюсы" data-desc="Светлый объём без тяжести." data-pairs="К латте с миндальным молоком.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #e8e2d8, #b8aa9a);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #d4cbc0, #8a7b6c);"></div>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Айвори</div><div class="product-card__hover-price">5 200 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Айвори</h3><p class="product-card__desc">Белые пионы, ранункулюсы</p>
-              <div class="product-card__footer"><span class="product-card__price">5 200 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
+  <div class="catalog-count" id="catalogCount" aria-live="polite"></div>
 
-          <article class="product-card" data-id="c4" data-name="Бордо" data-price="4100" data-category="bestsellers" data-composition="Бордовые розы, ягоды" data-desc="Глубина и камерность: классический силуэт." data-pairs="К фильтру с шоколадной нотой.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #7a2840, #4a1624);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #5c2234, #381018);"></div>
-              <span class="product-card__badge">Хит</span>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Бордо</div><div class="product-card__hover-price">4 100 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Бордо</h3><p class="product-card__desc">Бордовые розы, ягоды</p>
-              <div class="product-card__footer"><span class="product-card__price">4 100 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
+  <div class="catalog-grid" id="catalogGrid" aria-label="Товары каталога"></div>
 
-          <article class="product-card" data-id="c5" data-name="Утро" data-price="2400" data-category="mono" data-composition="Тюльпаны, мускари" data-desc="Свежая весенняя энергия в узком силуэте." data-pairs="К капучино с корицей.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #f0d890, #c9a848);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #e8c860, #9a7830);"></div>
-              <span class="product-card__badge">Сезон</span>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Утро</div><div class="product-card__hover-price">2 400 ₽</div></div>
+  <div class="catalog-empty" id="catalogEmpty" hidden aria-live="polite">
+    <p>В этой категории пока нет товаров.</p>
+    <button type="button" class="btn btn--dark" data-filter="all" id="catalogResetBtn">Показать все</button>
             </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Утро</h3><p class="product-card__desc">Тюльпаны, мускари</p>
-              <div class="product-card__footer"><span class="product-card__price">2 400 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
 
-          <article class="product-card" data-id="c6" data-name="Гранат" data-price="3900" data-category="season" data-composition="Гранатовые цветы, эвкалипт" data-desc="Насыщенные акценты и холодная зелень." data-pairs="К черничному фильтру.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #a02838, #4a2820);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #8a2030, #341c18);"></div>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Гранат</div><div class="product-card__hover-price">3 900 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Гранат</h3><p class="product-card__desc">Гранатовые цветы, эвкалипт</p>
-              <div class="product-card__footer"><span class="product-card__price">3 900 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-id="c7" data-name="Ваниль" data-price="3200" data-category="wedding" data-composition="Кремовые розы, хлопок" data-desc="Спокойный тёплый тон для важной даты." data-pairs="К классику с апельсином.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #ebe0d4, #c4a890);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #d8c8b4, #9a7860);"></div>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Ваниль</div><div class="product-card__hover-price">3 200 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Ваниль</h3><p class="product-card__desc">Кремовые розы, хлопок</p>
-              <div class="product-card__footer"><span class="product-card__price">3 200 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-id="c8" data-name="Шёлк" data-price="6400" data-category="compositions events" data-composition="Орхидеи, антуриум" data-desc="Скульптурность и дорогая тишина." data-pairs="К эспрессо-тоника.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #c84a62, #3a2840);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #a83850, #281830);"></div>
-              <span class="product-card__badge">Новинка</span>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Шёлк</div><div class="product-card__hover-price">6 400 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Шёлк</h3><p class="product-card__desc">Орхидеи, антуриум</p>
-              <div class="product-card__footer"><span class="product-card__price">6 400 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card is-hidden" data-id="c9" data-name="Дюна" data-price="2100" data-category="vases subscription" data-composition="Сухоцветы, пшеница" data-desc="Сухое тепло и спокойные лини — можно оформить как регулярную доставку в рамках подписки." data-pairs="К колд брю.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #d4bc98, #7a5838);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #c4a880, #584028);"></div>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Дюна</div><div class="product-card__hover-price">2 100 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Дюна</h3><p class="product-card__desc">Сухоцветы, пшеница</p>
-              <div class="product-card__footer"><span class="product-card__price">2 100 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card is-hidden" data-id="c10" data-name="Сицилия" data-price="3600" data-category="season" data-composition="Подсолнухи, чертополох" data-desc="Солнечный характер с полевым акцентом." data-pairs="К лимонаду базилик-безалк.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #f4c848, #b86820);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #e8b030, #885018);"></div>
-              <span class="product-card__badge">Сезон</span>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Сицилия</div><div class="product-card__hover-price">3 600 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Сицилия</h3><p class="product-card__desc">Подсолнухи, чертополох</p>
-              <div class="product-card__footer"><span class="product-card__price">3 600 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card is-hidden" data-id="c11" data-name="Терракот" data-price="2900" data-category="online" data-composition="Хризантемы, физалис" data-desc="Структурный акцент: теплая охра и листва." data-pairs="К фильтру с ноткой ореха.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #c87850, #6a3820);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #a86038, #4a2814);"></div>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Терракот</div><div class="product-card__hover-price">2 900 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Терракот</h3><p class="product-card__desc">Хризантемы, физалис</p>
-              <div class="product-card__footer"><span class="product-card__price">2 900 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card is-hidden" data-id="c12" data-name="Морриган" data-price="5800" data-category="bestsellers" data-composition="Тёмные розы, ягоды, дуб" data-desc="Драма и загадочность без визуального шума." data-pairs="К классику с содовой.">
-            <div class="product-card__media">
-              <div class="product-card__image product-card__image--main" style="background: linear-gradient(135deg, #3a2840, #1a1418);"></div>
-              <div class="product-card__image product-card__image--hover" style="background: linear-gradient(135deg, #281c30, #0c0810);"></div>
-              <span class="product-card__badge">Новинка</span>
-              <div class="product-card__hover-info"><div class="product-card__hover-name">Морриган</div><div class="product-card__hover-price">5 800 ₽</div></div>
-            </div>
-            <div class="product-card__body">
-              <h3 class="product-card__title">Морриган</h3><p class="product-card__desc">Тёмные розы, ягоды, дуб</p>
-              <div class="product-card__footer"><span class="product-card__price">5 800 ₽</span></div>
-              <div class="product-card__actions">
-                <button type="button" class="btn btn--light">Подробнее</button>
-                <button type="button" class="btn btn--dark" data-add-to-cart>В корзину</button>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="catalog-more">
-          <button type="button" class="btn btn--ghost catalog-more__btn" id="catalogShowMoreBtn" aria-expanded="false" aria-controls="catalogGrid" data-cursor="hover">Смотреть ещё</button>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer" id="contacts">
@@ -496,7 +343,7 @@
           <h4 class="site-footer__col-title">Каталог</h4>
           <ul class="site-footer__list">
             <li><a href="coffee.html">PALOMA Coffee</a></li>
-            <li><a href="weddings.html">Свадебная флористика</a></li>
+            <li><a href="event-decoration.html">Цветочное оформление</a></li>
             <li><a href="catalog.html?cat=online">Онлайн-витрина</a></li>
             <li><a href="catalog.html?cat=best">Букеты</a></li>
             <li><a href="catalog.html?cat=comp">Композиции</a></li>
@@ -513,7 +360,8 @@
             <li><a href="faq.html">Вопрос-ответ</a></li>
             <li><a href="blog.html">Журнал</a></li>
             <li><a href="wedding-piggy-bank.html">Свадебная копилка</a></li>
-            <li><a href="events.html">Мероприятия</a></li>
+            <li><a href="event-decoration.html">Оформление мероприятий</a></li>
+            <li><a href="events.html">Оформление</a></li>
           </ul>
         </div>
         <div class="site-footer__col">
@@ -586,27 +434,56 @@
     </div>
   </div>
 
-  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
-    <div class="cart-drawer__backdrop" data-cart-close></div>
-    <aside class="cart-drawer__panel">
-      <header class="cart-drawer__header">
-        <h3 class="cart-drawer__title">Корзина</h3>
-        <button type="button" class="cart-drawer__close" data-cart-close aria-label="Закрыть" data-cursor="hover">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  <!-- ── CART DRAWER ── -->
+  <div class="cart-drawer" id="cartDrawer"
+       aria-label="Корзина" aria-hidden="true"
+       role="dialog" hidden>
+    <div class="cart-drawer__backdrop"
+         id="cartDrawerBackdrop"
+         aria-hidden="true"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Корзина</h2>
+        <button type="button" class="cart-drawer__close"
+                id="cartDrawerClose"
+                data-cart-close
+                aria-label="Закрыть корзину" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
         </button>
-      </header>
-      <div class="cart-drawer__body" id="cartBody"></div>
-      <div class="cart-drawer__empty" id="cartEmpty">
-        <p>В корзине пока пусто.</p>
-        <button type="button" class="btn btn--light" data-cart-close>Продолжить покупки</button>
       </div>
-      <footer class="cart-drawer__footer" id="cartFooter">
-        <div class="cart-drawer__row"><span>Подытог</span><span id="cartSubtotal">0 ₽</span></div>
-        <div class="cart-drawer__row cart-drawer__row--muted"><span>Доставка</span><span>рассчитаем при оформлении</span></div>
-        <div class="cart-drawer__row cart-drawer__row--total"><span>Итого</span><span id="cartTotal">0 ₽</span></div>
-        <button type="button" class="btn btn--dark cart-drawer__checkout" id="cartCheckout" data-cursor="hover">Оформить заказ</button>
-      </footer>
-    </aside>
+      <div class="cart-drawer__empty" id="cartDrawerEmpty">
+        <div class="cart-drawer__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/>
+          </svg>
+        </div>
+        <p class="cart-drawer__empty-title">Корзина пуста</p>
+        <p class="cart-drawer__empty-text">Добавьте букет, кофе или подарок</p>
+        <a href="catalog.html"
+           class="btn btn--dark cart-drawer__empty-cta"
+           data-cart-close>Перейти в каталог</a>
+      </div>
+      <div class="cart-drawer__body" id="cartDrawerBody" hidden>
+        <div class="cart-drawer__list" id="cartDrawerList"
+             aria-label="Товары в корзине"></div>
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__total-row">
+            <span class="cart-drawer__total-label">Итого</span>
+            <span class="cart-drawer__total-val" id="cartDrawerTotal">0 ₽</span>
+          </div>
+          <a href="cart.html"
+             class="btn btn--dark cart-drawer__checkout"
+             aria-label="Перейти к оформлению заказа">Оформить заказ</a>
+          <button type="button" class="cart-drawer__continue"
+                  data-cart-close
+                  aria-label="Продолжить покупки">Продолжить покупки</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="custom-cursor" id="customCursor" aria-hidden="true">
@@ -614,7 +491,18 @@
     <div class="custom-cursor__ring"></div>
   </div>
 
+  <script src="paloma-products.js"></script>
+  <script src="catalog-data.js"></script>
+  <script src="preloader.js"></script>
+  <script src="cart-core.js"></script>
   <script src="script.js"></script>
+  <script src="paloma-animations.js"></script>
+  <script src="paloma-media-paths.js"></script>
+  <script src="paloma-media.js"></script>
+
+  <script src="wishlist.js"></script>
+  <script src="catalog.js"></script>
   <script src="clients.js"></script>
+  <script src="cursor.js"></script>
 </body>
 </html>

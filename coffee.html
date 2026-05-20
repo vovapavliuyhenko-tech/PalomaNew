@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#FBF6E8">
+  <meta name="theme-color" content="#0c0b0a">
   <title>PALOMA Coffee — кофе, десерты и цветы в Новороссийске</title>
   <meta name="description" content="PALOMA Coffee — место, где можно забрать букет, остаться на кофе и выбрать десерт. Новороссийск, ул. Энгельса, 74.">
   <meta property="og:title" content="PALOMA Coffee — кофе и цветы в Новороссийске">
@@ -15,22 +15,46 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="preloader.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="paloma-animations.css">
+  <link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="clients.css">
   <link rel="stylesheet" href="coffee.css">
+  <link rel="stylesheet" href="paloma-responsive.css">
+  <link rel="stylesheet" href="cursor.css">
 </head>
 <body class="coffee-page">
   <a href="#main" class="skip-link">К содержимому</a>
 
-  <div class="paloma-loader" id="palomaLoader" aria-hidden="true">
-    <div class="paloma-loader__inner">
-      <p class="paloma-loader__word">PALOMA</p>
-      <div class="paloma-loader__line" aria-hidden="true"></div>
+  <div class="pl" id="palomaLoader" aria-hidden="true" role="status" aria-label="Загрузка PALOMA">
+  <div class="pl__curtain pl__curtain--top" aria-hidden="true"></div>
+  <div class="pl__curtain pl__curtain--bot" aria-hidden="true"></div>
+  <div class="pl__scene" aria-hidden="true">
+    <div class="pl__ring-wrap" aria-hidden="true">
+      <svg class="pl__ring-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <path id="plCirclePath" d="M 160,160 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0" />
+        </defs>
+        <text class="pl__ring-text">
+          <textPath href="#plCirclePath" xlink:href="#plCirclePath" startOffset="0%" textLength="741" lengthAdjust="spacing">
+            PALOMA&nbsp;•&nbsp;FLOWERS&nbsp;•&nbsp;COFFEE&nbsp;•&nbsp;YOU&nbsp;•&nbsp;НОВОРОССИЙСК&nbsp;•&nbsp;
+          </textPath>
+        </text>
+      </svg>
     </div>
-    <div class="paloma-loader__curtain paloma-loader__curtain--t"></div>
-    <div class="paloma-loader__curtain paloma-loader__curtain--b"></div>
+    <div class="pl__logo-wrap">
+      <p class="pl__wordmark" aria-label="PALOMA">PALOMA</p>
+      <p class="pl__tagline" aria-label="flowers coffee you">
+        <span>flowers</span>
+        <span aria-hidden="true">·</span>
+        <span>coffee</span>
+        <span aria-hidden="true">·</span>
+        <span>you</span>
+      </p>
+    </div>
   </div>
-
+</div>
 
 <div class="site-top" id="siteTop">
     <div class="top-marquee" aria-hidden="false">
@@ -58,7 +82,7 @@
       </div>
     </div>
 
-    <header class="site-header" id="siteHeader">
+    <header class="site-header site-header--coffee" id="siteHeader">
       <div class="site-header__inner">
         <button type="button" class="site-header__menu-toggle" id="menuToggle" data-cursor="hover" aria-expanded="false" aria-controls="mobileNav" aria-label="Открыть меню">
           <span class="site-header__menu-lines" aria-hidden="true"></span>
@@ -173,7 +197,7 @@
                     </div>
                   </a>
 
-                  <a href="catalog.html?cat=sub"
+                  <a href="subscription.html"
                      class="catalog-nav-item" data-cursor="hover">
                     <div class="catalog-nav-item__icon" aria-hidden="true">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
@@ -206,7 +230,7 @@
             </div>
           </div>
           <a href="coffee.html" class="site-header__link">Кофейня</a>
-          <a href="weddings.html" class="site-header__link">Свадьбы</a>
+          <a href="event-decoration.html" class="site-header__link">Оформление</a>
 
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
           <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerCoffee" data-cursor="hover">
@@ -222,7 +246,7 @@
                 <a href="care.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/><path d="M12 14v7"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Уход за букетом</div><div class="client-nav-card__desc">7 дней свежести и больше</div></div></a>
                 <a href="faq.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 4"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Вопрос-ответ</div><div class="client-nav-card__desc">Частые вопросы</div></div></a>
                 <a href="wedding-piggy-bank.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Свадебная копилка</div><div class="client-nav-card__desc">Этапы подготовки</div></div></a>
-                <a href="events.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Мероприятия</div><div class="client-nav-card__desc">Оформление событий</div></div></a>
+                <a href="event-decoration.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оформление мероприятий</div><div class="client-nav-card__desc">Цветочный декор событий</div></div></a>
               </div>
             </div>
           </div>
@@ -233,13 +257,16 @@
 
         <div class="site-header__actions">
           <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
-          <button type="button" class="site-header__icon" aria-label="Избранное" data-cursor="hover">
+          <a href="wishlist.html" class="site-header__icon site-header__icon--wishlist" aria-label="Избранное" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
-          </button>
-          <a href="cart.html" class="site-header__icon site-header__icon--cart site-header__cart" aria-label="Корзина" data-cursor="hover">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
-            <span class="site-header__cart-count is-empty">0</span>
+            <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
           </a>
+          <button type="button" class="site-header__icon site-header__icon--cart site-header__cart"
+        id="cartOpenBtn" data-cart-open
+        aria-label="Корзина" aria-expanded="false" aria-controls="cartDrawer" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
+            <span class="site-header__cart-count site-header__badge cart-count" id="cartCount" data-cart-count style="display:none" aria-hidden="true">0</span>
+          </button>
         </div>
       </div>
 
@@ -248,16 +275,17 @@
         <div class="site-header__mobile-inner">
           <a href="catalog.html" class="site-header__mobile-link">Каталог</a>
           <a href="coffee.html" class="site-header__mobile-link">Кофейня</a>
-          <a href="weddings.html" class="site-header__mobile-link">Свадьбы</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление</a>
           <span class="site-header__mobile-section-title">Клиентам</span>
           <a href="delivery.html" class="site-header__mobile-link">Доставка</a>
           <a href="payment.html" class="site-header__mobile-link">Оплата</a>
           <a href="care.html" class="site-header__mobile-link">Уход за букетом</a>
           <a href="faq.html" class="site-header__mobile-link">Вопрос-ответ</a>
           <a href="wedding-piggy-bank.html" class="site-header__mobile-link">Свадебная копилка</a>
-          <a href="events.html" class="site-header__mobile-link">Мероприятия</a>
-          <a href="#coffee-contacts" class="site-header__mobile-link">Контакты</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление мероприятий</a>
+          <a href="#contacts" class="site-header__mobile-link">Контакты</a>
           <a href="blog.html" class="site-header__mobile-link">Блог</a>
+          <a href="wishlist.html" class="site-header__mobile-link">Избранное</a>
           <a href="tel:+78612000000" class="site-header__mobile-phone">+7 (861) 200-00-00</a>
         </div>
       </nav>
@@ -265,7 +293,7 @@
   </div>
 
   <main id="main" class="coffee-main">
-    <section class="coffee-hero dark-section torn-bottom">
+    <section class="coffee-hero coffee-hero--fullscreen dark-section">
       <div class="coffee-hero__bg">
         <video class="coffee-hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/images/coffee/hero-poster.jpg" aria-hidden="true">
           <source src="assets/video/coffee-hero.mp4" type="video/mp4">
@@ -280,368 +308,131 @@
         <div class="coffee-hero__mini-placeholder" aria-hidden="true"></div>
       </div>
       <div class="coffee-hero__text">
-        <p class="coffee-hero__lead">Кофе, десерты и букеты в одном месте. Заходите после прогулки, забирайте заказ или оставайтесь на тихий латте среди цветов.</p>
-        <p class="coffee-hero__tagline"><em>букеты, кофе и маленькие радости каждый день.</em></p>
-        <a href="#coffee-menu" class="coffee-hero__link" data-cursor="hover">Смотреть меню →</a>
+        <p class="coffee-hero__offer">
+          Кофе можно добавить к букету или взять отдельно — маленькая деталь,
+          которая делает подарок теплее.
+        </p>
+        <a href="#coffee-menu" class="btn btn--coffee-hero coffee-hero__cta" data-cursor="hover">
+          Смотреть меню
+        </a>
       </div>
     </section>
 
-    <section class="coffee-intro">
-      <div class="coffee-intro__grid">
-        <div class="coffee-intro__left">
-          <div class="coffee-intro__text">
-            <span class="coffee-intro__eyebrow">[ PALOMA Coffee ]</span>
-            <p class="coffee-intro__copy">PALOMA Coffee — это не отдельная история, а продолжение букета. Можно забрать композицию, выбрать десерт из витрины и остаться на кофе среди цветов, растений и света.</p>
-            <a href="#coffee-menu" class="btn btn--dark coffee-intro__btn" data-cursor="hover">Смотреть меню</a>
-          </div>
-          <div class="coffee-intro__small-images">
-            <div class="coffee-intro__small-img coffee-intro__small-img--1" aria-hidden="true"></div>
-            <div class="coffee-intro__small-img coffee-intro__small-img--2" aria-hidden="true"></div>
-          </div>
-        </div>
-        <div class="coffee-intro__right">
-          <div class="coffee-intro__main-image" role="presentation"></div>
-        </div>
+    <section class="coffee-atmosphere" aria-labelledby="coffee-atmosphere-heading">
+      <div class="coffee-atmosphere__media" role="presentation" aria-hidden="true"></div>
+      <div class="coffee-atmosphere__content">
+        <span class="coffee-atmosphere__eyebrow">[ Кофейня ]</span>
+        <h2 class="coffee-atmosphere__title" id="coffee-atmosphere-heading">PALOMA Coffee</h2>
+        <p class="coffee-atmosphere__text">
+          Кофейня в бутике — продолжение букета. Свет, цветы и спокойный ритм:
+          можно забрать композицию, выбрать десерт из витрины и остаться на латте
+          среди растений на Энгельса, 74.
+        </p>
+        <a href="#coffee-menu" class="btn btn--coffee coffee-atmosphere__btn" data-cursor="hover">
+          Выбрать кофе
+        </a>
       </div>
     </section>
 
     <section class="coffee-menu-section" id="coffee-menu">
-      <div class="coffee-menu-section__inner">
-        <div class="coffee-bean-decor" id="coffeeBeanDecor" aria-hidden="true">
-          <svg class="coffee-bean-decor__svg" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <ellipse cx="100" cy="150" rx="80" ry="130" stroke="#3d2b1f" stroke-width="1.5" fill="none" opacity="0.08"></ellipse>
-            <path d="M100 30 C100 30 70 150 100 270" stroke="#3d2b1f" stroke-width="1.5" fill="none" opacity="0.08"></path>
-            <ellipse cx="100" cy="150" rx="62" ry="108" stroke="#3d2b1f" stroke-width="1" fill="none" opacity="0.05"></ellipse>
-          </svg>
+      <div class="menu-hover-photo-slot" id="menuHoverPhotoSlot" aria-hidden="true">
+        <div class="menu-hover-photo">
+          <div class="menu-hover-photo__img" role="presentation"></div>
         </div>
+      </div>
+
         <header class="coffee-menu-section__header">
           <span class="coffee-menu-section__eyebrow">[ Меню ]</span>
           <h2 class="coffee-menu-section__title">PALOMA Coffee</h2>
-          <p class="coffee-menu-section__lead">Кофе, авторские напитки, какао и десерты из витрины. Всё можно добавить к букету или заказать отдельно.</p>
+        <p class="coffee-menu-section__lead">Кофе, чай, выпечка и лимонады — всё можно добавить к букету или заказать отдельно.</p>
         </header>
 
-        <div class="coffee-menu-filters" id="coffeeMenuFilters">
-          <button type="button" class="filter-chip is-active" data-menu-cat="all">Все</button>
-          <button type="button" class="filter-chip" data-menu-cat="coffee">Кофе</button>
-          <button type="button" class="filter-chip" data-menu-cat="author">Авторские</button>
-          <button type="button" class="filter-chip" data-menu-cat="cocoa-tea">Какао и чай</button>
-          <button type="button" class="filter-chip" data-menu-cat="cold">Холодные</button>
-          <button type="button" class="filter-chip" data-menu-cat="desserts">Десерты</button>
-          <button type="button" class="filter-chip" data-menu-cat="pastry">Выпечка</button>
-          <button type="button" class="filter-chip" data-menu-cat="combo">Комбо</button>
-        </div>
-
-        <div class="coffee-menu-grid" id="coffeeMenuGrid">
-          <article class="menu-item" data-photo-bg="linear-gradient(135deg, #5c3d28 0%, #8a6248 100%)" data-menu-category="coffee" data-id="latte" data-name="Латте" data-price="250">
-            <div class="menu-item__body">
-              <div class="menu-item__info">
-                <h3 class="menu-item__name">Латте</h3>
-                <p class="menu-item__desc">Мягкий кофе с молоком</p>
-                <span class="menu-item__volume">300 мл</span>
-              </div>
-              <div class="menu-item__right">
-                <span class="menu-item__price">250 ₽</span>
-                <button type="button" class="menu-item__add btn btn--dark" data-add-to-cart data-cursor="hover" aria-label="Добавить Латте в корзину">В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-item" data-photo-bg="linear-gradient(135deg, #5c3d28 0%, #8a6248 100%)" data-menu-category="coffee" data-id="cappuccino" data-name="Капучино" data-price="230">
-            <div class="menu-item__body">
-              <div class="menu-item__info">
-                <h3 class="menu-item__name">Капучино</h3>
-                <p class="menu-item__desc">Классика с плотной молочной пеной</p>
-                <span class="menu-item__volume">250 мл</span>
-              </div>
-              <div class="menu-item__right">
-                <span class="menu-item__price">230 ₽</span>
-                <button type="button" class="menu-item__add btn btn--dark" data-add-to-cart data-cursor="hover" aria-label="Добавить Капучино в корзину">В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-item" data-photo-bg="linear-gradient(135deg, #5c3d28 0%, #8a6248 100%)" data-menu-category="cocoa-tea" data-id="cocoa" data-name="Какао на густом шоколаде" data-price="280">
-            <div class="menu-item__body">
-              <div class="menu-item__info">
-                <h3 class="menu-item__name">Какао на густом шоколаде</h3>
-                <p class="menu-item__desc">Тёплый напиток к букету или отдельно</p>
-                <span class="menu-item__volume">300 мл</span>
-              </div>
-              <div class="menu-item__right">
-                <span class="menu-item__price">280 ₽</span>
-                <button type="button" class="menu-item__add btn btn--dark" data-add-to-cart data-cursor="hover">В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-item" data-photo-bg="linear-gradient(135deg, #5c3d28 0%, #8a6248 100%)" data-menu-category="author" data-id="raf-paloma" data-name="Авторский раф PALOMA" data-price="330">
-            <div class="menu-item__body">
-              <div class="menu-item__info">
-                <h3 class="menu-item__name">Авторский раф PALOMA</h3>
-                <p class="menu-item__desc">Сливочный кофе с мягким цветочным акцентом</p>
-                <span class="menu-item__volume">300 мл</span>
-              </div>
-              <div class="menu-item__right">
-                <span class="menu-item__price">330 ₽</span>
-                <button type="button" class="menu-item__add btn btn--dark" data-add-to-cart data-cursor="hover">В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-item" data-photo-bg="linear-gradient(135deg, #5c3d28 0%, #8a6248 100%)" data-menu-category="cold" data-id="cold-latte" data-name="Холодный латте" data-price="290">
-            <div class="menu-item__body">
-              <div class="menu-item__info">
-                <h3 class="menu-item__name">Холодный латте</h3>
-                <p class="menu-item__desc">Освежающий кофе со льдом</p>
-                <span class="menu-item__volume">300 мл</span>
-              </div>
-              <div class="menu-item__right">
-                <span class="menu-item__price">290 ₽</span>
-                <button type="button" class="menu-item__add btn btn--dark" data-add-to-cart data-cursor="hover">В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-item" data-photo-bg="linear-gradient(135deg, #5c3d28 0%, #8a6248 100%)" data-menu-category="desserts" data-id="dessert-vitrine" data-name="Десерт из витрины" data-price="320">
-            <div class="menu-item__body">
-              <div class="menu-item__info">
-                <h3 class="menu-item__name">Десерт из витрины</h3>
-                <p class="menu-item__desc">Уточняйте наличие у бариста</p>
-                <span class="menu-item__volume">—</span>
-              </div>
-              <div class="menu-item__right">
-                <span class="menu-item__price">от 320 ₽</span>
-                <button type="button" class="menu-item__add btn btn--dark" data-add-to-cart data-cursor="hover">В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-item" data-photo-bg="linear-gradient(135deg, #5c3d28 0%, #8a6248 100%)" data-menu-category="pastry" data-id="croissant" data-name="Круассан" data-price="250">
-            <div class="menu-item__body">
-              <div class="menu-item__info">
-                <h3 class="menu-item__name">Круассан</h3>
-                <p class="menu-item__desc">Свежая выпечка к утреннему кофе</p>
-                <span class="menu-item__volume">120 г</span>
-              </div>
-              <div class="menu-item__right">
-                <span class="menu-item__price">250 ₽</span>
-                <button type="button" class="menu-item__add btn btn--dark" data-add-to-cart data-cursor="hover">В корзину</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-item" data-photo-bg="linear-gradient(135deg, #5c3d28 0%, #8a6248 100%)" data-menu-category="combo" data-id="bouquet-coffee" data-name="Букет + кофе" data-price="450">
-            <div class="menu-item__body">
-              <div class="menu-item__info">
-                <h3 class="menu-item__name">Букет + кофе</h3>
-                <p class="menu-item__desc">Добавьте кофе к цветочному заказу</p>
-                <span class="menu-item__volume">—</span>
-              </div>
-              <div class="menu-item__right">
-                <span class="menu-item__price">от 450 ₽</span>
-                <button type="button" class="menu-item__add btn btn--dark" data-add-to-cart data-cursor="hover">В корзину</button>
-              </div>
-            </div>
-          </article>
-        </div>
+      <div class="coffee-menu-filters" id="coffeeMenuFilters" role="tablist" aria-label="Категории меню">
+        <button type="button" class="filter-chip is-active" data-menu-cat="all" aria-pressed="true">Все</button>
+        <button type="button" class="filter-chip" data-menu-cat="coffee" aria-pressed="false">Кофе</button>
+        <button type="button" class="filter-chip" data-menu-cat="tea" aria-pressed="false">Чай</button>
+        <button type="button" class="filter-chip" data-menu-cat="pastry" aria-pressed="false">Выпечка</button>
+        <button type="button" class="filter-chip" data-menu-cat="desserts" aria-pressed="false">Десерты</button>
+        <button type="button" class="filter-chip" data-menu-cat="lemonades" aria-pressed="false">Лимонады</button>
       </div>
+
+      <div class="coffee-menu-grid" id="coffeeMenuGrid" aria-live="polite"></div>
     </section>
 
-    <section class="coffee-combo coffee-to-bouquet">
-      <div class="coffee-combo__inner">
-        <div class="coffee-combo__image" role="presentation"></div>
-        <div class="coffee-combo__content">
-          <span class="coffee-combo__eyebrow">[ Комбо ]</span>
-          <h2 class="coffee-combo__title">Кофе к букету</h2>
-          <p class="coffee-combo__text">Латте, какао или десерт из витрины — маленькая деталь, которая делает подарок теплее.</p>
-          <div class="coffee-combo__actions">
-            <a href="#coffee-menu" class="btn btn--dark" data-cursor="hover">Добавить кофе к букету</a>
-            <a href="catalog.html" class="btn btn--outline coffee-combo__outline" data-cursor="hover">Смотреть букеты</a>
-          </div>
+    <section class="coffee-curtains" id="coffee-process" aria-label="Этапы приготовления кофе">
+      <article class="coffee-curtain" style="--curtain-z: 1">
+        <div class="coffee-curtain__bg">
+          <video class="coffee-curtain__video" muted loop playsinline preload="metadata" aria-hidden="true">
+            <source src="assets/video/coffee-beans.mp4" type="video/mp4">
+          </video>
+          <div class="coffee-curtain__bg-placeholder coffee-curtain__bg-placeholder--1" aria-hidden="true"></div>
         </div>
-      </div>
-    </section>
-
-    <section class="coffee-process" id="coffeeProcess">
-
-      <div class="coffee-process__header">
-        <span class="coffee-process__label">[ как готовим ]</span>
-        <h2 class="coffee-process__title">От зерна до чашки</h2>
-        <p class="coffee-process__lead">
-          Кофе в PALOMA — это спокойный ритуал: выбрать напиток,
-          добавить десерт к букету или остаться на латте среди цветов.
-        </p>
-      </div>
-
-      <div class="coffee-process__viewport" id="coffeeProcessViewport">
-        <div class="coffee-process__track" id="coffeeProcessTrack">
-
-          <article class="coffee-process__card">
-            <div class="coffee-process__card-bg coffee-process__card-bg--1" aria-hidden="true"></div>
-            <div class="coffee-process__card-overlay" aria-hidden="true"></div>
-            <div class="coffee-process__card-content">
-              <span class="coffee-process__num" aria-hidden="true">01</span>
-              <div>
-                <h3 class="coffee-process__card-title">Выбираем напиток</h3>
-                <p class="coffee-process__card-text">
-                  Классика, авторский напиток, какао или холодный кофе —
-                  под настроение и момент.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article class="coffee-process__card">
-            <div class="coffee-process__card-bg coffee-process__card-bg--2" aria-hidden="true"></div>
-            <div class="coffee-process__card-overlay" aria-hidden="true"></div>
-            <div class="coffee-process__card-content">
-              <span class="coffee-process__num" aria-hidden="true">02</span>
-              <div>
-                <h3 class="coffee-process__card-title">Готовим основу</h3>
-                <p class="coffee-process__card-text">
-                  Бариста собирает вкус аккуратно:
-                  температура, молоко, текстура и баланс.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article class="coffee-process__card">
-            <div class="coffee-process__card-bg coffee-process__card-bg--3" aria-hidden="true"></div>
-            <div class="coffee-process__card-overlay" aria-hidden="true"></div>
-            <div class="coffee-process__card-content">
-              <span class="coffee-process__num" aria-hidden="true">03</span>
-              <div>
-                <h3 class="coffee-process__card-title">Добавляем детали</h3>
-                <p class="coffee-process__card-text">
-                  К напитку можно выбрать десерт, открытку
-                  или добавить кофе к цветочному заказу.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article class="coffee-process__card">
-            <div class="coffee-process__card-bg coffee-process__card-bg--4" aria-hidden="true"></div>
-            <div class="coffee-process__card-overlay" aria-hidden="true"></div>
-            <div class="coffee-process__card-content">
-              <span class="coffee-process__num" aria-hidden="true">04</span>
-              <div>
-                <h3 class="coffee-process__card-title">Подаём красиво</h3>
-                <p class="coffee-process__card-text">
-                  Каждая чашка — часть атмосферы PALOMA:
-                  свет, цветы, кофейный аромат и спокойный ритм.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article class="coffee-process__card">
-            <div class="coffee-process__card-bg coffee-process__card-bg--5" aria-hidden="true"></div>
-            <div class="coffee-process__card-overlay" aria-hidden="true"></div>
-            <div class="coffee-process__card-content">
-              <span class="coffee-process__num" aria-hidden="true">05</span>
-              <div>
-                <h3 class="coffee-process__card-title">С собой или в зале</h3>
-                <p class="coffee-process__card-text">
-                  Можно забрать кофе с букетом или остаться
-                  в кофейне на Энгельса, 74.
-                </p>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-
-    </section>
-
-    <section class="coffee-story">
-      <article class="coffee-story__scene" data-scene="1">
-        <!-- TODO: replace with real PALOMA photo -->
-        <div class="coffee-story__bg-bw coffee-story__bg-bw--1" aria-hidden="true"></div>
-        <div class="coffee-story__overlay" aria-hidden="true"></div>
-        <div class="coffee-story__left">
-          <span class="coffee-story__num" aria-hidden="true">01</span>
-          <p class="coffee-story__text">Кофе можно добавить к букету или взять отдельно — маленькая деталь, которая делает подарок теплее.</p>
-        </div>
-        <div class="coffee-story__right" aria-hidden="true">
-          <div class="coffee-story__mini coffee-story__mini--1"></div>
+        <div class="coffee-curtain__overlay" aria-hidden="true"></div>
+        <div class="coffee-curtain__mini coffee-curtain__mini--1" aria-hidden="true"></div>
+        <div class="coffee-curtain__content">
+          <span class="coffee-curtain__num">01</span>
+          <h3 class="coffee-curtain__title">Зёрна</h3>
+          <p class="coffee-curtain__text">Отбираем зерно под сезон и вкус — основа каждой чашки в PALOMA.</p>
         </div>
       </article>
 
-      <article class="coffee-story__scene" data-scene="2">
-        <div class="coffee-story__bg-bw coffee-story__bg-bw--2" aria-hidden="true"></div>
-        <div class="coffee-story__overlay" aria-hidden="true"></div>
-        <div class="coffee-story__left">
-          <span class="coffee-story__num" aria-hidden="true">02</span>
-          <p class="coffee-story__text">Десерты меняются по наличию, но всегда остаются частью спокойного ритма PALOMA.</p>
+      <article class="coffee-curtain" style="--curtain-z: 2">
+        <div class="coffee-curtain__bg">
+          <video class="coffee-curtain__video" muted loop playsinline preload="metadata" aria-hidden="true">
+            <source src="assets/video/coffee-grind.mp4" type="video/mp4">
+          </video>
+          <div class="coffee-curtain__bg-placeholder coffee-curtain__bg-placeholder--2" aria-hidden="true"></div>
         </div>
-        <div class="coffee-story__right" aria-hidden="true">
-          <div class="coffee-story__mini coffee-story__mini--2"></div>
-        </div>
-      </article>
-
-      <article class="coffee-story__scene" data-scene="3">
-        <div class="coffee-story__bg-bw coffee-story__bg-bw--3" aria-hidden="true"></div>
-        <div class="coffee-story__overlay" aria-hidden="true"></div>
-        <div class="coffee-story__left">
-          <span class="coffee-story__num" aria-hidden="true">03</span>
-          <p class="coffee-story__text">Можно забрать букет на Энгельса, остаться на латте и выбрать открытку или подарок на месте.</p>
-        </div>
-        <div class="coffee-story__right" aria-hidden="true">
-          <div class="coffee-story__mini coffee-story__mini--3"></div>
+        <div class="coffee-curtain__overlay" aria-hidden="true"></div>
+        <div class="coffee-curtain__mini coffee-curtain__mini--2" aria-hidden="true"></div>
+        <div class="coffee-curtain__content">
+          <span class="coffee-curtain__num">02</span>
+          <h3 class="coffee-curtain__title">Помол</h3>
+          <p class="coffee-curtain__text">Помол под способ заваривания — чтобы раскрыть аромат и баланс.</p>
         </div>
       </article>
 
-      <article class="coffee-story__scene" data-scene="4">
-        <div class="coffee-story__bg-bw coffee-story__bg-bw--4" aria-hidden="true"></div>
-        <div class="coffee-story__overlay" aria-hidden="true"></div>
-        <div class="coffee-story__left">
-          <span class="coffee-story__num" aria-hidden="true">04</span>
-          <p class="coffee-story__text">PALOMA — цветы, кофе и настроение у моря. Пространство, куда приходят не только за заказом, но и за паузой.</p>
+      <article class="coffee-curtain" style="--curtain-z: 3">
+        <div class="coffee-curtain__bg">
+          <video class="coffee-curtain__video" muted loop playsinline preload="metadata" aria-hidden="true">
+            <source src="assets/video/coffee-brew.mp4" type="video/mp4">
+          </video>
+          <div class="coffee-curtain__bg-placeholder coffee-curtain__bg-placeholder--3" aria-hidden="true"></div>
         </div>
-        <div class="coffee-story__right" aria-hidden="true">
-          <div class="coffee-story__mini coffee-story__mini--4"></div>
+        <div class="coffee-curtain__overlay" aria-hidden="true"></div>
+        <div class="coffee-curtain__mini coffee-curtain__mini--3" aria-hidden="true"></div>
+        <div class="coffee-curtain__content">
+          <span class="coffee-curtain__num">03</span>
+          <h3 class="coffee-curtain__title">Приготовление</h3>
+          <p class="coffee-curtain__text">Температура, молоко и текстура — бариста собирает вкус аккуратно.</p>
+        </div>
+      </article>
+
+      <article class="coffee-curtain" style="--curtain-z: 4">
+        <div class="coffee-curtain__bg">
+          <video class="coffee-curtain__video" muted loop playsinline preload="metadata" aria-hidden="true">
+            <source src="assets/video/coffee-serve.mp4" type="video/mp4">
+          </video>
+          <div class="coffee-curtain__bg-placeholder coffee-curtain__bg-placeholder--4" aria-hidden="true"></div>
+        </div>
+        <div class="coffee-curtain__overlay" aria-hidden="true"></div>
+        <div class="coffee-curtain__mini coffee-curtain__mini--4" aria-hidden="true"></div>
+        <div class="coffee-curtain__content">
+          <span class="coffee-curtain__num">04</span>
+          <h3 class="coffee-curtain__title">Подача</h3>
+          <p class="coffee-curtain__text">Чашка к букету, с собой или в зале — часть атмосферы PALOMA.</p>
         </div>
       </article>
     </section>
 
-    <section class="coffee-contacts" id="coffee-contacts" aria-labelledby="coffee-contacts-heading">
-      <div class="coffee-contacts__inner">
-        <div class="coffee-contacts__info">
-          <span class="coffee-contacts__eyebrow">[ Приходите ]</span>
-          <h2 class="coffee-contacts__title" id="coffee-contacts-heading">PALOMA Coffee</h2>
-          <ul class="coffee-contacts__list">
-            <li class="coffee-contacts__item">
-              <span class="coffee-contacts__label">Адрес</span>
-              <span>Новороссийск, ул. Энгельса, 74</span>
-            </li>
-            <li class="coffee-contacts__item">
-              <span class="coffee-contacts__label">Часы</span>
-              <span>Ежедневно с 8:00 до 22:00</span>
-            </li>
-            <li class="coffee-contacts__item">
-              <span class="coffee-contacts__label">Телефон</span>
-              <a href="tel:+78612000000">+7 (861) 200-00-00</a>
-            </li>
-          </ul>
-          <div class="coffee-contacts__actions">
-            <a href="https://wa.me/79180000000" target="_blank" rel="noopener noreferrer" class="btn btn--dark" data-cursor="hover">WhatsApp</a>
-            <a href="https://t.me/paloma_novorossiysk" target="_blank" rel="noopener noreferrer" class="btn btn--outline coffee-combo__outline" data-cursor="hover">Telegram</a>
-            <a href="https://yandex.ru/maps/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA+%D1%83%D0%BB.+%D0%AD%D0%BD%D0%B3%D0%B5%D0%BB%D1%8C%D1%81%D0%B0+74" target="_blank" rel="noopener noreferrer" class="btn btn--ghost" data-cursor="hover">Построить маршрут</a>
-          </div>
-        </div>
-
-        <div class="coffee-contacts__media">
-          <div class="coffee-contacts__map-wrap">
-            <iframe class="coffee-contacts__iframe"
-              loading="lazy"
-              title="Карта PALOMA на Энгельса"
-              src="https://yandex.ru/map-widget/v1/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%AD%D0%BD%D0%B3%D0%B5%D0%BB%D1%8C%D1%81%D0%B0%2C%2074&amp;z=17"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
+    <section class="coffee-cta-final" aria-label="Заказать кофе">
+      <div class="coffee-cta-final__inner">
+        <a href="#coffee-menu" class="btn btn--coffee-hero coffee-cta-final__primary" data-cursor="hover">
+          Добавить кофе к букету
+        </a>
+        <a href="catalog.html" class="btn btn--coffee-outline coffee-cta-final__secondary" data-cursor="hover">
+          Перейти в каталог
+        </a>
       </div>
     </section>
 
@@ -659,7 +450,7 @@
           <h4 class="site-footer__col-title">Каталог</h4>
           <ul class="site-footer__list">
             <li><a href="coffee.html">PALOMA Coffee</a></li>
-            <li><a href="weddings.html">Свадебная флористика</a></li>
+            <li><a href="event-decoration.html">Цветочное оформление</a></li>
             <li><a href="catalog.html?cat=online">Онлайн-витрина</a></li>
             <li><a href="catalog.html?cat=best">Букеты</a></li>
             <li><a href="catalog.html?cat=comp">Композиции</a></li>
@@ -676,7 +467,8 @@
             <li><a href="faq.html">Вопрос-ответ</a></li>
             <li><a href="blog.html">Журнал</a></li>
             <li><a href="wedding-piggy-bank.html">Свадебная копилка</a></li>
-            <li><a href="events.html">Мероприятия</a></li>
+            <li><a href="event-decoration.html">Оформление мероприятий</a></li>
+            <li><a href="events.html">Оформление</a></li>
           </ul>
         </div>
         <div class="site-footer__col">
@@ -749,27 +541,56 @@
     </div>
   </div>
 
-  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
-    <div class="cart-drawer__backdrop" data-cart-close></div>
-    <aside class="cart-drawer__panel">
-      <header class="cart-drawer__header">
-        <h3 class="cart-drawer__title">Корзина</h3>
-        <button type="button" class="cart-drawer__close" data-cart-close aria-label="Закрыть" data-cursor="hover">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  <!-- ── CART DRAWER ── -->
+  <div class="cart-drawer" id="cartDrawer"
+       aria-label="Корзина" aria-hidden="true"
+       role="dialog" hidden>
+    <div class="cart-drawer__backdrop"
+         id="cartDrawerBackdrop"
+         aria-hidden="true"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Корзина</h2>
+        <button type="button" class="cart-drawer__close"
+                id="cartDrawerClose"
+                data-cart-close
+                aria-label="Закрыть корзину" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
         </button>
-      </header>
-      <div class="cart-drawer__body" id="cartBody"></div>
-      <div class="cart-drawer__empty" id="cartEmpty">
-        <p>В корзине пока пусто.</p>
-        <button type="button" class="btn btn--light" data-cart-close>Продолжить покупки</button>
       </div>
-      <footer class="cart-drawer__footer" id="cartFooter">
-        <div class="cart-drawer__row"><span>Подытог</span><span id="cartSubtotal">0 ₽</span></div>
-        <div class="cart-drawer__row cart-drawer__row--muted"><span>Доставка</span><span>рассчитаем при оформлении</span></div>
-        <div class="cart-drawer__row cart-drawer__row--total"><span>Итого</span><span id="cartTotal">0 ₽</span></div>
-        <button type="button" class="btn btn--dark cart-drawer__checkout" id="cartCheckout" data-cursor="hover">Оформить заказ</button>
-      </footer>
-    </aside>
+      <div class="cart-drawer__empty" id="cartDrawerEmpty">
+        <div class="cart-drawer__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/>
+          </svg>
+        </div>
+        <p class="cart-drawer__empty-title">Корзина пуста</p>
+        <p class="cart-drawer__empty-text">Добавьте букет, кофе или подарок</p>
+        <a href="catalog.html"
+           class="btn btn--dark cart-drawer__empty-cta"
+           data-cart-close>Перейти в каталог</a>
+      </div>
+      <div class="cart-drawer__body" id="cartDrawerBody" hidden>
+        <div class="cart-drawer__list" id="cartDrawerList"
+             aria-label="Товары в корзине"></div>
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__total-row">
+            <span class="cart-drawer__total-label">Итого</span>
+            <span class="cart-drawer__total-val" id="cartDrawerTotal">0 ₽</span>
+          </div>
+          <a href="cart.html"
+             class="btn btn--dark cart-drawer__checkout"
+             aria-label="Перейти к оформлению заказа">Оформить заказ</a>
+          <button type="button" class="cart-drawer__continue"
+                  data-cart-close
+                  aria-label="Продолжить покупки">Продолжить покупки</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="custom-cursor" id="customCursor" aria-hidden="true">
@@ -777,9 +598,18 @@
     <div class="custom-cursor__ring"></div>
   </div>
 
+  <script src="preloader.js"></script>
+  <script src="cart-core.js"></script>
   <script src="script.js"></script>
+  <script src="paloma-animations.js"></script>
+  <script src="paloma-media-paths.js"></script>
+  <script src="paloma-media.js"></script>
+
+  <script src="wishlist.js"></script>
   <script src="clients.js"></script>
+  <script src="coffee-menu-data.js"></script>
   <script src="coffee.js"></script>
+  <script src="cursor.js"></script>
 </body>
 </html>
 

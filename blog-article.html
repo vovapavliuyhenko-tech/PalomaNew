@@ -4,27 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FBF6E8">
-  <title>Статья — Журнал PALOMA</title>
-  <meta name="description" content="Материалы журнала PALOMA.">
+  <title>Статья — Блог PALOMA</title>
+  <meta name="description" content="Статья блога PALOMA — цветы, кофе и вдохновение для подарков.">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">`n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="preloader.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="paloma-animations.css">
+<link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="clients.css">
   <link rel="stylesheet" href="blog.css">
+  <link rel="stylesheet" href="paloma-responsive.css">
+  <link rel="stylesheet" href="cursor.css">
 </head>
 <body class="page-article">
   <a href="#main" class="skip-link">К содержимому</a>
 
-  <div class="paloma-loader" id="palomaLoader" aria-hidden="true">
-    <div class="paloma-loader__inner">
-      <p class="paloma-loader__word">PALOMA</p>
-      <div class="paloma-loader__line" aria-hidden="true"></div>
+  <div class="pl" id="palomaLoader" aria-hidden="true" role="status" aria-label="Загрузка PALOMA">
+  <div class="pl__curtain pl__curtain--top" aria-hidden="true"></div>
+  <div class="pl__curtain pl__curtain--bot" aria-hidden="true"></div>
+  <div class="pl__scene" aria-hidden="true">
+    <div class="pl__ring-wrap" aria-hidden="true">
+      <svg class="pl__ring-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <path id="plCirclePath" d="M 160,160 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0" />
+        </defs>
+        <text class="pl__ring-text">
+          <textPath href="#plCirclePath" xlink:href="#plCirclePath" startOffset="0%" textLength="741" lengthAdjust="spacing">
+            PALOMA&nbsp;•&nbsp;FLOWERS&nbsp;•&nbsp;COFFEE&nbsp;•&nbsp;YOU&nbsp;•&nbsp;НОВОРОССИЙСК&nbsp;•&nbsp;
+          </textPath>
+        </text>
+      </svg>
     </div>
-    <div class="paloma-loader__curtain paloma-loader__curtain--t"></div>
-    <div class="paloma-loader__curtain paloma-loader__curtain--b"></div>
+    <div class="pl__logo-wrap">
+      <p class="pl__wordmark" aria-label="PALOMA">PALOMA</p>
+      <p class="pl__tagline" aria-label="flowers coffee you">
+        <span>flowers</span>
+        <span aria-hidden="true">·</span>
+        <span>coffee</span>
+        <span aria-hidden="true">·</span>
+        <span>you</span>
+      </p>
+    </div>
   </div>
-
+</div>
 
 <div class="site-top" id="siteTop">
     <div class="top-marquee" aria-hidden="false">
@@ -167,7 +192,7 @@
                     </div>
                   </a>
 
-                  <a href="catalog.html?cat=sub"
+                  <a href="subscription.html"
                      class="catalog-nav-item" data-cursor="hover">
                     <div class="catalog-nav-item__icon" aria-hidden="true">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
@@ -200,7 +225,7 @@
             </div>
           </div>
           <a href="coffee.html" class="site-header__link">Кофейня</a>
-          <a href="weddings.html" class="site-header__link">Свадьбы</a>
+          <a href="event-decoration.html" class="site-header__link">Оформление</a>
 
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
           <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerBlog" data-cursor="hover">
@@ -216,7 +241,7 @@
                 <a href="care.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/><path d="M12 14v7"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Уход за букетом</div><div class="client-nav-card__desc">7 дней свежести и больше</div></div></a>
                 <a href="faq.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 4"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Вопрос-ответ</div><div class="client-nav-card__desc">Частые вопросы</div></div></a>
                 <a href="wedding-piggy-bank.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Свадебная копилка</div><div class="client-nav-card__desc">Этапы подготовки</div></div></a>
-                <a href="events.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Мероприятия</div><div class="client-nav-card__desc">Оформление событий</div></div></a>
+                <a href="event-decoration.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оформление мероприятий</div><div class="client-nav-card__desc">Цветочный декор событий</div></div></a>
               </div>
             </div>
           </div>
@@ -227,13 +252,16 @@
 
         <div class="site-header__actions">
           <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
-          <button type="button" class="site-header__icon" aria-label="Избранное" data-cursor="hover">
+          <a href="wishlist.html" class="site-header__icon site-header__icon--wishlist" aria-label="Избранное" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
-          </button>
-          <a href="cart.html" class="site-header__icon site-header__icon--cart site-header__cart" aria-label="Корзина" data-cursor="hover">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
-            <span class="site-header__cart-count is-empty">0</span>
+            <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
           </a>
+          <button type="button" class="site-header__icon site-header__icon--cart site-header__cart"
+        id="cartOpenBtn" data-cart-open
+        aria-label="Корзина" aria-expanded="false" aria-controls="cartDrawer" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
+            <span class="site-header__cart-count site-header__badge cart-count" id="cartCount" data-cart-count style="display:none" aria-hidden="true">0</span>
+          </button>
         </div>
       </div>
 
@@ -242,16 +270,17 @@
         <div class="site-header__mobile-inner">
           <a href="catalog.html" class="site-header__mobile-link">Каталог</a>
           <a href="coffee.html" class="site-header__mobile-link">Кофейня</a>
-          <a href="weddings.html" class="site-header__mobile-link">Свадьбы</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление</a>
           <span class="site-header__mobile-section-title">Клиентам</span>
           <a href="delivery.html" class="site-header__mobile-link">Доставка</a>
           <a href="payment.html" class="site-header__mobile-link">Оплата</a>
           <a href="care.html" class="site-header__mobile-link">Уход за букетом</a>
           <a href="faq.html" class="site-header__mobile-link">Вопрос-ответ</a>
           <a href="wedding-piggy-bank.html" class="site-header__mobile-link">Свадебная копилка</a>
-          <a href="events.html" class="site-header__mobile-link">Мероприятия</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление мероприятий</a>
           <a href="contacts.html" class="site-header__mobile-link">Контакты</a>
           <a href="blog.html" class="site-header__mobile-link">Блог</a>
+          <a href="wishlist.html" class="site-header__mobile-link">Избранное</a>
           <a href="tel:+78612000000" class="site-header__mobile-phone">+7 (861) 200-00-00</a>
         </div>
       </nav>
@@ -265,7 +294,7 @@
         <ol class="article-breadcrumbs__list">
           <li><a href="index.html">Главная</a></li>
           <li class="sep" aria-hidden="true">/</li>
-          <li><a href="blog.html">Журнал</a></li>
+          <li><a href="blog.html">Блог</a></li>
           <li class="sep" aria-hidden="true">/</li>
           <li id="articleBreadcrumbTitle">Статья</li>
         </ol>
@@ -277,8 +306,8 @@
     <div id="articleNotFound" hidden>
       <div class="article-not-found">
         <h1>Статья не найдена</h1>
-        <p>Вернитесь в журнал или откройте другой материал.</p>
-        <a href="blog.html" class="btn btn--dark">Вернуться в журнал</a>
+        <p>Вернитесь в блог или откройте другой материал.</p>
+        <a href="blog.html" class="btn btn--dark">Вернуться в блог</a>
       </div>
     </div>
 
@@ -296,7 +325,7 @@
           <h4 class="site-footer__col-title">Каталог</h4>
           <ul class="site-footer__list">
             <li><a href="coffee.html">PALOMA Coffee</a></li>
-            <li><a href="weddings.html">Свадебная флористика</a></li>
+            <li><a href="event-decoration.html">Цветочное оформление</a></li>
             <li><a href="catalog.html?cat=online">Онлайн-витрина</a></li>
             <li><a href="catalog.html?cat=best">Букеты</a></li>
             <li><a href="catalog.html?cat=comp">Композиции</a></li>
@@ -311,9 +340,10 @@
             <li><a href="payment.html">Оплата</a></li>
             <li><a href="care.html">Уход за букетом</a></li>
             <li><a href="faq.html">Вопрос-ответ</a></li>
-            <li><a href="blog.html">Журнал</a></li>
+            <li><a href="blog.html">Блог</a></li>
             <li><a href="wedding-piggy-bank.html">Свадебная копилка</a></li>
-            <li><a href="events.html">Мероприятия</a></li>
+            <li><a href="event-decoration.html">Оформление мероприятий</a></li>
+            <li><a href="events.html">Оформление</a></li>
           </ul>
         </div>
         <div class="site-footer__col">
@@ -342,9 +372,17 @@
     <div class="custom-cursor__dot"></div>
     <div class="custom-cursor__ring"></div>
   </div>
+  <script src="preloader.js"></script>
+  <script src="cart-core.js"></script>
   <script src="script.js"></script>
+  <script src="paloma-animations.js"></script>
+  <script src="paloma-media-paths.js"></script>
+  <script src="paloma-media.js"></script>
+
+  <script src="wishlist.js"></script>
   <script src="clients.js"></script>
   <script src="blog-data.js"></script>
   <script src="blog.js"></script>
+  <script src="cursor.js"></script>
 </body>
 </html>

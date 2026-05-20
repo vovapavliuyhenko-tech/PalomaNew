@@ -1,0 +1,107 @@
+  <main id="main" class="client-page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="breadcrumbs__inner">
+        <ol class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="index.html" itemprop="item"><span itemprop="name">Главная</span></a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li class="breadcrumbs__sep" aria-hidden="true">/</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="faq.html" itemprop="item"><span itemprop="name">Клиентам</span></a>
+            <meta itemprop="position" content="2">
+          </li>
+          <li class="breadcrumbs__sep" aria-hidden="true">/</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">Оформление мероприятий</span>
+            <meta itemprop="position" content="3">
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <section class="client-hero">
+      <div class="client-hero__inner">
+        <span class="client-hero__eyebrow">[ Клиентам ]</span>
+        <h1 class="client-hero__title">Оформление мероприятий</h1>
+        <p class="client-hero__lead">
+          Цветочное оформление для свадеб, ужинов, презентаций и частных событий.
+          Продумываем композиции, палитру и логистику — от концепции до монтажа на площадке.
+        </p>
+        <div class="client-hero__actions">
+          <a href="events.html" class="btn btn--dark" data-cursor="hover">Страница «Оформление»</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="client-event-intro">
+      <div class="client-event-intro__inner">
+        <header class="client-event-intro__header">
+          <span class="client-event-intro__eyebrow">[ Услуга ]</span>
+          <h2 class="client-event-intro__title">Что мы делаем</h2>
+        </header>
+        <div class="client-event-intro__grid">
+          <article class="client-event-intro__card" data-cursor="hover">
+            <h3 class="client-event-intro__card-title">Букеты и композиции</h3>
+            <p class="client-event-intro__card-text">Букеты невесты, бутоньерки, настольные и напольные инсталляции.</p>
+          </article>
+          <article class="client-event-intro__card" data-cursor="hover">
+            <h3 class="client-event-intro__card-title">Арки и фотозоны</h3>
+            <p class="client-event-intro__card-text">Церемония, welcome-зона, фон для гостей и пресс-волл.</p>
+          </article>
+          <article class="client-event-intro__card" data-cursor="hover">
+            <h3 class="client-event-intro__card-title">Декор пространства</h3>
+            <p class="client-event-intro__card-text">Столы, подиумы, подвесы — в единой палитре события.</p>
+          </article>
+        </div>
+        <p class="client-event-intro__note">
+          Подробные кейсы, этапы работы и портфолио — на странице
+          <a href="events.html">Оформление</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="client-lead" id="event-deco-form" aria-labelledby="event-deco-form-heading">
+      <div class="client-lead__inner">
+        <header class="client-lead__header">
+          <span class="client-lead__eyebrow">[ Заявка ]</span>
+          <h2 class="client-lead__title" id="event-deco-form-heading">Оставить заявку</h2>
+          <p class="client-lead__lead">Опишите событие — перезвоним и предложим концепцию оформления.</p>
+        </header>
+        <form class="client-lead__form" id="eventDecoForm" novalidate>
+          <div class="client-lead__field">
+            <label class="client-lead__label" for="edf-name">Имя</label>
+            <input class="client-lead__input" type="text" id="edf-name" name="name" autocomplete="name" required placeholder="Ваше имя" />
+          </div>
+          <div class="client-lead__field">
+            <label class="client-lead__label" for="edf-phone">Телефон</label>
+            <input class="client-lead__input" type="tel" id="edf-phone" name="phone" autocomplete="tel" required placeholder="+7 ___ ___ __ __" />
+          </div>
+          <div class="client-lead__field">
+            <label class="client-lead__label" for="edf-date">Дата события</label>
+            <input class="client-lead__input" type="text" id="edf-date" name="date" placeholder="Например, 14 июня 2026" />
+          </div>
+          <div class="client-lead__field client-lead__field--full">
+            <label class="client-lead__label" for="edf-type">Тип события</label>
+            <select class="client-lead__input client-lead__select" id="edf-type" name="eventType">
+              <option value="">Выберите</option>
+              <option value="wedding">Свадьба</option>
+              <option value="corporate">Корпоратив</option>
+              <option value="private">Частное событие</option>
+              <option value="other">Другое</option>
+            </select>
+          </div>
+          <div class="client-lead__field client-lead__field--full">
+            <label class="client-lead__label" for="edf-comment">Комментарий</label>
+            <textarea class="client-lead__input client-lead__textarea" id="edf-comment" name="comment" rows="4" placeholder="Площадка, палитра, зоны оформления…"></textarea>
+          </div>
+          <div class="client-lead__field client-lead__field--full">
+            <button type="submit" class="btn btn--dark client-lead__submit" data-cursor="hover">Отправить заявку</button>
+          </div>
+          <div class="client-lead__success" id="eventDecoSuccess" hidden>
+            <p>Спасибо! Мы получили заявку и свяжемся с вами в ближайшее время.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>

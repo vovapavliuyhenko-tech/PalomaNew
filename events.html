@@ -4,26 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FBF6E8">
-  <title>Оформление события цветами цветами — PALOMA Новороссийск</title>
-  <meta name="description" content="Флористическое оформление корпоративов, дней рождения, ужинов и фотосессий. Концепция, монтаж и демонтаж под ключ.">
+  <title>Цветочное оформление событий — PALOMA Новороссийск</title>
+  <meta name="description" content="PALOMA — цветочное оформление свадеб, мероприятий, витрин и фотозон. Флористическая концепция, монтаж декора, букет невесты. Новороссийск и побережье.">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">`n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="preloader.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="paloma-animations.css">
+<link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="clients.css">
+  <link rel="stylesheet" href="events.css">
+  <link rel="stylesheet" href="paloma-responsive.css">
+  <link rel="stylesheet" href="cursor.css">
 </head>
-<body>
+<body class="page-events">
   <a href="#main" class="skip-link">К содержимому</a>
 
-  <div class="paloma-loader" id="palomaLoader" aria-hidden="true">
-    <div class="paloma-loader__inner">
-      <p class="paloma-loader__word">PALOMA</p>
-      <div class="paloma-loader__line" aria-hidden="true"></div>
+  <div class="pl" id="palomaLoader" aria-hidden="true" role="status" aria-label="Загрузка PALOMA">
+  <div class="pl__curtain pl__curtain--top" aria-hidden="true"></div>
+  <div class="pl__curtain pl__curtain--bot" aria-hidden="true"></div>
+  <div class="pl__scene" aria-hidden="true">
+    <div class="pl__ring-wrap" aria-hidden="true">
+      <svg class="pl__ring-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <path id="plCirclePath" d="M 160,160 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0" />
+        </defs>
+        <text class="pl__ring-text">
+          <textPath href="#plCirclePath" xlink:href="#plCirclePath" startOffset="0%" textLength="741" lengthAdjust="spacing">
+            PALOMA&nbsp;•&nbsp;FLOWERS&nbsp;•&nbsp;COFFEE&nbsp;•&nbsp;YOU&nbsp;•&nbsp;НОВОРОССИЙСК&nbsp;•&nbsp;
+          </textPath>
+        </text>
+      </svg>
     </div>
-    <div class="paloma-loader__curtain paloma-loader__curtain--t"></div>
-    <div class="paloma-loader__curtain paloma-loader__curtain--b"></div>
+    <div class="pl__logo-wrap">
+      <p class="pl__wordmark" aria-label="PALOMA">PALOMA</p>
+      <p class="pl__tagline" aria-label="flowers coffee you">
+        <span>flowers</span>
+        <span aria-hidden="true">·</span>
+        <span>coffee</span>
+        <span aria-hidden="true">·</span>
+        <span>you</span>
+      </p>
+    </div>
   </div>
-
+</div>
 
 <div class="site-top" id="siteTop">
     <div class="top-marquee" aria-hidden="false">
@@ -166,7 +192,7 @@
                     </div>
                   </a>
 
-                  <a href="catalog.html?cat=sub"
+                  <a href="subscription.html"
                      class="catalog-nav-item" data-cursor="hover">
                     <div class="catalog-nav-item__icon" aria-hidden="true">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
@@ -199,7 +225,7 @@
             </div>
           </div>
           <a href="coffee.html" class="site-header__link">Кофейня</a>
-          <a href="weddings.html" class="site-header__link">Свадьбы</a>
+          <a href="event-decoration.html" class="site-header__link">Оформление</a>
 
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
           <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerEvents" data-cursor="hover">
@@ -215,7 +241,7 @@
                 <a href="care.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/><path d="M12 14v7"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Уход за букетом</div><div class="client-nav-card__desc">7 дней свежести и больше</div></div></a>
                 <a href="faq.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 4"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Вопрос-ответ</div><div class="client-nav-card__desc">Частые вопросы</div></div></a>
                 <a href="wedding-piggy-bank.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Свадебная копилка</div><div class="client-nav-card__desc">Этапы подготовки</div></div></a>
-                <a href="events.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Мероприятия</div><div class="client-nav-card__desc">Оформление событий</div></div></a>
+                <a href="event-decoration.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оформление мероприятий</div><div class="client-nav-card__desc">Цветочный декор событий</div></div></a>
               </div>
             </div>
           </div>
@@ -226,13 +252,16 @@
 
         <div class="site-header__actions">
           <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
-          <button type="button" class="site-header__icon" aria-label="Избранное" data-cursor="hover">
+          <a href="wishlist.html" class="site-header__icon site-header__icon--wishlist" aria-label="Избранное" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
-          </button>
-          <a href="cart.html" class="site-header__icon site-header__icon--cart site-header__cart" aria-label="Корзина" data-cursor="hover">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
-            <span class="site-header__cart-count is-empty">0</span>
+            <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
           </a>
+          <button type="button" class="site-header__icon site-header__icon--cart site-header__cart"
+        id="cartOpenBtn" data-cart-open
+        aria-label="Корзина" aria-expanded="false" aria-controls="cartDrawer" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
+            <span class="site-header__cart-count site-header__badge cart-count" id="cartCount" data-cart-count style="display:none" aria-hidden="true">0</span>
+          </button>
         </div>
       </div>
 
@@ -241,167 +270,270 @@
         <div class="site-header__mobile-inner">
           <a href="catalog.html" class="site-header__mobile-link">Каталог</a>
           <a href="coffee.html" class="site-header__mobile-link">Кофейня</a>
-          <a href="weddings.html" class="site-header__mobile-link">Свадьбы</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление</a>
           <span class="site-header__mobile-section-title">Клиентам</span>
           <a href="delivery.html" class="site-header__mobile-link">Доставка</a>
           <a href="payment.html" class="site-header__mobile-link">Оплата</a>
           <a href="care.html" class="site-header__mobile-link">Уход за букетом</a>
           <a href="faq.html" class="site-header__mobile-link">Вопрос-ответ</a>
           <a href="wedding-piggy-bank.html" class="site-header__mobile-link">Свадебная копилка</a>
-          <a href="events.html" class="site-header__mobile-link">Мероприятия</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление мероприятий</a>
           <a href="contacts.html" class="site-header__mobile-link">Контакты</a>
           <a href="blog.html" class="site-header__mobile-link">Блог</a>
+          <a href="wishlist.html" class="site-header__mobile-link">Избранное</a>
           <a href="tel:+78612000000" class="site-header__mobile-phone">+7 (861) 200-00-00</a>
         </div>
       </nav>
     </header>
   </div>
 
-  <main id="main">
-<nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <div class="breadcrumbs__inner">
-        <ol class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
-          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-            <a href="index.html" itemprop="item"><span itemprop="name">Главная</span></a>
-            <meta itemprop="position" content="1">
-          </li>
-          <li class="breadcrumbs__sep" aria-hidden="true">/</li>
-          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-            <a href="faq.html" itemprop="item"><span itemprop="name">Клиентам</span></a>
-            <meta itemprop="position" content="2">
-          </li>
-          <li class="breadcrumbs__sep" aria-hidden="true">/</li>
-          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-            <span itemprop="name">Мероприятия</span>
-            <meta itemprop="position" content="3">
-          </li>
-        </ol>
+  <main id="main" class="events-main">
+    <section class="e-hero" aria-labelledby="e-hero-heading">
+      <div class="e-hero__bg" aria-hidden="true">
+        <div class="e-hero__placeholder"></div>
       </div>
-    </nav>
-    <section class="client-hero">
-      <div class="client-hero__inner">
-        <span class="client-hero__eyebrow" aria-hidden="true">[ Клиентам ]</span>
-        <h1 class="client-hero__title">Мероприятия</h1>
-        <p class="client-hero__lead">Корпоративы, дни рождения, ужины, съёмки — создаём атмосферу с первого цветка.</p>
+      <div class="e-hero__overlay" aria-hidden="true"></div>
+      <div class="e-hero__content">
+        <h1 class="e-hero__title" id="e-hero-heading">Цветочное оформление событий</h1>
+        <p class="e-hero__lead">
+          Создаём атмосферу цветами: от букета невесты до оформления пространства.
+        </p>
+        <a href="#e-form" class="btn btn--light-outline e-hero__cta" data-cursor="hover">
+          Рассчитать оформление
+        </a>
       </div>
     </section>
-    <section class="info-cards-section info-cards-section--alt">
-      <div class="info-cards-section__inner">
-        <header class="info-cards-section__header">
-          <span class="info-cards-section__eyebrow">[ Типология ]</span>
-          <h2 class="info-cards-section__title">Типы событий</h2>
+
+    <section class="e-services" aria-labelledby="e-services-heading">
+      <div class="e-services__inner">
+        <header class="e-services__header">
+          <span class="e-services__eyebrow">[ Что оформляем ]</span>
+          <h2 class="e-services__title" id="e-services-heading">Направления</h2>
+          <p class="e-services__lead">
+            Флористическая концепция, подбор цветов и монтаж декора — под формат, площадку и свет.
+          </p>
         </header>
-        <div class="info-cards-grid" data-cols="3">
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Корпоратив</h3><p class="info-card__desc">Бренд‑цвет, welcome‑линии и активности на площадке.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">День рождения</h3><p class="info-card__desc">Интерактивные острова для гостей и фотозоны.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Романтический ужин</h3><p class="info-card__desc">Тот самый стол на двоих с мягкой подсветкой.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Фотосессия</h3><p class="info-card__desc">Переносные конструкции и лёгкие текстуры без шума в кадре.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Открытие / презентация</h3><p class="info-card__desc">Медиафасады из цветов и брендовые инсталляции.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Семейный праздник</h3><p class="info-card__desc">Тёплая палитра и живые острова безопасности для детей.</p></article>
+        <ul class="e-services__grid">
+          <li class="e-services__item">
+            <span class="e-services__name">Цветочное оформление</span>
+            <span class="e-services__hint">Букет невесты, арки, столы, церемония</span>
+          </li>
+          <li class="e-services__item">
+            <span class="e-services__name">Камерные ужины</span>
+            <span class="e-services__hint">Настольные композиции и свет</span>
+          </li>
+          <li class="e-services__item">
+            <span class="e-services__name">Фотозоны</span>
+            <span class="e-services__hint">Акценты для кадра и съёмки</span>
+          </li>
+          <li class="e-services__item">
+            <span class="e-services__name">Витрины</span>
+            <span class="e-services__hint">Сезонные и брендовые инсталляции</span>
+          </li>
+          <li class="e-services__item">
+            <span class="e-services__name">Арки</span>
+            <span class="e-services__hint">Церемония и welcome-зона</span>
+          </li>
+          <li class="e-services__item">
+            <span class="e-services__name">Столы</span>
+            <span class="e-services__hint">Оформление гостевых и президиума</span>
+          </li>
+          <li class="e-services__item">
+            <span class="e-services__name">Букет невесты</span>
+            <span class="e-services__hint">Отдельный заказ или часть проекта</span>
+          </li>
+          <li class="e-services__item">
+            <span class="e-services__name">Оформление офлайн-точек</span>
+            <span class="e-services__hint">Витрины, входные группы, pop-up</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="e-process" id="e-process" aria-labelledby="e-process-heading">
+      <div class="e-process__header">
+        <span class="e-process__label">[ Процесс ]</span>
+        <h2 class="e-process__title" id="e-process-heading">
+          Как мы готовим<br />цветочное оформление
+        </h2>
+        <p class="e-process__lead">
+          Прозрачные этапы: от знакомства до монтажа декора на площадке.
+        </p>
+      </div>
+      <div class="e-process__viewport" id="eProcessViewport">
+        <div class="e-process__track" id="eProcessTrack">
+          <article class="e-process__card">
+            <div class="e-process__card-bg e-process__card-bg--1" aria-hidden="true"></div>
+            <div class="e-process__card-overlay" aria-hidden="true"></div>
+            <div class="e-process__card-content">
+              <span class="e-process__num" aria-hidden="true">01</span>
+              <div>
+                <h3 class="e-process__card-title">Знакомство</h3>
+                <p class="e-process__card-text">
+                  Обсуждаем дату, площадку, формат и объём цветочного оформления.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="e-process__card">
+            <div class="e-process__card-bg e-process__card-bg--2" aria-hidden="true"></div>
+            <div class="e-process__card-overlay" aria-hidden="true"></div>
+            <div class="e-process__card-content">
+              <span class="e-process__num" aria-hidden="true">02</span>
+              <div>
+                <h3 class="e-process__card-title">Концепция</h3>
+                <p class="e-process__card-text">
+                  Собираем флористическую концепцию: палитра, фактуры, ключевые зоны.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="e-process__card">
+            <div class="e-process__card-bg e-process__card-bg--3" aria-hidden="true"></div>
+            <div class="e-process__card-overlay" aria-hidden="true"></div>
+            <div class="e-process__card-content">
+              <span class="e-process__num" aria-hidden="true">03</span>
+              <div>
+                <h3 class="e-process__card-title">Подбор цветов</h3>
+                <p class="e-process__card-text">
+                  Подбираем сезонные цветы и материалы под концепцию и бюджет.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="e-process__card">
+            <div class="e-process__card-bg e-process__card-bg--4" aria-hidden="true"></div>
+            <div class="e-process__card-overlay" aria-hidden="true"></div>
+            <div class="e-process__card-content">
+              <span class="e-process__num" aria-hidden="true">04</span>
+              <div>
+                <h3 class="e-process__card-title">Смета</h3>
+                <p class="e-process__card-text">
+                  Фиксируем понятный расчёт по зонам оформления и монтажу декора.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="e-process__card">
+            <div class="e-process__card-bg e-process__card-bg--5" aria-hidden="true"></div>
+            <div class="e-process__card-overlay" aria-hidden="true"></div>
+            <div class="e-process__card-content">
+              <span class="e-process__num" aria-hidden="true">05</span>
+              <div>
+                <h3 class="e-process__card-title">Подготовка</h3>
+                <p class="e-process__card-text">
+                  Закуп цветов, сборка композиций и подготовка элементов в студии.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="e-process__card">
+            <div class="e-process__card-bg e-process__card-bg--6" aria-hidden="true"></div>
+            <div class="e-process__card-overlay" aria-hidden="true"></div>
+            <div class="e-process__card-content">
+              <span class="e-process__num" aria-hidden="true">06</span>
+              <div>
+                <h3 class="e-process__card-title">Монтаж</h3>
+                <p class="e-process__card-text">
+                  Монтаж декора на площадке в согласованное окно — аккуратно и в срок.
+                </p>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
-    <section class="info-cards-section info-cards-section--light">
-      <div class="info-cards-section__inner">
-        <header class="info-cards-section__header">
-          <span class="info-cards-section__eyebrow">[ Пакеты ]</span>
-          <h2 class="info-cards-section__title">Что входит</h2>
+
+    <section class="e-gallery" id="e-gallery" aria-labelledby="e-gallery-heading">
+      <div class="e-gallery__inner">
+        <header class="e-gallery__header">
+          <span class="e-gallery__eyebrow">[ Портфолио ]</span>
+          <h2 class="e-gallery__title" id="e-gallery-heading">Проекты PALOMA</h2>
+          <p class="e-gallery__lead">Реальные фото подставим позже — сейчас градиенты-заглушки.</p>
         </header>
-        <div class="info-cards-grid" data-cols="4">
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Концепция и moodboard</h3><p class="info-card__desc">Визуальная дорожная карта и отбор палитры.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Композиции и декор</h3><p class="info-card__desc">Крупный и средний формат под сценографию места.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Доставка и монтаж</h3><p class="info-card__desc">Логистика в окно между подготовкой площадки и кейтерингом.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Демонтаж</h3><p class="info-card__desc">Сбор элементов после окончания согласно регламенту площадки.</p></article>
+        <div class="e-gallery__grid" id="eGalleryGrid"></div>
+      </div>
+    </section>
+
+    <section class="e-reviews reviews-section reviews-section--events" aria-labelledby="e-reviews-heading">
+      <div class="reviews-section__inner">
+        <div class="reviews-section__top">
+          <div class="reviews-section__meta">
+            <span class="reviews-section__label">отзывы</span>
+            <h2 class="reviews-section__title" id="e-reviews-heading">О цветочном<br />оформлении</h2>
+          </div>
+          <div class="reviews-section__arrows" aria-label="Навигация по отзывам">
+            <button type="button" class="reviews-arrow reviews-arrow--prev" id="eventsReviewsPrev" aria-label="Назад" data-cursor="hover">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="reviews-arrow reviews-arrow--next" id="eventsReviewsNext" aria-label="Вперёд" data-cursor="hover">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="reviews-carousel" id="eventsReviewsCarousel" aria-live="polite">
+          <div class="reviews-track" id="eventsReviewsTrack"></div>
         </div>
       </div>
     </section>
-    <section class="hscroll-section">
-      <div class="hscroll-section__header-wrap">
-        <span class="hscroll-section__eyebrow">[ Производственный процесс ]</span>
-        <h2 class="hscroll-section__title">Этапы работы</h2>
-        <p class="hscroll-section__lead">Прозрачный тайминг и понятная смета на каждом шаге.</p>
-      </div>
-      <div class="hscroll-section__outer" data-hscroll-outer>
-        <button type="button" class="hscroll-section__arrow hscroll-section__arrow--prev" data-hscroll-prev data-cursor="hover" aria-label="Назад"><svg width="20" height="12" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 7H1M1 7l6-6M1 7l6 6"/></svg></button>
-        <div class="hscroll-section__track" data-hscroll-track>
-          <article class="hscroll-card" data-cursor="hover"><span class="hscroll-card__num">01</span><h3 class="hscroll-card__title">Брифинг</h3><p class="hscroll-card__desc">Обсуждаем формат, бюджет и атмосферу.</p></article>
-          <article class="hscroll-card" data-cursor="hover"><span class="hscroll-card__num">02</span><h3 class="hscroll-card__title">Концепция</h3><p class="hscroll-card__desc">Присылаем moodboard и список референсов.</p></article>
-          <article class="hscroll-card" data-cursor="hover"><span class="hscroll-card__num">03</span><h3 class="hscroll-card__title">Смета</h3><p class="hscroll-card__desc">Фиксируем финальный объём перед подписанием.</p></article>
-          <article class="hscroll-card" data-cursor="hover"><span class="hscroll-card__num">04</span><h3 class="hscroll-card__title">Подготовка</h3><p class="hscroll-card__desc">Закуп цветка и сборка композиций в студии.</p></article>
-          <article class="hscroll-card" data-cursor="hover"><span class="hscroll-card__num">05</span><h3 class="hscroll-card__title">Монтаж</h3><p class="hscroll-card__desc">Приезжаем заранее, чтобы успеть проверить свет.</p></article>
-          <article class="hscroll-card" data-cursor="hover"><span class="hscroll-card__num">06</span><h3 class="hscroll-card__title">Демонтаж</h3><p class="hscroll-card__desc">Убираем декор после финала программы.</p></article>
+
+    <section class="e-form" id="e-form" aria-labelledby="e-form-heading">
+      <div class="e-form__inner">
+        <div class="e-form__text-col">
+          <span class="e-form__eyebrow">[ Заявка ]</span>
+          <h2 class="e-form__title" id="e-form-heading">Рассчитать оформление</h2>
+          <p class="e-form__lead">
+            Опишите событие — подготовим флористическую концепцию и смету на цветочное оформление.
+          </p>
         </div>
-        <button type="button" class="hscroll-section__arrow hscroll-section__arrow--next" data-hscroll-next data-cursor="hover" aria-label="Вперёд"><svg width="20" height="12" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h22M23 7l-6-6M23 7l-6 6"/></svg></button>
-      </div>
-    </section>
-    <section class="hscroll-section hscroll-section--alt">
-      <div class="hscroll-section__header-wrap">
-        <span class="hscroll-section__eyebrow">[ Кейсы ]</span>
-        <h2 class="hscroll-section__title">Недавние проекты</h2>
-        <p class="hscroll-section__lead">Подставные градиенты — когда появится фото, замените на изображение.</p>
-      </div>
-      <div class="hscroll-section__outer" data-hscroll-outer>
-        <button type="button" class="hscroll-section__arrow hscroll-section__arrow--prev" data-hscroll-prev data-cursor="hover" aria-label="Назад"><svg width="20" height="12" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 7H1M1 7l6-6M1 7l6 6"/></svg></button>
-        <div class="hscroll-section__track" data-hscroll-track>
-          <article class="hscroll-card hscroll-card--case" data-cursor="hover" style="background:linear-gradient(135deg,#1f2933,#394b59);border:none;color:#fff;">
-            <h3 class="hscroll-card__title">Корпоратив на крыше</h3>
-            <p class="hscroll-card__desc">Тёплые неон‑акценты и смешение зелени для вечернего networking.</p>
-          </article>
-          <article class="hscroll-card hscroll-card--case" data-cursor="hover" style="background:linear-gradient(135deg,#44263a,#88445f);border:none;color:#fff;">
-            <h3 class="hscroll-card__title">Юбилейное фуршет‑меню</h3>
-            <p class="hscroll-card__desc">Низкие композиции, чтобы собеседников было слышно.</p>
-          </article>
-          <article class="hscroll-card hscroll-card--case" data-cursor="hover" style="background:linear-gradient(135deg,#1d3d2f,#3f7360);border:none;color:#fff;">
-            <h3 class="hscroll-card__title">Fashion‑показ</h3>
-            <p class="hscroll-card__desc">Строго геометричная линия вдоль дорожки.</p>
-          </article>
-          <article class="hscroll-card hscroll-card--case" data-cursor="hover" style="background:linear-gradient(135deg,#36281f,#6b5344);border:none;color:#fff;">
-            <h3 class="hscroll-card__title">Семейный пикник luxury</h3>
-            <p class="hscroll-card__desc">Классический white‑on‑green в открытом шатре.</p>
-          </article>
-        </div>
-        <button type="button" class="hscroll-section__arrow hscroll-section__arrow--next" data-hscroll-next data-cursor="hover" aria-label="Вперёд"><svg width="20" height="12" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h22M23 7l-6-6M23 7l-6 6"/></svg></button>
-      </div>
-    </section>
-    <section class="client-faq">
-      <div class="client-faq__inner">
-        <header class="client-faq__header"><span class="client-faq__eyebrow">[ Вопрос-ответ ]</span><h2 class="client-faq__title">Про мероприятия</h2></header>
-        <div class="client-faq__list">
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover"><span class="faq-acc__q">За сколько нужно подать заявку?</span><span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span></button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">2–3 недели для среднего оформления, от месяца — если нужны инсталляции и сложный монтаж.</p></div>
+        <form class="e-form__form" id="eventsForm" novalidate>
+          <div class="e-form__field">
+            <label class="e-form__label" for="ef-name">Имя</label>
+            <input class="e-form__input" type="text" id="ef-name" name="name" placeholder="Ваше имя" autocomplete="name" required />
           </div>
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover"><span class="faq-acc__q">Что входит в стоимость оформления?</span><span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span></button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">Концепция, композиции, сборка на площадке и логистика.</p></div>
+          <div class="e-form__field">
+            <label class="e-form__label" for="ef-phone">Телефон</label>
+            <input class="e-form__input" type="tel" id="ef-phone" name="phone" placeholder="+7 ___ ___ __ __" autocomplete="tel" required />
           </div>
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover"><span class="faq-acc__q">Делаете ли демонтаж?</span><span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span></button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">Да, включается отдельной строкой в смету и согласуется со временем доступа помещений.</p></div>
+          <div class="e-form__field">
+            <label class="e-form__label" for="ef-messenger">Мессенджер</label>
+            <select class="e-form__input e-form__select" id="ef-messenger" name="messenger">
+              <option value="">Выберите</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="telegram">Telegram</option>
+              <option value="phone">Звонок</option>
+            </select>
           </div>
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover"><span class="faq-acc__q">Можно получить смету до подписания договора?</span><span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span></button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">Да, финализируем цифры до старта подготовки.</p></div>
+          <div class="e-form__field">
+            <label class="e-form__label" for="ef-date">Дата события</label>
+            <input class="e-form__input" type="text" id="ef-date" name="date" placeholder="Например, 14 июня 2026" />
           </div>
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover"><span class="faq-acc__q">Работаете ли в других городах?</span><span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span></button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">По всей линии Чёрного моря и по особым кейсам в регионах — дорожную карту согласуем заранее.</p></div>
+          <div class="e-form__field e-form__field--full">
+            <label class="e-form__label" for="ef-type">Тип события</label>
+            <select class="e-form__input e-form__select" id="ef-type" name="eventType">
+              <option value="">Выберите</option>
+              <option value="wedding-floral">Свадьба — цветочное оформление</option>
+              <option value="dinner">Камерный ужин</option>
+              <option value="photozone">Фотозона</option>
+              <option value="vitrine">Витрина / витринный декор</option>
+              <option value="arch">Арка / церемония</option>
+              <option value="tables">Столы гостей</option>
+              <option value="bridal">Букет невесты</option>
+              <option value="retail">Офлайн-точка</option>
+              <option value="other">Другое</option>
+            </select>
           </div>
-        </div>
-      </div>
-    </section>
-    <section class="client-cta">
-      <div class="client-cta__inner">
-        <h2 class="client-cta__title">Расскажите о событии</h2>
-        <p class="client-cta__lead">Пришлём смету в течение 24 часов и предложим визит на площадку.</p>
-        <div class="client-cta__actions">
-          <a href="https://wa.me/79180000000?text=%D0%A0%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank" rel="noopener" class="btn btn--dark client-cta__btn" data-cursor="hover" aria-label="Рассчитать оформление в WhatsApp">
-            Рассчитать оформление
-          </a>
-          <a href="https://t.me/paloma_novorossiysk" target="_blank" rel="noopener" class="btn btn--outline client-cta__btn" data-cursor="hover">Telegram</a>
-          <a href="tel:+78612000000" class="btn btn--outline client-cta__btn" data-cursor="hover">Телефон</a>
-          <a href="catalog.html" class="btn btn--ghost client-cta__btn" data-cursor="hover">В каталог</a>
-        </div>
+          <div class="e-form__field e-form__field--full">
+            <label class="e-form__label" for="ef-comment">Комментарий</label>
+            <textarea class="e-form__input e-form__textarea" id="ef-comment" name="comment" rows="4" placeholder="Площадка, палитра, зоны оформления…"></textarea>
+          </div>
+          <div class="e-form__field e-form__field--full">
+            <button type="submit" class="btn btn--dark e-form__submit" data-cursor="hover">Отправить заявку</button>
+          </div>
+          <div class="e-form__success" id="eFormSuccess" hidden>
+            <p>Спасибо! Мы получили заявку и свяжемся с вами в ближайшее время.</p>
+          </div>
+        </form>
       </div>
     </section>
   </main>
@@ -418,7 +550,7 @@
           <h4 class="site-footer__col-title">Каталог</h4>
           <ul class="site-footer__list">
             <li><a href="coffee.html">PALOMA Coffee</a></li>
-            <li><a href="weddings.html">Свадебная флористика</a></li>
+            <li><a href="event-decoration.html">Цветочное оформление</a></li>
             <li><a href="catalog.html?cat=online">Онлайн-витрина</a></li>
             <li><a href="catalog.html?cat=best">Букеты</a></li>
             <li><a href="catalog.html?cat=comp">Композиции</a></li>
@@ -435,7 +567,8 @@
             <li><a href="faq.html">Вопрос-ответ</a></li>
             <li><a href="blog.html">Журнал</a></li>
             <li><a href="wedding-piggy-bank.html">Свадебная копилка</a></li>
-            <li><a href="events.html">Мероприятия</a></li>
+            <li><a href="event-decoration.html">Оформление мероприятий</a></li>
+            <li><a href="events.html">Оформление</a></li>
           </ul>
         </div>
         <div class="site-footer__col">
@@ -508,27 +641,56 @@
     </div>
   </div>
 
-  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
-    <div class="cart-drawer__backdrop" data-cart-close></div>
-    <aside class="cart-drawer__panel">
-      <header class="cart-drawer__header">
-        <h3 class="cart-drawer__title">Корзина</h3>
-        <button type="button" class="cart-drawer__close" data-cart-close aria-label="Закрыть" data-cursor="hover">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  <!-- ── CART DRAWER ── -->
+  <div class="cart-drawer" id="cartDrawer"
+       aria-label="Корзина" aria-hidden="true"
+       role="dialog" hidden>
+    <div class="cart-drawer__backdrop"
+         id="cartDrawerBackdrop"
+         aria-hidden="true"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Корзина</h2>
+        <button type="button" class="cart-drawer__close"
+                id="cartDrawerClose"
+                data-cart-close
+                aria-label="Закрыть корзину" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
         </button>
-      </header>
-      <div class="cart-drawer__body" id="cartBody"></div>
-      <div class="cart-drawer__empty" id="cartEmpty">
-        <p>В корзине пока пусто.</p>
-        <button type="button" class="btn btn--light" data-cart-close>Продолжить покупки</button>
       </div>
-      <footer class="cart-drawer__footer" id="cartFooter">
-        <div class="cart-drawer__row"><span>Подытог</span><span id="cartSubtotal">0 ₽</span></div>
-        <div class="cart-drawer__row cart-drawer__row--muted"><span>Доставка</span><span>рассчитаем при оформлении</span></div>
-        <div class="cart-drawer__row cart-drawer__row--total"><span>Итого</span><span id="cartTotal">0 ₽</span></div>
-        <button type="button" class="btn btn--dark cart-drawer__checkout" id="cartCheckout" data-cursor="hover">Оформить заказ</button>
-      </footer>
-    </aside>
+      <div class="cart-drawer__empty" id="cartDrawerEmpty">
+        <div class="cart-drawer__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/>
+          </svg>
+        </div>
+        <p class="cart-drawer__empty-title">Корзина пуста</p>
+        <p class="cart-drawer__empty-text">Добавьте букет, кофе или подарок</p>
+        <a href="catalog.html"
+           class="btn btn--dark cart-drawer__empty-cta"
+           data-cart-close>Перейти в каталог</a>
+      </div>
+      <div class="cart-drawer__body" id="cartDrawerBody" hidden>
+        <div class="cart-drawer__list" id="cartDrawerList"
+             aria-label="Товары в корзине"></div>
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__total-row">
+            <span class="cart-drawer__total-label">Итого</span>
+            <span class="cart-drawer__total-val" id="cartDrawerTotal">0 ₽</span>
+          </div>
+          <a href="cart.html"
+             class="btn btn--dark cart-drawer__checkout"
+             aria-label="Перейти к оформлению заказа">Оформить заказ</a>
+          <button type="button" class="cart-drawer__continue"
+                  data-cart-close
+                  aria-label="Продолжить покупки">Продолжить покупки</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="custom-cursor" id="customCursor" aria-hidden="true">
@@ -536,7 +698,17 @@
     <div class="custom-cursor__ring"></div>
   </div>
 
+  <script src="preloader.js"></script>
+  <script src="cart-core.js"></script>
   <script src="script.js"></script>
+  <script src="paloma-animations.js"></script>
+  <script src="paloma-media-paths.js"></script>
+  <script src="paloma-media.js"></script>
+
+  <script src="wishlist.js"></script>
+  <script src="events-gallery-data.js"></script>
+  <script src="events.js"></script>
   <script src="clients.js"></script>
+  <script src="cursor.js"></script>
 </body>
 </html>

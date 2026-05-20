@@ -1,0 +1,424 @@
+/* PALOMA — страница контактов */
+
+.contacts-page {
+  padding-top: calc(52px + 88px + 12px);
+  background: var(--color-bg);
+}
+
+.contacts-page .breadcrumbs {
+  margin-top: 0;
+}
+
+/* ── Hero ── */
+
+.contacts-hero {
+  padding: clamp(48px, 7vw, 96px) 0 clamp(40px, 5vw, 64px);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contacts-hero__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+.contacts-hero__eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.contacts-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9vw, 128px);
+  font-weight: 400;
+  line-height: 0.93;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.contacts-hero__lead {
+  font-size: clamp(16px, 1.25vw, 20px);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+/* ── Фото + информация ── */
+
+.contacts-studio {
+  padding: clamp(64px, 8vw, 112px) 0;
+  background: var(--color-bg-alt);
+}
+
+.contacts-studio__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: stretch;
+}
+
+.contacts-studio__visual {
+  position: relative;
+  min-height: 420px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.contacts-studio__photo {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      165deg,
+      rgba(251, 246, 232, 0.15) 0%,
+      rgba(0, 0, 0, 0.35) 100%
+    ),
+    linear-gradient(135deg, #e8d4c8 0%, #9a5a62 42%, #5a2830 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.contacts-studio__photo-badge {
+  position: absolute;
+  left: clamp(20px, 3vw, 32px);
+  bottom: clamp(20px, 3vw, 32px);
+  z-index: 1;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--color-border);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.contacts-studio__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 4vw, 48px);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+}
+
+.contacts-studio__brand {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.contacts-studio__subtitle {
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: clamp(28px, 3vw, 40px);
+  padding-bottom: clamp(20px, 2.5vw, 28px);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.contacts-studio__rows {
+  list-style: none;
+  margin: 0 0 clamp(28px, 3vw, 40px);
+  padding: 0;
+}
+
+.contacts-studio__row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.contacts-studio__row:last-child {
+  border-bottom: none;
+}
+
+.contacts-studio__label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding-top: 3px;
+}
+
+.contacts-studio__row a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.contacts-studio__row a:hover {
+  color: var(--color-accent);
+}
+
+.contacts-studio__messengers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.contacts-studio__messengers a {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+  transition:
+    border-color var(--transition-base),
+    color var(--transition-base),
+    background var(--transition-base);
+}
+
+.contacts-studio__messengers a:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-bg-alt);
+}
+
+.contacts-studio__cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contacts-studio__cta-row .btn {
+  flex: 1 1 auto;
+  min-width: 160px;
+  justify-content: center;
+}
+
+/* ── Карта ── */
+
+.contacts-map-section {
+  padding: 0 0 clamp(64px, 8vw, 112px);
+  background: var(--color-bg-alt);
+}
+
+.contacts-map-section__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+.contacts-map-section__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.contacts-map-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.contacts-map-section__link {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.contacts-map-section__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contacts-map-frame {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 42vh, 480px);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.contacts-map-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.contacts-map-frame:not(:has(iframe)) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  text-align: center;
+  padding: 24px;
+}
+
+/* ── Форма ── */
+
+.contacts-form-section {
+  padding: clamp(64px, 8vw, 112px) 0;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.contacts-form-section__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+.contacts-form-section__header {
+  text-align: center;
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.contacts-form-section__eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+.contacts-form-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  margin-bottom: 12px;
+}
+
+.contacts-form-section__lead {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.contacts-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contacts-form__field--full {
+  grid-column: 1 / -1;
+}
+
+.contacts-form__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.contacts-form__input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  font: inherit;
+  font-size: 15px;
+  transition:
+    border-color var(--transition-base),
+    outline var(--transition-base);
+}
+
+.contacts-form__input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-color: var(--color-accent);
+}
+
+.contacts-form__textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contacts-form__submit {
+  width: 100%;
+  justify-content: center;
+}
+
+.contacts-form__success {
+  grid-column: 1 / -1;
+  padding: 24px;
+  text-align: center;
+  border: 1px solid var(--color-accent);
+  background: var(--color-bg-alt);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.contacts-form__note {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 960px) {
+  .contacts-studio__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .contacts-studio__visual {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contacts-studio__row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .contacts-studio__cta-row {
+    flex-direction: column;
+  }
+
+  .contacts-studio__cta-row .btn {
+    width: 100%;
+  }
+
+  .contacts-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contacts-studio__row a,
+  .contacts-studio__messengers a {
+    transition: none;
+  }
+}
