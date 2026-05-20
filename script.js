@@ -557,6 +557,7 @@
       document.getElementById("hero") ||
       document.querySelector(".hero-scene") ||
       document.querySelector(".coffee-hero") ||
+      document.querySelector(".cf-hero") ||
       document.querySelector(".w-hero");
 
     function onHeaderScroll() {
