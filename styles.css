@@ -6046,6 +6046,12 @@ body.is-home .site-header:not(.is-scrolled) svg {
   color: var(--paloma-text, #1a1a1a);
 }
 
+/* Секцию не скрываем целиком — reveal только у .home-showcase__head */
+.home-showcase.paloma-reveal {
+  opacity: 1;
+  transform: none;
+}
+
 .home-showcase__head {
   display: flex;
   align-items: flex-end;
@@ -6120,11 +6126,17 @@ body.is-home .site-header:not(.is-scrolled) svg {
 .home-showcase__track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: calc((100cqi - 24px) / 4);
+  grid-auto-columns: calc((100% - 24px) / 4);
   gap: 8px;
   align-items: stretch;
   width: max-content;
   min-width: 100%;
+}
+
+@supports (width: 1cqi) {
+  .home-showcase__track {
+    grid-auto-columns: calc((100cqi - 24px) / 4);
+  }
 }
 
 .home-product-card {
@@ -6312,12 +6324,6 @@ body.is-home .site-header:not(.is-scrolled) svg {
   background: var(--paloma-accent, #6b0f1a);
   transform-origin: left center;
   transition: width 0.25s ease;
-}
-
-@supports not (width: 100cqi) {
-  .home-showcase__track {
-    grid-auto-columns: calc((100% - 24px) / 4);
-  }
 }
 
 @media (max-width: 1024px) {

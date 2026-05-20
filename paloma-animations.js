@@ -101,7 +101,6 @@
     const hero =
       document.getElementById("homeHero") || document.getElementById("hero");
     const marquee = document.querySelector(".home-marquee");
-    const showcase = document.querySelector(".home-showcase, .showcase");
     const subscription = document.querySelector(
       ".home-subscription-promo, .home-subscription, .sub-block",
     );
@@ -120,7 +119,7 @@
     if (about && !about.nextElementSibling?.classList?.contains("paloma-wave")) {
       about.insertAdjacentHTML("afterend", waveSvg("paloma-wave--to-ivory"));
     }
-    if (showcase) showcase.classList.add("paloma-reveal");
+    /* Не вешать paloma-reveal на .home-showcase — иначе вся витрина остаётся opacity: 0 */
   }
 
   function initProductCards() {
