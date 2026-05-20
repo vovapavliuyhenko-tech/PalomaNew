@@ -1,0 +1,64 @@
+# Деплой статической витрины на GitHub Pages (ветка `main`).
+# Перед сборкой из `app` временно убираются: `api`, `studio`, группа `(admin)` (нет смысла на статическом хостинге).
+# URL: https://vovapavliuyhenko-tech.github.io/PALOMA/
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-paloma
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Stash API routes (static export cannot bundle Route Handlers)
+        run: mv src/app/api "${RUNNER_TEMP}/paloma-api-routes"
+
+      - name: Stash Sanity Studio (omit from static Pages build)
+        run: mv src/app/studio "${RUNNER_TEMP}/paloma-studio"
+
+      - name: Stash admin app (dynamic routes incompatible with export)
+        run: mv "src/app/(admin)" "${RUNNER_TEMP}/paloma-admin-app"
+
+      - name: Build static export
+        env:
+          PALOMA_STATIC_EXPORT: "1"
+          NEXT_PUBLIC_SITE_URL: "https://vovapavliuyhenko-tech.github.io/PALOMA"
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
