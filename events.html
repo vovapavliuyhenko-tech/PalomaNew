@@ -287,255 +287,822 @@
     </header>
   </div>
 
-  <main id="main" class="events-main">
-    <section class="e-hero" aria-labelledby="e-hero-heading">
-      <div class="e-hero__bg" aria-hidden="true">
-        <div class="e-hero__placeholder"></div>
-      </div>
-      <div class="e-hero__overlay" aria-hidden="true"></div>
-      <div class="e-hero__content">
-        <h1 class="e-hero__title" id="e-hero-heading">Цветочное оформление событий</h1>
-        <p class="e-hero__lead">
-          Создаём атмосферу цветами: от букета невесты до оформления пространства.
-        </p>
-        <a href="#e-form" class="btn btn--light-outline e-hero__cta" data-cursor="hover">
-          Рассчитать оформление
-        </a>
-      </div>
-    </section>
+  <main class="decor-page" id="main">
 
-    <section class="e-services" aria-labelledby="e-services-heading">
-      <div class="e-services__inner">
-        <header class="e-services__header">
-          <span class="e-services__eyebrow">[ Что оформляем ]</span>
-          <h2 class="e-services__title" id="e-services-heading">Направления</h2>
-          <p class="e-services__lead">
-            Флористическая концепция, подбор цветов и монтаж декора — под формат, площадку и свет.
+    <!-- =====================================================
+         DECOR HERO — hide-event inspired editorial composition
+         Motion:
+         - title reveal from bottom (CSS animation)
+         - image scale 1.05 → 1 (CSS animation)
+         - title subtle scroll lift (JS rAF)
+         ===================================================== -->
+    <section class="decor-hero decor-hero--editorial" id="decorHero" aria-label="Цветочное оформление PALOMA">
+
+      <div class="decor-hero__brand" aria-label="PALOMA">
+        PALOMA
+      </div>
+
+      <div class="decor-hero__layout">
+
+        <div class="decor-hero__title-wrap" id="decorHeroTitle">
+          <h1 class="decor-hero__title">
+            <span>ЦВЕТОЧНОЕ</span>
+            <span>ОФОРМЛЕНИЕ</span>
+            <span>ПРОСТРАНСТВ</span>
+          </h1>
+        </div>
+
+        <div class="decor-hero__media decor-hero__media--main" aria-hidden="true">
+          <!-- Future real image:
+          <img
+            class="decor-hero__img hero-main-image"
+            src="images/paloma/decor/hero-main-image.jpg"
+            alt=""
+            loading="eager"
+            fetchpriority="high">
+          -->
+          <div class="decor-hero__placeholder hero-main-image">
+            <span>hero-main-image</span>
+          </div>
+        </div>
+
+        <div class="decor-hero__media decor-hero__media--detail decor-hero__media--detail-1" aria-hidden="true">
+          <!-- Future real image:
+          <img
+            class="decor-hero__img hero-detail-image-1"
+            src="images/paloma/decor/hero-detail-image-1.jpg"
+            alt=""
+            loading="lazy">
+          -->
+          <div class="decor-hero__placeholder hero-detail-image-1">
+            <span>hero-detail-image-1</span>
+          </div>
+        </div>
+
+        <div class="decor-hero__media decor-hero__media--detail decor-hero__media--detail-2" aria-hidden="true">
+          <!-- Future real image:
+          <img
+            class="decor-hero__img hero-detail-image-2"
+            src="images/paloma/decor/hero-detail-image-2.jpg"
+            alt=""
+            loading="lazy">
+          -->
+          <div class="decor-hero__placeholder hero-detail-image-2">
+            <span>hero-detail-image-2</span>
+          </div>
+        </div>
+
+        <div class="decor-hero__text-block">
+          <p class="decor-hero__text">
+            Paloma создаёт цветочное оформление для свадеб, мероприятий, витрин,
+            фотосессий и частных пространств в Новороссийске. Мы работаем с
+            настроением, светом, фактурой и деталями, чтобы цветы стали частью
+            атмосферы.
           </p>
-        </header>
-        <ul class="e-services__grid">
-          <li class="e-services__item">
-            <span class="e-services__name">Цветочное оформление</span>
-            <span class="e-services__hint">Букет невесты, арки, столы, церемония</span>
-          </li>
-          <li class="e-services__item">
-            <span class="e-services__name">Камерные ужины</span>
-            <span class="e-services__hint">Настольные композиции и свет</span>
-          </li>
-          <li class="e-services__item">
-            <span class="e-services__name">Фотозоны</span>
-            <span class="e-services__hint">Акценты для кадра и съёмки</span>
-          </li>
-          <li class="e-services__item">
-            <span class="e-services__name">Витрины</span>
-            <span class="e-services__hint">Сезонные и брендовые инсталляции</span>
-          </li>
-          <li class="e-services__item">
-            <span class="e-services__name">Арки</span>
-            <span class="e-services__hint">Церемония и welcome-зона</span>
-          </li>
-          <li class="e-services__item">
-            <span class="e-services__name">Столы</span>
-            <span class="e-services__hint">Оформление гостевых и президиума</span>
-          </li>
-          <li class="e-services__item">
-            <span class="e-services__name">Букет невесты</span>
-            <span class="e-services__hint">Отдельный заказ или часть проекта</span>
-          </li>
-          <li class="e-services__item">
-            <span class="e-services__name">Оформление офлайн-точек</span>
-            <span class="e-services__hint">Витрины, входные группы, pop-up</span>
-          </li>
-        </ul>
+
+          <a href="#decorRequest" class="decor-hero__cta" data-cursor="hover">
+            Обсудить оформление
+          </a>
+        </div>
+
       </div>
+
     </section>
 
-    <section class="e-process" id="e-process" aria-labelledby="e-process-heading">
-      <div class="e-process__header">
-        <span class="e-process__label">[ Процесс ]</span>
-        <h2 class="e-process__title" id="e-process-heading">
-          Как мы готовим<br />цветочное оформление
+
+    <!-- =====================================================
+         DECOR STATEMENT — TYPOGRAPHIC PAUSE
+         Inspired by hide-event large statement block
+         Motion:
+         - section reveal on scroll (IntersectionObserver)
+         - line clip/reveal: opacity 0 → 1, translateY 80px → 0
+         ===================================================== -->
+    <section class="decor-statement" id="decorStatement" aria-label="Цветы меняют пространство">
+
+      <div class="decor-statement__inner">
+
+        <h2 class="decor-statement__title" data-decor-statement-title>
+          <span>ЦВЕТЫ,</span>
+          <span>КОТОРЫЕ</span>
+          <span>МЕНЯЮТ</span>
+          <span>ПРОСТРАНСТВО</span>
         </h2>
-        <p class="e-process__lead">
-          Прозрачные этапы: от знакомства до монтажа декора на площадке.
+
+        <p class="decor-statement__text">
+          Мы оформляем не событие целиком — мы создаём цветочную атмосферу,
+          которая делает место живым, тёплым и запоминающимся.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DECOR SCALE — IMMERSIVE DARK INFOGRAPHIC
+         Inspired by hide-event fullscreen infographic block
+         Motion:
+         - background scale on scroll (JS rAF)
+         - infographic group rotate -8deg → 8deg (JS rAF)
+         - stat items subtle Y movement (JS rAF)
+         - reduced-motion static fallback
+         ===================================================== -->
+    <section class="decor-scale" id="decorScale" aria-label="Масштаб цветочного оформления PALOMA" data-decor-reveal-section>
+
+      <div class="decor-scale__bg" id="decorScaleBg" aria-hidden="true">
+        <!-- Future real image:
+        <img
+          class="decor-scale__img"
+          src="images/paloma/decor/decor-scale-bg.jpg"
+          alt=""
+          loading="lazy">
+        -->
+        <div class="decor-scale__placeholder">
+          <span>PALOMA floral decor background</span>
+        </div>
+      </div>
+
+      <div class="decor-scale__overlay" aria-hidden="true"></div>
+
+      <div class="decor-scale__content">
+
+        <div class="decor-scale__heading">
+          <p class="decor-scale__eyebrow">
+            PALOMA decor scale
+          </p>
+
+          <h2 class="decor-scale__title">
+            Форматы цветочного оформления
+          </h2>
+        </div>
+
+        <div class="decor-scale__orbit" id="decorScaleOrbit" aria-hidden="true">
+
+          <svg
+            class="decor-scale__arcs"
+            viewBox="0 0 1200 620"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            focusable="false"
+            aria-hidden="true">
+            <path
+              d="M120 500 C280 110 900 40 1080 500"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-opacity="0.42" />
+            <path
+              d="M210 465 C350 190 850 140 990 465"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-opacity="0.24" />
+            <path
+              d="M320 430 C430 270 770 240 880 430"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-opacity="0.18" />
+          </svg>
+
+          <div class="decor-scale-stat decor-scale-stat--one" data-decor-scale-stat>
+            <span class="decor-scale-stat__number">до 300 м²</span>
+            <span class="decor-scale-stat__label">
+              оформление пространства, витрин и залов
+            </span>
+          </div>
+
+          <div class="decor-scale-stat decor-scale-stat--two" data-decor-scale-stat>
+            <span class="decor-scale-stat__number">от 1 зоны</span>
+            <span class="decor-scale-stat__label">
+              арка, стол, фотозона или входная группа
+            </span>
+          </div>
+
+          <div class="decor-scale-stat decor-scale-stat--three" data-decor-scale-stat>
+            <span class="decor-scale-stat__number">24 часа</span>
+            <span class="decor-scale-stat__label">
+              бережная подготовка перед событием
+            </span>
+          </div>
+
+          <div class="decor-scale-stat decor-scale-stat--four" data-decor-scale-stat>
+            <span class="decor-scale-stat__number">100%</span>
+            <span class="decor-scale-stat__label">
+              индивидуальная концепция под ваш повод
+            </span>
+          </div>
+
+        </div>
+
+        <a href="#decorRequest" class="decor-scale__cta" data-cursor="hover">
+          Обсудить проект
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DECOR TYPES — WHAT PALOMA DECORATES
+         Motion:
+         - stagger card reveal on scroll (IntersectionObserver)
+         - hover image scale
+         - hover arrow reveal
+         ===================================================== -->
+    <section class="decor-types" id="decorTypes" aria-label="Что мы оформляем цветами" data-decor-reveal-section>
+
+      <div class="decor-types__head">
+        <p class="decor-types__eyebrow">
+          Форматы
+        </p>
+
+        <h2 class="decor-types__title">
+          Что мы оформляем
+        </h2>
+
+        <p class="decor-types__text">
+          Цветы могут стать главным акцентом события, витрины, съёмки или личного пространства.
+          Мы подбираем палитру, форму, сезонные цветы и собираем композиции под задачу.
         </p>
       </div>
-      <div class="e-process__viewport" id="eProcessViewport">
-        <div class="e-process__track" id="eProcessTrack">
-          <article class="e-process__card">
-            <div class="e-process__card-bg e-process__card-bg--1" aria-hidden="true"></div>
-            <div class="e-process__card-overlay" aria-hidden="true"></div>
-            <div class="e-process__card-content">
-              <span class="e-process__num" aria-hidden="true">01</span>
-              <div>
-                <h3 class="e-process__card-title">Знакомство</h3>
-                <p class="e-process__card-text">
-                  Обсуждаем дату, площадку, формат и объём цветочного оформления.
-                </p>
-              </div>
-            </div>
-          </article>
-          <article class="e-process__card">
-            <div class="e-process__card-bg e-process__card-bg--2" aria-hidden="true"></div>
-            <div class="e-process__card-overlay" aria-hidden="true"></div>
-            <div class="e-process__card-content">
-              <span class="e-process__num" aria-hidden="true">02</span>
-              <div>
-                <h3 class="e-process__card-title">Концепция</h3>
-                <p class="e-process__card-text">
-                  Собираем флористическую концепцию: палитра, фактуры, ключевые зоны.
-                </p>
-              </div>
-            </div>
-          </article>
-          <article class="e-process__card">
-            <div class="e-process__card-bg e-process__card-bg--3" aria-hidden="true"></div>
-            <div class="e-process__card-overlay" aria-hidden="true"></div>
-            <div class="e-process__card-content">
-              <span class="e-process__num" aria-hidden="true">03</span>
-              <div>
-                <h3 class="e-process__card-title">Подбор цветов</h3>
-                <p class="e-process__card-text">
-                  Подбираем сезонные цветы и материалы под концепцию и бюджет.
-                </p>
-              </div>
-            </div>
-          </article>
-          <article class="e-process__card">
-            <div class="e-process__card-bg e-process__card-bg--4" aria-hidden="true"></div>
-            <div class="e-process__card-overlay" aria-hidden="true"></div>
-            <div class="e-process__card-content">
-              <span class="e-process__num" aria-hidden="true">04</span>
-              <div>
-                <h3 class="e-process__card-title">Смета</h3>
-                <p class="e-process__card-text">
-                  Фиксируем понятный расчёт по зонам оформления и монтажу декора.
-                </p>
-              </div>
-            </div>
-          </article>
-          <article class="e-process__card">
-            <div class="e-process__card-bg e-process__card-bg--5" aria-hidden="true"></div>
-            <div class="e-process__card-overlay" aria-hidden="true"></div>
-            <div class="e-process__card-content">
-              <span class="e-process__num" aria-hidden="true">05</span>
-              <div>
-                <h3 class="e-process__card-title">Подготовка</h3>
-                <p class="e-process__card-text">
-                  Закуп цветов, сборка композиций и подготовка элементов в студии.
-                </p>
-              </div>
-            </div>
-          </article>
-          <article class="e-process__card">
-            <div class="e-process__card-bg e-process__card-bg--6" aria-hidden="true"></div>
-            <div class="e-process__card-overlay" aria-hidden="true"></div>
-            <div class="e-process__card-content">
-              <span class="e-process__num" aria-hidden="true">06</span>
-              <div>
-                <h3 class="e-process__card-title">Монтаж</h3>
-                <p class="e-process__card-text">
-                  Монтаж декора на площадке в согласованное окно — аккуратно и в срок.
-                </p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section class="e-gallery" id="e-gallery" aria-labelledby="e-gallery-heading">
-      <div class="e-gallery__inner">
-        <header class="e-gallery__header">
-          <span class="e-gallery__eyebrow">[ Портфолио ]</span>
-          <h2 class="e-gallery__title" id="e-gallery-heading">Проекты PALOMA</h2>
-          <p class="e-gallery__lead">Реальные фото подставим позже — сейчас градиенты-заглушки.</p>
-        </header>
-        <div class="e-gallery__grid" id="eGalleryGrid"></div>
-      </div>
-    </section>
+      <div class="decor-types__grid">
 
-    <section class="e-reviews reviews-section reviews-section--events" aria-labelledby="e-reviews-heading">
-      <div class="reviews-section__inner">
-        <div class="reviews-section__top">
-          <div class="reviews-section__meta">
-            <span class="reviews-section__label">отзывы</span>
-            <h2 class="reviews-section__title" id="e-reviews-heading">О цветочном<br />оформлении</h2>
+        <article class="decor-type-card" data-decor-type-card>
+          <div class="decor-type-card__media" aria-hidden="true">
+            <!-- Future image:
+            <img src="images/paloma/decor/types-weddings.jpg" alt="" loading="lazy">
+            -->
+            <div class="decor-type-card__placeholder decor-type-card__placeholder--weddings">
+              <span>PALOMA weddings floral decor</span>
+            </div>
           </div>
-          <div class="reviews-section__arrows" aria-label="Навигация по отзывам">
-            <button type="button" class="reviews-arrow reviews-arrow--prev" id="eventsReviewsPrev" aria-label="Назад" data-cursor="hover">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button type="button" class="reviews-arrow reviews-arrow--next" id="eventsReviewsNext" aria-label="Вперёд" data-cursor="hover">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
+          <div class="decor-type-card__body">
+            <div class="decor-type-card__top">
+              <span class="decor-type-card__num">01</span>
+              <span class="decor-type-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3 class="decor-type-card__title">Свадьбы</h3>
+            <p class="decor-type-card__text">Букет невесты, арка, столы гостей, welcome-зона, фотозона.</p>
           </div>
-        </div>
-        <div class="reviews-carousel" id="eventsReviewsCarousel" aria-live="polite">
-          <div class="reviews-track" id="eventsReviewsTrack"></div>
-        </div>
+        </article>
+
+        <article class="decor-type-card" data-decor-type-card>
+          <div class="decor-type-card__media" aria-hidden="true">
+            <!-- Future image:
+            <img src="images/paloma/decor/types-events.jpg" alt="" loading="lazy">
+            -->
+            <div class="decor-type-card__placeholder decor-type-card__placeholder--events">
+              <span>PALOMA event floral accents</span>
+            </div>
+          </div>
+          <div class="decor-type-card__body">
+            <div class="decor-type-card__top">
+              <span class="decor-type-card__num">02</span>
+              <span class="decor-type-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3 class="decor-type-card__title">Мероприятия</h3>
+            <p class="decor-type-card__text">Цветочные акценты для ужинов, презентаций, камерных событий.</p>
+          </div>
+        </article>
+
+        <article class="decor-type-card" data-decor-type-card>
+          <div class="decor-type-card__media" aria-hidden="true">
+            <!-- Future image:
+            <img src="images/paloma/decor/types-windows.jpg" alt="" loading="lazy">
+            -->
+            <div class="decor-type-card__placeholder decor-type-card__placeholder--windows">
+              <span>PALOMA window floral display</span>
+            </div>
+          </div>
+          <div class="decor-type-card__body">
+            <div class="decor-type-card__top">
+              <span class="decor-type-card__num">03</span>
+              <span class="decor-type-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3 class="decor-type-card__title">Витрины</h3>
+            <p class="decor-type-card__text">Сезонное оформление входа, окна, стойки или зоны ожидания.</p>
+          </div>
+        </article>
+
+        <article class="decor-type-card" data-decor-type-card>
+          <div class="decor-type-card__media" aria-hidden="true">
+            <!-- Future image:
+            <img src="images/paloma/decor/types-shootings.jpg" alt="" loading="lazy">
+            -->
+            <div class="decor-type-card__placeholder decor-type-card__placeholder--shootings">
+              <span>PALOMA photoshoot floral objects</span>
+            </div>
+          </div>
+          <div class="decor-type-card__body">
+            <div class="decor-type-card__top">
+              <span class="decor-type-card__num">04</span>
+              <span class="decor-type-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3 class="decor-type-card__title">Фотосессии</h3>
+            <p class="decor-type-card__text">Композиции, букеты и цветочные объекты для кадра.</p>
+          </div>
+        </article>
+
+        <article class="decor-type-card" data-decor-type-card>
+          <div class="decor-type-card__media" aria-hidden="true">
+            <!-- Future image:
+            <img src="images/paloma/decor/types-interiors.jpg" alt="" loading="lazy">
+            -->
+            <div class="decor-type-card__placeholder decor-type-card__placeholder--interiors">
+              <span>PALOMA interior floral decor</span>
+            </div>
+          </div>
+          <div class="decor-type-card__body">
+            <div class="decor-type-card__top">
+              <span class="decor-type-card__num">05</span>
+              <span class="decor-type-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3 class="decor-type-card__title">Интерьеры</h3>
+            <p class="decor-type-card__text">Цветы для кофеен, салонов, бутиков и частных пространств.</p>
+          </div>
+        </article>
+
+        <article class="decor-type-card" data-decor-type-card>
+          <div class="decor-type-card__media" aria-hidden="true">
+            <!-- Future image:
+            <img src="images/paloma/decor/types-gift-zones.jpg" alt="" loading="lazy">
+            -->
+            <div class="decor-type-card__placeholder decor-type-card__placeholder--gift-zones">
+              <span>PALOMA gift zone floral decor</span>
+            </div>
+          </div>
+          <div class="decor-type-card__body">
+            <div class="decor-type-card__top">
+              <span class="decor-type-card__num">06</span>
+              <span class="decor-type-card__arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3 class="decor-type-card__title">Подарочные зоны</h3>
+            <p class="decor-type-card__text">Оформление коробок, столов, welcome-уголков и деталей.</p>
+          </div>
+        </article>
+
       </div>
+
     </section>
 
-    <section class="e-form" id="e-form" aria-labelledby="e-form-heading">
-      <div class="e-form__inner">
-        <div class="e-form__text-col">
-          <span class="e-form__eyebrow">[ Заявка ]</span>
-          <h2 class="e-form__title" id="e-form-heading">Рассчитать оформление</h2>
-          <p class="e-form__lead">
-            Опишите событие — подготовим флористическую концепцию и смету на цветочное оформление.
+
+    <!-- =====================================================
+         DECOR PROCESS — HORIZONTAL STICKY STORYTELLING
+         Motion:
+         - desktop: vertical scroll drives horizontal track (JS rAF)
+         - mobile: vertical fallback (CSS)
+         - reduced-motion: static vertical fallback
+         ===================================================== -->
+    <section class="decor-process" id="decorProcess" aria-label="Процесс цветочного оформления PALOMA" data-decor-reveal-section>
+
+      <div class="decor-process__sticky">
+        <div class="decor-process__track" id="decorProcessTrack">
+
+          <!-- Intro -->
+          <article class="decor-process-panel decor-process-panel--intro">
+            <div class="decor-process-intro">
+              <p class="decor-process-intro__eyebrow">
+                Как мы работаем
+              </p>
+
+              <h2 class="decor-process-intro__title">
+                <span>ПРОЦЕСС</span>
+                <span>ЦВЕТОЧНОГО</span>
+                <span>ОФОРМЛЕНИЯ</span>
+              </h2>
+
+              <p class="decor-process-intro__text">
+                От идеи до готовой атмосферы — каждый этап помогает собрать оформление,
+                которое выглядит естественно и дорого.
+              </p>
+            </div>
+
+            <div class="decor-process-intro__line" aria-hidden="true"></div>
+          </article>
+
+          <!-- Step 01 -->
+          <article class="decor-process-panel decor-process-step decor-process-step--one">
+            <div class="decor-process-step__content">
+              <span class="decor-process-step__num">01</span>
+              <h3 class="decor-process-step__title">Знакомство</h3>
+              <p class="decor-process-step__text">
+                Обсуждаем повод, площадку, настроение, сроки, бюджет и желаемую палитру.
+              </p>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--large" aria-hidden="true">
+              <!-- Future image: <img src="images/paloma/decor/process-01-main.jpg" alt="" loading="lazy"> -->
+              <div class="decor-process-photo decor-process-photo--01-main"><span>process-01-main</span></div>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--small" aria-hidden="true">
+              <!-- Future image: <img src="images/paloma/decor/process-01-detail.jpg" alt="" loading="lazy"> -->
+              <div class="decor-process-photo decor-process-photo--01-detail"><span>process-01-detail</span></div>
+            </div>
+
+            <span class="decor-process-step__arrow" aria-hidden="true">→</span>
+          </article>
+
+          <!-- Step 02 -->
+          <article class="decor-process-panel decor-process-step decor-process-step--two">
+            <div class="decor-process-step__content">
+              <span class="decor-process-step__num">02</span>
+              <h3 class="decor-process-step__title">Концепция</h3>
+              <p class="decor-process-step__text">
+                Собираем визуальное направление: цвет, форма, фактура, сезонные цветы и ключевые зоны.
+              </p>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--large" aria-hidden="true">
+              <div class="decor-process-photo decor-process-photo--02-main"><span>process-02-main</span></div>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--small" aria-hidden="true">
+              <div class="decor-process-photo decor-process-photo--02-detail"><span>process-02-detail</span></div>
+            </div>
+
+            <span class="decor-process-step__arrow" aria-hidden="true">→</span>
+          </article>
+
+          <!-- Step 03 -->
+          <article class="decor-process-panel decor-process-step decor-process-step--three">
+            <div class="decor-process-step__content">
+              <span class="decor-process-step__num">03</span>
+              <h3 class="decor-process-step__title">Подбор цветов</h3>
+              <p class="decor-process-step__text">
+                Выбираем свежие сорта с учётом сезона, стойкости и нужного визуального эффекта.
+              </p>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--large" aria-hidden="true">
+              <div class="decor-process-photo decor-process-photo--03-main"><span>process-03-main</span></div>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--small" aria-hidden="true">
+              <div class="decor-process-photo decor-process-photo--03-detail"><span>process-03-detail</span></div>
+            </div>
+
+            <span class="decor-process-step__arrow" aria-hidden="true">→</span>
+          </article>
+
+          <!-- Step 04 -->
+          <article class="decor-process-panel decor-process-step decor-process-step--four">
+            <div class="decor-process-step__content">
+              <span class="decor-process-step__num">04</span>
+              <h3 class="decor-process-step__title">Сборка и подготовка</h3>
+              <p class="decor-process-step__text">
+                Флористы собирают композиции, проверяют детали, упаковку и транспортировку.
+              </p>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--large" aria-hidden="true">
+              <div class="decor-process-photo decor-process-photo--04-main"><span>process-04-main</span></div>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--small" aria-hidden="true">
+              <div class="decor-process-photo decor-process-photo--04-detail"><span>process-04-detail</span></div>
+            </div>
+
+            <span class="decor-process-step__arrow" aria-hidden="true">→</span>
+          </article>
+
+          <!-- Step 05 -->
+          <article class="decor-process-panel decor-process-step decor-process-step--five">
+            <div class="decor-process-step__content">
+              <span class="decor-process-step__num">05</span>
+              <h3 class="decor-process-step__title">Монтаж</h3>
+              <p class="decor-process-step__text">
+                Аккуратно оформляем площадку, витрину или фотозону в согласованное время.
+              </p>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--large" aria-hidden="true">
+              <div class="decor-process-photo decor-process-photo--05-main"><span>process-05-main</span></div>
+            </div>
+
+            <div class="decor-process-step__media decor-process-step__media--small" aria-hidden="true">
+              <div class="decor-process-photo decor-process-photo--05-detail"><span>process-05-detail</span></div>
+            </div>
+
+            <span class="decor-process-step__arrow" aria-hidden="true">•</span>
+          </article>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DECOR PORTFOLIO — EDITORIAL CASES
+         Motion:
+         - card reveal on scroll (IntersectionObserver)
+         - image scale on hover
+         - overlay CTA reveal
+         ===================================================== -->
+    <section class="decor-portfolio" id="decorPortfolio" aria-label="Портфолио цветочного оформления PALOMA" data-decor-reveal-section>
+
+      <div class="decor-portfolio__head">
+        <p class="decor-portfolio__eyebrow">
+          Кейсы
+        </p>
+
+        <h2 class="decor-portfolio__title">
+          Портфолио оформления
+        </h2>
+
+        <p class="decor-portfolio__text">
+          Каждый проект собирается под пространство, свет, повод и настроение.
+        </p>
+      </div>
+
+      <div class="decor-portfolio__grid">
+
+        <article class="decor-case-card" data-decor-case-card>
+          <a href="#"
+             class="decor-case-card__media"
+             aria-label="Смотреть проект: Свадебный ужин">
+            <!-- Future image:
+            <img src="images/paloma/decor/case-wedding-dinner.jpg"
+                 alt="Цветочное оформление свадебного ужина PALOMA"
+                 loading="lazy">
+            -->
+            <span class="decor-case-card__placeholder decor-case-card__placeholder--wedding" aria-hidden="true">
+              <span>PALOMA wedding dinner decor</span>
+            </span>
+            <span class="decor-case-card__overlay" aria-hidden="true"></span>
+            <span class="decor-case-card__button">Смотреть проект</span>
+          </a>
+
+          <div class="decor-case-card__meta">
+            <span>[ СВАДЬБА ]</span>
+            <span>PALOMA</span>
+          </div>
+
+          <h3 class="decor-case-card__title">
+            <a href="#">Свадебный ужин</a>
+          </h3>
+
+          <p class="decor-case-card__description">
+            Цветочные композиции для столов, welcome-зоны и букета невесты.
           </p>
-        </div>
-        <form class="e-form__form" id="eventsForm" novalidate>
-          <div class="e-form__field">
-            <label class="e-form__label" for="ef-name">Имя</label>
-            <input class="e-form__input" type="text" id="ef-name" name="name" placeholder="Ваше имя" autocomplete="name" required />
+        </article>
+
+        <article class="decor-case-card" data-decor-case-card>
+          <a href="#"
+             class="decor-case-card__media"
+             aria-label="Смотреть проект: Витрина бутика">
+            <!-- Future image:
+            <img src="images/paloma/decor/case-boutique-window.jpg"
+                 alt="Цветочное оформление витрины бутика PALOMA"
+                 loading="lazy">
+            -->
+            <span class="decor-case-card__placeholder decor-case-card__placeholder--boutique" aria-hidden="true">
+              <span>PALOMA boutique window decor</span>
+            </span>
+            <span class="decor-case-card__overlay" aria-hidden="true"></span>
+            <span class="decor-case-card__button">Смотреть проект</span>
+          </a>
+
+          <div class="decor-case-card__meta">
+            <span>[ ВИТРИНА ]</span>
+            <span>PALOMA</span>
           </div>
-          <div class="e-form__field">
-            <label class="e-form__label" for="ef-phone">Телефон</label>
-            <input class="e-form__input" type="tel" id="ef-phone" name="phone" placeholder="+7 ___ ___ __ __" autocomplete="tel" required />
+
+          <h3 class="decor-case-card__title">
+            <a href="#">Витрина бутика</a>
+          </h3>
+
+          <p class="decor-case-card__description">
+            Сезонное оформление входной группы и акцентной зоны.
+          </p>
+        </article>
+
+        <article class="decor-case-card" data-decor-case-card>
+          <a href="#"
+             class="decor-case-card__media"
+             aria-label="Смотреть проект: Камерное мероприятие">
+            <!-- Future image:
+            <img src="images/paloma/decor/case-chamber-event.jpg"
+                 alt="Цветочное оформление камерного мероприятия PALOMA"
+                 loading="lazy">
+            -->
+            <span class="decor-case-card__placeholder decor-case-card__placeholder--event" aria-hidden="true">
+              <span>PALOMA chamber event decor</span>
+            </span>
+            <span class="decor-case-card__overlay" aria-hidden="true"></span>
+            <span class="decor-case-card__button">Смотреть проект</span>
+          </a>
+
+          <div class="decor-case-card__meta">
+            <span>[ МЕРОПРИЯТИЕ ]</span>
+            <span>PALOMA</span>
           </div>
-          <div class="e-form__field">
-            <label class="e-form__label" for="ef-messenger">Мессенджер</label>
-            <select class="e-form__input e-form__select" id="ef-messenger" name="messenger">
-              <option value="">Выберите</option>
-              <option value="whatsapp">WhatsApp</option>
-              <option value="telegram">Telegram</option>
-              <option value="phone">Звонок</option>
-            </select>
+
+          <h3 class="decor-case-card__title">
+            <a href="#">Камерное мероприятие</a>
+          </h3>
+
+          <p class="decor-case-card__description">
+            Цветы для стола, фотозоны и подарочной зоны.
+          </p>
+        </article>
+
+        <article class="decor-case-card" data-decor-case-card>
+          <a href="#"
+             class="decor-case-card__media"
+             aria-label="Смотреть проект: Фотосессия">
+            <!-- Future image:
+            <img src="images/paloma/decor/case-photoshoot.jpg"
+                 alt="Цветочные объекты для фотосессии PALOMA"
+                 loading="lazy">
+            -->
+            <span class="decor-case-card__placeholder decor-case-card__placeholder--shooting" aria-hidden="true">
+              <span>PALOMA photoshoot floral decor</span>
+            </span>
+            <span class="decor-case-card__overlay" aria-hidden="true"></span>
+            <span class="decor-case-card__button">Смотреть проект</span>
+          </a>
+
+          <div class="decor-case-card__meta">
+            <span>[ СЪЁМКА ]</span>
+            <span>PALOMA</span>
           </div>
-          <div class="e-form__field">
-            <label class="e-form__label" for="ef-date">Дата события</label>
-            <input class="e-form__input" type="text" id="ef-date" name="date" placeholder="Например, 14 июня 2026" />
-          </div>
-          <div class="e-form__field e-form__field--full">
-            <label class="e-form__label" for="ef-type">Тип события</label>
-            <select class="e-form__input e-form__select" id="ef-type" name="eventType">
-              <option value="">Выберите</option>
-              <option value="wedding-floral">Свадьба — цветочное оформление</option>
-              <option value="dinner">Камерный ужин</option>
-              <option value="photozone">Фотозона</option>
-              <option value="vitrine">Витрина / витринный декор</option>
-              <option value="arch">Арка / церемония</option>
-              <option value="tables">Столы гостей</option>
-              <option value="bridal">Букет невесты</option>
-              <option value="retail">Офлайн-точка</option>
-              <option value="other">Другое</option>
-            </select>
-          </div>
-          <div class="e-form__field e-form__field--full">
-            <label class="e-form__label" for="ef-comment">Комментарий</label>
-            <textarea class="e-form__input e-form__textarea" id="ef-comment" name="comment" rows="4" placeholder="Площадка, палитра, зоны оформления…"></textarea>
-          </div>
-          <div class="e-form__field e-form__field--full">
-            <button type="submit" class="btn btn--dark e-form__submit" data-cursor="hover">Отправить заявку</button>
-          </div>
-          <div class="e-form__success" id="eFormSuccess" hidden>
-            <p>Спасибо! Мы получили заявку и свяжемся с вами в ближайшее время.</p>
-          </div>
-        </form>
+
+          <h3 class="decor-case-card__title">
+            <a href="#">Фотосессия</a>
+          </h3>
+
+          <p class="decor-case-card__description">
+            Букеты и цветочные объекты для визуального образа.
+          </p>
+        </article>
+
       </div>
+
     </section>
+
+
+    <!-- =====================================================
+         USP PHOTO BLOCKS
+         TODO animation:
+         - alternating parallax photos
+         - text reveal
+         ===================================================== -->
+    <!-- =====================================================
+         DECOR REQUEST — FINAL CTA FORM
+         Purpose:
+         - collect floral decor requests
+         - send prefilled request to WhatsApp / Telegram
+         TODO:
+         - replace Telegram username (currently paloma_placeholder)
+         - connect backend if needed later
+         ===================================================== -->
+    <section class="decor-request" id="decorRequest" aria-label="Заявка на цветочное оформление PALOMA" data-decor-reveal-section>
+
+      <div class="decor-request__bg" aria-hidden="true">
+        <!-- Future real image:
+        <img
+          class="decor-request__img"
+          src="images/paloma/decor/request-bg.jpg"
+          alt=""
+          loading="lazy">
+        -->
+        <div class="decor-request__placeholder">
+          <span>PALOMA decor request background</span>
+        </div>
+      </div>
+
+      <div class="decor-request__overlay" aria-hidden="true"></div>
+
+      <div class="decor-request__inner">
+
+        <div class="decor-request__content">
+          <p class="decor-request__eyebrow">
+            PALOMA · цветочное оформление
+          </p>
+
+          <h2 class="decor-request__title">
+            Обсудим оформление?
+          </h2>
+
+          <p class="decor-request__text">
+            Расскажите о поводе и пространстве — мы предложим цветочное решение под вашу задачу.
+          </p>
+
+          <div class="decor-request__contacts" aria-label="Контакты PALOMA">
+            <p>Новороссийск, Энгельса 74</p>
+            <a href="tel:+79897707000">+7 989 770 70 00</a>
+          </div>
+        </div>
+
+        <form class="decor-request-form" id="decorRequestForm" novalidate>
+
+          <div class="decor-request-form__row">
+            <label class="decor-request-form__field" for="decorRequestName">
+              <span>Имя *</span>
+              <input
+                id="decorRequestName"
+                type="text"
+                name="name"
+                autocomplete="name"
+                placeholder="Как к вам обращаться"
+                data-decor-required>
+              <small class="decor-request-form__error" data-error-for="name"></small>
+            </label>
+
+            <label class="decor-request-form__field" for="decorRequestPhone">
+              <span>Телефон *</span>
+              <input
+                id="decorRequestPhone"
+                type="tel"
+                name="phone"
+                autocomplete="tel"
+                placeholder="+7"
+                data-decor-required>
+              <small class="decor-request-form__error" data-error-for="phone"></small>
+            </label>
+          </div>
+
+          <fieldset class="decor-request-form__fieldset">
+            <legend>Мессенджер для связи</legend>
+
+            <div class="decor-request-form__chips">
+              <label class="decor-request-chip">
+                <input type="radio" name="messenger" value="Telegram" checked>
+                <span>Telegram</span>
+              </label>
+
+              <label class="decor-request-chip">
+                <input type="radio" name="messenger" value="WhatsApp">
+                <span>WhatsApp</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="decor-request-form__field" for="decorRequestType">
+            <span>Что нужно оформить *</span>
+            <select
+              id="decorRequestType"
+              name="type"
+              data-decor-required>
+              <option value="">Выберите формат</option>
+              <option value="свадьбу">Свадьбу</option>
+              <option value="мероприятие">Мероприятие</option>
+              <option value="витрину">Витрину</option>
+              <option value="фотосессию">Фотосессию</option>
+              <option value="интерьер / пространство">Интерьер / пространство</option>
+              <option value="другое">Другое</option>
+            </select>
+            <small class="decor-request-form__error" data-error-for="type"></small>
+          </label>
+
+          <label class="decor-request-form__field" for="decorRequestDate">
+            <span>Дата события</span>
+            <input
+              id="decorRequestDate"
+              type="date"
+              name="date">
+          </label>
+
+          <label class="decor-request-form__field" for="decorRequestComment">
+            <span>Комментарий</span>
+            <textarea
+              id="decorRequestComment"
+              name="comment"
+              rows="5"
+              placeholder="Расскажите о площадке, палитре, зонах оформления или настроении"></textarea>
+          </label>
+
+          <div class="decor-request-form__actions">
+            <button
+              class="decor-request-form__submit decor-request-form__submit--whatsapp"
+              type="button"
+              data-decor-send="whatsapp">
+              Отправить в WhatsApp
+            </button>
+
+            <button
+              class="decor-request-form__submit decor-request-form__submit--telegram"
+              type="button"
+              data-decor-send="telegram">
+              Отправить в Telegram
+            </button>
+          </div>
+
+          <p
+            class="decor-request-form__status"
+            id="decorRequestStatus"
+            role="status"
+            aria-live="polite">
+          </p>
+
+        </form>
+
+      </div>
+
+    </section>
+
   </main>
 
   <footer class="site-footer" id="contacts">
