@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="clients.css">
   <link rel="stylesheet" href="coffee.css">
-  <link rel="stylesheet" href="coffee-new.css">
+  <link rel="stylesheet" href="coffee-page.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css">
 </head>
@@ -293,383 +293,667 @@
     </header>
   </div>
 
-    <main class="cf-page" id="main">
+    <main id="main">
 
-    <section class="cf-hero" id="cfHero" aria-label="PALOMA Coffee — кофейня">
-      <div class="cf-hero__inner">
-        <div class="cf-hero__text">
-          <span class="cf-eyebrow" aria-hidden="true">Кофейня · Энгельса 74</span>
-          <h1 class="cf-hero__title">
-            кофе,<br>
-            который<br>
-            <em>дополняет цветы.</em>
+    <!-- 01. HERO -->
+    <section class="coffee-hero" id="coffeeHero"
+             aria-label="PALOMA Coffee — кофейня на Энгельса 74">
+
+      <div class="coffee-hero__bg" aria-hidden="true">
+        <span class="coffee-hero__watermark" aria-hidden="true">COFFEE</span>
+      </div>
+
+      <div class="coffee-hero__inner">
+
+        <div class="coffee-hero__side" aria-hidden="true">
+          <span class="coffee-hero__side-text">
+            PALOMA · COFFEE · ЭНГЕЛЬСА 74
+          </span>
+        </div>
+
+        <div class="coffee-hero__content">
+
+          <div class="coffee-hero__eyebrow-wrap">
+            <span class="coffee-hero__eyebrow">[ PALOMA COFFEE ]</span>
+            <span class="coffee-hero__eyebrow-line" aria-hidden="true"></span>
+          </div>
+
+          <h1 class="coffee-hero__title">
+            <span class="coffee-hero__title-line" data-delay="0">кофе,</span>
+            <span class="coffee-hero__title-line" data-delay="80">который</span>
+            <span class="coffee-hero__title-line" data-delay="160">
+              <em>дополняет</em>
+            </span>
+            <span class="coffee-hero__title-line" data-delay="240">цветы.</span>
           </h1>
-          <p class="cf-hero__sub">
-            Кофе, десерты и выпечка
-            в цветочной кофейне PALOMA
-            на Энгельса 74.
-          </p>
-          <div class="cf-hero__actions">
-            <a href="#cf-menu" class="cf-btn cf-btn--dark" data-cursor="hover">
+
+          <div class="coffee-hero__sub-wrap">
+            <p class="coffee-hero__sub">
+              Кофе, десерты и выпечка в цветочной
+              кофейне PALOMA на Энгельса 74.
+            </p>
+            <ul class="coffee-hero__bullets" aria-label="Что мы предлагаем">
+              <li class="coffee-hero__bullet">
+                <span class="coffee-hero__bullet-dash" aria-hidden="true">—</span>
+                кофе с собой и в студии
+              </li>
+              <li class="coffee-hero__bullet">
+                <span class="coffee-hero__bullet-dash" aria-hidden="true">—</span>
+                можно добавить к цветочному заказу
+              </li>
+              <li class="coffee-hero__bullet">
+                <span class="coffee-hero__bullet-dash" aria-hidden="true">—</span>
+                десерты, выпечка и сезонные напитки
+              </li>
+            </ul>
+          </div>
+
+          <div class="coffee-hero__actions">
+            <a href="#coffeeMenu"
+               class="coffee-hero__btn coffee-hero__btn--primary"
+               aria-label="Смотреть меню кофейни PALOMA">
               Смотреть меню
-              <span aria-hidden="true">→</span>
             </a>
-            <a href="catalog.html" class="cf-btn cf-btn--ghost" data-cursor="hover">
+            <a href="catalog.html"
+               class="coffee-hero__btn coffee-hero__btn--secondary"
+               aria-label="Добавить кофе к букету">
               Добавить кофе к букету
             </a>
           </div>
+
         </div>
-        <div class="cf-hero__media" aria-hidden="true">
-          <video class="cf-hero__video" autoplay loop muted playsinline preload="metadata" poster="assets/images/coffee/hero-poster.jpg">
-            <source src="assets/video/coffee-hero.mp4" type="video/mp4">
-          </video>
-          <!--
-            TODO: replace with real PALOMA coffee hero photo
-            Path: images/paloma/coffee/hero.jpg
-            Style: чашка кофе, молочный фон, editorial
-          -->
-          <div class="cf-hero__photo-ph" aria-hidden="true"></div>
-          <span class="cf-hero__media-label" aria-hidden="true">PALOMA COFFEE</span>
+
+        <div class="coffee-hero__media" aria-hidden="true">
+
+          <div class="coffee-hero__media-frame">
+
+            <video class="coffee-hero__video"
+                   autoplay loop muted playsinline preload="metadata"
+                   poster="assets/images/coffee/hero-poster.jpg">
+              <source src="assets/video/coffee-hero.mp4" type="video/mp4">
+            </video>
+
+            <!-- TODO: replace with real PALOMA coffee hero photo
+                 Path: assets/images/coffee/hero.jpg -->
+            <div class="coffee-hero__photo-ph" aria-hidden="true"></div>
+
+            <div class="coffee-hero__media-border" aria-hidden="true"></div>
+
+          </div>
+
+          <div class="coffee-hero__media-meta" aria-hidden="true">
+            <span class="coffee-hero__media-num">01 / 01</span>
+            <span class="coffee-hero__media-label">PALOMA COFFEE</span>
+          </div>
+
         </div>
+
       </div>
-      <div class="cf-hero__bottom" aria-hidden="true">
-        <span class="cf-hero__scroll-line"></span>
-        <span class="cf-hero__scroll-text">scroll</span>
+
+      <div class="coffee-hero__bottom" aria-hidden="true">
+
+        <div class="coffee-hero__scroll">
+          <span class="coffee-hero__scroll-line"></span>
+          <span class="coffee-hero__scroll-text">scroll</span>
+        </div>
+
+        <div class="coffee-hero__location">
+          <span>Новороссийск</span>
+          <span class="coffee-hero__location-sep" aria-hidden="true">·</span>
+          <span>Энгельса 74</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 02. INTRO / PHILOSOPHY -->
+    <section class="coffee-intro" id="coffeeIntro" aria-label="Философия кофе PALOMA">
+      <div class="coffee-intro__inner">
+        <div class="coffee-intro__text">
+          <span class="coffee-eyebrow">Подход</span>
+          <p class="coffee-intro__quote">
+            Мы готовим кофе так, чтобы он дополнял цветы, а не спорил с ними.
+            Маленькая деталь, которая делает подарок теплее.
+          </p>
+        </div>
+        <div class="coffee-intro__media" aria-hidden="true">
+          <!-- TODO: replace with real PALOMA coffee intro photo
+               Path: assets/images/coffee/intro.jpg
+               Style: чашка кофе рядом с букетом, мягкий свет -->
+          <div class="coffee-intro__ph"></div>
+        </div>
       </div>
     </section>
 
-    <section class="ct-taste" id="ctTaste" aria-label="Выберите свой вкус — меню кофейни PALOMA">
-      <div class="ct-taste__inner">
-        <div class="ct-taste__header">
-          <div class="ct-taste__header-left">
-            <h2 class="ct-taste__title">
+    <!-- 03. PRODUCT SHOWCASE -->
+    <section class="coffee-product-showcase" id="coffeeShowcase"
+             aria-label="Выберите свой вкус — меню кофейни PALOMA">
+
+      <div class="coffee-product-showcase__wrap">
+
+        <header class="coffee-product-showcase__head">
+
+          <div class="coffee-product-showcase__head-left">
+            <h2 class="coffee-product-showcase__title">
               выберите<br>
               <em>свой вкус.</em>
             </h2>
           </div>
-          <div class="ct-taste__header-right">
-            <p class="ct-taste__desc">
-              У нас есть кофе, чай, десерты и выпечка —
-              каждый пункт можно взять с собой
-              или добавить к цветочному заказу.
-              <span class="ct-taste__arrow" aria-hidden="true">→</span>
+
+          <div class="coffee-product-showcase__head-right">
+            <p class="coffee-product-showcase__desc">
+              Кофе, чай, десерты и выпечка можно взять с собой,
+              выпить в студии или добавить к цветочному заказу.
             </p>
           </div>
+
+        </header>
+
+        <div class="coffee-product-showcase__grid" id="coffeeShowcaseGrid"
+             aria-label="Товары кофейни PALOMA">
+          <!-- JS initCoffeeShowcase() -->
         </div>
-        <div class="ct-taste__grid" id="ctTasteGrid" aria-label="Напитки и еда кофейни PALOMA"></div>
+
       </div>
+
     </section>
 
-    <section class="cf-moods" id="cfMoods" aria-label="Форматы кофе PALOMA" tabindex="0">
-      <div class="cf-moods__inner">
-        <div class="cf-moods__header">
-          <div class="cf-moods__header-left">
-            <h2 class="cf-moods__title">
+    <!-- 04. FORMAT TRACK -->
+    <section class="coffee-format-track" id="coffeeFormatTrack"
+             aria-label="Форматы кофе PALOMA">
+
+      <div class="coffee-format-track__inner">
+
+        <header class="coffee-format-track__head">
+
+          <div class="coffee-format-track__head-left">
+            <h2 class="coffee-format-track__title">
               кофе под настроение,<br>
               <em>букет или паузу.</em>
             </h2>
           </div>
-          <div class="cf-moods__header-right">
-            <p class="cf-moods__desc">
+
+          <div class="coffee-format-track__head-right">
+            <p class="coffee-format-track__desc">
               Мы готовим напитки сразу после заказа.
               Кофе можно взять с собой, выпить в студии
               или добавить к подарку.
             </p>
           </div>
-        </div>
-        <div class="cf-moods__scroll-outer">
-          <div class="cf-moods__track" id="cfMoodsTrack" role="list" aria-label="Форматы: с собой, в студии, к букету, сезонное меню">
-            <article class="cf-mood-card" role="listitem" aria-label="01 — с собой">
-              <div class="cf-mood-card__inner">
-                <header class="cf-mood-card__header">
-                  <span class="cf-mood-card__num" aria-hidden="true">01</span>
+
+        </header>
+
+        <div class="coffee-format-track__scroll-outer">
+
+          <div class="coffee-format-track__scroll"
+               id="cfmTrackScroll"
+               role="region"
+               aria-label="Горизонтальная прокрутка форматов кофе">
+
+            <article class="coffee-format-card" data-idx="0"
+                     aria-label="Формат: с собой">
+              <div class="coffee-format-card__inner">
+                <header class="coffee-format-card__head">
+                  <span class="coffee-format-card__num" aria-hidden="true">01</span>
                 </header>
-                <div class="cf-mood-card__center">
-                  <h3 class="cf-mood-card__title">с собой</h3>
+                <div class="coffee-format-card__body">
+                  <h3 class="coffee-format-card__title">с собой</h3>
                 </div>
-                <footer class="cf-mood-card__footer">
-                  <p class="cf-mood-card__desc">Для прогулки, офиса или дороги.</p>
+                <footer class="coffee-format-card__foot">
+                  <p class="coffee-format-card__desc">
+                    Для прогулки, офиса или дороги.
+                  </p>
                 </footer>
               </div>
             </article>
-            <article class="cf-mood-card" role="listitem" aria-label="02 — в студии">
-              <div class="cf-mood-card__inner">
-                <header class="cf-mood-card__header">
-                  <span class="cf-mood-card__num" aria-hidden="true">02</span>
+
+            <article class="coffee-format-card" data-idx="1"
+                     aria-label="Формат: в студии">
+              <div class="coffee-format-card__inner">
+                <header class="coffee-format-card__head">
+                  <span class="coffee-format-card__num" aria-hidden="true">02</span>
                 </header>
-                <div class="cf-mood-card__center">
-                  <h3 class="cf-mood-card__title">в студии</h3>
+                <div class="coffee-format-card__body">
+                  <h3 class="coffee-format-card__title">в студии</h3>
                 </div>
-                <footer class="cf-mood-card__footer">
-                  <p class="cf-mood-card__desc">Останьтесь внутри PALOMA и выпейте кофе среди цветов.</p>
+                <footer class="coffee-format-card__foot">
+                  <p class="coffee-format-card__desc">
+                    Останьтесь внутри PALOMA и выпейте
+                    кофе среди цветов.
+                  </p>
                 </footer>
               </div>
             </article>
-            <article class="cf-mood-card" role="listitem" aria-label="03 — к букету">
-              <div class="cf-mood-card__inner">
-                <header class="cf-mood-card__header">
-                  <span class="cf-mood-card__num" aria-hidden="true">03</span>
+
+            <article class="coffee-format-card" data-idx="2"
+                     aria-label="Формат: к букету">
+              <div class="coffee-format-card__inner">
+                <header class="coffee-format-card__head">
+                  <span class="coffee-format-card__num" aria-hidden="true">03</span>
                 </header>
-                <div class="cf-mood-card__center">
-                  <h3 class="cf-mood-card__title">к букету</h3>
+                <div class="coffee-format-card__body">
+                  <h3 class="coffee-format-card__title">к букету</h3>
                 </div>
-                <footer class="cf-mood-card__footer">
-                  <p class="cf-mood-card__desc">Добавим кофе, десерт или открытку к цветочному заказу.</p>
+                <footer class="coffee-format-card__foot">
+                  <p class="coffee-format-card__desc">
+                    Добавим кофе, десерт или открытку
+                    к цветочному заказу.
+                  </p>
                 </footer>
               </div>
             </article>
-            <article class="cf-mood-card" role="listitem" aria-label="04 — сезонное меню">
-              <div class="cf-mood-card__inner">
-                <header class="cf-mood-card__header">
-                  <span class="cf-mood-card__num" aria-hidden="true">04</span>
+
+            <article class="coffee-format-card" data-idx="3"
+                     aria-label="Формат: сезонное меню">
+              <div class="coffee-format-card__inner">
+                <header class="coffee-format-card__head">
+                  <span class="coffee-format-card__num" aria-hidden="true">04</span>
                 </header>
-                <div class="cf-mood-card__center">
-                  <h3 class="cf-mood-card__title">сезонное<br>меню</h3>
+                <div class="coffee-format-card__body">
+                  <h3 class="coffee-format-card__title">
+                    сезонное<br>меню
+                  </h3>
                 </div>
-                <footer class="cf-mood-card__footer">
-                  <p class="cf-mood-card__desc">Обновляем напитки и десерты под настроение сезона.</p>
+                <footer class="coffee-format-card__foot">
+                  <p class="coffee-format-card__desc">
+                    Обновляем напитки и десерты
+                    под настроение сезона.
+                  </p>
                 </footer>
               </div>
             </article>
+
           </div>
-          <div class="cf-moods__progress-wrap" aria-hidden="true">
-            <div class="cf-moods__progress-track">
-              <div class="cf-moods__progress-fill" id="cfMoodsProgress"></div>
+
+          <div class="coffee-format-track__progress-wrap" aria-hidden="true">
+            <div class="coffee-format-track__progress-track">
+              <div class="coffee-format-track__progress-fill"
+                   id="cfmProgressFill"></div>
             </div>
           </div>
+
         </div>
-        <div class="cf-moods__arrows" role="group" aria-label="Прокрутка форматов">
-          <button class="cf-moods__arrow cf-moods__arrow--prev" id="cfMoodsPrev" aria-label="Предыдущий формат" type="button" disabled>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
-            </svg>
-          </button>
-          <button class="cf-moods__arrow cf-moods__arrow--next" id="cfMoodsNext" aria-label="Следующий формат" type="button">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M5 12h14M19 12l-7-7M19 12l-7 7"/>
-            </svg>
-          </button>
-        </div>
+
       </div>
+
     </section>
 
-    <div class="cfs-wrap" id="cfsWrap">
+    <!-- 05. STORYTELLING -->
+    <section class="coffee-story" id="coffeeStory" aria-label="История кофейни PALOMA">
 
-      <section class="cfs-scene cfs-scene--1" id="cfsScene1" aria-label="О философии кофе PALOMA">
-        <div class="cfs-scene__bg" aria-hidden="true">
-          <video class="cfs-scene__video" autoplay loop muted playsinline preload="metadata" poster="assets/images/coffee/hero-poster.jpg">
+      <article class="coffee-story-panel coffee-story-panel--one" data-coffee-story-panel
+               aria-label="Философия кофе PALOMA">
+        <div class="coffee-story-panel__bg" data-coffee-story-bg aria-hidden="true">
+          <video class="coffee-story-panel__video" autoplay muted loop playsinline preload="metadata"
+                 poster="assets/images/coffee/hero-poster.jpg">
             <source src="assets/video/coffee-cups.mp4" type="video/mp4">
           </video>
-          <!-- TODO: story-01.jpg — крупный план кофе, тёплый тон -->
-          <div class="cfs-scene__bg-ph cfs-scene__bg-ph--1" aria-hidden="true"></div>
-          <div class="cfs-scene__overlay" aria-hidden="true"></div>
-        </div>
-        <div class="cfs-scene__content">
-          <div class="cfs-scene__card" aria-hidden="true">
-            <div class="cfs-scene__card-ph cfs-scene__card-ph--1"></div>
-          </div>
-          <div class="cfs-scene__text-block">
-            <p class="cfs-scene__text">
-              Мы готовим кофе так, чтобы он дополнял цветы,
-              а не спорил с ними.
-            </p>
+          <!-- TODO: assets/images/coffee/story-coffee-bg.jpg -->
+          <div class="coffee-story-panel__placeholder coffee-story-panel__placeholder--coffee">
+            <span>PALOMA coffee background</span>
           </div>
         </div>
-      </section>
 
-      <section class="cfs-scene cfs-scene--2" id="cfsScene2" aria-label="О качестве приготовления кофе PALOMA">
-        <div class="cfs-scene__bg" aria-hidden="true">
-          <div class="cfs-scene__bg-ph cfs-scene__bg-ph--2" aria-hidden="true"></div>
-          <div class="cfs-scene__overlay" aria-hidden="true"></div>
-        </div>
-        <div class="cfs-scene__content cfs-scene__content--split">
-          <div class="cfs-scene__text-block">
-            <p class="cfs-scene__text">
-              Каждый напиток готовится перед подачей —
-              без спешки, но точно.
-            </p>
-          </div>
-          <div class="cfs-scene__photo-overlay cfs-scene__photo-overlay--right" aria-hidden="true">
-            <div class="cfs-scene__ph cfs-scene__ph--2"></div>
-          </div>
-        </div>
-      </section>
+        <div class="coffee-story-panel__overlay" aria-hidden="true"></div>
 
-      <section class="cfs-scene cfs-scene--3" id="cfsScene3" aria-label="Кофе как часть подарка PALOMA">
-        <div class="cfs-scene__bg" aria-hidden="true">
-          <div class="cfs-scene__bg-ph cfs-scene__bg-ph--3" aria-hidden="true"></div>
-          <div class="cfs-scene__overlay" aria-hidden="true"></div>
+        <div class="coffee-story-panel__content coffee-story-panel__content--bottom">
+          <p class="coffee-story-panel__eyebrow">PALOMA coffee</p>
+          <h2 class="coffee-story-panel__title" data-coffee-story-text>
+            Мы готовим кофе так, чтобы он дополнял цветы, а не спорил с ними.
+          </h2>
         </div>
-        <div class="cfs-scene__content cfs-scene__content--split">
-          <div class="cfs-scene__text-block">
-            <p class="cfs-scene__text">
-              Кофе, десерт и открытка могут стать
-              частью одного подарка.
-            </p>
-            <a href="catalog.html" class="cf-btn cf-btn--light" data-cursor="hover" aria-label="Выбрать букет с кофе в каталоге PALOMA">
+
+        <div class="coffee-story-card coffee-story-card--cup" data-coffee-story-card aria-hidden="true">
+          <!-- TODO: assets/images/coffee/story-cup.jpg -->
+          <div class="coffee-story-card__image coffee-story-card__image--cup">
+            <span>coffee cup photo</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="coffee-story-panel coffee-story-panel--two" data-coffee-story-panel
+               aria-label="Медленный ритуал приготовления">
+        <div class="coffee-story-panel__bg" data-coffee-story-bg aria-hidden="true">
+          <!-- TODO: assets/images/coffee/story-machine-bw.jpg -->
+          <div class="coffee-story-panel__placeholder coffee-story-panel__placeholder--machine coffee-story-panel__placeholder--bw">
+            <span>PALOMA coffee machine background</span>
+          </div>
+        </div>
+
+        <div class="coffee-story-panel__overlay" aria-hidden="true"></div>
+
+        <div class="coffee-story-panel__content coffee-story-panel__content--left">
+          <p class="coffee-story-panel__eyebrow">slow coffee ritual</p>
+          <h2 class="coffee-story-panel__title" data-coffee-story-text>
+            Каждый напиток готовится перед подачей — без спешки, но точно.
+          </h2>
+        </div>
+
+        <div class="coffee-story-card coffee-story-card--detail" data-coffee-story-card aria-hidden="true">
+          <!-- TODO: assets/images/coffee/story-detail.jpg -->
+          <div class="coffee-story-card__image coffee-story-card__image--detail">
+            <span>coffee detail photo</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="coffee-story-panel coffee-story-panel--three" data-coffee-story-panel
+               aria-label="Кофе как часть подарка">
+        <div class="coffee-story-panel__bg" data-coffee-story-bg aria-hidden="true">
+          <!-- TODO: assets/images/coffee/story-interior-bw.jpg -->
+          <div class="coffee-story-panel__placeholder coffee-story-panel__placeholder--interior coffee-story-panel__placeholder--bw">
+            <span>PALOMA coffee interior background</span>
+          </div>
+        </div>
+
+        <div class="coffee-story-panel__overlay" aria-hidden="true"></div>
+
+        <div class="coffee-story-panel__content coffee-story-panel__content--left">
+          <p class="coffee-story-panel__eyebrow">flowers coffee you</p>
+          <h2 class="coffee-story-panel__title" data-coffee-story-text>
+            Кофе, десерт и открытка могут стать частью одного подарка.
+          </h2>
+        </div>
+
+        <div class="coffee-story-card coffee-story-card--dessert" data-coffee-story-card aria-hidden="true">
+          <!-- TODO: assets/images/coffee/story-dessert.jpg -->
+          <div class="coffee-story-card__image coffee-story-card__image--dessert">
+            <span>dessert and coffee photo</span>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- 06. GIFT SPLIT -->
+    <section class="coffee-gift-split" id="coffeeGiftSplit" aria-label="Кофе как часть подарка PALOMA">
+
+      <div class="coffee-gift-split__inner">
+
+        <div class="coffee-gift-split__content">
+
+          <p class="coffee-gift-split__eyebrow">
+            PALOMA flowers coffee you
+          </p>
+
+          <h2 class="coffee-gift-split__title" data-coffee-split-title>
+            <span>кофе,</span>
+            <span>который</span>
+            <span>объединяет</span>
+            <span>цветы и вкус.</span>
+          </h2>
+
+          <div class="coffee-gift-split__small-media" data-coffee-split-small-media aria-hidden="true">
+            <!-- TODO: assets/images/coffee/coffee-gift-small.jpg -->
+            <div class="coffee-gift-split__placeholder coffee-gift-split__placeholder--small">
+              <span>coffee gift detail</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="coffee-gift-split__visual" data-coffee-split-image aria-hidden="true">
+          <!-- TODO: assets/images/coffee/coffee-gift-main.jpg -->
+          <div class="coffee-gift-split__placeholder coffee-gift-split__placeholder--main">
+            <span>PALOMA coffee zone photo</span>
+          </div>
+        </div>
+
+        <div class="coffee-gift-split__text-block">
+
+          <p class="coffee-gift-split__text" data-coffee-split-text>
+            <span class="is-dark">Paloma соединяет</span>
+            <span class="is-muted">цветы, кофе и небольшие детали</span>
+            <span class="is-dark">в один подарок.</span>
+            <span class="is-muted">Букет может быть не только красивым,</span>
+            <span class="is-dark">но и тёплым:</span>
+            <span class="is-muted">с капучино, десертом, открыткой или вазой.</span>
+          </p>
+
+          <div class="coffee-gift-split__actions">
+            <a href="catalog.html" class="coffee-gift-split__link">
               выбрать букет →
             </a>
+            <a href="#coffeeMenu" class="coffee-gift-split__link">
+              смотреть меню →
+            </a>
           </div>
-          <div class="cfs-scene__photo-overlay cfs-scene__photo-overlay--center" aria-hidden="true">
-            <div class="cfs-scene__ph cfs-scene__ph--3"></div>
-          </div>
-        </div>
-      </section>
 
-    </div>
+        </div>
 
-    <section class="cf-union" id="cfUnion" aria-label="Кофе и цветы PALOMA">
-      <div class="cf-union__inner">
-        <div class="cf-union__text">
-          <h2 class="cf-union__title">
-            <span class="cf-union__title-dim">кофе,</span>
-            который<br>
-            <span class="cf-union__title-dim">объединяет</span><br>
-            цветы и вкус.
-          </h2>
-          <p class="cf-union__desc">
-            PALOMA соединяет цветы, кофе и небольшие детали
-            в один подарок. Букет может быть не только
-            красивым, но и тёплым: с капучино, десертом,
-            открыткой или вазой.
-          </p>
-          <div class="cf-union__actions">
-            <a href="catalog.html" class="cf-btn cf-btn--dark" data-cursor="hover">выбрать букет →</a>
-            <a href="#cf-menu" class="cf-btn cf-btn--ghost" data-cursor="hover">смотреть меню →</a>
-          </div>
-          <div class="cf-union__mini-photo" aria-hidden="true">
-            <div class="cf-union__mini-ph"></div>
-          </div>
-        </div>
-        <div class="cf-union__photo" aria-hidden="true">
-          <div class="cf-union__photo-ph"></div>
-        </div>
       </div>
+
     </section>
 
-    <section class="cfgr" id="cfGrain" aria-label="О кофе PALOMA — вкус и атмосфера">
-      <div class="cfgr__inner">
-        <div class="cfgr__bean-wrap" aria-hidden="true">
-          <!-- TODO: images/paloma/coffee/bean.png — PNG, прозрачный фон -->
-          <div class="cfgr__bean-ph" aria-hidden="true"></div>
+    <!-- 07. BEAN MOOD -->
+    <section class="coffee-bean-mood" id="coffeeBeanMood" aria-label="Кофейные детали PALOMA">
+
+      <div class="coffee-bean-mood__inner">
+
+        <div class="coffee-bean-mood__visual" aria-hidden="true">
+          <!-- TODO: assets/images/coffee/bean.png — реальное PNG зерна -->
+          <div class="coffee-bean-mood__bean" id="coffeeBeanMoodBean">
+            <span>coffee bean abstract shape</span>
+          </div>
         </div>
-        <div class="cfgr__content">
-          <span class="cfgr__eyebrow">Зерно · Вкус · Атмосфера</span>
-          <h2 class="cfgr__title">
-            детали, из которых<br>
-            складывается<br>
-            <em>настроение.</em>
-          </h2>
-          <p class="cfgr__desc">
-            Мы выбираем мягкие кофейные сочетания,
-            которые подходят к цветам, десертам
-            и спокойной атмосфере PALOMA.
+
+        <div class="coffee-bean-mood__content" id="coffeeBeanMoodContent">
+
+          <p class="coffee-bean-mood__eyebrow">
+            PALOMA coffee details
           </p>
-          <a href="#ctTaste" class="cfgr__cta cf-link" aria-label="Смотреть меню кофейни PALOMA">
-            купить кофе
-            <span class="cfgr__cta-arrow" aria-hidden="true">→</span>
+
+          <h2 class="coffee-bean-mood__title">
+            <span>детали,</span>
+            <span>из которых</span>
+            <span>складывается</span>
+            <span>настроение.</span>
+          </h2>
+
+          <p class="coffee-bean-mood__text">
+            Мы выбираем мягкие кофейные сочетания, которые подходят к цветам,
+            десертам и спокойной атмосфере Paloma.
+          </p>
+
+          <a href="#coffeeMenu" class="coffee-bean-mood__link">
+            купить кофе →
           </a>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="cf-plus" id="cfPlus" aria-label="Кофе к букету PALOMA">
-      <div class="cf-plus__inner">
-        <div class="cf-plus__photo" aria-hidden="true">
-          <div class="cf-plus__photo-ph"></div>
-        </div>
-        <div class="cf-plus__text">
-          <span class="cf-eyebrow">Кофе + Цветы</span>
-          <h2 class="cf-plus__title">кофе можно<br>добавить к <em>букету</em></h2>
-          <p class="cf-plus__desc">
-            Добавьте к цветам кофе, десерт, открытку
-            или вазу. Мы соберём заказ аккуратно
-            и красиво.
+    <!-- 08. MENU -->
+    <section class="coffee-menu" id="coffeeMenu" aria-label="Меню кофейни PALOMA">
+
+      <div class="coffee-menu__inner">
+
+        <div class="coffee-menu__head">
+          <p class="coffee-menu__eyebrow">
+            PALOMA coffee menu
           </p>
-          <div class="cf-plus__actions">
-            <a href="catalog.html" class="cf-btn cf-btn--dark" data-cursor="hover">выбрать букет</a>
-            <a href="#ctTaste" class="cf-btn cf-btn--ghost" data-cursor="hover">добавить кофе</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="cfm" id="cf-menu" aria-label="Меню кофейни PALOMA">
-      <div class="cfm__inner">
-        <header class="cfm__header">
-          <span class="cfm__eyebrow">Меню</span>
-          <h2 class="cfm__title">Меню кофейни</h2>
-        </header>
-        <div class="cfm__layout">
-          <div class="cfm__left">
-            <nav class="cfm__tabs" id="cfmTabs" role="tablist" aria-label="Категории меню">
-              <button class="cfm__tab is-active" data-cat="all" role="tab" aria-selected="true" aria-controls="cfmList" type="button">Все</button>
-              <button class="cfm__tab" data-cat="coffee" role="tab" aria-selected="false" aria-controls="cfmList" type="button">Кофе</button>
-              <button class="cfm__tab" data-cat="tea" role="tab" aria-selected="false" aria-controls="cfmList" type="button">Чай</button>
-              <button class="cfm__tab" data-cat="bakery" role="tab" aria-selected="false" aria-controls="cfmList" type="button">Выпечка</button>
-              <button class="cfm__tab" data-cat="dessert" role="tab" aria-selected="false" aria-controls="cfmList" type="button">Десерты</button>
-              <button class="cfm__tab" data-cat="lemonade" role="tab" aria-selected="false" aria-controls="cfmList" type="button">Лимонады</button>
-            </nav>
-            <div class="cfm__tabs-line" aria-hidden="true">
-              <span class="cfm__tabs-line-fill" id="cfmTabsLine"></span>
-            </div>
-            <ul class="cfm__list" id="cfmList" role="tabpanel" aria-live="polite" aria-label="Позиции меню"></ul>
-          </div>
-          <div class="cfm__photo-zone" id="cfmPhotoZone" aria-hidden="true">
-            <div class="cfm__photo-frame" id="cfmPhotoFrame">
-              <div class="cfm__photo-fill" id="cfmPhotoFill"></div>
-              <span class="cfm__photo-label" id="cfmPhotoLabel"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+          <h2 class="coffee-menu__title">
+            Меню кофейни
+          </h2>
 
-    <section class="cf-location" id="cfLocation" aria-label="PALOMA на Энгельса">
-      <div class="cf-location__inner">
-        <div class="cf-location__text">
-          <span class="cf-eyebrow">Адрес</span>
-          <h2 class="cf-location__title">PALOMA<br>на Энгельса</h2>
-          <p class="cf-location__desc">
-            Зайдите за букетом, останьтесь на кофе
-            и выберите подарок на месте.
+          <p class="coffee-menu__text">
+            Кофе, чай, десерты и небольшие дополнения, которые можно взять отдельно
+            или добавить к букету.
           </p>
-          <address class="cf-location__address">
-            <p>Новороссийск, Энгельса 74</p>
-            <a href="tel:+79897707000">+7 989 770 70 00</a>
-          </address>
-          <div class="cf-location__actions">
-            <a href="https://yandex.ru/maps/?text=Новороссийск+Энгельса+74" class="cf-btn cf-btn--dark" target="_blank" rel="noopener" data-cursor="hover">построить маршрут</a>
-            <a href="#cf-menu" class="cf-btn cf-btn--ghost" data-cursor="hover">смотреть меню</a>
+        </div>
+
+        <div class="coffee-menu__tabs" role="tablist" aria-label="Категории меню кофейни">
+          <button class="coffee-menu__tab is-active" type="button" role="tab" aria-selected="true" data-coffee-category="coffee">
+            кофе
+          </button>
+
+          <button class="coffee-menu__tab" type="button" role="tab" aria-selected="false" data-coffee-category="tea">
+            чай
+          </button>
+
+          <button class="coffee-menu__tab" type="button" role="tab" aria-selected="false" data-coffee-category="bakery">
+            выпечка
+          </button>
+
+          <button class="coffee-menu__tab" type="button" role="tab" aria-selected="false" data-coffee-category="desserts">
+            десерты
+          </button>
+
+          <button class="coffee-menu__tab" type="button" role="tab" aria-selected="false" data-coffee-category="lemonades">
+            лимонады
+          </button>
+        </div>
+
+        <div class="coffee-menu__layout">
+
+          <div class="coffee-menu__list" id="coffeeMenuList" aria-live="polite">
+            <!-- JS renders menu items here -->
+          </div>
+
+          <aside class="coffee-menu__preview" aria-hidden="true">
+            <div class="coffee-menu__preview-frame" id="coffeeMenuPreview">
+              <div class="coffee-menu__preview-placeholder coffee-menu__preview-placeholder--default">
+                <span>PALOMA coffee preview</span>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 09. COFFEE + BOUQUET UPSELL -->
+    <section class="coffee-bouquet-add" id="coffeeBouquetAdd" aria-label="Кофе можно добавить к букету">
+
+      <div class="coffee-bouquet-add__inner">
+
+        <div class="coffee-bouquet-add__media" data-coffee-bouquet-media aria-hidden="true">
+          <!-- TODO: assets/images/coffee/bouquet-with-coffee.jpg -->
+          <div class="coffee-bouquet-add__placeholder">
+            <span>bouquet with coffee photo</span>
+          </div>
+
+          <p class="coffee-bouquet-add__caption">
+            [ flowers + coffee ]
+          </p>
+        </div>
+
+        <div class="coffee-bouquet-add__content" data-coffee-bouquet-content>
+
+          <p class="coffee-bouquet-add__eyebrow">
+            PALOMA flowers coffee you
+          </p>
+
+          <h2 class="coffee-bouquet-add__title">
+            кофе можно добавить к букету
+          </h2>
+
+          <p class="coffee-bouquet-add__text">
+            Когда хочется сделать подарок теплее, добавьте к цветам кофе,
+            десерт или открытку. Мы соберём заказ так, чтобы всё выглядело
+            цельно и аккуратно.
+          </p>
+
+          <div class="coffee-bouquet-add__actions">
+            <a href="catalog.html" class="coffee-bouquet-add__button coffee-bouquet-add__button--primary">
+              выбрать букет
+            </a>
+
+            <a href="#coffeeMenu" class="coffee-bouquet-add__button coffee-bouquet-add__button--secondary">
+              добавить кофе
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 10. OFFLINE LOCATION -->
+    <section class="coffee-location" id="coffeeLocation" aria-label="PALOMA на Энгельса 74">
+
+      <div class="coffee-location__inner">
+
+        <div class="coffee-location__media" data-coffee-location-media aria-hidden="true">
+          <!-- TODO: assets/images/coffee/location-engelsa-74.jpg -->
+          <div class="coffee-location__placeholder">
+            <span>PALOMA Engelsa 74 location photo</span>
           </div>
         </div>
-        <div class="cf-location__map" aria-label="Местоположение PALOMA">
-          <iframe
-            class="cf-location__iframe"
-            title="PALOMA на карте — Энгельса 74"
-            src="https://yandex.ru/map-widget/v1/?ll=37.769000%2C44.723500&amp;z=17&amp;pt=37.769000%2C44.723500%2Cpm2rdm"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <div class="coffee-location__content" data-coffee-location-content>
+
+          <p class="coffee-location__eyebrow">
+            [ ОФЛАЙН-ТОЧКА ]
+          </p>
+
+          <h2 class="coffee-location__title">
+            <span>PALOMA</span>
+            <span>на Энгельса</span>
+          </h2>
+
+          <p class="coffee-location__text">
+            Зайдите за букетом, останьтесь на кофе и выберите подарок на месте.
+          </p>
+
+          <div class="coffee-location__contacts" aria-label="Контакты PALOMA">
+            <p class="coffee-location__address">
+              Новороссийск, Энгельса 74
+            </p>
+
+            <a href="tel:+79897707000" class="coffee-location__phone">
+              +7 989 770 70 00
+            </a>
+          </div>
+
+          <div class="coffee-location__actions">
+            <a
+              href="https://yandex.ru/maps/?text=Новороссийск%20Энгельса%2074%20Paloma"
+              class="coffee-location__button coffee-location__button--primary"
+              target="_blank"
+              rel="noopener">
+              построить маршрут
+            </a>
+
+            <a
+              href="#coffeeMenu"
+              class="coffee-location__button coffee-location__button--secondary"
+              data-coffee-location-menu-link>
+              смотреть меню
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 11. FINAL CTA -->
+    <section class="coffee-final-cta" id="coffeeFinalCta" aria-label="Финальный призыв PALOMA Coffee">
+      <div class="coffee-final-cta__bg" aria-hidden="true">
+        <!-- TODO: assets/images/coffee/final-bg.jpg -->
+        <div class="coffee-final-cta__bg-ph"></div>
+        <div class="coffee-final-cta__overlay" aria-hidden="true"></div>
+      </div>
+      <div class="coffee-final-cta__content">
+        <p class="coffee-final-cta__title"><em>цветы, кофе, вы.</em></p>
+        <p class="coffee-final-cta__sub">Соберите подарок, который хочется запомнить.</p>
+        <div class="coffee-final-cta__actions">
+          <a href="catalog.html" class="coffee-btn coffee-btn--light" data-cursor="hover">в каталог</a>
+          <a href="#coffeeMenu" class="coffee-btn coffee-btn--ghost-light" data-cursor="hover">в меню кофейни</a>
         </div>
       </div>
     </section>
 
-    <section class="cf-final" id="cfFinal" aria-label="Финальный призыв PALOMA">
-      <div class="cf-final__bg" aria-hidden="true">
-        <div class="cf-final__bg-ph"></div>
-        <div class="cf-final__overlay" aria-hidden="true"></div>
-      </div>
-      <div class="cf-final__content">
-        <p class="cf-final__title"><em>цветы, кофе, вы.</em></p>
-        <p class="cf-final__sub">Соберите подарок, который хочется запомнить.</p>
-        <div class="cf-final__actions">
-          <a href="catalog.html" class="cf-btn cf-btn--light" data-cursor="hover">в каталог</a>
-          <a href="#cf-menu" class="cf-btn cf-btn--ghost-light" data-cursor="hover">в меню кофейни</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
+    </main>
 
   <footer class="site-footer" id="contacts">
     <img src="assets/images/giraffe.svg" alt="" class="site-footer__giraffe-silhouette" width="160" height="320" loading="lazy" />
@@ -842,7 +1126,7 @@
   <script src="clients.js"></script>
   <script src="coffee-menu-data.js"></script>
   <script src="coffee-data.js"></script>
-  <script src="coffee-new.js"></script>
+  <script src="coffee-page.js"></script>
   <script src="cursor.js"></script>
 </body>
 </html>
