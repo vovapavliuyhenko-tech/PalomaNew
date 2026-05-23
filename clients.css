@@ -29,7 +29,7 @@ button.site-header__link.site-header__link--has-dropdown {
   position: fixed;
   left: 0;
   right: 0;
-  top: calc(52px + 88px);
+  top: var(--paloma-header-offset);
   background: var(--color-bg);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
   border-top: 1px solid var(--color-border);
@@ -131,7 +131,7 @@ button.site-header__link.site-header__link--has-dropdown {
 
 @media (min-width: 1280px) {
   .clients-dropdown {
-    top: calc(52px + 88px);
+    top: var(--paloma-header-offset);
   }
 }
 
@@ -164,7 +164,7 @@ button.site-header__link.site-header__link--has-dropdown {
 .breadcrumbs {
   background: var(--color-bg);
   padding: 14px 0;
-  margin-top: calc(52px + 88px + 12px);
+  margin-top: calc(var(--paloma-header-offset) + 12px);
   border-bottom: 1px solid var(--color-border);
 }
 

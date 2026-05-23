@@ -102,7 +102,7 @@
       document.getElementById("homeHero") || document.getElementById("hero");
     const marquee = document.querySelector(".home-marquee");
     const subscription = document.querySelector(
-      ".home-subscription-promo, .home-subscription, .sub-block",
+      ".home-sub, .home-subscription-promo, .home-subscription, .sub-block",
     );
     const about = document.querySelector(".home-about-scroll");
 

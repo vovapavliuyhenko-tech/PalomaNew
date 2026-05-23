@@ -1,6 +1,6 @@
 /* ── CART PAGE ── */
 .cart-page {
-  padding-top: var(--paloma-header-offset, calc(52px + 88px));
+  padding-top: var(--paloma-header-offset, calc(34px + 88px));
   min-height: 80vh;
   background: var(--color-bg);
 }

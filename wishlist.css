@@ -3,7 +3,7 @@
    ════════════════════════════════════════════════════════ */
 
 body.wishlist-page {
-  padding-top: calc(52px + 88px);
+  padding-top: var(--paloma-header-offset);
 }
 
 .wishlist-main {

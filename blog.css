@@ -1,5 +1,5 @@
 .blog-page {
-  padding-top: calc(52px + 88px + 12px);
+  padding-top: calc(var(--paloma-header-offset) + 12px);
   background: var(--color-bg);
 }
 
@@ -471,7 +471,7 @@
 }
 
 .article-page {
-  padding-top: calc(52px + 88px + 12px);
+  padding-top: calc(var(--paloma-header-offset) + 12px);
 }
 .article-breadcrumbs {
   background: var(--color-bg);

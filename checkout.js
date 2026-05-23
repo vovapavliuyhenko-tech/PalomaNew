@@ -1,430 +1,81 @@
 /* ════════════════════════════════════════════════════════
-   checkout.js — оформление заказа PALOMA
+   PALOMA CHECKOUT — полная логика
+   Зависимости: cart-core.js (PalomaCart)
    ════════════════════════════════════════════════════════ */
 
-(function initCheckout() {
+(function PalomaCheckout() {
   "use strict";
 
   if (!document.body.classList.contains("checkout-page")) return;
 
-  const form = document.getElementById("checkoutForm");
-  const emptyEl = document.getElementById("checkoutEmpty");
-  const layoutEl = document.getElementById("checkoutLayout");
-  const loadingEl = document.getElementById("checkoutLoading");
-  const loadingText = document.getElementById("checkoutLoadingText");
-  const summaryItems = document.getElementById("checkoutSummaryItems");
-  const subtotalEl = document.getElementById("checkoutSubtotal");
-  const totalEl = document.getElementById("checkoutTotal");
-  const failedBanner = document.getElementById("paymentFailedBanner");
-  const failedClose = document.getElementById("paymentFailedClose");
-  const cardTextArea = document.getElementById("cf-card-text");
-  const cardTextCount = document.getElementById("cardTextCount");
-  const recipientRadios = form?.querySelectorAll('[name="recipient-type"]');
-  const recipientOther = document.getElementById("recipientOtherFields");
-  const deliveryRadios = form?.querySelectorAll('[name="delivery"]');
-  const courierFields = document.getElementById("courierFields");
-
-  const CFG = window.PALOMA_PAYMENT_CONFIG || {
-    TEST_MODE: true,
-    PAYMENT_ENDPOINT: "/api/create-payment",
-    RETURN_URL_SUCCESS: "thank-you.html",
-    RETURN_URL_FAIL: "checkout.html?payment=failed",
-    WHATSAPP_NUMBER: "79180000000",
-    TELEGRAM_HANDLE: "paloma_novorossiysk",
-    CITY: "Новороссийск",
-  };
-
   const CART_KEY = "paloma_cart_v3";
+  const ORDER_KEY = "paloma_last_order";
+  const DELIVERY_COST = 300;
+  const FREE_DELIVERY = 10000;
+  const CARD_COST = 100;
 
-  let items = [];
-
-  function init() {
-    items = window.PalomaCart
-      ? window.PalomaCart.getItems()
-      : _loadCartFallback();
-
-    if (!items.length) {
-      showEmpty();
-      return;
-    }
-
-    const dateInput = document.getElementById("cf-date");
-    if (dateInput) {
-      dateInput.min = new Date().toISOString().split("T")[0];
-    }
-
-    renderSummary();
-    initRecipientToggle();
-    initDeliveryToggle();
-    initCardTextCounter();
-    initPaymentFailedBanner();
-    initFormSubmit();
-    initFieldClearOnInput();
-  }
-
-  function showEmpty() {
-    if (emptyEl) emptyEl.hidden = false;
-    if (layoutEl) layoutEl.hidden = true;
-    if (failedBanner) failedBanner.hidden = true;
-  }
-
-  function renderSummary() {
-    if (!summaryItems) return;
-
-    summaryItems.innerHTML = items
-      .map((item) => {
-        const lineTotal = (item.price * (item.qty || 1)).toLocaleString(
-          "ru-RU",
-        );
-        const mediaStyle = `background:${esc(item.bg || "var(--color-bg-alt)")};`;
-        const imgHtml = item.image
-          ? `<img src="${esc(item.image)}" alt="${esc(item.name)}"
-                loading="lazy" class="checkout-summary__item-img"
-                onerror="this.style.display='none'">`
-          : "";
-        return `
-        <div class="checkout-summary__item">
-          <div class="checkout-summary__item-media"
-               style="${mediaStyle}" aria-hidden="true">
-            ${imgHtml}
-          </div>
-          <div class="checkout-summary__item-info">
-            <p class="checkout-summary__item-name">${esc(item.name)}</p>
-            <p class="checkout-summary__item-qty">
-              ${esc(item.size ? item.size + " · " : "")}${item.qty || 1} шт.
-            </p>
-          </div>
-          <span class="checkout-summary__item-price">${lineTotal} ₽</span>
-        </div>`;
-      })
-      .join("");
-
-    const total = window.PalomaCart
-      ? window.PalomaCart.calcTotal(items)
-      : items.reduce((s, i) => s + i.price * (i.qty || 1), 0);
-    const fmt = total.toLocaleString("ru-RU") + " ₽";
-    if (subtotalEl) subtotalEl.textContent = fmt;
-    if (totalEl) totalEl.textContent = fmt;
-  }
-
-  function initRecipientToggle() {
-    if (!recipientRadios || !recipientOther) return;
-    recipientRadios.forEach((radio) => {
-      radio.addEventListener("change", () => {
-        const isOther = radio.value === "other" && radio.checked;
-        recipientOther.hidden = !isOther;
-      });
-    });
-  }
-
-  function initDeliveryToggle() {
-    if (!deliveryRadios || !courierFields) return;
-    deliveryRadios.forEach((radio) => {
-      radio.addEventListener("change", () => {
-        const isCourier = radio.value === "courier" && radio.checked;
-        courierFields.hidden = !isCourier;
-        const addr = document.getElementById("cf-address");
-        if (addr) addr.required = isCourier;
-      });
-    });
-  }
-
-  function initCardTextCounter() {
-    if (!cardTextArea || !cardTextCount) return;
-    cardTextArea.addEventListener("input", () => {
-      cardTextCount.textContent = String(cardTextArea.value.length);
-    });
-  }
-
-  function initPaymentFailedBanner() {
-    if (!failedBanner || !failedClose) return;
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("payment") === "failed") {
-      failedBanner.hidden = false;
-    }
-    failedClose.addEventListener("click", () => {
-      failedBanner.hidden = true;
-    });
-  }
-
-  function initFieldClearOnInput() {
-    form?.querySelectorAll(".checkout-field__input").forEach((input) => {
-      input.addEventListener("input", () => {
-        input.classList.remove("is-error");
-        const errId = input.id + "-error";
-        const errEl = document.getElementById(errId);
-        if (errEl) errEl.hidden = true;
-      });
-    });
-  }
-
-  const RULES = [
+  const UPSELL_ITEMS = [
     {
-      id: "cf-name",
-      errorId: "cf-name-error",
-      validate: (v) => v.trim().length >= 2,
-      message: "Укажите имя (минимум 2 символа)",
+      id: "upsell-card",
+      name: "Открытка с текстом",
+      price: 100,
+      ph: "linear-gradient(135deg,#f0e8d8,#e0d0b8)",
+      image: "",
     },
     {
-      id: "cf-phone",
-      errorId: "cf-phone-error",
-      validate: (v) => /^[\d\s+\-()]{10,}$/.test(v.trim()),
-      message: "Укажите корректный телефон",
+      id: "upsell-vase",
+      name: "Ваза для букета",
+      price: 550,
+      ph: "linear-gradient(135deg,#d8e8f0,#b8c8d8)",
+      image: "",
     },
     {
-      id: "cf-date",
-      errorId: "cf-date-error",
-      validate: (v) => Boolean(v),
-      message: "Выберите дату",
+      id: "upsell-coffee",
+      name: "Кофе PALOMA",
+      price: 280,
+      ph: "linear-gradient(135deg,#d8c0a8,#a07848)",
+      image: "",
+    },
+    {
+      id: "upsell-choco",
+      name: "Шоколад ручной работы",
+      price: 350,
+      ph: "linear-gradient(135deg,#c8a878,#785830)",
+      image: "",
+    },
+    {
+      id: "upsell-dessert",
+      name: "Десерт дня",
+      price: 320,
+      ph: "linear-gradient(135deg,#e8c8b8,#c09878)",
+      image: "",
     },
   ];
 
-  function validate() {
-    let valid = true;
+  const $grid = document.getElementById("coGrid");
+  const $empty = document.getElementById("coEmpty");
+  const $success = document.getElementById("coSuccess");
+  const $items = document.getElementById("coItems");
+  const $subtotal = document.getElementById("coSubtotal");
+  const $deliveryTotal = document.getElementById("coDeliveryTotal");
+  const $total = document.getElementById("coTotal");
+  const $mobileTotal = document.getElementById("coMobileTotal");
+  const $form = document.getElementById("coForm");
+  const $upsellGrid = document.getElementById("coUpsellGrid");
+  const $cardRow = document.getElementById("coCardRow");
+  const $deliveryPrice = document.getElementById("coDeliveryPrice");
+  const $mobileBar = document.getElementById("coMobileBar");
 
-    RULES.forEach((rule) => {
-      const input = document.getElementById(rule.id);
-      const errEl = document.getElementById(rule.errorId);
-      if (!input) return;
-      const ok = rule.validate(input.value);
-      input.classList.toggle("is-error", !ok);
-      if (errEl) {
-        errEl.hidden = ok;
-        if (!ok) errEl.textContent = rule.message;
-      }
-      if (!ok) valid = false;
-    });
-
-    const delivery = form.querySelector('[name="delivery"]:checked');
-    const deliveryErr = document.getElementById("delivery-error");
-    if (!delivery) {
-      if (deliveryErr) {
-        deliveryErr.hidden = false;
-        deliveryErr.textContent = "Выберите способ получения";
-      }
-      valid = false;
-    } else if (deliveryErr) {
-      deliveryErr.hidden = true;
-
-      if (delivery.value === "courier") {
-        const addr = document.getElementById("cf-address");
-        const addrErr = document.getElementById("cf-address-error");
-        const addrOk = addr && addr.value.trim().length >= 5;
-        addr?.classList.toggle("is-error", !addrOk);
-        if (addrErr) addrErr.hidden = !!addrOk;
-        if (!addrOk) valid = false;
-      }
+  function getCart() {
+    if (window.PalomaCart?.getItems) {
+      return window.PalomaCart.getItems();
     }
-
-    const interval = form.querySelector('[name="interval"]:checked');
-    const intervalErr = document.getElementById("cf-interval-error");
-    if (!interval) {
-      if (intervalErr) {
-        intervalErr.hidden = false;
-        intervalErr.textContent = "Выберите интервал доставки";
-      }
-      valid = false;
-    } else if (intervalErr) {
-      intervalErr.hidden = true;
-    }
-
-    const payment = form.querySelector('[name="payment"]:checked');
-    const paymentErr = document.getElementById("payment-error");
-    if (!payment) {
-      if (paymentErr) {
-        paymentErr.hidden = false;
-        paymentErr.textContent = "Выберите способ оплаты";
-      }
-      valid = false;
-    } else if (paymentErr) {
-      paymentErr.hidden = true;
-    }
-
-    return valid;
-  }
-
-  function scrollToFirstError() {
-    const firstError = form.querySelector(
-      ".is-error, .checkout-field__error:not([hidden])",
-    );
-    firstError
-      ?.closest(".checkout-section, .checkout-field")
-      ?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-
-  function collectOrder() {
-    const g = (id) => document.getElementById(id)?.value?.trim() || "";
-    const r = (name) =>
-      form.querySelector(`[name="${name}"]:checked`)?.value || "";
-
-    const total = window.PalomaCart
-      ? window.PalomaCart.calcTotal(items)
-      : items.reduce((s, i) => s + i.price * (i.qty || 1), 0);
-
-    return {
-      orderId: _generateOrderId(),
-      createdAt: new Date().toISOString(),
-      status: "pending",
-      customer: {
-        name: g("cf-name"),
-        phone: g("cf-phone"),
-        email: g("cf-email"),
-        messenger: g("cf-messenger"),
-      },
-      recipient: {
-        type: r("recipient-type") || "self",
-        name: g("cf-rec-name"),
-        phone: g("cf-rec-phone"),
-      },
-      delivery: {
-        method: r("delivery"),
-        address: g("cf-address"),
-        courierComment: g("cf-courier-comment"),
-        date: g("cf-date"),
-        interval: r("interval"),
-      },
-      cardText: g("cf-card-text"),
-      comment: g("cf-comment"),
-      paymentMethod: r("payment"),
-      items: items.map((i) => ({ ...i })),
-      total,
-      city: CFG.CITY || "Новороссийск",
-    };
-  }
-
-  function initFormSubmit() {
-    [
-      document.getElementById("checkoutSubmitDesktop"),
-      document.getElementById("checkoutSubmitMobile"),
-    ].forEach((btn) => {
-      btn?.addEventListener("click", (e) => {
-        e.preventDefault();
-        handleSubmit();
-      });
-    });
-
-    form?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      handleSubmit();
-    });
-  }
-
-  async function handleSubmit() {
-    if (!validate()) {
-      scrollToFirstError();
-      return;
-    }
-
-    const order = collectOrder();
-
     try {
-      localStorage.setItem("paloma_last_order", JSON.stringify(order));
-    } catch {
-      /* ignore */
-    }
-
-    showLoading("Создаём заказ...");
-
-    if (CFG.TEST_MODE) {
-      await _sleep(1500);
-      _onPaymentSuccess(order);
-      return;
-    }
-
-    try {
-      updateLoadingText("Перенаправляем на страницу оплаты...");
-      const res = await fetch(CFG.PAYMENT_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          order,
-          paymentMethod: order.paymentMethod,
-          returnUrl:
-            CFG.RETURN_URL_SUCCESS + "?orderId=" + encodeURIComponent(order.orderId),
-        }),
-      });
-
-      if (!res.ok) throw new Error("HTTP " + res.status);
-
-      const data = await res.json();
-
-      if (data.paymentUrl) {
-        window.location.href = data.paymentUrl;
-      } else if (data.status === "succeeded") {
-        _onPaymentSuccess(order);
-      } else {
-        throw new Error("No paymentUrl");
-      }
-    } catch (err) {
-      console.error("[PALOMA Checkout]", err);
-      hideLoading();
-      window.location.href = CFG.RETURN_URL_FAIL;
-    }
-  }
-
-  function _onPaymentSuccess(order) {
-    try {
-      localStorage.setItem("paloma_last_order", JSON.stringify(order));
-      sessionStorage.setItem("paloma_checkout_success", order.orderId);
-    } catch {
-      /* ignore */
-    }
-
-    if (window.PalomaCart?.emptyCart) {
-      window.PalomaCart.emptyCart();
-    } else {
-      localStorage.removeItem(CART_KEY);
-      localStorage.removeItem("paloma_cart_v1");
-    }
-
-    const url =
-      CFG.RETURN_URL_SUCCESS +
-      "?orderId=" +
-      encodeURIComponent(order.orderId) +
-      "&method=" +
-      encodeURIComponent(order.paymentMethod);
-    window.location.href = url;
-  }
-
-  function showLoading(text) {
-    if (!loadingEl) return;
-    if (loadingText) loadingText.textContent = text || "Загрузка...";
-    loadingEl.hidden = false;
-    document.body.style.overflow = "hidden";
-  }
-
-  function hideLoading() {
-    if (!loadingEl) return;
-    loadingEl.hidden = true;
-    document.body.style.overflow = "";
-  }
-
-  function updateLoadingText(text) {
-    if (loadingText) loadingText.textContent = text;
-  }
-
-  function _generateOrderId() {
-    const ts = Date.now().toString(36).toUpperCase();
-    const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
-    return "PL-" + ts + "-" + rand;
-  }
-
-  function _loadCartFallback() {
-    try {
-      const raw =
-        localStorage.getItem(CART_KEY) ||
-        localStorage.getItem("paloma_cart_v2") ||
-        localStorage.getItem("paloma_cart_v1") ||
-        "[]";
-      const parsed = JSON.parse(raw);
-      return Array.isArray(parsed) ? parsed : [];
+      const raw = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+      return Array.isArray(raw) ? raw : [];
     } catch {
       return [];
     }
-  }
-
-  function _sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   function esc(str) {
@@ -435,5 +86,398 @@
       .replace(/"/g, "&quot;");
   }
 
-  init();
+  function itemMedia(item) {
+    if (item.image) {
+      return `<img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy">`;
+    }
+    const bg = item.bg || item.ph || "linear-gradient(135deg,#f0e8d8,#e0d0b8)";
+    return `<div class="co-item__photo-ph" style="background:${esc(bg)};width:100%;height:100%;"></div>`;
+  }
+
+  function itemMeta(item) {
+    const parts = [];
+    if (item.size && item.size !== "—") parts.push(esc(item.size));
+    if (item.addons?.length) {
+      parts.push(esc(item.addons.filter(Boolean).join(", ")));
+    }
+    return parts.length
+      ? `<p class="co-item__meta">${parts.join(" · ")}</p>`
+      : "";
+  }
+
+  function renderItems(cart) {
+    if (!$items) return;
+    $items.innerHTML = "";
+
+    cart.forEach((item) => {
+      const li = document.createElement("li");
+      li.className = "co-item";
+      li.dataset.id = item.id;
+
+      li.innerHTML = `
+        <div class="co-item__photo">${itemMedia(item)}</div>
+        <div class="co-item__info">
+          <p class="co-item__name">${esc(item.name)}</p>
+          ${itemMeta(item)}
+          <div class="co-item__qty">
+            <button type="button" class="co-item__qty-btn" data-action="dec" data-id="${esc(item.id)}"
+                    aria-label="Уменьшить количество">−</button>
+            <span class="co-item__qty-num">${item.qty || 1}</span>
+            <button type="button" class="co-item__qty-btn" data-action="inc" data-id="${esc(item.id)}"
+                    aria-label="Увеличить количество">+</button>
+          </div>
+        </div>
+        <div class="co-item__right">
+          <span class="co-item__price">${((item.price || 0) * (item.qty || 1)).toLocaleString("ru-RU")} ₽</span>
+          <button type="button" class="co-item__remove" data-action="remove" data-id="${esc(item.id)}"
+                  aria-label="Удалить ${esc(item.name)} из заказа">Удалить</button>
+        </div>
+      `;
+      $items.appendChild(li);
+    });
+  }
+
+  function renderUpsell(cart) {
+    if (!$upsellGrid) return;
+    $upsellGrid.innerHTML = "";
+
+    UPSELL_ITEMS.forEach((item) => {
+      const inCart = cart.some((c) => c.id === item.id);
+      const div = document.createElement("div");
+      div.className = "co-upsell-card";
+
+      const imgHtml = item.image
+        ? `<img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy">`
+        : `<div style="background:${esc(item.ph)};width:100%;height:100%;"></div>`;
+
+      div.innerHTML = `
+        <div class="co-upsell-card__photo">${imgHtml}</div>
+        <div class="co-upsell-card__body">
+          <p class="co-upsell-card__name">${esc(item.name)}</p>
+          <p class="co-upsell-card__price">${item.price.toLocaleString("ru-RU")} ₽</p>
+          <button type="button" class="co-upsell-card__btn ${inCart ? "is-added" : ""}"
+                  data-upsell-id="${esc(item.id)}"
+                  ${inCart ? "disabled" : ""}>
+            ${inCart ? "✓ Добавлено" : "Добавить"}
+          </button>
+        </div>
+      `;
+      $upsellGrid.appendChild(div);
+    });
+  }
+
+  function getDeliveryType() {
+    const checked = document.querySelector('[name="delivery_type"]:checked');
+    return checked ? checked.value : "courier";
+  }
+
+  function hasCard() {
+    const cb = document.getElementById("co-add-card");
+    return cb && cb.checked;
+  }
+
+  function calcTotals(cart) {
+    const subtotal = cart.reduce(
+      (s, i) => s + (i.price || 0) * (i.qty || 1),
+      0,
+    );
+    const deliveryType = getDeliveryType();
+    const delivery =
+      deliveryType === "pickup" || deliveryType === "ask_recipient"
+        ? 0
+        : subtotal >= FREE_DELIVERY
+          ? 0
+          : DELIVERY_COST;
+    const cardCost = hasCard() ? CARD_COST : 0;
+    const total = subtotal + delivery + cardCost;
+
+    if ($subtotal) {
+      $subtotal.textContent = subtotal.toLocaleString("ru-RU") + " ₽";
+    }
+    if ($deliveryTotal) {
+      $deliveryTotal.textContent =
+        delivery === 0
+          ? deliveryType === "pickup"
+            ? "Бесплатно"
+            : "0 ₽"
+          : delivery.toLocaleString("ru-RU") + " ₽";
+    }
+    if ($total) $total.textContent = total.toLocaleString("ru-RU") + " ₽";
+    if ($mobileTotal) {
+      $mobileTotal.textContent = total.toLocaleString("ru-RU") + " ₽";
+    }
+    if ($cardRow) $cardRow.hidden = !hasCard();
+
+    return { subtotal, delivery, cardCost, total };
+  }
+
+  function updateView() {
+    const cart = getCart();
+    const empty = cart.length === 0;
+
+    if ($grid) $grid.hidden = empty;
+    if ($empty) $empty.hidden = !empty;
+    if ($success) $success.hidden = true;
+    if ($mobileBar) $mobileBar.hidden = empty;
+
+    if (!empty) {
+      renderItems(cart);
+      renderUpsell(cart);
+      calcTotals(cart);
+    }
+  }
+
+  function handleDeliveryToggle() {
+    const type = getDeliveryType();
+    const $addrFields = document.getElementById("coAddressFields");
+    if ($addrFields) {
+      $addrFields.hidden = type !== "courier";
+    }
+    if ($deliveryPrice) {
+      $deliveryPrice.textContent =
+        type === "pickup" ? "Бесплатно" : DELIVERY_COST + " ₽";
+    }
+    calcTotals(getCart());
+  }
+
+  function cartAction(id, action) {
+    if (!window.PalomaCart) return;
+    if (action === "inc") window.PalomaCart.bumpQtyById(id, 1);
+    else if (action === "dec") window.PalomaCart.bumpQtyById(id, -1);
+    else if (action === "remove") window.PalomaCart.removeById(id);
+    updateView();
+  }
+
+  function addUpsell(id) {
+    const item = UPSELL_ITEMS.find((u) => u.id === id);
+    const cart = getCart();
+    if (!item || cart.some((c) => c.id === id)) return;
+
+    const payload = {
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      qty: 1,
+      bg: item.ph,
+      image: item.image,
+      category: "upsell",
+    };
+
+    if (window.PalomaCart?.add) {
+      window.PalomaCart.add(payload);
+      window.PalomaCart.closeDrawer?.();
+    } else {
+      cart.push(payload);
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+    updateView();
+  }
+
+  document.addEventListener("click", (e) => {
+    const qtyBtn = e.target.closest(
+      '[data-action="inc"], [data-action="dec"], [data-action="remove"]',
+    );
+    if (qtyBtn && $items?.contains(qtyBtn)) {
+      cartAction(qtyBtn.dataset.id, qtyBtn.dataset.action);
+      return;
+    }
+
+    const upsellBtn = e.target.closest("[data-upsell-id]");
+    if (upsellBtn) {
+      addUpsell(upsellBtn.dataset.upsellId);
+      return;
+    }
+
+    if (
+      e.target.closest("#coSubmitBtn, #coMobileSubmit, #coSubmitMobile")
+    ) {
+      e.preventDefault();
+      handleSubmit();
+    }
+  });
+
+  document.addEventListener("change", (e) => {
+    if (e.target.name === "delivery_type") {
+      handleDeliveryToggle();
+    }
+    if (e.target.dataset.action === "toggle-recipient") {
+      const fields = document.getElementById("coRecipientFields");
+      if (fields) fields.hidden = e.target.value !== "other";
+    }
+    if (e.target.name === "time_type") {
+      const interval = document.getElementById("coTimeInterval");
+      const exact = document.getElementById("coTimeExact");
+      if (interval) interval.hidden = e.target.value !== "interval";
+      if (exact) exact.hidden = e.target.value !== "exact";
+    }
+    if (e.target.id === "co-add-card") {
+      const tf = document.getElementById("coCardTextField");
+      if (tf) tf.hidden = !e.target.checked;
+      calcTotals(getCart());
+    }
+  });
+
+  $form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    handleSubmit();
+  });
+
+  document.addEventListener("paloma-cart-updated", updateView);
+
+  function validateForm() {
+    let valid = true;
+
+    const rules = [
+      {
+        id: "co-name",
+        errorId: "co-name-error",
+        check: (v) => v.trim().length >= 2,
+      },
+      {
+        id: "co-phone",
+        errorId: "co-phone-error",
+        check: (v) => v.replace(/\D/g, "").length >= 10,
+      },
+      {
+        id: "co-date",
+        errorId: "co-date-error",
+        check: (v) => v.trim() !== "",
+        skip: () => getDeliveryType() === "pickup",
+      },
+    ];
+
+    rules.forEach((rule) => {
+      if (rule.skip && rule.skip()) return;
+      const input = document.getElementById(rule.id);
+      const error = document.getElementById(rule.errorId);
+      if (!input) return;
+      const ok = rule.check(input.value);
+      input.classList.toggle("is-error", !ok);
+      if (error) error.hidden = ok;
+      if (!ok) valid = false;
+    });
+
+    if (getDeliveryType() === "courier") {
+      const addrInput = document.getElementById("co-address");
+      if (addrInput && addrInput.value.trim().length < 5) {
+        addrInput.classList.add("is-error");
+        valid = false;
+      } else if (addrInput) {
+        addrInput.classList.remove("is-error");
+      }
+    }
+
+    const recipientType = document.querySelector(
+      '[name="recipient_type"]:checked',
+    )?.value;
+    if (recipientType === "other") {
+      const recName = document.getElementById("co-recipient-name");
+      if (recName && recName.value.trim().length < 2) {
+        recName.classList.add("is-error");
+        valid = false;
+      } else if (recName) {
+        recName.classList.remove("is-error");
+      }
+    }
+
+    return valid;
+  }
+
+  function collectFormData() {
+    const data = {};
+    if ($form) {
+      new FormData($form).forEach((v, k) => {
+        data[k] = v;
+      });
+    }
+    const payment = document.querySelector('[name="payment"]:checked');
+    if (payment) data.payment = payment.value;
+    return data;
+  }
+
+  function handleSubmit() {
+    const cart = getCart();
+    if (!cart.length) {
+      updateView();
+      return;
+    }
+
+    if (!validateForm()) {
+      const firstError = document.querySelector(
+        ".is-error, .co-error:not([hidden])",
+      );
+      firstError?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    const totals = calcTotals(cart);
+    const orderId = "ORD-" + Date.now().toString(36).toUpperCase();
+
+    const orderData = {
+      id: orderId,
+      date: new Date().toISOString(),
+      items: cart.slice(),
+      subtotal: totals.subtotal,
+      delivery: totals.delivery,
+      cardCost: totals.cardCost,
+      total: totals.total,
+      form: collectFormData(),
+    };
+
+    try {
+      localStorage.setItem(ORDER_KEY, JSON.stringify(orderData));
+    } catch {
+      /* ignore */
+    }
+
+    if (window.PalomaCart?.emptyCart) {
+      window.PalomaCart.emptyCart();
+    } else {
+      localStorage.removeItem(CART_KEY);
+    }
+
+    showSuccess(orderId);
+  }
+
+  function showSuccess(orderId) {
+    if ($grid) $grid.hidden = true;
+    if ($empty) $empty.hidden = true;
+    if ($mobileBar) $mobileBar.hidden = true;
+    if ($success) {
+      $success.hidden = false;
+      const numEl = document.getElementById("coSuccessOrderNum");
+      if (numEl) numEl.textContent = "№ " + orderId;
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function initPayment(orderData) {
+    /* TODO: ЮKassa — см. payment-config.js */
+    console.log("[PALOMA] Payment initiated for order:", orderData.id);
+    showSuccess(orderData.id);
+  }
+
+  function init() {
+    updateView();
+    handleDeliveryToggle();
+
+    const dateInput = document.getElementById("co-date");
+    if (dateInput) {
+      dateInput.min = new Date().toISOString().split("T")[0];
+    }
+
+    $form?.querySelectorAll(".co-input").forEach((input) => {
+      input.addEventListener("input", () => {
+        input.classList.remove("is-error");
+        const err = document.getElementById(input.id + "-error");
+        if (err) err.hidden = true;
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();

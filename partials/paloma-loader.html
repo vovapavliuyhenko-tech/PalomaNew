@@ -1,28 +1,19 @@
-<div class="pl" id="palomaLoader" aria-hidden="true" role="status" aria-label="Загрузка PALOMA">
-  <div class="pl__curtain pl__curtain--top" aria-hidden="true"></div>
-  <div class="pl__curtain pl__curtain--bot" aria-hidden="true"></div>
-  <div class="pl__scene" aria-hidden="true">
-    <div class="pl__ring-wrap" aria-hidden="true">
-      <svg class="pl__ring-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-        <defs>
-          <path id="plCirclePath" d="M 160,160 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0" />
-        </defs>
-        <text class="pl__ring-text">
-          <textPath href="#plCirclePath" xlink:href="#plCirclePath" startOffset="0%" textLength="741" lengthAdjust="spacing">
-            PALOMA&nbsp;•&nbsp;FLOWERS&nbsp;•&nbsp;COFFEE&nbsp;•&nbsp;YOU&nbsp;•&nbsp;НОВОРОССИЙСК&nbsp;•&nbsp;
-          </textPath>
-        </text>
-      </svg>
-    </div>
-    <div class="pl__logo-wrap">
-      <p class="pl__wordmark" aria-label="PALOMA">PALOMA</p>
-      <p class="pl__tagline" aria-label="flowers coffee you">
-        <span>flowers</span>
-        <span aria-hidden="true">·</span>
-        <span>coffee</span>
-        <span aria-hidden="true">·</span>
-        <span>you</span>
-      </p>
+  <div id="palomaLoader" class="paloma-loader" aria-hidden="true" role="presentation">
+    <div class="paloma-loader__inner">
+      <div class="paloma-loader__brand">
+        <span class="paloma-loader__name">PALOMA</span>
+        <span class="paloma-loader__tagline">FLOWERS · COFFEE · YOU</span>
+      </div>
+      <div class="paloma-loader__progress" aria-hidden="true">
+        <div class="paloma-loader__progress-fill" id="palomaLoaderProgress"></div>
+      </div>
     </div>
   </div>
-</div>
+
+  <div id="palomaTransition" class="paloma-transition" aria-hidden="true" role="presentation">
+    <div class="paloma-transition__inner">
+      <div class="paloma-transition__brand">
+        <span class="paloma-transition__name">PALOMA</span>
+      </div>
+    </div>
+  </div>

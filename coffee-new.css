@@ -37,18 +37,18 @@ body.coffee-page:has(.cf-page) .site-header.is-scrolled {
 }
 
 body.coffee-page:has(.cf-page) .site-footer {
-  background: #1b1a18;
+  background: #13100E;
   border-top-color: rgba(251, 246, 232, 0.12);
   color: rgba(251, 246, 232, 0.55);
 }
 
 body.coffee-page:has(.cf-page) .site-footer a {
-  color: #fbf6e8;
+  color: inherit;
 }
 
-body.coffee-page:has(.cf-page) .site-footer__brand-logo,
-body.coffee-page:has(.cf-page) .site-footer__wordmark {
-  color: #fbf6e8;
+body.coffee-page:has(.cf-page) .footer-logo__text,
+body.coffee-page:has(.cf-page) .footer-contacts__phone {
+  color: rgba(251, 246, 232, 0.90);
 }
 
 /* ════════════════

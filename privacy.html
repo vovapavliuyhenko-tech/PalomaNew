@@ -21,34 +21,25 @@
 <body>
   <a href="#main" class="skip-link">К содержимому</a>
 
-  <div class="pl" id="palomaLoader" aria-hidden="true" role="status" aria-label="Загрузка PALOMA">
-  <div class="pl__curtain pl__curtain--top" aria-hidden="true"></div>
-  <div class="pl__curtain pl__curtain--bot" aria-hidden="true"></div>
-  <div class="pl__scene" aria-hidden="true">
-    <div class="pl__ring-wrap" aria-hidden="true">
-      <svg class="pl__ring-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-        <defs>
-          <path id="plCirclePath" d="M 160,160 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0" />
-        </defs>
-        <text class="pl__ring-text">
-          <textPath href="#plCirclePath" xlink:href="#plCirclePath" startOffset="0%" textLength="741" lengthAdjust="spacing">
-            PALOMA&nbsp;•&nbsp;FLOWERS&nbsp;•&nbsp;COFFEE&nbsp;•&nbsp;YOU&nbsp;•&nbsp;НОВОРОССИЙСК&nbsp;•&nbsp;
-          </textPath>
-        </text>
-      </svg>
-    </div>
-    <div class="pl__logo-wrap">
-      <p class="pl__wordmark" aria-label="PALOMA">PALOMA</p>
-      <p class="pl__tagline" aria-label="flowers coffee you">
-        <span>flowers</span>
-        <span aria-hidden="true">·</span>
-        <span>coffee</span>
-        <span aria-hidden="true">·</span>
-        <span>you</span>
-      </p>
+  <div id="palomaLoader" class="paloma-loader" aria-hidden="true" role="presentation">
+    <div class="paloma-loader__inner">
+      <div class="paloma-loader__brand">
+        <span class="paloma-loader__name">PALOMA</span>
+        <span class="paloma-loader__tagline">FLOWERS · COFFEE · YOU</span>
+      </div>
+      <div class="paloma-loader__progress" aria-hidden="true">
+        <div class="paloma-loader__progress-fill" id="palomaLoaderProgress"></div>
+      </div>
     </div>
   </div>
-</div>
+
+  <div id="palomaTransition" class="paloma-transition" aria-hidden="true" role="presentation">
+    <div class="paloma-transition__inner">
+      <div class="paloma-transition__brand">
+        <span class="paloma-transition__name">PALOMA</span>
+      </div>
+    </div>
+  </div>
 
 <div class="site-top" id="siteTop">
     <div class="top-marquee" aria-hidden="false">
@@ -325,50 +316,92 @@
     </section>
   </main>
 
-  <footer class="site-footer site-footer--light" id="contacts">
-    <div class="site-footer__inner">
-      <div class="site-footer__top">
-        <div class="site-footer__brand">
-          <a href="index.html" class="site-footer__brand-logo">PALOMA</a>
-          <p class="site-footer__brand-tag">flowers · coffee · you</p>
-          <p class="site-footer__brand-desc">Цветочный бутик и кофейня в Новороссийске</p>
-        </div>
+  <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
 
-        <nav class="site-footer__nav" aria-label="Навигация в подвале">
-          <h4 class="site-footer__col-title">Навигация</h4>
-          <ul class="site-footer__nav-list">
-            <li><a href="catalog.html">Каталог</a></li>
-            <li><a href="coffee.html">Кофейня</a></li>
-            <li><a href="event-decoration.html">Оформление</a></li>
-            <li><a href="delivery.html">Клиентам</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
-            <li><a href="blog.html">Блог</a></li>
-          </ul>
-        </nav>
+    <div class="footer-inner">
 
-        <div class="site-footer__contacts">
-          <h4 class="site-footer__col-title">Контакты</h4>
-          <ul class="site-footer__list">
-            <li><a href="tel:+78612000000">+7 (861) 200-00-00</a></li>
-            <li><a href="https://t.me/paloma_novorossiysk" target="_blank" rel="noopener noreferrer">Telegram</a></li>
-            <li><a href="https://wa.me/79180000000" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-            <li>Новороссийск, ул. Энгельса, 74</li>
-          </ul>
-        </div>
+      <div class="footer-col footer-col--brand">
+        <a class="footer-logo" href="index.html" aria-label="PALOMA — главная">
+          <span class="footer-logo__text">PALOMA</span>
+          <span class="footer-logo__sub">flowers · coffee · you</span>
+        </a>
+        <p class="footer-tagline">
+          Букеты, кофе и подарки
+          в Новороссийске.
+        </p>
       </div>
 
-      <div class="site-footer__bottom">
-        <span class="site-footer__copyright">© 2026 PALOMA Flowers Coffee You</span>
-        <div class="site-footer__legal">
-          <a href="privacy.html">Политика конфиденциальности</a>
-          <a href="offer.html">Оферта</a>
-        </div>
+      <nav class="footer-col footer-col--nav" aria-label="Навигация в подвале">
+        <p class="footer-col__label">Магазин</p>
+        <ul class="footer-nav">
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="catalog.html?cat=online">Онлайн-витрина</a></li>
+          <li><a href="catalog.html?cat=season">Самый сезон</a></li>
+          <li><a href="catalog.html?cat=best">Бестселлеры</a></li>
+          <li><a href="subscription.html">Цветочная подписка</a></li>
+          <li><a href="coffee.html">Кофейня</a></li>
+          <li><a href="event-decoration.html">Оформление</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col footer-col--info" aria-label="Информация для клиентов">
+        <p class="footer-col__label">Клиентам</p>
+        <ul class="footer-nav">
+          <li><a href="delivery.html">Доставка</a></li>
+          <li><a href="payment.html">Оплата</a></li>
+          <li><a href="care.html">Уход за букетом</a></li>
+          <li><a href="faq.html">Вопрос-ответ</a></li>
+          <li><a href="blog.html">Блог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col footer-col--contacts">
+        <p class="footer-col__label">Контакты</p>
+        <address class="footer-contacts">
+          <a class="footer-contacts__phone"
+             href="tel:+78612000000"
+             aria-label="Позвонить в PALOMA">
+            +7 (861) 200-00-00
+          </a>
+          <p class="footer-contacts__address">
+            Новороссийск,<br>
+            ул. Энгельса, 74
+          </p>
+          <div class="footer-contacts__messengers">
+            <a href="https://t.me/paloma_novorossiysk"
+               class="footer-messenger-btn"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Написать в Telegram">
+              Telegram
+            </a>
+            <a href="https://wa.me/79180000000"
+               class="footer-messenger-btn"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Написать в WhatsApp">
+              WhatsApp
+            </a>
+          </div>
+        </address>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2026 PALOMA — flowers, coffee, you
+      </p>
+      <div class="footer-legal">
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <span class="footer-legal__sep" aria-hidden="true">·</span>
+        <a href="offer.html">Публичная оферта</a>
       </div>
     </div>
 
-    <div class="site-footer__wordmark-wrap" aria-hidden="true">
-      <p class="site-footer__wordmark" id="footerWordmark">PALOMA</p>
+    <div class="footer-brand" aria-hidden="true">
+      <span class="footer-brand__text">PALOMA</span>
     </div>
+
   </footer>
 
   <div class="product-modal" id="productModal" aria-hidden="true">

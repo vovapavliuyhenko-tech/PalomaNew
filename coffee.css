@@ -1146,12 +1146,12 @@
 }
 
 .coffee-page .site-footer a {
-  color: var(--coffee-text);
+  color: inherit;
 }
 
-.coffee-page .site-footer__brand-logo,
-.coffee-page .site-footer__wordmark {
-  color: var(--coffee-text);
+.coffee-page .footer-logo__text,
+.coffee-page .footer-contacts__phone {
+  color: rgba(251, 246, 232, 0.90);
 }
 
 /* Кнопки кофейни */

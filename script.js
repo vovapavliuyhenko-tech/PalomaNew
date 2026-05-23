@@ -801,46 +801,140 @@
 /* Subscription promo — см. initHomeSubscriptionPromo() */
 
 /* ══════════════════════════════════════════
-   HOME HERO — scroll scale background
+   PALOMA HERO — reveal + parallax
    ══════════════════════════════════════════ */
-function initHomeHeroMotion() {
+function initHero() {
   "use strict";
 
   const hero = document.getElementById("homeHero");
-  const media = document.getElementById("homeHeroMedia");
+  const brand = document.getElementById("heroBrand");
+  if (!hero) return;
 
-  if (!hero || !media) return;
-
-  const reduceMotion = window.matchMedia(
+  const noMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
 
-  if (reduceMotion) {
-    media.style.transform = "scale(1)";
-    return;
+  function triggerReveal() {
+    if (noMotion) {
+      hero.classList.add("is-loaded");
+      if (brand) brand.classList.add("is-revealed");
+      return;
+    }
+
+    if (brand) {
+      requestAnimationFrame(() => {
+        brand.classList.add("is-revealed");
+      });
+    }
+
+    requestAnimationFrame(() => {
+      hero.classList.add("is-loaded");
+    });
   }
 
-  let ticking = false;
-
-  function updateHeroScale() {
-    const rect = hero.getBoundingClientRect();
-    const heroHeight = hero.offsetHeight || window.innerHeight;
-    const progress = Math.min(Math.max(-rect.top / heroHeight, 0), 1);
-    const scale = 1 + progress * 0.18;
-
-    media.style.transform = `scale(${scale})`;
-    ticking = false;
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(triggerReveal, 100);
+    });
+  } else {
+    setTimeout(triggerReveal, 80);
   }
 
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(updateHeroScale);
+  if (noMotion) return;
+
+  const photoFrame = hero.querySelector(".hero__photo-frame");
+  const brandWrap = hero.querySelector(".hero__brand-wrap");
+  const isDesktop = () => window.innerWidth > 768;
+
+  let raf = null;
+  let heroInView = false;
+  let mx = 0;
+  let my = 0;
+  let targetMx = 0;
+  let targetMy = 0;
+  let lastScrollY = -1;
+
+  const viewObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        heroInView = entry.isIntersecting;
+        if (heroInView) startParallax();
+        else stopParallax();
+      });
+    },
+    { threshold: 0 },
+  );
+  viewObserver.observe(hero);
+
+  if (isDesktop()) {
+    hero.addEventListener(
+      "mousemove",
+      (e) => {
+        const rect = hero.getBoundingClientRect();
+        targetMx = (e.clientX - rect.left - rect.width / 2) / rect.width;
+        targetMy = (e.clientY - rect.top - rect.height / 2) / rect.height;
+      },
+      { passive: true },
+    );
   }
 
-  updateHeroScale();
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", updateHeroScale);
+  function updateParallax() {
+    if (!hero.classList.contains("is-loaded")) {
+      if (heroInView) {
+        raf = requestAnimationFrame(updateParallax);
+      } else {
+        raf = null;
+      }
+      return;
+    }
+
+    const scrollY = window.scrollY;
+    lastScrollY = scrollY;
+
+    const heroH = hero.offsetHeight || window.innerHeight;
+    const progress = Math.min(1, scrollY / heroH);
+
+    mx += (targetMx - mx) * 0.06;
+    my += (targetMy - my) * 0.06;
+
+    if (photoFrame) {
+      const scrollYShift = progress * -40;
+      const px = isDesktop() ? mx * 18 : 0;
+      const py = isDesktop() ? my * 10 : 0;
+      photoFrame.style.transform = `scale(1) translate(${px.toFixed(2)}px, ${(scrollYShift + py).toFixed(2)}px)`;
+    }
+
+    if (brandWrap) {
+      const bY = progress * -24;
+      brandWrap.style.transform = `translateY(calc(-50% + ${bY.toFixed(2)}px))`;
+    }
+
+    if (heroInView) {
+      raf = requestAnimationFrame(updateParallax);
+    } else {
+      raf = null;
+    }
+  }
+
+  function startParallax() {
+    if (raf) return;
+    raf = requestAnimationFrame(updateParallax);
+  }
+
+  function stopParallax() {
+    if (raf) {
+      cancelAnimationFrame(raf);
+      raf = null;
+    }
+  }
+
+  window.addEventListener("beforeunload", stopParallax);
+  window.addEventListener("resize", () => {
+    if (!isDesktop()) {
+      targetMx = 0;
+      targetMy = 0;
+    }
+  });
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1417,94 +1511,34 @@ function initHomeAboutScroll() {
 function initHomeSubscriptionPromo() {
   "use strict";
 
-  const section = document.getElementById("homeSubscriptionPromo");
-  if (!section) return;
+  const card = document.getElementById("homeSubCard");
+  if (!card) return;
 
-  const bg = document.getElementById("homeSubscriptionPromoBg");
-  const card = document.getElementById("homeSubscriptionPromoCard");
-
-  const reduceMotion = window.matchMedia(
+  const noMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
 
-  if (card) {
-    if (reduceMotion) {
-      card.classList.add("is-visible");
-    } else {
-      const cardObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            card.classList.toggle("is-visible", entry.isIntersecting);
-          });
-        },
-        {
-          threshold: 0.22,
-          rootMargin: "0px 0px -80px 0px",
-        },
-      );
-
-      cardObserver.observe(card);
-    }
+  if (noMotion) {
+    card.classList.add("is-visible");
+    return;
   }
 
-  if (!bg || reduceMotion) return;
-
-  let raf = null;
-  let isActive = false;
-  let lastY = null;
-
-  function updateParallax() {
-    const rect = section.getBoundingClientRect();
-    const sectionH = section.offsetHeight || window.innerHeight;
-    const viewH = window.innerHeight;
-
-    const progress = 1 - rect.bottom / (sectionH + viewH);
-    const clamped = Math.max(0, Math.min(1, progress));
-    const translateY = 8 - clamped * 16;
-    const rounded = Math.round(translateY * 100) / 100;
-
-    if (rounded !== lastY) {
-      bg.style.transform = `translateY(${rounded}%)`;
-      lastY = rounded;
-    }
-
-    if (isActive) {
-      raf = window.requestAnimationFrame(updateParallax);
-    }
-  }
-
-  function start() {
-    if (raf) return;
-    isActive = true;
-    raf = window.requestAnimationFrame(updateParallax);
-  }
-
-  function stop() {
-    isActive = false;
-
-    if (raf) {
-      window.cancelAnimationFrame(raf);
-      raf = null;
-    }
-  }
-
-  const sectionObserver = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          start();
-        } else {
-          stop();
+          card.classList.add("is-visible");
+          observer.disconnect();
         }
       });
     },
     {
-      rootMargin: "20% 0px 20% 0px",
-      threshold: 0,
+      threshold: 0.18,
+      rootMargin: "0px 0px -40px 0px",
     },
   );
 
-  sectionObserver.observe(section);
+  observer.observe(card);
 }
 
 function initHomeSubscriptionParallax() {
@@ -1590,14 +1624,104 @@ function initProductCarousels() {
   });
 }
 
+function initEvProcess() {
+  "use strict";
+
+  const viewport = document.getElementById("evProcessViewport");
+  const track = document.getElementById("evProcessTrack");
+  const progressFill = document.getElementById("evProgressFill");
+
+  if (!viewport || !track) return;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+
+  let raf = null;
+  let scrollDistance = 0;
+  let enabled = false;
+
+  function measure() {
+    const viewportW = window.innerWidth;
+    const viewportH = window.innerHeight;
+
+    if (!enabled || reduceMotion || mobileQuery.matches) {
+      viewport.style.height = "auto";
+      track.style.transform = "none";
+      scrollDistance = 0;
+      if (progressFill) progressFill.style.width = "0%";
+      return;
+    }
+
+    viewport.style.height = `${viewportH}px`;
+
+    requestAnimationFrame(() => {
+      const trackW = track.scrollWidth;
+      const maxTranslate = Math.max(0, trackW - viewportW);
+      scrollDistance = maxTranslate;
+      viewport.style.height = `${viewportH + scrollDistance}px`;
+      update();
+    });
+  }
+
+  function update() {
+    if (!enabled || reduceMotion || mobileQuery.matches) return;
+
+    const rect = viewport.getBoundingClientRect();
+    const scrolled = Math.max(0, Math.min(scrollDistance, -rect.top));
+    const progress = scrollDistance > 0 ? scrolled / scrollDistance : 0;
+
+    track.style.transform = `translate3d(${-scrolled}px, 0, 0)`;
+
+    if (progressFill) {
+      progressFill.style.width = `${(progress * 100).toFixed(2)}%`;
+    }
+
+    raf = null;
+  }
+
+  function requestUpdate() {
+    if (raf) return;
+    raf = window.requestAnimationFrame(update);
+  }
+
+  function enableDesktop() {
+    enabled = !reduceMotion && !mobileQuery.matches;
+
+    if (!enabled) {
+      viewport.style.height = "auto";
+      track.style.transform = "none";
+      return;
+    }
+
+    measure();
+  }
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", measure);
+
+  if (typeof mobileQuery.addEventListener === "function") {
+    mobileQuery.addEventListener("change", enableDesktop);
+  } else if (typeof mobileQuery.addListener === "function") {
+    mobileQuery.addListener(enableDesktop);
+  }
+
+  enableDesktop();
+}
+
 function initHomeShowcaseCarousel() {
   initProductCarousels();
 }
 
 if (document.body.classList.contains("is-home")) {
-  initHomeHeroMotion();
+  initHero();
   initHomeReveal();
   initProductCarousels();
   initHomeAboutScroll();
   initHomeSubscriptionPromo();
+}
+
+if (document.body.classList.contains("event-decoration-page")) {
+  initEvProcess();
 }

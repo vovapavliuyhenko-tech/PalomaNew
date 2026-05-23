@@ -129,7 +129,10 @@ window.PalomaCart = (function () {
 
     saveItems(items);
     _update();
-    if (!document.body.classList.contains("cart-page")) {
+    if (
+      !document.body.classList.contains("cart-page") &&
+      !document.body.classList.contains("checkout-page")
+    ) {
       openDrawer();
     }
   }
@@ -545,7 +548,17 @@ window.PalomaCart = (function () {
       .join("\n");
   }
 
+  function _linkCheckoutButtons() {
+    document.querySelectorAll(".cart-drawer__checkout").forEach((el) => {
+      if (el.tagName === "A" && el.getAttribute("href") === "cart.html") {
+        el.setAttribute("href", "checkout.html");
+      }
+    });
+  }
+
   function init() {
+    _linkCheckoutButtons();
+
     document.addEventListener("click", (e) => {
       if (e.target.closest("#cartOpenBtn, [data-cart-open]")) {
         e.preventDefault();
