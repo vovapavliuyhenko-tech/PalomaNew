@@ -278,95 +278,71 @@
          HOME REDESIGN — PALOMA (skladcvetov73 structure)
          ═══════════════════════════════════════════════════ -->
 
-    <!-- ═══════════════════════════════════════════════════
-         PALOMA HERO — editorial flower shop
-         ═══════════════════════════════════════════════════ -->
-    <section class="hero" id="homeHero"
-             aria-label="PALOMA — цветочный бутик и кофейня">
+    <!-- =====================================================
+         PALOMA HOME HERO — SPLIT EDITORIAL COVER
+         Left side follows provided screenshot.
+         Right side reserved for future hero photo.
+         ===================================================== -->
+    <section class="paloma-hero" id="homeHero" aria-label="PALOMA flowers coffee you">
 
-      <div class="hero__bg-deco" aria-hidden="true">
-        <div class="hero__bg-glow hero__bg-glow--left"></div>
-        <div class="hero__bg-glow hero__bg-glow--right"></div>
-      </div>
+      <div class="paloma-hero__left">
 
-      <div class="hero__brand-wrap" aria-hidden="true">
-        <div class="hero__brand" id="heroBrand">
-          <span class="hero__brand-letter" data-char="P">P</span>
-          <span class="hero__brand-letter" data-char="A">A</span>
-          <span class="hero__brand-letter" data-char="L">L</span>
-          <span class="hero__brand-letter" data-char="O">O</span>
-          <span class="hero__brand-letter" data-char="M">M</span>
-          <span class="hero__brand-letter" data-char="A">A</span>
-        </div>
-        <span class="hero__brand-sub">flowers · coffee · you</span>
-      </div>
+        <div class="paloma-hero__top">
+          <span class="paloma-hero__brand">PALOMA</span>
 
-      <div class="hero__content">
-
-        <div class="hero__left">
-
-          <span class="hero__eyebrow" aria-hidden="true">
-            Новороссийск · Энгельса 74
+          <span class="paloma-hero__location">
+            НОВОРОССИЙСК<br>
+            ЭНГЕЛЬСА 74
           </span>
+        </div>
 
-          <h1 class="hero__offer">
-            Свежие букеты,<br>
-            кофе и подарки —<br>
-            <em>с доставкой в день заказа</em>
+        <div class="paloma-hero__content">
+
+          <h1 class="paloma-hero__title">
+            <span>Цветы, кофе</span>
+            <span>и подарки —</span>
+            <em>всё в один день</em>
           </h1>
 
-          <div class="hero__cta-group">
-            <a href="catalog.html"
-               class="hero__cta hero__cta--primary"
-               aria-label="Перейти в каталог PALOMA">
-              Выбрать букет
+          <p class="paloma-hero__text">
+            Свежие букеты с доставкой по городу. Можно<br>
+            добавить кофе, открытку или десерт.
+          </p>
+
+          <div class="paloma-hero__actions">
+            <a href="catalog.html" class="paloma-hero__btn">
+              В каталог
             </a>
-            <a href="catalog.html?cat=online"
-               class="hero__cta hero__cta--secondary"
-               aria-label="Онлайн-витрина готовых букетов">
-              Онлайн-витрина
+
+            <a href="catalog.html#showcase" class="paloma-hero__btn">
+              Витрина →
             </a>
           </div>
 
-          <div class="hero__tags" aria-label="Преимущества PALOMA">
-            <span class="hero__tag">Фото до отправки</span>
-            <span class="hero__tag-sep" aria-hidden="true">·</span>
-            <span class="hero__tag">Доставка от 2 ч</span>
-            <span class="hero__tag-sep" aria-hidden="true">·</span>
-            <span class="hero__tag">Можно добавить кофе</span>
-          </div>
-
-        </div>
-
-        <div class="hero__right" aria-hidden="true">
-
-          <div class="hero__photo-frame">
-            <img class="hero__photo"
-                 src="images/paloma/hero/hero-main.jpg"
-                 alt="Букет цветов PALOMA"
-                 loading="eager"
-                 fetchpriority="high"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <div class="hero__photo-ph" style="display:none;" aria-hidden="true"></div>
-            <div class="hero__photo-border" aria-hidden="true"></div>
-            <div class="hero__photo-badge" aria-hidden="true">
-              <span class="hero__photo-badge-num">100+</span>
-              <span class="hero__photo-badge-text">букетов в наличии</span>
-            </div>
+          <div class="paloma-hero__meta" aria-label="Преимущества PALOMA">
+            <span>ДОСТАВКА ОТ 2 Ч</span>
+            <span>·</span>
+            <span>ФОТО ДО ОТПРАВКИ</span>
+            <span>·</span>
+            <span>САМОВЫВОЗ</span>
           </div>
 
         </div>
 
       </div>
 
-      <div class="hero__bottom">
-        <div class="hero__wide-cta-wrap">
-          <a href="catalog.html"
-             class="hero__wide-cta"
-             aria-label="Перейти в каталог букетов PALOMA">
-            <span class="hero__wide-cta-text">Перейти в каталог</span>
-            <span class="hero__wide-cta-arrow" aria-hidden="true">→</span>
-          </a>
+      <div class="paloma-hero__right" aria-hidden="true">
+        <!-- Future real image:
+        <img
+          class="paloma-hero__image"
+          src="images/paloma/hero/paloma-hero-main.jpg"
+          alt=""
+          loading="eager"
+          fetchpriority="high">
+        -->
+
+        <div class="paloma-hero__image-placeholder">
+          <span>PALOMA HERO IMAGE</span>
         </div>
       </div>
 
