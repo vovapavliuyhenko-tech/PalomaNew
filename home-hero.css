@@ -20,7 +20,7 @@ body.is-home .paloma-hero__left {
   min-height: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding:
     calc(var(--paloma-header-offset, 88px) + clamp(36px, 4vw, 48px))
     clamp(32px, 4vw, 48px)
