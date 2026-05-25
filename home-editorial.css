@@ -59,23 +59,22 @@
   top: 0;
   width: clamp(108px, 11vw, 170px);
   height: auto;
-  opacity: 0.96;
+  opacity: 1;
   z-index: 5;
   pointer-events: none;
   user-select: none;
   display: block;
-  mix-blend-mode: screen;
 }
 
 .home-subscription__flower--left {
   left: 0;
-  transform: translate(-10%, -8%) rotate(-3deg);
+  transform: translate(-8%, -6%) rotate(-2deg);
   transform-origin: top left;
 }
 
 .home-subscription__flower--right {
   right: 0;
-  transform: translate(10%, -8%) rotate(3deg);
+  transform: translate(8%, -6%) rotate(2deg);
   transform-origin: top right;
 }
 
@@ -83,9 +82,9 @@
   position: absolute;
   right: 22px;
   bottom: 0;
-  width: clamp(121px, 12.7vw, 194px);
+  width: clamp(139px, 14.6vw, 223px);
   height: auto;
-  max-height: 54%;
+  max-height: 62%;
   z-index: 3;
   display: block;
   object-fit: contain;
@@ -185,11 +184,11 @@
   }
 
   .home-subscription__flower--left {
-    transform: translate(-10%, -8%) rotate(-3deg);
+    transform: translate(-8%, -6%) rotate(-2deg);
   }
 
   .home-subscription__flower--right {
-    transform: translate(10%, -8%) rotate(3deg);
+    transform: translate(8%, -6%) rotate(2deg);
   }
 
   .home-subscription__title {
@@ -204,8 +203,8 @@
   .home-subscription__giraffe {
     right: 14px;
     bottom: 0;
-    width: 119px;
-    max-height: 50%;
+    width: 137px;
+    max-height: 58%;
   }
 }
 
@@ -215,10 +214,10 @@
   }
 
   .home-subscription__giraffe {
-    width: 90px;
+    width: 104px;
     right: 10px;
     bottom: 0;
-    max-height: 46%;
+    max-height: 53%;
   }
 }
 
