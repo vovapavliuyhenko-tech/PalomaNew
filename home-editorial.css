@@ -330,7 +330,7 @@
 
 .home-categories__photo {
   width: 100%;
-  height: clamp(420px, 38vw, 620px);
+  height: clamp(280px, 24vw, 420px);
   display: block;
   overflow: hidden;
   background:
@@ -404,7 +404,7 @@
   }
 
   .home-categories__photo {
-    height: 460px;
+    height: 340px;
   }
 }
 
@@ -451,7 +451,7 @@
   }
 
   .home-categories__photo {
-    height: 460px;
+    height: 340px;
   }
 
   .home-categories__item span {
