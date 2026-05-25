@@ -93,15 +93,44 @@ body.is-home .paloma-hero__text {
   color: rgba(247, 239, 228, 0.68);
 }
 
-body.is-home .paloma-hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+body.is-home .paloma-hero__actions-wrap {
+  display: inline-grid;
+  grid-template-columns: minmax(0, max-content);
+  max-width: 100%;
   margin-top: clamp(22px, 2.6vw, 30px);
 }
 
+body.is-home .paloma-hero__actions-ruler {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-display, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(58px, 6vw, 112px);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.045em;
+  line-height: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+body.is-home .paloma-hero__actions {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  width: 100%;
+  margin-top: 0;
+}
+
 body.is-home .paloma-hero__btn {
-  min-width: 178px;
+  width: 100%;
+  min-width: 0;
   min-height: 58px;
   display: inline-flex;
   align-items: center;
@@ -220,7 +249,7 @@ body.is-home .paloma-hero__brand,
 body.is-home .paloma-hero__location,
 body.is-home .paloma-hero__title,
 body.is-home .paloma-hero__text,
-body.is-home .paloma-hero__actions,
+body.is-home .paloma-hero__actions-wrap,
 body.is-home .paloma-hero__meta {
   opacity: 0;
   transform: translateY(24px);
@@ -240,7 +269,7 @@ body.is-home .paloma-hero__text {
   animation-delay: 0.32s;
 }
 
-body.is-home .paloma-hero__actions {
+body.is-home .paloma-hero__actions-wrap {
   animation-delay: 0.44s;
 }
 
@@ -307,6 +336,10 @@ body.is-home .paloma-hero__image {
     font-size: clamp(52px, 7vw, 82px);
   }
 
+  body.is-home .paloma-hero__actions-ruler {
+    font-size: clamp(52px, 7vw, 82px);
+  }
+
   body.is-home .paloma-hero__text {
     font-size: 15px;
   }
@@ -346,6 +379,11 @@ body.is-home .paloma-hero__image {
     letter-spacing: -0.04em;
   }
 
+  body.is-home .paloma-hero__actions-ruler {
+    font-size: clamp(44px, 14vw, 68px);
+    letter-spacing: -0.04em;
+  }
+
   body.is-home .paloma-hero__text {
     margin-top: 20px;
     font-size: 14px;
@@ -356,11 +394,15 @@ body.is-home .paloma-hero__image {
     display: none;
   }
 
-  body.is-home .paloma-hero__actions {
+  body.is-home .paloma-hero__actions-wrap {
     display: grid;
+    width: 100%;
+    margin-top: 22px;
+  }
+
+  body.is-home .paloma-hero__actions {
     grid-template-columns: 1fr;
     gap: 10px;
-    margin-top: 22px;
   }
 
   body.is-home .paloma-hero__btn {
@@ -401,6 +443,10 @@ body.is-home .paloma-hero__image {
   }
 
   body.is-home .paloma-hero__title {
+    font-size: clamp(40px, 13vw, 58px);
+  }
+
+  body.is-home .paloma-hero__actions-ruler {
     font-size: clamp(40px, 13vw, 58px);
   }
 
