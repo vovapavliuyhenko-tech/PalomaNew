@@ -57,24 +57,27 @@
 .home-subscription__flower {
   position: absolute;
   top: 0;
-  width: clamp(108px, 11vw, 170px);
+  width: clamp(118px, 11.5vw, 156px);
   height: auto;
   opacity: 1;
   z-index: 5;
   pointer-events: none;
   user-select: none;
   display: block;
+  object-fit: contain;
 }
 
 .home-subscription__flower--left {
   left: 0;
-  transform: translate(-8%, -6%) rotate(-2deg);
+  object-position: top left;
+  transform: translate(-14%, -10%);
   transform-origin: top left;
 }
 
 .home-subscription__flower--right {
   right: 0;
-  transform: translate(8%, -6%) rotate(2deg);
+  object-position: top right;
+  transform: translate(14%, -10%) scaleX(-1);
   transform-origin: top right;
 }
 
@@ -180,15 +183,15 @@
   }
 
   .home-subscription__flower {
-    width: 136px;
+    width: 142px;
   }
 
   .home-subscription__flower--left {
-    transform: translate(-8%, -6%) rotate(-2deg);
+    transform: translate(-14%, -10%);
   }
 
   .home-subscription__flower--right {
-    transform: translate(8%, -6%) rotate(2deg);
+    transform: translate(14%, -10%) scaleX(-1);
   }
 
   .home-subscription__title {
@@ -210,7 +213,7 @@
 
 @media (max-width: 480px) {
   .home-subscription__flower {
-    width: 108px;
+    width: 118px;
   }
 
   .home-subscription__giraffe {
