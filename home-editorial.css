@@ -58,32 +58,24 @@
   position: absolute;
   top: 0;
   width: clamp(156px, 15vw, 228px);
-  aspect-ratio: 0.72;
-  background-color: #E82E76;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-position: center;
-  mask-position: center;
-  opacity: 0.95;
+  height: auto;
+  opacity: 0.96;
   z-index: 5;
   pointer-events: none;
   user-select: none;
+  display: block;
+  shape-rendering: geometricPrecision;
+  image-rendering: auto;
 }
 
 .home-subscription__flower--left {
   left: 0;
-  -webkit-mask-image: url("assets/images/subscription-flower-left.png");
-  mask-image: url("assets/images/subscription-flower-left.png");
   transform: translate(-18%, -14%) rotate(-4deg);
   transform-origin: top left;
 }
 
 .home-subscription__flower--right {
   right: 0;
-  -webkit-mask-image: url("assets/images/subscription-flower-right.png");
-  mask-image: url("assets/images/subscription-flower-right.png");
   transform: translate(18%, -14%) rotate(4deg);
   transform-origin: top right;
 }
