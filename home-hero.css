@@ -96,37 +96,58 @@ body.is-home .paloma-hero__text {
 body.is-home .paloma-hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: clamp(20px, 2.4vw, 28px);
+  gap: 14px;
+  margin-top: clamp(22px, 2.6vw, 30px);
 }
 
 body.is-home .paloma-hero__btn {
-  min-height: 48px;
+  min-width: 178px;
+  min-height: 58px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 24px;
-  border: 1px solid rgba(247, 239, 228, 0.34);
-  border-radius: 10px;
-  background: transparent;
-  color: #f7efe4;
+  padding: 0 36px;
+  border-radius: 12px;
   text-decoration: none;
   font-family: var(--font-sans, inherit);
   font-size: 13px;
   font-weight: 700;
+  line-height: 1;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   transition:
     color 0.35s ease,
     background 0.35s ease,
     border-color 0.35s ease,
+    box-shadow 0.35s ease,
     transform 0.35s ease;
 }
 
-body.is-home .paloma-hero__btn:hover {
-  color: #2a120c;
-  background: #f7efe4;
-  border-color: #f7efe4;
+body.is-home .paloma-hero__btn--primary {
+  background: rgba(247, 239, 228, 0.94);
+  color: #35180f;
+  border: 1px solid rgba(247, 239, 228, 0.75);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+}
+
+body.is-home .paloma-hero__btn--primary:hover {
+  background: #fff7ec;
+  border-color: #fff7ec;
+  transform: translateY(-2px);
+}
+
+body.is-home .paloma-hero__btn--glass {
+  background: rgba(255, 255, 255, 0.07);
+  color: #f7efe4;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.is-home .paloma-hero__btn--glass:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff7ec;
   transform: translateY(-2px);
 }
 
@@ -344,8 +365,10 @@ body.is-home .paloma-hero__image {
 
   body.is-home .paloma-hero__btn {
     width: 100%;
-    min-height: 52px;
+    min-width: 0;
+    min-height: 54px;
     padding: 0 18px;
+    font-size: 12px;
   }
 
   body.is-home .paloma-hero__meta {
@@ -411,7 +434,15 @@ body.is-home .paloma-hero__image {
     transform: none !important;
   }
 
-  body.is-home .paloma-hero__btn:hover {
-    transform: none;
+  body.is-home .paloma-hero__btn,
+  body.is-home .paloma-hero__btn--primary,
+  body.is-home .paloma-hero__btn--glass {
+    transition: none !important;
+  }
+
+  body.is-home .paloma-hero__btn:hover,
+  body.is-home .paloma-hero__btn--primary:hover,
+  body.is-home .paloma-hero__btn--glass:hover {
+    transform: none !important;
   }
 }

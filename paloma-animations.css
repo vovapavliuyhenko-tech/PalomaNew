@@ -155,23 +155,17 @@ body.paloma-cursor-on .cursor-trail-dot {
   mix-blend-mode: normal;
 }
 
-/* ── Section waves ── */
+/* ── Section waves — disabled site-wide ── */
 .paloma-wave {
-  display: block;
-  width: 100%;
-  line-height: 0;
-  margin: 0;
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  overflow: hidden;
   pointer-events: none;
-  position: relative;
-  z-index: 2;
 }
 
 .paloma-wave svg {
-  width: 100%;
-  max-width: 100%;
-  height: clamp(28px, 4.5vw, 52px);
-  display: block;
-  overflow: hidden;
+  display: none !important;
 }
 
 .paloma-wave--to-milk path {

@@ -95,31 +95,7 @@
   }
 
   function initSectionWaves() {
-    if (reducedMotion || isMobile) return;
-    if (!document.body.classList.contains("is-home")) return;
-
-    const hero =
-      document.getElementById("homeHero") || document.getElementById("hero");
-    const marquee = document.querySelector(".home-marquee");
-    const subscription = document.querySelector(
-      ".home-sub, .home-subscription-promo, .home-subscription, .sub-block",
-    );
-    const about = document.querySelector(".home-about-scroll");
-
-    const waveAnchor = marquee || hero;
-    if (
-      waveAnchor &&
-      !waveAnchor.nextElementSibling?.classList?.contains("paloma-wave")
-    ) {
-      waveAnchor.insertAdjacentHTML("afterend", waveSvg("paloma-wave--to-milk"));
-    }
-    if (subscription && !subscription.previousElementSibling?.classList?.contains("paloma-wave")) {
-      subscription.insertAdjacentHTML("beforebegin", waveSvg("paloma-wave--to-paper"));
-    }
-    if (about && !about.nextElementSibling?.classList?.contains("paloma-wave")) {
-      about.insertAdjacentHTML("afterend", waveSvg("paloma-wave--to-ivory"));
-    }
-    /* Не вешать paloma-reveal на .home-showcase — иначе вся витрина остаётся opacity: 0 */
+    /* Decorative section waves removed site-wide */
   }
 
   function initProductCards() {
