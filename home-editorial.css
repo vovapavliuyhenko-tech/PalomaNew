@@ -57,24 +57,34 @@
 .home-subscription__flower {
   position: absolute;
   top: 0;
-  width: clamp(148px, 14vw, 210px);
-  height: auto;
-  opacity: 0.94;
+  width: clamp(156px, 15vw, 228px);
+  aspect-ratio: 0.72;
+  background-color: #E82E76;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  opacity: 0.95;
   z-index: 5;
   pointer-events: none;
   user-select: none;
-  mix-blend-mode: screen;
 }
 
 .home-subscription__flower--left {
   left: 0;
-  transform: translate(-6%, -4%) rotate(-3deg);
+  -webkit-mask-image: url("assets/images/subscription-flower-left.png");
+  mask-image: url("assets/images/subscription-flower-left.png");
+  transform: translate(-18%, -14%) rotate(-4deg);
   transform-origin: top left;
 }
 
 .home-subscription__flower--right {
   right: 0;
-  transform: translate(6%, -4%) rotate(3deg);
+  -webkit-mask-image: url("assets/images/subscription-flower-right.png");
+  mask-image: url("assets/images/subscription-flower-right.png");
+  transform: translate(18%, -14%) rotate(4deg);
   transform-origin: top right;
 }
 
@@ -82,9 +92,9 @@
   position: absolute;
   right: 22px;
   bottom: 0;
-  width: clamp(101px, 10.6vw, 162px);
+  width: clamp(121px, 12.7vw, 194px);
   height: auto;
-  max-height: 45%;
+  max-height: 54%;
   z-index: 3;
   display: block;
   object-fit: contain;
@@ -180,15 +190,15 @@
   }
 
   .home-subscription__flower {
-    width: 136px;
+    width: 148px;
   }
 
   .home-subscription__flower--left {
-    transform: translate(-6%, -4%) rotate(-3deg);
+    transform: translate(-18%, -14%) rotate(-4deg);
   }
 
   .home-subscription__flower--right {
-    transform: translate(6%, -4%) rotate(3deg);
+    transform: translate(18%, -14%) rotate(4deg);
   }
 
   .home-subscription__title {
@@ -203,21 +213,21 @@
   .home-subscription__giraffe {
     right: 14px;
     bottom: 0;
-    width: 99px;
-    max-height: 42%;
+    width: 119px;
+    max-height: 50%;
   }
 }
 
 @media (max-width: 480px) {
   .home-subscription__flower {
-    width: 112px;
+    width: 120px;
   }
 
   .home-subscription__giraffe {
-    width: 75px;
+    width: 90px;
     right: 10px;
     bottom: 0;
-    max-height: 38%;
+    max-height: 46%;
   }
 }
 
