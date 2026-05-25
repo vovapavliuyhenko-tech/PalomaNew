@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css">
   <link rel="stylesheet" href="home-hero.css?v=3">
+  <link rel="stylesheet" href="home-editorial.css?v=1">
 </head>
 <body class="is-home">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -506,96 +507,53 @@
     </section>
 
     <!-- =====================================================
-         PALOMA CATEGORY COLLECTIONS
+         PALOMA CATEGORY COLLECTIONS — editorial row
          ===================================================== -->
-    <section class="home-categories" id="homeCategories" aria-label="Подборки по категориям PALOMA">
-
-      <div class="home-categories__head home-reveal">
-        <div class="home-categories__intro">
+    <section class="home-categories" id="categories" aria-label="Подборки по категориям">
+      <div class="home-categories__head">
+        <div>
           <h2 class="home-categories__title">Подборки по категориям</h2>
-          <p class="home-categories__text">
-            Свежие букеты, композиции, аксессуары и подарки для дома, праздников и важных моментов.
+
+          <p class="home-categories__subtitle">
+            Свежие букеты из роз и пионов для романтики, пышные композиции для
+            праздников или уютные сезонные миксы для дома в нашем каталоге
           </p>
         </div>
-        <a href="catalog.html" class="home-categories__all-link">Все товары</a>
+
+        <a class="home-categories__all" href="catalog.html">Все товары</a>
       </div>
 
       <div class="home-categories__grid">
-
-        <a href="catalog.html?cat=online" class="home-category-card">
-          <span class="home-category-card__media" aria-hidden="true">
-            <span class="home-category-card__placeholder home-category-card__placeholder--showcase">
-              <span>PALOMA category photo</span>
-            </span>
-          </span>
-          <span class="home-category-card__title">Онлайн-витрина</span>
+        <a class="home-categories__item" href="catalog.html?cat=best">
+          <div class="home-categories__photo home-categories__photo--roses"></div>
+          <span>Розы</span>
         </a>
 
-        <a href="catalog.html?cat=season" class="home-category-card">
-          <span class="home-category-card__media" aria-hidden="true">
-            <span class="home-category-card__placeholder home-category-card__placeholder--season">
-              <span>PALOMA category photo</span>
-            </span>
-          </span>
-          <span class="home-category-card__title">Самый сезон</span>
+        <a class="home-categories__item" href="catalog.html?cat=season">
+          <div class="home-categories__photo home-categories__photo--chrysanthemums"></div>
+          <span>Хризантемы</span>
         </a>
 
-        <a href="catalog.html?cat=best" class="home-category-card">
-          <span class="home-category-card__media" aria-hidden="true">
-            <span class="home-category-card__placeholder home-category-card__placeholder--bestsellers">
-              <span>PALOMA category photo</span>
-            </span>
-          </span>
-          <span class="home-category-card__title">Бестселлеры</span>
+        <a class="home-categories__item" href="catalog.html?cat=online">
+          <div class="home-categories__photo home-categories__photo--bouquets"></div>
+          <span>Сборные букеты</span>
         </a>
 
-        <a href="catalog.html?cat=comp" class="home-category-card">
-          <span class="home-category-card__media" aria-hidden="true">
-            <span class="home-category-card__placeholder home-category-card__placeholder--compositions">
-              <span>PALOMA category photo</span>
-            </span>
-          </span>
-          <span class="home-category-card__title">Цветочные композиции</span>
+        <a class="home-categories__item" href="catalog.html?cat=mono">
+          <div class="home-categories__photo home-categories__photo--mono"></div>
+          <span>Монобукеты</span>
         </a>
 
-        <a href="catalog.html?cat=mono" class="home-category-card">
-          <span class="home-category-card__media" aria-hidden="true">
-            <span class="home-category-card__placeholder home-category-card__placeholder--mono">
-              <span>PALOMA category photo</span>
-            </span>
-          </span>
-          <span class="home-category-card__title">Моно и дуобукеты</span>
+        <a class="home-categories__item" href="catalog.html?cat=comp">
+          <div class="home-categories__photo home-categories__photo--compositions"></div>
+          <span>Композиции</span>
         </a>
 
-        <a href="catalog.html?cat=vases" class="home-category-card">
-          <span class="home-category-card__media" aria-hidden="true">
-            <span class="home-category-card__placeholder home-category-card__placeholder--gifts">
-              <span>PALOMA category photo</span>
-            </span>
-          </span>
-          <span class="home-category-card__title">Вазы и подарки</span>
+        <a class="home-categories__item" href="catalog.html?cat=vases">
+          <div class="home-categories__photo home-categories__photo--accessories"></div>
+          <span>Аксессуары</span>
         </a>
-
-        <a href="subscription.html" class="home-category-card">
-          <span class="home-category-card__media" aria-hidden="true">
-            <span class="home-category-card__placeholder home-category-card__placeholder--subscription">
-              <span>PALOMA category photo</span>
-            </span>
-          </span>
-          <span class="home-category-card__title">Цветочная подписка</span>
-        </a>
-
-        <a href="catalog.html?cat=events" class="home-category-card">
-          <span class="home-category-card__media" aria-hidden="true">
-            <span class="home-category-card__placeholder home-category-card__placeholder--events">
-              <span>PALOMA category photo</span>
-            </span>
-          </span>
-          <span class="home-category-card__title">Оформление мероприятия</span>
-        </a>
-
       </div>
-
     </section>
 
     <!-- =====================================================
@@ -735,52 +693,40 @@
     </section>
 
     <!-- =====================================================
-         PALOMA FLOWER SUBSCRIPTION — главная
+         PALOMA FLOWER SUBSCRIPTION — editorial card
          ===================================================== -->
-    <section class="home-sub" id="homeSubscription"
-             aria-label="Цветочная подписка PALOMA">
+    <section class="home-subscription" id="subscription" aria-label="Цветочная подписка Paloma">
+      <div class="home-subscription__bg" aria-hidden="true"></div>
 
-      <div class="home-sub__bg" aria-hidden="true">
-        <!-- TODO: replace with real PALOMA subscription photo
-             Path: assets/images/subscription-bg.jpg -->
-        <div class="home-sub__bg-ph"></div>
-        <div class="home-sub__overlay"></div>
+      <div class="home-subscription__card">
+        <div class="home-subscription__flower home-subscription__flower--left" aria-hidden="true"></div>
+        <div class="home-subscription__flower home-subscription__flower--right" aria-hidden="true"></div>
+
+        <img
+          class="home-subscription__giraffe"
+          src="assets/images/paloma-giraffe.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          onerror="this.classList.add('is-hidden')">
+
+        <div class="home-subscription__mark" aria-hidden="true">*</div>
+
+        <h2 class="home-subscription__title">Цветочная подписка</h2>
+
+        <p class="home-subscription__text">
+          Абонемент на букеты с регулярной доставкой по заранее согласованному графику.
+          Привезём сезонные цветы для тех, кто вам особенно дорог.
+        </p>
+
+        <a class="home-subscription__link" href="subscription.html">
+          Выбрать тарифный план
+        </a>
+
+        <p class="home-subscription__note">
+          Будьте рядом, даже на расстоянии
+        </p>
       </div>
-
-      <div class="home-sub__card-wrap">
-        <div class="home-sub__card" id="homeSubCard">
-
-          <span class="home-sub__label" aria-hidden="true">
-            Paloma · подписка
-          </span>
-
-          <h2 class="home-sub__title">
-            Цветочная<br>
-            подписка
-          </h2>
-
-          <p class="home-sub__desc">
-            Регулярные букеты для дома, офиса или подарка.
-            Подбираем сезонные цветы и доставляем
-            в удобный день.
-          </p>
-
-          <div class="home-sub__divider" aria-hidden="true"></div>
-
-          <a href="subscription.html"
-             class="home-sub__cta"
-             aria-label="Выбрать тарифный план цветочной подписки">
-            <span class="home-sub__cta-text">Выбрать тарифный план</span>
-            <span class="home-sub__cta-arrow" aria-hidden="true">→</span>
-          </a>
-
-          <p class="home-sub__sign">
-            <em>«Цветы, которые всегда вовремя»</em>
-          </p>
-
-        </div>
-      </div>
-
     </section>
 
     <!-- =====================================================

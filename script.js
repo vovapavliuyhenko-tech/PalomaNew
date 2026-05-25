@@ -798,7 +798,7 @@
   syncBodyOverflow();
 })();
 
-/* Subscription promo — см. initHomeSubscriptionPromo() */
+/* Subscription + categories reveal — см. initHomeEditorialSectionsReveal() */
 
 /* Split hero — load animations handled in CSS (.paloma-hero) */
 function initHero() {}
@@ -1374,41 +1374,38 @@ function initHomeAboutScroll() {
   initHomeAboutHorizontalScroll();
 }
 
-function initHomeSubscriptionPromo() {
+function initHomeEditorialSectionsReveal() {
   "use strict";
 
-  const card = document.getElementById("homeSubCard");
-  if (!card) return;
+  const sections = document.querySelectorAll(
+    ".home-subscription, .home-categories",
+  );
+  if (!sections.length) return;
 
-  const noMotion = window.matchMedia(
+  const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
 
-  if (noMotion) {
-    card.classList.add("is-visible");
+  if (reduceMotion) {
+    sections.forEach((section) => section.classList.add("is-visible"));
     return;
   }
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          card.classList.add("is-visible");
-          observer.disconnect();
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
       });
     },
     {
-      threshold: 0.18,
-      rootMargin: "0px 0px -40px 0px",
+      threshold: 0.16,
+      rootMargin: "0px 0px -8% 0px",
     },
   );
 
-  observer.observe(card);
-}
-
-function initHomeSubscriptionParallax() {
-  initHomeSubscriptionPromo();
+  sections.forEach((section) => observer.observe(section));
 }
 
 function initProductCarousels() {
@@ -1585,7 +1582,7 @@ if (document.body.classList.contains("is-home")) {
   initHomeReveal();
   initProductCarousels();
   initHomeAboutScroll();
-  initHomeSubscriptionPromo();
+  initHomeEditorialSectionsReveal();
 }
 
 if (document.body.classList.contains("event-decoration-page")) {
