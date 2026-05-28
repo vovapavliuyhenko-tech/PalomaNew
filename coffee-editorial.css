@@ -9,11 +9,14 @@
 
 .cof-hero {
   position: relative;
-  height: 100vh;
+  height: 100vh;        /* fallback for browsers without dvh */
+  height: 100dvh;       /* dynamic viewport — correct on mobile chrome */
   min-height: 640px;
   overflow: hidden;
   background: #0c0704;
-  margin-top: calc(-1 * var(--paloma-header-offset, 88px));
+  /* No negative margin-top: .site-top is position:fixed so <main>
+     starts at y=0 already; the fixed header naturally overlays
+     the hero without any margin trick. */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
