@@ -287,25 +287,40 @@
 
     <main id="main">
 
-    <!-- ═══ HERO ════════════════════════════════════════════ -->
+    <!-- ═══ HERO — TYPOGRAPHIC FULLSCREEN ══════════════════ -->
     <section class="cof-hero" aria-label="PALOMA Coffee — кофейня на Энгельса 74">
+
+      <!-- Background photo with zoom animation -->
       <div class="cof-hero__bg" aria-hidden="true">
         <img src="images/paloma/coffee/hero.jpg" alt=""
              width="1920" height="1280" loading="eager" fetchpriority="high" decoding="sync">
       </div>
+
+      <!-- Dark overlay -->
       <div class="cof-hero__overlay" aria-hidden="true"></div>
+
+      <!-- Giant ghost word — visual centrepiece -->
+      <div class="cof-hero__word" aria-hidden="true">COFFEE</div>
+
+      <!-- Bottom content bar -->
       <div class="cof-hero__content">
-        <h1 class="cof-hero__title">
-          кофе,<br>
-          который<br>
-          <em>дополняет</em><br>
-          цветы.
-        </h1>
-        <div class="cof-hero__meta" aria-hidden="true">
+        <div class="cof-hero__content-left">
           <span class="cof-hero__eyebrow">PALOMA Coffee</span>
-          <span class="cof-hero__address">Новороссийск · ул. Энгельса, 74</span>
+          <h1 class="cof-hero__tagline">
+            кофе, который<br><em>дополняет цветы</em>
+          </h1>
+          <a href="#coffeeMenu" class="cof-hero__scroll-cta" aria-label="Перейти к меню">
+            <span class="cof-hero__scroll-line" aria-hidden="true"></span>
+            <span>меню</span>
+          </a>
         </div>
+        <address class="cof-hero__address" aria-label="Адрес PALOMA">
+          <span>Новороссийск</span>
+          <span>ул. Энгельса, 74</span>
+          <span>+7 989 770 70 00</span>
+        </address>
       </div>
+
     </section>
 
     <!-- ═══ MENU WITH CURSOR PHOTO ══════════════════════════ -->
