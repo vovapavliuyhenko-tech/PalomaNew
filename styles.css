@@ -5035,7 +5035,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   display: inline-flex;
   align-items: center;
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 22px;
+  font-size: 18px;
   font-style: italic;
   font-weight: 400;
   line-height: 1;
@@ -5075,13 +5075,13 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   }
 
   .home-marquee__item {
-    font-size: 17px;
+    font-size: 14px;
     letter-spacing: 0.01em;
   }
 
   .home-marquee__separator {
     margin: 0 20px;
-    font-size: 17px;
+    font-size: 14px;
   }
 }
 
