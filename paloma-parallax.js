@@ -35,12 +35,12 @@
       var progress = (viewH - rect.top) / (viewH + sectH);
       progress = Math.max(0, Math.min(1, progress));
 
-      /* Bg travels ±140px (280px total) — CSS sets top/bottom: -140px
+      /* Bg travels ±200px (400px total) — CSS sets top/bottom: -200px
          so the image always covers the section completely.
-         At progress=0  → bgY = -140 (bg shifted up, shows lower part of photo)
+         At progress=0  → bgY = -200 (bg shifted up, shows lower part of photo)
          At progress=0.5 → bgY =  0  (centered)
-         At progress=1  → bgY = +140 (bg shifted down, shows upper part)       */
-      var bgY = (progress * 280 - 140).toFixed(2);
+         At progress=1  → bgY = +200 (bg shifted down, shows upper part)       */
+      var bgY = (progress * 400 - 200).toFixed(2);
       bg.style.transform = 'translateY(' + bgY + 'px)';
     }
 
