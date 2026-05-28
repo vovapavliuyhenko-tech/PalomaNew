@@ -18,13 +18,13 @@
   /* Extended beyond section so parallax never reveals the dark bg.
      JS moves this ±200px — total travel 400px, all invisible outside section. */
   position: absolute;
-  top: -200px;
+  top: -260px;
   left: 0;
   right: 0;
-  bottom: -200px;
+  bottom: -260px;
   will-change: transform;
   background:
-    linear-gradient(rgba(20, 12, 10, 0.38), rgba(20, 12, 10, 0.38)),
+    linear-gradient(rgba(20, 12, 10, 0.54), rgba(20, 12, 10, 0.54)),
     url("images/paloma/catalog/bouquet-01.jpg") center 40% / cover no-repeat;
 }
 

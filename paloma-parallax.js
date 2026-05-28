@@ -40,7 +40,7 @@
          At progress=0  → bgY = -200 (bg shifted up, shows lower part of photo)
          At progress=0.5 → bgY =  0  (centered)
          At progress=1  → bgY = +200 (bg shifted down, shows upper part)       */
-      var bgY = (progress * 400 - 200).toFixed(2);
+      var bgY = (progress * 520 - 260).toFixed(2);
       bg.style.transform = 'translateY(' + bgY + 'px)';
     }
 
