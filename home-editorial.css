@@ -193,7 +193,7 @@
    ===================================================== */
 
 .home-categories {
-  background: #fffdf8;
+  background: var(--color-bg, #fbf6e8);
   color: #35180f;
   padding: 84px 24px 92px;
   border-top: 1px solid rgba(53, 24, 15, 0.08);
