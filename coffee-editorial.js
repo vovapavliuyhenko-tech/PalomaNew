@@ -133,11 +133,81 @@
     });
   }
 
+  /* ── Hero scroll FX (mirrors home-hero-cover.js) ──────── */
+  function initHeroScrollFx() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var hero = document.querySelector('.cof-hero');
+    var word = document.querySelector('.cof-hero__word');
+    var bg   = document.querySelector('.cof-hero__bg');
+    if (!hero || !word || !bg) return;
+
+    /* ── Word: wait for CSS entry anim to finish, then JS owns it ── */
+    var wordReady = false;
+
+    function onWordAnimEnd() {
+      if (wordReady) return;
+      wordReady = true;
+      word.style.animation = 'none';
+      word.style.opacity   = '1';
+      word.style.transform = 'scale(1)';
+      /* kick first tick in case user already scrolled */
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }
+
+    word.addEventListener('animationend', onWordAnimEnd, { once: true });
+    setTimeout(onWordAnimEnd, 2800); /* fallback if animationend doesn't fire */
+
+    /* ── Background: same — wait for 7s zoom-out, then JS owns it ── */
+    var bgReady = false;
+
+    function onBgAnimEnd() {
+      if (bgReady) return;
+      bgReady = true;
+      bg.style.animation  = 'none';
+      bg.style.transform  = 'scale(1)';
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }
+
+    bg.addEventListener('animationend', onBgAnimEnd, { once: true });
+    setTimeout(onBgAnimEnd, 7500); /* fallback (bg anim is 7 s) */
+
+    var rafId = null;
+
+    function tick() {
+      rafId = null;
+      var scrollY = window.scrollY;
+      var heroH   = hero.offsetHeight;
+      if (scrollY > heroH) return; /* hero fully off-screen — stop */
+
+      var p = scrollY / heroH; /* 0 at top → 1 at bottom of hero */
+
+      /* Word: drift DOWN + subtle scale-up + fade out */
+      if (wordReady) {
+        var wY  = (p * 180).toFixed(1);
+        var wSc = (1 + p * 0.18).toFixed(3);
+        var wOp = Math.max(0, 1 - p * 1.8).toFixed(3);
+        word.style.transform = 'translateY(' + wY + 'px) scale(' + wSc + ')';
+        word.style.opacity   = wOp;
+      }
+
+      /* Background: zoom IN on scroll (scale 1 → 1.18) */
+      if (bgReady) {
+        bg.style.transform = 'scale(' + (1 + p * 0.18).toFixed(3) + ')';
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }, { passive: true });
+  }
+
   /* ── Boot ──────────────────────────────────────────────── */
   function init() {
     initMenuCursor();
     initPanelParallax();
     initDragScroll();
+    initHeroScrollFx();
   }
 
   if (document.readyState === 'loading') {
