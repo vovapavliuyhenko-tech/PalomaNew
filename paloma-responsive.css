@@ -298,7 +298,7 @@ svg {
   position: sticky;
   top: var(--paloma-header-offset);
   z-index: 30;
-  background: var(--color-bg, var(--milk, #faf8f4));
+  background: var(--color-bg, var(--milk, #fbf6e8));
   isolation: isolate;
 }
 
@@ -308,7 +308,7 @@ svg {
   height: 8px;
   background: linear-gradient(
     180deg,
-    var(--color-bg, var(--milk, #faf8f4)) 0%,
+    var(--color-bg, var(--milk, #fbf6e8)) 0%,
     transparent 100%
   );
   pointer-events: none;
@@ -442,7 +442,7 @@ svg {
     background: linear-gradient(
       180deg,
       transparent 0%,
-      var(--color-bg, #faf8f4) 18%
+      var(--color-bg, #fbf6e8) 18%
     );
   }
 
@@ -515,7 +515,7 @@ svg {
     background: linear-gradient(
       180deg,
       transparent 0%,
-      var(--color-bg, #faf8f4) 24%
+      var(--color-bg, #fbf6e8) 24%
     );
   }
 }
