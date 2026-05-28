@@ -5251,6 +5251,21 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   transform: scale(1.045);
 }
 
+.home-product-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-product-card__media:hover img {
+  transform: scale(1.045);
+}
+
 .home-product-card__body {
   padding-top: 14px;
 }
@@ -6431,23 +6446,20 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .home-article-card__placeholder--bouquet-care {
   background:
-    radial-gradient(circle at 30% 24%, rgba(255, 236, 226, 0.5), transparent 31%),
-    radial-gradient(circle at 74% 60%, rgba(107, 15, 26, 0.22), transparent 36%),
-    linear-gradient(135deg, #eaded1 0%, #c79da2 48%, #6d3d48 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.28) 100%),
+    url("images/paloma/catalog/bouquet-05.jpg") center 20% / cover no-repeat;
 }
 
 .home-article-card__placeholder--composition-care {
   background:
-    radial-gradient(circle at 32% 26%, rgba(230, 242, 220, 0.48), transparent 31%),
-    radial-gradient(circle at 74% 60%, rgba(86, 104, 72, 0.24), transparent 36%),
-    linear-gradient(135deg, #dfe6d3 0%, #abb88e 48%, #5c684d 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.28) 100%),
+    url("images/paloma/events/event-02.jpg") center center / cover no-repeat;
 }
 
 .home-article-card__placeholder--vase-choice {
   background:
-    radial-gradient(circle at 28% 26%, rgba(246, 235, 218, 0.52), transparent 31%),
-    radial-gradient(circle at 74% 60%, rgba(126, 96, 72, 0.22), transparent 36%),
-    linear-gradient(135deg, #eee2d2 0%, #c9b296 48%, #806958 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.28) 100%),
+    url("images/paloma/vases/vase-03.jpg") center center / cover no-repeat;
 }
 
 @media (max-width: 900px) {
@@ -6719,9 +6731,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 30% 24%, rgba(255, 235, 220, 0.48), transparent 31%),
-    radial-gradient(circle at 76% 60%, rgba(107, 15, 26, 0.24), transparent 38%),
-    linear-gradient(135deg, #eaded1 0%, #b98d8b 48%, #643640 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.22) 100%),
+    url("images/paloma/store/store-01.jpg") center center / cover no-repeat;
 }
 
 .home-about-scene--flowers {
@@ -6744,9 +6755,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   width: 54%;
   height: 72%;
   background:
-    radial-gradient(circle at 35% 28%, rgba(255, 224, 232, 0.5), transparent 32%),
-    radial-gradient(circle at 72% 60%, rgba(107, 15, 26, 0.24), transparent 36%),
-    linear-gradient(135deg, #ead6dc 0%, #bd8793 48%, #6b3544 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.15) 100%),
+    url("images/paloma/catalog/bouquet-01.jpg") center 20% / cover no-repeat;
 }
 
 .home-about-photo--flowers-02 {
@@ -6755,9 +6765,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   width: 34%;
   height: 42%;
   background:
-    radial-gradient(circle at 32% 26%, rgba(230, 242, 220, 0.48), transparent 31%),
-    radial-gradient(circle at 74% 60%, rgba(86, 104, 72, 0.24), transparent 36%),
-    linear-gradient(135deg, #dfe6d3 0%, #abb88e 48%, #5c684d 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.15) 100%),
+    url("images/paloma/catalog/bouquet-04.jpg") center 15% / cover no-repeat;
 }
 
 .home-about-photo--flowers-03 {
@@ -6766,9 +6775,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   width: 44%;
   height: 42%;
   background:
-    radial-gradient(circle at 30% 24%, rgba(255, 236, 226, 0.5), transparent 31%),
-    radial-gradient(circle at 74% 60%, rgba(160, 84, 72, 0.22), transparent 36%),
-    linear-gradient(135deg, #efe0c8 0%, #d4b58d 48%, #8c6a52 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.15) 100%),
+    url("images/paloma/subscription/bouquet-box.jpg") center center / cover no-repeat;
 }
 
 .home-about-scene--coffee {
@@ -6783,9 +6791,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 30% 24%, rgba(248, 232, 204, 0.52), transparent 31%),
-    radial-gradient(circle at 72% 60%, rgba(125, 88, 58, 0.26), transparent 36%),
-    linear-gradient(135deg, #eee1cf 0%, #c3a77f 48%, #765d42 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.22) 100%),
+    url("images/paloma/desserts/dessert-01.jpg") center center / cover no-repeat;
 }
 
 .home-about-scene--gifts {
@@ -6811,30 +6818,26 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .home-about-photo--gift-01 {
   background:
-    radial-gradient(circle at 34% 28%, rgba(246, 235, 218, 0.52), transparent 31%),
-    radial-gradient(circle at 72% 62%, rgba(126, 96, 72, 0.2), transparent 35%),
-    linear-gradient(135deg, #eee2d2 0%, #c9b296 48%, #806958 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.18) 100%),
+    url("images/paloma/vases/vase-01.jpg") center center / cover no-repeat;
 }
 
 .home-about-photo--gift-02 {
   background:
-    radial-gradient(circle at 32% 28%, rgba(255, 240, 232, 0.5), transparent 31%),
-    radial-gradient(circle at 72% 58%, rgba(107, 15, 26, 0.2), transparent 36%),
-    linear-gradient(135deg, #efe0d8 0%, #c9a2a4 48%, #7a4f56 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.16) 100%),
+    url("images/paloma/vases/vase-02.jpg") center center / cover no-repeat;
 }
 
 .home-about-photo--gift-03 {
   background:
-    radial-gradient(circle at 32% 24%, rgba(255, 229, 176, 0.52), transparent 31%),
-    radial-gradient(circle at 74% 60%, rgba(142, 86, 38, 0.24), transparent 36%),
-    linear-gradient(135deg, #efd8a8 0%, #c09252 48%, #6f4428 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 100%),
+    url("images/paloma/desserts/dessert-02.jpg") center center / cover no-repeat;
 }
 
 .home-about-photo--gift-04 {
   background:
-    radial-gradient(circle at 28% 24%, rgba(232, 242, 230, 0.48), transparent 31%),
-    radial-gradient(circle at 76% 58%, rgba(88, 108, 82, 0.24), transparent 36%),
-    linear-gradient(135deg, #dce6d2 0%, #aeb997 48%, #667255 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.15) 100%),
+    url("images/paloma/store/store-02.jpg") center center / cover no-repeat;
 }
 
 .home-about-scene--events {
@@ -6849,9 +6852,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 30% 26%, rgba(255, 238, 222, 0.45), transparent 31%),
-    radial-gradient(circle at 76% 58%, rgba(80, 48, 58, 0.25), transparent 36%),
-    linear-gradient(135deg, #eee0d2 0%, #ad8d88 48%, #49323b 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.22) 100%),
+    url("images/paloma/events/event-01.jpg") center center / cover no-repeat;
 }
 
 .home-about-scene--final {

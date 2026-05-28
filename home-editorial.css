@@ -18,12 +18,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgba(20, 12, 10, 0.34), rgba(20, 12, 10, 0.34)),
-    radial-gradient(circle at 30% 30%, rgba(255, 220, 200, 0.18), transparent 34%),
-    radial-gradient(circle at 74% 60%, rgba(107, 15, 26, 0.28), transparent 42%),
-    linear-gradient(135deg, #2a1714 0%, #6b3c2f 48%, #15110f 100%);
-  background-size: cover;
-  background-position: center;
+    linear-gradient(rgba(20, 12, 10, 0.58), rgba(20, 12, 10, 0.58)),
+    url("images/paloma/catalog/bouquet-01.jpg") center 20% / cover no-repeat;
   transform: scale(1.02);
 }
 
@@ -155,18 +151,6 @@
     padding: 64px 24px 42px;
   }
 
-  .home-subscription__flower {
-    width: 142px;
-  }
-
-  .home-subscription__flower--left {
-    transform: translate(-14%, -10%);
-  }
-
-  .home-subscription__flower--right {
-    transform: translate(14%, -10%) scaleX(-1);
-  }
-
   .home-subscription__title {
     font-size: 36px;
   }
@@ -185,10 +169,6 @@
 }
 
 @media (max-width: 480px) {
-  .home-subscription__flower {
-    width: 118px;
-  }
-
   .home-subscription__giraffe {
     width: 104px;
     right: 10px;
@@ -321,49 +301,61 @@
   height: clamp(280px, 24vw, 420px);
   display: block;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 30% 24%, rgba(255, 224, 232, 0.48), transparent 31%),
-    radial-gradient(circle at 72% 58%, rgba(107, 15, 26, 0.2), transparent 36%),
-    linear-gradient(135deg, #ead6dc 0%, #bd8793 48%, #6b3544 100%);
+  background-color: #ead6dc;
+  background-size: cover;
+  background-position: center top;
   filter: saturate(0.96) contrast(1.02);
   transition:
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.7s ease;
 }
 
+/* Roses — peonies + viburnum, Paloma uniform */
+.home-categories__photo--roses {
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 100%),
+    url("images/paloma/catalog/bouquet-01.jpg");
+  background-position: center 20%;
+}
+
+/* Chrysanthemums — protea and hydrangea mix */
 .home-categories__photo--chrysanthemums {
-  background:
-    radial-gradient(circle at 30% 24%, rgba(255, 238, 222, 0.45), transparent 31%),
-    radial-gradient(circle at 76% 58%, rgba(80, 48, 58, 0.25), transparent 36%),
-    linear-gradient(135deg, #eee0d2 0%, #ad8d88 48%, #49323b 100%);
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 100%),
+    url("images/paloma/catalog/bouquet-03.jpg");
+  background-position: center 30%;
 }
 
+/* Сборные букеты — colorful Paloma-ribbon bouquet */
 .home-categories__photo--bouquets {
-  background:
-    radial-gradient(circle at 28% 24%, rgba(232, 242, 230, 0.48), transparent 31%),
-    radial-gradient(circle at 76% 58%, rgba(88, 108, 82, 0.24), transparent 36%),
-    linear-gradient(135deg, #dce6d2 0%, #aeb997 48%, #667255 100%);
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 100%),
+    url("images/paloma/catalog/bouquet-02.jpg");
+  background-position: center 25%;
 }
 
+/* Монобукеты — white ranunculus + freesia, moody */
 .home-categories__photo--mono {
-  background:
-    radial-gradient(circle at 32% 28%, rgba(255, 240, 232, 0.5), transparent 31%),
-    radial-gradient(circle at 72% 58%, rgba(107, 15, 26, 0.2), transparent 36%),
-    linear-gradient(135deg, #efe0d8 0%, #c9a2a4 48%, #7a4f56 100%);
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.22) 100%),
+    url("images/paloma/catalog/bouquet-04.jpg");
+  background-position: center 15%;
 }
 
+/* Композиции — large editorial dark-background bouquet */
 .home-categories__photo--compositions {
-  background:
-    radial-gradient(circle at 32% 24%, rgba(255, 229, 176, 0.52), transparent 31%),
-    radial-gradient(circle at 74% 60%, rgba(142, 86, 38, 0.24), transparent 36%),
-    linear-gradient(135deg, #efd8a8 0%, #c09252 48%, #6f4428 100%);
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 100%),
+    url("images/paloma/catalog/bouquet-06.jpg");
+  background-position: center 20%;
 }
 
+/* Аксессуары — premium Seletti vase */
 .home-categories__photo--accessories {
-  background:
-    radial-gradient(circle at 30% 24%, rgba(248, 232, 204, 0.52), transparent 31%),
-    radial-gradient(circle at 72% 60%, rgba(125, 88, 58, 0.26), transparent 36%),
-    linear-gradient(135deg, #eee1cf 0%, #c3a77f 48%, #765d42 100%);
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 100%),
+    url("images/paloma/vases/vase-01.jpg");
+  background-position: center center;
 }
 
 .home-categories__item span {

@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="clients.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css">
-  <link rel="stylesheet" href="home-hero.css?v=4">
+  <link rel="stylesheet" href="home-hero-cover.css">
   <link rel="stylesheet" href="home-editorial.css?v=13">
 </head>
 <body class="is-home">
@@ -239,7 +239,7 @@
         </nav>
 
         <div class="site-header__actions">
-          <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
+          <a href="tel:+79897707000" class="site-header__phone">+7 989 770 70 00</a>
           <a href="wishlist.html" class="site-header__icon site-header__icon--wishlist" aria-label="Избранное" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
             <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
@@ -281,58 +281,41 @@
          ═══════════════════════════════════════════════════ -->
 
     <!-- =====================================================
-         PALOMA HOME HERO — SPLIT EDITORIAL COVER
-         Left side follows provided screenshot.
-         Right side reserved for future hero photo.
+         PALOMA COVER HERO — cinematic full-screen
+         hide-event style: dark photo + enormous italic word
          ===================================================== -->
-    <section class="paloma-hero" id="homeHero" aria-label="PALOMA flowers coffee you">
+    <section class="paloma-cover" id="homeHero" aria-label="PALOMA — цветы, кофе, вы">
 
-      <div class="paloma-hero__left">
-
-        <div class="paloma-hero__content">
-
-          <h1 class="paloma-hero__title">
-            <span>Цветы, кофе</span>
-            <span>и подарки —</span>
-            <em>всё в один день</em>
-          </h1>
-
-          <p class="paloma-hero__text">
-            Свежие букеты с доставкой по городу. Можно<br>
-            добавить кофе, открытку или десерт.
-          </p>
-
-          <div class="paloma-hero__actions-wrap">
-            <span class="paloma-hero__actions-ruler" aria-hidden="true">всё в один день</span>
-
-            <div class="paloma-hero__actions">
-              <a href="catalog.html" class="paloma-hero__btn paloma-hero__btn--primary">
-                В каталог
-              </a>
-
-              <a href="coffee.html" class="paloma-hero__btn paloma-hero__btn--glass">
-                В кофейню
-              </a>
-            </div>
-          </div>
-
-        </div>
-
+      <div class="paloma-cover__bg" aria-hidden="true">
+        <img
+          src="images/paloma/hero/hero-cover-dark.jpg"
+          alt=""
+          width="1920"
+          height="1280"
+          loading="eager"
+          fetchpriority="high"
+          decoding="sync">
       </div>
 
-      <div class="paloma-hero__right" aria-hidden="true">
-        <!-- Future real image:
-        <img
-          class="paloma-hero__image"
-          src="images/paloma/hero/paloma-hero-main.jpg"
-          alt=""
-          loading="eager"
-          fetchpriority="high">
-        -->
+      <div class="paloma-cover__overlay" aria-hidden="true"></div>
 
-        <div class="paloma-hero__image-placeholder">
-          <span>PALOMA HERO IMAGE</span>
+      <div class="paloma-cover__center">
+        <h1 class="paloma-cover__word">PALOMA</h1>
+        <p class="paloma-cover__tagline">flowers · coffee · you · новороссийск</p>
+      </div>
+
+      <div class="paloma-cover__bottombar">
+        <address class="paloma-cover__address">
+          <span>ул. Энгельса, 74</span>
+          <span>+7 989 770 70 00</span>
+        </address>
+        <div class="paloma-cover__scroll-hint" aria-hidden="true">
+          <span class="paloma-cover__scroll-line"></span>
         </div>
+        <a href="catalog.html" class="paloma-cover__cta">
+          В каталог
+          <span class="paloma-cover__cta-arrow" aria-hidden="true">→</span>
+        </a>
       </div>
 
     </section>
@@ -407,7 +390,7 @@
 
             <article class="home-product-card">
               <a href="catalog.html" class="home-product-card__media" aria-label="Подробнее: Букет из 7 пионов">
-                <div class="home-product-card__placeholder" aria-hidden="true"><span>PALOMA bouquet photo</span></div>
+                <img src="images/paloma/catalog/bouquet-01.jpg" alt="Букет из 7 пионов — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="catalog.html">Букет из 7 пионов</a></h3>
@@ -420,7 +403,7 @@
 
             <article class="home-product-card">
               <a href="catalog.html" class="home-product-card__media" aria-label="Подробнее: Букет из 11 пионов">
-                <div class="home-product-card__placeholder" aria-hidden="true"><span>PALOMA bouquet photo</span></div>
+                <img src="images/paloma/catalog/bouquet-02.jpg" alt="Авторский букет Paloma с лентой" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="catalog.html">Букет из 11 пионов</a></h3>
@@ -433,7 +416,7 @@
 
             <article class="home-product-card">
               <a href="catalog.html" class="home-product-card__media" aria-label="Подробнее: Букет из 15 пионов">
-                <div class="home-product-card__placeholder" aria-hidden="true"><span>PALOMA bouquet photo</span></div>
+                <img src="images/paloma/catalog/bouquet-03.jpg" alt="Летний букет с протеей — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="catalog.html">Букет из 15 пионов</a></h3>
@@ -446,7 +429,7 @@
 
             <article class="home-product-card">
               <a href="catalog.html" class="home-product-card__media" aria-label="Подробнее: Букет из 21 пиона">
-                <div class="home-product-card__placeholder" aria-hidden="true"><span>PALOMA bouquet photo</span></div>
+                <img src="images/paloma/catalog/bouquet-06.jpg" alt="Большой авторский букет PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="catalog.html">Букет из 21 пиона</a></h3>
@@ -459,7 +442,7 @@
 
             <article class="home-product-card">
               <a href="catalog.html" class="home-product-card__media" aria-label="Подробнее: Авторский букет Paloma">
-                <div class="home-product-card__placeholder" aria-hidden="true"><span>PALOMA bouquet photo</span></div>
+                <img src="images/paloma/catalog/bouquet-05.jpg" alt="Авторский тёмный букет — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="catalog.html">Авторский букет Paloma</a></h3>
@@ -472,7 +455,7 @@
 
             <article class="home-product-card">
               <a href="catalog.html" class="home-product-card__media" aria-label="Подробнее: Нежный сезонный букет">
-                <div class="home-product-card__placeholder" aria-hidden="true"><span>PALOMA bouquet photo</span></div>
+                <img src="images/paloma/catalog/bouquet-04.jpg" alt="Нежный белый букет — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="catalog.html">Нежный сезонный букет</a></h3>
@@ -581,9 +564,7 @@
 
             <article class="home-product-card">
               <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Букет из ромашек">
-                <div class="home-product-card__placeholder home-product-card__placeholder--daisies" aria-hidden="true">
-                  <span>PALOMA bouquet photo</span>
-                </div>
+                <img src="images/paloma/catalog/bouquet-04.jpg" alt="Нежный белый букет — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="product.html">Букет из ромашек</a></h3>
@@ -596,9 +577,7 @@
 
             <article class="home-product-card">
               <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Кустовая хризантема">
-                <div class="home-product-card__placeholder home-product-card__placeholder--chrysanthemum" aria-hidden="true">
-                  <span>PALOMA bouquet photo</span>
-                </div>
+                <img src="images/paloma/catalog/bouquet-05.jpg" alt="Авторский тёмный букет PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="product.html">Кустовая хризантема</a></h3>
@@ -611,9 +590,7 @@
 
             <article class="home-product-card">
               <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Букет из воздушных гортензий">
-                <div class="home-product-card__placeholder home-product-card__placeholder--hydrangea" aria-hidden="true">
-                  <span>PALOMA bouquet photo</span>
-                </div>
+                <img src="images/paloma/subscription/bouquet-box.jpg" alt="Гортензии в коробке PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="product.html">Букет из воздушных гортензий</a></h3>
@@ -626,9 +603,7 @@
 
             <article class="home-product-card">
               <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Букет из лилий">
-                <div class="home-product-card__placeholder home-product-card__placeholder--lilies" aria-hidden="true">
-                  <span>PALOMA bouquet photo</span>
-                </div>
+                <img src="images/paloma/catalog/bouquet-03.jpg" alt="Яркий букет с протеей — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="product.html">Букет из лилий</a></h3>
@@ -641,9 +616,7 @@
 
             <article class="home-product-card">
               <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Сезонный микс Paloma">
-                <div class="home-product-card__placeholder home-product-card__placeholder--seasonal-mix" aria-hidden="true">
-                  <span>PALOMA bouquet photo</span>
-                </div>
+                <img src="images/paloma/catalog/bouquet-02.jpg" alt="Сборный букет с лентой PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="product.html">Сезонный микс Paloma</a></h3>
@@ -656,9 +629,7 @@
 
             <article class="home-product-card">
               <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Композиция в вазе">
-                <div class="home-product-card__placeholder home-product-card__placeholder--vase" aria-hidden="true">
-                  <span>PALOMA bouquet photo</span>
-                </div>
+                <img src="images/paloma/catalog/bouquet-06.jpg" alt="Крупный авторский букет PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title"><a href="product.html">Композиция в вазе</a></h3>
@@ -752,14 +723,12 @@
           <div class="home-showcase__track" data-carousel-track>
 
             <article class="home-product-card home-product-card--accessory">
-              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Ваза Paloma 01">
-                <div class="home-product-card__placeholder home-product-card__placeholder--vase-01" aria-hidden="true">
-                  <span>PALOMA accessory photo</span>
-                </div>
+              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Ваза Seletti Kintsugi">
+                <img src="images/paloma/vases/vase-01.jpg" alt="Ваза Seletti Love in Bloom Kintsugi — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title">
-                  <a href="product.html">Ваза Paloma 01</a>
+                  <a href="product.html">Ваза Seletti Kintsugi</a>
                 </h3>
                 <p class="home-product-card__price">3 500 ₽</p>
                 <div class="home-product-card__actions">
@@ -769,14 +738,12 @@
             </article>
 
             <article class="home-product-card home-product-card--accessory">
-              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Ваза Paloma 02">
-                <div class="home-product-card__placeholder home-product-card__placeholder--vase-02" aria-hidden="true">
-                  <span>PALOMA accessory photo</span>
-                </div>
+              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Ваза белая с золотом">
+                <img src="images/paloma/vases/vase-02.jpg" alt="Ваза белая с золотыми ручками — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title">
-                  <a href="product.html">Ваза Paloma 02</a>
+                  <a href="product.html">Ваза белая с золотом</a>
                 </h3>
                 <p class="home-product-card__price">4 500 ₽</p>
                 <div class="home-product-card__actions">
@@ -786,14 +753,12 @@
             </article>
 
             <article class="home-product-card home-product-card--accessory">
-              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Секатор">
-                <div class="home-product-card__placeholder home-product-card__placeholder--secateur" aria-hidden="true">
-                  <span>PALOMA accessory photo</span>
-                </div>
+              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Ваза Izumi">
+                <img src="images/paloma/vases/vase-03.jpg" alt="Ваза Canopie Izumi — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title">
-                  <a href="product.html">Секатор</a>
+                  <a href="product.html">Ваза Izumi</a>
                 </h3>
                 <p class="home-product-card__price">1 500 ₽</p>
                 <div class="home-product-card__actions">
@@ -803,14 +768,12 @@
             </article>
 
             <article class="home-product-card home-product-card--accessory">
-              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Конфеты Ferrero Rocher">
-                <div class="home-product-card__placeholder home-product-card__placeholder--ferrero" aria-hidden="true">
-                  <span>PALOMA accessory photo</span>
-                </div>
+              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Десерт Валентинка">
+                <img src="images/paloma/desserts/dessert-01.jpg" alt="Десерт Валентинка — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title">
-                  <a href="product.html">Конфеты Ferrero Rocher</a>
+                  <a href="product.html">Десерт Валентинка</a>
                 </h3>
                 <p class="home-product-card__price">от 1 500 ₽</p>
                 <div class="home-product-card__actions">
@@ -820,14 +783,12 @@
             </article>
 
             <article class="home-product-card home-product-card--accessory">
-              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Открытка">
-                <div class="home-product-card__placeholder home-product-card__placeholder--postcard" aria-hidden="true">
-                  <span>PALOMA accessory photo</span>
-                </div>
+              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Круассан фисташковый">
+                <img src="images/paloma/desserts/dessert-02.jpg" alt="Круассан с фисташковым кремом — PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title">
-                  <a href="product.html">Открытка</a>
+                  <a href="product.html">Круассан фисташковый</a>
                 </h3>
                 <p class="home-product-card__price">300 ₽</p>
                 <div class="home-product-card__actions">
@@ -837,14 +798,12 @@
             </article>
 
             <article class="home-product-card home-product-card--accessory">
-              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Десерт к букету">
-                <div class="home-product-card__placeholder home-product-card__placeholder--dessert" aria-hidden="true">
-                  <span>PALOMA accessory photo</span>
-                </div>
+              <a href="product.html" class="home-product-card__media" aria-label="Подробнее: Гортензии в коробке">
+                <img src="images/paloma/subscription/bg.jpg" alt="Розовые гортензии в коробке PALOMA" loading="lazy" decoding="async" width="600" height="870">
               </a>
               <div class="home-product-card__body">
                 <h3 class="home-product-card__title">
-                  <a href="product.html">Десерт к букету</a>
+                  <a href="product.html">Гортензии в коробке</a>
                 </h3>
                 <p class="home-product-card__price">от 320 ₽</p>
                 <div class="home-product-card__actions">
@@ -1274,5 +1233,6 @@
   <script src="wishlist.js"></script>
   <script src="clients.js"></script>
   <script src="cursor.js"></script>
+  <script src="home-hero-cover.js"></script>
 </body>
 </html>

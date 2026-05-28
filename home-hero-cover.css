@@ -1,0 +1,269 @@
+/* =====================================================
+   HOME COVER HERO — cinematic full-screen
+   Replaces split hero on index.html.
+   hide-event aesthetic: dark photo + enormous word.
+   ===================================================== */
+
+/* ── Header: all-light over dark cover ───────────────
+   The base transparent-header rules live in styles.css
+   (body.is-home .site-header:not(.is-scrolled) …).
+   Those set logo/nav links to --hero-text (warm cream).
+   The split-hero override made actions dark; reverse it
+   here so everything is light over the dark photo.      */
+
+body.is-home .site-header:not(.is-scrolled) .site-header__actions,
+body.is-home .site-header:not(.is-scrolled) .site-header__actions .site-header__icon,
+body.is-home .site-header:not(.is-scrolled) .site-header__actions .site-header__phone {
+  color: var(--hero-text);
+}
+
+body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
+  stroke: var(--hero-text);
+}
+
+/* ── Section ─────────────────────────────────────────── */
+
+.paloma-cover {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: #0c0704;
+  margin-top: calc(-1 * var(--paloma-header-offset, 88px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Background photo ────────────────────────────────── */
+
+.paloma-cover__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  animation: coverBgZoom 7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.paloma-cover__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* ── Dark vignette overlay ───────────────────────────── */
+
+.paloma-cover__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(12, 7, 4, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(12, 7, 4, 0.7) 0%, transparent 55%),
+    rgba(12, 7, 4, 0.28);
+}
+
+/* ── Center content group ────────────────────────────── */
+
+.paloma-cover__center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Enormous main word ──────────────────────────────── */
+
+.paloma-cover__word {
+  margin: 0;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(64px, 18vw, 290px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 0.88;
+  color: #f7f1e8;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(48px);
+  animation: coverWordReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+/* ── Tagline below word ──────────────────────────────── */
+
+.paloma-cover__tagline {
+  margin-top: clamp(18px, 2.6vw, 40px);
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: clamp(10px, 0.85vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(247, 241, 232, 0.46);
+  opacity: 0;
+  animation: coverFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.15s forwards;
+}
+
+/* ── Bottom bar ──────────────────────────────────────── */
+
+.paloma-cover__bottombar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 clamp(24px, 5.4vw, 80px) clamp(28px, 3.8vw, 52px);
+  opacity: 0;
+  animation: coverFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.55s forwards;
+}
+
+.paloma-cover__address {
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: clamp(11px, 0.8vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  color: rgba(247, 241, 232, 0.45);
+  line-height: 1.65;
+}
+
+.paloma-cover__address span {
+  display: block;
+}
+
+/* ── Scroll line (center of bottombar) ───────────────── */
+
+.paloma-cover__scroll-hint {
+  overflow: hidden;
+  width: 1px;
+  height: 44px;
+  align-self: flex-end;
+}
+
+.paloma-cover__scroll-line {
+  width: 1px;
+  height: 44px;
+  background: rgba(247, 241, 232, 0.42);
+  display: block;
+  transform: translateY(-100%);
+  animation: coverScrollLine 2.4s ease-in-out infinite 2.8s;
+}
+
+/* ── CTA link ────────────────────────────────────────── */
+
+.paloma-cover__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(15px, 1.25vw, 20px);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(247, 241, 232, 0.74);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(247, 241, 232, 0.28);
+  padding-bottom: 3px;
+  transition: color 0.35s ease, border-color 0.35s ease;
+}
+
+.paloma-cover__cta:hover {
+  color: #f7f1e8;
+  border-color: rgba(247, 241, 232, 0.72);
+}
+
+.paloma-cover__cta:focus-visible {
+  outline: 2px solid rgba(247, 241, 232, 0.75);
+  outline-offset: 6px;
+  border-radius: 1px;
+}
+
+.paloma-cover__cta-arrow {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.paloma-cover__cta:hover .paloma-cover__cta-arrow {
+  transform: translateX(5px);
+}
+
+/* ── Keyframes ───────────────────────────────────────── */
+
+@keyframes coverBgZoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+@keyframes coverWordReveal {
+  from { opacity: 0; transform: translateY(48px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes coverFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes coverScrollLine {
+  0%   { transform: translateY(-100%); }
+  55%  { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+/* ── Mobile ──────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .paloma-cover__word {
+    font-size: clamp(52px, 20vw, 160px);
+  }
+}
+
+@media (max-width: 768px) {
+  .paloma-cover__tagline {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    margin-top: 16px;
+  }
+
+  .paloma-cover__bottombar {
+    padding: 0 20px 28px;
+  }
+
+  .paloma-cover__scroll-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .paloma-cover__word {
+    font-size: clamp(44px, 22vw, 100px);
+  }
+
+  .paloma-cover__bottombar {
+    padding: 0 16px 22px;
+  }
+
+  .paloma-cover__address {
+    font-size: 10px;
+  }
+
+  .paloma-cover__cta {
+    font-size: 14px;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .paloma-cover__bg        { animation: none !important; transform: none !important; }
+  .paloma-cover__word      { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .paloma-cover__tagline   { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .paloma-cover__bottombar { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .paloma-cover__scroll-line { animation: none !important; }
+}

@@ -131,7 +131,7 @@
           <span class="co-item__price">${((item.price || 0) * (item.qty || 1)).toLocaleString("ru-RU")} ₽</span>
           <button type="button" class="co-item__remove" data-action="remove" data-id="${esc(item.id)}"
                   aria-label="Удалить ${esc(item.name)} из заказа">Удалить</button>
-        </div>
+          </div>
       `;
       $items.appendChild(li);
     });
@@ -361,7 +361,7 @@
       const addrInput = document.getElementById("co-address");
       if (addrInput && addrInput.value.trim().length < 5) {
         addrInput.classList.add("is-error");
-        valid = false;
+      valid = false;
       } else if (addrInput) {
         addrInput.classList.remove("is-error");
       }
@@ -374,7 +374,7 @@
       const recName = document.getElementById("co-recipient-name");
       if (recName && recName.value.trim().length < 2) {
         recName.classList.add("is-error");
-        valid = false;
+      valid = false;
       } else if (recName) {
         recName.classList.remove("is-error");
       }

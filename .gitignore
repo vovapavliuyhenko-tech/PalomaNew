@@ -16,3 +16,11 @@ npm-debug.log*
 *.mjs.bak
 _fix_*.mjs
 fix_*.mjs
+
+# Raw source photos (используются только images/paloma/)
+IMG_*.JPG
+IMG_*.HEIC
+IMG_20*.jpg
+
+# Claude session files
+.claude/

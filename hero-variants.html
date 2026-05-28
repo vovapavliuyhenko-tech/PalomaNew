@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PALOMA — Hero Variants (для выбора)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & fonts ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "Manrope", system-ui, sans-serif;
+      --cream: #f7f1e8;
+      --dark: #2a120c;
+      --mid: #5a3827;
+      --light: #f7efe4;
+      --accent: #e6ad95;
+      --wine: #6b0f1a;
+    }
+    body { background: #eee; font-family: var(--font-sans); }
+    .variant-label {
+      background: #1d1512;
+      color: #e6ad95;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      text-align: center;
+    }
+    .variant-hint {
+      background: #2a1a12;
+      color: rgba(247,239,228,0.6);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-align: center;
+      padding: 8px 32px 12px;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       VARIANT 1 — Editorial Split (ТЕКУЩИЙ ОСНОВНОЙ)
+       Левая тёмная + правая фото
+    ═══════════════════════════════════════════════════ */
+    .hero-v1 {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      min-height: 100svh;
+    }
+    .hero-v1__left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(56px,6vw,88px) clamp(32px,4vw,56px) clamp(48px,5vw,64px);
+      background:
+        radial-gradient(circle at 28% 18%, rgba(156,111,78,0.5), transparent 38%),
+        radial-gradient(circle at 88% 78%, rgba(64,29,18,0.44), transparent 44%),
+        linear-gradient(160deg, #8b6549 0%, #5a3827 45%, #2a120c 100%);
+      color: var(--light);
+    }
+    .hero-v1__eyebrow {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(247,239,228,0.5);
+      margin-bottom: clamp(20px,2.4vw,32px);
+    }
+    .hero-v1__title {
+      font-family: var(--font-display);
+      font-size: clamp(58px,5.8vw,108px);
+      font-weight: 400;
+      line-height: 0.92;
+      letter-spacing: -0.045em;
+      color: var(--light);
+    }
+    .hero-v1__title span { display: block; }
+    .hero-v1__title em {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+    }
+    .hero-v1__sub {
+      margin-top: clamp(20px,2.4vw,28px);
+      font-size: clamp(14px,1.1vw,17px);
+      line-height: 1.58;
+      color: rgba(247,239,228,0.65);
+      max-width: 440px;
+    }
+    .hero-v1__actions {
+      display: flex;
+      gap: 14px;
+      margin-top: clamp(24px,2.8vw,34px);
+    }
+    .hero-v1__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 0 36px;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .hero-v1__btn--primary {
+      background: rgba(247,239,228,0.94);
+      color: #35180f;
+      border: 1px solid rgba(247,239,228,0.6);
+    }
+    .hero-v1__btn--glass {
+      background: rgba(255,255,255,0.07);
+      color: var(--light);
+      border: 1px solid rgba(255,255,255,0.26);
+      backdrop-filter: blur(12px);
+    }
+    .hero-v1__meta {
+      margin-top: 20px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(247,239,228,0.38);
+    }
+    .hero-v1__right {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .hero-v1__right img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       VARIANT 2 — Hide-Event Inspired / PALOMA Full Screen
+       Огромный текст + сетка из нескольких фото
+    ═══════════════════════════════════════════════════ */
+    .hero-v2 {
+      position: relative;
+      min-height: 100svh;
+      background: #faf6f0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    .hero-v2__bg-word {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(100px, 16vw, 220px);
+      font-weight: 300;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: rgba(42,18,12,0.055);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    .hero-v2__left {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(60px,7vw,100px) clamp(32px,4vw,56px) clamp(48px,5vw,72px);
+    }
+    .hero-v2__tag {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(42,18,12,0.45);
+      margin-bottom: clamp(24px,2.8vw,36px);
+    }
+    .hero-v2__title {
+      font-family: var(--font-display);
+      font-size: clamp(52px,5.2vw,92px);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: #2a120c;
+    }
+    .hero-v2__title em {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+      color: #8b4f3a;
+    }
+    .hero-v2__desc {
+      margin-top: clamp(20px,2.2vw,28px);
+      font-size: clamp(14px,1.05vw,16px);
+      line-height: 1.62;
+      color: rgba(42,18,12,0.6);
+      max-width: 380px;
+    }
+    .hero-v2__actions {
+      display: flex;
+      gap: 14px;
+      margin-top: clamp(24px,2.8vw,36px);
+      flex-wrap: wrap;
+    }
+    .hero-v2__btn--dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 36px;
+      border-radius: 10px;
+      background: #2a120c;
+      color: #f7efe4;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .hero-v2__btn--outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 32px;
+      border-radius: 10px;
+      background: transparent;
+      color: #2a120c;
+      border: 1px solid rgba(42,18,12,0.3);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .hero-v2__location {
+      margin-top: 24px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(42,18,12,0.38);
+    }
+    .hero-v2__right {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: clamp(28px,3vw,48px) clamp(28px,3vw,48px) clamp(28px,3vw,48px) 0;
+    }
+    .hero-v2__photo {
+      overflow: hidden;
+      border-radius: 4px;
+      background: #e8ddd4;
+    }
+    .hero-v2__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-v2__photo--main {
+      grid-column: 1 / -1;
+      height: clamp(280px, 44vh, 520px);
+    }
+    .hero-v2__photo--sm {
+      height: clamp(140px, 20vh, 230px);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       VARIANT 3 — Gallery Hero / Fashion Cover
+       Слово PALOMA во всю ширину + фото
+    ═══════════════════════════════════════════════════ */
+    .hero-v3 {
+      position: relative;
+      min-height: 100svh;
+      background: #faf6f0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-v3__wordmark {
+      position: relative;
+      z-index: 2;
+      font-family: var(--font-display);
+      font-size: clamp(80px, 15vw, 200px);
+      font-weight: 300;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: #2a120c;
+      text-align: center;
+      mix-blend-mode: multiply;
+      padding: 0 clamp(16px, 3vw, 48px);
+      width: 100%;
+    }
+    .hero-v3__media {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(220px, 28vw, 420px);
+      height: clamp(320px, 55vh, 640px);
+      z-index: 3;
+      overflow: hidden;
+      border-radius: 2px;
+      mix-blend-mode: multiply;
+    }
+    .hero-v3__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-v3__left-text {
+      position: absolute;
+      left: clamp(24px, 4vw, 60px);
+      bottom: clamp(32px, 5vw, 72px);
+      z-index: 4;
+      max-width: 260px;
+    }
+    .hero-v3__offer {
+      font-family: var(--font-sans);
+      font-size: clamp(12px, 0.9vw, 14px);
+      line-height: 1.6;
+      color: rgba(42,18,12,0.65);
+      margin-bottom: 16px;
+    }
+    .hero-v3__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      padding: 0 28px;
+      border-radius: 8px;
+      background: rgba(42,18,12,0.9);
+      color: #f7efe4;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+    }
+    .hero-v3__right-actions {
+      position: absolute;
+      right: clamp(24px, 4vw, 60px);
+      bottom: clamp(32px, 5vw, 72px);
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .hero-v3__coffee-link {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(42,18,12,0.5);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(42,18,12,0.2);
+      padding-bottom: 2px;
+    }
+    .hero-v3__circle-badge {
+      position: absolute;
+      top: clamp(80px, 10vw, 130px);
+      right: clamp(24px, 5vw, 80px);
+      z-index: 4;
+      width: 90px;
+      height: 90px;
+    }
+    .hero-v3__circle-badge svg {
+      width: 100%;
+      height: 100%;
+      animation: palomaSpin 18s linear infinite;
+    }
+    @keyframes palomaSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+
+    /* ── Mobile common ── */
+    @media (max-width: 767px) {
+      .hero-v1 { grid-template-columns: 1fr; }
+      .hero-v1__right { height: 52svh; }
+      .hero-v2 { grid-template-columns: 1fr; }
+      .hero-v2__right { padding: 0 20px 20px; }
+      .hero-v2__photo--main { height: clamp(220px, 44vh, 360px); }
+      .hero-v2__photo--sm { height: 150px; }
+      .hero-v3__media {
+        width: clamp(160px, 50vw, 260px);
+        height: clamp(240px, 45vh, 400px);
+      }
+      .hero-v3__wordmark { font-size: clamp(64px, 18vw, 110px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     VARIANT 1 — Editorial Split (ОСНОВНОЙ на сайте)
+     Тёмная левая + фото справа
+     Самый коммерческий, ближе к hide-event.tilda.ws
+════════════════════════════════════════════════════════ -->
+<div class="variant-label">ВАРИАНТ 1 — «Editorial Split» · ТЕКУЩИЙ ОСНОВНОЙ НА САЙТЕ</div>
+<div class="variant-hint">Тёмная левая часть с крупной типографикой · Правая — реальное фото из Paloma</div>
+
+<section class="hero-v1" id="hero-variant-1" aria-label="Вариант 1: Editorial Split">
+  <div class="hero-v1__left">
+    <p class="hero-v1__eyebrow">Новороссийск · Энгельса 74 · +7 989 770 70 00</p>
+
+    <h1 class="hero-v1__title">
+      <span>Цветы, кофе</span>
+      <span>и подарки —</span>
+      <em>всё в один день</em>
+    </h1>
+
+    <p class="hero-v1__sub">
+      Свежие букеты с доставкой по Новороссийску. Добавьте кофе,
+      открытку или десерт к заказу.
+    </p>
+
+    <div class="hero-v1__actions">
+      <a href="catalog.html" class="hero-v1__btn hero-v1__btn--primary">В каталог</a>
+      <a href="coffee.html" class="hero-v1__btn hero-v1__btn--glass">В кофейню</a>
+    </div>
+
+    <p class="hero-v1__meta">Доставка от 2 ч · Фото до отправки · Самовывоз с Энгельса 74</p>
+  </div>
+
+  <div class="hero-v1__right" aria-hidden="true">
+    <img
+      src="images/paloma/hero/hero-main.jpg"
+      alt=""
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+      width="900"
+      height="1200">
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     VARIANT 2 — Hide-Event Inspired / «Добро пожаловать»
+     Светлый фон · Большие фото-коллаж · Тёмный текст
+════════════════════════════════════════════════════════ -->
+<div class="variant-label">ВАРИАНТ 2 — «Hide-Event Inspired» · Светлый арт-директорский hero</div>
+<div class="variant-hint">Коллаж из нескольких фото · Большой заголовок · Светлый фон · Близко к hide-event.tilda.ws</div>
+
+<section class="hero-v2" id="hero-variant-2" aria-label="Вариант 2: Hide-Event Inspired">
+
+  <div class="hero-v2__bg-word" aria-hidden="true">PALOMA</div>
+
+  <div class="hero-v2__left">
+    <p class="hero-v2__tag">Новороссийск · Флористика и кофе</p>
+
+    <h1 class="hero-v2__title">
+      PALOMA<br>
+      FLOWERS<br>
+      <em>COFFEE · YOU</em>
+    </h1>
+
+    <p class="hero-v2__desc">
+      Paloma — цветочный бутик и кофейня. Собираем букеты,
+      оформляем события и готовим кофе для красивых моментов.
+    </p>
+
+    <div class="hero-v2__actions">
+      <a href="catalog.html" class="hero-v2__btn--dark">Выбрать букет</a>
+      <a href="coffee.html" class="hero-v2__btn--outline">В кофейню</a>
+    </div>
+
+    <p class="hero-v2__location">Энгельса 74 · +7 989 770 70 00</p>
+  </div>
+
+  <div class="hero-v2__right" aria-hidden="true">
+    <div class="hero-v2__photo hero-v2__photo--main">
+      <img src="images/paloma/hero/hero-main.jpg" alt="" loading="eager" decoding="sync">
+    </div>
+    <div class="hero-v2__photo hero-v2__photo--sm">
+      <img src="images/paloma/hero/hero-v2-editorial.jpg" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="hero-v2__photo hero-v2__photo--sm">
+      <img src="images/paloma/hero/hero-v3-vase.jpg" alt="" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     VARIANT 3 — Gallery Hero / «Обложка журнала»
+     Слово PALOMA во всю ширину · Фото поверх букв
+════════════════════════════════════════════════════════ -->
+<div class="variant-label">ВАРИАНТ 3 — «Gallery Hero / Журнал» · Слово PALOMA на весь экран</div>
+<div class="variant-hint">PALOMA во всю ширину · Фото поверх букв (mix-blend-mode) · Fashion editorial cover</div>
+
+<section class="hero-v3" id="hero-variant-3" aria-label="Вариант 3: Gallery Hero">
+
+  <div class="hero-v3__circle-badge" aria-hidden="true">
+    <svg viewBox="0 0 90 90">
+      <defs>
+        <path id="circlePath" d="M 45,45 m -30,0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0"/>
+      </defs>
+      <text font-family="Manrope, sans-serif" font-size="8.5" font-weight="600" letter-spacing="2.8" fill="rgba(42,18,12,0.5)" text-transform="uppercase">
+        <textPath href="#circlePath">PALOMA · FLOWERS · COFFEE · YOU · </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <div class="hero-v3__wordmark" aria-hidden="true">PALOMA</div>
+
+  <div class="hero-v3__media" aria-hidden="true">
+    <img
+      src="images/paloma/hero/hero-v3-vase.jpg"
+      alt=""
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync">
+  </div>
+
+  <div class="hero-v3__left-text">
+    <p class="hero-v3__offer">
+      Букеты, кофе и подарки<br>
+      с доставкой по Новороссийску
+    </p>
+    <a href="catalog.html" class="hero-v3__cta">Перейти в каталог</a>
+  </div>
+
+  <div class="hero-v3__right-actions">
+    <a href="coffee.html" class="hero-v3__coffee-link">Смотреть кофейню</a>
+  </div>
+
+</section>
+
+</body>
+</html>
