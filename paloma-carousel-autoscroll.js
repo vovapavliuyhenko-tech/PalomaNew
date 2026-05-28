@@ -34,7 +34,7 @@
       /* ── State ───────────────────────────────────── */
       var paused  = false;
       var rafId   = null;
-      var speed   = 1.0;   /* px per frame ≈ 60 px/s at 60fps */
+      var speed   = 2.2;   /* px per frame ≈ 132 px/s at 60fps */
 
       /* half = width of the original (non-cloned) content */
       var halfWidth = viewport.scrollWidth / 2;
