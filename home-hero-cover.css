@@ -26,8 +26,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .paloma-cover {
   position: relative;
   width: 100%;
-  height: 100svh;
-  min-height: 600px;
+  height: calc(100svh + 80px);
+  min-height: 680px;
   overflow: hidden;
   background: #0c0704;
   margin-top: calc(-1 * var(--paloma-header-offset, 88px));
