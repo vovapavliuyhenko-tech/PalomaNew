@@ -25,8 +25,8 @@
     loader.setAttribute("aria-hidden", "true");
     loader.innerHTML = [
       '<div class="paloma-page-loader__logo" aria-label="PALOMA">',
-      '  <span class="paloma-page-loader__logo-base">PALOMA</span>',
-      '  <span class="paloma-page-loader__logo-fill">PALOMA</span>',
+      '  <span class="paloma-page-loader__logo-base">Paloma</span>',
+      '  <span class="paloma-page-loader__logo-fill">Paloma</span>',
       "</div>",
     ].join("");
 

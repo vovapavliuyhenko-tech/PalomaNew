@@ -2,6 +2,8 @@
    PALOMA PAGE LOADER — premium curtain transition
    ===================================================== */
 
+@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap");
+
 :root {
   --paloma-loader-bg: #282828;
   --paloma-loader-text: rgba(255, 253, 248, 0.94);
@@ -67,17 +69,17 @@ body.is-paloma-page-visible main {
   position: relative;
   display: inline-block;
   font-family:
-    var(--font-display),
-    "Cormorant Garamond",
-    "Didot",
-    "Bodoni 72",
-    "Playfair Display",
-    serif;
-  font-size: clamp(72px, 13vw, 210px);
-  font-weight: 300;
-  line-height: 0.86;
-  letter-spacing: -0.065em;
-  text-transform: uppercase;
+    "Pinyon Script",
+    "Great Vibes",
+    "Snell Roundhand",
+    "Edwardian Script ITC",
+    cursive;
+  font-size: clamp(96px, 18vw, 280px);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  text-transform: none;
   color: var(--paloma-loader-text, rgba(255, 253, 248, 0.94));
   opacity: 0;
   transform: translateY(18px) scale(0.96);
@@ -88,7 +90,7 @@ body.is-paloma-page-visible main {
     filter 1.05s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1));
 }
 
-/* TODO: Replace fallback display font with licensed Paloma logo/display font when available. */
+/* Formal script — Pinyon Script (Google Fonts). Licensed brand font: TODO. */
 
 .paloma-page-loader__logo-base,
 .paloma-page-loader__logo-fill {
@@ -110,14 +112,14 @@ body.is-paloma-page-visible main {
 
 @media (max-width: 1024px) {
   .paloma-page-loader__logo {
-    font-size: clamp(58px, 12vw, 140px);
+    font-size: clamp(78px, 16vw, 180px);
   }
 }
 
 @media (max-width: 768px) {
   .paloma-page-loader__logo {
-    font-size: clamp(42px, 17vw, 92px);
-    letter-spacing: -0.055em;
+    font-size: clamp(64px, 20vw, 120px);
+    letter-spacing: 0;
   }
 }
 
