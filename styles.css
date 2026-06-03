@@ -198,12 +198,14 @@ a {
 */
 
 body.loader-lock,
-body.pl-lock {
+body.pl-lock,
+body.is-paloma-loading {
   overflow: hidden;
 }
 
 body.loader-lock .custom-cursor,
-body.pl-lock .custom-cursor {
+body.pl-lock .custom-cursor,
+body.is-paloma-loading .custom-cursor {
   opacity: 0;
   visibility: hidden;
 }

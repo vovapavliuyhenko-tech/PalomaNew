@@ -1,197 +1,200 @@
-/* ════════════════════════════════════════════════════════
-   PALOMA LOADER + PAGE TRANSITIONS
-   ════════════════════════════════════════════════════════ */
+/* =====================================================
+   PALOMA PAGE LOADER — premium curtain transition
+   ===================================================== */
 
-(function PalomaLoader() {
+(function PalomaPageLoaderModule() {
   "use strict";
 
-  function injectLoaderHTML() {
-    if (document.getElementById("palomaLoader")) return;
+  function removeLegacyLoaders() {
+    document.querySelectorAll("#palomaLoader, #palomaTransition, .paloma-loader, .paloma-transition").forEach(function (node) {
+      node.remove();
+    });
+    document.body.classList.remove("pl-lock", "loader-lock");
+  }
 
-    const markup = [
-      '<div id="palomaLoader" class="paloma-loader" aria-hidden="true" role="presentation">',
-      '  <div class="paloma-loader__inner">',
-      '    <div class="paloma-loader__brand">',
-      '      <span class="paloma-loader__name">PALOMA</span>',
-      '      <span class="paloma-loader__tagline">FLOWERS · COFFEE · YOU</span>',
-      "    </div>",
-      '    <div class="paloma-loader__progress" aria-hidden="true">',
-      '      <div class="paloma-loader__progress-fill" id="palomaLoaderProgress"></div>',
-      "    </div>",
-      "  </div>",
-      "</div>",
-      '<div id="palomaTransition" class="paloma-transition" aria-hidden="true" role="presentation">',
-      '  <div class="paloma-transition__inner">',
-      '    <div class="paloma-transition__brand">',
-      '      <span class="paloma-transition__name">PALOMA</span>',
-      "    </div>",
-      "  </div>",
+  function createPalomaPageLoader() {
+    removeLegacyLoaders();
+
+    let loader = document.getElementById("palomaPageLoader");
+
+    if (loader) return loader;
+
+    loader = document.createElement("div");
+    loader.className = "paloma-page-loader";
+    loader.id = "palomaPageLoader";
+    loader.setAttribute("aria-hidden", "true");
+    loader.innerHTML = [
+      '<div class="paloma-page-loader__logo" aria-label="PALOMA">',
+      '  <span class="paloma-page-loader__logo-base">PALOMA</span>',
+      '  <span class="paloma-page-loader__logo-fill">PALOMA</span>',
       "</div>",
     ].join("");
 
-    const template = document.createElement("template");
-    template.innerHTML = markup.trim();
-    const nodes = Array.from(template.content.children);
-    const first = document.body.firstChild;
-
-    nodes.forEach(function (node) {
-      document.body.insertBefore(node, first);
-    });
+    document.body.prepend(loader);
+    return loader;
   }
 
-  injectLoaderHTML();
+  function isInternalNavigationLink(link) {
+    if (!link) return false;
 
-  const loader = document.getElementById("palomaLoader");
-  const transition = document.getElementById("palomaTransition");
-  const progress = document.getElementById("palomaLoaderProgress");
-
-  if (!loader || !transition) return;
-
-  const noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let progressInterval = null;
-  let hideTimeout = null;
-  let loaded = false;
-
-  document.body.classList.add("pl-lock");
-
-  function isExcludedLink(link) {
     const href = (link.getAttribute("href") || "").trim();
 
-    if (!href || href === "#" || href.startsWith("#") || href.startsWith("javascript:")) {
-      return true;
+    if (!href || href === "#") return false;
+    if (href.startsWith("#")) return false;
+    if (href.startsWith("tel:")) return false;
+    if (href.startsWith("mailto:")) return false;
+    if (href.startsWith("javascript:")) return false;
+    if (/^(tg:|https?:\/\/(t\.me|wa\.me|api\.whatsapp))/i.test(href)) return false;
+    if (link.hasAttribute("download")) return false;
+    if (link.hasAttribute("data-no-transition") || link.hasAttribute("data-cart-close")) return false;
+
+    const target = link.getAttribute("target");
+    if (target && target !== "_self") return false;
+
+    let nextUrl;
+
+    try {
+      nextUrl = new URL(href, window.location.href);
+    } catch (error) {
+      return false;
     }
 
-    if (/^(tel:|mailto:|tg:|https?:\/\/(t\.me|wa\.me|api\.whatsapp))/i.test(href)) {
-      return true;
+    const currentUrl = new URL(window.location.href);
+
+    if (nextUrl.origin !== currentUrl.origin) return false;
+
+    if (/\.(pdf|zip|png|jpg|jpeg|gif|svg|webp|mp4|mp3)$/i.test(nextUrl.pathname)) {
+      return false;
     }
 
-    if (link.hasAttribute("data-no-transition") || link.hasAttribute("data-cart-close")) {
-      return true;
-    }
+    const samePageHashOnly =
+      nextUrl.pathname === currentUrl.pathname &&
+      nextUrl.search === currentUrl.search &&
+      nextUrl.hash;
 
-    if (link.target === "_blank") {
-      return true;
-    }
+    if (samePageHashOnly) return false;
 
-    if (link.hostname && link.hostname !== window.location.hostname) {
-      return true;
-    }
+    if (nextUrl.href === currentUrl.href) return false;
 
-    if (/\.(pdf|zip|png|jpg|jpeg|gif|svg|webp|mp4|mp3)$/i.test(href)) {
-      return true;
-    }
-
-    return false;
+    return true;
   }
 
-  function hideLoader() {
-    if (loader.classList.contains("is-hidden")) return;
+  function initPalomaPageLoader() {
+    const loader = createPalomaPageLoader();
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    loader.classList.add("is-hiding");
-    const duration = noMotion ? 200 : 580;
+    let isTransitioning = false;
+    let initialDone = false;
+    const revealDelay = reduceMotion ? 80 : 120;
+    const leaveDelay = reduceMotion ? 260 : 1650;
+    const cleanupDelay = reduceMotion ? 320 : 2800;
 
-    hideTimeout = window.setTimeout(function () {
-      loader.classList.add("is-hidden");
-      document.body.classList.remove("pl-lock");
-      document.body.classList.remove("loader-lock");
+    function lockScroll() {
+      document.body.classList.add("is-paloma-loading");
+      document.body.classList.remove("pl-lock", "loader-lock");
+    }
+
+    function unlockScroll() {
+      document.body.classList.remove("is-paloma-loading", "pl-lock", "loader-lock");
+    }
+
+    function resetLoaderVisualState() {
+      loader.classList.remove("is-hidden", "is-leaving", "is-ready");
+      loader.style.transform = "";
+      loader.style.opacity = "";
+      loader.style.visibility = "";
+    }
+
+    function finishInitialLoader() {
+      if (initialDone) return;
+      initialDone = true;
+      unlockScroll();
+      document.body.classList.add("is-paloma-page-visible");
       document.dispatchEvent(new CustomEvent("paloma:loader-done"));
-    }, duration);
-  }
+    }
 
-  function initLoader() {
-    let progressValue = 0;
+    function showInitialLoader() {
+      resetLoaderVisualState();
+      lockScroll();
 
-    progressInterval = window.setInterval(function () {
-      progressValue += Math.random() * 18;
-      if (progressValue > 85) progressValue = 85;
-      if (progress) progress.style.width = progressValue + "%";
-    }, 100);
+      window.requestAnimationFrame(function () {
+        loader.classList.add("is-ready");
+      });
 
-    requestAnimationFrame(function () {
-      loader.classList.add("is-revealed");
+      window.setTimeout(function () {
+        loader.classList.add("is-leaving");
+        document.body.classList.add("is-paloma-page-visible");
+      }, leaveDelay);
+
+      window.setTimeout(function () {
+        loader.classList.add("is-hidden");
+        finishInitialLoader();
+      }, cleanupDelay);
+    }
+
+    function showTransitionAndNavigate(url) {
+      if (isTransitioning) return;
+
+      isTransitioning = true;
+      lockScroll();
+
+      resetLoaderVisualState();
+
+      window.requestAnimationFrame(function () {
+        loader.classList.add("is-ready");
+      });
+
+      window.setTimeout(function () {
+        window.location.href = url;
+      }, reduceMotion ? 120 : 720);
+    }
+
+    document.addEventListener(
+      "click",
+      function (event) {
+        const link = event.target.closest("a[href]");
+
+        if (!isInternalNavigationLink(link)) return;
+        if (event.defaultPrevented) return;
+        if (event.button !== 0) return;
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+
+        const href = link.getAttribute("href");
+        const nextUrl = new URL(href, window.location.href);
+
+        event.preventDefault();
+        showTransitionAndNavigate(nextUrl.href);
+      },
+      false,
+    );
+
+    window.addEventListener("pageshow", function (event) {
+      isTransitioning = false;
+
+      if (event.persisted) {
+        resetLoaderVisualState();
+        loader.classList.add("is-hidden");
+        finishInitialLoader();
+      }
     });
 
-    function onLoaded() {
-      if (loaded) return;
-      loaded = true;
+    window.addEventListener("popstate", function () {
+      isTransitioning = false;
+    });
 
-      if (progressInterval) {
-        window.clearInterval(progressInterval);
-        progressInterval = null;
-      }
-
-      if (progress) progress.style.width = "100%";
-
-      const minDisplayTime = noMotion ? 150 : 600;
-      window.setTimeout(hideLoader, minDisplayTime);
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", onLoaded, { once: true });
-    } else {
-      onLoaded();
-    }
-
-    window.addEventListener("load", onLoaded, { once: true });
-  }
-
-  function transitionIn(callback) {
-    transition.classList.add("is-entering");
-    document.body.classList.add("pl-lock");
-
-    const enterDuration = noMotion ? 100 : 450;
     window.setTimeout(function () {
-      if (typeof callback === "function") callback();
-    }, enterDuration);
+      if (!loader.classList.contains("is-hidden") && !initialDone) {
+        loader.classList.add("is-leaving", "is-hidden");
+        finishInitialLoader();
+      }
+    }, 5000);
+
+    window.setTimeout(showInitialLoader, revealDelay);
   }
 
-  function transitionOut() {
-    transition.classList.remove("is-entering");
-    if (loader.classList.contains("is-hidden")) {
-      document.body.classList.remove("pl-lock");
-    }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPalomaPageLoader, { once: true });
+  } else {
+    initPalomaPageLoader();
   }
-
-  document.addEventListener(
-    "click",
-    function (e) {
-      const link = e.target.closest("a[href]");
-      if (!link) return;
-      if (isExcludedLink(link)) return;
-      if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
-      if (e.button !== 0) return;
-
-      const href = link.href;
-      if (href === window.location.href) return;
-
-      e.preventDefault();
-      transitionIn(function () {
-        window.location.href = href;
-      });
-    },
-    false,
-  );
-
-  window.addEventListener("pageshow", function (e) {
-    if (e.persisted) {
-      transitionOut();
-    }
-
-    if (!loader.classList.contains("is-hidden") && loaded) {
-      hideLoader();
-    }
-  });
-
-  window.addEventListener("popstate", transitionOut);
-
-  window.setTimeout(function () {
-    if (loader && !loader.classList.contains("is-hidden")) {
-      hideLoader();
-    }
-    if (transition && transition.classList.contains("is-entering")) {
-      transitionOut();
-    }
-  }, 5000);
-
-  initLoader();
 })();

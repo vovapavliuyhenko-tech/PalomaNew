@@ -1,202 +1,146 @@
-/* ════════════════════════════════════════════════════════
-   PALOMA LOADER + PAGE TRANSITIONS (premium)
-   Legacy .pl styles removed — see git history
-   ════════════════════════════════════════════════════════ */
+/* =====================================================
+   PALOMA PAGE LOADER — premium curtain transition
+   ===================================================== */
 
-body.pl-lock {
+:root {
+  --paloma-loader-bg: #282828;
+  --paloma-loader-text: rgba(255, 253, 248, 0.94);
+  --paloma-loader-text-muted: rgba(255, 253, 248, 0.24);
+  --paloma-transition-ease: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+body.is-paloma-loading {
   overflow: hidden;
 }
 
-body.pl-lock .custom-cursor {
+body.is-paloma-loading .custom-cursor {
   opacity: 0;
   visibility: hidden;
 }
 
-/* ── 1. LOADER — первоначальная загрузка ── */
-.paloma-loader {
+body.is-paloma-page-visible .site,
+body.is-paloma-page-visible main {
+  opacity: 1;
+}
+
+.paloma-page-loader {
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  background: #16070B;
+  z-index: 99999;
+  width: 100vw;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-  opacity: 1;
-  transform: translateY(0);
-  will-change: opacity, transform;
-}
-
-.paloma-loader.is-hiding {
-  opacity: 0;
-  transform: translateY(-8px);
-}
-
-.paloma-loader.is-hidden {
-  display: none !important;
-  pointer-events: none;
-}
-
-.paloma-loader__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  margin-top: -24px;
-  position: relative;
-  width: 100%;
-}
-
-.paloma-loader__brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(8px, 1.5vw, 14px);
-}
-
-.paloma-loader__name {
-  font-family: var(--font-display, 'Italiana', serif);
-  font-size: clamp(40px, 6vw, 80px);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: rgba(251, 246, 232, 0.90);
-  line-height: 1;
-  display: block;
-  transform-origin: center;
-  opacity: 0;
-  transition:
-    opacity 0.60s cubic-bezier(0.22, 1, 0.36, 1) 0.10s,
-    letter-spacing 0.70s cubic-bezier(0.22, 1, 0.36, 1) 0.10s;
-}
-
-.paloma-loader.is-revealed .paloma-loader__name {
-  opacity: 1;
-  letter-spacing: 0.16em;
-}
-
-.paloma-loader__tagline {
-  font-family: var(--mono, 'JetBrains Mono', monospace);
-  font-size: clamp(8px, 1vw, 11px);
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(251, 246, 232, 0.32);
-  line-height: 1;
-  display: block;
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 0.55s ease 0.45s,
-    transform 0.55s ease 0.45s;
-}
-
-.paloma-loader.is-revealed .paloma-loader__tagline {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.paloma-loader__progress {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: rgba(251, 246, 232, 0.08);
   overflow: hidden;
-}
-
-.paloma-loader__progress-fill {
-  height: 100%;
-  width: 0%;
-  background: rgba(251, 246, 232, 0.30);
-  transition: width 0.3s ease;
-}
-
-/* ── 2. TRANSITION OVERLAY ── */
-.paloma-transition {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  background: #16070B;
-  opacity: 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity;
-}
-
-.paloma-transition.is-entering {
-  opacity: 1;
+  background: var(--paloma-loader-bg, #282828);
   pointer-events: auto;
-}
-
-.paloma-transition__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -20px;
-}
-
-.paloma-transition__brand {
-  display: flex;
-  align-items: center;
-}
-
-.paloma-transition__name {
-  font-family: var(--font-display, 'Italiana', serif);
-  font-size: clamp(36px, 5vw, 64px);
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  color: rgba(251, 246, 232, 0.80);
-  line-height: 1;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.35s ease 0.10s;
-}
-
-.paloma-transition.is-entering .paloma-transition__name {
+  transform: translateY(0);
   opacity: 1;
+  visibility: visible;
+  will-change: transform, opacity, clip-path;
+}
+
+.paloma-page-loader.is-ready .paloma-page-loader__logo {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.paloma-page-loader.is-ready .paloma-page-loader__logo-fill {
+  clip-path: inset(0 0 0 0);
+}
+
+.paloma-page-loader.is-leaving {
+  transform: translateY(-100%);
+  transition:
+    transform 1.05s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1));
+}
+
+.paloma-page-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.paloma-page-loader__logo {
+  position: relative;
+  display: inline-block;
+  font-family:
+    var(--font-display),
+    "Cormorant Garamond",
+    "Didot",
+    "Bodoni 72",
+    "Playfair Display",
+    serif;
+  font-size: clamp(72px, 13vw, 210px);
+  font-weight: 300;
+  line-height: 0.86;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+  color: var(--paloma-loader-text, rgba(255, 253, 248, 0.94));
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  filter: blur(12px);
+  transition:
+    opacity 1.05s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1)),
+    transform 1.05s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1)),
+    filter 1.05s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1));
+}
+
+/* TODO: Replace fallback display font with licensed Paloma logo/display font when available. */
+
+.paloma-page-loader__logo-base,
+.paloma-page-loader__logo-fill {
+  display: block;
+}
+
+.paloma-page-loader__logo-base {
+  color: var(--paloma-loader-text-muted, rgba(255, 253, 248, 0.24));
+}
+
+.paloma-page-loader__logo-fill {
+  position: absolute;
+  inset: 0;
+  color: var(--paloma-loader-text, rgba(255, 253, 248, 0.94));
+  clip-path: inset(0 100% 0 0);
+  transition:
+    clip-path 1.15s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1)) 0.18s;
+}
+
+@media (max-width: 1024px) {
+  .paloma-page-loader__logo {
+    font-size: clamp(58px, 12vw, 140px);
+  }
+}
+
+@media (max-width: 768px) {
+  .paloma-page-loader__logo {
+    font-size: clamp(42px, 17vw, 92px);
+    letter-spacing: -0.055em;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .paloma-loader,
-  .paloma-transition {
-    transition: opacity 0.25s ease !important;
+  .paloma-page-loader,
+  .paloma-page-loader__logo,
+  .paloma-page-loader__logo-fill {
+    transition: none !important;
+    animation: none !important;
+    filter: none !important;
+  }
+
+  .paloma-page-loader__logo {
+    opacity: 1 !important;
     transform: none !important;
   }
 
-  .paloma-loader.is-hiding {
-    transform: none !important;
+  .paloma-page-loader__logo-fill {
+    clip-path: inset(0 0 0 0) !important;
   }
 
-  .paloma-loader__name {
-    letter-spacing: 0.16em !important;
-    transition: opacity 0.20s ease 0.05s !important;
-  }
-
-  .paloma-loader__tagline {
-    transform: none !important;
-    transition: opacity 0.20s ease 0.15s !important;
-  }
-
-  .paloma-transition__name {
-    transition: opacity 0.15s ease 0.05s !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .paloma-loader__inner {
-    margin-top: -16px;
-  }
-
-  .paloma-loader__name {
-    font-size: clamp(36px, 10vw, 52px);
-  }
-
-  .paloma-transition__name {
-    font-size: clamp(32px, 9vw, 44px);
+  .paloma-page-loader.is-leaving {
+    opacity: 0;
+    transform: none;
   }
 }

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="preloader.css">
+  <link rel="stylesheet" href="preloader.css?v=8">
   <link rel="stylesheet" href="styles.css?v=unified-bg">
   <link rel="stylesheet" href="paloma-animations.css">
   <link rel="stylesheet" href="cart.css">
@@ -22,24 +22,11 @@
 </head>
 <body class="is-home">
   <a href="#main" class="skip-link">К содержимому</a>
-
-  <div id="palomaLoader" class="paloma-loader" aria-hidden="true" role="presentation">
-    <div class="paloma-loader__inner">
-      <div class="paloma-loader__brand">
-        <span class="paloma-loader__name">PALOMA</span>
-        <span class="paloma-loader__tagline">FLOWERS · COFFEE · YOU</span>
-      </div>
-      <div class="paloma-loader__progress" aria-hidden="true">
-        <div class="paloma-loader__progress-fill" id="palomaLoaderProgress"></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="palomaTransition" class="paloma-transition" aria-hidden="true" role="presentation">
-    <div class="paloma-transition__inner">
-      <div class="paloma-transition__brand">
-        <span class="paloma-transition__name">PALOMA</span>
-      </div>
+  <!-- PALOMA PAGE LOADER — premium curtain transition -->
+  <div class="paloma-page-loader" id="palomaPageLoader" aria-hidden="true">
+    <div class="paloma-page-loader__logo" aria-label="PALOMA">
+      <span class="paloma-page-loader__logo-base">PALOMA</span>
+      <span class="paloma-page-loader__logo-fill">PALOMA</span>
     </div>
   </div>
 
@@ -1221,7 +1208,7 @@
     <div class="custom-cursor__ring"></div>
   </div>
 
-  <script src="preloader.js"></script>
+  <script src="preloader.js?v=8"></script>
   <script src="cart-core.js"></script>
   <script src="paloma-products.js"></script>
   <script src="catalog-data.js"></script>
