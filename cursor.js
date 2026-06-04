@@ -35,6 +35,7 @@
   cursor.className = "paloma-cursor is-hidden";
   cursor.id = "palomaCursorEl";
   cursor.setAttribute("aria-hidden", "true");
+  cursor.innerHTML = '<span class="paloma-cursor__label">смотреть</span>';
   document.body.appendChild(cursor);
 
   const trail = [];
