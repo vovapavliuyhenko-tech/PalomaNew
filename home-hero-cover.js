@@ -25,8 +25,9 @@
     if (!word || !bg) return;
 
     /* GPU hints */
-    word.style.willChange = 'transform, opacity';
-    bg.style.willChange   = 'transform';
+    word.style.willChange    = 'transform, opacity';
+    bg.style.willChange      = 'transform';
+    if (tagline) tagline.style.willChange = 'transform, opacity';
 
     var rafId = null;
 
@@ -63,10 +64,15 @@
       word.style.transform = 'translateY(' + wDriftY + 'px) scale(' + wScale.toFixed(4) + ')';
       word.style.opacity   = wOpacity.toFixed(4);
 
-      /* ── UI elements: fade fast ─────────────────────── */
-      var uiAlpha = (Math.max(0, 1 - p * 4.5)).toFixed(4);
-      if (tagline) tagline.style.opacity = uiAlpha;
-      if (bar)     bar.style.opacity     = uiAlpha;
+      /* ── Tagline: drift down (same feel as word) + fade ── */
+      var uiAlpha    = (Math.max(0, 1 - p * 3.2)).toFixed(4);
+      var tagDriftY  = (p * 120).toFixed(1);
+      var tagScale   = (1 + p * 0.18).toFixed(4);
+      if (tagline) {
+        tagline.style.transform = 'translateY(' + tagDriftY + 'px) scale(' + tagScale + ')';
+        tagline.style.opacity   = uiAlpha;
+      }
+      if (bar) bar.style.opacity = (Math.max(0, 1 - p * 4.5)).toFixed(4);
 
       /* ── Background: zoom in (scale 1 → 1.22) ────────── */
       var bgScale = (1 + p * 0.22).toFixed(4);
@@ -82,7 +88,7 @@
       if (window.scrollY === 0) {
         word.style.transform  = 'scale(1)';
         word.style.opacity    = '1';
-        if (tagline) tagline.style.opacity = '1';
+        if (tagline) { tagline.style.opacity = '1'; tagline.style.transform = 'translateY(0) scale(1)'; }
         if (bar)     bar.style.opacity     = '1';
         bg.style.transform    = 'scale(1)';
       }
