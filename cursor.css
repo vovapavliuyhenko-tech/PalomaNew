@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════
    PALOMA CUSTOM CURSOR
-   Референс: millennium-carpets.ru
+   Небольшой круг + тянущийся след из затухающих копий
    ════════════════════════════════════════════════════════ */
 
 /* Скрыть legacy-курсор при активном новом */
@@ -17,76 +17,57 @@ body.paloma-cursor-active .cursor-trail-dot {
   }
 }
 
+/* ── Основной круг ───────────────────────────────────── */
 .paloma-cursor {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99999;
   pointer-events: none;
-  width: 20px;
-  height: 20px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background: transparent;
-  border: 1.5px solid rgba(107, 15, 26, 0.85);
-  transform: translate(-50%, -50%) scale(1);
-  will-change: transform, width, height, background, border-color;
+  background: #2a120c;
+  border: none;
+  transform: translate(-50%, -50%);
+  will-change: transform, width, height, opacity;
   transition:
-    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.35s ease,
-    border-color 0.35s ease,
-    opacity 0.35s ease;
+    width  0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.25s ease,
+    opacity 0.3s ease;
   user-select: none;
 }
 
+/* Hover — превращается в пустое кольцо */
 .paloma-cursor.is-hovering {
-  width: 44px;
-  height: 44px;
-  background: rgba(107, 15, 26, 0.08);
-  border-color: rgba(107, 15, 26, 0.5);
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1.5px solid rgba(42, 18, 12, 0.7);
 }
 
+/* Press — быстро сжимается */
 .paloma-cursor.is-pressing {
-  width: 16px;
-  height: 16px;
-  background: rgba(107, 15, 26, 0.2);
-  border-color: rgba(107, 15, 26, 0.9);
-  transition:
-    width 0.12s ease,
-    height 0.12s ease,
-    background 0.12s ease;
+  width: 6px;
+  height: 6px;
+  background: #6b0f1a;
+  transition: width 0.08s ease, height 0.08s ease;
 }
 
+/* Текстовое поле — тонкая вертикальная черта */
 .paloma-cursor.is-text {
   width: 2px;
-  height: 24px;
+  height: 22px;
   border-radius: 1px;
-  background: rgba(107, 15, 26, 0.7);
-  border: none;
+  background: rgba(42, 18, 12, 0.75);
 }
 
 .paloma-cursor.is-hidden {
   opacity: 0;
 }
 
-.paloma-cursor__dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(107, 15, 26, 0.9);
-  transition: opacity 0.3s ease, transform 0.35s ease;
-}
-
-.paloma-cursor.is-hovering .paloma-cursor__dot,
-.paloma-cursor.is-text .paloma-cursor__dot {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0);
-}
-
+/* ── След ────────────────────────────────────────────── */
 .paloma-cursor-trail {
   position: fixed;
   top: 0;
@@ -94,12 +75,12 @@ body.paloma-cursor-active .cursor-trail-dot {
   z-index: 99998;
   pointer-events: none;
   border-radius: 50%;
+  background: #2a120c;
   transform: translate(-50%, -50%);
   will-change: transform, opacity;
-  background: rgba(107, 15, 26, 0.18);
-  transition: opacity 0.5s ease;
 }
 
+/* ── Touch / грубый pointer — всё скрыть ─────────────── */
 @media (hover: none), (pointer: coarse) {
   .paloma-cursor,
   .paloma-cursor-trail {
@@ -112,9 +93,10 @@ body.paloma-cursor-active .cursor-trail-dot {
   }
 }
 
+/* ── Reduced motion — след убираем ───────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .paloma-cursor {
-    transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
+    transition: width 0.1s ease, height 0.1s ease, opacity 0.1s ease;
   }
 
   .paloma-cursor-trail {
