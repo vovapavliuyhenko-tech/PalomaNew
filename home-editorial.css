@@ -1,4 +1,65 @@
 /* =====================================================
+   PALOMA WAVE — фирменная волнистая строка (× YOU PALOMA)
+   как в инстаграме: текст по синусоиде
+   ===================================================== */
+
+.paloma-wave {
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  line-height: 0;
+}
+
+.paloma-wave__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.paloma-wave__text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Полноширинный разделитель-полоса на кремовом фоне */
+.paloma-wave-band {
+  background: var(--color-bg, #fbf6e8);
+  padding: clamp(14px, 3vw, 34px) 0;
+}
+
+.paloma-wave-band .paloma-wave__text {
+  fill: rgba(116, 24, 39, 0.55);
+}
+
+/* Вариант внутри светлой карточки подписки */
+.home-subscription__wave {
+  position: relative;
+  z-index: 4;
+  width: min(440px, 100%);
+  margin: 0 auto 30px;
+}
+
+.home-subscription__wave .paloma-wave__text {
+  fill: rgba(53, 24, 15, 0.30);
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .paloma-wave__text { font-size: 14px; letter-spacing: 0.14em; }
+  .home-subscription__wave { margin-bottom: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paloma-wave { /* статичный, без анимации — ок */ }
+}
+
+/* =====================================================
    HOME SUBSCRIPTION — PALOMA
    ===================================================== */
 

@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css">
   <link rel="stylesheet" href="home-hero-cover.css?v=2">
-  <link rel="stylesheet" href="home-editorial.css?v=14">
+  <link rel="stylesheet" href="home-editorial.css?v=15">
 </head>
 <body class="is-home">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -522,6 +522,19 @@
       </div>
     </section>
 
+    <!-- PALOMA фирменная волнистая строка -->
+    <div class="paloma-wave paloma-wave-band" aria-hidden="true">
+      <svg class="paloma-wave__svg" viewBox="0 0 1200 64" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <path id="palomaWaveBand" fill="none"
+            d="M0,32 Q75,4 150,32 T300,32 T450,32 T600,32 T750,32 T900,32 T1050,32 T1200,32"/>
+        </defs>
+        <text class="paloma-wave__text">
+          <textPath href="#palomaWaveBand" xlink:href="#palomaWaveBand" startOffset="0">×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×</textPath>
+        </text>
+      </svg>
+    </div>
+
     <!-- =====================================================
          PALOMA CUSTOMER CHOICE
          ===================================================== -->
@@ -662,6 +675,18 @@
           aria-hidden="true"
           loading="lazy"
           onerror="this.src='assets/images/giraffe.svg'">
+
+        <div class="paloma-wave home-subscription__wave" aria-hidden="true">
+          <svg class="paloma-wave__svg" viewBox="0 0 600 56" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+              <path id="palomaWaveSub" fill="none"
+                d="M0,28 Q37.5,6 75,28 T150,28 T225,28 T300,28 T375,28 T450,28 T525,28 T600,28"/>
+            </defs>
+            <text class="paloma-wave__text">
+              <textPath href="#palomaWaveSub" xlink:href="#palomaWaveSub" startOffset="0">×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×</textPath>
+            </text>
+          </svg>
+        </div>
 
         <div class="home-subscription__mark" aria-hidden="true">*</div>
 
