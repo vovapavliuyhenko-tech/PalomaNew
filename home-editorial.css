@@ -1,29 +1,4 @@
 /* =====================================================
-   PALOMA WAVE — вариант внутри светлой карточки подписки
-   (базовые стили .paloma-wave лежат в styles.css)
-   ===================================================== */
-
-.home-subscription__wave {
-  position: relative;
-  z-index: 4;
-  width: min(440px, 100%);
-  margin: 0 auto 30px;
-}
-
-.home-subscription__wave .paloma-wave__svg {
-  height: clamp(40px, 9vw, 56px);
-}
-
-.home-subscription__wave .paloma-wave__text {
-  fill: rgba(53, 24, 15, 0.30);
-  font-size: 15px;
-}
-
-@media (max-width: 768px) {
-  .home-subscription__wave { margin-bottom: 22px; }
-}
-
-/* =====================================================
    HOME SUBSCRIPTION — PALOMA
    ===================================================== */
 
