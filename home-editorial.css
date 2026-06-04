@@ -34,7 +34,7 @@
   width: min(820px, calc(100% - 48px));
   min-height: 600px;
   padding: 88px 72px 56px;
-  background: #fffdf8;
+  background: #fbf6e8;
   color: #35180f;
   display: flex;
   flex-direction: column;

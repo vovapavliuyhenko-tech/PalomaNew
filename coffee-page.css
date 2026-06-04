@@ -2354,14 +2354,14 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-bouquet-add {
   position: relative;
   overflow: hidden;
-  background: #fbf7f0;
+  background: #fbf6e8;
   color: var(--coffee-dark, #1a1a1a);
   padding: clamp(80px, 10vw, 160px) clamp(12px, 4vw, 72px);
   border-top: 1px solid rgba(26, 26, 26, 0.12);
 }
 
 .coffee-page .coffee-bouquet-add {
-  background: #fbf7f0;
+  background: #fbf6e8;
   color: #1a1a1a;
 }
 
@@ -3418,7 +3418,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 }
 
 .coffee-page .coffee-bouquet-add {
-  background-color: #fbf7f0;
+  background-color: #fbf6e8;
 }
 
 .coffee-page .coffee-location {
