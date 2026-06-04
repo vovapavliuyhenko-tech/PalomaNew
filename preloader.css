@@ -62,7 +62,7 @@ body.is-paloma-loading {
   font-style: normal;
   letter-spacing: 0.44em;
   text-transform: uppercase;
-  color: #2a120c;
+  color: #741827;
   display: block;
 }
 
@@ -80,7 +80,7 @@ body.is-paloma-loading {
   font-weight: 400;
   letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: rgba(42, 18, 12, 0.3);
+  color: rgba(116, 24, 39, 0.35);
   opacity: 0;
   transition: opacity 0.7s ease 0.36s;
 }
