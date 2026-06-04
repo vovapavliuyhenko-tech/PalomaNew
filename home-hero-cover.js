@@ -32,18 +32,35 @@
     var rafId = null;
 
     /* After entry animations finish, clear them so inline
-       styles take full control without fighting fill-mode. */
-    var clearPending = true;
-    word.addEventListener('animationend', clearEntryAnim, { once: true });
-    /* Fallback if animation is disabled or cached out */
-    setTimeout(clearEntryAnim, 2600);
+       styles take full control without fighting fill-mode.
+       Both word AND tagline have forwards fill — both must be cleared. */
+    var wordCleared    = false;
+    var taglineCleared = false;
 
-    function clearEntryAnim() {
-      if (!clearPending) return;
-      clearPending = false;
-      word.style.animation  = 'none';
-      word.style.opacity    = '1';
-      word.style.transform  = 'scale(1)';
+    function clearWordAnim() {
+      if (wordCleared) return;
+      wordCleared = true;
+      word.style.animation = 'none';
+      word.style.opacity   = '1';
+      word.style.transform = 'scale(1)';
+    }
+
+    function clearTaglineAnim() {
+      if (taglineCleared) return;
+      taglineCleared = true;
+      if (!tagline) return;
+      tagline.style.animation = 'none';
+      tagline.style.opacity   = '1';
+      tagline.style.transform = 'translateY(0) scale(1)';
+    }
+
+    word.addEventListener('animationend', clearWordAnim, { once: true });
+    setTimeout(clearWordAnim, 2600);
+
+    if (tagline) {
+      tagline.addEventListener('animationend', clearTaglineAnim, { once: true });
+      /* tagline delay is 1.15s + 1s duration = ~2.2s; fallback at 2.8s */
+      setTimeout(clearTaglineAnim, 2800);
     }
 
     function tick() {
