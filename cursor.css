@@ -24,8 +24,8 @@ body.paloma-cursor-active .cursor-trail-dot {
   left: 0;
   z-index: 99999;
   pointer-events: none;
-  width: 9px;
-  height: 9px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: #2a120c;
   border: none;
