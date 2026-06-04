@@ -308,45 +308,6 @@
   flex-shrink: 0;
 }
 
-/* ── PALOMA wave brand line (× YOU PALOMA) ────────────────── */
-
-.paloma-wave {
-  width: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-  line-height: 0;
-}
-
-.paloma-wave__svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  overflow: visible;
-}
-
-.paloma-wave__text {
-  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 17px;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.paloma-wave-band {
-  background: #fbf6e8;
-  padding: clamp(14px, 3vw, 34px) 0;
-}
-
-.paloma-wave-band .paloma-wave__text {
-  fill: rgba(116, 24, 39, 0.55);
-}
-
-@media (max-width: 768px) {
-  .paloma-wave__text { font-size: 14px; letter-spacing: 0.14em; }
-}
-
 /* ── Cursor follower image ────────────────────────────────── */
 
 .cof-cursor-img {
