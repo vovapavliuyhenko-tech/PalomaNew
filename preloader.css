@@ -3,6 +3,8 @@
    Кремовый фон · Cormorant капслок · шторка поднимается
    ===================================================== */
 
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
 :root {
   --paloma-transition-ease: cubic-bezier(0.76, 0, 0.24, 1);
 }
@@ -71,18 +73,20 @@ body.is-paloma-loading {
   display: none;
 }
 
-/* ── Подпись ── */
+/* ── Подпись — Great Vibes как в герое ── */
 .paloma-page-loader__tagline {
   position: relative;
   z-index: 2;
-  font-family: 'Manrope', sans-serif;
-  font-size: clamp(8px, 0.9vw, 11px);
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(22px, 2.8vw, 36px);
   font-weight: 400;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: rgba(116, 24, 39, 0.35);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgba(116, 24, 39, 0.52);
   opacity: 0;
-  transition: opacity 0.7s ease 0.36s;
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.42s,
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.42s;
+  transform: translateY(14px);
 }
 
 /* ── is-ready: показываем текст ── */
@@ -93,6 +97,7 @@ body.is-paloma-loading {
 
 .paloma-page-loader.is-ready .paloma-page-loader__tagline {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── Шторка (legacy-элемент, просто прячем) ── */
