@@ -1,13 +1,11 @@
 /* =====================================================
-   PALOMA PAGE LOADER — premium curtain transition
+   PALOMA PAGE LOADER
+   Вариант A — кремовый фон, Cormorant капслок,
+   шторка уезжает вверх
    ===================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap");
-
 :root {
-  --paloma-loader-bg: #282828;
-  --paloma-loader-text: rgba(255, 253, 248, 0.94);
-  --paloma-loader-text-muted: rgba(255, 253, 248, 0.24);
+  --paloma-loader-bg: #fbf6e8;
   --paloma-transition-ease: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
@@ -20,11 +18,7 @@ body.is-paloma-loading .custom-cursor {
   visibility: hidden;
 }
 
-body.is-paloma-page-visible .site,
-body.is-paloma-page-visible main {
-  opacity: 1;
-}
-
+/* ── Обёртка ── */
 .paloma-page-loader {
   position: fixed;
   inset: 0;
@@ -35,114 +29,104 @@ body.is-paloma-page-visible main {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--paloma-loader-bg, #282828);
+  background: #fbf6e8;
   pointer-events: auto;
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-  will-change: transform, opacity, clip-path;
+  will-change: transform;
 }
 
+/* ── Контент (текст) ── */
+.paloma-page-loader__logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.7s ease 0.1s;
+}
+
+/* JS добавляет .is-ready — показываем текст */
 .paloma-page-loader.is-ready .paloma-page-loader__logo {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
 }
 
-.paloma-page-loader.is-ready .paloma-page-loader__logo-fill {
-  clip-path: inset(0 0 0 0);
+/* ── Логотип PALOMA ── */
+.paloma-page-loader__logo-base {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(15px, 2vw, 24px);
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #2a120c;
+  /* убираем fill-эффект — просто показываем текст */
 }
 
-.paloma-page-loader.is-leaving {
+/* Скрываем fill-копию (JS её не трогает, просто прячем) */
+.paloma-page-loader__logo-fill {
+  display: none;
+}
+
+/* ── Подпись ── */
+.paloma-page-loader__tagline {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(8px, 0.85vw, 10px);
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(42, 18, 12, 0.32);
+  opacity: 0;
+  transition: opacity 0.7s ease 0.36s;
+}
+
+.paloma-page-loader.is-ready .paloma-page-loader__tagline {
+  opacity: 1;
+}
+
+/* ── Шторка — поверх всего, уезжает вверх ── */
+.paloma-page-loader__shutter {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: #fbf6e8;
+  transform: translateY(0%);
+  will-change: transform;
+}
+
+/* JS добавляет .is-leaving — шторка уезжает вверх */
+.paloma-page-loader.is-leaving .paloma-page-loader__shutter {
   transform: translateY(-100%);
-  transition:
-    transform 1.05s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1));
+  transition: transform 1.0s var(--paloma-transition-ease);
 }
 
+/* После ухода — скрываем весь лоадер */
 .paloma-page-loader.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: opacity 0s 1.1s, visibility 0s 1.1s;
 }
 
-.paloma-page-loader__logo {
-  position: relative;
-  display: inline-block;
-  font-family:
-    "Pinyon Script",
-    "Great Vibes",
-    "Snell Roundhand",
-    "Edwardian Script ITC",
-    cursive;
-  font-size: clamp(96px, 18vw, 280px);
-  font-weight: 400;
-  font-style: normal;
-  line-height: 0.88;
-  letter-spacing: 0.01em;
-  text-transform: none;
-  color: var(--paloma-loader-text, rgba(255, 253, 248, 0.94));
-  opacity: 0;
-  transform: translateY(18px) scale(0.96);
-  filter: blur(12px);
-  transition:
-    opacity 1.05s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1)),
-    transform 1.05s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1)),
-    filter 1.05s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1));
-}
-
-/* Formal script — Pinyon Script (Google Fonts). Licensed brand font: TODO. */
-
-.paloma-page-loader__logo-base,
-.paloma-page-loader__logo-fill {
-  display: block;
-}
-
-.paloma-page-loader__logo-base {
-  color: var(--paloma-loader-text-muted, rgba(255, 253, 248, 0.24));
-}
-
-.paloma-page-loader__logo-fill {
-  position: absolute;
-  inset: 0;
-  color: var(--paloma-loader-text, rgba(255, 253, 248, 0.94));
-  clip-path: inset(0 100% 0 0);
-  transition:
-    clip-path 1.15s var(--paloma-transition-ease, cubic-bezier(0.76, 0, 0.24, 1)) 0.18s;
-}
-
-@media (max-width: 1024px) {
-  .paloma-page-loader__logo {
-    font-size: clamp(78px, 16vw, 180px);
-  }
-}
-
+/* ── Мобайл ── */
 @media (max-width: 768px) {
-  .paloma-page-loader__logo {
-    font-size: clamp(64px, 20vw, 120px);
-    letter-spacing: 0;
+  .paloma-page-loader__logo-base {
+    font-size: clamp(13px, 4vw, 18px);
+    letter-spacing: 0.36em;
   }
 }
 
+/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
-  .paloma-page-loader,
   .paloma-page-loader__logo,
-  .paloma-page-loader__logo-fill {
+  .paloma-page-loader__tagline,
+  .paloma-page-loader__shutter {
     transition: none !important;
     animation: none !important;
-    filter: none !important;
   }
-
-  .paloma-page-loader__logo {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .paloma-page-loader__logo-fill {
-    clip-path: inset(0 0 0 0) !important;
-  }
-
-  .paloma-page-loader.is-leaving {
-    opacity: 0;
-    transform: none;
+  .paloma-page-loader__logo  { opacity: 1 !important; }
+  .paloma-page-loader__tagline { opacity: 1 !important; }
+  .paloma-page-loader.is-leaving .paloma-page-loader__shutter {
+    transform: translateY(-100%) !important;
   }
 }
