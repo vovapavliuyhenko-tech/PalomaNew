@@ -38,21 +38,17 @@
   padding: clamp(8px, 1.6vw, 20px) 0;
 }
 
-/* Вариант внутри светлой карточки подписки (на главной) */
+/* Вариант внутри светлой карточки подписки (на главной).
+   Та же фирменная большая волна, во всю ширину карточки. */
 .home-subscription__wave {
   position: relative;
   z-index: 4;
-  width: min(440px, 100%);
-  margin: 0 auto 30px;
+  width: 100%;
+  margin: 0 auto 18px;
 }
 
 .home-subscription__wave .paloma-wave__svg {
-  height: clamp(40px, 9vw, 56px);
-}
-
-.home-subscription__wave .paloma-wave__text {
-  fill: rgba(53, 24, 15, 0.3);
-  font-size: 15px;
+  height: clamp(70px, 9vw, 110px);
 }
 
 @media (max-width: 768px) {
