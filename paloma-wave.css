@@ -15,18 +15,20 @@
 .paloma-wave__svg {
   display: block;
   width: 100%;
-  /* Явная высота — иначе SVG может схлопнуться в 0px и overflow:hidden
-     полностью спрячет волну (именно поэтому её не было видно). */
-  height: clamp(52px, 5.4vw, 82px);
+  /* Крупная волна во всю ширину: высота = ширина / 8 (соотношение viewBox 1200×150).
+     aspect-ratio растягивает SVG по ширине без полей по бокам и не схлопывается. */
+  height: auto;
+  aspect-ratio: 1200 / 150;
+  min-height: 70px;
   overflow: visible;
 }
 
 .paloma-wave__text {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 17px;
+  font-size: 13px;
   font-style: italic;
   font-weight: 400;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   fill: rgba(116, 24, 39, 0.5);
 }
@@ -34,7 +36,7 @@
 /* Полноширинная полоса-разделитель на кремовом фоне */
 .paloma-wave-band {
   background: #fbf6e8;
-  padding: clamp(14px, 3vw, 34px) 0;
+  padding: clamp(8px, 1.6vw, 20px) 0;
 }
 
 /* Вариант внутри светлой карточки подписки (на главной) */
@@ -55,7 +57,6 @@
 }
 
 @media (max-width: 768px) {
-  .paloma-wave__svg { height: clamp(44px, 11vw, 60px); }
-  .paloma-wave__text { font-size: 14px; letter-spacing: 0.14em; }
+  .paloma-wave__text { font-size: 11px; letter-spacing: 0.16em; }
   .home-subscription__wave { margin-bottom: 22px; }
 }
