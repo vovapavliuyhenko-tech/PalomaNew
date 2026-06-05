@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════
    PALOMA CUSTOM CURSOR
-   Точка (мгновенно) + кольцо-контур (догоняет с инерцией).
+   Одно полупрозрачное кольцо, плавно следует за мышью.
    На ховере кнопок — большой круг «смотреть».
    ════════════════════════════════════════════════════════ */
 
@@ -18,18 +18,20 @@ body.paloma-cursor-active .cursor-trail-dot {
   }
 }
 
-/* ── Кольцо-контур (догоняет) ────────────────────────── */
+/* ── Полупрозрачное кольцо ───────────────────────────── */
 .paloma-cursor {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99999;
   pointer-events: none;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: transparent;
-  border: 1.5px solid #2a120c;
+  background: rgba(42, 18, 12, 0.18);
+  border: 1px solid rgba(42, 18, 12, 0.28);
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
   transform: translate(-50%, -50%);
   will-change: transform, width, height, opacity;
   transition:
@@ -41,35 +43,14 @@ body.paloma-cursor-active .cursor-trail-dot {
   user-select: none;
 }
 
-/* ── Точка (мгновенно за мышью) ──────────────────────── */
-.paloma-cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100000;
-  pointer-events: none;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #2a120c;
-  transform: translate(-50%, -50%);
-  will-change: transform, opacity;
-  transition: opacity 0.25s ease;
-  user-select: none;
-}
-
-/* Точка скрыта при ховере/тексте/общем скрытии */
-.paloma-cursor-dot.is-hidden,
-.paloma-cursor-dot.is-suppressed {
-  opacity: 0;
-}
-
 /* Hover — большой заполненный круг с надписью «смотреть» */
 .paloma-cursor.is-hovering {
   width: 72px;
   height: 72px;
   background: #2a120c;
   border-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,8 +80,8 @@ body.paloma-cursor-active .cursor-trail-dot {
 
 /* Press — кольцо слегка сжимается */
 .paloma-cursor.is-pressing {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   transition: width 0.12s ease, height 0.12s ease;
 }
 
@@ -109,8 +90,10 @@ body.paloma-cursor-active .cursor-trail-dot {
   width: 2px;
   height: 24px;
   border-radius: 1px;
-  background: rgba(42, 18, 12, 0.75);
+  background: rgba(42, 18, 12, 0.6);
   border-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 .paloma-cursor.is-hidden {
@@ -119,8 +102,7 @@ body.paloma-cursor-active .cursor-trail-dot {
 
 /* ── Touch / грубый pointer — всё скрыть ─────────────── */
 @media (hover: none), (pointer: coarse) {
-  .paloma-cursor,
-  .paloma-cursor-dot {
+  .paloma-cursor {
     display: none !important;
   }
 
