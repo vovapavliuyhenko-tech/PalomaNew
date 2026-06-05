@@ -71,6 +71,35 @@
   color: #741827;
 }
 
+/* Подзаголовок под заголовком — как «Подборки по категориям» на главной */
+.catalog-hero__subtitle {
+  max-width: 720px;
+  margin: 18px 0 0;
+  font-family: var(--font-sans, var(--sans, "Manrope"), sans-serif);
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.45;
+  color: #4a3b34;
+}
+
+/* ── Карточки товаров в редакционном стиле главной ──────── */
+.catalog-page .product-card {
+  border-radius: 0;
+  background: transparent;
+}
+
+.catalog-page .product-card__name {
+  font-style: italic;
+  letter-spacing: -0.025em;
+}
+
+.catalog-page .product-card__price {
+  font-family: var(--font-sans, var(--sans, "Manrope"), sans-serif);
+  font-size: 14px;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: #77706a;
+}
+
 .catalog-filters-wrap {
   position: static;
   background: #fbf6e8;

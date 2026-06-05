@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="paloma-animations.css">
 <link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="catalog.css?v=cat1">
+  <link rel="stylesheet" href="paloma-wave.css?v=7">
   <link rel="stylesheet" href="clients.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=9">
@@ -282,8 +283,22 @@
   <div class="catalog-hero">
     <div class="catalog-hero__inner">
       <h1 class="catalog-hero__title">Каталог <em class="catalog-hero__title-accent">Paloma</em></h1>
+      <p class="catalog-hero__subtitle">Букеты, композиции, сезонная витрина и подарки — выберите категорию или листайте всё подряд.</p>
               </div>
             </div>
+
+  <!-- PALOMA фирменная волнистая строка -->
+  <div class="paloma-wave paloma-wave-band" aria-hidden="true">
+    <svg class="paloma-wave__svg" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <path id="palomaWaveCatalog" fill="none"
+          d="M0,75 Q200,16 400,75 T800,75 T1200,75"/>
+      </defs>
+      <text class="paloma-wave__text">
+        <textPath href="#palomaWaveCatalog" xlink:href="#palomaWaveCatalog" startOffset="0">×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×</textPath>
+      </text>
+    </svg>
+  </div>
 
   <div class="catalog-filters-wrap" id="catalogFiltersWrap">
     <div class="catalog-filters" id="catalogFilters" role="group" aria-label="Фильтры каталога">
