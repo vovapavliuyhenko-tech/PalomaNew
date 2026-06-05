@@ -1,7 +1,6 @@
 /* ════════════════════════════════════════════════════════
    PALOMA CUSTOM CURSOR
-   Эластичная тёмная капля: вытягивается по движению (JS-transform).
-   На ховере кнопок — большой круг «смотреть».
+   Хвост-комета на canvas + DOM-кружок «смотреть» на ховере.
    ════════════════════════════════════════════════════════ */
 
 /* Скрыть legacy-курсор при активном новом */
@@ -18,37 +17,45 @@ body.paloma-cursor-active .cursor-trail-dot {
   }
 }
 
-/* ── Тёмная капля ────────────────────────────────────── */
+/* ── Canvas со шлейфом ───────────────────────────────── */
+.paloma-cursor-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99998;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── DOM-кружок: невидим по умолчанию, появляется на ховере ── */
 .paloma-cursor {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99999;
   pointer-events: none;
-  width: 18px;
-  height: 18px;
+  width: 0;
+  height: 0;
   border-radius: 50%;
   background: #2a120c;
-  border: none;
-  /* transform управляется из JS (растяжение) — без перехода,
-     переход только на размер/цвет при ховере. */
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  will-change: transform, width, height, opacity;
   transition:
     width  0.3s cubic-bezier(0.22, 1, 0.36, 1),
     height 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.3s ease,
-    opacity 0.3s ease;
-  will-change: transform, width, height, opacity;
+    opacity 0.25s ease;
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Hover — большой заполненный круг с надписью «смотреть» */
 .paloma-cursor.is-hovering {
   width: 72px;
   height: 72px;
-  background: #2a120c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 1;
 }
 
 .paloma-cursor__label {
@@ -73,28 +80,19 @@ body.paloma-cursor-active .cursor-trail-dot {
   opacity: 1;
 }
 
-/* Press — капля слегка сжимается */
-.paloma-cursor.is-pressing {
-  width: 12px;
-  height: 12px;
-  transition: width 0.12s ease, height 0.12s ease;
-}
-
 /* Текстовое поле — тонкая вертикальная черта */
 .paloma-cursor.is-text {
   width: 2px;
   height: 24px;
   border-radius: 1px;
   background: rgba(42, 18, 12, 0.75);
-}
-
-.paloma-cursor.is-hidden {
-  opacity: 0;
+  opacity: 1;
 }
 
 /* ── Touch / грубый pointer — всё скрыть ─────────────── */
 @media (hover: none), (pointer: coarse) {
-  .paloma-cursor {
+  .paloma-cursor,
+  .paloma-cursor-canvas {
     display: none !important;
   }
 
@@ -104,9 +102,13 @@ body.paloma-cursor-active .cursor-trail-dot {
   }
 }
 
-/* ── Reduced motion ──────────────────────────────────── */
+/* ── Reduced motion: шлейф не нужен ──────────────────── */
 @media (prefers-reduced-motion: reduce) {
+  .paloma-cursor-canvas { display: none !important; }
   .paloma-cursor {
+    width: 16px;
+    height: 16px;
+    opacity: 1;
     transition: width 0.1s ease, height 0.1s ease, opacity 0.1s ease;
   }
 }
