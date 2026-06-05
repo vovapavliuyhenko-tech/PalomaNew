@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preloader — 3 варианта PALOMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: #ddd8ce;
+      min-height: 100vh;
+      padding: 40px 24px 60px;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      font-style: italic;
+      color: #2a120c;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 11px;
+      color: rgba(42,18,12,0.45);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 44px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .card { display: flex; flex-direction: column; gap: 14px; }
+
+    .label {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(42,18,12,0.45);
+    }
+    .label strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: #2a120c;
+      margin-bottom: 3px;
+    }
+
+    .stage {
+      width: 100%;
+      aspect-ratio: 16/10;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 1px;
+    }
+    .stage::after {
+      content: '▶ нажми';
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: inherit;
+      opacity: 0.28;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .stage:hover::after { opacity: 0.55; }
+
+    .pick-btn {
+      display: block;
+      width: 100%;
+      padding: 11px;
+      background: #2a120c;
+      color: #fbf6e8;
+      border: none;
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .pick-btn:hover { background: #741827; }
+
+    /* ══════════════════════════════════════
+       ВАРИАНТ A — кремовый + маленькое имя по центру
+       шторка уезжает ВВЕРХ одним куском
+    ══════════════════════════════════════ */
+    .va {
+      background: #fbf6e8;
+      color: #2a120c;
+    }
+
+    .va .inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .va .name {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(11px, 1.4vw, 15px);
+      font-weight: 400;
+      letter-spacing: 0.44em;
+      text-transform: uppercase;
+      color: #2a120c;
+      opacity: 0;
+      transition: opacity 0.7s ease 0.1s;
+    }
+
+    .va .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(9px, 1vw, 11px);
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      color: rgba(42,18,12,0.36);
+      opacity: 0;
+      transition: opacity 0.7s ease 0.38s;
+    }
+
+    /* Шторка — один прямоугольник поверх всего */
+    .va .shutter {
+      position: absolute;
+      inset: 0;
+      background: #fbf6e8;
+      transform: translateY(0%);
+      transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    .va.play .name    { opacity: 1; }
+    .va.play .tagline { opacity: 1; }
+    .va.play .shutter { transform: translateY(-100%); transition-delay: 1.1s; }
+
+    /* ══════════════════════════════════════
+       ВАРИАНТ B — чёрный + крошечное имя снизу слева
+       шторка уезжает ВВЕРХ двумя половинами (split)
+    ══════════════════════════════════════ */
+    .vb {
+      background: #161010;
+      color: #f7f1e8;
+    }
+
+    .vb .inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: clamp(16px, 3vw, 28px);
+    }
+
+    .vb .name {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(10px, 1.2vw, 13px);
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(247,241,232,0.7);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
+    }
+
+    /* Split shutter: верхняя и нижняя половины */
+    .vb .sh-top {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: #161010;
+      transform: translateY(0%);
+      transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+    .vb .sh-bot {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 50%;
+      background: #161010;
+      transform: translateY(0%);
+      transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    .vb.play .name   { opacity: 1; transform: translateY(0); }
+    .vb.play .sh-top { transform: translateY(-100%); transition-delay: 1.0s; }
+    .vb.play .sh-bot { transform: translateY(100%);  transition-delay: 1.0s; }
+
+    /* ══════════════════════════════════════
+       ВАРИАНТ C — тёплый тёмно-коричневый + имя по центру
+       шторка уезжает влево, как страница книги
+    ══════════════════════════════════════ */
+    .vc {
+      background: #1a0e0a;
+      color: #f7f1e8;
+    }
+
+    .vc .inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .vc .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(247,241,232,0.4);
+      opacity: 0;
+      transition: opacity 0.5s ease 0.05s;
+    }
+
+    .vc .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(12px, 1.6vw, 18px);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.28em;
+      color: rgba(247,241,232,0.82);
+      opacity: 0;
+      transition: opacity 0.8s ease 0.18s;
+    }
+
+    .vc .tagline {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(8px, 0.85vw, 10px);
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(247,241,232,0.22);
+      opacity: 0;
+      transition: opacity 0.7s ease 0.44s;
+    }
+
+    /* Шторка уезжает влево */
+    .vc .shutter {
+      position: absolute;
+      inset: 0;
+      background: #1a0e0a;
+      transform: translateX(0%);
+      transform-origin: left center;
+      transition: transform 1.0s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    .vc.play .dot     { opacity: 1; }
+    .vc.play .name    { opacity: 1; }
+    .vc.play .tagline { opacity: 1; }
+    .vc.play .shutter { transform: translateX(-100%); transition-delay: 1.15s; }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; max-width: 440px; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Прелоадер PALOMA — 3 новых варианта</h1>
+<p class="subtitle">Минималистичный текст · шторка · нажми на экран для анимации</p>
+
+<div class="grid">
+
+  <!-- A -->
+  <div class="card">
+    <div class="stage va" id="va">
+      <div class="inner">
+        <div class="name">PALOMA</div>
+        <div class="tagline">flowers · coffee · you</div>
+      </div>
+      <div class="shutter"></div>
+    </div>
+    <div class="label">
+      <strong>A — Кремовый</strong>
+      Светлый фон · маленький Manrope · шторка вверх
+    </div>
+    <button class="pick-btn" onclick="pick('A')">Выбрать вариант A</button>
+  </div>
+
+  <!-- B -->
+  <div class="card">
+    <div class="stage vb" id="vb">
+      <div class="inner">
+        <div class="name">PALOMA</div>
+      </div>
+      <div class="sh-top"></div>
+      <div class="sh-bot"></div>
+    </div>
+    <div class="label">
+      <strong>B — Чёрный split</strong>
+      Тёмный · имя снизу · две шторки расходятся
+    </div>
+    <button class="pick-btn" onclick="pick('B')">Выбрать вариант B</button>
+  </div>
+
+  <!-- C -->
+  <div class="card">
+    <div class="stage vc" id="vc">
+      <div class="inner">
+        <div class="dot"></div>
+        <div class="name">Paloma</div>
+        <div class="tagline">flowers · coffee · you</div>
+      </div>
+      <div class="shutter"></div>
+    </div>
+    <div class="label">
+      <strong>C — Шоколадный</strong>
+      Тёплый тёмный · курсив · шторка влево
+    </div>
+    <button class="pick-btn" onclick="pick('C')">Выбрать вариант C</button>
+  </div>
+
+</div>
+
+<script>
+  function play(id) {
+    var el = document.getElementById(id);
+    el.classList.remove('play');
+    void el.offsetWidth;
+    setTimeout(function(){ el.classList.add('play'); }, 40);
+  }
+
+  ['va','vb','vc'].forEach(function(id){
+    document.getElementById(id).addEventListener('click', function(){ play(id); });
+  });
+
+  // auto-play on load
+  setTimeout(function(){
+    play('va');
+    setTimeout(function(){ play('vb'); }, 100);
+    setTimeout(function(){ play('vc'); }, 200);
+  }, 500);
+
+  function pick(v) {
+    var names = {
+      'A': 'вариант A — кремовый',
+      'B': 'вариант B — чёрный split',
+      'C': 'вариант C — шоколадный'
+    };
+    alert('Скажи Claude: «внедри ' + names[v] + '» — и он сразу обновит preloader.css на сайте.');
+  }
+</script>
+
+</body>
+</html>
