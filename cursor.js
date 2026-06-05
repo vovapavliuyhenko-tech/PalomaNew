@@ -1,8 +1,7 @@
 /* ════════════════════════════════════════════════════════
    cursor.js — кастомный курсор PALOMA
-   Хвост-комета: тонкий сужающийся след изгибается по траектории
-   движения (запятая/полумесяц), в покое — маленькая точка.
-   На ховере кнопок — большой круг «смотреть».
+   Эластичная капля: кружок вытягивается по направлению движения
+   и возвращается в круг в покое. На ховере кнопок — круг «смотреть».
    ════════════════════════════════════════════════════════ */
 (function initPalomaCursor() {
   "use strict";
@@ -18,24 +17,15 @@
 
   const noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Длина и плавность хвоста */
-  const NODES    = noMotion ? 1 : 18;   /* число узлов в шлейфе */
-  const EASE     = 0.34;                 /* как быстро узлы догоняют предыдущий */
-  const HEAD_W   = 8;                    /* толщина у головы, px */
-  const COLOR    = "#2a120c";
+  /* Плавность следования (меньше = больше инерции/растяжения) */
+  const CURSOR_LAG  = noMotion ? 1 : 0.22;
+  /* Сила растяжения капли от скорости движения */
+  const STRETCH_K   = 0.020;
+  const STRETCH_MAX = 0.6;
 
-  /* ── Элементы ── */
+  /* ── Создаём элемент ── */
   document.body.classList.add("paloma-cursor-active");
 
-  /* Canvas со шлейфом */
-  const canvas = document.createElement("canvas");
-  canvas.id = "palomaCursorCanvas";
-  canvas.className = "paloma-cursor-canvas";
-  canvas.setAttribute("aria-hidden", "true");
-  document.body.appendChild(canvas);
-  const ctx = canvas.getContext("2d");
-
-  /* DOM-кружок «смотреть» (виден только на ховере) */
   const cursor = document.createElement("div");
   cursor.className = "paloma-cursor is-hidden";
   cursor.id = "palomaCursorEl";
@@ -43,22 +33,10 @@
   cursor.innerHTML = '<span class="paloma-cursor__label">смотреть</span>';
   document.body.appendChild(cursor);
 
-  let dpr = Math.max(1, window.devicePixelRatio || 1);
-  function resize() {
-    dpr = Math.max(1, window.devicePixelRatio || 1);
-    canvas.width  = Math.floor(window.innerWidth  * dpr);
-    canvas.height = Math.floor(window.innerHeight * dpr);
-    canvas.style.width  = window.innerWidth + "px";
-    canvas.style.height = window.innerHeight + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-  resize();
-  window.addEventListener("resize", resize, { passive: true });
-
   /* ── Состояние ── */
   let mx = -300, my = -300;
-  const nodes = [];
-  for (let i = 0; i < NODES; i++) nodes.push({ x: -300, y: -300 });
+  let cx = -300, cy = -300;
+  let px = -300, py = -300;
   let isHovering = false, isTextField = false, isVisible = false;
   let raf;
 
@@ -80,6 +58,8 @@
   const TEXT_SELECTOR =
     'input[type="text"],input[type="tel"],input[type="email"],input[type="date"],input[type="number"],input[type="search"],textarea';
 
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
   function setHover(on) {
     if (isTextField) return;
     isHovering = on;
@@ -99,7 +79,7 @@
     mx = e.clientX;
     my = e.clientY;
     if (!isVisible) {
-      for (const n of nodes) { n.x = mx; n.y = my; }
+      cx = mx; cy = my; px = mx; py = my;
       cursor.classList.remove("is-hidden");
       isVisible = true;
     }
@@ -108,7 +88,6 @@
   document.addEventListener("mouseleave", () => {
     cursor.classList.add("is-hidden");
     isVisible = false;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
 
   document.addEventListener("mouseenter", () => {
@@ -136,49 +115,26 @@
   /* ── RAF loop ── */
   function loop() {
     raf = requestAnimationFrame(loop);
+    if (!isVisible) return;
 
-    /* Цепочка узлов тянется к мыши — формирует изогнутый шлейф */
-    nodes[0].x += (mx - nodes[0].x) * EASE;
-    nodes[0].y += (my - nodes[0].y) * EASE;
-    for (let i = 1; i < NODES; i++) {
-      nodes[i].x += (nodes[i - 1].x - nodes[i].x) * EASE;
-      nodes[i].y += (nodes[i - 1].y - nodes[i].y) * EASE;
-    }
+    px = cx; py = cy;
+    cx = lerp(cx, mx, CURSOR_LAG);
+    cy = lerp(cy, my, CURSOR_LAG);
 
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    /* Скорость движения → растяжение капли в её направлении */
+    const vx = cx - px;
+    const vy = cy - py;
+    const speed = Math.hypot(vx, vy);
 
-    /* На ховере/в текстовом поле шлейф прячем — показываем DOM-кружок */
-    if (!isVisible || isHovering || isTextField || noMotion) {
-      /* DOM-кружок позиционируем под мышью */
-      cursor.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
-      return;
-    }
-    cursor.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
-
-    /* Сужающийся хвост: сегменты с убывающей толщиной + скруглением */
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.strokeStyle = COLOR;
-    ctx.fillStyle = COLOR;
-
-    /* голова — точка */
-    ctx.beginPath();
-    ctx.arc(nodes[0].x, nodes[0].y, HEAD_W / 2, 0, Math.PI * 2);
-    ctx.fill();
-
-    for (let i = 0; i < NODES - 1; i++) {
-      const t = i / (NODES - 1);
-      const w = HEAD_W * (1 - t);
-      if (w < 0.4) break;
-      ctx.beginPath();
-      ctx.lineWidth = w;
-      ctx.moveTo(nodes[i].x, nodes[i].y);
-      /* сглаживаем кривую через среднюю точку */
-      const mxp = (nodes[i].x + nodes[i + 1].x) / 2;
-      const myp = (nodes[i].y + nodes[i + 1].y) / 2;
-      ctx.quadraticCurveTo(nodes[i].x, nodes[i].y, mxp, myp);
-      ctx.lineTo(nodes[i + 1].x, nodes[i + 1].y);
-      ctx.stroke();
+    if (noMotion || isHovering || isTextField || speed < 0.5) {
+      cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+    } else {
+      const angle = Math.atan2(vy, vx) * 180 / Math.PI;
+      const s = Math.min(speed * STRETCH_K, STRETCH_MAX);
+      const sx = 1 + s;
+      const sy = 1 - s * 0.55;
+      cursor.style.transform =
+        `translate(${cx}px,${cy}px) translate(-50%,-50%) rotate(${angle}deg) scale(${sx},${sy})`;
     }
   }
 
