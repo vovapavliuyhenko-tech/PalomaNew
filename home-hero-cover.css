@@ -60,10 +60,12 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   position: absolute;
   inset: 0;
   z-index: 1;
+  /* Светлый фон: мягкая дымка сверху/снизу для читаемости заголовка,
+     без сплошного затемнения — фото остаётся светлым и воздушным. */
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(12, 7, 4, 0.55) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(12, 7, 4, 0.7) 0%, transparent 55%),
-    rgba(12, 7, 4, 0.28);
+    radial-gradient(ellipse at 50% 0%, rgba(20, 14, 10, 0.34) 0%, transparent 58%),
+    radial-gradient(ellipse at 50% 100%, rgba(20, 14, 10, 0.42) 0%, transparent 55%),
+    rgba(20, 14, 10, 0.1);
 }
 
 /* ── Center content group ────────────────────────────── */
