@@ -15,11 +15,10 @@
 .paloma-wave__svg {
   display: block;
   width: 100%;
-  /* Крупная волна во всю ширину: высота = ширина / 8 (соотношение viewBox 1200×150).
-     aspect-ratio растягивает SVG по ширине без полей по бокам и не схлопывается. */
-  height: auto;
-  aspect-ratio: 1200 / 150;
-  min-height: 70px;
+  /* Явная высота обязательна — height:auto/aspect-ratio схлопывается в 0px
+     на некоторых браузерах когда SVG в блоке без явного размера.
+     160px = крупная дуга (viewBox 1200×150), волна видна полностью. */
+  height: 160px;
   overflow: visible;
 }
 
