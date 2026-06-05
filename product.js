@@ -73,6 +73,18 @@
   const breadCatLink = document.getElementById("pdpBreadcrumbCatLink");
   const breadNameEl = document.getElementById("pdpBreadcrumbName");
   const addonsGrid = document.getElementById("pdpAddonsGrid");
+  const giftToggle = document.getElementById("pdpGiftToggle");
+  const giftFields = document.getElementById("pdpGiftFields");
+  const cardText = document.getElementById("pdpCardText");
+  const recipientName = document.getElementById("pdpRecipientName");
+  const recipientPhone = document.getElementById("pdpRecipientPhone");
+  const fulfillBtns = document.getElementById("pdpFulfillBtns");
+  const deliveryDate = document.getElementById("pdpDeliveryDate");
+  const photoBefore = document.getElementById("pdpPhotoBefore");
+  const similarSection = document.getElementById("pdpSimilar");
+  const similarGrid = document.getElementById("pdpSimilarGrid");
+
+  let fulfillMode = "delivery";
 
   let product = null;
   let rawProduct = null;
@@ -351,7 +363,7 @@
         price: unitPrice,
         qty,
         size: sizeLabel,
-        addons: [],
+        addons: collectExtras(),
         bg: product.placeholderBg || "",
         category: product.category || "",
       });
@@ -450,6 +462,63 @@
     });
   }
 
+  function initGiftAndFulfill() {
+    if (giftToggle && giftFields) {
+      giftToggle.addEventListener("change", () => {
+        giftFields.hidden = !giftToggle.checked;
+      });
+    }
+    if (fulfillBtns) {
+      const btns = fulfillBtns.querySelectorAll(".pdp-fulfill__btn");
+      btns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          fulfillMode = btn.dataset.fulfill || "delivery";
+          btns.forEach((b) => b.classList.toggle("is-active", b === btn));
+        });
+      });
+    }
+  }
+
+  function collectExtras() {
+    const extras = [];
+    extras.push(fulfillMode === "pickup" ? "Самовывоз" : "Доставка");
+    if (deliveryDate && deliveryDate.value) {
+      extras.push("Дата: " + deliveryDate.value);
+    }
+    if (photoBefore && photoBefore.checked) extras.push("Фото перед отправкой");
+    if (giftToggle && giftToggle.checked) {
+      if (cardText && cardText.value.trim()) {
+        extras.push("Открытка: " + cardText.value.trim());
+      }
+      const rn = recipientName && recipientName.value.trim();
+      const rp = recipientPhone && recipientPhone.value.trim();
+      if (rn || rp) extras.push("Получатель: " + [rn, rp].filter(Boolean).join(", "));
+    }
+    return extras;
+  }
+
+  function renderSimilar() {
+    if (!similarGrid || !similarSection || !window.PALOMA_CATALOG || !product) return;
+    const items = window.PALOMA_CATALOG.getSimilar(product.id, 4) || [];
+    if (!items.length) return;
+    similarGrid.innerHTML = items
+      .map(function (p) {
+        const href = "product.html?slug=" + encodeURIComponent(p.slug || p.id);
+        const media = p.image
+          ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy">'
+          : '<span class="pdp-similar-card__ph" style="background:' + esc(p.placeholderBg || "") + '"></span>';
+        return (
+          '<a class="pdp-similar-card" href="' + href + '">' +
+          '<span class="pdp-similar-card__media">' + media + "</span>" +
+          '<span class="pdp-similar-card__name">' + esc(p.name) + "</span>" +
+          '<span class="pdp-similar-card__price">' + formatPrice(p.price) + "</span>" +
+          "</a>"
+        );
+      })
+      .join("");
+    similarSection.hidden = false;
+  }
+
   function init() {
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("slug") || params.get("id");
@@ -470,6 +539,8 @@
 
     renderProduct();
     renderAddons();
+    renderSimilar();
+    initGiftAndFulfill();
     bindWishlistButton();
     initQty();
     initCart();

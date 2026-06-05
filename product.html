@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="preloader.css?v=14">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=prod1">
   <link rel="stylesheet" href="paloma-animations.css">
 <link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="product.css">
@@ -312,6 +312,47 @@
 
         <p class="pdp-info__desc" id="pdpDesc"></p>
 
+        <div class="pdp-gift">
+          <label class="pdp-gift__toggle">
+            <input type="checkbox" id="pdpGiftToggle" data-pdp-gift-toggle>
+            <span>Это подарок — добавить открытку и данные получателя</span>
+          </label>
+          <div class="pdp-gift__fields" id="pdpGiftFields" hidden>
+            <label class="pdp-field">
+              <span class="pdp-field__label">Текст открытки</span>
+              <textarea class="pdp-field__input" rows="3" maxlength="300" id="pdpCardText" placeholder="Например: С днём рождения! Будь счастлива."></textarea>
+            </label>
+            <div class="pdp-field-row">
+              <label class="pdp-field">
+                <span class="pdp-field__label">Имя получателя</span>
+                <input class="pdp-field__input" type="text" id="pdpRecipientName" placeholder="Имя">
+              </label>
+              <label class="pdp-field">
+                <span class="pdp-field__label">Телефон получателя</span>
+                <input class="pdp-field__input" type="tel" id="pdpRecipientPhone" placeholder="+7">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pdp-fulfill">
+          <span class="pdp-fulfill__label">Получение</span>
+          <div class="pdp-fulfill__btns" id="pdpFulfillBtns" role="group" aria-label="Способ получения">
+            <button type="button" class="pdp-fulfill__btn is-active" data-fulfill="delivery">Доставка по Новороссийску</button>
+            <button type="button" class="pdp-fulfill__btn" data-fulfill="pickup">Самовывоз · Энгельса, 74</button>
+          </div>
+          <div class="pdp-fulfill__row">
+            <label class="pdp-field">
+              <span class="pdp-field__label">Желаемая дата</span>
+              <input class="pdp-field__input" type="date" id="pdpDeliveryDate">
+            </label>
+            <label class="pdp-photo">
+              <input type="checkbox" id="pdpPhotoBefore" checked>
+              <span>Фото букета перед отправкой</span>
+            </label>
+          </div>
+        </div>
+
         <div class="pdp-actions">
           <div class="pdp-qty" role="group" aria-label="Количество">
             <button type="button" class="pdp-qty__btn pdp-qty__btn--dec" id="pdpQtyDec" aria-label="Уменьшить количество">
@@ -370,6 +411,16 @@
       <div class="pdp-addons__inner">
         <h2 class="pdp-addons__title">Идеально подойдёт к этому товару</h2>
         <div class="pdp-addons__grid" id="pdpAddonsGrid"></div>
+      </div>
+    </section>
+
+    <section class="pdp-similar" id="pdpSimilar" aria-label="Похожие букеты" hidden>
+      <div class="pdp-similar__inner">
+        <div class="pdp-similar__head">
+          <h2 class="pdp-similar__title">С этим часто покупают</h2>
+          <a href="catalog.html" class="pdp-similar__link">В каталог</a>
+        </div>
+        <div class="pdp-similar__grid" id="pdpSimilarGrid"></div>
       </div>
     </section>
 
@@ -589,7 +640,7 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js"></script>
-  <script src="product.js"></script>
+  <script src="product.js?v=2"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=12"></script>
 </body>
