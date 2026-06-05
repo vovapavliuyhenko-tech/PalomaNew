@@ -8458,3 +8458,186 @@ body.event-decoration-page .client-hero {
     transition: none;
   }
 }
+
+/* ============================================================
+   PALOMA SUBSCRIPTION — extended (calc, fields, steps, FAQ)
+   ============================================================ */
+.subscription-hero__lead {
+  max-width: 520px;
+  margin: 4px 0 22px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(42, 18, 12, 0.66);
+}
+.subscription-options--contact { margin-top: 8px; }
+
+/* Сводка расчёта */
+.subscription-summary {
+  margin: 22px 0 6px;
+  padding: 18px 20px;
+  background: #fbf6e8;
+  border: 1px solid rgba(116, 24, 39, 0.16);
+}
+.subscription-summary__row,
+.subscription-summary__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--sans);
+}
+.subscription-summary__row {
+  font-size: 14px;
+  color: rgba(42, 18, 12, 0.7);
+  padding: 5px 0;
+}
+.subscription-summary__total {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(116, 24, 39, 0.18);
+  font-size: 16px;
+  font-weight: 600;
+  color: #2a120c;
+}
+.subscription-summary__total span:last-child {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-style: italic;
+  color: #741827;
+}
+
+/* Поля заказа */
+.subscription-fields {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0 6px;
+}
+.subscription-field { display: block; }
+.subscription-field__label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(42, 18, 12, 0.55);
+}
+.subscription-field__input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgba(42, 18, 12, 0.2);
+  background: #fff;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: #2a120c;
+  transition: border-color 0.2s ease;
+}
+.subscription-field__input:focus {
+  outline: none;
+  border-color: #741827;
+}
+.subscription-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(42, 18, 12, 0.7);
+  cursor: pointer;
+}
+.subscription-consent input { margin-top: 3px; flex-shrink: 0; }
+
+/* Как работает */
+.subscription-steps {
+  max-width: var(--container, 1400px);
+  margin: 0 auto;
+  padding: clamp(56px, 6vw, 96px) clamp(16px, 4vw, 48px);
+}
+.subscription-steps__title,
+.subscription-faq__title {
+  margin: 0 0 36px;
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.4vw, 48px);
+  font-style: italic;
+  font-weight: 400;
+  color: #2a120d;
+}
+.subscription-steps__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.subscription-step {
+  padding: 26px 22px;
+  background: #fbf6e8;
+  border: 1px solid rgba(116, 24, 39, 0.12);
+}
+.subscription-step__num {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: #741827;
+}
+.subscription-step__title {
+  margin: 12px 0 8px;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: #2a120c;
+}
+.subscription-step__text {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(42, 18, 12, 0.66);
+}
+
+/* FAQ */
+.subscription-faq {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 48px) clamp(56px, 6vw, 96px);
+}
+.subscription-faq__item {
+  border-bottom: 1px solid rgba(42, 18, 12, 0.14);
+}
+.subscription-faq__q {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 0;
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.6vw, 22px);
+  color: #2a120c;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+.subscription-faq__q::-webkit-details-marker { display: none; }
+.subscription-faq__q::after {
+  content: "+";
+  font-family: var(--sans);
+  font-size: 22px;
+  color: #741827;
+  transition: transform 0.25s ease;
+}
+.subscription-faq__item[open] .subscription-faq__q::after { transform: rotate(45deg); }
+.subscription-faq__a {
+  padding: 0 0 22px;
+  max-width: 720px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(42, 18, 12, 0.7);
+}
+
+@media (max-width: 900px) {
+  .subscription-steps__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .subscription-steps__grid { grid-template-columns: 1fr; }
+}

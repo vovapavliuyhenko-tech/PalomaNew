@@ -1,4 +1,5 @@
-/* PALOMA Subscription — subscription.html */
+/* PALOMA Subscription — subscription.html
+   Живой расчёт цены (subscription-pricing.js) + оформление в корзину. */
 function initSubscriptionPage() {
   "use strict";
 
@@ -6,65 +7,109 @@ function initSubscriptionPage() {
   if (!page) return;
 
   const form = document.getElementById("subscriptionForm");
-  const termButtons = page.querySelectorAll("[data-subscription-term]");
-  const sizeButtons = page.querySelectorAll("[data-subscription-size]");
-
-  let selectedTerm = "1 месяц";
-  let selectedSize = "S";
+  if (!form) return;
 
   const SUB_ID_PREFIX = "paloma-flower-subscription";
-  const SUB_PRICE = 15000;
   const SUB_BG =
     "linear-gradient(135deg, #eaded1 0%, #b98d8b 48%, #643640 100%)";
 
-  function setActiveButton(buttons, activeButton) {
-    buttons.forEach((button) => {
-      const isActive = button === activeButton;
-      button.classList.toggle("is-active", isActive);
-      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+  /* Текущий выбор */
+  const state = {
+    period: "3",
+    frequency: "biweekly",
+    size: "M",
+    fulfillment: "pickup",
+    contact: "Telegram",
+  };
+
+  const fmt = (n) => n.toLocaleString("ru-RU") + " ₽";
+
+  /* Группы кнопок-переключателей */
+  const groups = [
+    { sel: "[data-sub-period]",      attr: "period" },
+    { sel: "[data-sub-frequency]",   attr: "frequency" },
+    { sel: "[data-sub-size]",        attr: "size" },
+    { sel: "[data-sub-fulfillment]", attr: "fulfillment" },
+    { sel: "[data-sub-contact]",     attr: "contact" },
+  ];
+
+  function bindGroup(container, key) {
+    if (!container) return;
+    const buttons = container.querySelectorAll("button");
+    buttons.forEach((btn) => {
+      btn.setAttribute(
+        "aria-pressed",
+        btn.classList.contains("is-active") ? "true" : "false",
+      );
+      btn.addEventListener("click", () => {
+        const val = btn.dataset[key];
+        if (val == null) return;
+        state[key] = val;
+        buttons.forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        recalc();
+      });
     });
   }
 
-  termButtons.forEach((button) => {
-    if (button.classList.contains("is-active")) {
-      selectedTerm = button.dataset.subscriptionTerm || selectedTerm;
-    }
-    button.setAttribute(
-      "aria-pressed",
-      button.classList.contains("is-active") ? "true" : "false",
-    );
+  groups.forEach((g) => bindGroup(page.querySelector(g.sel), g.attr));
 
-    button.addEventListener("click", () => {
-      selectedTerm = button.dataset.subscriptionTerm || selectedTerm;
-      setActiveButton(termButtons, button);
+  /* Элементы вывода */
+  const out = {
+    deliveries: page.querySelector("[data-sum-deliveries]"),
+    bouquets: page.querySelector("[data-sum-bouquets]"),
+    deliveryRow: page.querySelector("[data-sum-delivery-row]"),
+    delivery: page.querySelector("[data-sum-delivery]"),
+    total: page.querySelector("[data-sum-total]"),
+    totalBtn: page.querySelector("[data-sum-total-btn]"),
+    priceTop: page.querySelector("[data-sub-price-top]"),
+  };
+
+  let last = null;
+
+  function recalc() {
+    if (typeof window.PalomaSubscriptionCalc !== "function") return;
+    const r = window.PalomaSubscriptionCalc({
+      size: state.size,
+      period: state.period,
+      frequency: state.frequency,
+      fulfillment: state.fulfillment,
     });
-  });
+    last = r;
+    if (out.deliveries) out.deliveries.textContent = r.deliveries + " шт";
+    if (out.bouquets) out.bouquets.textContent = fmt(r.bouquetsTotal);
+    if (out.delivery) out.delivery.textContent = fmt(r.deliveryTotal);
+    if (out.deliveryRow) out.deliveryRow.hidden = r.deliveryTotal === 0;
+    if (out.total) out.total.textContent = fmt(r.total);
+    if (out.totalBtn) out.totalBtn.textContent = fmt(r.total);
+    if (out.priceTop) out.priceTop.textContent = fmt(r.total);
+  }
 
-  sizeButtons.forEach((button) => {
-    if (button.classList.contains("is-active")) {
-      selectedSize = button.dataset.subscriptionSize || selectedSize;
-    }
-    button.setAttribute(
-      "aria-pressed",
-      button.classList.contains("is-active") ? "true" : "false",
-    );
+  recalc();
 
-    button.addEventListener("click", () => {
-      selectedSize = button.dataset.subscriptionSize || selectedSize;
-      setActiveButton(sizeButtons, button);
-    });
-  });
-
-  if (!form) return;
+  /* Поля */
+  const nameInput = page.querySelector("[data-sub-name]");
+  const phoneInput = page.querySelector("[data-sub-phone]");
+  const consent = page.querySelector("[data-sub-consent]");
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const termSlug = selectedTerm
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-zа-яё0-9-]/gi, "");
-    const cartId = `${SUB_ID_PREFIX}-${termSlug}-${selectedSize}`;
+    const name = (nameInput && nameInput.value || "").trim();
+    const phone = (phoneInput && phoneInput.value || "").trim();
+
+    if (!name) { if (nameInput) nameInput.focus(); return; }
+    if (!phone) { if (phoneInput) phoneInput.focus(); return; }
+    if (consent && !consent.checked) { consent.focus(); return; }
+    if (!last) recalc();
+
+    const lbl = last ? last.labels : {};
+    const cartId =
+      SUB_ID_PREFIX + "-" + state.period + "m-" + state.frequency +
+      "-" + state.size + "-" + state.fulfillment;
 
     if (window.PalomaCart && typeof window.PalomaCart.add === "function") {
       window.PalomaCart.getItems().forEach((item) => {
@@ -76,19 +121,24 @@ function initSubscriptionPage() {
       window.PalomaCart.add({
         id: cartId,
         name: "Цветочная подписка",
-        price: SUB_PRICE,
+        price: last ? last.total : 0,
         qty: 1,
-        size: selectedSize,
+        size: state.size,
         category: "subscription",
         type: "subscription",
         bg: SUB_BG,
-        addons: [selectedTerm, "от 15 000 ₽"],
+        addons: [
+          lbl.period || "",
+          lbl.frequency || "",
+          "Размер " + state.size,
+          lbl.fulfillment || "",
+          name + ", " + phone + " (" + state.contact + ")",
+        ].filter(Boolean),
       });
 
       if (typeof window.PalomaCart.openDrawer === "function") {
         window.PalomaCart.openDrawer();
       }
-
       return;
     }
 
