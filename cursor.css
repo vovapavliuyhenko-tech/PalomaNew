@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════
    PALOMA CUSTOM CURSOR
-   Одно полупрозрачное кольцо, плавно следует за мышью.
+   Эластичная тёмная капля: вытягивается по движению (JS-transform).
    На ховере кнопок — большой круг «смотреть».
    ════════════════════════════════════════════════════════ */
 
@@ -18,28 +18,26 @@ body.paloma-cursor-active .cursor-trail-dot {
   }
 }
 
-/* ── Полупрозрачное кольцо ───────────────────────────── */
+/* ── Тёмная капля ────────────────────────────────────── */
 .paloma-cursor {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99999;
   pointer-events: none;
-  width: 40px;
-  height: 40px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: rgba(42, 18, 12, 0.18);
-  border: 1px solid rgba(42, 18, 12, 0.28);
-  -webkit-backdrop-filter: blur(1px);
-  backdrop-filter: blur(1px);
-  transform: translate(-50%, -50%);
-  will-change: transform, width, height, opacity;
+  background: #2a120c;
+  border: none;
+  /* transform управляется из JS (растяжение) — без перехода,
+     переход только на размер/цвет при ховере. */
   transition:
     width  0.3s cubic-bezier(0.22, 1, 0.36, 1),
     height 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     background 0.3s ease,
-    border-color 0.3s ease,
     opacity 0.3s ease;
+  will-change: transform, width, height, opacity;
   user-select: none;
 }
 
@@ -48,9 +46,6 @@ body.paloma-cursor-active .cursor-trail-dot {
   width: 72px;
   height: 72px;
   background: #2a120c;
-  border-color: transparent;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,10 +73,10 @@ body.paloma-cursor-active .cursor-trail-dot {
   opacity: 1;
 }
 
-/* Press — кольцо слегка сжимается */
+/* Press — капля слегка сжимается */
 .paloma-cursor.is-pressing {
-  width: 32px;
-  height: 32px;
+  width: 12px;
+  height: 12px;
   transition: width 0.12s ease, height 0.12s ease;
 }
 
@@ -90,10 +85,7 @@ body.paloma-cursor-active .cursor-trail-dot {
   width: 2px;
   height: 24px;
   border-radius: 1px;
-  background: rgba(42, 18, 12, 0.6);
-  border-color: transparent;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  background: rgba(42, 18, 12, 0.75);
 }
 
 .paloma-cursor.is-hidden {

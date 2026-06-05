@@ -1,7 +1,7 @@
 /* ════════════════════════════════════════════════════════
    cursor.js — кастомный курсор PALOMA
-   Одно полупрозрачное кольцо, плавно следует за мышью.
-   На ховере кнопок — большой круг «смотреть».
+   Эластичная капля: кружок вытягивается по направлению движения
+   и возвращается в круг в покое. На ховере кнопок — круг «смотреть».
    ════════════════════════════════════════════════════════ */
 (function initPalomaCursor() {
   "use strict";
@@ -17,8 +17,11 @@
 
   const noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Чем ближе к 1 — тем меньше отставание. 0.35 = лёгкая инерция. */
-  const CURSOR_LAG = noMotion ? 1 : 0.35;
+  /* Плавность следования (меньше = больше инерции/растяжения) */
+  const CURSOR_LAG  = noMotion ? 1 : 0.22;
+  /* Сила растяжения капли от скорости движения */
+  const STRETCH_K   = 0.020;
+  const STRETCH_MAX = 0.6;
 
   /* ── Создаём элемент ── */
   document.body.classList.add("paloma-cursor-active");
@@ -33,6 +36,7 @@
   /* ── Состояние ── */
   let mx = -300, my = -300;
   let cx = -300, cy = -300;
+  let px = -300, py = -300;
   let isHovering = false, isTextField = false, isVisible = false;
   let raf;
 
@@ -75,7 +79,7 @@
     mx = e.clientX;
     my = e.clientY;
     if (!isVisible) {
-      cx = mx; cy = my;
+      cx = mx; cy = my; px = mx; py = my;
       cursor.classList.remove("is-hidden");
       isVisible = true;
     }
@@ -112,9 +116,26 @@
   function loop() {
     raf = requestAnimationFrame(loop);
     if (!isVisible) return;
+
+    px = cx; py = cy;
     cx = lerp(cx, mx, CURSOR_LAG);
     cy = lerp(cy, my, CURSOR_LAG);
-    cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+
+    /* Скорость движения → растяжение капли в её направлении */
+    const vx = cx - px;
+    const vy = cy - py;
+    const speed = Math.hypot(vx, vy);
+
+    if (noMotion || isHovering || isTextField || speed < 0.5) {
+      cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+    } else {
+      const angle = Math.atan2(vy, vx) * 180 / Math.PI;
+      const s = Math.min(speed * STRETCH_K, STRETCH_MAX);
+      const sx = 1 + s;
+      const sy = 1 - s * 0.55;
+      cursor.style.transform =
+        `translate(${cx}px,${cy}px) translate(-50%,-50%) rotate(${angle}deg) scale(${sx},${sy})`;
+    }
   }
 
   loop();
