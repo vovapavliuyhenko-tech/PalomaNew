@@ -90,20 +90,8 @@ function initSubscriptionPage() {
 
   recalc();
 
-  /* Поля */
-  const nameInput = page.querySelector("[data-sub-name]");
-  const phoneInput = page.querySelector("[data-sub-phone]");
-  const consent = page.querySelector("[data-sub-consent]");
-
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    const name = (nameInput && nameInput.value || "").trim();
-    const phone = (phoneInput && phoneInput.value || "").trim();
-
-    if (!name) { if (nameInput) nameInput.focus(); return; }
-    if (!phone) { if (phoneInput) phoneInput.focus(); return; }
-    if (consent && !consent.checked) { consent.focus(); return; }
     if (!last) recalc();
 
     const lbl = last ? last.labels : {};
@@ -132,7 +120,6 @@ function initSubscriptionPage() {
           lbl.frequency || "",
           "Размер " + state.size,
           lbl.fulfillment || "",
-          name + ", " + phone + " (" + state.contact + ")",
         ].filter(Boolean),
       });
 
@@ -146,4 +133,59 @@ function initSubscriptionPage() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initSubscriptionPage);
+/* Горизонтальный скролл блока «Как это работает» (как на главной) */
+function initSubStepsScroll() {
+  "use strict";
+  const section = document.getElementById("subStepsScroll");
+  const track = document.getElementById("subStepsTrack");
+  if (!section || !track) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+  let raf = null;
+  let scrollDistance = 0;
+  let enabled = false;
+
+  function measure() {
+    if (reduceMotion || mobileQuery.matches) {
+      section.style.height = "auto";
+      track.style.transform = "none";
+      scrollDistance = 0;
+      enabled = false;
+      return;
+    }
+    enabled = true;
+    const viewportW = window.innerWidth;
+    const viewportH = window.innerHeight;
+    section.style.height = viewportH + "px";
+    requestAnimationFrame(() => {
+      const trackW = track.scrollWidth;
+      scrollDistance = Math.max(0, trackW - viewportW);
+      section.style.height = (viewportH + scrollDistance) + "px";
+      update();
+    });
+  }
+
+  function update() {
+    if (!enabled) return;
+    const rect = section.getBoundingClientRect();
+    const scrolled = Math.max(0, Math.min(scrollDistance, -rect.top));
+    track.style.transform = "translate3d(" + -scrolled + "px,0,0)";
+    raf = null;
+  }
+
+  function requestUpdate() {
+    if (raf) return;
+    raf = window.requestAnimationFrame(update);
+  }
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", measure);
+  if (mobileQuery.addEventListener) mobileQuery.addEventListener("change", measure);
+  measure();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  initSubscriptionPage();
+  initSubStepsScroll();
+});

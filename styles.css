@@ -8550,13 +8550,7 @@ body.event-decoration-page .client-hero {
 }
 .subscription-consent input { margin-top: 3px; flex-shrink: 0; }
 
-/* Как работает */
-.subscription-steps {
-  max-width: var(--container, 1400px);
-  margin: 0 auto;
-  padding: clamp(56px, 6vw, 96px) clamp(16px, 4vw, 48px);
-}
-.subscription-steps__title,
+/* Как работает — горизонтальный скролл (sticky + сдвиг трека) */
 .subscription-faq__title {
   margin: 0 0 36px;
   font-family: var(--serif);
@@ -8565,52 +8559,120 @@ body.event-decoration-page .client-hero {
   font-weight: 400;
   color: #2a120d;
 }
-.subscription-steps__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+.sub-hscroll {
+  position: relative;
+  background: #f6efe0;
 }
-.subscription-step {
-  padding: 26px 22px;
-  background: #fbf6e8;
-  border: 1px solid rgba(116, 24, 39, 0.12);
+.sub-hscroll__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
-.subscription-step__num {
-  font-family: var(--serif);
-  font-size: 18px;
-  font-style: italic;
+.sub-hscroll__track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: clamp(12px, 1.4vw, 22px);
+  padding: 0 clamp(20px, 6vw, 96px);
+  will-change: transform;
+}
+.sub-hscroll__intro {
+  flex: 0 0 auto;
+  width: clamp(280px, 34vw, 460px);
+  align-self: center;
+  padding-right: clamp(16px, 3vw, 48px);
+}
+.sub-hscroll__eyebrow {
+  margin: 0 0 14px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: #741827;
 }
-.subscription-step__title {
-  margin: 12px 0 8px;
+.sub-hscroll__title {
+  margin: 0 0 18px;
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: clamp(34px, 4vw, 60px);
+  font-style: italic;
   font-weight: 400;
-  color: #2a120c;
+  line-height: 1.02;
+  color: #2a120d;
 }
-.subscription-step__text {
+.sub-hscroll__hint {
   margin: 0;
   font-family: var(--sans);
   font-size: 14px;
-  line-height: 1.5;
-  color: rgba(42, 18, 12, 0.66);
+  color: rgba(42, 18, 12, 0.5);
+}
+.sub-step {
+  flex: 0 0 auto;
+  width: clamp(240px, 26vw, 340px);
+  display: flex;
+  flex-direction: column;
+  padding: 34px 28px;
+  background: #fbf6e8;
+  border: 1px solid rgba(116, 24, 39, 0.14);
+}
+.sub-step__num {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-style: italic;
+  color: #741827;
+}
+.sub-step__title {
+  margin: 18px 0 12px;
+  font-family: var(--serif);
+  font-size: clamp(22px, 1.8vw, 28px);
+  font-weight: 400;
+  color: #2a120c;
+}
+.sub-step__text {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(42, 18, 12, 0.68);
 }
 
-/* FAQ */
+/* Мобайл / без анимации — обычный горизонтальный свайп */
+@media (max-width: 768px) {
+  .sub-hscroll__sticky {
+    position: static;
+    height: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 56px 0;
+  }
+  .sub-hscroll__intro { width: 78vw; }
+  .sub-step { width: 72vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sub-hscroll__sticky { position: static; height: auto; overflow-x: auto; padding: 56px 0; }
+}
+
+/* FAQ — во всю ширину, бордовые акценты */
 .subscription-faq {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 48px) clamp(56px, 6vw, 96px);
+  width: 100%;
+  margin: 0;
+  padding: clamp(20px, 3vw, 40px) clamp(16px, 4vw, 64px) clamp(56px, 6vw, 96px);
+}
+.subscription-faq__title { padding-left: 2px; }
+.subscription-faq__list {
+  border-top: 2px solid #741827;
 }
 .subscription-faq__item {
-  border-bottom: 1px solid rgba(42, 18, 12, 0.14);
+  border-bottom: 2px solid #741827;
 }
 .subscription-faq__q {
   list-style: none;
   cursor: pointer;
-  padding: 20px 0;
+  padding: 26px 4px;
   font-family: var(--serif);
-  font-size: clamp(18px, 1.6vw, 22px);
+  font-size: clamp(19px, 1.8vw, 26px);
   color: #2a120c;
   display: flex;
   justify-content: space-between;
@@ -8621,18 +8683,20 @@ body.event-decoration-page .client-hero {
 .subscription-faq__q::after {
   content: "+";
   font-family: var(--sans);
-  font-size: 22px;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
   color: #741827;
   transition: transform 0.25s ease;
 }
 .subscription-faq__item[open] .subscription-faq__q::after { transform: rotate(45deg); }
 .subscription-faq__a {
-  padding: 0 0 22px;
-  max-width: 720px;
+  padding: 0 4px 26px;
+  max-width: 860px;
   font-family: var(--sans);
-  font-size: 15px;
-  line-height: 1.55;
-  color: rgba(42, 18, 12, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(42, 18, 12, 0.72);
 }
 
 @media (max-width: 900px) {

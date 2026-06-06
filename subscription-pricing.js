@@ -17,7 +17,7 @@ window.PALOMA_SUBSCRIPTION_PRICING = {
   },
   fulfillment: {
     pickup: { label: "Самовывоз", feePerDelivery: 0 },
-    delivery: { label: "Доставка", feePerDelivery: 350 },
+    delivery: { label: "Доставка", feePerDelivery: 0 },
   },
   defaults: {
     size: "M",

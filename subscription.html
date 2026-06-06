@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="preloader.css?v=14">
-  <link rel="stylesheet" href="styles.css?v=sub1">
+  <link rel="stylesheet" href="styles.css?v=sub2">
   <link rel="stylesheet" href="paloma-animations.css">
 <link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="clients.css">
@@ -331,8 +331,8 @@
         <fieldset class="subscription-form__group">
           <legend class="subscription-form__legend">Получение</legend>
           <div class="subscription-options" data-sub-fulfillment>
-            <button class="subscription-option is-active" type="button" data-fulfillment="pickup">Самовывоз</button>
-            <button class="subscription-option" type="button" data-fulfillment="delivery">Доставка · +350 ₽/раз</button>
+            <button class="subscription-option is-active" type="button" data-fulfillment="pickup">Самовывоз · Энгельса, 74</button>
+            <button class="subscription-option" type="button" data-fulfillment="delivery">Доставка по Новороссийску · бесплатно</button>
           </div>
         </fieldset>
 
@@ -349,28 +349,6 @@
           <div class="subscription-summary__total">
             <span>Итого за период</span><span data-sum-total>—</span>
           </div>
-        </div>
-
-        <div class="subscription-fields">
-          <label class="subscription-field">
-            <span class="subscription-field__label">Ваше имя</span>
-            <input class="subscription-field__input" type="text" name="name" autocomplete="name" required data-sub-name>
-          </label>
-          <label class="subscription-field">
-            <span class="subscription-field__label">Телефон</span>
-            <input class="subscription-field__input" type="tel" name="phone" autocomplete="tel" placeholder="+7" required data-sub-phone>
-          </label>
-          <div class="subscription-field">
-            <span class="subscription-field__label">Куда написать</span>
-            <div class="subscription-options subscription-options--contact" data-sub-contact>
-              <button class="subscription-option is-active" type="button" data-contact="Telegram">Telegram</button>
-              <button class="subscription-option" type="button" data-contact="WhatsApp">WhatsApp</button>
-            </div>
-          </div>
-          <label class="subscription-consent">
-            <input type="checkbox" required data-sub-consent>
-            <span>Согласен(а) на обработку персональных данных и условия оферты.</span>
-          </label>
         </div>
 
         <button class="subscription-form__submit" type="submit" data-subscription-submit>
@@ -411,31 +389,38 @@
     </div>
   </section>
 
-  <section class="subscription-steps" aria-label="Как работает подписка">
-    <div class="subscription-steps__head">
-      <h2 class="subscription-steps__title">Как это работает</h2>
-    </div>
-    <div class="subscription-steps__grid">
-      <article class="subscription-step">
-        <span class="subscription-step__num">01</span>
-        <h3 class="subscription-step__title">Выбираете параметры</h3>
-        <p class="subscription-step__text">Срок, частоту, размер букета и способ получения. Цена считается сразу.</p>
-      </article>
-      <article class="subscription-step">
-        <span class="subscription-step__num">02</span>
-        <h3 class="subscription-step__title">Оформляете заказ</h3>
-        <p class="subscription-step__text">Оставляете имя и телефон — мы свяжемся в Telegram или WhatsApp и согласуем график.</p>
-      </article>
-      <article class="subscription-step">
-        <span class="subscription-step__num">03</span>
-        <h3 class="subscription-step__title">Собираем букет</h3>
-        <p class="subscription-step__text">Флористы PALOMA готовят свежую сезонную композицию и присылают фото перед отправкой.</p>
-      </article>
-      <article class="subscription-step">
-        <span class="subscription-step__num">04</span>
-        <h3 class="subscription-step__title">Получаете цветы</h3>
-        <p class="subscription-step__text">Забираете сами или привозим по Новороссийску точно по согласованному графику.</p>
-      </article>
+  <section class="sub-hscroll" id="subStepsScroll" aria-label="Как работает подписка">
+    <div class="sub-hscroll__sticky">
+      <div class="sub-hscroll__track" id="subStepsTrack">
+
+        <div class="sub-hscroll__intro">
+          <p class="sub-hscroll__eyebrow">Цветочная подписка</p>
+          <h2 class="sub-hscroll__title">Как это работает</h2>
+          <p class="sub-hscroll__hint">Листайте вниз — карточки едут вбок&nbsp;→</p>
+        </div>
+
+        <article class="sub-step">
+          <span class="sub-step__num">01</span>
+          <h3 class="sub-step__title">Выбираете параметры</h3>
+          <p class="sub-step__text">Срок, частоту, размер букета и способ получения. Цена считается сразу.</p>
+        </article>
+        <article class="sub-step">
+          <span class="sub-step__num">02</span>
+          <h3 class="sub-step__title">Оформляете заказ</h3>
+          <p class="sub-step__text">Добавляете подписку в корзину — мы свяжемся, согласуем график и удобную оплату.</p>
+        </article>
+        <article class="sub-step">
+          <span class="sub-step__num">03</span>
+          <h3 class="sub-step__title">Собираем букет</h3>
+          <p class="sub-step__text">Флористы PALOMA готовят свежую сезонную композицию и присылают фото перед отправкой.</p>
+        </article>
+        <article class="sub-step">
+          <span class="sub-step__num">04</span>
+          <h3 class="sub-step__title">Получаете цветы</h3>
+          <p class="sub-step__text">Забираете сами или бесплатно привозим по Новороссийску точно по графику.</p>
+        </article>
+
+      </div>
     </div>
   </section>
 
@@ -716,8 +701,8 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js"></script>
-  <script src="subscription-pricing.js?v=2"></script>
-  <script src="subscription.js?v=2"></script>
+  <script src="subscription-pricing.js?v=3"></script>
+  <script src="subscription.js?v=3"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=12"></script>
 </body>
