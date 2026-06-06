@@ -133,62 +133,11 @@ function initSubscriptionPage() {
   });
 }
 
-/* Горизонтальный скролл блока «Как это работает» (как на главной) */
-function initSubStepsScroll() {
-  "use strict";
-  const section = document.getElementById("subStepsScroll");
-  const track = document.getElementById("subStepsTrack");
-  if (!section || !track) return;
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const mobileQuery = window.matchMedia("(max-width: 768px)");
-  let raf = null;
-  let scrollDistance = 0;
-  let enabled = false;
-
-  function measure() {
-    if (reduceMotion || mobileQuery.matches) {
-      section.style.height = "auto";
-      track.style.transform = "none";
-      scrollDistance = 0;
-      enabled = false;
-      return;
-    }
-    enabled = true;
-    const viewportW = window.innerWidth;
-    const viewportH = window.innerHeight;
-    section.style.height = viewportH + "px";
-    requestAnimationFrame(() => {
-      const trackW = track.scrollWidth;
-      scrollDistance = Math.max(0, trackW - viewportW);
-      section.style.height = (viewportH + scrollDistance) + "px";
-      update();
-    });
-  }
-
-  function update() {
-    if (!enabled) return;
-    const rect = section.getBoundingClientRect();
-    const scrolled = Math.max(0, Math.min(scrollDistance, -rect.top));
-    track.style.transform = "translate3d(" + -scrolled + "px,0,0)";
-    raf = null;
-  }
-
-  function requestUpdate() {
-    if (raf) return;
-    raf = window.requestAnimationFrame(update);
-  }
-
-  window.addEventListener("scroll", requestUpdate, { passive: true });
-  window.addEventListener("resize", measure);
-  window.addEventListener("load", measure);
-  if (mobileQuery.addEventListener) mobileQuery.addEventListener("change", measure);
-  measure();
-  /* перестраховка: пересчитать после подгрузки шрифтов */
-  setTimeout(measure, 400);
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   initSubscriptionPage();
-  initSubStepsScroll();
+  /* Тот же проверенный механизм горизонтального скролла, что и на главной.
+     Функция объявлена глобально в script.js. */
+  if (typeof initHomeAboutScroll === "function") {
+    initHomeAboutScroll();
+  }
 });

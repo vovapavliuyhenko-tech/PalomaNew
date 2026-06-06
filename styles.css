@@ -8783,3 +8783,34 @@ body.event-decoration-page .client-hero {
   .pdp-field-row, .pdp-fulfill__row, .pdp-fulfill__btns { grid-template-columns: 1fr; }
   .pdp-similar__grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ============================================================
+   SUBSCRIPTION STEPS — внутри механики .home-about-scroll
+   ============================================================ */
+.sub-steps-scroll .home-about-scroll__track {
+  align-items: center;
+  gap: clamp(14px, 1.8vw, 30px);
+  padding: 0 clamp(20px, 6vw, 110px);
+}
+.sub-steps-scroll .sub-step {
+  align-self: center;
+  height: auto;
+  max-height: 64vh;
+}
+/* Мобайл: обычный горизонтальный свайп (JS-механика выключена) */
+@media (max-width: 768px) {
+  .sub-steps-scroll { height: auto !important; }
+  .sub-steps-scroll .home-about-scroll__sticky {
+    position: static;
+    height: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sub-steps-scroll .home-about-scroll__track {
+    height: auto;
+    transform: none !important;
+    padding: 48px 16px;
+  }
+  .sub-steps-scroll .sub-hscroll__intro { width: 80vw; }
+  .sub-steps-scroll .sub-step { width: 74vw; max-height: none; }
+}
