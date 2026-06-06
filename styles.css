@@ -8581,7 +8581,8 @@ body.event-decoration-page .client-hero {
 }
 .sub-hscroll__intro {
   flex: 0 0 auto;
-  width: clamp(280px, 34vw, 460px);
+  width: 44vw;
+  min-width: 300px;
   align-self: center;
   padding-right: clamp(16px, 3vw, 48px);
 }
@@ -8610,10 +8611,12 @@ body.event-decoration-page .client-hero {
 }
 .sub-step {
   flex: 0 0 auto;
-  width: clamp(240px, 26vw, 340px);
+  width: 34vw;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
-  padding: 34px 28px;
+  justify-content: center;
+  padding: clamp(34px, 4vw, 64px) clamp(28px, 3vw, 52px);
   background: #fbf6e8;
   border: 1px solid rgba(116, 24, 39, 0.14);
 }

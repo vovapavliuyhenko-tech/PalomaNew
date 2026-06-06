@@ -181,8 +181,11 @@ function initSubStepsScroll() {
 
   window.addEventListener("scroll", requestUpdate, { passive: true });
   window.addEventListener("resize", measure);
+  window.addEventListener("load", measure);
   if (mobileQuery.addEventListener) mobileQuery.addEventListener("change", measure);
   measure();
+  /* перестраховка: пересчитать после подгрузки шрифтов */
+  setTimeout(measure, 400);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
