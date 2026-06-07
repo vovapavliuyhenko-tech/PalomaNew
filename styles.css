@@ -8012,36 +8012,23 @@ body.event-decoration-page .client-hero {
   z-index: 1;
   pointer-events: none;
   user-select: none;
-  display: flex;
-  align-items: flex-end;
-  justify-content: stretch;
+  display: block;
   overflow: hidden;
-  height: clamp(120px, 22vw, 340px);
-  padding-inline: clamp(6px, 1vw, 12px);
+  height: auto;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .footer-brand__text {
-  font-family: var(--font-display, 'Italiana', serif);
+  display: block;
   width: 100%;
-  max-width: 100%;
-  text-align: center;
-  font-size: clamp(92px, 19.5vw, 720px);
+  height: auto;
+  overflow: visible;
+}
+.footer-brand__text text {
+  font-family: var(--font-display, 'Italiana', serif);
   font-weight: 400;
-  letter-spacing: clamp(0.04em, 0.55vw, 0.16em);
-  line-height: 0.85;
-  white-space: nowrap;
-  color: transparent;
-  background: linear-gradient(
-    180deg,
-    rgba(251, 246, 232, 0.09) 0%,
-    rgba(251, 246, 232, 0.06) 40%,
-    rgba(251, 246, 232, 0.02) 75%,
-    rgba(251, 246, 232, 0.00) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  fill: rgba(251, 246, 232, 0.08);
   -webkit-mask-image: linear-gradient(
     180deg,
     rgba(0, 0, 0, 1) 0%,
@@ -8056,18 +8043,6 @@ body.event-decoration-page .client-hero {
     rgba(0, 0, 0, 0.30) 80%,
     rgba(0, 0, 0, 0) 100%
   );
-  display: block;
-  transform: translateY(8%);
-  box-sizing: border-box;
-}
-
-@supports not (-webkit-background-clip: text) {
-  .footer-brand__text {
-    color: rgba(251, 246, 232, 0.065);
-    background: none;
-    -webkit-text-fill-color: rgba(251, 246, 232, 0.065);
-    opacity: 0.85;
-  }
 }
 
 @media (max-width: 1200px) {
@@ -8083,13 +8058,8 @@ body.event-decoration-page .client-hero {
     gap: clamp(24px, 4vw, 40px);
   }
 
-  .footer-brand__text {
-    font-size: clamp(80px, 24vw, 520px);
-    letter-spacing: clamp(0.03em, 0.7vw, 0.12em);
-  }
-
   .footer-brand {
-    height: clamp(100px, 24vw, 240px);
+    height: auto;
   }
 }
 
@@ -8104,13 +8074,8 @@ body.event-decoration-page .client-hero {
     grid-column: 1 / -1;
   }
 
-  .footer-brand__text {
-    font-size: clamp(72px, 26vw, 420px);
-    letter-spacing: clamp(0.02em, 0.85vw, 0.1em);
-  }
-
   .footer-brand {
-    height: clamp(88px, 26vw, 180px);
+    height: auto;
   }
 
   .footer-bottom {
@@ -8130,13 +8095,8 @@ body.event-decoration-page .client-hero {
     grid-column: 1;
   }
 
-  .footer-brand__text {
-    font-size: clamp(64px, 28vw, 360px);
-    letter-spacing: clamp(0.02em, 1vw, 0.08em);
-  }
-
   .footer-brand {
-    height: clamp(72px, 28vw, 140px);
+    height: auto;
   }
 
   .footer-legal {
@@ -8150,11 +8110,6 @@ body.event-decoration-page .client-hero {
   }
 }
 
-@media (max-width: 360px) {
-  .footer-brand__text {
-    font-size: clamp(56px, 30vw, 280px);
-  }
-}
 
 /* ════════════════════════════════════════════════════════
    EV-PROCESS — горизонтальный блок этапов
