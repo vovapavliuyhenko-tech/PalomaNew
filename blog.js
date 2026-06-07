@@ -30,10 +30,13 @@
 
   function cardHtml(art, large) {
     const largeClass = large ? " blog-card--large" : "";
+    const bgStyle = art.image
+      ? `background-image: url('${escHtml(art.image)}'); background-color: #efe6da;`
+      : `background: ${escHtml(art.bg)};`;
     return (
       `<article class="blog-card${largeClass}">` +
       `<a class="blog-card__image" href="blog-article.html?id=${escHtml(art.id)}"` +
-      ` aria-label="${escHtml(art.title)}" style="background: ${escHtml(art.bg)};" data-cursor="hover">` +
+      ` aria-label="${escHtml(art.title)}" style="${bgStyle}" data-cursor="hover">` +
       `<span class="blog-card__cat">${escHtml(art.categoryLabel)}</span></a>` +
       `<${tag} class="blog-card__body">` +
       `<h3 class="blog-card__title"><a href="blog-article.html?id=${escHtml(art.id)}">${escHtml(art.title)}</a></h3>` +
@@ -109,6 +112,23 @@
 
     const related = articles.filter((a) => a.id !== art.id).slice(0, 3);
 
+    const heroStyle = art.image
+      ? `background-image: url('${escHtml(art.image)}'); background-color: #efe6da;`
+      : `background: ${escHtml(art.bg)};`;
+
+    const galleryHtml =
+      art.gallery && art.gallery.length
+        ? `<section class="article-gallery" aria-label="Фотографии PALOMA">
+            <${tag} class="article-gallery__grid">` +
+          art.gallery
+            .map(
+              (src) =>
+                `<${tag} class="article-gallery__item" style="background-image: url('${escHtml(src)}');" role="img" aria-label="${escHtml(art.title)}"></${tag}>`,
+            )
+            .join("") +
+          `</${tag}></section>`
+        : "";
+
     const relatedHtml = related.length
       ? `<section class="article-related" aria-labelledby="article-related-heading">
           <${tag} class="article-related__inner">
@@ -128,10 +148,11 @@
             <span>${escHtml(art.readTime)} чтения</span>
           </${tag}>
         </${tag}>
-        <${tag} class="article-hero__image" style="background: ${escHtml(art.bg)};"
+        <${tag} class="article-hero__image" style="${heroStyle}"
              role="img" aria-label="${escHtml(art.alt || art.title)}"></${tag}>
       </section>
       <${tag} class="article-body"><${tag} class="article-body__inner">${art.content}</${tag}></${tag}>
+      ${galleryHtml}
       ${relatedHtml}
       <section class="article-cta">
         <${tag} class="article-cta__inner">

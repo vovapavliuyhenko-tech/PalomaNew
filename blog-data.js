@@ -12,6 +12,12 @@ window.PALOMA_BLOG = [
     featured: true,
     bg: "linear-gradient(155deg, #e8d4c8 0%, #9a5a62 48%, #5a2830 100%)",
     alt: "Букет PALOMA в тёплой палитре",
+    image: "images/paloma/catalog/h1.jpg",
+    gallery: [
+      "images/paloma/catalog/c1.jpg",
+      "images/paloma/catalog/c5.jpg",
+      "images/paloma/catalog/h4.jpg",
+    ],
     content: `
       <p>Букет по настроению — не про «правильные» цветы, а про ощущение, которое вы хотите передать. В PALOMA мы начинаем с пары вопросов: кому букет, какой повод и какой тон — нежный, яркий, спокойный.</p>
       <h2>Нежное и тихое</h2>
@@ -36,6 +42,12 @@ window.PALOMA_BLOG = [
     featured: false,
     bg: "linear-gradient(155deg, #c8b4a8 0%, #7a5448 55%, #3a2420 100%)",
     alt: "Букет и кофе PALOMA",
+    image: "images/paloma/catalog/d1.jpg",
+    gallery: [
+      "images/paloma/catalog/d2.jpg",
+      "images/paloma/catalog/d3.jpg",
+      "images/paloma/catalog/c9.jpg",
+    ],
     content: `
       <p>Букет сам по себе — уже подарок. Но если хочется сделать момент цельным, добавьте то, что продлит удовольствие после вручения.</p>
       <h2>Кофе</h2>
@@ -59,6 +71,12 @@ window.PALOMA_BLOG = [
     featured: false,
     bg: "linear-gradient(155deg, #d4bcc8 0%, #8a5858 50%, #4a2828 100%)",
     alt: "Свежий букет в вазе",
+    image: "images/paloma/catalog/c4.jpg",
+    gallery: [
+      "images/paloma/catalog/c7.jpg",
+      "images/paloma/catalog/c12.jpg",
+      "images/paloma/catalog/h3.jpg",
+    ],
     content: `
       <p>Свежесть начинается в студии, а продолжается у вас дома. Эти правила работают для большинства срезанных цветов.</p>
       <h2>Сразу после получения</h2>
@@ -82,6 +100,12 @@ window.PALOMA_BLOG = [
     featured: false,
     bg: "linear-gradient(155deg, #b88478 0%, #6b3840 52%, #2a1410 100%)",
     alt: "Цветочная подписка PALOMA",
+    image: "images/paloma/catalog/c14.jpg",
+    gallery: [
+      "images/paloma/catalog/c10.jpg",
+      "images/paloma/catalog/c16.jpg",
+      "images/paloma/catalog/h6.jpg",
+    ],
     content: `
       <p>Подписка — это ритм: раз в неделю или две недели вы получаете свежий букет в согласованном размере. Без необходимости каждый раз заново выбирать с нуля.</p>
       <h2>Для дома</h2>
@@ -104,6 +128,12 @@ window.PALOMA_BLOG = [
     featured: false,
     bg: "linear-gradient(155deg, #c4a882 0%, #8a6248 48%, #4a3028 100%)",
     alt: "Цветочное оформление события PALOMA",
+    image: "images/paloma/catalog/c18.jpg",
+    gallery: [
+      "images/paloma/catalog/c13.jpg",
+      "images/paloma/catalog/c19.jpg",
+      "images/paloma/catalog/c20.jpg",
+    ],
     content: `
       <p>PALOMA занимается цветочным оформлением и флористической концепцией — оформлением пространства, образами и деталями, без ведения мероприятия.</p>
       <h2>С чего начинаем</h2>

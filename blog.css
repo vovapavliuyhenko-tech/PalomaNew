@@ -589,6 +589,33 @@
   margin-bottom: 20px;
 }
 
+.article-gallery {
+  background: var(--color-bg);
+  padding: 0 0 clamp(40px, 5vw, 72px);
+}
+.article-gallery__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1.2vw, 18px);
+  padding: 0 clamp(16px, 3vw, 40px);
+}
+.article-gallery__item {
+  aspect-ratio: 3/4;
+  background-size: cover;
+  background-position: center;
+  background-color: #efe6da;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.article-gallery__item:hover {
+  transform: translateY(-6px);
+}
+@media (max-width: 640px) {
+  .article-gallery__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .article-related {
   background: var(--color-bg-alt);
   padding: clamp(64px, 8vw, 112px) 0;

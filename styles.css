@@ -6367,6 +6367,20 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   text-decoration: none;
 }
 
+.home-article-card__photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-color: #e8ddd2;
+  transform: scale(1);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.home-article-card:hover .home-article-card__photo {
+  transform: scale(1.05);
+}
+
 .home-article-card__placeholder {
   position: absolute;
   inset: 0;
