@@ -560,12 +560,18 @@
   padding: clamp(40px, 5vw, 64px) 0;
 }
 .article-body__inner {
-  max-width: 780px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(24px, 5vw, 80px);
-  font-size: clamp(16px, 1.2vw, 18px);
-  line-height: 1.75;
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.8;
   color: var(--color-text);
+}
+.article-body__inner p,
+.article-body__inner blockquote,
+.article-body__inner ul,
+.article-body__inner ol {
+  max-width: none;
 }
 .article-body__inner h2 {
   font-family: var(--font-display);
