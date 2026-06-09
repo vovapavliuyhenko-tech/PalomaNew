@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=12">
-  <link rel="stylesheet" href="event-author.css?v=3">
+  <link rel="stylesheet" href="event-author.css?v=4">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -310,12 +310,15 @@
 
   <!-- PORTFOLIO — горизонтальный скролл -->
   <section class="ea-hx" id="portfolio">
-    <div class="ea-hx__pin">
-      <div class="ea-hx__head">
+      <div class="ea-hx__head" data-reveal>
         <span class="ea-eyebrow">наши проекты</span>
         <h2 class="ea-title">Проекты, которые<br>мы создаём</h2>
+        <div class="ea-hx__nav">
+          <button type="button" class="ea-test__arrow" id="hxPrev" aria-label="Назад" data-cursor="hover">‹</button>
+          <button type="button" class="ea-test__arrow" id="hxNext" aria-label="Вперёд" data-cursor="hover">›</button>
+        </div>
       </div>
-      <div class="ea-hx__viewport">
+      <div class="ea-hx__viewport" id="hxViewport">
         <div class="ea-hx__track" id="hxTrack">
           <article class="ea-proj">
             <img class="ea-proj__photo" src="images/paloma/events/event-01.jpg" alt="">
@@ -349,8 +352,6 @@
           </article>
         </div>
       </div>
-      <span class="ea-hx__hint">скролл →</span>
-    </div>
   </section>
 
   <div class="ea-stack">
@@ -721,24 +722,18 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.12});
     document.querySelectorAll('.ea-page [data-reveal]').forEach(function(el){io.observe(el);});
 
-    /* ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ портфолио */
-    var hx=document.getElementById('portfolio');
-    var track=document.getElementById('hxTrack');
-    var raf=null;
-    function tick(){
-      raf=null;
-      if(!hx||!track)return;
-      if(window.innerWidth<=900){track.style.transform='';return;}
-      var rect=hx.getBoundingClientRect();
-      var total=hx.offsetHeight-window.innerHeight;
-      var passed=Math.min(Math.max(-rect.top,0),total);
-      var p=total>0?passed/total:0;
-      var maxX=Math.max(0,track.scrollWidth-window.innerWidth);
-      track.style.transform='translateX(-'+(p*maxX).toFixed(1)+'px)';
+    /* ПОРТФОЛИО — горизонтальный слайдер (стрелки + перетаскивание) */
+    var hxVp=document.getElementById('hxViewport');
+    function hxStep(){var c=hxVp&&hxVp.querySelector('.ea-proj');return c?c.getBoundingClientRect().width+44:420;}
+    var hxP=document.getElementById('hxPrev'),hxN=document.getElementById('hxNext');
+    if(hxP&&hxVp)hxP.addEventListener('click',function(){hxVp.scrollBy({left:-hxStep(),behavior:'smooth'});});
+    if(hxN&&hxVp)hxN.addEventListener('click',function(){hxVp.scrollBy({left:hxStep(),behavior:'smooth'});});
+    if(hxVp){var dn=false,sx=0,sl=0;
+      hxVp.addEventListener('pointerdown',function(e){dn=true;sx=e.clientX;sl=hxVp.scrollLeft;try{hxVp.setPointerCapture(e.pointerId);}catch(x){}});
+      hxVp.addEventListener('pointermove',function(e){if(dn)hxVp.scrollLeft=sl-(e.clientX-sx);});
+      hxVp.addEventListener('pointerup',function(){dn=false;});
+      hxVp.addEventListener('pointercancel',function(){dn=false;});
     }
-    addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(tick);},{passive:true});
-    addEventListener('resize',function(){if(!raf)raf=requestAnimationFrame(tick);},{passive:true});
-    tick();
 
     /* FAQ-аккордеон */
     document.querySelectorAll('.ea-faq__item').forEach(function(item){
