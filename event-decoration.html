@@ -1,474 +1,717 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Цветочное оформление событий — PALOMA</title>
-<meta name="description" content="PALOMA — студия цветочного оформления событий в Новороссийске: свадьбы, частные праздники, корпоративы. Концепция, декор, монтаж.">
-<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&family=Marck+Script&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --paper:#ece4d2;--paper2:#e7ddc8;--paper3:#f3ecdd;
-  --ink:#2a1a14;--muted:#8a7a6a;
-  --wine:#b21e34;--wine2:#c8203b;--wine-d:#7a1320;
-  --line:rgba(42,26,20,.14);
-  --fdisplay:'Italiana',serif;--fserif:'Cormorant',serif;--fscript:'Marck Script',cursive;--fsans:'Manrope',sans-serif;
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--fsans);background:var(--ink);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{text-decoration:none;color:inherit}
-::selection{background:var(--wine);color:var(--paper3)}
-
-/* ─── NAV ─── */
-.ea-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  padding:16px clamp(20px,4vw,60px);background:rgba(243,236,221,0);transition:background .4s,backdrop-filter .4s,box-shadow .4s}
-.ea-nav.is-solid{background:rgba(243,236,221,.9);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
-.ea-nav__group{display:flex;gap:clamp(16px,2vw,32px)}
-.ea-nav__group--r{justify-content:flex-end}
-.ea-nav a.ea-nav__link{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);opacity:.82;transition:.25s;white-space:nowrap}
-.ea-nav a.ea-nav__link:hover{opacity:1;color:var(--wine)}
-.ea-nav__logo{text-align:center;font-family:var(--fdisplay);color:var(--wine);font-size:clamp(20px,2vw,28px);letter-spacing:.16em;line-height:1}
-.ea-nav__logo small{display:block;font-family:var(--fsans);font-size:8px;letter-spacing:.42em;color:var(--muted);margin-top:3px;padding-left:.42em}
-
-/* ─── общие ─── */
-.ea-head{display:flex;flex-direction:column;gap:6px}
-.ea-eyebrow{font-family:var(--fserif);font-style:italic;font-size:clamp(15px,1.3vw,19px);color:var(--muted);letter-spacing:.04em}
-.ea-title{font-family:var(--fserif);font-weight:500;font-size:clamp(30px,4.4vw,68px);line-height:1.04;color:var(--wine);text-transform:uppercase;letter-spacing:.005em}
-.ea-title em{font-family:var(--fdisplay);font-style:normal;color:var(--ink);display:block}
-.ea-btn{display:inline-flex;align-items:center;gap:12px;padding:15px 30px;background:var(--wine);color:var(--paper3);font-size:12px;
-  letter-spacing:.18em;text-transform:uppercase;font-weight:500;border:none;border-radius:2px;cursor:pointer;transition:background .35s var(--ease),transform .35s var(--ease)}
-.ea-btn:hover{background:var(--wine-d);transform:translateY(-2px)}
-.ea-btn svg{width:16px;height:16px;fill:currentColor;transition:transform .35s var(--ease)}
-.ea-btn:hover svg{transform:scale(1.25)}
-.ea-btn--ghost{background:transparent;color:var(--wine);border:1px solid var(--wine)}
-.ea-btn--ghost:hover{background:var(--wine);color:var(--paper3)}
-
-[data-reveal]{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
-[data-reveal].is-in{opacity:1;transform:none}
-
-/* ─── ШТОРКА-СТЕК: секции наезжают друг на друга ─── */
-.ea-stack{position:relative;z-index:1}
-.ea-panel{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-  box-shadow:0 -24px 60px rgba(20,10,6,.16);overflow:hidden}
-.ea-panel--pad{padding:clamp(70px,8vw,120px) clamp(20px,5vw,90px)}
-
-/* ─── HERO ─── */
-.ea-hero{display:grid;grid-template-columns:1.12fr .88fr;min-height:100vh;background:var(--paper3)}
-.ea-hero__left{position:relative;overflow:hidden;background:#cfc3b0}
-.ea-hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.05);animation:slowzoom 16s ease-in-out infinite alternate}
-@keyframes slowzoom{to{transform:scale(1.13)}}
-.ea-hero__frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;background:#fff;padding:14px 14px 0;
-  box-shadow:0 40px 90px rgba(20,10,6,.4);width:min(26vw,360px)}
-.ea-hero__frame img{width:100%;aspect-ratio:3/3.9;object-fit:cover}
-.ea-hero__cap{display:flex;justify-content:space-between;gap:10px;font-family:var(--fsans);font-size:11px;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--ink);padding:14px 4px 16px;font-weight:500}
-.ea-hero__cap b{color:var(--muted);font-weight:500}
-.ea-hero__right{position:relative;display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,80px)}
-.ea-hero__right::before{content:"";position:absolute;left:0;top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,rgba(42,26,20,.12),transparent)}
-.ea-hero__logo{position:absolute;top:clamp(24px,4vw,40px);right:clamp(24px,4vw,48px);font-family:var(--fdisplay);color:var(--wine);font-size:24px;letter-spacing:.14em}
-.ea-hero__h1{font-family:var(--fserif);font-weight:500;font-size:clamp(34px,4.4vw,74px);line-height:1.04;color:var(--wine);text-transform:uppercase;letter-spacing:.01em}
-.ea-hero__lead{max-width:360px;margin:28px 0 34px;font-weight:300;font-size:15px;line-height:1.8;color:#6a5444}
-.ea-hero__sign{margin-top:auto;align-self:flex-start}
-
-/* ─── PHILOSOPHY ─── */
-.ea-philo{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--paper3)}
-.ea-philo__text{display:flex;flex-direction:column;justify-content:center;padding:clamp(50px,6vw,110px) clamp(28px,5vw,90px)}
-.ea-philo__text .ea-title{margin:14px 0 26px}
-.ea-philo__p{font-family:var(--fsans);font-weight:300;font-size:clamp(14px,1.05vw,16px);line-height:1.95;color:#5a4438;text-align:justify;max-width:560px}
-.ea-philo__name{font-family:var(--fscript);font-size:30px;color:var(--wine);margin-top:30px}
-.ea-philo__role{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.ea-philo__media{position:relative;overflow:hidden;background:#bdb09c}
-.ea-philo__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-
-/* ─── PORTFOLIO (горизонтальный скролл) ─── */
-.ea-hx{position:relative;height:360vh;background:var(--paper)}
-.ea-hx__pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column}
-.ea-hx__head{text-align:center;padding:clamp(40px,5vw,70px) 20px clamp(20px,3vw,40px)}
-.ea-hx__head .ea-eyebrow{display:block;margin-bottom:8px}
-.ea-hx__viewport{flex:1;display:flex;align-items:center;overflow:hidden}
-.ea-hx__track{display:flex;gap:clamp(22px,3vw,48px);padding:0 clamp(40px,8vw,120px);will-change:transform}
-.ea-proj{flex:0 0 auto;width:min(40vw,520px)}
-.ea-proj__photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;box-shadow:0 30px 70px rgba(20,10,6,.2)}
-.ea-proj__meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.ea-proj__city{color:var(--ink)}
-.ea-proj__name{font-family:var(--fscript);font-size:34px;color:var(--wine);line-height:.9;margin-top:6px}
-.ea-proj__text{font-weight:300;font-size:14px;line-height:1.7;color:#5a4438;margin-top:12px;max-width:90%}
-.ea-hx__hint{position:absolute;right:clamp(20px,4vw,50px);bottom:24px;font-family:var(--fsans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-
-/* ─── SERVICES ─── */
-.ea-serv{background:var(--paper3);min-height:100vh}
-.ea-serv__intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center;
-  padding:clamp(60px,7vw,110px) clamp(28px,5vw,90px) clamp(30px,4vw,56px)}
-.ea-serv__intro .ea-title{margin-top:14px}
-.ea-serv__col p{font-weight:300;font-size:clamp(14px,1.05vw,16px);line-height:1.9;color:#5a4438;text-align:justify;margin-bottom:18px}
-.ea-serv__col em{font-family:var(--fscript);font-style:normal;color:var(--wine);font-size:1.5em;line-height:1}
-.ea-serv__row{position:relative;min-height:64vh;display:flex;align-items:flex-end;overflow:hidden}
-.ea-serv__row img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ea-serv__card{position:relative;z-index:2;background:var(--paper3);margin:0 0 0 clamp(20px,5vw,90px);padding:clamp(28px,3vw,48px);
-  width:min(40vw,460px);box-shadow:0 30px 70px rgba(20,10,6,.22)}
-.ea-serv__num{font-family:var(--fdisplay);font-size:18px;color:var(--muted);letter-spacing:.2em}
-.ea-serv__ctitle{font-family:var(--fserif);font-weight:500;font-size:clamp(22px,2.4vw,36px);text-transform:uppercase;color:var(--wine);margin:6px 0 18px}
-.ea-serv__list{list-style:none;margin-bottom:18px}
-.ea-serv__list li{font-size:14px;line-height:1.5;color:#5a4438;padding:8px 0;border-bottom:1px dashed var(--line)}
-.ea-serv__price{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.ea-serv__price b{display:block;font-family:var(--fserif);font-size:24px;letter-spacing:0;text-transform:none;color:var(--wine);margin-top:4px}
-
-/* ─── PROCESS ─── */
-.ea-proc{background:var(--ink);color:var(--paper3);min-height:100vh}
-.ea-proc .ea-title{color:var(--paper3)}
-.ea-proc .ea-eyebrow{color:#caa}
-.ea-proc__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.5vw,24px);margin-top:clamp(34px,4vw,56px)}
-.ea-step{padding:24px 20px;border-top:2px solid var(--wine);background:rgba(243,236,221,.03)}
-.ea-step__num{font-family:var(--fdisplay);font-size:32px;color:var(--wine2);line-height:1}
-.ea-step__t{font-family:var(--fserif);font-size:20px;font-weight:600;margin:10px 0 8px;color:var(--paper3)}
-.ea-step__d{font-size:13px;line-height:1.6;color:rgba(243,236,221,.7);font-weight:300}
-
-/* ─── TESTIMONIALS ─── */
-.ea-test{background:var(--paper);min-height:100vh}
-.ea-test__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,30px);margin-top:clamp(34px,4vw,56px)}
-.ea-quote{background:var(--paper3);padding:clamp(26px,2.4vw,40px);border-radius:3px;box-shadow:0 18px 44px rgba(20,10,6,.1)}
-.ea-quote__mark{font-family:var(--fdisplay);font-size:54px;color:var(--wine);line-height:.6;opacity:.5}
-.ea-quote__text{font-family:var(--fserif);font-size:18px;line-height:1.55;color:#3a261c;margin:6px 0 20px}
-.ea-quote__name{font-weight:600;font-size:14px}
-.ea-quote__role{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:3px}
-
-/* ─── CONTACT ─── */
-.ea-cta{background:var(--wine);color:var(--paper3);min-height:100vh}
-.ea-cta__inner{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:center;width:100%}
-.ea-cta .ea-title{color:var(--paper3)}
-.ea-cta .ea-eyebrow{color:#ffd9c8}
-.ea-cta__lead{font-family:var(--fserif);font-size:clamp(22px,2.4vw,34px);line-height:1.4;margin-top:16px}
-.ea-cta__lead span{font-family:var(--fscript);color:#ffd9c8;font-size:1.2em}
-.ea-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.ea-form__field{display:flex;flex-direction:column;gap:7px}
-.ea-form__field--full{grid-column:1/-1}
-.ea-form label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,236,221,.7)}
-.ea-form input,.ea-form select,.ea-form textarea{background:transparent;border:none;border-bottom:1px solid rgba(243,236,221,.34);
-  color:var(--paper3);font-family:var(--fsans);font-size:15px;padding:10px 2px;outline:none;transition:border-color .3s}
-.ea-form input::placeholder,.ea-form textarea::placeholder{color:rgba(243,236,221,.45)}
-.ea-form input:focus,.ea-form select:focus,.ea-form textarea:focus{border-color:#ffd9c8}
-.ea-form select option{color:#2a1a14}
-.ea-form__submit{grid-column:1/-1;justify-self:start;background:var(--paper3);color:var(--wine);margin-top:8px}
-.ea-form__submit:hover{background:var(--ink);color:var(--paper3)}
-.ea-form__ok{grid-column:1/-1;font-family:var(--fserif);font-size:18px;color:#ffd9c8}
-
-/* ─── FAQ ─── */
-.ea-faq{background:var(--paper3);min-height:100vh}
-.ea-faq__list{max-width:920px;margin-top:clamp(30px,4vw,50px)}
-.ea-faq__item{border-bottom:1px solid var(--line)}
-.ea-faq__q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:26px 50px 26px 0;position:relative;
-  font-family:var(--fserif);font-size:clamp(19px,2vw,28px);font-weight:500;color:var(--ink)}
-.ea-faq__q::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-weight:300;font-size:28px;color:var(--wine);transition:transform .35s var(--ease)}
-.ea-faq__item.is-open .ea-faq__q::after{transform:translateY(-50%) rotate(45deg)}
-.ea-faq__a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
-.ea-faq__a p{padding:0 40px 28px 0;font-weight:300;font-size:16px;line-height:1.7;color:#5a4438}
-
-/* ─── FOOTER ─── */
-.ea-foot{position:relative;z-index:2;background:var(--ink);color:var(--paper3);padding:clamp(50px,6vw,90px) clamp(20px,5vw,90px) 28px;overflow:hidden}
-.ea-foot__top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;position:relative;z-index:2}
-.ea-foot__logo{font-family:var(--fdisplay);font-size:32px;letter-spacing:.14em}
-.ea-foot__logo small{display:block;font-family:var(--fsans);font-size:9px;letter-spacing:.4em;color:rgba(243,236,221,.5);margin-top:6px}
-.ea-foot__nav{display:flex;gap:clamp(18px,3vw,44px);flex-wrap:wrap}
-.ea-foot__nav a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,236,221,.7);transition:.25s}
-.ea-foot__nav a:hover{color:var(--wine2)}
-.ea-foot__brand{font-family:var(--fdisplay);font-size:clamp(60px,17vw,260px);line-height:.8;color:rgba(243,236,221,.05);text-align:center;margin:clamp(28px,4vw,56px) 0 0;letter-spacing:.04em;user-select:none}
-.ea-foot__bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(243,236,221,.1);padding-top:22px;margin-top:8px;font-size:11px;letter-spacing:.1em;color:rgba(243,236,221,.4);position:relative;z-index:2}
-.ea-foot__bottom a{color:rgba(243,236,221,.4)}
-.ea-foot__bottom a:hover{color:rgba(243,236,221,.75)}
-
-/* ─── RESPONSIVE: на мобиле отключаем стек и горизонт.скролл ─── */
-@media(max-width:900px){
-  .ea-nav__group{display:none}
-  .ea-nav{grid-template-columns:1fr}
-  .ea-panel{position:relative;min-height:0;box-shadow:none}
-  .ea-hero,.ea-philo,.ea-serv__intro,.ea-cta__inner{grid-template-columns:1fr}
-  .ea-hero{min-height:auto}
-  .ea-hero__left{min-height:70vh}
-  .ea-hero__right::before{display:none}
-  .ea-philo__media{min-height:60vh}
-  .ea-philo{min-height:0}
-  .ea-hx{height:auto}
-  .ea-hx__pin{position:relative;height:auto}
-  .ea-hx__viewport{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .ea-hx__track{transform:none!important}
-  .ea-proj{width:78vw}
-  .ea-proc__grid,.ea-test__grid{grid-template-columns:1fr 1fr}
-  .ea-form{grid-template-columns:1fr}
-  .ea-serv__card{width:auto;margin:0 16px}
-}
-@media(max-width:560px){.ea-proc__grid,.ea-test__grid{grid-template-columns:1fr}.ea-hero__frame{width:62vw}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FBF6E8">
+  <title>Оформление мероприятий — цветочный декор PALOMA</title>
+  <meta name="description" content="Цветочное оформление мероприятий в Новороссийске: свадьбы, корпоративы, частные события. Заявка и портфолио PALOMA.">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="preloader.css?v=14">
+  <link rel="stylesheet" href="styles.css?v=footband">
+  <link rel="stylesheet" href="paloma-animations.css">
+<link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="clients.css">
+  <link rel="stylesheet" href="clients-pages.css">
+  <link rel="stylesheet" href="paloma-responsive.css">
+  <link rel="stylesheet" href="cursor.css?v=12">
+  <link rel="stylesheet" href="event-author.css?v=1">
 </head>
-<body>
-
-<!-- NAV -->
-<nav class="ea-nav" id="eaNav">
-  <div class="ea-nav__group">
-    <a class="ea-nav__link" href="#philosophy">Философия</a>
-    <a class="ea-nav__link" href="#portfolio">Портфолио</a>
-    <a class="ea-nav__link" href="#services">Услуги</a>
+<body class="event-decoration-page">
+  <a href="#main" class="skip-link">К содержимому</a>
+  <!-- PALOMA PAGE LOADER — premium curtain transition -->
+  <div class="paloma-page-loader" id="palomaPageLoader" aria-hidden="true">
+    <div class="paloma-page-loader__logo" aria-label="PALOMA">
+      <span class="paloma-page-loader__logo-base">PALOMA</span>
+      <span class="paloma-page-loader__logo-fill" aria-hidden="true"></span>
+    </div>
+    <p class="paloma-page-loader__tagline">flowers · coffee · you</p>
+    <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
   </div>
-  <a class="ea-nav__logo" href="index.html">PALOMA<small>цветочное оформление</small></a>
-  <div class="ea-nav__group ea-nav__group--r">
-    <a class="ea-nav__link" href="#process">Процесс</a>
-    <a class="ea-nav__link" href="#testimonials">Отзывы</a>
-    <a class="ea-nav__link" href="#contact">Контакты</a>
-  </div>
-</nav>
 
-<div class="ea-stack">
-
-  <!-- HERO -->
-  <section class="ea-panel ea-hero" id="top">
-    <div class="ea-hero__left">
-      <img class="ea-hero__bg" src="images/paloma/wedding/wedding-detail.jpg" alt="">
-      <figure class="ea-hero__frame" data-reveal>
-        <img src="images/paloma/wedding/hero.jpg" alt="Оформление свадьбы PALOMA">
-        <figcaption class="ea-hero__cap"><span>Вероника и Александр</span><b>[ Новороссийск ] · 14.06</b></figcaption>
-      </figure>
-    </div>
-    <div class="ea-hero__right">
-      <span class="ea-hero__logo">PALOMA</span>
-      <h1 class="ea-hero__h1" data-reveal>Оформляем однажды,<br>чтобы запомнить навсегда</h1>
-      <p class="ea-hero__lead" data-reveal style="--d:.1s">PALOMA — студия цветочного оформления событий. Мы превращаем праздники в живые цветочные истории.</p>
-      <a class="ea-btn ea-hero__sign" href="#contact" data-reveal style="--d:.18s">Оформить событие
-        <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section class="ea-panel ea-philo" id="philosophy">
-    <div class="ea-philo__text">
-      <span class="ea-eyebrow" data-reveal>философия</span>
-      <h2 class="ea-title" data-reveal style="--d:.05s">У каждого события<br>своя история — и мы<br>помогаем её рассказать</h2>
-      <p class="ea-philo__p" data-reveal style="--d:.1s">Наши оформления — про стиль, эмоции и неповторимую атмосферу. Мы ведём вас от первой мимолётной идеи до события, воплощённого в живых цветах. Будь то камерная церемония у моря, ужин в саду, арка из сезонных трав, цветочное облако над столом гостей или праздник под открытым небом — мы создаём оформление вашей мечты.</p>
-      <div data-reveal style="--d:.16s">
-        <div class="ea-philo__name">Алёна Голубева</div>
-        <div class="ea-philo__role">основатель и флорист-декоратор PALOMA</div>
+<div class="site-top" id="siteTop">
+    <div class="top-marquee" aria-hidden="false">
+      <div class="top-marquee__track">
+                <div class="top-marquee__content">
+        <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+      </div>
+              <div class="top-marquee__content" aria-hidden="true">
+        <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+      </div>
       </div>
     </div>
-    <div class="ea-philo__media" data-reveal>
-      <img src="images/paloma/hero/hero-v2-editorial.jpg" alt="Флорист-декоратор PALOMA">
-    </div>
-  </section>
 
-</div><!-- /ea-stack (часть 1) -->
-
-<!-- PORTFOLIO — горизонтальный скролл -->
-<section class="ea-hx" id="portfolio">
-  <div class="ea-hx__pin">
-    <div class="ea-hx__head">
-      <span class="ea-eyebrow">наши проекты</span>
-      <h2 class="ea-title">Проекты, которые<br>мы создаём</h2>
-    </div>
-    <div class="ea-hx__viewport">
-      <div class="ea-hx__track" id="hxTrack">
-        <article class="ea-proj">
-          <img class="ea-proj__photo" src="images/paloma/events/event-01.jpg" alt="">
-          <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>02.06.2026</span></div>
-          <div class="ea-proj__name">Свадьба у моря</div>
-          <p class="ea-proj__text">Пыльная роза, эвкалипт и свечи на закате. Арка-полумесяц на фоне бухты и длинный стол с низкими композициями.</p>
-        </article>
-        <article class="ea-proj">
-          <img class="ea-proj__photo" src="images/paloma/events/event-02.jpg" alt="">
-          <div class="ea-proj__meta"><span class="ea-proj__city">[ Геленджик ]</span><span>18.07.2026</span></div>
-          <div class="ea-proj__name">Юбилей в саду</div>
-          <p class="ea-proj__text">Тёплая пастель, пионы и полевые травы. Цветочные подвесы над столом и арт-инсталляция у входа.</p>
-        </article>
-        <article class="ea-proj">
-          <img class="ea-proj__photo" src="images/paloma/events/event-03.jpg" alt="">
-          <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>09.09.2026</span></div>
-          <div class="ea-proj__name">Корпоратив бренда</div>
-          <p class="ea-proj__text">Сцена и пресс-волл в фирменной палитре, фактурные композиции и чёткий тайминг монтажа.</p>
-        </article>
-        <article class="ea-proj">
-          <img class="ea-proj__photo" src="images/paloma/wedding/hero.jpg" alt="">
-          <div class="ea-proj__meta"><span class="ea-proj__city">[ Анапа ]</span><span>21.05.2026</span></div>
-          <div class="ea-proj__name">Камерная церемония</div>
-          <p class="ea-proj__text">Минимум декора, максимум воздуха: белая палитра, лёгкие травы и стеклянные подсвечники.</p>
-        </article>
-        <article class="ea-proj">
-          <img class="ea-proj__photo" src="images/paloma/subscription/bg.jpg" alt="">
-          <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>03.08.2026</span></div>
-          <div class="ea-proj__name">Ужин в честь годовщины</div>
-          <p class="ea-proj__text">Сервировка стола, бутоньерки и цветочный бордюр по центру — вечер, наполненный ароматом.</p>
-        </article>
-      </div>
-    </div>
-    <span class="ea-hx__hint">скролл →</span>
-  </div>
-</section>
-
-<div class="ea-stack">
-
-  <!-- SERVICES -->
-  <section class="ea-panel ea-serv" id="services">
-    <div class="ea-serv__intro">
-      <div class="ea-serv__col">
-        <span class="ea-eyebrow" data-reveal>сервис</span>
-        <h2 class="ea-title" data-reveal style="--d:.05s">Заботимся о каждой<br>детали на протяжении<br>всего оформления</h2>
-      </div>
-      <div class="ea-serv__col">
-        <p data-reveal>Подготовка к событию может казаться хлопотной — с нами она станет лёгкой и приятной. Каждый праздник для нас уникален, поэтому мы предлагаем индивидуальный подход.</p>
-        <p data-reveal style="--d:.06s">От концепции и палитры до монтажа в день события — мы берём цветочную часть на себя, чтобы вы наслаждались моментом <em>спокойно</em></p>
-      </div>
-    </div>
-    <div class="ea-serv__row" data-reveal>
-      <img src="images/paloma/events/event-02.jpg" alt="">
-      <div class="ea-serv__card">
-        <span class="ea-serv__num">01</span>
-        <h3 class="ea-serv__ctitle">Оформление свадьбы включает:</h3>
-        <ul class="ea-serv__list">
-          <li>Букет невесты и бутоньерки</li>
-          <li>Арку и зону церемонии</li>
-          <li>Композиции на столы гостей</li>
-          <li>Президиум и welcome-зону</li>
-          <li>Фотозону и детали образа</li>
-        </ul>
-        <div class="ea-serv__price">Стоимость<b>от 60 000 ₽</b></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section class="ea-panel ea-proc ea-panel--pad" id="process">
-    <span class="ea-eyebrow" data-reveal>как мы работаем</span>
-    <h2 class="ea-title" data-reveal style="--d:.05s">Процесс</h2>
-    <div class="ea-proc__grid">
-      <div class="ea-step" data-reveal><div class="ea-step__num">01</div><div class="ea-step__t">Знакомство</div><div class="ea-step__d">Событие, площадка, дата и бюджет. Бесплатная консультация.</div></div>
-      <div class="ea-step" data-reveal style="--d:.05s"><div class="ea-step__num">02</div><div class="ea-step__t">Концепция</div><div class="ea-step__d">Палитра, стиль и зоны. Мудборд под пространство.</div></div>
-      <div class="ea-step" data-reveal style="--d:.1s"><div class="ea-step__num">03</div><div class="ea-step__t">Подбор цветов</div><div class="ea-step__d">Сезонные сорта, оттенки и фактуры.</div></div>
-      <div class="ea-step" data-reveal style="--d:.15s"><div class="ea-step__num">04</div><div class="ea-step__t">Смета</div><div class="ea-step__d">Прозрачный расчёт по позициям.</div></div>
-      <div class="ea-step" data-reveal style="--d:.2s"><div class="ea-step__num">05</div><div class="ea-step__t">Подготовка</div><div class="ea-step__d">Закупка и сборка композиций в студии.</div></div>
-      <div class="ea-step" data-reveal style="--d:.25s"><div class="ea-step__num">06</div><div class="ea-step__t">Монтаж</div><div class="ea-step__d">Оформляем площадку и фотографируем результат.</div></div>
-      <div class="ea-step" data-reveal style="--d:.3s"><div class="ea-step__num">07</div><div class="ea-step__t">Демонтаж</div><div class="ea-step__d">Убираем декор. Цветы можно забрать с собой.</div></div>
-      <div class="ea-step" data-reveal style="--d:.35s;border-top-color:#ffd9c8"><div class="ea-step__num" style="color:#ffd9c8">♥</div><div class="ea-step__t">Готово</div><div class="ea-step__d">Событие сияет, гости — в восторге.</div></div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="ea-panel ea-test ea-panel--pad" id="testimonials">
-    <span class="ea-eyebrow" data-reveal>что говорят клиенты</span>
-    <h2 class="ea-title" data-reveal style="--d:.05s">Отзывы</h2>
-    <div class="ea-test__grid">
-      <figure class="ea-quote" data-reveal>
-        <div class="ea-quote__mark">“</div>
-        <blockquote class="ea-quote__text">Арка на фоне моря и стол с пыльной розой — гости не отпускали фотографа. PALOMA поняли нас с полуслова.</blockquote>
-        <figcaption><div class="ea-quote__name">Анастасия и Александр</div><div class="ea-quote__role">свадьба, июнь</div></figcaption>
-      </figure>
-      <figure class="ea-quote" data-reveal style="--d:.08s">
-        <div class="ea-quote__mark">“</div>
-        <blockquote class="ea-quote__text">Оформили юбилей мамы так нежно, что она расплакалась. Спасибо за вкус и заботу о деталях.</blockquote>
-        <figcaption><div class="ea-quote__name">Марина</div><div class="ea-quote__role">частное событие</div></figcaption>
-      </figure>
-      <figure class="ea-quote" data-reveal style="--d:.16s">
-        <div class="ea-quote__mark">“</div>
-        <blockquote class="ea-quote__text">Сцена и фуршет в наших фирменных цветах. Чётко по таймингу и красиво — без хлопот для нас.</blockquote>
-        <figcaption><div class="ea-quote__name">Игорь</div><div class="ea-quote__role">корпоратив</div></figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="ea-panel ea-cta ea-panel--pad" id="contact">
-    <div class="ea-cta__inner">
-      <div>
-        <span class="ea-eyebrow" data-reveal>оформить событие</span>
-        <h2 class="ea-title" data-reveal style="--d:.05s">Get in touch</h2>
-        <p class="ea-cta__lead" data-reveal style="--d:.1s">Расскажите о вашем празднике — <span>перезвоним</span> и предложим концепцию оформления.</p>
-      </div>
-      <form class="ea-form" id="eaForm" novalidate data-reveal style="--d:.12s">
-        <div class="ea-form__field"><label for="ea-name">Имя</label><input id="ea-name" type="text" placeholder="Ваше имя" required></div>
-        <div class="ea-form__field"><label for="ea-phone">Телефон</label><input id="ea-phone" type="tel" placeholder="+7 ___ ___ __ __" required></div>
-        <div class="ea-form__field"><label for="ea-date">Дата события</label><input id="ea-date" type="text" placeholder="14 июня 2026"></div>
-        <div class="ea-form__field"><label for="ea-type">Тип события</label>
-          <select id="ea-type"><option value="">Выберите</option><option>Свадьба</option><option>Частное событие</option><option>Корпоратив</option><option>Другое</option></select>
-        </div>
-        <div class="ea-form__field ea-form__field--full"><label for="ea-comment">Комментарий</label><textarea id="ea-comment" rows="3" placeholder="Площадка, палитра, зоны оформления…"></textarea></div>
-        <button type="submit" class="ea-btn ea-form__submit">Отправить данные
-          <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
+    <header class="site-header" id="siteHeader">
+      <div class="site-header__inner">
+        <button type="button" class="site-header__menu-toggle" id="menuToggle" data-cursor="hover" aria-expanded="false" aria-controls="mobileNav" aria-label="Открыть меню">
+          <span class="site-header__menu-lines" aria-hidden="true"></span>
         </button>
-        <p class="ea-form__ok" id="eaOk" hidden>Спасибо! Мы получили заявку и скоро свяжемся с вами.</p>
-      </form>
+
+        <a href="index.html" class="site-header__logo">
+          <span class="site-header__logo-word">PALOMA</span>
+          <span class="site-header__logo-tag">flowers · coffee · you</span>
+        </a>
+
+        <nav class="site-header__nav" aria-label="Основная навигация">
+          <div class="site-header__dropdown-wrap site-header__dropdown-wrap--catalog" data-dropdown="catalog">
+            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerDelivery" data-cursor="hover">
+              Каталог
+              <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+            </button>
+            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerDelivery">
+              <div class="catalog-dropdown__inner">
+                <div class="catalog-dropdown__grid">
+
+                  <a href="catalog.html?cat=online"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="2" y="3" width="20" height="14" rx="1"/>
+                        <path d="M8 21h8M12 17v4"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Онлайн-витрина</span>
+                      <span class="catalog-nav-item__sub">Готовые букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=season"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/>
+                        <path d="M12 14v7"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Самый сезон</span>
+                      <span class="catalog-nav-item__sub">Сезонные цветы</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=best"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2l3 6.5H21l-5.5 4 2 6.5L12 15l-5.5 4 2-6.5L3 8.5h6z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Бестселлеры</span>
+                      <span class="catalog-nav-item__sub">Чаще всего выбирают</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=comp"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="12" cy="12" r="9"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Композиции</span>
+                      <span class="catalog-nav-item__sub">Цветочные формы</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=mono"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2a5 5 0 015 5c0 4-5 9-5 9S7 11 7 7a5 5 0 015-5z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Моно и дуобукеты</span>
+                      <span class="catalog-nav-item__sub">Один или два вида цветов</span>
+                    </div>
+                  </a>
+
+                  <a href="weddings.html"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Свадебные</span>
+                      <span class="catalog-nav-item__sub">Букеты и оформление</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=vases"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M7 22h10M8 22V8l4-6 4 6v14"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Вазы и подарки</span>
+                      <span class="catalog-nav-item__sub">Дополнения к букету</span>
+                    </div>
+                  </a>
+
+                  <a href="subscription.html"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M4 4v5h5M20 20v-5h-5"/>
+                        <path d="M20 9A8 8 0 005.3 5.3M4 15a8 8 0 0014.7 3.7"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Цветочная подписка</span>
+                      <span class="catalog-nav-item__sub">Регулярные букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=events"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="3" y="5" width="18" height="16" rx="1"/>
+                        <path d="M3 9h18M8 3v4M16 3v4"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Оформление события цветами</span>
+                      <span class="catalog-nav-item__sub">Цветочное оформление</span>
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="coffee.html" class="site-header__link">Кофейня</a>
+          <a href="event-decoration.html" class="site-header__link">Оформление</a>
+
+          <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
+          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerDelivery" data-cursor="hover">
+            Клиентам
+            <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+
+          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerDelivery">
+            <div class="clients-dropdown__inner">
+              <div class="clients-dropdown__grid">
+                <a href="delivery.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h13v10H3zM16 10h4l2 3v4h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Доставка</div><div class="client-nav-card__desc">Зоны, сроки и стоимость</div></div></a>
+                <a href="payment.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 11h20"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оплата</div><div class="client-nav-card__desc">Онлайн через ЮKassa</div></div></a>
+                <a href="care.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/><path d="M12 14v7"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Уход за букетом</div><div class="client-nav-card__desc">7 дней свежести и больше</div></div></a>
+                <a href="faq.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 4"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Вопрос-ответ</div><div class="client-nav-card__desc">Частые вопросы</div></div></a>
+                <a href="wedding-piggy-bank.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Свадебная копилка</div><div class="client-nav-card__desc">Этапы подготовки</div></div></a>
+                <a href="event-decoration.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оформление мероприятий</div><div class="client-nav-card__desc">Цветочный декор событий</div></div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="contacts.html" class="site-header__link">Контакты</a>
+        <a href="blog.html" class="site-header__link">Блог</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
+          <a href="wishlist.html" class="site-header__icon site-header__icon--wishlist" aria-label="Избранное" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+            <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
+          </a>
+          <button type="button" class="site-header__icon site-header__icon--cart site-header__cart"
+        id="cartOpenBtn" data-cart-open
+        aria-label="Корзина" aria-expanded="false" aria-controls="cartDrawer" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
+            <span class="site-header__cart-count site-header__badge cart-count" id="cartCount" data-cart-count style="display:none" aria-hidden="true">0</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="site-header__backdrop" id="menuBackdrop" aria-hidden="true"></div>
+      <nav class="site-header__mobile-panel" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
+        <div class="site-header__mobile-inner">
+          <a href="catalog.html" class="site-header__mobile-link">Каталог</a>
+          <a href="coffee.html" class="site-header__mobile-link">Кофейня</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление</a>
+          <span class="site-header__mobile-section-title">Клиентам</span>
+          <a href="delivery.html" class="site-header__mobile-link">Доставка</a>
+          <a href="payment.html" class="site-header__mobile-link">Оплата</a>
+          <a href="care.html" class="site-header__mobile-link">Уход за букетом</a>
+          <a href="faq.html" class="site-header__mobile-link">Вопрос-ответ</a>
+          <a href="wedding-piggy-bank.html" class="site-header__mobile-link">Свадебная копилка</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление мероприятий</a>
+          <a href="contacts.html" class="site-header__mobile-link">Контакты</a>
+          <a href="blog.html" class="site-header__mobile-link">Блог</a>
+          <a href="wishlist.html" class="site-header__mobile-link">Избранное</a>
+          <a href="tel:+78612000000" class="site-header__mobile-phone">+7 (861) 200-00-00</a>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+    <main id="main" class="ea-page">
+
+  <div class="ea-stack">
+
+    <!-- HERO -->
+    <section class="ea-panel ea-hero" id="top">
+      <div class="ea-hero__left">
+        <img class="ea-hero__bg" src="images/paloma/wedding/wedding-detail.jpg" alt="">
+        <figure class="ea-hero__frame" data-reveal>
+          <img src="images/paloma/wedding/hero.jpg" alt="Оформление свадьбы PALOMA">
+          <figcaption class="ea-hero__cap"><span>Вероника и Александр</span><b>[ Новороссийск ] · 14.06</b></figcaption>
+        </figure>
+      </div>
+      <div class="ea-hero__right">
+        <h1 class="ea-hero__h1" data-reveal>Оформляем однажды,<br>чтобы запомнить навсегда</h1>
+        <p class="ea-hero__lead" data-reveal style="--d:.1s">PALOMA — студия цветочного оформления событий. Мы превращаем праздники в живые цветочные истории.</p>
+        <a class="ea-btn" href="#contact" data-reveal style="--d:.18s">Оформить событие
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="ea-panel ea-philo" id="philosophy">
+      <div class="ea-philo__text">
+        <span class="ea-eyebrow" data-reveal>философия</span>
+        <h2 class="ea-title" data-reveal style="--d:.05s">У каждого события<br>своя история — и мы<br>помогаем её рассказать</h2>
+        <p class="ea-philo__p" data-reveal style="--d:.1s">Наши оформления — про стиль, эмоции и неповторимую атмосферу. Мы ведём вас от первой мимолётной идеи до события, воплощённого в живых цветах. Будь то камерная церемония у моря, ужин в саду, арка из сезонных трав, цветочное облако над столом гостей или праздник под открытым небом — мы создаём оформление вашей мечты.</p>
+        <div data-reveal style="--d:.16s">
+          <div class="ea-philo__name">Алёна Голубева</div>
+          <div class="ea-philo__role">основатель и флорист-декоратор PALOMA</div>
+        </div>
+      </div>
+      <div class="ea-philo__media" data-reveal>
+        <img src="images/paloma/hero/hero-v2-editorial.jpg" alt="Флорист-декоратор PALOMA">
+      </div>
+    </section>
+
+  </div><!-- /ea-stack 1 -->
+
+  <!-- PORTFOLIO — горизонтальный скролл -->
+  <section class="ea-hx" id="portfolio">
+    <div class="ea-hx__pin">
+      <div class="ea-hx__head">
+        <span class="ea-eyebrow">наши проекты</span>
+        <h2 class="ea-title">Проекты, которые<br>мы создаём</h2>
+      </div>
+      <div class="ea-hx__viewport">
+        <div class="ea-hx__track" id="hxTrack">
+          <article class="ea-proj">
+            <img class="ea-proj__photo" src="images/paloma/events/event-01.jpg" alt="">
+            <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>02.06.2026</span></div>
+            <div class="ea-proj__name">Свадьба у моря</div>
+            <p class="ea-proj__text">Пыльная роза, эвкалипт и свечи на закате. Арка-полумесяц на фоне бухты и длинный стол с низкими композициями.</p>
+          </article>
+          <article class="ea-proj">
+            <img class="ea-proj__photo" src="images/paloma/events/event-02.jpg" alt="">
+            <div class="ea-proj__meta"><span class="ea-proj__city">[ Геленджик ]</span><span>18.07.2026</span></div>
+            <div class="ea-proj__name">Юбилей в саду</div>
+            <p class="ea-proj__text">Тёплая пастель, пионы и полевые травы. Цветочные подвесы над столом и арт-инсталляция у входа.</p>
+          </article>
+          <article class="ea-proj">
+            <img class="ea-proj__photo" src="images/paloma/events/event-03.jpg" alt="">
+            <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>09.09.2026</span></div>
+            <div class="ea-proj__name">Корпоратив бренда</div>
+            <p class="ea-proj__text">Сцена и пресс-волл в фирменной палитре, фактурные композиции и чёткий тайминг монтажа.</p>
+          </article>
+          <article class="ea-proj">
+            <img class="ea-proj__photo" src="images/paloma/wedding/hero.jpg" alt="">
+            <div class="ea-proj__meta"><span class="ea-proj__city">[ Анапа ]</span><span>21.05.2026</span></div>
+            <div class="ea-proj__name">Камерная церемония</div>
+            <p class="ea-proj__text">Минимум декора, максимум воздуха: белая палитра, лёгкие травы и стеклянные подсвечники.</p>
+          </article>
+          <article class="ea-proj">
+            <img class="ea-proj__photo" src="images/paloma/subscription/bg.jpg" alt="">
+            <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>03.08.2026</span></div>
+            <div class="ea-proj__name">Ужин в честь годовщины</div>
+            <p class="ea-proj__text">Сервировка стола, бутоньерки и цветочный бордюр по центру — вечер, наполненный ароматом.</p>
+          </article>
+        </div>
+      </div>
+      <span class="ea-hx__hint">скролл →</span>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="ea-panel ea-faq ea-panel--pad" id="faq">
-    <span class="ea-eyebrow" data-reveal>частые вопросы</span>
-    <h2 class="ea-title" data-reveal style="--d:.05s">FAQ</h2>
-    <div class="ea-faq__list" data-reveal>
-      <div class="ea-faq__item"><button class="ea-faq__q">Сколько стоит оформление?</button><div class="ea-faq__a"><p>Стоимость зависит от площадки, количества зон, сезона и пожеланий по декору. На первой консультации мы составляем смету под ваш бюджет и показываем, каким будет оформление.</p></div></div>
-      <div class="ea-faq__item"><button class="ea-faq__q">С чего начинается работа?</button><div class="ea-faq__a"><p>С бесплатного знакомства: обсуждаем дату, площадку, стиль и бюджет. Затем готовим концепцию с палитрой и мудбордом и фиксируем смету.</p></div></div>
-      <div class="ea-faq__item"><button class="ea-faq__q">Вы работаете только по Новороссийску?</button><div class="ea-faq__a"><p>База — Новороссийск и площадки побережья. Выезд в другие города возможен по согласованию логистики.</p></div></div>
-      <div class="ea-faq__item"><button class="ea-faq__q">Можно ли забрать цветы после события?</button><div class="ea-faq__a"><p>Да. Живые композиции можно забрать с собой или раздать гостям — мы аккуратно демонтируем декор после праздника.</p></div></div>
+  <div class="ea-stack">
+
+    <!-- SERVICES -->
+    <section class="ea-panel ea-serv" id="services">
+      <div class="ea-serv__intro">
+        <div class="ea-serv__col">
+          <span class="ea-eyebrow" data-reveal>сервис</span>
+          <h2 class="ea-title" data-reveal style="--d:.05s">Заботимся о каждой<br>детали на протяжении<br>всего оформления</h2>
+        </div>
+        <div class="ea-serv__col">
+          <p data-reveal>Подготовка к событию может казаться хлопотной — с нами она станет лёгкой и приятной. Каждый праздник для нас уникален, поэтому мы предлагаем индивидуальный подход.</p>
+          <p data-reveal style="--d:.06s">От концепции и палитры до монтажа в день события — мы берём цветочную часть на себя, чтобы вы наслаждались моментом <em>спокойно</em></p>
+        </div>
+      </div>
+      <div class="ea-serv__row" data-reveal>
+        <img src="images/paloma/events/event-02.jpg" alt="">
+        <div class="ea-serv__card">
+          <span class="ea-serv__num">01</span>
+          <h3 class="ea-serv__ctitle">Оформление свадьбы включает:</h3>
+          <ul class="ea-serv__list">
+            <li>Букет невесты и бутоньерки</li>
+            <li>Арку и зону церемонии</li>
+            <li>Композиции на столы гостей</li>
+            <li>Президиум и welcome-зону</li>
+            <li>Фотозону и детали образа</li>
+          </ul>
+          <div class="ea-serv__price">Стоимость<b>от 60 000 ₽</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="ea-panel ea-proc ea-panel--pad" id="process">
+      <span class="ea-eyebrow" data-reveal>как мы работаем</span>
+      <h2 class="ea-title" data-reveal style="--d:.05s">Процесс</h2>
+      <div class="ea-proc__grid">
+        <div class="ea-step" data-reveal><div class="ea-step__num">01</div><div class="ea-step__t">Знакомство</div><div class="ea-step__d">Событие, площадка, дата и бюджет. Бесплатная консультация.</div></div>
+        <div class="ea-step" data-reveal style="--d:.05s"><div class="ea-step__num">02</div><div class="ea-step__t">Концепция</div><div class="ea-step__d">Палитра, стиль и зоны. Мудборд под пространство.</div></div>
+        <div class="ea-step" data-reveal style="--d:.1s"><div class="ea-step__num">03</div><div class="ea-step__t">Подбор цветов</div><div class="ea-step__d">Сезонные сорта, оттенки и фактуры.</div></div>
+        <div class="ea-step" data-reveal style="--d:.15s"><div class="ea-step__num">04</div><div class="ea-step__t">Смета</div><div class="ea-step__d">Прозрачный расчёт по позициям.</div></div>
+        <div class="ea-step" data-reveal style="--d:.2s"><div class="ea-step__num">05</div><div class="ea-step__t">Подготовка</div><div class="ea-step__d">Закупка и сборка композиций в студии.</div></div>
+        <div class="ea-step" data-reveal style="--d:.25s"><div class="ea-step__num">06</div><div class="ea-step__t">Монтаж</div><div class="ea-step__d">Оформляем площадку и фотографируем результат.</div></div>
+        <div class="ea-step" data-reveal style="--d:.3s"><div class="ea-step__num">07</div><div class="ea-step__t">Демонтаж</div><div class="ea-step__d">Убираем декор. Цветы можно забрать с собой.</div></div>
+        <div class="ea-step" data-reveal style="--d:.35s;border-top-color:#ffd9c8"><div class="ea-step__num" style="color:#ffd9c8">♥</div><div class="ea-step__t">Готово</div><div class="ea-step__d">Событие сияет, гости — в восторге.</div></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="ea-panel ea-test ea-panel--pad" id="testimonials">
+      <span class="ea-eyebrow" data-reveal>что говорят клиенты</span>
+      <h2 class="ea-title" data-reveal style="--d:.05s">Отзывы</h2>
+      <div class="ea-test__grid">
+        <figure class="ea-quote" data-reveal>
+          <div class="ea-quote__mark">“</div>
+          <blockquote class="ea-quote__text">Арка на фоне моря и стол с пыльной розой — гости не отпускали фотографа. PALOMA поняли нас с полуслова.</blockquote>
+          <figcaption><div class="ea-quote__name">Анастасия и Александр</div><div class="ea-quote__role">свадьба, июнь</div></figcaption>
+        </figure>
+        <figure class="ea-quote" data-reveal style="--d:.08s">
+          <div class="ea-quote__mark">“</div>
+          <blockquote class="ea-quote__text">Оформили юбилей мамы так нежно, что она расплакалась. Спасибо за вкус и заботу о деталях.</blockquote>
+          <figcaption><div class="ea-quote__name">Марина</div><div class="ea-quote__role">частное событие</div></figcaption>
+        </figure>
+        <figure class="ea-quote" data-reveal style="--d:.16s">
+          <div class="ea-quote__mark">“</div>
+          <blockquote class="ea-quote__text">Сцена и фуршет в наших фирменных цветах. Чётко по таймингу и красиво — без хлопот для нас.</blockquote>
+          <figcaption><div class="ea-quote__name">Игорь</div><div class="ea-quote__role">корпоратив</div></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="ea-panel ea-cta ea-panel--pad" id="contact">
+      <div class="ea-cta__inner">
+        <div>
+          <span class="ea-eyebrow" data-reveal>оформить событие</span>
+          <h2 class="ea-title" data-reveal style="--d:.05s">Get in touch</h2>
+          <p class="ea-cta__lead" data-reveal style="--d:.1s">Расскажите о вашем празднике — <span>перезвоним</span> и предложим концепцию оформления.</p>
+        </div>
+        <form class="ea-form" id="eaForm" novalidate data-reveal style="--d:.12s">
+          <div class="ea-form__field"><label for="ea-name">Имя</label><input id="ea-name" type="text" placeholder="Ваше имя" required></div>
+          <div class="ea-form__field"><label for="ea-phone">Телефон</label><input id="ea-phone" type="tel" placeholder="+7 ___ ___ __ __" required></div>
+          <div class="ea-form__field"><label for="ea-date">Дата события</label><input id="ea-date" type="text" placeholder="14 июня 2026"></div>
+          <div class="ea-form__field"><label for="ea-type">Тип события</label>
+            <select id="ea-type"><option value="">Выберите</option><option>Свадьба</option><option>Частное событие</option><option>Корпоратив</option><option>Другое</option></select>
+          </div>
+          <div class="ea-form__field ea-form__field--full"><label for="ea-comment">Комментарий</label><textarea id="ea-comment" rows="3" placeholder="Площадка, палитра, зоны оформления…"></textarea></div>
+          <button type="submit" class="ea-btn ea-form__submit">Отправить данные
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
+          </button>
+          <p class="ea-form__ok" id="eaOk" hidden>Спасибо! Мы получили заявку и скоро свяжемся с вами.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="ea-panel ea-faq ea-panel--pad" id="faq">
+      <span class="ea-eyebrow" data-reveal>частые вопросы</span>
+      <h2 class="ea-title" data-reveal style="--d:.05s">FAQ</h2>
+      <div class="ea-faq__list" data-reveal>
+        <div class="ea-faq__item"><button class="ea-faq__q">Сколько стоит оформление?</button><div class="ea-faq__a"><p>Стоимость зависит от площадки, количества зон, сезона и пожеланий по декору. На первой консультации мы составляем смету под ваш бюджет и показываем, каким будет оформление.</p></div></div>
+        <div class="ea-faq__item"><button class="ea-faq__q">С чего начинается работа?</button><div class="ea-faq__a"><p>С бесплатного знакомства: обсуждаем дату, площадку, стиль и бюджет. Затем готовим концепцию с палитрой и мудбордом и фиксируем смету.</p></div></div>
+        <div class="ea-faq__item"><button class="ea-faq__q">Вы работаете только по Новороссийску?</button><div class="ea-faq__a"><p>База — Новороссийск и площадки побережья. Выезд в другие города возможен по согласованию логистики.</p></div></div>
+        <div class="ea-faq__item"><button class="ea-faq__q">Можно ли забрать цветы после события?</button><div class="ea-faq__a"><p>Да. Живые композиции можно забрать с собой или раздать гостям — мы аккуратно демонтируем декор после праздника.</p></div></div>
+      </div>
+    </section>
+
+  </div><!-- /ea-stack 2 -->
+
+  </main>
+
+
+  <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
+
+    <div class="footer-inner">
+
+      <div class="footer-col footer-col--brand">
+        <a class="footer-logo" href="index.html" aria-label="PALOMA — главная">
+          <span class="footer-logo__text">PALOMA</span>
+          <span class="footer-logo__sub">flowers · coffee · you</span>
+        </a>
+        <p class="footer-tagline">
+          Букеты, кофе и подарки
+          в Новороссийске.
+        </p>
+      </div>
+
+      <nav class="footer-col footer-col--nav" aria-label="Навигация в подвале">
+        <p class="footer-col__label">Магазин</p>
+        <ul class="footer-nav">
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="catalog.html?cat=online">Онлайн-витрина</a></li>
+          <li><a href="catalog.html?cat=season">Самый сезон</a></li>
+          <li><a href="catalog.html?cat=best">Бестселлеры</a></li>
+          <li><a href="subscription.html">Цветочная подписка</a></li>
+          <li><a href="coffee.html">Кофейня</a></li>
+          <li><a href="event-decoration.html">Оформление</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col footer-col--info" aria-label="Информация для клиентов">
+        <p class="footer-col__label">Клиентам</p>
+        <ul class="footer-nav">
+          <li><a href="delivery.html">Доставка</a></li>
+          <li><a href="payment.html">Оплата</a></li>
+          <li><a href="care.html">Уход за букетом</a></li>
+          <li><a href="faq.html">Вопрос-ответ</a></li>
+          <li><a href="blog.html">Блог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col footer-col--contacts">
+        <p class="footer-col__label">Контакты</p>
+        <address class="footer-contacts">
+          <a class="footer-contacts__phone"
+             href="tel:+78612000000"
+             aria-label="Позвонить в PALOMA">
+            +7 (861) 200-00-00
+          </a>
+          <p class="footer-contacts__address">
+            Новороссийск,<br>
+            ул. Энгельса, 74
+          </p>
+          <div class="footer-contacts__messengers">
+            <a href="https://t.me/paloma_novorossiysk"
+               class="footer-messenger-btn"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Написать в Telegram">
+              Telegram
+            </a>
+            <a href="https://wa.me/79180000000"
+               class="footer-messenger-btn"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Написать в WhatsApp">
+              WhatsApp
+            </a>
+          </div>
+        </address>
+      </div>
+
     </div>
-  </section>
 
-</div><!-- /ea-stack (часть 2) -->
+    <div class="footer-brand" aria-hidden="true">
+      <svg class="footer-brand__text" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax meet" role="img" aria-label="PALOMA"><text x="600" y="188" text-anchor="middle" textLength="1180" lengthAdjust="spacingAndGlyphs" font-size="210">PALOMA</text></svg>
+    </div>
 
-<!-- FOOTER -->
-<footer class="ea-foot">
-  <div class="ea-foot__top">
-    <a class="ea-foot__logo" href="index.html">PALOMA<small>flowers · coffee · you</small></a>
-    <nav class="ea-foot__nav">
-      <a href="#philosophy">Философия</a><a href="#portfolio">Портфолио</a><a href="#services">Услуги</a>
-      <a href="#process">Процесс</a><a href="#testimonials">Отзывы</a><a href="#contact">Контакты</a>
-    </nav>
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2026 PALOMA — flowers, coffee, you
+      </p>
+      <div class="footer-legal">
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <span class="footer-legal__sep" aria-hidden="true">·</span>
+        <a href="offer.html">Публичная оферта</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <div class="product-modal__backdrop" data-close></div>
+    <div class="product-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="product-modal__close" aria-label="Закрыть" data-close data-cursor="hover">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="product-modal__grid">
+        <div class="product-modal__gallery">
+          <div class="product-modal__main-img" id="modalMainImg"></div>
+          <div class="product-modal__thumbs" id="modalThumbs">
+            <button type="button" class="product-modal__thumb is-active" aria-label="Вид 1"></button>
+            <button type="button" class="product-modal__thumb" aria-label="Вид 2"></button>
+            <button type="button" class="product-modal__thumb" aria-label="Вид 3"></button>
+          </div>
+        </div>
+        <div class="product-modal__info">
+          <div class="product-modal__category">Букеты</div>
+          <h2 class="product-modal__title" id="modalTitle">—</h2>
+          <div class="product-modal__price" id="modalPrice">—</div>
+          <p class="product-modal__desc" id="modalDesc">—</p>
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Состав</div>
+            <div class="product-modal__composition" id="modalComposition">—</div>
+          </div>
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Размер</div>
+            <div class="product-modal__sizes">
+              <button type="button" class="size-pill is-active" data-size="S" data-mod="0">S</button>
+              <button type="button" class="size-pill" data-size="M" data-mod="800">M</button>
+              <button type="button" class="size-pill" data-size="L" data-mod="1600">L</button>
+              <button type="button" class="size-pill" data-size="XL" data-mod="2800">XL</button>
+            </div>
+          </div>
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Дополнения</div>
+            <div class="product-modal__addons">
+              <label class="addon"><input type="checkbox" data-addon-price="350"> Открытка <span>+350 ₽</span></label>
+              <label class="addon"><input type="checkbox" data-addon-price="1200"> Ваза <span>+1 200 ₽</span></label>
+              <label class="addon"><input type="checkbox" data-addon-price="320"> Кофе с собой <span>+320 ₽</span></label>
+            </div>
+          </div>
+          <div class="product-modal__pairs" id="modalPairs">—</div>
+          <button type="button" class="btn btn--dark product-modal__add" id="modalAddToCart" data-cursor="hover">В корзину — <span id="modalTotal">3 500 ₽</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="paloma-page-loader__tagline">flowers · coffee · you</p>
+    <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
   </div>
-  <div class="ea-foot__brand" aria-hidden="true">PALOMA</div>
-  <div class="ea-foot__bottom">
-    <span>© 2026 PALOMA — flowers, coffee, you. Новороссийск, ул. Энгельса, 74</span>
-    <span><a href="privacy.html">Политика конфиденциальности</a> · <a href="offer.html">Публичная оферта</a></span>
+
+  <!-- ── CART DRAWER ── -->
+  <div class="cart-drawer" id="cartDrawer"
+       aria-label="Корзина" aria-hidden="true"
+       role="dialog" hidden>
+    <div class="cart-drawer__backdrop"
+         id="cartDrawerBackdrop"
+         aria-hidden="true"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Корзина</h2>
+        <button type="button" class="cart-drawer__close"
+                id="cartDrawerClose"
+                data-cart-close
+                aria-label="Закрыть корзину" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="cart-drawer__empty" id="cartDrawerEmpty">
+        <div class="cart-drawer__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/>
+          </svg>
+        </div>
+        <p class="cart-drawer__empty-title">Корзина пуста</p>
+        <p class="cart-drawer__empty-text">Добавьте букет, кофе или подарок</p>
+        <a href="catalog.html"
+           class="btn btn--dark cart-drawer__empty-cta"
+           data-cart-close>Перейти в каталог</a>
+      </div>
+      <div class="cart-drawer__body" id="cartDrawerBody" hidden>
+        <div class="cart-drawer__list" id="cartDrawerList"
+             aria-label="Товары в корзине"></div>
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__total-row">
+            <span class="cart-drawer__total-label">Итого</span>
+            <span class="cart-drawer__total-val" id="cartDrawerTotal">0 ₽</span>
+          </div>
+          <a href="cart.html"
+             class="btn btn--dark cart-drawer__checkout"
+             aria-label="Перейти к оформлению заказа">Оформить заказ</a>
+          <button type="button" class="cart-drawer__continue"
+                  data-cart-close
+                  aria-label="Продолжить покупки">Продолжить покупки</button>
+        </div>
+      </div>
+    </div>
+    <p class="paloma-page-loader__tagline">flowers · coffee · you</p>
+    <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
   </div>
-</footer>
 
-<script>
-/* nav фон при скролле */
-const nav=document.getElementById('eaNav');
-addEventListener('scroll',()=>nav.classList.toggle('is-solid',scrollY>40),{passive:true});
+  <div class="custom-cursor" id="customCursor" aria-hidden="true">
+    <div class="custom-cursor__dot"></div>
+    <div class="custom-cursor__ring"></div>
+  </div>
 
-/* reveal */
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}}),{threshold:.12});
-document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+  <script src="preloader.js?v=9"></script>
+  <script src="cart-core.js"></script>
+  <script src="script.js"></script>
+  <script src="paloma-animations.js"></script>
+  <script src="paloma-media-paths.js"></script>
+  <script src="paloma-media.js"></script>
 
-/* ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ портфолио (привязан к вертикальному) */
-const hx=document.getElementById('portfolio');
-const track=document.getElementById('hxTrack');
-let hxRaf=null;
-function hxTick(){
-  hxRaf=null;
-  if(window.innerWidth<=900){track.style.transform='';return;}
-  const rect=hx.getBoundingClientRect();
-  const total=hx.offsetHeight-window.innerHeight;
-  const passed=Math.min(Math.max(-rect.top,0),total);
-  const p=total>0?passed/total:0;
-  const maxX=Math.max(0,track.scrollWidth-window.innerWidth);
-  track.style.transform=`translateX(${-(p*maxX).toFixed(1)}px)`;
-}
-addEventListener('scroll',()=>{if(!hxRaf)hxRaf=requestAnimationFrame(hxTick)},{passive:true});
-addEventListener('resize',()=>{if(!hxRaf)hxRaf=requestAnimationFrame(hxTick)},{passive:true});
-hxTick();
+  <script src="wishlist.js"></script>
+  <script src="clients.js"></script>
+  <script src="clients-pages.js"></script>
+  <script src="cursor.js?v=12"></script>
+  <script>
+  (function(){
+    /* reveal по скроллу */
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.12});
+    document.querySelectorAll('.ea-page [data-reveal]').forEach(function(el){io.observe(el);});
 
-/* FAQ */
-document.querySelectorAll('.ea-faq__item').forEach(item=>{
-  const q=item.querySelector('.ea-faq__q'),a=item.querySelector('.ea-faq__a');
-  q.addEventListener('click',()=>{
-    const open=item.classList.contains('is-open');
-    document.querySelectorAll('.ea-faq__item').forEach(i=>{i.classList.remove('is-open');i.querySelector('.ea-faq__a').style.maxHeight=null;});
-    if(!open){item.classList.add('is-open');a.style.maxHeight=a.scrollHeight+'px';}
-  });
-});
+    /* ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ портфолио */
+    var hx=document.getElementById('portfolio');
+    var track=document.getElementById('hxTrack');
+    var raf=null;
+    function tick(){
+      raf=null;
+      if(!hx||!track)return;
+      if(window.innerWidth<=900){track.style.transform='';return;}
+      var rect=hx.getBoundingClientRect();
+      var total=hx.offsetHeight-window.innerHeight;
+      var passed=Math.min(Math.max(-rect.top,0),total);
+      var p=total>0?passed/total:0;
+      var maxX=Math.max(0,track.scrollWidth-window.innerWidth);
+      track.style.transform='translateX(-'+(p*maxX).toFixed(1)+'px)';
+    }
+    addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(tick);},{passive:true});
+    addEventListener('resize',function(){if(!raf)raf=requestAnimationFrame(tick);},{passive:true});
+    tick();
 
-/* форма */
-document.getElementById('eaForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('eaOk').hidden=false;e.target.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);});
-</script>
+    /* FAQ-аккордеон */
+    document.querySelectorAll('.ea-faq__item').forEach(function(item){
+      var q=item.querySelector('.ea-faq__q'),a=item.querySelector('.ea-faq__a');
+      q.addEventListener('click',function(){
+        var open=item.classList.contains('is-open');
+        document.querySelectorAll('.ea-faq__item').forEach(function(i){i.classList.remove('is-open');i.querySelector('.ea-faq__a').style.maxHeight=null;});
+        if(!open){item.classList.add('is-open');a.style.maxHeight=a.scrollHeight+'px';}
+      });
+    });
+
+    /* форма-заявка */
+    var f=document.getElementById('eaForm');
+    if(f)f.addEventListener('submit',function(e){e.preventDefault();var ok=document.getElementById('eaOk');if(ok)ok.hidden=false;f.querySelectorAll('input,select,textarea,button').forEach(function(el){el.disabled=true;});});
+  })();
+  </script>
+
 </body>
 </html>
