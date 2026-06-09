@@ -39,7 +39,8 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 
 /* ── ШТОРКА-СТЕК: секции наезжают друг на друга ── */
 .ea-stack{position:relative;z-index:1}
-.ea-panel{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.ea-panel{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  box-shadow:0 -26px 64px rgba(20,10,6,.18);overflow:hidden}
 .ea-panel--pad{padding:var(--ea-py) var(--ea-px)}
 /* контент центральных секций — в едином контейнере, выровнен как на главной */
 .ea-panel--pad>*{width:100%;max-width:var(--ea-maxw);margin-left:auto;margin-right:auto}
@@ -72,21 +73,20 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-philo__media{position:relative;overflow:hidden;background:#bdb09c}
 .ea-philo__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
-/* ── PORTFOLIO — горизонтальный слайдер со стрелками (как референс) ── */
-.ea-hx{position:relative;background:var(--paper);padding:var(--ea-py) 0}
-.ea-hx__head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;
-  max-width:var(--ea-maxw);margin:0 auto;padding:0 var(--ea-px) clamp(30px,4vw,54px)}
-.ea-hx__nav{display:flex;gap:14px;margin-top:18px}
-.ea-hx__viewport{overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none}
-.ea-hx__viewport::-webkit-scrollbar{display:none}
-.ea-hx__track{display:flex;gap:clamp(26px,3.2vw,56px);padding:6px var(--ea-px);width:max-content}
-.ea-proj{flex:0 0 auto;width:min(42vw,560px);scroll-snap-align:center}
+/* ── PORTFOLIO (горизонтальный скролл) ── */
+.ea-hx{position:relative;height:380vh;background:var(--paper)}
+.ea-hx__pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column}
+.ea-hx__head{text-align:center;padding:clamp(64px,7vw,110px) 20px clamp(24px,3vw,44px)}
+.ea-hx__head .ea-eyebrow{display:block;margin-bottom:10px}
+.ea-hx__viewport{flex:1;display:flex;align-items:center;overflow:hidden}
+.ea-hx__track{display:flex;gap:clamp(26px,3.2vw,56px);padding:0 var(--ea-px);will-change:transform}
+.ea-proj{flex:0 0 auto;width:min(42vw,560px)}
 .ea-proj__photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;box-shadow:0 34px 76px rgba(20,10,6,.22)}
 .ea-proj__meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .ea-proj__city{color:var(--ink)}
 .ea-proj__name{font-family:var(--fscript);font-size:clamp(32px,2.8vw,40px);color:var(--wine);line-height:.9;margin-top:8px}
 .ea-proj__text{font-weight:300;font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:#5a4438;margin-top:14px;max-width:92%}
+.ea-hx__hint{position:absolute;right:var(--ea-px);bottom:26px;font-family:var(--fsans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 
 /* ── SERVICES ── */
 .ea-serv{background:var(--paper3);min-height:100vh}
@@ -95,7 +95,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-serv__intro .ea-title{margin-top:16px}
 .ea-serv__col p{font-weight:300;font-size:clamp(15px,1.15vw,18px);line-height:1.95;color:#5a4438;text-align:justify;margin-bottom:20px}
 .ea-serv__col em{font-family:var(--fscript);font-style:normal;color:var(--wine);font-size:1.5em;line-height:1}
-.ea-serv__row{position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden;padding:clamp(36px,6vh,90px) 0}
+.ea-serv__row{position:relative;min-height:66vh;display:flex;align-items:flex-end;overflow:hidden}
 .ea-serv__row img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ea-serv__card{position:relative;z-index:2;background:var(--paper3);margin:0 0 0 var(--ea-px);padding:clamp(32px,3vw,52px);
   width:min(42vw,480px);box-shadow:0 34px 76px rgba(20,10,6,.24)}
@@ -165,6 +165,10 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   .ea-hero__right::before{display:none}
   .ea-philo__media{min-height:62vh}
   .ea-philo{min-height:0}
+  .ea-hx{height:auto}
+  .ea-hx__pin{position:relative;height:auto}
+  .ea-hx__viewport{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .ea-hx__track{transform:none!important}
   .ea-proj{width:80vw}
   .ea-proc__grid,.ea-test__grid{grid-template-columns:1fr 1fr}
   .ea-form{grid-template-columns:1fr}
