@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=12">
-  <link rel="stylesheet" href="event-author.css?v=1">
+  <link rel="stylesheet" href="event-author.css?v=2">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -372,14 +372,19 @@
         <div class="ea-serv__card">
           <span class="ea-serv__num">01</span>
           <h3 class="ea-serv__ctitle">Оформление свадьбы включает:</h3>
-          <ul class="ea-serv__list">
-            <li>Букет невесты и бутоньерки</li>
-            <li>Арку и зону церемонии</li>
-            <li>Композиции на столы гостей</li>
-            <li>Президиум и welcome-зону</li>
-            <li>Фотозону и детали образа</li>
-          </ul>
+          <img class="ea-serv__thumb" src="images/paloma/catalog/c18.jpg" alt="">
+          <p class="ea-serv__slash">Букет невесты и бутоньерки / Арка и зона церемонии / Композиции на столы гостей / Президиум и welcome-зона / Фотозона и детали образа / Подбор палитры и сезонных цветов</p>
           <div class="ea-serv__price">Стоимость<b>от 60 000 ₽</b></div>
+        </div>
+      </div>
+      <div class="ea-serv__row ea-serv__row--top" data-reveal>
+        <img src="images/paloma/events/event-03.jpg" alt="">
+        <div class="ea-serv__card">
+          <span class="ea-serv__num">02</span>
+          <h3 class="ea-serv__ctitle">Оформление частного события включает:</h3>
+          <img class="ea-serv__thumb" src="images/paloma/catalog/c13.jpg" alt="">
+          <p class="ea-serv__slash">Декор зоны и фотозоны / Цветочные композиции на столы / Подвесы и инсталляции / Оформление входа и welcome-зоны / Букеты и подарочная флористика гостям</p>
+          <div class="ea-serv__price">Стоимость<b>от 25 000 ₽</b></div>
         </div>
       </div>
     </section>
@@ -400,50 +405,81 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- TESTIMONIALS — слайдер -->
     <section class="ea-panel ea-test ea-panel--pad" id="testimonials">
-      <span class="ea-eyebrow" data-reveal>что говорят клиенты</span>
-      <h2 class="ea-title" data-reveal style="--d:.05s">Отзывы</h2>
-      <div class="ea-test__grid">
-        <figure class="ea-quote" data-reveal>
-          <div class="ea-quote__mark">“</div>
-          <blockquote class="ea-quote__text">Арка на фоне моря и стол с пыльной розой — гости не отпускали фотографа. PALOMA поняли нас с полуслова.</blockquote>
-          <figcaption><div class="ea-quote__name">Анастасия и Александр</div><div class="ea-quote__role">свадьба, июнь</div></figcaption>
-        </figure>
-        <figure class="ea-quote" data-reveal style="--d:.08s">
-          <div class="ea-quote__mark">“</div>
-          <blockquote class="ea-quote__text">Оформили юбилей мамы так нежно, что она расплакалась. Спасибо за вкус и заботу о деталях.</blockquote>
-          <figcaption><div class="ea-quote__name">Марина</div><div class="ea-quote__role">частное событие</div></figcaption>
-        </figure>
-        <figure class="ea-quote" data-reveal style="--d:.16s">
-          <div class="ea-quote__mark">“</div>
-          <blockquote class="ea-quote__text">Сцена и фуршет в наших фирменных цветах. Чётко по таймингу и красиво — без хлопот для нас.</blockquote>
-          <figcaption><div class="ea-quote__name">Игорь</div><div class="ea-quote__role">корпоратив</div></figcaption>
-        </figure>
+      <div class="ea-test__head">
+        <div>
+          <span class="ea-eyebrow" data-reveal>отзывы</span>
+          <h2 class="ea-title" data-reveal style="--d:.05s">Что говорят клиенты</h2>
+        </div>
+        <div class="ea-test__nav" data-reveal>
+          <button type="button" class="ea-test__arrow" id="testPrev" aria-label="Предыдущий отзыв" data-cursor="hover">‹</button>
+          <button type="button" class="ea-test__arrow" id="testNext" aria-label="Следующий отзыв" data-cursor="hover">›</button>
+        </div>
+      </div>
+      <div class="ea-test__slider" id="testSlider" data-reveal>
+        <article class="ea-test__slide is-on">
+          <div class="ea-test__photo" style="background-image:url('images/paloma/events/event-01.jpg')"></div>
+          <div class="ea-test__body">
+            <h3 class="ea-test__qtitle">Лучшая свадьба! Ничего бы не поменяли, даже погоду</h3>
+            <p class="ea-test__qtext">PALOMA, вы чудо! Оформление получилось просто супер — красиво так было. Несмотря ни на что, вышло бомбически. Всё благодаря вам и вашей команде.</p>
+            <p class="ea-test__qtext">Это был наш день и про нас на все 100! Проснулись с улыбкой и ощущением — какой же был классный день. Спасибо ещё раз!</p>
+            <div class="ea-test__sign">Александр и Анастасия</div>
+          </div>
+        </article>
+        <article class="ea-test__slide">
+          <div class="ea-test__photo" style="background-image:url('images/paloma/events/event-02.jpg')"></div>
+          <div class="ea-test__body">
+            <h3 class="ea-test__qtitle">Оформили юбилей мамы так, что она расплакалась</h3>
+            <p class="ea-test__qtext">Нежная пастель, пионы и подвесы над столом — гости весь вечер фотографировались. Спасибо за вкус и заботу о каждой детали.</p>
+            <p class="ea-test__qtext">Всё было собрано идеально по таймингу, а на следующий день мы забрали цветы домой. Лучшее решение — доверить оформление вам.</p>
+            <div class="ea-test__sign">Марина</div>
+          </div>
+        </article>
+        <article class="ea-test__slide">
+          <div class="ea-test__photo" style="background-image:url('images/paloma/events/event-03.jpg')"></div>
+          <div class="ea-test__body">
+            <h3 class="ea-test__qtitle">Сцена и фуршет в наших фирменных цветах — без хлопот</h3>
+            <p class="ea-test__qtext">Фактурные композиции, чёткий монтаж и полное попадание в палитру бренда. Команда взяла всю флористику на себя.</p>
+            <p class="ea-test__qtext">Гости отметили, как красиво и уместно всё смотрелось. Будем рады работать снова — спасибо за профессионализм!</p>
+            <div class="ea-test__sign">Игорь</div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="ea-panel ea-cta ea-panel--pad" id="contact">
       <div class="ea-cta__inner">
-        <div>
-          <span class="ea-eyebrow" data-reveal>оформить событие</span>
-          <h2 class="ea-title" data-reveal style="--d:.05s">Get in touch</h2>
-          <p class="ea-cta__lead" data-reveal style="--d:.1s">Расскажите о вашем празднике — <span>перезвоним</span> и предложим концепцию оформления.</p>
+        <div class="ea-cta__formcol">
+          <span class="ea-eyebrow" data-reveal>связаться</span>
+          <h2 class="ea-title" data-reveal style="--d:.05s">Оформить событие</h2>
+          <form class="ea-form" id="eaForm" novalidate data-reveal style="--d:.1s">
+            <div class="ea-form__field ea-form__field--full"><label for="ea-name">Имя</label><input id="ea-name" type="text" placeholder="Ваше имя" required></div>
+            <div class="ea-form__field ea-form__field--full"><label for="ea-phone">Телефон</label><input id="ea-phone" type="tel" placeholder="+7 (000) 000-00-00" required></div>
+            <div class="ea-form__field"><label for="ea-date">Дата события</label><input id="ea-date" type="text" placeholder="Дата события"></div>
+            <div class="ea-form__field"><label for="ea-guests">Количество гостей</label><input id="ea-guests" type="text" placeholder="Например, 60"></div>
+            <div class="ea-form__field ea-form__field--full"><label for="ea-venue">Тип площадки</label>
+              <select id="ea-venue"><option value="">Выберите</option><option>На побережье</option><option>Загородная площадка</option><option>Ресторан / лофт</option><option>Частный дом / сад</option></select>
+            </div>
+            <div class="ea-form__field ea-form__field--full">
+              <label for="ea-budget">Планируемый бюджет</label>
+              <div class="ea-range">
+                <output class="ea-range__bubble" id="budgetBubble">60 000</output>
+                <input type="range" id="ea-budget" min="30000" max="500000" step="5000" value="60000">
+                <div class="ea-range__minmax"><span>30 000</span><span>500 000</span></div>
+              </div>
+            </div>
+            <button type="submit" class="ea-btn ea-form__submit">Отправить данные
+              <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
+            </button>
+            <p class="ea-form__consent">* Нажимая кнопку, вы даёте согласие на обработку данных в соответствии с <a href="privacy.html">политикой конфиденциальности</a>.</p>
+            <p class="ea-form__ok" id="eaOk" hidden>Спасибо! Мы получили заявку и скоро свяжемся с вами.</p>
+          </form>
         </div>
-        <form class="ea-form" id="eaForm" novalidate data-reveal style="--d:.12s">
-          <div class="ea-form__field"><label for="ea-name">Имя</label><input id="ea-name" type="text" placeholder="Ваше имя" required></div>
-          <div class="ea-form__field"><label for="ea-phone">Телефон</label><input id="ea-phone" type="tel" placeholder="+7 ___ ___ __ __" required></div>
-          <div class="ea-form__field"><label for="ea-date">Дата события</label><input id="ea-date" type="text" placeholder="14 июня 2026"></div>
-          <div class="ea-form__field"><label for="ea-type">Тип события</label>
-            <select id="ea-type"><option value="">Выберите</option><option>Свадьба</option><option>Частное событие</option><option>Корпоратив</option><option>Другое</option></select>
-          </div>
-          <div class="ea-form__field ea-form__field--full"><label for="ea-comment">Комментарий</label><textarea id="ea-comment" rows="3" placeholder="Площадка, палитра, зоны оформления…"></textarea></div>
-          <button type="submit" class="ea-btn ea-form__submit">Отправить данные
-            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
-          </button>
-          <p class="ea-form__ok" id="eaOk" hidden>Спасибо! Мы получили заявку и скоро свяжемся с вами.</p>
-        </form>
+        <div class="ea-cta__media" data-reveal>
+          <img src="images/paloma/wedding/hero.jpg" alt="Цветочное оформление PALOMA">
+        </div>
       </div>
     </section>
 
@@ -451,11 +487,13 @@
     <section class="ea-panel ea-faq ea-panel--pad" id="faq">
       <span class="ea-eyebrow" data-reveal>частые вопросы</span>
       <h2 class="ea-title" data-reveal style="--d:.05s">FAQ</h2>
-      <div class="ea-faq__list" data-reveal>
-        <div class="ea-faq__item"><button class="ea-faq__q">Сколько стоит оформление?</button><div class="ea-faq__a"><p>Стоимость зависит от площадки, количества зон, сезона и пожеланий по декору. На первой консультации мы составляем смету под ваш бюджет и показываем, каким будет оформление.</p></div></div>
-        <div class="ea-faq__item"><button class="ea-faq__q">С чего начинается работа?</button><div class="ea-faq__a"><p>С бесплатного знакомства: обсуждаем дату, площадку, стиль и бюджет. Затем готовим концепцию с палитрой и мудбордом и фиксируем смету.</p></div></div>
-        <div class="ea-faq__item"><button class="ea-faq__q">Вы работаете только по Новороссийску?</button><div class="ea-faq__a"><p>База — Новороссийск и площадки побережья. Выезд в другие города возможен по согласованию логистики.</p></div></div>
-        <div class="ea-faq__item"><button class="ea-faq__q">Можно ли забрать цветы после события?</button><div class="ea-faq__a"><p>Да. Живые композиции можно забрать с собой или раздать гостям — мы аккуратно демонтируем декор после праздника.</p></div></div>
+      <div class="ea-faq__grid ea-faq__list" data-reveal>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Сколько стоит оформление?</button><div class="ea-faq__a"><p>Стоимость зависит от площадки, количества зон, сезона и пожеланий по декору. На первой консультации мы составляем смету под ваш бюджет и показываем, каким будет оформление.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">С чего начинается работа?</button><div class="ea-faq__a"><p>С бесплатного знакомства: обсуждаем дату, площадку, стиль и бюджет. Затем готовим концепцию с палитрой и мудбордом и фиксируем смету.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">За какое время лучше начать подготовку?</button><div class="ea-faq__a"><p>Оптимально — за 1–3 месяца до события: так мы успеваем заложить сезонные цветы и собрать команду на монтаж. Но беремся и за срочные задачи.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Можно ли использовать свой декор и вазы?</button><div class="ea-faq__a"><p>Конечно. Мы можем работать с вашими вазами, тканями и реквизитом, дополнив их живыми цветами в единой палитре события.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Чем отличается оформление от полной организации?</button><div class="ea-faq__a"><p>Мы отвечаем за цветочную часть и декор пространства: концепцию, композиции, монтаж и демонтаж. Координацию площадки и подрядчиков ведёт ваш организатор.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Почему стоит выбрать именно нас?</button><div class="ea-faq__a"><p>Своя цветочная студия в Новороссийске, авторская флористика и внимание к деталям. Вы видите концепцию заранее и получаете именно то, что согласовали.</p></div></div>
       </div>
     </section>
 
@@ -463,6 +501,11 @@
 
   </main>
 
+  <!-- PREFOOTER — фото-полоса с рукописной фразой -->
+  <section class="ea-prefooter" aria-hidden="true">
+    <img src="images/paloma/events/event-01.jpg" alt="">
+    <span class="ea-prefooter__script">у каждого события своя история —<br>и мы помогаем её рассказать!</span>
+  </section>
 
   <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
 
@@ -706,6 +749,19 @@
         if(!open){item.classList.add('is-open');a.style.maxHeight=a.scrollHeight+'px';}
       });
     });
+
+    /* отзывы — слайдер */
+    var tSlides=[].slice.call(document.querySelectorAll('.ea-test__slide'));
+    var ti=0;
+    function showT(n){if(!tSlides.length)return;ti=(n+tSlides.length)%tSlides.length;tSlides.forEach(function(s,k){s.classList.toggle('is-on',k===ti);});}
+    var tp=document.getElementById('testPrev'),tn=document.getElementById('testNext');
+    if(tp)tp.addEventListener('click',function(){showT(ti-1);});
+    if(tn)tn.addEventListener('click',function(){showT(ti+1);});
+
+    /* бюджет — ползунок с подсказкой */
+    var budget=document.getElementById('ea-budget'),bubble=document.getElementById('budgetBubble');
+    function updBudget(){if(!budget||!bubble)return;bubble.textContent=Number(budget.value).toLocaleString('ru-RU');var min=+budget.min,max=+budget.max;var pct=(budget.value-min)/(max-min);bubble.style.left=(pct*100)+'%';}
+    if(budget){budget.addEventListener('input',updBudget);updBudget();}
 
     /* форма-заявка */
     var f=document.getElementById('eaForm');
