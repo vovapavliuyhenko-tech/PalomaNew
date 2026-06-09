@@ -3,6 +3,8 @@
    Подключается ПОВЕРХ styles.css. Глобальные ресеты не трогаем.
    ===================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marck+Script&display=swap');
+
 html{scroll-behavior:smooth;scroll-padding-top:132px}
 
 .ea-page{
@@ -26,7 +28,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 
 /* ── общие элементы ── */
 .ea-eyebrow{font-family:var(--fserif);font-style:italic;font-size:clamp(15px,1.3vw,19px);color:var(--muted);letter-spacing:.04em;display:inline-block}
-.ea-title{font-family:var(--fserif);font-weight:500;font-size:clamp(28px,3.4vw,56px);line-height:1.1;color:var(--wine);text-transform:uppercase;letter-spacing:.01em}
+.ea-title{font-family:var(--fserif);font-weight:500;font-size:clamp(28px,3.4vw,56px);line-height:1.07;color:var(--wine);text-transform:uppercase;letter-spacing:.01em}
 .ea-title em{font-family:var(--fdisplay);font-style:normal;color:var(--ink);display:block}
 .ea-btn{display:inline-flex;align-items:center;gap:13px;padding:17px 34px;background:var(--wine);color:var(--paper3);font-size:13px;
   letter-spacing:.18em;text-transform:uppercase;font-weight:500;border:none;border-radius:2px;cursor:pointer;transition:background .35s var(--eease),transform .35s var(--eease)}
@@ -62,15 +64,15 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-hero__right{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
   padding:clamp(48px,5vw,90px) clamp(36px,5vw,80px);border-left:1px solid rgba(42,26,20,.2)}
 .ea-hero__logo{position:absolute;top:clamp(26px,4vw,46px);right:clamp(28px,4vw,56px);font-family:var(--fdisplay);color:var(--wine);font-size:clamp(20px,1.6vw,26px);letter-spacing:.14em;z-index:2}
-.ea-hero__h1{font-family:var(--fserif);font-weight:500;font-size:clamp(28px,3.2vw,54px);line-height:1.12;color:var(--wine);text-transform:uppercase;letter-spacing:.01em}
-.ea-hero__lead{max-width:340px;margin:26px auto 34px;font-weight:300;font-size:clamp(13px,1vw,15px);line-height:1.8;color:#6a5444}
+.ea-hero__h1{font-family:var(--fserif);font-weight:500;font-size:clamp(28px,3.2vw,54px);line-height:1.06;color:var(--wine);text-transform:uppercase;letter-spacing:.01em}
+.ea-hero__lead{max-width:360px;margin:24px auto 40px;font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.55;color:#6a5444}
 
 /* ── PHILOSOPHY ── */
 .ea-philo{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--paper3)}
 .ea-philo__text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:var(--ea-py) clamp(36px,5vw,80px);border-right:1px solid rgba(42,26,20,.2)}
-.ea-philo__text .ea-title{margin:16px 0 30px}
-.ea-philo__p{font-family:var(--fsans);font-weight:300;font-size:clamp(15px,1.15vw,18px);line-height:2;color:#5a4438;text-align:justify;max-width:600px}
-.ea-philo__name{font-family:var(--fserif);font-style:italic;font-weight:500;font-size:clamp(22px,1.9vw,28px);color:var(--ink);margin-top:34px}
+.ea-philo__text .ea-title{margin:14px 0 28px}
+.ea-philo__p{font-family:var(--fsans);font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.65;color:#5a4438;text-align:justify;max-width:560px}
+.ea-philo__name{font-family:var(--fserif);font-style:italic;font-weight:500;font-size:clamp(20px,1.6vw,24px);color:var(--ink);margin-top:32px}
 .ea-philo__role{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:6px}
 .ea-philo__media{position:relative;overflow:hidden;background:#bdb09c}
 .ea-philo__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
