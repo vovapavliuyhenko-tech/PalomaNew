@@ -25,8 +25,8 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-page ::selection{background:var(--wine);color:var(--paper3)}
 
 /* ── общие элементы ── */
-.ea-eyebrow{font-family:var(--fserif);font-style:italic;font-size:clamp(17px,1.5vw,23px);color:var(--muted);letter-spacing:.04em;display:inline-block}
-.ea-title{font-family:var(--fserif);font-weight:500;font-size:clamp(36px,4.8vw,76px);line-height:1.05;color:var(--wine);text-transform:uppercase;letter-spacing:.01em}
+.ea-eyebrow{font-family:var(--fserif);font-style:italic;font-size:clamp(15px,1.3vw,19px);color:var(--muted);letter-spacing:.04em;display:inline-block}
+.ea-title{font-family:var(--fserif);font-weight:500;font-size:clamp(28px,3.4vw,56px);line-height:1.1;color:var(--wine);text-transform:uppercase;letter-spacing:.01em}
 .ea-title em{font-family:var(--fdisplay);font-style:normal;color:var(--ink);display:block}
 .ea-btn{display:inline-flex;align-items:center;gap:13px;padding:17px 34px;background:var(--wine);color:var(--paper3);font-size:13px;
   letter-spacing:.18em;text-transform:uppercase;font-weight:500;border:none;border-radius:2px;cursor:pointer;transition:background .35s var(--eease),transform .35s var(--eease)}
@@ -48,27 +48,26 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-panel--pad>.ea-title{margin-bottom:8px}
 
 /* ── HERO ── */
-.ea-hero{display:grid;grid-template-columns:1.1fr .9fr;min-height:100vh;background:var(--paper3)}
+.ea-hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--paper3)}
 .ea-hero__left{position:relative;overflow:hidden;background:#cfc3b0}
 .ea-hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.05);animation:eaZoom 16s ease-in-out infinite alternate}
 @keyframes eaZoom{to{transform:scale(1.13)}}
-.ea-hero__frame{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);z-index:2;background:#fff;padding:16px 16px 0;
-  box-shadow:0 44px 96px rgba(20,10,6,.4);width:min(27vw,380px)}
+.ea-hero__frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;background:#fff;padding:16px 16px 0;
+  box-shadow:0 44px 96px rgba(20,10,6,.4);width:min(26vw,360px)}
 .ea-hero__frame img{width:100%;aspect-ratio:3/3.9;object-fit:cover}
 .ea-hero__cap{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-family:var(--fsans);font-size:12px;letter-spacing:.08em;
   text-transform:uppercase;color:var(--ink);padding:15px 4px 17px;font-weight:500}
 .ea-hero__cap-city{color:var(--muted)}
 .ea-hero__cap b{color:var(--muted);font-weight:500}
 .ea-hero__right{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  padding:clamp(56px,6vw,100px) var(--ea-px)}
-.ea-hero__right::before{content:"";position:absolute;left:50%;top:6%;bottom:6%;width:1px;background:linear-gradient(180deg,transparent,rgba(42,26,20,.14) 20%,rgba(42,26,20,.14) 80%,transparent)}
+  padding:clamp(48px,5vw,90px) clamp(36px,5vw,80px);border-left:1px solid rgba(42,26,20,.2)}
 .ea-hero__logo{position:absolute;top:clamp(26px,4vw,46px);right:clamp(28px,4vw,56px);font-family:var(--fdisplay);color:var(--wine);font-size:clamp(20px,1.6vw,26px);letter-spacing:.14em;z-index:2}
-.ea-hero__h1{font-family:var(--fserif);font-weight:500;font-size:clamp(40px,4.8vw,80px);line-height:1.08;color:var(--wine);text-transform:uppercase;letter-spacing:.01em}
-.ea-hero__lead{max-width:380px;margin:30px auto 40px;font-weight:300;font-size:clamp(16px,1.1vw,18px);line-height:1.85;color:#6a5444}
+.ea-hero__h1{font-family:var(--fserif);font-weight:500;font-size:clamp(28px,3.2vw,54px);line-height:1.12;color:var(--wine);text-transform:uppercase;letter-spacing:.01em}
+.ea-hero__lead{max-width:340px;margin:26px auto 34px;font-weight:300;font-size:clamp(13px,1vw,15px);line-height:1.8;color:#6a5444}
 
 /* ── PHILOSOPHY ── */
 .ea-philo{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--paper3)}
-.ea-philo__text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:var(--ea-py) var(--ea-px)}
+.ea-philo__text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:var(--ea-py) clamp(36px,5vw,80px);border-right:1px solid rgba(42,26,20,.2)}
 .ea-philo__text .ea-title{margin:16px 0 30px}
 .ea-philo__p{font-family:var(--fsans);font-weight:300;font-size:clamp(15px,1.15vw,18px);line-height:2;color:#5a4438;text-align:justify;max-width:600px}
 .ea-philo__name{font-family:var(--fserif);font-style:italic;font-weight:500;font-size:clamp(22px,1.9vw,28px);color:var(--ink);margin-top:34px}
