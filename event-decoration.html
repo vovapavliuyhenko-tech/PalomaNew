@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=12">
-  <link rel="stylesheet" href="event-author.css?v=10">
+  <link rel="stylesheet" href="event-author.css?v=11">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -316,40 +316,62 @@
       <h2 class="ea-title">Проекты, которые<br>мы создаём</h2>
     </div>
     <div class="ea-hx__grid">
-      <article class="ea-proj" data-reveal>
-        <img class="ea-proj__photo" src="images/paloma/events/event-01.jpg" alt="">
+      <article class="ea-proj" data-reveal role="button" tabindex="0" data-cursor="hover"
+        data-gallery="images/paloma/events/event-01.jpg,images/paloma/wedding/hero.jpg,images/paloma/wedding/wedding-detail.jpg">
+        <div class="ea-proj__photo-wrap"><img class="ea-proj__photo" src="images/paloma/events/event-01.jpg" alt="Свадьба Анастасии и Александра"></div>
         <div class="ea-proj__body">
           <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>02.06.2026</span></div>
-          <div class="ea-proj__name">Анастасия и Александр</div>
-          <p class="ea-proj__text">Свадьба у моря: пыльная роза, эвкалипт и свечи на закате. Арка-полумесяц на фоне бухты и длинный стол с низкими композициями.</p>
+          <div class="ea-proj__caption">
+            <div class="ea-proj__name">Анастасия и Александр</div>
+            <p class="ea-proj__text">Свадьба у моря: пыльная роза, эвкалипт и свечи на закате. Арка-полумесяц на фоне бухты и длинный стол с низкими композициями.</p>
+          </div>
         </div>
       </article>
-      <article class="ea-proj" data-reveal style="--d:.06s">
-        <img class="ea-proj__photo" src="images/paloma/events/event-02.jpg" alt="">
+      <article class="ea-proj" data-reveal style="--d:.06s" role="button" tabindex="0" data-cursor="hover"
+        data-gallery="images/paloma/events/event-02.jpg,images/paloma/subscription/bg.jpg,images/paloma/catalog/c18.jpg">
+        <div class="ea-proj__photo-wrap"><img class="ea-proj__photo" src="images/paloma/events/event-02.jpg" alt="Юбилей Марины и Ильи"></div>
         <div class="ea-proj__body">
           <div class="ea-proj__meta"><span class="ea-proj__city">[ Геленджик ]</span><span>18.07.2026</span></div>
-          <div class="ea-proj__name">Марина и Илья</div>
-          <p class="ea-proj__text">Юбилей в саду: тёплая пастель, пионы и полевые травы. Цветочные подвесы над столом и арт-инсталляция у входа.</p>
+          <div class="ea-proj__caption">
+            <div class="ea-proj__name">Марина и Илья</div>
+            <p class="ea-proj__text">Юбилей в саду: тёплая пастель, пионы и полевые травы. Цветочные подвесы над столом и арт-инсталляция у входа.</p>
+          </div>
         </div>
       </article>
-      <article class="ea-proj" data-reveal>
-        <img class="ea-proj__photo" src="images/paloma/events/event-03.jpg" alt="">
+      <article class="ea-proj" data-reveal role="button" tabindex="0" data-cursor="hover"
+        data-gallery="images/paloma/events/event-03.jpg,images/paloma/catalog/c13.jpg,images/paloma/catalog/c19.jpg">
+        <div class="ea-proj__photo-wrap"><img class="ea-proj__photo" src="images/paloma/events/event-03.jpg" alt="Церемония Вероники и Павла"></div>
         <div class="ea-proj__body">
           <div class="ea-proj__meta"><span class="ea-proj__city">[ Анапа ]</span><span>21.05.2026</span></div>
-          <div class="ea-proj__name">Вероника и Павел</div>
-          <p class="ea-proj__text">Камерная церемония: белая палитра, лёгкие травы и стеклянные подсвечники. Минимум декора, максимум воздуха.</p>
+          <div class="ea-proj__caption">
+            <div class="ea-proj__name">Вероника и Павел</div>
+            <p class="ea-proj__text">Камерная церемония: белая палитра, лёгкие травы и стеклянные подсвечники. Минимум декора, максимум воздуха.</p>
+          </div>
         </div>
       </article>
-      <article class="ea-proj" data-reveal style="--d:.06s">
-        <img class="ea-proj__photo" src="images/paloma/wedding/hero.jpg" alt="">
+      <article class="ea-proj" data-reveal style="--d:.06s" role="button" tabindex="0" data-cursor="hover"
+        data-gallery="images/paloma/wedding/hero.jpg,images/paloma/events/event-01.jpg,images/paloma/catalog/c20.jpg">
+        <div class="ea-proj__photo-wrap"><img class="ea-proj__photo" src="images/paloma/wedding/hero.jpg" alt="Свадьба Дарьи и Сергея"></div>
         <div class="ea-proj__body">
           <div class="ea-proj__meta"><span class="ea-proj__city">[ Сочи ]</span><span>09.09.2026</span></div>
-          <div class="ea-proj__name">Дарья и Сергей</div>
-          <p class="ea-proj__text">Оформление в фирменной палитре: фактурные композиции, фотозона и чёткий тайминг монтажа в день торжества.</p>
+          <div class="ea-proj__caption">
+            <div class="ea-proj__name">Дарья и Сергей</div>
+            <p class="ea-proj__text">Оформление в фирменной палитре: фактурные композиции, фотозона и чёткий тайминг монтажа в день торжества.</p>
+          </div>
         </div>
       </article>
     </div>
   </section>
+
+  <!-- ПОПАП-ГАЛЕРЕЯ кейсов -->
+  <div class="ea-lb" id="eaLb" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Галерея оформления">
+    <button type="button" class="ea-lb__close" id="eaLbClose" aria-label="Закрыть">&times;</button>
+    <button type="button" class="ea-lb__arrow ea-lb__arrow--prev" id="eaLbPrev" aria-label="Предыдущее фото">&lsaquo;</button>
+    <img class="ea-lb__img" id="eaLbImg" src="" alt="">
+    <button type="button" class="ea-lb__arrow ea-lb__arrow--next" id="eaLbNext" aria-label="Следующее фото">&rsaquo;</button>
+    <div class="ea-lb__counter" id="eaLbCount"></div>
+  </div>
+
 
 
   <div class="ea-stack">
@@ -719,6 +741,28 @@
     /* reveal по скроллу */
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.12});
     document.querySelectorAll('.ea-page [data-reveal]').forEach(function(el){io.observe(el);});
+
+    /* ПОПАП-ГАЛЕРЕЯ кейсов портфолио */
+    (function(){
+      var lb=document.getElementById('eaLb');
+      if(!lb)return;
+      var lbImg=document.getElementById('eaLbImg'),lbCount=document.getElementById('eaLbCount');
+      var list=[],idx=0;
+      function show(){ if(!list.length)return; lbImg.src=list[idx]; lbCount.textContent=(idx+1)+' / '+list.length; }
+      function open(g){ list=g; idx=0; show(); lb.classList.add('is-open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('ea-lb-open'); }
+      function close(){ lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('ea-lb-open'); }
+      function step(d){ if(!list.length)return; idx=(idx+d+list.length)%list.length; show(); }
+      document.querySelectorAll('.ea-proj[data-gallery]').forEach(function(card){
+        var g=(card.getAttribute('data-gallery')||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
+        card.addEventListener('click',function(){ if(g.length)open(g); });
+        card.addEventListener('keydown',function(e){ if((e.key==='Enter'||e.key===' ')&&g.length){e.preventDefault();open(g);} });
+      });
+      document.getElementById('eaLbClose').addEventListener('click',close);
+      document.getElementById('eaLbPrev').addEventListener('click',function(e){e.stopPropagation();step(-1);});
+      document.getElementById('eaLbNext').addEventListener('click',function(e){e.stopPropagation();step(1);});
+      lb.addEventListener('click',function(e){ if(e.target===lb)close(); });
+      document.addEventListener('keydown',function(e){ if(!lb.classList.contains('is-open'))return; if(e.key==='Escape')close(); else if(e.key==='ArrowLeft')step(-1); else if(e.key==='ArrowRight')step(1); });
+    })();
 
     /* FAQ-аккордеон */
     document.querySelectorAll('.ea-faq__item').forEach(function(item){
