@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=12">
-  <link rel="stylesheet" href="event-author.css?v=9">
+  <link rel="stylesheet" href="event-author.css?v=10">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -285,8 +285,8 @@
         <span class="ea-hero__logo">PALOMA</span>
         <h1 class="ea-hero__h1" data-reveal>Оформляем однажды,<br>чтобы запомнить навсегда</h1>
         <p class="ea-hero__lead" data-reveal style="--d:.1s">PALOMA — студия цветочного оформления событий. Мы превращаем праздники в живые цветочные истории.</p>
-        <a class="btn btn--dark ea-hero__cta" href="#contact" data-cursor="hover" data-reveal style="--d:.18s">Оформить событие
-          <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" style="fill:currentColor;margin-left:8px;vertical-align:-2px"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
+        <a class="ea-btn" href="#contact" data-cursor="hover" data-reveal style="--d:.18s">Оформить событие
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
         </a>
       </div>
     </section>
@@ -309,50 +309,48 @@
 
   </div><!-- /ea-stack 1 -->
 
-  <!-- PORTFOLIO — горизонтальный скролл -->
+  <!-- PORTFOLIO — сетка кейсов (как референс) -->
   <section class="ea-hx" id="portfolio">
-    <div class="ea-hx__pin">
-      <div class="ea-hx__head">
-        <span class="ea-eyebrow">наши проекты</span>
-        <h2 class="ea-title">Проекты, которые<br>мы создаём</h2>
-      </div>
-      <div class="ea-hx__viewport">
-        <div class="ea-hx__track" id="hxTrack">
-          <article class="ea-proj">
-            <img class="ea-proj__photo" src="images/paloma/events/event-01.jpg" alt="">
-            <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>02.06.2026</span></div>
-            <div class="ea-proj__name">Свадьба у моря</div>
-            <p class="ea-proj__text">Пыльная роза, эвкалипт и свечи на закате. Арка-полумесяц на фоне бухты и длинный стол с низкими композициями.</p>
-          </article>
-          <article class="ea-proj">
-            <img class="ea-proj__photo" src="images/paloma/events/event-02.jpg" alt="">
-            <div class="ea-proj__meta"><span class="ea-proj__city">[ Геленджик ]</span><span>18.07.2026</span></div>
-            <div class="ea-proj__name">Юбилей в саду</div>
-            <p class="ea-proj__text">Тёплая пастель, пионы и полевые травы. Цветочные подвесы над столом и арт-инсталляция у входа.</p>
-          </article>
-          <article class="ea-proj">
-            <img class="ea-proj__photo" src="images/paloma/events/event-03.jpg" alt="">
-            <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>09.09.2026</span></div>
-            <div class="ea-proj__name">Корпоратив бренда</div>
-            <p class="ea-proj__text">Сцена и пресс-волл в фирменной палитре, фактурные композиции и чёткий тайминг монтажа.</p>
-          </article>
-          <article class="ea-proj">
-            <img class="ea-proj__photo" src="images/paloma/wedding/hero.jpg" alt="">
-            <div class="ea-proj__meta"><span class="ea-proj__city">[ Анапа ]</span><span>21.05.2026</span></div>
-            <div class="ea-proj__name">Камерная церемония</div>
-            <p class="ea-proj__text">Минимум декора, максимум воздуха: белая палитра, лёгкие травы и стеклянные подсвечники.</p>
-          </article>
-          <article class="ea-proj">
-            <img class="ea-proj__photo" src="images/paloma/subscription/bg.jpg" alt="">
-            <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>03.08.2026</span></div>
-            <div class="ea-proj__name">Ужин в честь годовщины</div>
-            <p class="ea-proj__text">Сервировка стола, бутоньерки и цветочный бордюр по центру — вечер, наполненный ароматом.</p>
-          </article>
+    <div class="ea-hx__head" data-reveal>
+      <span class="ea-eyebrow">наши проекты</span>
+      <h2 class="ea-title">Проекты, которые<br>мы создаём</h2>
+    </div>
+    <div class="ea-hx__grid">
+      <article class="ea-proj" data-reveal>
+        <img class="ea-proj__photo" src="images/paloma/events/event-01.jpg" alt="">
+        <div class="ea-proj__body">
+          <div class="ea-proj__meta"><span class="ea-proj__city">[ Новороссийск ]</span><span>02.06.2026</span></div>
+          <div class="ea-proj__name">Анастасия и Александр</div>
+          <p class="ea-proj__text">Свадьба у моря: пыльная роза, эвкалипт и свечи на закате. Арка-полумесяц на фоне бухты и длинный стол с низкими композициями.</p>
         </div>
-      </div>
-      <span class="ea-hx__hint">скролл →</span>
+      </article>
+      <article class="ea-proj" data-reveal style="--d:.06s">
+        <img class="ea-proj__photo" src="images/paloma/events/event-02.jpg" alt="">
+        <div class="ea-proj__body">
+          <div class="ea-proj__meta"><span class="ea-proj__city">[ Геленджик ]</span><span>18.07.2026</span></div>
+          <div class="ea-proj__name">Марина и Илья</div>
+          <p class="ea-proj__text">Юбилей в саду: тёплая пастель, пионы и полевые травы. Цветочные подвесы над столом и арт-инсталляция у входа.</p>
+        </div>
+      </article>
+      <article class="ea-proj" data-reveal>
+        <img class="ea-proj__photo" src="images/paloma/events/event-03.jpg" alt="">
+        <div class="ea-proj__body">
+          <div class="ea-proj__meta"><span class="ea-proj__city">[ Анапа ]</span><span>21.05.2026</span></div>
+          <div class="ea-proj__name">Вероника и Павел</div>
+          <p class="ea-proj__text">Камерная церемония: белая палитра, лёгкие травы и стеклянные подсвечники. Минимум декора, максимум воздуха.</p>
+        </div>
+      </article>
+      <article class="ea-proj" data-reveal style="--d:.06s">
+        <img class="ea-proj__photo" src="images/paloma/wedding/hero.jpg" alt="">
+        <div class="ea-proj__body">
+          <div class="ea-proj__meta"><span class="ea-proj__city">[ Сочи ]</span><span>09.09.2026</span></div>
+          <div class="ea-proj__name">Дарья и Сергей</div>
+          <p class="ea-proj__text">Оформление в фирменной палитре: фактурные композиции, фотозона и чёткий тайминг монтажа в день торжества.</p>
+        </div>
+      </article>
     </div>
   </section>
+
 
   <div class="ea-stack">
 
@@ -721,25 +719,6 @@
     /* reveal по скроллу */
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.12});
     document.querySelectorAll('.ea-page [data-reveal]').forEach(function(el){io.observe(el);});
-
-    /* ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ портфолио */
-    var hx=document.getElementById('portfolio');
-    var track=document.getElementById('hxTrack');
-    var raf=null;
-    function tick(){
-      raf=null;
-      if(!hx||!track)return;
-      if(window.innerWidth<=900){track.style.transform='';return;}
-      var rect=hx.getBoundingClientRect();
-      var total=hx.offsetHeight-window.innerHeight;
-      var passed=Math.min(Math.max(-rect.top,0),total);
-      var p=total>0?passed/total:0;
-      var maxX=Math.max(0,track.scrollWidth-window.innerWidth);
-      track.style.transform='translateX(-'+(p*maxX).toFixed(1)+'px)';
-    }
-    addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(tick);},{passive:true});
-    addEventListener('resize',function(){if(!raf)raf=requestAnimationFrame(tick);},{passive:true});
-    tick();
 
     /* FAQ-аккордеон */
     document.querySelectorAll('.ea-faq__item').forEach(function(item){
