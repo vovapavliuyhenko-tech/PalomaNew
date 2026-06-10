@@ -681,6 +681,12 @@
   min-height: 40vh;
   padding-top: var(--paloma-header-offset, 96px);
 }
+/* hidden должен перекрывать display (иначе пустой блок виден при наличии товаров) */
+.cart-page-empty[hidden],
+.cart-page-content[hidden] {
+  display: none !important;
+}
+
 .cart-page-empty {
   display: flex;
   align-items: center;

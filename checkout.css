@@ -907,6 +907,15 @@
   cursor: default;
 }
 
+/* атрибут hidden должен перекрывать display этих блоков
+   (иначе «Корзина пуста» и форма показываются одновременно) */
+.co-empty[hidden],
+.co-grid[hidden],
+.co-success[hidden],
+.co-mobile-bar[hidden] {
+  display: none !important;
+}
+
 .co-empty {
   display: flex;
   align-items: center;
