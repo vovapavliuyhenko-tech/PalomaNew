@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=12">
-  <link rel="stylesheet" href="event-author.css?v=21">
+  <link rel="stylesheet" href="event-author.css?v=22">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -486,6 +486,51 @@
             <div class="ea-test__sign">Игорь</div>
           </div>
         </article>
+        <article class="ea-test__slide">
+          <div class="ea-test__photo" style="background-image:url('images/paloma/wedding/hero.jpg')"></div>
+          <div class="ea-test__body">
+            <h3 class="ea-test__qtitle">Это был самый красивый день — спасибо за каждый цветок!</h3>
+            <p class="ea-test__qtext">PALOMA, у меня нет слов, одни эмоции! Арка у моря, длинный стол с низкими композициями, букет невесты — всё было нежнее, чем я представляла.</p>
+            <p class="ea-test__qtext">Вы сняли с нас все заботы и сделали всё на высшем уровне. Гости до сих пор вспоминают, как красиво всё смотрелось. Обожаю и буду рекомендовать всем!</p>
+            <div class="ea-test__sign">Вероника и Павел</div>
+          </div>
+        </article>
+        <article class="ea-test__slide">
+          <div class="ea-test__photo" style="background-image:url('images/paloma/hero/hero-v2-editorial.jpg')"></div>
+          <div class="ea-test__body">
+            <h3 class="ea-test__qtitle">Попадание в самое сердечко — всё, как в мечтах</h3>
+            <p class="ea-test__qtext">Я просто описала, что примерно хочу, и команда сразу собрала палитру и мудборд. Это было точное попадание — ничего бы не поменяла.</p>
+            <p class="ea-test__qtext">Нам не нужно было думать ни о чём, только выбирать, что больше нравится. Всё получилось так невероятно, как в мечтах. Спасибо огромное!</p>
+            <div class="ea-test__sign">Дарья и Сергей</div>
+          </div>
+        </article>
+        <article class="ea-test__slide">
+          <div class="ea-test__photo" style="background-image:url('images/paloma/events/event-02.jpg')"></div>
+          <div class="ea-test__body">
+            <h3 class="ea-test__qtitle">Даже родителей разрывало от эмоций!</h3>
+            <p class="ea-test__qtext">Оформление юбилея получилось таким тёплым и атмосферным, что весь вечер гости фотографировались у фотозоны. Подвесы над столом — отдельная любовь.</p>
+            <p class="ea-test__qtext">Вы наша волшебница! С какой заботой вы решали каждый вопрос и брали на карандаш все нюансы. В самое сердце!</p>
+            <div class="ea-test__sign">Марина</div>
+          </div>
+        </article>
+        <article class="ea-test__slide">
+          <div class="ea-test__photo" style="background-image:url('images/paloma/hero/hero-main.jpg')"></div>
+          <div class="ea-test__body">
+            <h3 class="ea-test__qtitle">Мы просто получали удовольствие от процесса!</h3>
+            <p class="ea-test__qtext">Спасибо за то, что подготовка и сам день были такими лёгкими и приятными. Сезонные цветы, арка у виноградников, стол под открытым небом — сказка.</p>
+            <p class="ea-test__qtext">Сомневались, нужен ли декоратор, но теперь сомнений нет — это был самый правильный выбор, который на 300% себя оправдал!</p>
+            <div class="ea-test__sign">Ольга и Никита</div>
+          </div>
+        </article>
+        <article class="ea-test__slide">
+          <div class="ea-test__photo" style="background-image:url('images/paloma/events/event-01.jpg')"></div>
+          <div class="ea-test__body">
+            <h3 class="ea-test__qtitle">Всё прошло на одном дыхании!</h3>
+            <p class="ea-test__qtext">Это такая любовь! Гости сказали, что всё было настолько красиво и продуманно, что даже в телефоне некогда было сидеть. Душевно, по-семейному.</p>
+            <p class="ea-test__qtext">Команда — огонь, все в восторге от цветов и деталей. Площадка стала идеальным местом для нашей истории. Было нереально красиво!</p>
+            <div class="ea-test__sign">Елена и Дмитрий</div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -762,21 +807,53 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.12});
     document.querySelectorAll('.ea-page [data-reveal]').forEach(function(el){io.observe(el);});
 
-    /* ПОПАП-ГАЛЕРЕЯ кейсов портфолио */
+    /* ПОРТФОЛИО: карусель в карточке (стрелки/точки) + попап по клику */
     (function(){
       var lb=document.getElementById('eaLb');
       if(!lb)return;
       var lbImg=document.getElementById('eaLbImg'),lbCount=document.getElementById('eaLbCount');
       var list=[],idx=0;
       function show(){ if(!list.length)return; lbImg.src=list[idx]; lbCount.textContent=(idx+1)+' / '+list.length; }
-      function open(g){ list=g; idx=0; show(); lb.classList.add('is-open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('ea-lb-open'); }
+      function open(g,start){ list=g; idx=start||0; show(); lb.classList.add('is-open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('ea-lb-open'); }
       function close(){ lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('ea-lb-open'); }
       function step(d){ if(!list.length)return; idx=(idx+d+list.length)%list.length; show(); }
+
       document.querySelectorAll('.ea-proj[data-gallery]').forEach(function(card){
         var g=(card.getAttribute('data-gallery')||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
-        card.addEventListener('click',function(){ if(g.length)open(g); });
-        card.addEventListener('keydown',function(e){ if((e.key==='Enter'||e.key===' ')&&g.length){e.preventDefault();open(g);} });
+        if(!g.length)return;
+        var wrap=card.querySelector('.ea-proj__photo-wrap');
+        var plus=wrap.querySelector('.ea-proj__plus');
+        var firstAlt=(wrap.querySelector('.ea-proj__photo')||{}).alt||'';
+        // строим слайды из data-gallery
+        var slidesBox=document.createElement('div'); slidesBox.className='ea-proj__slides';
+        g.forEach(function(src,i){
+          var im=document.createElement('img');
+          im.className='ea-proj__photo'+(i===0?' is-on':'');
+          im.src=src; im.alt=(i===0?firstAlt:''); im.loading='lazy';
+          slidesBox.appendChild(im);
+        });
+        wrap.innerHTML=''; wrap.appendChild(slidesBox);
+        var slides=slidesBox.querySelectorAll('.ea-proj__photo');
+        var ci=0;
+        function go(n){ ci=(n+g.length)%g.length; slides.forEach(function(s,k){s.classList.toggle('is-on',k===ci);}); if(dotsEls)dotsEls.forEach(function(d,k){d.classList.toggle('is-on',k===ci);}); }
+        var dotsEls=null;
+        if(g.length>1){
+          var prev=document.createElement('button'); prev.type='button'; prev.className='ea-proj__nav ea-proj__nav--prev'; prev.setAttribute('aria-label','Предыдущее фото'); prev.innerHTML='&lsaquo;';
+          var next=document.createElement('button'); next.type='button'; next.className='ea-proj__nav ea-proj__nav--next'; next.setAttribute('aria-label','Следующее фото'); next.innerHTML='&rsaquo;';
+          prev.addEventListener('click',function(e){e.stopPropagation();go(ci-1);});
+          next.addEventListener('click',function(e){e.stopPropagation();go(ci+1);});
+          wrap.appendChild(prev); wrap.appendChild(next);
+          var dots=document.createElement('div'); dots.className='ea-proj__dots';
+          g.forEach(function(_,i){var d=document.createElement('span'); d.className='ea-proj__dot'+(i===0?' is-on':''); dots.appendChild(d);});
+          wrap.appendChild(dots);
+          dotsEls=dots.querySelectorAll('.ea-proj__dot');
+        }
+        if(plus) wrap.appendChild(plus);
+        // клик по карточке (не по стрелкам) — попап с текущего фото
+        card.addEventListener('click',function(){ open(g,ci); });
+        card.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();open(g,ci);} });
       });
+
       document.getElementById('eaLbClose').addEventListener('click',close);
       document.getElementById('eaLbPrev').addEventListener('click',function(e){e.stopPropagation();step(-1);});
       document.getElementById('eaLbNext').addEventListener('click',function(e){e.stopPropagation();step(1);});
