@@ -1,0 +1,125 @@
+/* =====================================================================
+   PALOMA Coffee — страница в стиле «Оформление» (scoped .coffee-ea)
+   Подключается ПОВЕРХ event-author.css (использует его .ea-* паттерны:
+   .ea-hero, .ea-svc-шторка, .ea-proc-горизонталь, .ea-panel).
+   Здесь — только специфика кофейни: видео-герой, меню, лимонады, акценты.
+   ===================================================================== */
+
+/* sticky-шторка работает только если ни <main>, ни <body> не скролл-контейнеры.
+   Глобальные body{overflow-x:hidden} и main{overflow-x:hidden} → overflow-y:auto
+   (скролл-контейнер) и ломают sticky. clip убирает горизонт.прокрутку без этого. */
+body.coffee-page{overflow-x:clip!important}
+.coffee-page main{overflow-x:clip!important;overflow-y:visible!important}
+
+.coffee-ea{--cf-cream:var(--paper);--cf-wine:var(--wine);--cf-coffee:#5a4031;--cf-latte:#c9a884}
+
+/* ── ВИДЕО-ФОН в герое/блоках (вместо .ea-hero__bg) ── */
+.cf-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#cfc3b0}
+.cf-hero__left .cf-video,.cf-svc .cf-video{transform:scale(1.04)}
+/* лёгкий «живой» зум, пока нет mp4 (постер-фото оживает как видео) */
+.cf-kenburns{animation:cfKen 18s ease-in-out infinite alternate}
+@keyframes cfKen{from{transform:scale(1.04)}to{transform:scale(1.13)}}
+
+/* герой/зеркальный блок: фото-сторона центрирует рамку + тёмная вуаль */
+.cf-hero__left,.cf-mir__media{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:#e7e1d4;padding:clamp(120px,15vh,170px) clamp(24px,4vw,56px) clamp(40px,6vh,72px)}
+.cf-hero__left::after,.cf-mir__media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,12,8,.3),rgba(20,12,8,.46))}
+.cf-hero__left .ea-hero__frame,.cf-mir__media .ea-hero__frame{z-index:2}
+
+/* ── БЛОК-ГЕРОЙ кофейни: логотип Paloma coffee сверху по центру ── */
+.cf-hero__logo{font-family:var(--logo);color:var(--wine);font-size:clamp(20px,1.7vw,27px);
+  letter-spacing:.12em;text-transform:none;text-align:center}
+.cf-hero__logo small{display:block;font-family:var(--fdisplay);font-size:.5em;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--muted);margin-top:8px}
+/* зеркальный вариант (фото справа, текст слева) — блок 2 */
+.ea-hero--mirror .ea-hero__left{order:2;border-left:1px solid var(--eline)}
+.ea-hero--mirror .ea-hero__right{order:1;border-left:none}
+.cf-uls{list-style:none;margin:22px 0 34px;display:flex;flex-direction:column;gap:12px;text-align:left;max-width:400px}
+.cf-uls li{position:relative;padding-left:26px;font-size:clamp(14px,1.05vw,16px);line-height:1.5;color:var(--body)}
+.cf-uls li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;border-radius:50%;
+  background:var(--wine);box-shadow:0 0 0 4px rgba(183,14,45,.12)}
+
+/* ── БЛОК МЕНЮ (как на скриншотах sjostrand: строки + фото при наведении) ── */
+.cf-menu{background:var(--paper);border-top:1px solid var(--cream-line)}
+.cf-menu__tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:clamp(28px,3vw,44px) 0 clamp(30px,3vw,50px)}
+.cf-menu__tab{font-family:var(--fdisplay);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);background:none;border:1px solid var(--eline);border-radius:40px;padding:10px 22px;cursor:pointer;transition:.3s}
+.cf-menu__tab:hover{color:var(--wine);border-color:var(--wine)}
+.cf-menu__tab.is-on{background:var(--wine);color:var(--paper2);border-color:var(--wine)}
+.cf-menu__list{position:relative;max-width:var(--ea-maxw);margin:0 auto;width:100%}
+.cf-menu__row{display:grid;grid-template-columns:auto 1fr auto auto;align-items:baseline;gap:clamp(14px,2vw,30px);
+  padding:clamp(20px,2.4vw,30px) clamp(8px,1vw,16px);border-bottom:1px solid var(--eline);cursor:pointer;
+  transition:background .3s var(--eease),padding-left .35s var(--eease)}
+.cf-menu__row:hover{background:rgba(183,14,45,.035);padding-left:clamp(16px,2vw,34px)}
+.cf-menu__num{font-family:var(--fdisplay);font-size:13px;color:var(--muted);letter-spacing:.1em}
+.cf-menu__name{font-family:var(--fhead);font-size:clamp(24px,2.6vw,40px);color:var(--ink);line-height:1;transition:color .3s}
+.cf-menu__row:hover .cf-menu__name{color:var(--wine)}
+.cf-menu__vol{font-family:var(--fdisplay);font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:lowercase;white-space:nowrap}
+.cf-menu__price{font-family:var(--fdisplay);font-size:clamp(16px,1.4vw,21px);color:var(--wine);white-space:nowrap}
+.cf-menu__desc{grid-column:2/3;font-size:14px;line-height:1.5;color:var(--muted);margin-top:6px;max-width:520px}
+/* плавающее фото товара при наведении (следует за курсором) */
+.cf-menu__pop{position:fixed;z-index:80;width:clamp(150px,15vw,220px);aspect-ratio:4/5;pointer-events:none;
+  border-radius:4px;overflow:hidden;box-shadow:0 30px 70px rgba(40,24,12,.4);opacity:0;transform:translate(-50%,-46%) scale(.9);
+  transition:opacity .3s var(--eease),transform .3s var(--eease);background-size:cover;background-position:center;background-color:#cfc3b0}
+.cf-menu__pop.is-on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.cf-menu__pop img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ── БЛОК ЛИМОНАДОВ — яркий, с фото/видео ── */
+.cf-lemon{color:#fff;background:#b21e34;justify-content:center;align-items:center;text-align:center}
+.cf-lemon .cf-video{filter:saturate(1.05)}
+.cf-lemon::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(120,8,24,.42),rgba(120,8,24,.62))}
+.cf-lemon__inner{position:relative;z-index:2;max-width:880px;padding:0 var(--ea-px)}
+.cf-lemon__eyebrow{font-family:var(--fdisplay);letter-spacing:.3em;text-transform:lowercase;font-size:clamp(13px,1.1vw,16px);color:rgba(255,255,255,.8)}
+.cf-lemon__title{font-family:var(--fhead);font-size:clamp(40px,7vw,108px);line-height:1.02;margin:14px 0 18px;color:#fff}
+.cf-lemon__lead{font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:rgba(255,255,255,.9);max-width:620px;margin:0 auto 34px}
+.cf-lemon .ea-btn{background:#fff;color:var(--wine)}
+.cf-lemon .ea-btn:hover{background:var(--ink);color:#fff}
+.cf-lemon__chips{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.cf-lemon__chip{border:1px solid rgba(255,255,255,.45);border-radius:40px;padding:9px 20px;font-family:var(--fdisplay);
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+
+/* ── АКЦЕНТНЫЕ ДЕТАЛИ в пустых углах (цветок-иконка, как на брендинге) ── */
+.cf-accent{position:absolute;z-index:4;pointer-events:none;opacity:.9}
+.cf-accent svg{display:block;width:100%;height:100%}
+.cf-accent--tl{top:clamp(16px,3vw,40px);left:clamp(16px,3vw,40px)}
+.cf-accent--br{bottom:clamp(16px,3vw,40px);right:clamp(16px,3vw,40px)}
+.cf-flower{width:clamp(44px,5vw,82px);height:auto}
+.cf-flower path{fill:currentColor}
+
+/* подпись «PALOMA × YOU» по дуге — декоративная лента */
+.cf-ribbon{font-family:var(--fdisplay);font-size:clamp(11px,1vw,13px);letter-spacing:.36em;text-transform:uppercase;color:var(--muted)}
+
+/* ── МОДАЛКА позиции меню (как карточка букета) ── */
+.cf-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:5vh 5vw;
+  background:rgba(40,24,12,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.cf-modal.is-open{display:flex}
+.cf-modal__panel{position:relative;display:grid;grid-template-columns:1fr 1fr;max-width:900px;width:100%;max-height:88vh;
+  background:var(--paper2);box-shadow:0 50px 120px rgba(20,12,8,.5);overflow:hidden;animation:cfPop .4s var(--eease)}
+@keyframes cfPop{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.cf-modal__img{background-size:cover;background-position:center;background-color:#cfc3b0;min-height:340px}
+.cf-modal__body{padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;justify-content:center}
+.cf-modal__cat{font-family:var(--fdisplay);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cf-modal__title{font-family:var(--fhead);font-size:clamp(30px,3.2vw,48px);color:var(--wine);line-height:1.05;margin:8px 0 16px}
+.cf-modal__desc{font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--body);margin-bottom:20px}
+.cf-modal__meta{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--eline);
+  border-bottom:1px solid var(--eline);padding:16px 0;margin-bottom:24px}
+.cf-modal__vol{font-family:var(--fdisplay);font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.cf-modal__price{font-family:var(--fhead);font-size:clamp(26px,2.4vw,36px);color:var(--wine)}
+.cf-modal__close{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:none;
+  background:rgba(244,242,234,.9);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center;z-index:2;transition:.3s}
+.cf-modal__close:hover{background:var(--wine);color:#fff}
+.cf-modal__added{font-family:var(--fdisplay);font-size:13px;color:var(--wine);margin-top:14px;opacity:0;transition:.3s}
+.cf-modal__added.is-on{opacity:1}
+body.cf-modal-open{overflow:hidden}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .ea-hero--mirror .ea-hero__left{order:0;border-left:none}
+  .ea-hero--mirror .ea-hero__right{order:0}
+  .cf-menu__row{grid-template-columns:auto 1fr auto;gap:10px 16px}
+  .cf-menu__vol{display:none}
+  .cf-menu__desc{grid-column:1/-1}
+  .cf-modal__panel{grid-template-columns:1fr;max-height:92vh;overflow-y:auto}
+  .cf-modal__img{min-height:230px}
+}
