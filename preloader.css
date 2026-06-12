@@ -58,11 +58,11 @@ body.is-paloma-loading {
 }
 
 .paloma-page-loader__logo-base {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Italiana', Georgia, serif;
   font-size: clamp(22px, 3.2vw, 44px);
-  font-weight: 300;
+  font-weight: 400;
   font-style: normal;
-  letter-spacing: 0.44em;
+  letter-spacing: 0.30em;
   text-transform: uppercase;
   color: #741827;
   display: block;
@@ -73,15 +73,16 @@ body.is-paloma-loading {
   display: none;
 }
 
-/* ── Подпись — Great Vibes как в герое ── */
+/* ── Подпись логотипа — Italiana, как в вордмарке ── */
 .paloma-page-loader__tagline {
   position: relative;
   z-index: 2;
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(22px, 2.8vw, 36px);
+  font-family: 'Italiana', serif;
+  font-style: normal;
+  font-size: clamp(13px, 1.6vw, 19px);
   font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: none;
+  letter-spacing: 0.32em;
+  text-transform: lowercase;
   color: rgba(116, 24, 39, 0.52);
   opacity: 0;
   transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.42s,

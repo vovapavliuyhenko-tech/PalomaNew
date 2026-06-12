@@ -88,10 +88,10 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .paloma-cover__word {
   margin: 0;
-  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-family: var(--logo);
   font-size: clamp(64px, 18vw, 290px);
-  font-weight: 300;
-  font-style: italic;
+  font-weight: 400;
+  font-style: normal;
   line-height: 0.88;
   color: #f7f1e8;
   letter-spacing: -0.02em;
@@ -104,11 +104,12 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .paloma-cover__tagline {
   margin-top: clamp(14px, 2.2vw, 32px);
-  font-family: 'Great Vibes', cursive;
-  font-size: 38px;
+  font-family: var(--logo);
+  font-style: normal;
+  font-size: clamp(16px, 2vw, 26px);
   font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: none;
+  letter-spacing: 0.28em;
+  text-transform: lowercase;
   color: rgba(247, 241, 232, 0.58);
   opacity: 0;
   animation: coverFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.15s forwards;

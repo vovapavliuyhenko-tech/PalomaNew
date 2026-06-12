@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Classica One — заголовки и логотип (отрисован в этом шрифте) */
+@font-face {
+  font-family: 'Classica One';
+  src: url('fonts/classica-one.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -29,10 +40,13 @@
   --coffee-tone: #3b2a20;
   --pollen: #ffd353;
 
-  --serif: "Italiana", "Times New Roman", serif;
-  --ital: "Cormorant Garamond", serif;
-  --sans: "Manrope", system-ui, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, monospace;
+  /* Логотип PALOMA — высококонтрастный сериф, как в нарисованном файле */
+  --logo: "Italiana", "Times New Roman", serif;
+  /* Крупные заголовки — рукописный Classica One; текст/подзаголовки — Montserrat 275 italic */
+  --serif: "Classica One", "Italiana", cursive;
+  --ital: "Montserrat", system-ui, sans-serif;
+  --sans: "Montserrat", system-ui, sans-serif;
+  --mono: "Montserrat", system-ui, sans-serif;
 
   --container: 1440px;
   --gutter: clamp(20px, 4vw, 64px);
@@ -91,6 +105,8 @@
   --color-white: var(--ivory);
   --font-display: var(--serif);
   --font-sans: var(--sans);
+  --font-mono: var(--mono);
+  --font-ital: var(--ital);
 }
 
 ::selection {
@@ -134,6 +150,11 @@ html {
 
 body {
   font-family: var(--sans);
+  /* весь текст — Montserrat 275 Italic; заголовки на Classica One остаются
+     прямыми, т.к. у Classica нет курсива, а синтез отключён */
+  font-weight: 275;
+  font-style: italic;
+  font-synthesis: none;
   color: var(--coal);
   background: var(--ivory);
   font-size: 15px;
@@ -142,6 +163,32 @@ body {
   text-rendering: optimizeLegibility;
   padding-top: 0;
   overflow-x: hidden;
+}
+
+/* Заголовки и логотип (Classica One) — всегда прямые, без курсива */
+h1, h2, h3, h4, h5, h6,
+.site-header__logo-word, .footer-logo__text {
+  font-style: normal;
+}
+
+/* Classica One (рукописный) — ТОЛЬКО для крупных заголовков секций.
+   Имена товаров/карточек, мелкие подзаголовки и функц. лейблы — Montserrat. */
+[class*="card__title"], [class*="item__title"], [class*="card-title"],
+[class*="case-title"], [class*="__name"], [class*="__link"], [class*="__label"],
+[class*="__price"], [class*="__tagline"], [class*="__q"], [class*="__total"],
+.home-categories__item, .home-categories__all, .home-subscription__link,
+.footer-contacts__phone, .home-marquee__item, .paloma-cover__cta-arrow,
+.product-modal__title, .cart-drawer__title, .cart-drawer__empty-title,
+.pdp-addons__title, .pdp-similar__title, .cof-add__title, .cof-stages__title,
+.sub-step__title, .w-cta-float__text, .w-form__success, .w-intro__principle,
+.co-empty__title, .co-summary__title, .co-payment__title,
+.cart-page-empty__title, .cart-page-summary__title, .cart-addons__title {
+  font-family: var(--sans) !important;
+}
+/* логотип-таглайны и бренд-имя (Italiana) — исключение из правила выше */
+.footer-logo__sub, .paloma-cover__tagline, .paloma-page-loader__tagline,
+.contacts-studio__brand, .co-header__logo {
+  font-family: var(--logo) !important;
 }
 
 body.is-home {
@@ -402,7 +449,7 @@ body.is-paloma-loading .custom-cursor {
 }
 
 .site-header__logo-word {
-  font-family: var(--serif);
+  font-family: var(--logo);
   font-size: clamp(18px, 1.9vw, 22px);
   letter-spacing: 0.18em;
   color: var(--graphite);
@@ -410,7 +457,8 @@ body.is-paloma-loading .custom-cursor {
 }
 
 .site-header__logo-tag {
-  font-family: var(--mono);
+  font-family: var(--logo);
+  font-style: normal;
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -7847,7 +7895,7 @@ body.event-decoration-page .client-hero {
 }
 
 .footer-logo__text {
-  font-family: var(--font-display, 'Italiana', serif);
+  font-family: var(--logo);
   font-size: clamp(22px, 2.5vw, 32px);
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -7856,7 +7904,8 @@ body.event-decoration-page .client-hero {
 }
 
 .footer-logo__sub {
-  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-family: var(--logo);
+  font-style: normal;
   font-size: 9px;
   letter-spacing: 0.22em;
   text-transform: lowercase;
@@ -8025,7 +8074,7 @@ body.event-decoration-page .client-hero {
   overflow: visible;
 }
 .footer-brand__text text {
-  font-family: var(--font-display, 'Italiana', serif);
+  font-family: var(--logo);
   font-weight: 400;
   fill: rgba(251, 246, 232, 0.06);
 }
