@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=13">
-  <link rel="stylesheet" href="event-author.css?v=25">
+  <link rel="stylesheet" href="event-author.css?v=26">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -274,12 +274,47 @@
 
     <!-- HERO -->
     <section class="ea-panel ea-hero" id="top">
-      <div class="ea-hero__left">
-        <img class="ea-hero__bg" src="images/paloma/wedding/wedding-detail.jpg" alt="">
-        <figure class="ea-hero__frame" data-reveal>
-          <img src="images/paloma/wedding/hero.jpg" alt="Оформление свадьбы PALOMA">
-          <figcaption class="ea-hero__cap"><span>Вероника и Александр</span><span class="ea-hero__cap-city">[ Новороссийск ]</span><b>14.06.2026</b></figcaption>
-        </figure>
+      <div class="ea-hero__left" id="eaHero">
+        <div class="ea-hero__track" id="eaHeroTrack">
+          <div class="ea-hero__slide is-active">
+            <img class="ea-hero__bg" src="images/paloma/hero/hero-cover-dark.jpg" alt="">
+            <figure class="ea-hero__frame">
+              <img src="images/paloma/wedding/hero.jpg" alt="Оформление свадьбы PALOMA — Вероника и Александр">
+              <figcaption class="ea-hero__cap"><span>Вероника и Александр</span><span class="ea-hero__cap-city">[ Новороссийск ]</span><b>14.06.2026</b></figcaption>
+            </figure>
+          </div>
+          <div class="ea-hero__slide">
+            <img class="ea-hero__bg" src="images/paloma/wedding/wedding-detail.jpg" alt="">
+            <figure class="ea-hero__frame">
+              <img src="images/paloma/events/event-01.jpg" alt="Оформление PALOMA — Анастасия и Александр">
+              <figcaption class="ea-hero__cap"><span>Анастасия и Александр</span><span class="ea-hero__cap-city">[ Геленджик ]</span><b>02.06.2026</b></figcaption>
+            </figure>
+          </div>
+          <div class="ea-hero__slide">
+            <img class="ea-hero__bg" src="images/paloma/events/event-02.jpg" alt="">
+            <figure class="ea-hero__frame">
+              <img src="images/paloma/events/event-03.jpg" alt="Оформление PALOMA — Марина и Илья">
+              <figcaption class="ea-hero__cap"><span>Марина и Илья</span><span class="ea-hero__cap-city">[ Анапа ]</span><b>18.07.2026</b></figcaption>
+            </figure>
+          </div>
+          <div class="ea-hero__slide">
+            <img class="ea-hero__bg" src="images/paloma/hero/hero-v3-vase.jpg" alt="">
+            <figure class="ea-hero__frame">
+              <img src="images/paloma/hero/hero-v2-editorial.jpg" alt="Оформление PALOMA — Дарья и Сергей">
+              <figcaption class="ea-hero__cap"><span>Дарья и Сергей</span><span class="ea-hero__cap-city">[ Сочи ]</span><b>09.09.2026</b></figcaption>
+            </figure>
+          </div>
+          <div class="ea-hero__slide">
+            <img class="ea-hero__bg" src="images/paloma/hero/hero-main.jpg" alt="">
+            <figure class="ea-hero__frame">
+              <img src="images/paloma/hero/hero-light.jpg" alt="Оформление PALOMA — Елена и Дмитрий">
+              <figcaption class="ea-hero__cap"><span>Елена и Дмитрий</span><span class="ea-hero__cap-city">[ Краснодар ]</span><b>14.08.2026</b></figcaption>
+            </figure>
+          </div>
+        </div>
+        <button type="button" class="ea-hero__arrow ea-hero__arrow--prev" id="eaHeroPrev" aria-label="Предыдущее" data-cursor="hover">&lsaquo;</button>
+        <button type="button" class="ea-hero__arrow ea-hero__arrow--next" id="eaHeroNext" aria-label="Следующее" data-cursor="hover">&rsaquo;</button>
+        <div class="ea-hero__dots" id="eaHeroDots" aria-hidden="true"></div>
       </div>
       <div class="ea-hero__right">
         <span class="ea-hero__logo" data-reveal>PALOMA</span>
@@ -806,6 +841,29 @@
     /* reveal по скроллу */
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.12});
     document.querySelectorAll('.ea-page [data-reveal]').forEach(function(el){io.observe(el);});
+
+    /* HERO-СЛАЙДЕР: фон + фото-рамка меняются вместе, авто-прокрутка + стрелки */
+    (function(){
+      var track=document.getElementById('eaHeroTrack'); if(!track)return;
+      var slides=[].slice.call(track.querySelectorAll('.ea-hero__slide'));
+      var n=slides.length; if(n<2)return;
+      var dotsBox=document.getElementById('eaHeroDots'), i=0, timer=null;
+      var dots=slides.map(function(_,k){var d=document.createElement('button');d.type='button';
+        d.className='ea-hero__dot'+(k===0?' is-on':'');d.setAttribute('aria-label','Слайд '+(k+1));
+        d.addEventListener('click',function(){go(k);restart();});dotsBox.appendChild(d);return d;});
+      function go(k){ i=(k+n)%n; track.style.transform='translateX(-'+(i*100/n)+'%)';
+        slides.forEach(function(s,j){s.classList.toggle('is-active',j===i);});
+        dots.forEach(function(d,j){d.classList.toggle('is-on',j===i);}); }
+      function next(){go(i+1);} function prev(){go(i-1);}
+      function start(){timer=setInterval(next,5000);} function stop(){clearInterval(timer);}
+      function restart(){stop();start();}
+      var pn=document.getElementById('eaHeroNext'),pp=document.getElementById('eaHeroPrev');
+      if(pn)pn.addEventListener('click',function(){next();restart();});
+      if(pp)pp.addEventListener('click',function(){prev();restart();});
+      var box=document.getElementById('eaHero');
+      if(box){box.addEventListener('mouseenter',stop);box.addEventListener('mouseleave',start);}
+      go(0); start();
+    })();
 
     /* ПОРТФОЛИО: карусель в карточке (стрелки/точки) + попап по клику */
     (function(){
