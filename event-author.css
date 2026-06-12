@@ -77,11 +77,14 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-hero{display:grid;grid-template-columns:1fr 1fr;background:var(--paper2)}
 /* ── HERO-СЛАЙДЕР: фон + центральное фото-рамка меняются вместе (как eventauthor) ── */
 .ea-hero__left{position:relative;overflow:hidden;background:#e7e1d4}
-.ea-hero__track{display:flex;height:100%;transition:transform .8s cubic-bezier(.5,0,.1,1)}
+.ea-hero__track{display:flex;height:100%;transition:transform .55s cubic-bezier(.5,0,.1,1)}
 .ea-hero__slide{position:relative;flex:0 0 100%;display:flex;align-items:center;justify-content:center;
   padding:clamp(120px,15vh,170px) clamp(24px,4vw,56px) clamp(40px,6vh,72px)}
 .ea-hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);z-index:0}
-.ea-hero__slide.is-active .ea-hero__bg{animation:eaKen 6s ease-out forwards}
+/* тёмная вуаль поверх фона — белая рамка и подпись читаются на любом фото */
+.ea-hero__slide::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,12,8,.42),rgba(20,12,8,.52))}
+.ea-hero__slide.is-active .ea-hero__bg{animation:eaKen 4.5s ease-out forwards}
 @keyframes eaKen{from{transform:scale(1.02)}to{transform:scale(1.12)}}
 .ea-hero__arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:48px;height:48px;border-radius:50%;
   border:1px solid rgba(255,255,255,.55);background:rgba(20,12,8,.22);color:#fff;font-size:24px;line-height:1;cursor:pointer;

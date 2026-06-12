@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=13">
-  <link rel="stylesheet" href="event-author.css?v=26">
+  <link rel="stylesheet" href="event-author.css?v=27">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -277,38 +277,38 @@
       <div class="ea-hero__left" id="eaHero">
         <div class="ea-hero__track" id="eaHeroTrack">
           <div class="ea-hero__slide is-active">
-            <img class="ea-hero__bg" src="images/paloma/hero/hero-cover-dark.jpg" alt="">
+            <img class="ea-hero__bg" src="images/paloma/events/hero-bg-1.jpg" alt="">
             <figure class="ea-hero__frame">
-              <img src="images/paloma/wedding/hero.jpg" alt="Оформление свадьбы PALOMA — Вероника и Александр">
-              <figcaption class="ea-hero__cap"><span>Вероника и Александр</span><span class="ea-hero__cap-city">[ Новороссийск ]</span><b>14.06.2026</b></figcaption>
+              <img src="images/paloma/events/hero-1.jpg" alt="Авторский букет PALOMA">
+              <figcaption class="ea-hero__cap"><span>Авторский букет</span><span class="ea-hero__cap-city">[ Новороссийск ]</span><b>Лето 2026</b></figcaption>
             </figure>
           </div>
           <div class="ea-hero__slide">
-            <img class="ea-hero__bg" src="images/paloma/wedding/wedding-detail.jpg" alt="">
+            <img class="ea-hero__bg" src="images/paloma/events/hero-bg-2.jpg" alt="">
             <figure class="ea-hero__frame">
-              <img src="images/paloma/events/event-01.jpg" alt="Оформление PALOMA — Анастасия и Александр">
-              <figcaption class="ea-hero__cap"><span>Анастасия и Александр</span><span class="ea-hero__cap-city">[ Геленджик ]</span><b>02.06.2026</b></figcaption>
+              <img src="images/paloma/events/hero-2.jpg" alt="Свадебная флористика PALOMA">
+              <figcaption class="ea-hero__cap"><span>Свадебная флористика</span><span class="ea-hero__cap-city">[ Новороссийск ]</span><b>Весна 2026</b></figcaption>
             </figure>
           </div>
           <div class="ea-hero__slide">
-            <img class="ea-hero__bg" src="images/paloma/events/event-02.jpg" alt="">
+            <img class="ea-hero__bg" src="images/paloma/events/hero-bg-3.jpg" alt="">
             <figure class="ea-hero__frame">
-              <img src="images/paloma/events/event-03.jpg" alt="Оформление PALOMA — Марина и Илья">
-              <figcaption class="ea-hero__cap"><span>Марина и Илья</span><span class="ea-hero__cap-city">[ Анапа ]</span><b>18.07.2026</b></figcaption>
+              <img src="images/paloma/events/hero-3.jpg" alt="Цветочная студия PALOMA">
+              <figcaption class="ea-hero__cap"><span>Цветочная студия</span><span class="ea-hero__cap-city">[ Новороссийск ]</span><b>Осень 2026</b></figcaption>
             </figure>
           </div>
           <div class="ea-hero__slide">
-            <img class="ea-hero__bg" src="images/paloma/hero/hero-v3-vase.jpg" alt="">
+            <img class="ea-hero__bg" src="images/paloma/events/hero-bg-4.jpg" alt="">
             <figure class="ea-hero__frame">
-              <img src="images/paloma/hero/hero-v2-editorial.jpg" alt="Оформление PALOMA — Дарья и Сергей">
-              <figcaption class="ea-hero__cap"><span>Дарья и Сергей</span><span class="ea-hero__cap-city">[ Сочи ]</span><b>09.09.2026</b></figcaption>
+              <img src="images/paloma/events/hero-4.jpg" alt="Цветы в коробке PALOMA">
+              <figcaption class="ea-hero__cap"><span>Цветы в коробке</span><span class="ea-hero__cap-city">[ Новороссийск ]</span><b>Лето 2026</b></figcaption>
             </figure>
           </div>
           <div class="ea-hero__slide">
-            <img class="ea-hero__bg" src="images/paloma/hero/hero-main.jpg" alt="">
+            <img class="ea-hero__bg" src="images/paloma/events/hero-bg-5.jpg" alt="">
             <figure class="ea-hero__frame">
-              <img src="images/paloma/hero/hero-light.jpg" alt="Оформление PALOMA — Елена и Дмитрий">
-              <figcaption class="ea-hero__cap"><span>Елена и Дмитрий</span><span class="ea-hero__cap-city">[ Краснодар ]</span><b>14.08.2026</b></figcaption>
+              <img src="images/paloma/events/hero-5.jpg" alt="Оформление события PALOMA">
+              <figcaption class="ea-hero__cap"><span>Оформление события</span><span class="ea-hero__cap-city">[ Новороссийск ]</span><b>Осень 2026</b></figcaption>
             </figure>
           </div>
         </div>
@@ -855,7 +855,7 @@
         slides.forEach(function(s,j){s.classList.toggle('is-active',j===i);});
         dots.forEach(function(d,j){d.classList.toggle('is-on',j===i);}); }
       function next(){go(i+1);} function prev(){go(i-1);}
-      function start(){timer=setInterval(next,5000);} function stop(){clearInterval(timer);}
+      function start(){timer=setInterval(next,3000);} function stop(){clearInterval(timer);}
       function restart(){stop();start();}
       var pn=document.getElementById('eaHeroNext'),pp=document.getElementById('eaHeroPrev');
       if(pn)pn.addEventListener('click',function(){next();restart();});
