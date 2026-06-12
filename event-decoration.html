@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=13">
-  <link rel="stylesheet" href="event-author.css?v=27">
+  <link rel="stylesheet" href="event-author.css?v=32">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -435,8 +435,8 @@
 
   <div class="ea-stack">
 
-    <!-- SERVICES -->
-    <section class="ea-panel ea-serv" id="services">
+    <!-- SERVICES — интро + 2 полноэкранные «шторки» с фото и карточкой -->
+    <section class="ea-panel ea-serv-intro ea-panel--pad" id="services">
       <div class="ea-serv__intro">
         <div class="ea-serv__col">
           <span class="ea-eyebrow" data-reveal>our services</span>
@@ -447,37 +447,42 @@
           <p data-reveal style="--d:.06s">От концепции и палитры до монтажа в день события — мы берём цветочную часть на себя, чтобы вы наслаждались моментом <em>спокойно</em></p>
         </div>
       </div>
-      <div class="ea-serv__row" data-reveal>
-        <img src="images/paloma/events/event-02.jpg" alt="">
-        <div class="ea-serv__card">
-          <span class="ea-serv__num">01</span>
-          <h3 class="ea-serv__ctitle">Оформление свадьбы включает:</h3>
-          <img class="ea-serv__thumb" src="images/paloma/catalog/c18.jpg" alt="">
-          <p class="ea-serv__slash">Букет невесты и бутоньерки / Арка и зона церемонии / Композиции на столы гостей / Президиум и welcome-зона / Фотозона и детали образа / Подбор палитры и сезонных цветов</p>
-          <div class="ea-serv__price">Стоимость<b>от 60 000 ₽</b></div>
-        </div>
+    </section>
+    <section class="ea-panel ea-svc">
+      <img class="ea-svc__bg" src="images/paloma/events/event-02.jpg" alt="">
+      <div class="ea-serv__card" data-reveal>
+        <span class="ea-serv__num">01</span>
+        <h3 class="ea-serv__ctitle">Оформление свадьбы включает:</h3>
+        <img class="ea-serv__thumb" src="images/paloma/catalog/c18.jpg" alt="">
+        <p class="ea-serv__slash">Букет невесты и бутоньерки / Арка и зона церемонии / Композиции на столы гостей / Президиум и welcome-зона / Фотозона и детали образа / Подбор палитры и сезонных цветов</p>
+        <div class="ea-serv__price">Стоимость<b>от 60 000 ₽</b></div>
       </div>
-      <div class="ea-serv__row ea-serv__row--top" data-reveal>
-        <img src="images/paloma/events/event-03.jpg" alt="">
-        <div class="ea-serv__card">
-          <span class="ea-serv__num">02</span>
-          <h3 class="ea-serv__ctitle">Оформление частного события включает:</h3>
-          <img class="ea-serv__thumb" src="images/paloma/catalog/c13.jpg" alt="">
-          <p class="ea-serv__slash">Декор зоны и фотозоны / Цветочные композиции на столы / Подвесы и инсталляции / Оформление входа и welcome-зоны / Букеты и подарочная флористика гостям</p>
-          <div class="ea-serv__price">Стоимость<b>от 25 000 ₽</b></div>
-        </div>
+    </section>
+    <section class="ea-panel ea-svc">
+      <img class="ea-svc__bg" src="images/paloma/events/event-03.jpg" alt="">
+      <div class="ea-serv__card" data-reveal>
+        <span class="ea-serv__num">02</span>
+        <h3 class="ea-serv__ctitle">Оформление частного события включает:</h3>
+        <img class="ea-serv__thumb" src="images/paloma/catalog/c13.jpg" alt="">
+        <p class="ea-serv__slash">Декор зоны и фотозоны / Цветочные композиции на столы / Подвесы и инсталляции / Оформление входа и welcome-зоны / Букеты и подарочная флористика гостям</p>
+        <div class="ea-serv__price">Стоимость<b>от 25 000 ₽</b></div>
       </div>
     </section>
 
-    <!-- PROCESS -->
-    <section class="ea-panel ea-proc ea-panel--pad" id="process">
-      <span class="ea-eyebrow" data-reveal>our process</span>
-      <h2 class="ea-title" data-reveal style="--d:.05s">Процесс оформления<br>вашего события</h2>
-      <p class="ea-proc__lead" data-reveal style="--d:.1s">На пути подготовки мы пройдём несколько этапов, каждый из которых приблизит вас к событию вашей мечты.</p>
-      <div class="ea-proc__grid">
-        <div class="ea-step" data-reveal><div class="ea-step__num">01 / знакомство</div><div class="ea-step__t">Знакомство</div><div class="ea-step__d">Мы всегда начинаем со знакомства. Вы рассказываете о событии, площадке, дате и пожеланиях, а мы — о процессе работы и возможностях воплощения вашего оформления.</div></div>
-        <div class="ea-step" data-reveal style="--d:.07s"><div class="ea-step__num">02 / планирование</div><div class="ea-step__t">Планирование</div><div class="ea-step__d">Мы найдём ваш стиль, соберём палитру, подберём сезонные цветы, составим смету и продумаем каждую зону — создавая концепцию вашего незабываемого события.</div></div>
-        <div class="ea-step" data-reveal style="--d:.14s"><div class="ea-step__num">03 / событие</div><div class="ea-step__t">Событие</div><div class="ea-step__d">В ваш самый важный день мы берём на себя монтаж и все цветочные процессы, чтобы вы были спокойны, а праздник прошёл именно так, как вы мечтали.</div></div>
+    <!-- PROCESS — самостоятельная горизонтальная прокрутка при скролле -->
+    <section class="ea-proc" id="process">
+      <div class="ea-proc__sticky">
+        <div class="ea-proc__track" id="eaProcTrack">
+          <div class="ea-proc__panel ea-proc__intro">
+            <span class="ea-eyebrow">our process</span>
+            <h2 class="ea-title">Процесс оформления<br>вашего события</h2>
+            <p class="ea-proc__lead">На пути подготовки мы пройдём несколько этапов, каждый из которых приблизит вас к событию вашей мечты. Листайте вниз →</p>
+          </div>
+          <div class="ea-proc__panel ea-proc-step"><div class="ea-step__num">01 / знакомство</div><div class="ea-step__t">Знакомство</div><div class="ea-step__d">Мы всегда начинаем со знакомства. Вы рассказываете о событии, площадке, дате и пожеланиях, а мы — о процессе работы и возможностях воплощения вашего оформления.</div></div>
+          <div class="ea-proc__panel ea-proc-step"><div class="ea-step__num">02 / планирование</div><div class="ea-step__t">Планирование</div><div class="ea-step__d">Мы найдём ваш стиль, соберём палитру, подберём сезонные цветы, составим смету и продумаем каждую зону — создавая концепцию вашего незабываемого события.</div></div>
+          <div class="ea-proc__panel ea-proc-step"><div class="ea-step__num">03 / событие</div><div class="ea-step__t">Событие</div><div class="ea-step__d">В ваш самый важный день мы берём на себя монтаж и все цветочные процессы, чтобы вы были спокойны, а праздник прошёл именно так, как вы мечтали.</div></div>
+        </div>
+        <div class="ea-proc__progress"><div class="ea-proc__progress-bar" id="eaProcBar"></div></div>
       </div>
     </section>
 
@@ -863,6 +868,28 @@
       var box=document.getElementById('eaHero');
       if(box){box.addEventListener('mouseenter',stop);box.addEventListener('mouseleave',start);}
       go(0); start();
+    })();
+
+    /* ПРОЦЕСС: горизонтальная прокрутка скроллом (scroll-jack) */
+    (function(){
+      var sec=document.getElementById('process');
+      var track=document.getElementById('eaProcTrack');
+      var bar=document.getElementById('eaProcBar');
+      if(!sec||!track)return;
+      function update(){
+        var rect=sec.getBoundingClientRect();
+        var dist=sec.offsetHeight-window.innerHeight;
+        if(dist<=0)return;
+        var p=Math.min(1,Math.max(0,(-rect.top)/dist));
+        var max=track.scrollWidth-window.innerWidth;
+        if(max<0)max=0;
+        track.style.transform='translateX(-'+(p*max).toFixed(2)+'px)';
+        if(bar)bar.style.width=(p*100).toFixed(1)+'%';
+      }
+      var onScroll=update;
+      window.addEventListener('scroll',onScroll,{passive:true});
+      window.addEventListener('resize',onScroll);
+      update();
     })();
 
     /* ПОРТФОЛИО: карусель в карточке (стрелки/точки) + попап по клику */

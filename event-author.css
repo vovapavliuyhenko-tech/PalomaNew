@@ -60,18 +60,21 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-page [data-reveal]{opacity:0;transform:translateY(38px);transition:opacity 1s var(--eease),transform 1s var(--eease);transition-delay:var(--d,0s)}
 .ea-page [data-reveal].is-in{opacity:1;transform:none}
 
-/* ── ШТОРКА-СТЕК: вступительные секции наезжают друг на друга (безопасно) ──
-   Стек применяется ТОЛЬКО к full-viewport секциям (hero+philosophy),
-   чтобы контент-богатые блоки ниже никогда не обрезались. */
+/* ── ШТОРКА-СТЕК: каждая секция липкая (sticky) и ровно 100vh — следующая
+   наезжает «шторкой» поверх предыдущей. Контент каждой панели помещается
+   в экран, поэтому обрезки нет. Портфолио (.ea-hx) — обычный поток (высокое),
+   сервис-панели наезжают на него. */
+/* main{overflow-x:hidden} делает <main> скролл-контейнером (overflow-y:auto)
+   и ломает position:sticky. clip убирает горизонт. прокрутку, но НЕ создаёт
+   скролл-контейнер — sticky-шторка снова работает. */
+.event-decoration-page main{overflow-x:clip;overflow-y:visible}
 .ea-stack{position:relative;z-index:1}
-.ea-panel{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.ea-panel{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;box-shadow:0 -24px 60px rgba(74,53,38,.16)}
 .ea-panel--pad{padding:var(--ea-py) var(--ea-px)}
 .ea-panel--pad>*{width:100%;max-width:var(--ea-maxw);margin-left:auto;margin-right:auto}
 .ea-panel--pad>.ea-eyebrow{margin-bottom:12px}
 .ea-panel--pad>.ea-title{margin-bottom:10px}
-/* curtain только на hero и philosophy */
-.ea-hero,.ea-philo{position:sticky;top:0;min-height:100vh;
-  box-shadow:0 -24px 60px rgba(74,53,38,.12)}
 
 /* ── HERO ── */
 .ea-hero{display:grid;grid-template-columns:1fr 1fr;background:var(--paper2)}
@@ -112,8 +115,8 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* ── PHILOSOPHY ── */
 .ea-philo{display:grid;grid-template-columns:1fr 1fr;background:var(--paper)}
 .ea-philo__text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  padding:var(--ea-py) clamp(36px,5vw,80px);border-right:1px solid var(--eline)}
-.ea-philo__text .ea-title{margin:16px 0 30px}
+  padding:clamp(56px,7vh,120px) clamp(36px,5vw,80px);border-right:1px solid var(--eline)}
+.ea-philo__text .ea-title{margin:12px 0 22px}
 .ea-philo__p{font-family:var(--fsans);font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.75;color:var(--body);max-width:560px}
 .ea-philo__name{font-family:var(--fdisplay);font-weight:400;font-size:clamp(21px,1.7vw,27px);color:var(--ink);margin-top:34px;letter-spacing:.02em}
 .ea-philo__role{font-family:var(--fdisplay);font-size:12px;letter-spacing:.24em;text-transform:lowercase;color:var(--muted);margin-top:8px}
@@ -153,39 +156,47 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proj__meta{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--fdisplay);
   font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .ea-proj__city{color:var(--ink)}
-.ea-proj__name{font-family:var(--fdisplay);font-weight:500;font-size:clamp(23px,2.1vw,32px);color:var(--wine);
-  line-height:1.12;margin:16px 0 14px;letter-spacing:.01em}
+.ea-proj__name{font-family:var(--fhead)!important;font-weight:400;font-size:clamp(30px,3vw,46px);color:var(--wine);
+  line-height:1.05;margin:14px 0 16px;letter-spacing:.01em}
 .ea-proj__text{font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--body)}
 
-/* ── SERVICES — «our services» ── */
-.ea-serv{background:var(--paper);border-top:1px solid var(--cream-line)}
+/* ── SERVICES — интро-панель + две ПОЛНОЭКРАННЫЕ панели (фото на весь экран
+   + карточка с текстом), которые «шторкой» наезжают на предыдущую ── */
+.ea-serv-intro{background:var(--paper)}
 .ea-serv__intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,90px);align-items:center;
-  max-width:var(--ea-maxw);margin:0 auto;width:100%;padding:var(--ea-py) var(--ea-px) clamp(40px,4vw,66px)}
+  max-width:var(--ea-maxw);margin:0 auto;width:100%}
 .ea-serv__intro .ea-title{margin-top:16px}
 .ea-serv__col p{font-weight:400;font-size:clamp(15px,1.1vw,17px);line-height:1.85;color:var(--body);margin-bottom:20px}
 .ea-serv__col em{font-style:normal;color:var(--wine)}
-.ea-serv__row{position:relative;min-height:64vh;display:flex;align-items:flex-end;overflow:hidden}
-.ea-serv__row img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ea-serv__card{position:relative;z-index:2;background:var(--paper2);margin:0 0 0 var(--ea-px);padding:clamp(32px,3vw,52px);
-  width:min(42vw,480px);box-shadow:0 34px 76px rgba(40,24,12,.22)}
+/* полноэкранная панель услуги (sticky наследуется от .ea-panel — шторка) */
+.ea-svc{justify-content:center;align-items:flex-start;background:#cfc3b0}
+.ea-svc__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.ea-svc::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(20,12,8,.5),rgba(20,12,8,.14) 58%,rgba(20,12,8,.04))}
+.ea-serv__card{position:relative;z-index:2;background:var(--paper2);margin-left:clamp(20px,7vw,120px);
+  padding:clamp(34px,3vw,54px);width:min(48vw,520px);box-shadow:0 40px 100px rgba(20,12,8,.45)}
 .ea-serv__num{font-family:var(--fdisplay);font-size:18px;color:var(--muted);letter-spacing:.24em}
-.ea-serv__ctitle{font-family:var(--fdisplay);font-weight:500;font-size:clamp(22px,2.3vw,32px);color:var(--wine);margin:10px 0 22px;line-height:1.18}
-.ea-serv__price{font-family:var(--fdisplay);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.ea-serv__price b{display:block;font-family:var(--fdisplay);font-size:26px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--wine);margin-top:6px}
-.ea-serv__row--top{align-items:flex-start}
-.ea-serv__row--top .ea-serv__card{margin-top:clamp(40px,7vh,90px)}
-.ea-serv__thumb{width:120px;height:120px;object-fit:cover;margin:2px 0 22px;box-shadow:0 14px 32px rgba(40,24,12,.18)}
+.ea-serv__ctitle{font-family:var(--fdisplay);font-weight:500;font-size:clamp(22px,2.4vw,34px);color:var(--wine);margin:10px 0 22px;line-height:1.18;text-transform:uppercase;letter-spacing:.01em}
+.ea-serv__thumb{width:118px;height:118px;object-fit:cover;margin:2px 0 22px;box-shadow:0 14px 32px rgba(40,24,12,.18)}
 .ea-serv__slash{font-size:15px;line-height:1.85;color:var(--body);font-weight:400;margin-bottom:24px}
+.ea-serv__price{font-family:var(--fdisplay);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.ea-serv__price b{display:block;font-family:var(--fdisplay);font-size:28px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--wine);margin-top:6px}
 
-/* ── PROCESS — «our process»: 3 этапа на кремовом фоне ── */
-.ea-proc{background:var(--paper2);border-top:1px solid var(--cream-line)}
-.ea-proc__lead{max-width:760px;margin:18px auto 0;font-size:clamp(15px,1.1vw,17px);line-height:1.8;color:var(--body);text-align:center}
-.ea-proc>.ea-eyebrow,.ea-proc>.ea-title,.ea-proc>.ea-proc__lead{text-align:center}
-.ea-proc__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3vw,56px);margin-top:clamp(48px,5vw,80px)}
-.ea-step{padding:36px 30px 0;border-top:2px solid var(--wine)}
-.ea-step__num{font-family:var(--fdisplay);font-size:clamp(15px,1.2vw,18px);color:var(--wine);letter-spacing:.14em;text-transform:lowercase}
-.ea-step__t{font-family:var(--fdisplay);font-size:clamp(24px,2.2vw,32px);font-weight:400;margin:14px 0 16px;color:var(--ink)}
-.ea-step__d{font-size:15px;line-height:1.8;color:var(--body);font-weight:400}
+/* ── PROCESS — самостоятельная ГОРИЗОНТАЛЬНАЯ прокрутка скроллом ──
+   Высокая обёртка (320vh) + липкий экран + трек, сдвигаемый по X по прогрессу. */
+.ea-proc{position:relative;height:320vh;background:var(--paper2);border-top:1px solid var(--cream-line);z-index:2}
+.ea-proc__sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+.ea-proc__track{display:flex;align-items:stretch;height:100%;will-change:transform}
+.ea-proc__panel{flex:0 0 auto;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(28px,6vw,110px)}
+.ea-proc__intro{width:min(92vw,640px)}
+.ea-proc__intro .ea-eyebrow{display:block;margin-bottom:12px}
+.ea-proc__lead{margin-top:18px;font-size:clamp(15px,1.1vw,17px);line-height:1.8;color:var(--body);max-width:520px}
+.ea-proc-step{width:min(88vw,480px);border-left:1px solid var(--eline)}
+.ea-step__num{font-family:var(--fdisplay);font-size:clamp(14px,1.1vw,17px);color:var(--wine);letter-spacing:.12em;text-transform:lowercase}
+.ea-step__t{font-family:var(--fhead);font-size:clamp(32px,3.4vw,54px);font-weight:400;margin:16px 0 20px;color:var(--wine);line-height:1.1}
+.ea-step__d{font-size:15px;line-height:1.85;color:var(--body);font-weight:400;max-width:400px}
+.ea-proc__progress{position:absolute;left:clamp(28px,6vw,110px);right:clamp(28px,6vw,110px);bottom:clamp(36px,7vh,68px);height:2px;background:var(--eline);z-index:3}
+.ea-proc__progress-bar{height:100%;background:var(--wine);width:0}
 
 /* ── TESTIMONIALS — «testimonials»: слайдер ── */
 .ea-test{background:var(--paper);border-top:1px solid var(--cream-line)}
@@ -265,21 +276,23 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   font-size:13px;letter-spacing:.18em;color:rgba(247,242,233,.75)}
 body.ea-lb-open{overflow:hidden}
 
-/* ── RESPONSIVE ── */
+/* ── RESPONSIVE ──
+   Эффект «шторки» на сервис-панелях (.ea-svc) и горизонтальный процесс
+   сохраняются и на мобильных. Контент-высокие панели на мобиле — обычным
+   потоком, чтобы их содержимое не обрезалось. */
 @media(max-width:900px){
-  .ea-hero,.ea-philo{position:relative;min-height:0;box-shadow:none}
+  .ea-hero,.ea-philo,.ea-serv-intro,.ea-test,.ea-cta,.ea-faq{position:relative;min-height:0;box-shadow:none}
   .ea-hero,.ea-philo,.ea-serv__intro,.ea-cta__inner{grid-template-columns:1fr}
   .ea-hero__left{min-height:72vh}
   .ea-philo__text{border-right:none;border-bottom:1px solid var(--eline)}
   .ea-philo__media{min-height:62vh}
   .ea-hx__grid{grid-template-columns:1fr}
-  .ea-proc__grid{grid-template-columns:1fr}
   .ea-test__head{flex-direction:column;gap:18px}
   .ea-test__slide.is-on{grid-template-columns:1fr}
   .ea-cta__media{min-height:60vh}
   .ea-form,.ea-faq__grid{grid-template-columns:1fr}
-  .ea-serv__card{width:auto;margin:0 16px}
-  .ea-serv__row--top .ea-serv__card{margin-top:0}
+  .ea-serv__card{width:auto;margin:auto clamp(16px,5vw,40px)}
+  .ea-proc-step{width:88vw}
   .ea-prefooter__script{max-width:88%;font-size:clamp(20px,5.5vw,32px)}
 }
 @media(max-width:560px){.ea-hero__frame{width:66vw}.ea-lb__arrow{width:46px;height:46px}.ea-lb__img{max-width:92vw}}
