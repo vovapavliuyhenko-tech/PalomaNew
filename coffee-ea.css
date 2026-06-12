@@ -58,6 +58,8 @@ body.coffee-page{overflow-x:clip!important}
 .cf-menu__vol{font-family:var(--fdisplay);font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:lowercase;white-space:nowrap}
 .cf-menu__price{font-family:var(--fdisplay);font-size:clamp(16px,1.4vw,21px);color:var(--wine);white-space:nowrap}
 .cf-menu__desc{grid-column:2/3;font-size:14px;line-height:1.5;color:var(--muted);margin-top:6px;max-width:520px}
+.cf-menu__note{max-width:var(--ea-maxw);margin:clamp(26px,3vw,40px) auto 0;font-size:13px;line-height:1.7;
+  color:var(--muted);text-align:center;padding:0 var(--ea-px)}
 /* плавающее фото товара при наведении (следует за курсором) */
 .cf-menu__pop{position:fixed;z-index:80;width:clamp(150px,15vw,220px);aspect-ratio:4/5;pointer-events:none;
   border-radius:4px;overflow:hidden;box-shadow:0 30px 70px rgba(40,24,12,.4);opacity:0;transform:translate(-50%,-46%) scale(.9);

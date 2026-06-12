@@ -34,20 +34,15 @@
 
     /* ── МЕНЮ ── */
     var MENU = window.PALOMA_COFFEE_MENU || [];
-    var imgByCat = {
-      coffee: "images/paloma/coffee/hero.jpg",
-      tea: "images/paloma/coffee/hero.jpg",
-      bakery: "images/paloma/desserts/dessert-01.jpg",
-      dessert: "images/paloma/desserts/dessert-02.jpg",
-      lemonade: "images/paloma/events/hero-5.jpg",
-    };
+    var imgByCat = {}; // фото товаров нет — используем градиент item.imageBg
     var catLabels = {
       all: "Всё меню",
-      coffee: "Кофе",
+      classic: "Классика",
+      cacaoraf: "Какао / Раф",
+      smoothie: "Смузи",
+      milkshake: "Коктейли",
       tea: "Чай",
-      bakery: "Выпечка",
-      dessert: "Десерты",
-      lemonade: "Лимонады",
+      cold: "Холодные",
     };
     function itemImg(it) {
       return it.image || imgByCat[it.category] || "";
