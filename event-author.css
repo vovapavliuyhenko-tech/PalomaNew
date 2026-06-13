@@ -202,27 +202,27 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proc__intro .ea-eyebrow{display:block;margin-bottom:12px}
 .ea-proc__lead{margin-top:18px;font-size:clamp(15px,1.1vw,17px);line-height:1.8;color:var(--body);max-width:520px}
 /* шаг = широкая «сцена» с разбросанными фото, стрелкой и рукописным акцентом */
-.ea-proc-step{position:relative;width:clamp(880px,94vw,1340px);padding:0 clamp(40px,5vw,90px)}
+.ea-proc-step{position:relative;width:clamp(760px,78vw,1120px);padding:0 clamp(40px,5vw,80px)}
 .ea-step__num{font-family:var(--fdisplay);font-size:clamp(14px,1.1vw,17px);color:var(--wine);letter-spacing:.12em;text-transform:lowercase}
-.ea-step__t{font-family:var(--fhead);font-size:clamp(38px,4.2vw,68px);font-weight:500;margin:0;color:var(--wine);line-height:1.02;text-transform:uppercase;letter-spacing:.015em}
-.ea-step__t--top{position:absolute;top:13%;left:clamp(40px,5vw,90px)}
-.ea-step__t--mid{position:absolute;top:42%;left:42%}
-.ea-step__body{position:absolute;width:min(25vw,320px)}
-.ea-step__body--lo{top:43%;left:clamp(300px,27vw,400px)}
-.ea-step__body--mid{top:58%;left:42%}
-.ea-step__body--hi{top:28%;left:36%;width:min(26vw,320px)}
-.ea-step__d{font-size:clamp(14px,1.05vw,16px);line-height:1.85;color:var(--body);font-weight:400}
+.ea-step__t{font-family:var(--fhead);font-size:clamp(40px,4.4vw,72px);font-weight:500;margin:0;color:var(--wine);line-height:1.02;text-transform:uppercase;letter-spacing:.015em}
+.ea-step__t--top{position:absolute;top:12%;left:clamp(40px,5vw,80px)}
+.ea-step__t--mid{position:absolute;top:40%;left:44%}
+.ea-step__body{position:absolute;width:min(27vw,360px)}
+.ea-step__body--lo{top:42%;left:clamp(320px,29vw,440px)}
+.ea-step__body--mid{top:57%;left:44%}
+.ea-step__body--hi{top:26%;left:40%;width:min(28vw,360px)}
+.ea-step__d{font-size:clamp(15px,1.15vw,17.5px);line-height:1.8;color:var(--body);font-weight:400}
 .ea-step__script{font-family:'Classica One','Italiana',cursive;color:var(--wine);font-size:1.7em;line-height:1;white-space:nowrap;display:inline-block;transform:rotate(-4deg);margin-left:.12em;vertical-align:-.1em}
 /* фото — крупнее и расставлены как на референсе */
 .ea-proc__ph{position:absolute;object-fit:cover;box-shadow:0 24px 54px rgba(40,24,12,.22);z-index:1}
 /* шаг 1: фото сада сверху + портрет с розой слева */
-.ea-proc__ph--a{top:5%;left:46%;width:clamp(230px,21vw,340px);aspect-ratio:4/3}
-.ea-proc__ph--b{top:34%;left:0;width:clamp(230px,19vw,310px);aspect-ratio:3/4}
+.ea-proc__ph--a{top:4%;left:46%;width:clamp(280px,24vw,400px);aspect-ratio:4/3}
+.ea-proc__ph--b{top:33%;left:0;width:clamp(280px,22vw,380px);aspect-ratio:3/4}
 /* шаг 2: крупное вертикальное ч/б фото пары — доминанта */
-.ea-proc__ph--c{top:5%;left:2%;width:clamp(380px,33vw,540px);aspect-ratio:3/3.8;filter:grayscale(1)}
+.ea-proc__ph--c{top:4%;left:0;width:clamp(440px,37vw,600px);aspect-ratio:3/3.9;filter:grayscale(1)}
 /* шаг 3: два ч/б фото снизу */
-.ea-proc__ph--d{top:52%;left:28%;width:clamp(250px,23vw,340px);aspect-ratio:4/3.2;filter:grayscale(1)}
-.ea-proc__ph--e{top:52%;left:60%;width:clamp(250px,23vw,340px);aspect-ratio:4/3.2;filter:grayscale(1)}
+.ea-proc__ph--d{top:50%;left:26%;width:clamp(300px,27vw,400px);aspect-ratio:4/3.2;filter:grayscale(1)}
+.ea-proc__ph--e{top:50%;left:62%;width:clamp(300px,27vw,400px);aspect-ratio:4/3.2;filter:grayscale(1)}
 .ea-proc-step:last-child .ea-step__t--top{left:36%}
 /* нарисованные дугообразные стрелки между этапами */
 .ea-proc__arrow{position:absolute;width:clamp(150px,14vw,220px);height:auto;z-index:2;opacity:.85}
