@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=13">
-  <link rel="stylesheet" href="event-author.css?v=36">
+  <link rel="stylesheet" href="event-author.css?v=37">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -322,7 +322,7 @@
           <h1 class="ea-hero__h1" data-reveal>Оформляем однажды,<br>чтобы запомнить навсегда</h1>
           <p class="ea-hero__lead" data-reveal style="--d:.1s">PALOMA — студия цветочного оформления событий. Мы превращаем праздники в живые цветочные истории.</p>
         </div>
-        <a class="ea-btn" href="#contact" data-cursor="hover" data-reveal style="--d:.18s">Оформить событие
+        <a class="ea-btn" href="#contact" data-cursor="hover" data-reveal style="--d:.18s"><span class="ea-hero__btn-txt">Оформить событие</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
         </a>
       </div>
@@ -872,7 +872,7 @@
       var dots=slides.map(function(_,k){var d=document.createElement('button');d.type='button';
         d.className='ea-hero__dot'+(k===0?' is-on':'');d.setAttribute('aria-label','Слайд '+(k+1));
         d.addEventListener('click',function(){go(k);restart();});dotsBox.appendChild(d);return d;});
-      function go(k){ i=(k+n)%n; track.style.transform='translateX(-'+(i*100/n)+'%)';
+      function go(k){ i=(k+n)%n;
         slides.forEach(function(s,j){s.classList.toggle('is-active',j===i);});
         dots.forEach(function(d,j){d.classList.toggle('is-on',j===i);}); }
       function next(){go(i+1);} function prev(){go(i-1);}

@@ -80,9 +80,11 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-hero{display:grid;grid-template-columns:1fr 1fr;background:var(--paper2)}
 /* ── HERO-СЛАЙДЕР: фон + центральное фото-рамка меняются вместе (как eventauthor) ── */
 .ea-hero__left{position:relative;overflow:hidden;background:#e7e1d4}
-.ea-hero__track{display:flex;height:100%;transition:transform .55s cubic-bezier(.5,0,.1,1)}
-.ea-hero__slide{position:relative;flex:0 0 100%;display:flex;align-items:center;justify-content:center;
+.ea-hero__track{position:relative;height:100%;width:100%}
+.ea-hero__slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;
+  transition:opacity 1s var(--eease);pointer-events:none;
   padding:clamp(120px,15vh,170px) clamp(24px,4vw,56px) clamp(40px,6vh,72px)}
+.ea-hero__slide.is-active{opacity:1;pointer-events:auto}
 .ea-hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);z-index:0}
 /* тёмная вуаль поверх фона — белая рамка и подпись читаются на любом фото */
 .ea-hero__slide::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -109,22 +111,25 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   padding:clamp(124px,17vh,186px) clamp(36px,5vw,80px) clamp(56px,7vh,92px);border-left:1px solid var(--eline)}
 .ea-hero__logo{font-family:var(--flat);color:var(--wine);font-size:clamp(18px,1.5vw,24px);letter-spacing:.34em;text-transform:uppercase}
 .ea-hero__mid{display:flex;flex-direction:column;align-items:center}
-.ea-hero__h1{font-family:var(--fhead);font-weight:500;font-size:clamp(34px,3.6vw,60px);line-height:1.1;color:var(--wine);letter-spacing:.015em;text-transform:uppercase}
-.ea-hero__lead{max-width:380px;margin:26px auto 42px;font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.65;color:var(--body)}
-/* hero CTA на референсе — винный ТЕКСТ с сердечком, без заливки */
-.ea-hero__right .ea-btn{background:transparent;color:var(--wine);padding:0;gap:12px;font-size:14px;letter-spacing:.2em}
+.ea-hero__h1{font-family:var(--fhead);font-weight:500;font-size:clamp(30px,3vw,52px);line-height:1.12;color:var(--wine);letter-spacing:.015em;text-transform:uppercase}
+.ea-hero__lead{max-width:360px;margin:22px auto 38px;font-weight:400;font-size:clamp(13px,0.95vw,15px);line-height:1.6;color:var(--body)}
+/* hero CTA на референсе — винный ТЕКСТ с подчёркиванием и сердечком, без заливки */
+.ea-hero__right .ea-btn{background:transparent;color:var(--wine);padding:0;gap:10px;font-size:13px;letter-spacing:.18em}
 .ea-hero__right .ea-btn:hover{background:transparent;transform:none;color:var(--wine-d)}
-.ea-hero__right .ea-btn svg{width:18px;height:18px;fill:var(--wine)}
+.ea-hero__right .ea-btn svg{width:16px;height:16px;fill:var(--wine)}
 .ea-hero__right .ea-btn:hover svg{transform:none;fill:var(--wine-d)}
+.ea-hero__btn-txt{border-bottom:1px solid currentColor;padding-bottom:3px}
+/* HERO-СЛАЙДЕР: плавная смена (crossfade) без стрелок и точек */
+.ea-hero__arrow,.ea-hero__dots{display:none!important}
 
 /* ── PHILOSOPHY ── */
 .ea-philo{display:grid;grid-template-columns:1fr 1fr;background:var(--paper)}
-.ea-philo__text{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;
-  padding:clamp(56px,7vh,120px) clamp(40px,5.5vw,96px);border-right:1px solid var(--eline)}
-.ea-philo__text .ea-title{margin:18px 0 26px}
-.ea-philo__p{font-family:var(--fsans);font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.78;color:var(--body);max-width:560px;text-align:justify}
-.ea-philo__name{font-family:var(--fdisplay);font-style:italic;font-weight:400;font-size:clamp(21px,1.7vw,27px);color:var(--ink);margin-top:38px;letter-spacing:.02em;align-self:center;text-align:center}
-.ea-philo__role{font-family:var(--fdisplay);font-size:12px;letter-spacing:.22em;text-transform:lowercase;color:var(--muted);margin-top:8px;align-self:center;text-align:center}
+.ea-philo__text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:clamp(48px,6vh,104px) clamp(40px,6vw,110px);border-right:1px solid var(--eline)}
+.ea-philo__text .ea-title{margin:16px 0 24px;font-size:clamp(26px,2.7vw,42px)}
+.ea-philo__p{font-family:var(--fsans);font-weight:400;font-size:clamp(13px,0.95vw,15px);line-height:1.8;color:var(--body);max-width:520px;text-align:justify;margin:0 auto}
+.ea-philo__name{font-family:var(--fdisplay);font-style:italic;font-weight:400;font-size:clamp(18px,1.4vw,23px);color:var(--ink);margin-top:32px;letter-spacing:.02em;text-align:center}
+.ea-philo__role{font-family:var(--fdisplay);font-size:11px;letter-spacing:.22em;text-transform:lowercase;color:var(--muted);margin-top:7px;text-align:center}
 .ea-philo__media{position:relative;overflow:hidden;background:#d8d0c0}
 .ea-philo__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
@@ -132,10 +137,10 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-hx{position:relative;background:var(--paper2);padding:var(--ea-py) 0;border-top:1px solid var(--cream-line)}
 .ea-hx__head{text-align:center;max-width:var(--ea-maxw);margin:0 auto;padding:0 var(--ea-px) clamp(44px,5vw,72px)}
 .ea-hx__head .ea-eyebrow{display:block;margin-bottom:14px}
-.ea-hx__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,2.2vw,44px);max-width:1860px;margin:0 auto;padding:0 clamp(20px,2.6vw,56px)}
-.ea-proj{display:block;background:var(--paper);border:1px solid var(--cream-line);overflow:hidden;color:inherit;cursor:pointer;
+.ea-hx__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1vw,18px);max-width:none;margin:0;padding:0}
+.ea-proj{display:block;background:var(--paper);overflow:hidden;color:inherit;cursor:pointer;
   transition:transform .5s var(--eease),box-shadow .5s var(--eease)}
-.ea-proj:hover{transform:translateY(-6px);box-shadow:0 30px 64px rgba(74,53,38,.16)}
+.ea-proj:hover{box-shadow:0 30px 64px rgba(74,53,38,.16)}
 .ea-proj:hover .ea-proj__photo{transform:scale(1.04)}
 .ea-proj__photo-wrap{overflow:hidden;position:relative;aspect-ratio:4/3.4}
 .ea-proj__slides{position:absolute;inset:0}
@@ -157,13 +162,13 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proj__plus{position:absolute;right:16px;top:16px;width:42px;height:42px;border-radius:50%;background:rgba(244,242,234,.92);
   color:var(--wine);display:grid;place-items:center;font-size:20px;line-height:1;opacity:0;transform:translateY(-8px);transition:.4s var(--eease);z-index:3}
 .ea-proj:hover .ea-proj__plus{opacity:1;transform:none}
-.ea-proj__body{padding:clamp(26px,2.4vw,44px) clamp(26px,2.6vw,52px) clamp(32px,3vw,56px)}
+.ea-proj__body{padding:clamp(18px,1.6vw,30px) clamp(20px,2vw,40px) clamp(22px,2vw,38px)}
 .ea-proj__meta{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--fdisplay);
-  font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .ea-proj__city{color:var(--ink)}
-.ea-proj__name{font-family:'Classica One','Italiana',cursive!important;font-weight:400;font-size:clamp(30px,3vw,46px);color:var(--wine);
-  line-height:1.05;margin:14px 0 16px;letter-spacing:.01em}
-.ea-proj__text{font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--body)}
+.ea-proj__name{font-family:'Classica One','Italiana',cursive!important;font-weight:400;font-size:clamp(24px,2.2vw,36px);color:var(--wine);
+  line-height:1.05;margin:10px 0 10px;letter-spacing:.01em}
+.ea-proj__text{font-weight:400;font-size:clamp(13px,0.95vw,15px);line-height:1.65;color:var(--body)}
 
 /* ── SERVICES — интро-панель + две ПОЛНОЭКРАННЫЕ панели (фото на весь экран
    + карточка с текстом), которые «шторкой» наезжают на предыдущую ── */
@@ -179,13 +184,13 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-svc::after{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(90deg,rgba(20,12,8,.5),rgba(20,12,8,.14) 58%,rgba(20,12,8,.04))}
 .ea-serv__card{position:relative;z-index:2;background:var(--paper2);margin-left:clamp(20px,7vw,120px);
-  padding:clamp(34px,3vw,54px);width:min(48vw,520px);box-shadow:0 40px 100px rgba(20,12,8,.45)}
-.ea-serv__num{font-family:var(--fdisplay);font-size:18px;color:var(--muted);letter-spacing:.24em}
-.ea-serv__ctitle{font-family:var(--fhead);font-weight:500;font-size:clamp(26px,2.9vw,42px);color:var(--wine);margin:10px 0 22px;line-height:1.1;text-transform:uppercase;letter-spacing:.015em}
-.ea-serv__thumb{width:118px;height:118px;object-fit:cover;margin:2px 0 22px;box-shadow:0 14px 32px rgba(40,24,12,.18)}
-.ea-serv__slash{font-size:15px;line-height:1.85;color:var(--body);font-weight:400;margin-bottom:24px}
-.ea-serv__price{font-family:var(--fdisplay);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.ea-serv__price b{display:block;font-family:var(--fdisplay);font-size:28px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--wine);margin-top:6px}
+  padding:clamp(28px,2.4vw,44px);width:min(40vw,440px);box-shadow:0 40px 100px rgba(20,12,8,.45)}
+.ea-serv__num{font-family:var(--fdisplay);font-size:14px;color:var(--muted);letter-spacing:.24em}
+.ea-serv__ctitle{font-family:var(--fhead);font-weight:500;font-size:clamp(20px,2vw,30px);color:var(--wine);margin:8px 0 18px;line-height:1.12;text-transform:uppercase;letter-spacing:.015em}
+.ea-serv__thumb{width:92px;height:92px;object-fit:cover;margin:2px 0 18px;box-shadow:0 14px 32px rgba(40,24,12,.18)}
+.ea-serv__slash{font-size:13px;line-height:1.7;color:var(--body);font-weight:400;margin-bottom:20px}
+.ea-serv__price{font-family:var(--fdisplay);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.ea-serv__price b{display:block;font-family:var(--fdisplay);font-size:22px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--wine);margin-top:5px}
 
 /* ── PROCESS — самостоятельная ГОРИЗОНТАЛЬНАЯ прокрутка скроллом ──
    Высокая обёртка (320vh) + липкий экран + трек, сдвигаемый по X по прогрессу. */
@@ -233,11 +238,11 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-test__slide{display:none;grid-template-columns:.92fr 1.08fr;gap:clamp(30px,4vw,80px);align-items:stretch}
 .ea-test__slide.is-on{display:grid;animation:eaFade .6s var(--eease)}
 @keyframes eaFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.ea-test__photo{min-height:clamp(320px,48vh,520px);background-size:cover;background-position:center;box-shadow:0 30px 70px rgba(40,24,12,.16)}
-.ea-test__body{display:flex;flex-direction:column;justify-content:center;padding:clamp(8px,1.6vw,20px) clamp(10px,2.6vw,48px)}
-.ea-test__qtitle{font-family:var(--fdisplay);font-weight:500;font-size:clamp(18px,1.7vw,26px);line-height:1.28;color:var(--wine);margin-bottom:20px}
-.ea-test__qtext{font-weight:400;font-size:clamp(13px,0.95vw,15px);line-height:1.8;color:var(--body);margin-bottom:12px}
-.ea-test__sign{font-family:var(--fdisplay);font-style:italic;font-size:clamp(17px,1.4vw,22px);color:var(--ink);margin-top:20px;align-self:flex-end;letter-spacing:.03em}
+.ea-test__photo{min-height:clamp(300px,42vh,460px);background-size:cover;background-position:center;box-shadow:0 30px 70px rgba(40,24,12,.16)}
+.ea-test__body{display:flex;flex-direction:column;justify-content:center;padding:clamp(6px,1.4vw,18px) clamp(10px,2.4vw,44px)}
+.ea-test__qtitle{font-family:var(--fdisplay);font-weight:500;font-size:clamp(16px,1.4vw,22px);line-height:1.3;color:var(--wine);margin-bottom:16px}
+.ea-test__qtext{font-weight:400;font-size:clamp(12px,0.85vw,14px);line-height:1.75;color:var(--body);margin-bottom:10px}
+.ea-test__sign{font-family:var(--fdisplay);font-style:italic;font-size:clamp(15px,1.2vw,19px);color:var(--ink);margin-top:16px;align-self:flex-end;letter-spacing:.03em}
 
 /* ── CONTACT — «get in touch»: на кремовом фоне ── */
 .ea-cta{background:var(--paper2);border-top:1px solid var(--cream-line)}
