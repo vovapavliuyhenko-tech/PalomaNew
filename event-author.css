@@ -204,22 +204,22 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* шаг = широкая «сцена» с разбросанными фото, стрелкой и рукописным акцентом */
 .ea-proc-step{position:relative;width:clamp(760px,78vw,1120px);padding:0 clamp(40px,5vw,80px)}
 .ea-step__num{font-family:var(--fdisplay);font-size:clamp(14px,1.1vw,17px);color:var(--wine);letter-spacing:.12em;text-transform:lowercase}
-.ea-step__t{font-family:var(--fhead);font-size:clamp(40px,4.4vw,72px);font-weight:500;margin:0;color:var(--wine);line-height:1.02;text-transform:uppercase;letter-spacing:.015em}
+.ea-step__t{font-family:var(--fhead);font-size:clamp(40px,4.4vw,72px);font-weight:500;margin:0;color:var(--wine);line-height:1.02;text-transform:uppercase;letter-spacing:.015em;z-index:3}
 .ea-step__t--top{position:absolute;top:12%;left:clamp(40px,5vw,80px)}
-.ea-step__t--mid{position:absolute;top:40%;left:44%}
-.ea-step__body{position:absolute;width:min(27vw,360px)}
-.ea-step__body--lo{top:42%;left:clamp(320px,29vw,440px)}
-.ea-step__body--mid{top:57%;left:44%}
+.ea-step__t--mid{position:absolute;top:38%;left:clamp(440px,36vw,560px)}
+.ea-step__body{position:absolute;width:min(30vw,380px);z-index:3}
+.ea-step__body--lo{top:42%;left:clamp(330px,30vw,450px)}
+.ea-step__body--mid{top:56%;left:clamp(440px,36vw,560px)}
 .ea-step__body--hi{top:26%;left:40%;width:min(28vw,360px)}
-.ea-step__d{font-size:clamp(15px,1.15vw,17.5px);line-height:1.8;color:var(--body);font-weight:400}
+.ea-step__d{font-size:clamp(15.5px,1.2vw,18px);line-height:1.8;color:var(--body);font-weight:400}
 .ea-step__script{font-family:'Classica One','Italiana',cursive;color:var(--wine);font-size:1.7em;line-height:1;white-space:nowrap;display:inline-block;transform:rotate(-4deg);margin-left:.12em;vertical-align:-.1em}
 /* фото — крупнее и расставлены как на референсе */
 .ea-proc__ph{position:absolute;object-fit:cover;box-shadow:0 24px 54px rgba(40,24,12,.22);z-index:1}
 /* шаг 1: фото сада сверху + портрет с розой слева */
-.ea-proc__ph--a{top:4%;left:46%;width:clamp(280px,24vw,400px);aspect-ratio:4/3}
+.ea-proc__ph--a{top:3%;left:54%;width:clamp(280px,24vw,400px);aspect-ratio:4/3}
 .ea-proc__ph--b{top:33%;left:0;width:clamp(280px,22vw,380px);aspect-ratio:3/4}
 /* шаг 2: крупное вертикальное ч/б фото пары — доминанта */
-.ea-proc__ph--c{top:4%;left:0;width:clamp(440px,37vw,600px);aspect-ratio:3/3.9;filter:grayscale(1)}
+.ea-proc__ph--c{top:4%;left:0;width:clamp(380px,32vw,500px);aspect-ratio:3/3.9;filter:grayscale(1)}
 /* шаг 3: два ч/б фото снизу */
 .ea-proc__ph--d{top:50%;left:26%;width:clamp(300px,27vw,400px);aspect-ratio:4/3.2;filter:grayscale(1)}
 .ea-proc__ph--e{top:50%;left:62%;width:clamp(300px,27vw,400px);aspect-ratio:4/3.2;filter:grayscale(1)}
