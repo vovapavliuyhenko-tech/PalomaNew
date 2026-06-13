@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=13">
-  <link rel="stylesheet" href="event-author.css?v=35">
+  <link rel="stylesheet" href="event-author.css?v=36">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -478,9 +478,31 @@
             <h2 class="ea-title">Процесс оформления<br>вашего события</h2>
             <p class="ea-proc__lead">На пути подготовки мы пройдём несколько этапов, каждый из которых приблизит вас к событию вашей мечты. Листайте вниз →</p>
           </div>
-          <div class="ea-proc__panel ea-proc-step"><div class="ea-step__num">01 / знакомство</div><div class="ea-step__t">Знакомство</div><div class="ea-step__d">Мы всегда начинаем со знакомства. Вы рассказываете о событии, площадке, дате и пожеланиях, а мы — о процессе работы и возможностях воплощения вашего оформления.</div></div>
-          <div class="ea-proc__panel ea-proc-step"><div class="ea-step__num">02 / планирование</div><div class="ea-step__t">Планирование</div><div class="ea-step__d">Мы найдём ваш стиль, соберём палитру, подберём сезонные цветы, составим смету и продумаем каждую зону — создавая концепцию вашего незабываемого события.</div></div>
-          <div class="ea-proc__panel ea-proc-step"><div class="ea-step__num">03 / событие</div><div class="ea-step__t">Событие</div><div class="ea-step__d">В ваш самый важный день мы берём на себя монтаж и все цветочные процессы, чтобы вы были спокойны, а праздник прошёл именно так, как вы мечтали.</div></div>
+          <div class="ea-proc__panel ea-proc-step">
+            <h3 class="ea-step__t ea-step__t--top">01/ знакомство</h3>
+            <img class="ea-proc__ph ea-proc__ph--a" src="images/paloma/events/event-03.jpg" alt="" loading="lazy">
+            <img class="ea-proc__ph ea-proc__ph--b" src="images/paloma/hero/hero-v2-editorial.jpg" alt="" loading="lazy">
+            <div class="ea-step__body ea-step__body--lo">
+              <p class="ea-step__d">Мы всегда начинаем со знакомства. Вы рассказываете о событии, площадке, дате и пожеланиях, а мы — о процессе работы и возможностях воплощения вашей <span class="ea-step__script">мечты</span></p>
+            </div>
+            <svg class="ea-proc__arrow ea-proc__arrow--1" viewBox="0 0 230 120" fill="none" aria-hidden="true"><path d="M6 78 C 78 112, 158 92, 214 36" stroke="#b89a6a" stroke-width="2.2" stroke-linecap="round"/><path d="M196 30 L 217 35 L 205 53" stroke="#b89a6a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ea-proc__panel ea-proc-step">
+            <img class="ea-proc__ph ea-proc__ph--c" src="images/paloma/wedding/hero.jpg" alt="" loading="lazy">
+            <h3 class="ea-step__t ea-step__t--mid">02/ планирование</h3>
+            <div class="ea-step__body ea-step__body--mid">
+              <p class="ea-step__d">Мы найдём ваш стиль, соберём палитру, подберём сезонные цветы, продумаем каждую зону, составим смету и продумаем тайминг — создавая концепцию вашего незабываемого <span class="ea-step__script">праздника</span></p>
+            </div>
+            <svg class="ea-proc__arrow ea-proc__arrow--2" viewBox="0 0 230 130" fill="none" aria-hidden="true"><path d="M8 40 C 70 6, 150 18, 214 86" stroke="#b89a6a" stroke-width="2.2" stroke-linecap="round"/><path d="M198 92 L 218 86 L 210 66" stroke="#b89a6a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ea-proc__panel ea-proc-step">
+            <h3 class="ea-step__t ea-step__t--top">03/ событие</h3>
+            <div class="ea-step__body ea-step__body--hi">
+              <p class="ea-step__d">В ваш самый важный день, с раннего утра и до поздней ночи, мы берём на себя монтаж и все цветочные процессы, чтобы вы были спокойны, а праздник прошёл <span class="ea-step__script">идеально!</span></p>
+            </div>
+            <img class="ea-proc__ph ea-proc__ph--d" src="images/paloma/events/event-01.jpg" alt="" loading="lazy">
+            <img class="ea-proc__ph ea-proc__ph--e" src="images/paloma/events/event-02.jpg" alt="" loading="lazy">
+          </div>
         </div>
         <div class="ea-proc__progress"><div class="ea-proc__progress-bar" id="eaProcBar"></div></div>
       </div>
@@ -591,9 +613,9 @@
             <div class="ea-form__field ea-form__field--full">
               <label for="ea-budget">Планируемый бюджет</label>
               <div class="ea-range">
-                <output class="ea-range__bubble" id="budgetBubble">60 000</output>
-                <input type="range" id="ea-budget" min="30000" max="500000" step="5000" value="60000">
-                <div class="ea-range__minmax"><span>30 000</span><span>500 000</span></div>
+                <output class="ea-range__bubble" id="budgetBubble">100 000</output>
+                <input type="range" id="ea-budget" min="30000" max="1000000" step="5000" value="100000">
+                <div class="ea-range__minmax"><span>30 000</span><span>1 000 000</span></div>
               </div>
             </div>
             <button type="submit" class="ea-btn ea-form__submit">Отправить данные
@@ -626,12 +648,6 @@
   </div><!-- /ea-stack 2 -->
 
   </main>
-
-  <!-- PREFOOTER — фото-полоса с рукописной фразой -->
-  <section class="ea-prefooter" aria-hidden="true">
-    <img src="images/paloma/events/event-01.jpg" alt="">
-    <span class="ea-prefooter__script">у каждого события своя история —<br>и мы помогаем её рассказать!</span>
-  </section>
 
   <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
 
