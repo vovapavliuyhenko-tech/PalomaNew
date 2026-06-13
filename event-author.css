@@ -23,7 +23,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   --eline:rgba(74,53,38,.16);
   /* крупные заголовки (ea-title/ea-hero__h1) — Classica One (--fhead);
      остальные подзаголовки/текст — Montserrat 275 italic */
-  --fhead:'Classica One','Italiana',cursive;
+  --fhead:'Cormorant Garamond','Times New Roman',serif;
   --fdisplay:'Montserrat',Arial,sans-serif;
   --fserif:'Montserrat',Arial,sans-serif;
   --fscript:'Montserrat',Arial,sans-serif;
@@ -43,11 +43,11 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 
 /* ── общие элементы ── */
 /* английский лоуэркейс-надзаголовок, как «our events / philosophy» на референсе */
-.ea-eyebrow{font-family:var(--flat);font-size:clamp(13px,1.05vw,16px);color:var(--muted);
-  letter-spacing:.26em;text-transform:lowercase;display:inline-block}
+.ea-eyebrow{font-family:'Classica One','Italiana',cursive;font-size:clamp(20px,1.9vw,30px);color:var(--ink);
+  letter-spacing:.01em;text-transform:lowercase;display:inline-block;line-height:1}
 /* крупный заголовок (геометр. гротеск), винно-красный, в естественном регистре */
-.ea-title{font-family:var(--fhead);font-weight:400;font-size:clamp(30px,3.6vw,58px);
-  line-height:1.14;color:var(--wine);letter-spacing:.005em}
+.ea-title{font-family:var(--fhead);font-weight:500;font-size:clamp(32px,3.8vw,62px);
+  line-height:1.1;color:var(--wine);letter-spacing:.015em;text-transform:uppercase}
 .ea-title em{font-style:normal;color:var(--ink);display:block}
 
 .ea-btn{display:inline-flex;align-items:center;gap:13px;padding:18px 38px;background:var(--wine);color:var(--paper2);
@@ -109,17 +109,22 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   padding:clamp(124px,17vh,186px) clamp(36px,5vw,80px) clamp(56px,7vh,92px);border-left:1px solid var(--eline)}
 .ea-hero__logo{font-family:var(--flat);color:var(--wine);font-size:clamp(18px,1.5vw,24px);letter-spacing:.34em;text-transform:uppercase}
 .ea-hero__mid{display:flex;flex-direction:column;align-items:center}
-.ea-hero__h1{font-family:var(--fhead);font-weight:400;font-size:clamp(30px,3.4vw,56px);line-height:1.18;color:var(--wine);letter-spacing:.005em}
+.ea-hero__h1{font-family:var(--fhead);font-weight:500;font-size:clamp(34px,3.6vw,60px);line-height:1.1;color:var(--wine);letter-spacing:.015em;text-transform:uppercase}
 .ea-hero__lead{max-width:380px;margin:26px auto 42px;font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.65;color:var(--body)}
+/* hero CTA на референсе — винный ТЕКСТ с сердечком, без заливки */
+.ea-hero__right .ea-btn{background:transparent;color:var(--wine);padding:0;gap:12px;font-size:14px;letter-spacing:.2em}
+.ea-hero__right .ea-btn:hover{background:transparent;transform:none;color:var(--wine-d)}
+.ea-hero__right .ea-btn svg{width:18px;height:18px;fill:var(--wine)}
+.ea-hero__right .ea-btn:hover svg{transform:none;fill:var(--wine-d)}
 
 /* ── PHILOSOPHY ── */
 .ea-philo{display:grid;grid-template-columns:1fr 1fr;background:var(--paper)}
-.ea-philo__text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  padding:clamp(56px,7vh,120px) clamp(36px,5vw,80px);border-right:1px solid var(--eline)}
-.ea-philo__text .ea-title{margin:12px 0 22px}
-.ea-philo__p{font-family:var(--fsans);font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.75;color:var(--body);max-width:560px}
-.ea-philo__name{font-family:var(--fdisplay);font-weight:400;font-size:clamp(21px,1.7vw,27px);color:var(--ink);margin-top:34px;letter-spacing:.02em}
-.ea-philo__role{font-family:var(--fdisplay);font-size:12px;letter-spacing:.24em;text-transform:lowercase;color:var(--muted);margin-top:8px}
+.ea-philo__text{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;
+  padding:clamp(56px,7vh,120px) clamp(40px,5.5vw,96px);border-right:1px solid var(--eline)}
+.ea-philo__text .ea-title{margin:18px 0 26px}
+.ea-philo__p{font-family:var(--fsans);font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.78;color:var(--body);max-width:560px;text-align:justify}
+.ea-philo__name{font-family:var(--fdisplay);font-style:italic;font-weight:400;font-size:clamp(21px,1.7vw,27px);color:var(--ink);margin-top:38px;letter-spacing:.02em;align-self:center;text-align:center}
+.ea-philo__role{font-family:var(--fdisplay);font-size:12px;letter-spacing:.22em;text-transform:lowercase;color:var(--muted);margin-top:8px;align-self:center;text-align:center}
 .ea-philo__media{position:relative;overflow:hidden;background:#d8d0c0}
 .ea-philo__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
@@ -127,7 +132,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-hx{position:relative;background:var(--paper2);padding:var(--ea-py) 0;border-top:1px solid var(--cream-line)}
 .ea-hx__head{text-align:center;max-width:var(--ea-maxw);margin:0 auto;padding:0 var(--ea-px) clamp(44px,5vw,72px)}
 .ea-hx__head .ea-eyebrow{display:block;margin-bottom:14px}
-.ea-hx__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.2vw,56px);max-width:var(--ea-maxw);margin:0 auto;padding:0 var(--ea-px)}
+.ea-hx__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,2.2vw,44px);max-width:1860px;margin:0 auto;padding:0 clamp(20px,2.6vw,56px)}
 .ea-proj{display:block;background:var(--paper);border:1px solid var(--cream-line);overflow:hidden;color:inherit;cursor:pointer;
   transition:transform .5s var(--eease),box-shadow .5s var(--eease)}
 .ea-proj:hover{transform:translateY(-6px);box-shadow:0 30px 64px rgba(74,53,38,.16)}
@@ -156,7 +161,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proj__meta{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--fdisplay);
   font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .ea-proj__city{color:var(--ink)}
-.ea-proj__name{font-family:var(--fhead)!important;font-weight:400;font-size:clamp(30px,3vw,46px);color:var(--wine);
+.ea-proj__name{font-family:'Classica One','Italiana',cursive!important;font-weight:400;font-size:clamp(30px,3vw,46px);color:var(--wine);
   line-height:1.05;margin:14px 0 16px;letter-spacing:.01em}
 .ea-proj__text{font-weight:400;font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--body)}
 
@@ -176,7 +181,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-serv__card{position:relative;z-index:2;background:var(--paper2);margin-left:clamp(20px,7vw,120px);
   padding:clamp(34px,3vw,54px);width:min(48vw,520px);box-shadow:0 40px 100px rgba(20,12,8,.45)}
 .ea-serv__num{font-family:var(--fdisplay);font-size:18px;color:var(--muted);letter-spacing:.24em}
-.ea-serv__ctitle{font-family:var(--fdisplay);font-weight:500;font-size:clamp(22px,2.4vw,34px);color:var(--wine);margin:10px 0 22px;line-height:1.18;text-transform:uppercase;letter-spacing:.01em}
+.ea-serv__ctitle{font-family:var(--fhead);font-weight:500;font-size:clamp(26px,2.9vw,42px);color:var(--wine);margin:10px 0 22px;line-height:1.1;text-transform:uppercase;letter-spacing:.015em}
 .ea-serv__thumb{width:118px;height:118px;object-fit:cover;margin:2px 0 22px;box-shadow:0 14px 32px rgba(40,24,12,.18)}
 .ea-serv__slash{font-size:15px;line-height:1.85;color:var(--body);font-weight:400;margin-bottom:24px}
 .ea-serv__price{font-family:var(--fdisplay);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
@@ -193,7 +198,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proc__lead{margin-top:18px;font-size:clamp(15px,1.1vw,17px);line-height:1.8;color:var(--body);max-width:520px}
 .ea-proc-step{width:min(88vw,480px);border-left:1px solid var(--eline)}
 .ea-step__num{font-family:var(--fdisplay);font-size:clamp(14px,1.1vw,17px);color:var(--wine);letter-spacing:.12em;text-transform:lowercase}
-.ea-step__t{font-family:var(--fhead);font-size:clamp(32px,3.4vw,54px);font-weight:400;margin:16px 0 20px;color:var(--wine);line-height:1.1}
+.ea-step__t{font-family:var(--fhead);font-size:clamp(34px,3.6vw,58px);font-weight:500;margin:16px 0 20px;color:var(--wine);line-height:1.06;text-transform:uppercase;letter-spacing:.015em}
 .ea-step__d{font-size:15px;line-height:1.85;color:var(--body);font-weight:400;max-width:400px}
 .ea-proc__progress{position:absolute;left:clamp(28px,6vw,110px);right:clamp(28px,6vw,110px);bottom:clamp(36px,7vh,68px);height:2px;background:var(--eline);z-index:3}
 .ea-proc__progress-bar{height:100%;background:var(--wine);width:0}
