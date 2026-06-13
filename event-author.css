@@ -227,6 +227,9 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proc__progress{position:absolute;left:clamp(28px,6vw,110px);right:clamp(28px,6vw,110px);bottom:clamp(36px,7vh,68px);height:2px;background:var(--eline);z-index:3}
 .ea-proc__progress-bar{height:100%;background:var(--wine);width:0}
 
+/* без эффекта «шторки» (sticky) для контактов, отзывов и FAQ — обычный поток */
+.ea-test,.ea-cta,.ea-faq{position:static;min-height:0;box-shadow:none}
+
 /* ── TESTIMONIALS — «testimonials»: слайдер ── */
 .ea-test{background:var(--paper);border-top:1px solid var(--cream-line)}
 .ea-test__head{display:flex;justify-content:space-between;align-items:flex-start;max-width:var(--ea-maxw);margin:0 auto;width:100%}
