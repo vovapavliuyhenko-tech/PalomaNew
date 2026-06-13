@@ -194,7 +194,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 
 /* ── PROCESS — самостоятельная ГОРИЗОНТАЛЬНАЯ прокрутка скроллом ──
    Высокая обёртка (320vh) + липкий экран + трек, сдвигаемый по X по прогрессу. */
-.ea-proc{position:relative;height:440vh;background:var(--paper2);border-top:1px solid var(--cream-line);z-index:2}
+.ea-proc{position:relative;height:520vh;background:var(--paper2);border-top:1px solid var(--cream-line);z-index:2}
 .ea-proc__sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
 .ea-proc__track{display:flex;align-items:stretch;height:100%;will-change:transform}
 .ea-proc__panel{flex:0 0 auto;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(28px,6vw,110px)}
@@ -202,28 +202,34 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proc__intro .ea-eyebrow{display:block;margin-bottom:12px}
 .ea-proc__lead{margin-top:18px;font-size:clamp(15px,1.1vw,17px);line-height:1.8;color:var(--body);max-width:520px}
 /* шаг = широкая «сцена» с разбросанными фото, стрелкой и рукописным акцентом */
-.ea-proc-step{position:relative;width:clamp(680px,82vw,1120px);padding:0 clamp(40px,5vw,90px)}
+.ea-proc-step{position:relative;width:clamp(880px,94vw,1340px);padding:0 clamp(40px,5vw,90px)}
 .ea-step__num{font-family:var(--fdisplay);font-size:clamp(14px,1.1vw,17px);color:var(--wine);letter-spacing:.12em;text-transform:lowercase}
-.ea-step__t{font-family:var(--fhead);font-size:clamp(38px,4.4vw,72px);font-weight:500;margin:0;color:var(--wine);line-height:1.02;text-transform:uppercase;letter-spacing:.015em}
-.ea-step__t--top{position:absolute;top:22%;left:clamp(40px,5vw,90px)}
-.ea-step__t--mid{position:absolute;top:46%;left:clamp(40px,5vw,90px)}
-.ea-step__body{position:absolute;width:min(40vw,420px)}
-.ea-step__body--lo{top:54%;left:clamp(40px,5vw,90px)}
-.ea-step__body--mid{top:60%;left:clamp(40px,5vw,90px)}
-.ea-step__body--hi{top:30%;left:clamp(40px,5vw,90px);width:min(34vw,360px)}
+.ea-step__t{font-family:var(--fhead);font-size:clamp(38px,4.2vw,68px);font-weight:500;margin:0;color:var(--wine);line-height:1.02;text-transform:uppercase;letter-spacing:.015em}
+.ea-step__t--top{position:absolute;top:13%;left:clamp(40px,5vw,90px)}
+.ea-step__t--mid{position:absolute;top:42%;left:42%}
+.ea-step__body{position:absolute;width:min(25vw,320px)}
+.ea-step__body--lo{top:43%;left:clamp(300px,27vw,400px)}
+.ea-step__body--mid{top:58%;left:42%}
+.ea-step__body--hi{top:28%;left:36%;width:min(26vw,320px)}
 .ea-step__d{font-size:clamp(14px,1.05vw,16px);line-height:1.85;color:var(--body);font-weight:400}
 .ea-step__script{font-family:'Classica One','Italiana',cursive;color:var(--wine);font-size:1.7em;line-height:1;white-space:nowrap;display:inline-block;transform:rotate(-4deg);margin-left:.12em;vertical-align:-.1em}
-/* разбросанные фото */
+/* фото — крупнее и расставлены как на референсе */
 .ea-proc__ph{position:absolute;object-fit:cover;box-shadow:0 24px 54px rgba(40,24,12,.22);z-index:1}
-.ea-proc__ph--a{top:8%;left:36%;width:clamp(150px,15vw,230px);aspect-ratio:4/3}
-.ea-proc__ph--b{top:40%;left:2%;width:clamp(140px,13vw,210px);aspect-ratio:3/3.4}
-.ea-proc__ph--c{top:6%;left:42%;width:clamp(260px,30vw,440px);aspect-ratio:1/1;filter:grayscale(1)}
-.ea-proc__ph--d{top:4%;left:2%;width:clamp(260px,30vw,420px);aspect-ratio:1/1;filter:grayscale(1)}
-.ea-proc__ph--e{top:56%;left:54%;width:clamp(150px,16vw,240px);aspect-ratio:4/3.4;filter:grayscale(1)}
-/* нарисованные стрелки между этапами */
-.ea-proc__arrow{position:absolute;width:clamp(120px,12vw,200px);height:auto;z-index:2;opacity:.85}
-.ea-proc__arrow--1{right:clamp(20px,3vw,40px);top:54%}
-.ea-proc__arrow--2{right:clamp(10px,2vw,30px);top:40%}
+/* шаг 1: фото сада сверху + портрет с розой слева */
+.ea-proc__ph--a{top:5%;left:46%;width:clamp(230px,21vw,340px);aspect-ratio:4/3}
+.ea-proc__ph--b{top:34%;left:0;width:clamp(230px,19vw,310px);aspect-ratio:3/4}
+/* шаг 2: крупное вертикальное ч/б фото пары — доминанта */
+.ea-proc__ph--c{top:5%;left:2%;width:clamp(380px,33vw,540px);aspect-ratio:3/3.8;filter:grayscale(1)}
+/* шаг 3: два ч/б фото снизу */
+.ea-proc__ph--d{top:52%;left:28%;width:clamp(250px,23vw,340px);aspect-ratio:4/3.2;filter:grayscale(1)}
+.ea-proc__ph--e{top:52%;left:60%;width:clamp(250px,23vw,340px);aspect-ratio:4/3.2;filter:grayscale(1)}
+.ea-proc-step:last-child .ea-step__t--top{left:36%}
+/* нарисованные дугообразные стрелки между этапами */
+.ea-proc__arrow{position:absolute;width:clamp(150px,14vw,220px);height:auto;z-index:2;opacity:.85}
+.ea-proc__arrow--0{right:8%;top:52%}
+.ea-proc__arrow--1{right:clamp(30px,4vw,70px);top:46%}
+.ea-proc__arrow--2{right:clamp(20px,3vw,60px);top:26%}
+.ea-proc__arrow--3{left:5%;top:30%}
 .ea-proc__progress{position:absolute;left:clamp(28px,6vw,110px);right:clamp(28px,6vw,110px);bottom:clamp(36px,7vh,68px);height:2px;background:var(--eline);z-index:3}
 .ea-proc__progress-bar{height:100%;background:var(--wine);width:0}
 
