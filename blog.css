@@ -32,11 +32,11 @@
   margin-bottom: 20px;
 }
 .blog-hero__title {
-  font-family: var(--font-display);
-  font-size: clamp(64px, 10vw, 148px);
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: -0.03em;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: clamp(56px, 8.5vw, 120px);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: 0;
   margin-bottom: 24px;
 }
 .blog-hero__lead {

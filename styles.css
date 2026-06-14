@@ -5085,7 +5085,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   display: inline-flex;
   align-items: center;
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 18px;
+  font-size: 14px;
   font-style: italic;
   font-weight: 400;
   line-height: 1;
@@ -5170,7 +5170,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: clamp(22px, 3vw, 36px);
+  margin-bottom: clamp(44px, 5vw, 76px);
   padding: 0 clamp(4px, 1vw, 12px);
   max-width: var(--container);
   margin-left: auto;
@@ -6676,12 +6676,12 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .home-about-scene__title {
   margin: 0;
-  font-family: var(--serif);
-  font-size: clamp(52px, 7.4vw, 126px);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 0.88;
-  letter-spacing: -0.065em;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: clamp(40px, 5.4vw, 92px);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.02;
+  letter-spacing: 0;
   color: var(--paloma-accent, #6b0f1a);
 }
 
@@ -8852,4 +8852,4 @@ body.is-home .site-header:not(.is-scrolled) .site-header__logo{background-image:
 .paloma-cover__tagline{display:none !important}
 /* ── водяной знак в футере → светлый вордмарк, едва заметный ── */
 .footer-brand__text{display:none !important}
-.footer-brand{aspect-ratio:10/3; background-image:var(--logo-img-light); background-size:min(94%,1100px) auto; opacity:.08}
+.footer-brand{aspect-ratio:10/3; background-image:var(--logo-img-light); background-size:100% auto; background-position:center; opacity:.08}

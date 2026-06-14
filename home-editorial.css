@@ -104,11 +104,11 @@
 }
 
 .home-subscription__text {
-  max-width: 560px;
+  max-width: 520px;
   margin: 0 auto 62px;
   font-family: var(--font-sans, inherit);
-  font-size: 18px;
-  line-height: 1.42;
+  font-size: 15px;
+  line-height: 1.5;
   font-weight: 400;
   color: #2f1712;
 }
