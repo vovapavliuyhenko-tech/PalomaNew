@@ -6676,12 +6676,12 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .home-about-scene__title {
   margin: 0;
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: clamp(40px, 5.4vw, 92px);
-  font-weight: 500;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: clamp(32px, 4.4vw, 70px);
+  font-weight: 600;
   font-style: normal;
-  line-height: 1.02;
-  letter-spacing: 0;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   color: var(--paloma-accent, #6b0f1a);
 }
 
@@ -7772,9 +7772,9 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 }
 
 .page-compact-header__title {
-  font-family: var(--font-display, 'Italiana', serif);
-  font-size: clamp(28px, 4vw, 56px);
-  font-weight: 400;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: clamp(26px, 3.6vw, 48px);
+  font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.018em;
   color: var(--color-text, #1A1A1A);

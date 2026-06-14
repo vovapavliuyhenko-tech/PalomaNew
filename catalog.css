@@ -56,11 +56,11 @@
 }
 
 .catalog-hero__title {
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: clamp(40px, 6vw, 84px);
-  font-weight: 500;
-  line-height: 1.0;
-  letter-spacing: 0;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: clamp(34px, 4.8vw, 66px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   color: var(--color-text, var(--ink, #1a1a1a));
   margin: 0;
 }
