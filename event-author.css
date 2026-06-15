@@ -173,9 +173,12 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* ── SERVICES — интро-панель + две ПОЛНОЭКРАННЫЕ панели (фото на весь экран
    + карточка с текстом), которые «шторкой» наезжают на предыдущую ── */
 .ea-serv-intro{background:var(--paper)}
-.ea-serv__intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,90px);align-items:center;
+.ea-serv__intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,90px);align-items:start;
   max-width:var(--ea-maxw);margin:0 auto;width:100%}
-.ea-serv__intro .ea-title{margin-top:16px}
+/* интро-заголовок «Услуги» — компактнее, ровно в 3 строки (по <br>) */
+.ea-serv__intro .ea-title{margin-top:14px;font-size:clamp(24px,2.5vw,40px);line-height:1.2}
+/* правый текст выравниваем по верхней строке заголовка, а не выше его */
+.ea-serv__intro .ea-serv__col:last-child{padding-top:clamp(32px,3.2vw,50px)}
 .ea-serv__col p{font-weight:400;font-size:clamp(15px,1.1vw,17px);line-height:1.85;color:var(--body);margin-bottom:20px}
 .ea-serv__col em{font-style:normal;color:var(--wine)}
 /* полноэкранная панель услуги (sticky наследуется от .ea-panel — шторка) */
