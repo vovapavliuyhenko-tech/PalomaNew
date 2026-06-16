@@ -32,28 +32,43 @@
         io.observe(el);
       });
 
-    /* ── МЕНЮ ── */
+    /* ── МЕНЮ (карточки как в каталоге) ── */
     var MENU = window.PALOMA_COFFEE_MENU || [];
-    var imgByCat = {}; // фото товаров нет — используем градиент item.imageBg
     var catLabels = {
       all: "Всё меню",
       classic: "Классика",
-      cacaoraf: "Какао / Раф",
+      cacaoraf: "Какао и раф",
       smoothie: "Смузи",
       milkshake: "Коктейли",
       tea: "Чай",
       cold: "Холодные",
     };
+    /* фото по разделам — доступные кадры кофейни */
+    var imgByCat = {
+      classic: "images/paloma/coffee/hero.jpg",
+      cacaoraf: "images/paloma/coffee/hero.jpg",
+      smoothie: "images/paloma/desserts/dessert-01.jpg",
+      milkshake: "images/paloma/desserts/dessert-02.jpg",
+      tea: "images/paloma/coffee/hero.jpg",
+      cold: "images/paloma/desserts/dessert-01.jpg",
+    };
     function itemImg(it) {
       return it.image || imgByCat[it.category] || "";
     }
 
-    var tabsBox = document.getElementById("cfMenuTabs");
-    var listBox = document.getElementById("cfMenuList");
-    var pop = document.getElementById("cfMenuPop");
+    var filtersBox = document.getElementById("cfMenuFilters");
+    var grid = document.getElementById("cfMenuGrid");
+    var countBox = document.getElementById("cfMenuCount");
     var active = "all";
 
-    if (tabsBox && listBox && MENU.length) {
+    function plural(n) {
+      var m10 = n % 10, m100 = n % 100;
+      if (m10 === 1 && m100 !== 11) return n + " позиция";
+      if (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) return n + " позиции";
+      return n + " позиций";
+    }
+
+    if (filtersBox && grid && MENU.length) {
       var cats = ["all"].concat(
         MENU.map(function (i) {
           return i.category;
@@ -64,69 +79,112 @@
       cats.forEach(function (c) {
         var b = document.createElement("button");
         b.type = "button";
-        b.className = "cf-menu__tab" + (c === "all" ? " is-on" : "");
-        b.textContent = catLabels[c] || c;
+        b.className = "catalog-filter-btn" + (c === "all" ? " is-active" : "");
+        b.setAttribute("data-filter", c);
+        b.setAttribute("aria-pressed", c === "all" ? "true" : "false");
         b.setAttribute("data-cursor", "hover");
+        b.textContent = catLabels[c] || c;
         b.addEventListener("click", function () {
+          if (active === c) return;
           active = c;
-          [].forEach.call(tabsBox.children, function (x) {
-            x.classList.toggle("is-on", x === b);
+          [].forEach.call(filtersBox.children, function (x) {
+            var on = x === b;
+            x.classList.toggle("is-active", on);
+            x.setAttribute("aria-pressed", on ? "true" : "false");
           });
           render();
         });
-        tabsBox.appendChild(b);
+        filtersBox.appendChild(b);
       });
       render();
     }
 
-    function render() {
-      listBox.innerHTML = "";
-      MENU.filter(function (it) {
-        return active === "all" || it.category === active;
-      }).forEach(function (it) {
-        var row = document.createElement("article");
-        row.className = "cf-menu__row";
-        row.setAttribute("role", "button");
-        row.tabIndex = 0;
-        row.setAttribute("data-cursor", "hover");
-        row.innerHTML =
-          '<span class="cf-menu__num">' + esc(it.num || "") + "</span>" +
-          '<span class="cf-menu__name">' + esc(it.title) + "</span>" +
-          '<span class="cf-menu__vol">' + esc(it.volumes || "") + "</span>" +
-          '<span class="cf-menu__price">' + esc(it.priceLabel || it.price + " ₽") + "</span>" +
-          '<p class="cf-menu__desc">' + esc(it.desc || "") + "</p>";
-        row.addEventListener("mouseenter", function () {
-          showPop(it);
-        });
-        row.addEventListener("mousemove", movePop);
-        row.addEventListener("mouseleave", hidePop);
-        row.addEventListener("click", function () {
-          openModal(it);
-        });
-        row.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            openModal(it);
-          }
-        });
-        listBox.appendChild(row);
-      });
-    }
-    function showPop(it) {
-      if (!pop) return;
+    function cardHtml(it) {
       var img = itemImg(it);
-      pop.style.background = "";
-      if (img) pop.style.backgroundImage = 'url("' + img + '")';
-      else if (it.imageBg) pop.style.background = it.imageBg;
-      pop.classList.add("is-on");
+      var media = img
+        ? '<img class="product-card__img product-card__img--main" src="' +
+            esc(img) + '" alt="' + esc(it.title) +
+            '" loading="lazy" onerror="this.style.display=\'none\'">' +
+          '<div class="product-card__ph" style="background:' +
+            esc(it.imageBg || "") + ';" aria-hidden="true"></div>'
+        : '<div class="product-card__ph" style="background:' +
+            esc(it.imageBg || "") + ';" aria-hidden="true"></div>';
+      return (
+        '<div class="product-card__media">' +
+          media +
+          '<span class="product-card__badge product-card__badge--coffee">' +
+            esc(it.volumes || "") + "</span>" +
+        "</div>" +
+        '<div class="product-card__body">' +
+          '<h3 class="product-card__name">' + esc(it.title) + "</h3>" +
+          (it.desc ? '<p class="product-card__desc">' + esc(it.desc) + "</p>" : "") +
+          '<p class="product-card__price">' + esc(it.priceLabel || it.price + " ₽") + "</p>" +
+          '<div class="product-card__btns">' +
+            '<button type="button" class="product-card__btn product-card__btn--detail" data-cf-detail aria-label="Подробнее: ' +
+              esc(it.title) + '">Подробнее</button>' +
+            '<button type="button" class="product-card__btn product-card__btn--cart" data-cf-add aria-label="Добавить в корзину: ' +
+              esc(it.title) + '">В корзину</button>' +
+          "</div>" +
+        "</div>"
+      );
     }
-    function movePop(e) {
-      if (!pop) return;
-      pop.style.left = e.clientX + "px";
-      pop.style.top = e.clientY + "px";
+
+    function render() {
+      if (!grid) return;
+      grid.innerHTML = "";
+      var items = MENU.filter(function (it) {
+        return active === "all" || it.category === active;
+      });
+      if (countBox) countBox.textContent = plural(items.length);
+      var frag = document.createDocumentFragment();
+      items.forEach(function (it) {
+        var card = document.createElement("article");
+        card.className = "product-card";
+        card.dataset.id = it.id;
+        card._item = it;
+        card.innerHTML = cardHtml(it);
+        frag.appendChild(card);
+      });
+      grid.appendChild(frag);
+      var cards = grid.querySelectorAll(".product-card");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        cards.forEach(function (c) { c.classList.add("is-visible", "is-revealed"); });
+      } else {
+        requestAnimationFrame(function () {
+          cards.forEach(function (c, i) {
+            setTimeout(function () { c.classList.add("is-visible", "is-revealed"); }, Math.min(i * 40, 400));
+          });
+        });
+      }
+      window.palomaRebindCursorHovers && window.palomaRebindCursorHovers();
     }
-    function hidePop() {
-      if (pop) pop.classList.remove("is-on");
+
+    if (grid) {
+      grid.addEventListener("click", function (e) {
+        var card = e.target.closest(".product-card");
+        if (!card || !card._item) return;
+        var it = card._item;
+        if (e.target.closest("[data-cf-add]")) {
+          if (window.PalomaCart && window.PalomaCart.add) {
+            var img = itemImg(it);
+            window.PalomaCart.add({
+              id: it.id,
+              name: it.title,
+              price: Number(it.price) || 0,
+              qty: 1,
+              category: "coffee",
+              bg: img ? "url(" + img + ") center/cover" : it.imageBg || "",
+            });
+          }
+          var btn = e.target.closest("[data-cf-add]");
+          var prev = btn.textContent;
+          btn.textContent = "✓";
+          btn.disabled = true;
+          setTimeout(function () { btn.textContent = prev; btn.disabled = false; }, 1200);
+          return;
+        }
+        openModal(it);
+      });
     }
 
     /* ── МОДАЛКА позиции меню (как карточка букета) ── */

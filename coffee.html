@@ -20,9 +20,10 @@
   <link rel="stylesheet" href="paloma-animations.css?v=7">
   <link rel="stylesheet" href="cart.css?v=7">
   <link rel="stylesheet" href="clients.css?v=7">
+  <link rel="stylesheet" href="catalog.css?v=cat2">
   <link rel="stylesheet" href="coffee.css?v=7">
   <link rel="stylesheet" href="coffee-page.css?v=7">
-  <link rel="stylesheet" href="coffee-editorial.css?v=9">
+  <link rel="stylesheet" href="coffee-editorial.css?v=10">
   <link rel="stylesheet" href="paloma-wave.css?v=9">
   <link rel="stylesheet" href="paloma-responsive.css?v=7">
   <link rel="stylesheet" href="cursor.css?v=13">
@@ -314,7 +315,7 @@
       <!-- БЛОК 2 — ФИЛОСОФИЯ (зеркально): текст | фото + рамка-карточка -->
       <section class="ea-panel ea-hero ea-hero--mirror cf-philo" id="cf-about">
         <div class="ea-hero__left cf-mir__media">
-          <img class="cf-video cf-kenburns" src="images/paloma/events/hero-2.jpg" alt="Уютный момент в PALOMA Coffee">
+          <img class="cf-video cf-kenburns" src="images/paloma/desserts/dessert-02.jpg" alt="Уютный момент в PALOMA Coffee">
           <figure class="ea-hero__frame">
             <img src="images/paloma/desserts/dessert-01.jpg" alt="Десерт и кофе PALOMA">
             <figcaption class="ea-hero__cap"><span>Пока вы ждёте</span><span class="ea-hero__cap-city">[ уютно ]</span><b>с собой и у нас</b></figcaption>
@@ -340,21 +341,25 @@
 
     </div><!-- /ea-stack 1 -->
 
-    <!-- БЛОК 3 — МЕНЮ: строки + фото товара при наведении, клик → попап -->
+    <!-- БЛОК 3 — МЕНЮ: разделы как в каталоге + карточки товара -->
     <section class="cf-menu ea-panel--pad" id="cf-menu">
       <span class="ea-eyebrow" data-reveal style="display:block;text-align:center">our menu</span>
       <h2 class="ea-title" data-reveal style="--d:.05s;text-align:center">Меню кофейни</h2>
-      <div class="cf-menu__tabs" id="cfMenuTabs" data-reveal style="--d:.1s"></div>
-      <div class="cf-menu__list" id="cfMenuList" data-reveal style="--d:.12s"></div>
+
+      <div class="cf-menu-catalog catalog-page" data-reveal style="--d:.1s">
+        <div class="catalog-filters-wrap">
+          <div class="catalog-filters" id="cfMenuFilters" role="group" aria-label="Разделы меню кофейни"></div>
+        </div>
+        <div class="catalog-count" id="cfMenuCount" aria-live="polite"></div>
+        <div class="catalog-grid" id="cfMenuGrid" aria-label="Меню кофейни"></div>
+      </div>
+
       <p class="cf-menu__note" data-reveal>Дополнительно: альтернативное молоко +60 / 80 / 100&nbsp;₽ · сироп +30 / 60&nbsp;₽ — малина, клубника, банан, мята, лаванда, вишня, гренадин, манго, фисташка, кокос, солёная карамель, карамель, ваниль, миндаль, шоколад, клён, ирландский крем, лесной орех, попкорн, имбирный пряник.</p>
     </section>
 
-    <!-- плавающее фото товара (следует за курсором) -->
-    <div class="cf-menu__pop" id="cfMenuPop" aria-hidden="true"></div>
-
     <!-- БЛОК 4 — ЛИМОНАДЫ: яркий, видео-фон -->
     <section class="ea-panel cf-lemon" id="cf-lemon">
-      <video class="cf-video cf-kenburns" autoplay muted loop playsinline preload="metadata" poster="images/paloma/events/hero-5.jpg" aria-hidden="true">
+      <video class="cf-video cf-kenburns" autoplay muted loop playsinline preload="metadata" poster="images/paloma/desserts/dessert-01.jpg" aria-hidden="true">
         <source src="videos/paloma/lemonade.mp4" type="video/mp4">
       </video>
       <div class="cf-lemon__inner" data-reveal>
@@ -432,11 +437,11 @@
         </div>
       </section>
       <section class="ea-panel ea-svc cf-svc">
-        <img class="cf-video" src="images/paloma/events/hero-1.jpg" alt="">
+        <img class="cf-video" src="images/paloma/coffee/hero.jpg" alt="">
         <div class="ea-serv__card" data-reveal>
           <span class="ea-serv__num">03</span>
           <h3 class="ea-serv__ctitle">Доставка по городу включает:</h3>
-          <img class="ea-serv__thumb" src="images/paloma/events/hero-4.jpg" alt="">
+          <img class="ea-serv__thumb" src="images/paloma/desserts/dessert-02.jpg" alt="">
           <p class="ea-serv__slash">Кофе и десерты к букету / Доставка по Новороссийску / Самовывоз на Энгельса, 74/82 / Заказ через сайт за минуту / Бережная упаковка</p>
           <div class="ea-serv__price">Доставка<b>от 250 ₽</b></div>
         </div>
@@ -671,7 +676,7 @@
   <script src="clients.js?v=7"></script>
   <script src="coffee-menu-data.js?v=8"></script>
   <script src="coffee-data.js?v=7"></script>
-  <script src="coffee-ea.js?v=2"></script>
+  <script src="coffee-ea.js?v=3"></script>
   <script src="cursor.js?v=12"></script>
 </body>
 </html>
