@@ -1,4 +1,4 @@
-/* ════════════════════════════════════════════════════════
+﻿/* ════════════════════════════════════════════════════════
    PALOMA CUSTOM CURSOR
    Эластичная тёмная капля: вытягивается по движению (JS-transform).
    На ховере кнопок — большой круг «смотреть».
@@ -28,7 +28,7 @@ body.paloma-cursor-active .cursor-trail-dot {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #2a120c;
+  background: #1B1A18;
   border: none;
   /* transform управляется из JS (растяжение) — без перехода,
      переход только на размер/цвет при ховере. */
@@ -45,7 +45,7 @@ body.paloma-cursor-active .cursor-trail-dot {
 .paloma-cursor.is-hovering {
   width: 72px;
   height: 72px;
-  background: #2a120c;
+  background: #1B1A18;
   display: flex;
   align-items: center;
   justify-content: center;

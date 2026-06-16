@@ -1,15 +1,15 @@
-/**
+﻿/**
  * Canonical Paloma design tokens — single source per brand TZ.
  * Legacy aliases are mapped in globals.css (:root @theme).
  */
 :root {
-  --paloma-orange: #f0522b;
-  --paloma-burgundy: #7a1e1e;
-  --paloma-white: #fffdf8;
-  --paloma-coal: #282828;
-  --paloma-rose: #e296b2;
+  --paloma-orange: #FBF6E8;
+  --paloma-burgundy: #1B1A18;
+  --paloma-white: #FBF6E8;
+  --paloma-coal: #1B1A18;
+  --paloma-rose: #FBF6E8;
   /** Розовый персик — только акцент, не доминирующий фон */
-  --paloma-peach: #feecde;
+  --paloma-peach: #FBF6E8;
 
   /* Семантика PRD / PROJECT_RULES (алиасы к палитре Paloma) */
   --color-cream: var(--paloma-white);

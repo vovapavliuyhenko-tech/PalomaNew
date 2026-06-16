@@ -1,4 +1,4 @@
-/* thank-you.css */
+﻿/* thank-you.css */
 .thank-you-page .ty-main {
   min-height: 80vh;
   display: flex;
@@ -28,7 +28,7 @@
   margin-bottom: 24px;
 }
 .ty-icon {
-  color: var(--color-accent, #6b0f1a);
+  color: var(--color-accent, #1B1A18);
   margin-bottom: 24px;
 }
 .ty-title {
@@ -53,7 +53,7 @@
   font-family: var(--font-mono, "JetBrains Mono", monospace);
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: var(--color-accent, #6b0f1a);
+  color: var(--color-accent, #1B1A18);
 }
 .ty-text {
   font-size: 16px;
@@ -63,7 +63,7 @@
 }
 .ty-order-summary {
   width: 100%;
-  background: var(--color-bg-alt, #f2efe8);
+  background: var(--color-bg-alt, #FBF6E8);
   padding: 20px;
   border-radius: 4px;
   margin-bottom: 28px;
@@ -108,13 +108,13 @@
   gap: 10px;
 }
 .ty-btn-wa {
-  background: #25d366;
-  border-color: #25d366;
-  color: #fff;
+  background: #1B1A18;
+  border-color: #1B1A18;
+  color: #FBF6E8;
 }
 .ty-btn-wa:hover {
-  background: #1ebe5d;
-  border-color: #1ebe5d;
+  background: #1B1A18;
+  border-color: #1B1A18;
 }
 .ty-next-steps {
   width: 100%;
@@ -144,6 +144,6 @@
   font-family: var(--font-mono, "JetBrains Mono", monospace);
   font-size: 10px;
   letter-spacing: 0.2em;
-  color: var(--color-accent, #6b0f1a);
+  color: var(--color-accent, #1B1A18);
   flex-shrink: 0;
 }

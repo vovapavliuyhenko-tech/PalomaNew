@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PALOMA Coffee — премиум, в стиле главной</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant:ital,wght@0,400;1,400&family=Great+Vibes&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#fbf6e8; --cream:#FBF6E8; --paper:#FBF6E8;
+  --dark:#1B1A18; --burgundy:#1B1A18; --crema:#FBF6E8;
+  --font-display:'Italiana',serif; --font-script:'Great Vibes',cursive;
+  --font-sans:'Manrope',sans-serif; --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);background:var(--ivory);color:var(--dark);overflow-x:hidden}
+img{display:block}
+.tag{position:fixed;top:20px;left:20px;z-index:200;background:rgba(247,241,232,.7);
+  backdrop-filter:blur(10px);border:1px solid rgba(116,24,39,.25);border-radius:100px;
+  padding:9px 20px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--burgundy);pointer-events:none}
+.nav{position:fixed;top:50%;right:18px;transform:translateY(-50%);z-index:200;display:flex;flex-direction:column;gap:12px}
+.nav a{width:11px;height:11px;border-radius:50%;border:1.5px solid rgba(116,24,39,.6)}
+.nav a:hover{background:var(--burgundy)}
+
+/* общий нижний бар как на главной */
+.bar{position:absolute;bottom:0;left:0;right:0;z-index:6;display:flex;align-items:flex-end;justify-content:space-between;
+  padding:0 clamp(24px,5vw,72px) clamp(26px,3.6vw,48px);opacity:0;animation:fadeUp 1s 1.5s var(--ease) forwards}
+.bar address{font-style:normal;font-size:12px;letter-spacing:.07em;color:rgba(116,24,39,.9);line-height:1.7}
+.bar address span{display:block}
+.bar .line{width:1px;height:44px;overflow:hidden;align-self:flex-end}
+.bar .line i{display:block;width:1px;height:44px;background:rgba(116,24,39,.55);transform:translateY(-100%);animation:scroll 2.4s ease-in-out infinite 2.6s}
+.bar .cta{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-display);font-size:clamp(15px,1.2vw,20px);
+  color:var(--burgundy);text-decoration:none;border-bottom:1px solid rgba(116,24,39,.5);padding-bottom:3px;font-style:italic}
+.bar .cta span{transition:transform .35s var(--ease)}
+.bar .cta:hover span{transform:translateX(5px)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes scroll{0%{transform:translateY(-100%)}55%{transform:translateY(0)}100%{transform:translateY(100%)}}
+.tagline-script{font-family:var(--font-script);color:rgba(176,122,60,.85);font-size:clamp(26px,3vw,42px);opacity:0;animation:fadeUp 1s 1.15s var(--ease) forwards}
+
+/* ════════════════════════════════════════════════════════════
+   P1 — «ДВОЙНАЯ ЭКСПОЗИЦИЯ» : фото живёт ВНУТРИ букв слова
+   ════════════════════════════════════════════════════════════ */
+.P1{position:relative;height:100vh;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 0%,#FBF6E8,var(--paper))}
+.P1::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E")}
+.P1__ghost{position:absolute;inset:0;background:url('images/paloma/coffee/hero.jpg') center/cover;opacity:.1;filter:grayscale(.3)}
+.P1__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.P1__word{font-family:var(--font-display);font-style:italic;font-size:clamp(70px,21vw,330px);line-height:.82;letter-spacing:-.02em;
+  background:url('images/paloma/coffee/hero.jpg') center/120% no-repeat;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:p1pan 20s ease-in-out infinite alternate, wordUp 1.4s .4s var(--ease) both}
+@keyframes p1pan{from{background-position:30% 40%}to{background-position:70% 60%}}
+@keyframes wordUp{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+.P1__eyebrow{font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--burgundy);margin-bottom:18px;opacity:0;animation:fadeUp 1s .2s var(--ease) forwards}
+.P1 .tagline-script{margin-top:6px}
+
+/* ════════════════════════════════════════════════════════════
+   P2 — «ТРИПТИХ-ШТОРЫ» : 3 фото-панели разъезжаются, центр-слово
+   ════════════════════════════════════════════════════════════ */
+.P2{position:relative;height:100vh;overflow:hidden;background:var(--paper);display:flex}
+.P2__panel{position:relative;flex:1;background-size:cover;background-position:center;filter:brightness(.92) saturate(1.02);
+  transition:flex .8s var(--ease), filter .6s;will-change:flex}
+.P2__panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(26,13,8,.4))}
+.P2__panel:nth-child(1){background-image:url('images/paloma/catalog/d1.jpg');transform:translateX(-100%);animation:slideIn .9s .1s var(--ease) forwards}
+.P2__panel:nth-child(2){background-image:url('images/paloma/coffee/hero.jpg');transform:translateY(100%);animation:slideUp 1s .25s var(--ease) forwards}
+.P2__panel:nth-child(3){background-image:url('images/paloma/catalog/d3.jpg');transform:translateX(100%);animation:slideIn2 .9s .1s var(--ease) forwards}
+@keyframes slideIn{to{transform:translateX(0)}}
+@keyframes slideIn2{to{transform:translateX(0)}}
+@keyframes slideUp{to{transform:translateY(0)}}
+.P2:hover .P2__panel{flex:.7}
+.P2__panel:hover{flex:1.9;filter:brightness(1) saturate(1.08)}
+.P2__cap{position:absolute;left:18px;bottom:18px;z-index:3;font-family:var(--font-display);font-size:13px;letter-spacing:.1em;color:#fff;
+  opacity:0;animation:fadeUp 1s 1s var(--ease) forwards}
+.P2__center{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;mix-blend-mode:hard-light}
+.P2__word{font-family:var(--font-display);font-style:italic;color:var(--cream);font-size:clamp(60px,15vw,240px);line-height:.85;
+  text-shadow:0 6px 40px rgba(0,0,0,.4);opacity:0;animation:wordUp 1.4s .8s var(--ease) forwards}
+.P2 .tagline-script{color:rgba(247,241,232,.95);animation-delay:1.4s}
+
+/* ════════════════════════════════════════════════════════════
+   P3 — «ПАРЯЩАЯ ГАЛЕРЕЯ» : полароиды дрейфуют, параллакс к мышке
+   ════════════════════════════════════════════════════════════ */
+.P3{position:relative;height:100vh;overflow:hidden;
+  background:radial-gradient(130% 100% at 50% 30%,#FBF6E8 0%,var(--ivory) 60%,var(--paper) 100%)}
+.P3__layer{position:absolute;inset:0;transition:transform .4s ease-out}
+.P3__pic{position:absolute;background:#fff;padding:10px 10px 30px;box-shadow:0 24px 50px rgba(42,18,12,.16);
+  animation:drift 9s ease-in-out infinite}
+.P3__pic img{width:100%;height:100%;object-fit:cover;display:block}
+.P3__pic span{position:absolute;left:10px;bottom:9px;font-family:var(--font-display);font-size:10px;letter-spacing:.12em;color:#FBF6E8}
+@keyframes drift{0%,100%{transform:translateY(-10px) rotate(var(--r))}50%{transform:translateY(10px) rotate(calc(var(--r) * -1))}}
+.P3__center{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+.P3__eyebrow{font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--burgundy);margin-bottom:16px;opacity:0;animation:fadeUp 1s .2s var(--ease) forwards}
+.P3__word{font-family:var(--font-display);font-style:italic;color:var(--burgundy);font-size:clamp(64px,18vw,290px);line-height:.82;letter-spacing:-.02em;
+  opacity:0;animation:wordUp 1.4s .45s var(--ease) forwards}
+.P3 .tagline-script{margin-top:8px}
+
+@media(max-width:760px){
+  .P2__panel:nth-child(1),.P2__panel:nth-child(3){display:none}
+  .P3__pic{display:none}
+  .P3__pic:nth-child(-n+3){display:block}
+}
+</style>
+</head>
+<body>
+<span class="tag" id="tag">P1 · «Двойная экспозиция» — фото внутри букв</span>
+<nav class="nav"><a href="#P1"></a><a href="#P2"></a><a href="#P3"></a></nav>
+
+<!-- P1 -->
+<section class="P1" id="P1">
+  <div class="P1__ghost"></div>
+  <div class="P1__center">
+    <div class="P1__eyebrow">PALOMA Coffee · Энгельса 74/82</div>
+    <div class="P1__word">coffee</div>
+    <div class="tagline-script">кофе, который дополняет цветы</div>
+  </div>
+  <div class="bar">
+    <address><span>ул. Энгельса, 74/82</span><span>+7 989 770 70 00</span></address>
+    <div class="line"><i></i></div>
+    <a class="cta" href="#">в меню <span>→</span></a>
+  </div>
+</section>
+
+<!-- P2 -->
+<section class="P2" id="P2">
+  <div class="P2__panel"><div class="P2__cap">эспрессо</div></div>
+  <div class="P2__panel"><div class="P2__cap">обжарка</div></div>
+  <div class="P2__panel"><div class="P2__cap">десерты</div></div>
+  <div class="P2__center">
+    <div class="P2__word">coffee</div>
+    <div class="tagline-script">кофе, который дополняет цветы</div>
+  </div>
+  <div class="bar">
+    <address style="color:rgba(247,241,232,.95)"><span>ул. Энгельса, 74/82</span><span>+7 989 770 70 00</span></address>
+    <div class="line"><i style="background:rgba(247,241,232,.7)"></i></div>
+    <a class="cta" href="#" style="color:var(--cream);border-color:rgba(247,241,232,.6)">в меню <span>→</span></a>
+  </div>
+</section>
+
+<!-- P3 -->
+<section class="P3" id="P3">
+  <div class="P3__layer" id="p3a" data-depth="20">
+    <div class="P3__pic" style="--r:-5deg;top:12%;left:7%;width:170px;height:226px;animation-delay:0s"><img src="images/paloma/catalog/d1.jpg" alt=""><span>ESPRESSO</span></div>
+    <div class="P3__pic" style="--r:4deg;top:58%;left:12%;width:150px;height:200px;animation-delay:1.2s"><img src="images/paloma/catalog/d2.jpg" alt=""><span>DESSERT</span></div>
+    <div class="P3__pic" style="--r:6deg;top:16%;right:8%;width:160px;height:212px;animation-delay:.6s"><img src="images/paloma/coffee/hero.jpg" alt=""><span>BAR</span></div>
+  </div>
+  <div class="P3__layer" id="p3b" data-depth="45">
+    <div class="P3__pic" style="--r:-3deg;top:60%;right:10%;width:190px;height:250px;animation-delay:2s"><img src="images/paloma/catalog/d3.jpg" alt=""><span>FILTER</span></div>
+    <div class="P3__pic" style="--r:8deg;top:6%;left:38%;width:120px;height:158px;animation-delay:.3s"><img src="images/paloma/catalog/c9.jpg" alt=""><span>BLEND</span></div>
+  </div>
+  <div class="P3__center">
+    <div class="P3__eyebrow">PALOMA Coffee · Энгельса 74/82</div>
+    <div class="P3__word">coffee</div>
+    <div class="tagline-script">кофе, который дополняет цветы</div>
+  </div>
+  <div class="bar">
+    <address><span>ул. Энгельса, 74/82</span><span>+7 989 770 70 00</span></address>
+    <div class="line"><i></i></div>
+    <a class="cta" href="#">в меню <span>→</span></a>
+  </div>
+</section>
+
+<script>
+const tag=document.getElementById('tag');
+const labels={P1:'P1 · «Двойная экспозиция» — фото внутри букв',P2:'P2 · «Триптих-шторы» — наведи на панель',P3:'P3 · «Парящая галерея» — параллакс к мышке'};
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)tag.textContent=labels[e.target.id]}),{threshold:.5})
+  .observe(document.getElementById('P1'));
+['P1','P2','P3'].forEach(id=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)tag.textContent=labels[id]}),{threshold:.5}).observe(document.getElementById(id)));
+
+/* P3 параллакс */
+const P3=document.getElementById('P3'),la=document.getElementById('p3a'),lb=document.getElementById('p3b');
+P3.addEventListener('mousemove',e=>{
+  const r=P3.getBoundingClientRect();
+  const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  la.style.transform=`translate(${x*20}px,${y*20}px)`;
+  lb.style.transform=`translate(${x*45}px,${y*45}px)`;
+});
+P3.addEventListener('mouseleave',()=>{la.style.transform='';lb.style.transform=''});
+</script>
+</body>
+</html>

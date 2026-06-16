@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PALOMA Coffee — 3 варианта первого блока</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#fbf6e8; --dark:#1B1A18; --burgundy:#1B1A18;
+  --font-display:'Italiana','Cormorant',serif;
+  --font-sans:'Manrope',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);background:#000;color:#fff;-webkit-font-smoothing:antialiased}
+img{display:block}
+
+/* ===== Метка-ярлык варианта ===== */
+.demo-tag{
+  position:absolute;top:24px;left:24px;z-index:50;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.25);border-radius:100px;
+  padding:8px 18px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:500;
+}
+.demo-nav{
+  position:fixed;top:50%;right:18px;transform:translateY(-50%);z-index:100;
+  display:flex;flex-direction:column;gap:10px;
+}
+.demo-nav a{
+  width:11px;height:11px;border-radius:50%;border:1px solid rgba(255,255,255,.6);
+  background:transparent;transition:.3s;display:block;
+}
+.demo-nav a:hover{background:#fff;transform:scale(1.3)}
+
+/* ============================================================
+   ВАРИАНТ 1 — Пиннинг продукта на видео (Sjöstrand)
+   ============================================================ */
+.v1{position:relative;height:300vh;background:#1B1A18}
+.v1__sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.v1__bg{position:absolute;inset:0}
+.v1__bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.55);animation:kb1 18s ease-in-out infinite alternate}
+@keyframes kb1{from{transform:scale(1.05)}to{transform:scale(1.18)}}
+.v1__product{
+  position:relative;z-index:5;width:min(34vw,340px);aspect-ratio:3/4;
+  background:#fbf6e8 url('images/paloma/catalog/d1.jpg') center/cover;
+  border-radius:6px;box-shadow:0 40px 90px rgba(0,0,0,.55);
+  animation:float1 6s ease-in-out infinite;
+}
+@keyframes float1{0%,100%{transform:translateY(-12px) rotate(-1.5deg)}50%{transform:translateY(12px) rotate(1.5deg)}}
+.v1__lines{position:absolute;z-index:6;left:6vw;bottom:12vh;max-width:520px}
+.v1__lines p{font-size:clamp(20px,2.4vw,34px);font-weight:300;line-height:1.35;opacity:.25;transition:opacity .5s;margin-bottom:6px}
+.v1__lines p em{font-style:italic;color:#FBF6E8}
+.v1__word{
+  position:absolute;z-index:1;top:8vh;right:4vw;font-family:var(--font-display);
+  font-size:clamp(60px,14vw,220px);color:rgba(255,255,255,.07);line-height:.8;letter-spacing:.04em;
+}
+
+/* ============================================================
+   ВАРИАНТ 2 — Редакторский разворот (eventauthor)
+   ============================================================ */
+.v2{position:relative;min-height:100vh;background:var(--ivory);color:var(--dark);
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4vw;padding:8vh 6vw;overflow:hidden}
+.v2::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 49.6%,rgba(42,18,12,.06) 50%,transparent 50.4%);
+  pointer-events:none}
+.v2__card{
+  position:relative;justify-self:center;width:min(36vw,420px);background:#fff;
+  padding:18px 18px 64px;box-shadow:0 30px 70px rgba(42,18,12,.18);
+  transform:rotate(-3deg);opacity:0;animation:cardIn 1s .2s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes cardIn{to{opacity:1;transform:rotate(-2deg) translateY(0)}}
+.v2__card img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.v2__cap{position:absolute;left:18px;right:18px;bottom:22px;display:flex;justify-content:space-between;
+  font-family:var(--font-display);font-size:13px;letter-spacing:.1em;color:#1B1A18}
+.v2__cap span:nth-child(2){color:var(--burgundy)}
+.v2__right h1{font-family:var(--font-display);color:var(--burgundy);
+  font-size:clamp(40px,5.2vw,84px);line-height:1.02;letter-spacing:.01em;text-transform:uppercase}
+.v2__right h1 span{display:inline-block;opacity:0;transform:translateY(22px);
+  animation:wordUp .7s forwards;animation-delay:calc(.4s + var(--i)*.12s)}
+@keyframes wordUp{to{opacity:1;transform:translateY(0)}}
+.v2__right p{margin:28px 0 34px;max-width:420px;font-weight:300;font-size:18px;line-height:1.6;color:#1B1A18}
+.v2__btn{display:inline-flex;align-items:center;gap:10px;border:none;background:none;
+  font-family:var(--font-sans);font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  font-size:14px;color:var(--burgundy);cursor:pointer;padding-bottom:6px;border-bottom:1.5px solid var(--burgundy)}
+
+/* ============================================================
+   ВАРИАНТ 3 — Раскрытие шторкой + zoom (hide-event)
+   ============================================================ */
+.v3{position:relative;height:100vh;overflow:hidden;background:#000;cursor:pointer}
+.v3__photo{position:absolute;inset:0}
+.v3__photo img{width:100%;height:100%;object-fit:cover;filter:brightness(.7);
+  transform:scale(1.25);animation:kb3 7s ease-out forwards}
+@keyframes kb3{to{transform:scale(1.02)}}
+.v3__word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:clamp(80px,22vw,360px);color:#fff;letter-spacing:.05em;
+  overflow:hidden}
+.v3__word span{display:block;clip-path:inset(0 0 0 0);animation:curtain 1.6s 0s cubic-bezier(.76,0,.24,1) forwards}
+@keyframes curtain{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 100% 0)}}
+.v3__content{position:absolute;left:0;right:0;bottom:0;padding:6vh 6vw;
+  display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;
+  opacity:0;transform:translateY(40px);animation:rise 1s 1.4s forwards}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+.v3__eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+.v3__tagline{font-family:var(--font-display);font-size:clamp(34px,5vw,72px);line-height:1.05;margin-top:10px}
+.v3__tagline em{font-style:italic;color:#FBF6E8}
+.v3__addr{font-size:14px;line-height:1.9;text-align:right;opacity:.85}
+.v3__hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:12px;opacity:.5;letter-spacing:.1em}
+
+@media(max-width:760px){
+  .v2{grid-template-columns:1fr;text-align:center}
+  .v2::before{display:none}
+  .v2__card{width:min(70vw,320px);margin-bottom:32px}
+  .v1__lines{left:5vw;right:5vw;bottom:8vh}
+}
+</style>
+</head>
+<body>
+
+<nav class="demo-nav">
+  <a href="#v1" title="Вариант 1"></a>
+  <a href="#v2" title="Вариант 2"></a>
+  <a href="#v3" title="Вариант 3"></a>
+</nav>
+
+<!-- ВАРИАНТ 1 -->
+<section class="v1" id="v1">
+  <span class="demo-tag">Вариант 1 · Пиннинг продукта (Sjöstrand)</span>
+  <div class="v1__sticky">
+    <div class="v1__bg"><img src="images/paloma/coffee/hero.jpg" alt=""></div>
+    <div class="v1__word">COFFEE</div>
+    <div class="v1__product"></div>
+    <div class="v1__lines">
+      <p data-line>мы создали <em>четыре уникальных бленда</em></p>
+      <p data-line>из редких сортов зёрен со всего мира</p>
+      <p data-line>каждое сочетание — сложный многогранный вкус</p>
+    </div>
+  </div>
+</section>
+
+<!-- ВАРИАНТ 2 -->
+<section class="v2" id="v2">
+  <span class="demo-tag" style="color:var(--burgundy);background:rgba(255,255,255,.6);border-color:rgba(116,24,39,.3)">Вариант 2 · Редакторский разворот (eventauthor)</span>
+  <div class="v2__card">
+    <img src="images/paloma/catalog/d2.jpg" alt="">
+    <div class="v2__cap"><span>PALOMA COFFEE</span><span>[ ЭНГЕЛЬСА 74 ]</span></div>
+  </div>
+  <div class="v2__right">
+    <h1>
+      <span style="--i:0">КОФЕ,</span> <span style="--i:1">КОТОРЫЙ</span><br>
+      <span style="--i:2">ДОПОЛНЯЕТ</span><br>
+      <span style="--i:3">ЦВЕТЫ</span>
+    </h1>
+    <p>Четыре авторских бленда, обжарка под Новороссийск и аромат, который продолжает букет.</p>
+    <button class="v2__btn">Смотреть меню ♥</button>
+  </div>
+</section>
+
+<!-- ВАРИАНТ 3 -->
+<section class="v3" id="v3" onclick="this.querySelectorAll('.v3__word span,.v3__photo img,.v3__content').forEach(e=>{e.style.animation='none';e.offsetHeight;e.style.animation=''})">
+  <span class="demo-tag">Вариант 3 · Раскрытие шторкой + zoom (hide-event) — кликни для повтора</span>
+  <div class="v3__photo"><img src="images/paloma/events/event-01.jpg" alt=""></div>
+  <div class="v3__word"><span>COFFEE</span></div>
+  <div class="v3__content">
+    <div>
+      <div class="v3__eyebrow">PALOMA Coffee</div>
+      <div class="v3__tagline">кофе, который<br><em>дополняет цветы</em></div>
+    </div>
+    <address class="v3__addr">Новороссийск<br>ул. Энгельса, 74/82<br>+7 989 770 70 00</address>
+  </div>
+  <div class="v3__hint">↓ листай дальше</div>
+</section>
+
+<script>
+/* Вариант 1: подсветка строк по скроллу sticky-секции */
+const v1=document.querySelector('.v1');
+const lines=[...document.querySelectorAll('.v1__lines [data-line]')];
+const product=document.querySelector('.v1__product');
+addEventListener('scroll',()=>{
+  const r=v1.getBoundingClientRect();
+  const total=v1.offsetHeight-innerHeight;
+  const p=Math.min(1,Math.max(0,-r.top/total));
+  lines.forEach((l,i)=>{l.style.opacity=(p>(i+1)/(lines.length+1))?1:.25});
+  product.style.transform=`scale(${1+p*0.12})`;
+},{passive:true});
+</script>
+</body>
+</html>

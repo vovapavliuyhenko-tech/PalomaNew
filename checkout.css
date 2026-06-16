@@ -1,16 +1,16 @@
-/* ════════════════════════════════════════════════════════
+﻿/* ════════════════════════════════════════════════════════
    PALOMA CHECKOUT — premium e-commerce styling
    ════════════════════════════════════════════════════════ */
 
 .checkout-page {
   --co-bg: #FBF6E8;
-  --co-bg-card: #ffffff;
-  --co-dark: #1A1A1A;
+  --co-bg-card: #FBF6E8;
+  --co-dark: #1B1A18;
   --co-muted: rgba(27, 26, 24, 0.50);
   --co-line: rgba(27, 26, 24, 0.10);
-  --co-accent: #6B0F1A;
-  --co-error: #c0392b;
-  --co-success: #27ae60;
+  --co-accent: #1B1A18;
+  --co-error: #1B1A18;
+  --co-success: #1B1A18;
   --co-radius: 12px;
   --co-radius-sm: 8px;
 
@@ -511,7 +511,7 @@
   align-items: flex-start;
   gap: 8px;
   padding: 12px 14px;
-  background: rgba(107, 15, 26, 0.06);
+  background: rgba(27, 26, 24, 0.06);
   border-radius: var(--co-radius-sm);
   margin-top: 12px;
 }

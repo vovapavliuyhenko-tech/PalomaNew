@@ -1,4 +1,4 @@
-/* PALOMA — анимации (preloader, cursor, reveal, waves) */
+﻿/* PALOMA — анимации (preloader, cursor, reveal, waves) */
 
 /* ── Preloader v2 ── */
 .paloma-loader--v2 {
@@ -141,17 +141,17 @@ body.paloma-cursor-on .custom-cursor__ring {
   width: 28px;
   height: 28px;
   margin: -14px 0 0 -14px;
-  border: 1px solid rgba(107, 15, 26, 0.35);
+  border: 1px solid rgba(27, 26, 24, 0.35);
   background: rgba(251, 246, 232, 0.08);
 }
 
 body.paloma-cursor-on .custom-cursor.is-hovering .custom-cursor__ring {
-  border-color: rgba(107, 15, 26, 0.55);
-  background: rgba(107, 15, 26, 0.06);
+  border-color: rgba(27, 26, 24, 0.55);
+  background: rgba(27, 26, 24, 0.06);
 }
 
 body.paloma-cursor-on .cursor-trail-dot {
-  background: rgba(107, 15, 26, 0.22);
+  background: rgba(27, 26, 24, 0.22);
   mix-blend-mode: normal;
 }
 

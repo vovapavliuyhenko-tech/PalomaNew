@@ -1,4 +1,4 @@
-/* ── CART PAGE ── */
+﻿/* ── CART PAGE ── */
 .cart-page {
   padding-top: var(--paloma-header-offset, calc(34px + 88px));
   min-height: 80vh;
@@ -386,7 +386,7 @@
 .cart-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(27, 26, 24, 0.4);
   backdrop-filter: blur(4px);
 }
 .cart-modal__panel {
@@ -439,11 +439,11 @@
 }
 .cart-modal__actions .btn--dark.cart-modal__btn {
   background: var(--color-text);
-  color: #fff;
+  color: #FBF6E8;
   border-color: var(--color-text);
 }
 .cart-modal__actions .btn--dark.cart-modal__btn:hover {
-  background: #2a2a2a;
+  background: #1B1A18;
 }
 .cart-modal__actions .btn--outline.cart-modal__btn {
   background: transparent;
@@ -452,12 +452,12 @@
 }
 .cart-modal__actions .btn--outline.cart-modal__btn:hover {
   background: var(--color-text);
-  color: #fff;
+  color: #FBF6E8;
 }
 .cart-modal__actions .btn--ghost.cart-modal__btn {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(27, 26, 24, 0.04);
   color: var(--color-text-muted);
-  border-color: rgba(0, 0, 0, 0.12);
+  border-color: rgba(27, 26, 24, 0.12);
 }
 .cart-modal__actions .btn--ghost.cart-modal__btn:hover {
   border-color: var(--color-text);
@@ -879,12 +879,12 @@
 }
 .cart-addon-card__btn:hover {
   background: var(--color-text);
-  color: #fff;
+  color: #FBF6E8;
 }
 .cart-page-summary {
   position: sticky;
   top: 96px;
-  background: var(--color-bg-alt, #f2efe8);
+  background: var(--color-bg-alt, #FBF6E8);
   padding: clamp(24px, 3vw, 36px);
   border-radius: 4px;
 }

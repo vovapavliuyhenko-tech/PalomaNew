@@ -1,4 +1,4 @@
-/* =====================================================
+﻿/* =====================================================
    PALOMA PAGE LOADER
    Кремовый фон · Cormorant капслок · шторка поднимается
    ===================================================== */
@@ -64,7 +64,7 @@ body.is-paloma-loading {
   font-style: normal;
   letter-spacing: 0.30em;
   text-transform: uppercase;
-  color: #741827;
+  color: #1B1A18;
   display: block;
 }
 
@@ -83,7 +83,7 @@ body.is-paloma-loading {
   font-weight: 400;
   letter-spacing: 0.32em;
   text-transform: lowercase;
-  color: rgba(116, 24, 39, 0.52);
+  color: rgba(27, 26, 24, 0.52);
   opacity: 0;
   transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.42s,
               transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.42s;

@@ -1,4 +1,4 @@
-/* ════════════════════════════════════════════════════════
+﻿/* ════════════════════════════════════════════════════════
    product.css — страница товара PALOMA (PDP)
    ════════════════════════════════════════════════════════ */
 
@@ -9,7 +9,7 @@ body.product-page {
 .pdp-breadcrumbs {
   padding: 14px 0;
   border-bottom: 1px solid var(--color-border, rgba(27, 26, 24, 0.1));
-  background: var(--color-bg, var(--milk, #faf8f4));
+  background: var(--color-bg, var(--milk, #FBF6E8));
 }
 
 .pdp-breadcrumbs__inner {
@@ -31,18 +31,18 @@ body.product-page {
 .pdp-breadcrumbs__list a {
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: var(--color-text-muted, var(--muted, #6e6e6e));
+  color: var(--color-text-muted, var(--muted, #1B1A18));
   text-decoration: none;
   transition: color 0.22s;
 }
 
 .pdp-breadcrumbs__list a:hover {
-  color: var(--color-accent, var(--burgundy, #6b0f1a));
+  color: var(--color-accent, var(--burgundy, #1B1A18));
 }
 
 .pdp-breadcrumbs__list li[aria-current] {
   font-size: 12px;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
 }
 
 .pdp-breadcrumbs__list li[aria-hidden] {
@@ -85,7 +85,7 @@ body.product-page {
   position: relative;
   aspect-ratio: 4/5;
   overflow: hidden;
-  background: var(--color-bg-alt, var(--cream, #f2efe8));
+  background: var(--color-bg-alt, var(--cream, #FBF6E8));
   border-radius: 4px;
 }
 
@@ -129,7 +129,7 @@ body.product-page {
   width: clamp(56px, 8vw, 80px);
   aspect-ratio: 1/1;
   overflow: hidden;
-  background: var(--color-bg-alt, var(--cream, #f2efe8));
+  background: var(--color-bg-alt, var(--cream, #FBF6E8));
   border-radius: 3px;
   border: 2px solid transparent;
   cursor: pointer;
@@ -139,11 +139,11 @@ body.product-page {
 }
 
 .pdp-gallery__thumb.is-active {
-  border-color: var(--color-text, var(--ink, #1a1a1a));
+  border-color: var(--color-text, var(--ink, #1B1A18));
 }
 
 .pdp-gallery__thumb:hover {
-  border-color: var(--color-text-muted, var(--muted, #6e6e6e));
+  border-color: var(--color-text-muted, var(--muted, #1B1A18));
 }
 
 .pdp-gallery__thumb-ph,
@@ -161,7 +161,7 @@ body.product-page {
 }
 
 .pdp-gallery__thumb:focus-visible {
-  outline: 2px solid var(--color-accent, var(--burgundy, #6b0f1a));
+  outline: 2px solid var(--color-accent, var(--burgundy, #1B1A18));
   outline-offset: 2px;
 }
 
@@ -175,7 +175,7 @@ body.product-page {
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-accent, var(--burgundy, #6b0f1a));
+  color: var(--color-accent, var(--burgundy, #1B1A18));
   margin: 0 0 10px;
 }
 
@@ -185,7 +185,7 @@ body.product-page {
   font-weight: 400;
   line-height: 0.96;
   letter-spacing: -0.02em;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   margin: 0 0 16px;
 }
 
@@ -194,7 +194,7 @@ body.product-page {
   font-size: clamp(22px, 2.5vw, 32px);
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   margin: 0 0 24px;
 }
 
@@ -217,19 +217,19 @@ body.product-page {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-text-muted, var(--muted, #6e6e6e));
+  color: var(--color-text-muted, var(--muted, #1B1A18));
 }
 
 .pdp-info__row-val {
   font-size: 14px;
   line-height: 1.5;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
 }
 
 .pdp-info__desc {
   font-size: 15px;
   line-height: 1.65;
-  color: var(--color-text-muted, var(--muted, #6e6e6e));
+  color: var(--color-text-muted, var(--muted, #1B1A18));
   margin: 0 0 24px;
 }
 
@@ -243,7 +243,7 @@ body.product-page {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-text-muted, var(--muted, #6e6e6e));
+  color: var(--color-text-muted, var(--muted, #1B1A18));
   margin-bottom: 10px;
 }
 
@@ -261,23 +261,23 @@ body.product-page {
   font-family: var(--font-sans, var(--sans, "Manrope"), sans-serif);
   font-size: 13px;
   font-weight: 500;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   cursor: pointer;
   transition: background 0.22s, color 0.22s, border-color 0.22s;
 }
 
 .pdp-size-btn:hover {
-  border-color: var(--color-text, var(--ink, #1a1a1a));
+  border-color: var(--color-text, var(--ink, #1B1A18));
 }
 
 .pdp-size-btn.is-active {
-  background: var(--color-text, var(--ink, #1a1a1a));
-  color: #fff;
-  border-color: var(--color-text, var(--ink, #1a1a1a));
+  background: var(--color-text, var(--ink, #1B1A18));
+  color: #FBF6E8;
+  border-color: var(--color-text, var(--ink, #1B1A18));
 }
 
 .pdp-size-btn:focus-visible {
-  outline: 2px solid var(--color-accent, var(--burgundy, #6b0f1a));
+  outline: 2px solid var(--color-accent, var(--burgundy, #1B1A18));
   outline-offset: 2px;
 }
 
@@ -314,12 +314,12 @@ body.product-page {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   transition: background 0.22s;
 }
 
 .pdp-qty__btn:hover {
-  background: var(--color-bg-alt, var(--cream, #f2efe8));
+  background: var(--color-bg-alt, var(--cream, #FBF6E8));
 }
 
 .pdp-qty__btn:disabled {
@@ -328,7 +328,7 @@ body.product-page {
 }
 
 .pdp-qty__btn:focus-visible {
-  outline: 2px solid var(--color-accent, var(--burgundy, #6b0f1a));
+  outline: 2px solid var(--color-accent, var(--burgundy, #1B1A18));
   outline-offset: -2px;
 }
 
@@ -338,7 +338,7 @@ body.product-page {
   font-family: var(--font-mono, var(--mono, "JetBrains Mono"), monospace);
   font-size: 15px;
   font-weight: 500;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   user-select: none;
 }
 
@@ -352,20 +352,20 @@ body.product-page {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   flex-shrink: 0;
   transition: background 0.22s, color 0.22s, border-color 0.22s;
 }
 
 .pdp-actions__wish:hover,
 .pdp-actions__wish[aria-pressed="true"] {
-  background: var(--color-accent, var(--burgundy, #6b0f1a));
-  border-color: var(--color-accent, var(--burgundy, #6b0f1a));
-  color: #fff;
+  background: var(--color-accent, var(--burgundy, #1B1A18));
+  border-color: var(--color-accent, var(--burgundy, #1B1A18));
+  color: #FBF6E8;
 }
 
 .pdp-actions__wish:focus-visible {
-  outline: 2px solid var(--color-accent, var(--burgundy, #6b0f1a));
+  outline: 2px solid var(--color-accent, var(--burgundy, #1B1A18));
   outline-offset: 2px;
 }
 
@@ -374,8 +374,8 @@ body.product-page {
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: var(--color-text, var(--ink, #1a1a1a));
-  color: #fff;
+  background: var(--color-text, var(--ink, #1B1A18));
+  color: #FBF6E8;
   border-radius: 4px;
   font-size: 13px;
   font-weight: 500;
@@ -430,7 +430,7 @@ body.product-page {
   font-family: var(--font-sans, var(--sans, "Manrope"), sans-serif);
   font-size: 15px;
   font-weight: 500;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   transition: color 0.22s;
   user-select: none;
 }
@@ -440,7 +440,7 @@ body.product-page {
 }
 
 .pdp-accordion__trigger:hover {
-  color: var(--color-accent, var(--burgundy, #6b0f1a));
+  color: var(--color-accent, var(--burgundy, #1B1A18));
 }
 
 .pdp-accordion__icon {
@@ -459,7 +459,7 @@ body.product-page {
 .pdp-accordion__intro {
   font-size: 14px;
   line-height: 1.65;
-  color: var(--color-text-muted, var(--muted, #6e6e6e));
+  color: var(--color-text-muted, var(--muted, #1B1A18));
   margin-bottom: 16px;
 }
 
@@ -477,12 +477,12 @@ body.product-page {
   align-items: center;
   gap: 10px;
   font-size: 14px;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
 }
 
 .pdp-accordion__list li svg {
   flex-shrink: 0;
-  color: var(--color-accent, var(--burgundy, #6b0f1a));
+  color: var(--color-accent, var(--burgundy, #1B1A18));
 }
 
 .pdp-delivery {
@@ -491,7 +491,7 @@ body.product-page {
   flex-direction: column;
   gap: 10px;
   padding: 16px;
-  background: var(--color-bg-alt, var(--cream, #f2efe8));
+  background: var(--color-bg-alt, var(--cream, #FBF6E8));
   border-radius: 4px;
 }
 
@@ -500,17 +500,17 @@ body.product-page {
   align-items: center;
   gap: 10px;
   font-size: 13px;
-  color: var(--color-text-muted, var(--muted, #6e6e6e));
+  color: var(--color-text-muted, var(--muted, #1B1A18));
 }
 
 .pdp-delivery__item svg {
   flex-shrink: 0;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
 }
 
 .pdp-addons {
   padding: clamp(48px, 6vw, 80px) 0;
-  background: var(--color-bg-alt, var(--cream, #f2efe8));
+  background: var(--color-bg-alt, var(--cream, #FBF6E8));
   margin-top: clamp(48px, 6vw, 80px);
 }
 
@@ -526,7 +526,7 @@ body.product-page {
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.015em;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   margin: 0 0 clamp(24px, 3vw, 40px);
 }
 
@@ -552,7 +552,7 @@ body.product-page {
 .addon-card {
   display: flex;
   flex-direction: column;
-  background: var(--color-bg, var(--milk, #faf8f4));
+  background: var(--color-bg, var(--milk, #FBF6E8));
   border-radius: 4px;
   overflow: hidden;
 }
@@ -560,7 +560,7 @@ body.product-page {
 .addon-card__media {
   aspect-ratio: 1/1;
   overflow: hidden;
-  background: var(--color-bg-alt, var(--cream, #f2efe8));
+  background: var(--color-bg-alt, var(--cream, #FBF6E8));
   position: relative;
 }
 
@@ -589,14 +589,14 @@ body.product-page {
   font-size: clamp(14px, 1.4vw, 18px);
   font-weight: 400;
   line-height: 1.2;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
 }
 
 .addon-card__price {
   font-family: var(--font-mono, var(--mono, "JetBrains Mono"), monospace);
   font-size: 13px;
   font-weight: 500;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   margin-bottom: 8px;
 }
 
@@ -611,8 +611,8 @@ body.product-page {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   background: transparent;
-  color: var(--color-text, var(--ink, #1a1a1a));
-  border: 1px solid var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
+  border: 1px solid var(--color-text, var(--ink, #1B1A18));
   border-radius: 2px;
   cursor: pointer;
   transition: background 0.25s, color 0.25s;
@@ -620,18 +620,18 @@ body.product-page {
 }
 
 .addon-card__btn:hover {
-  background: var(--color-text, var(--ink, #1a1a1a));
-  color: #fff;
+  background: var(--color-text, var(--ink, #1B1A18));
+  color: #FBF6E8;
 }
 
 .addon-card__btn.is-added {
-  background: var(--color-accent, var(--burgundy, #6b0f1a));
-  border-color: var(--color-accent, var(--burgundy, #6b0f1a));
-  color: #fff;
+  background: var(--color-accent, var(--burgundy, #1B1A18));
+  border-color: var(--color-accent, var(--burgundy, #1B1A18));
+  color: #FBF6E8;
 }
 
 .addon-card__btn:focus-visible {
-  outline: 2px solid var(--color-accent, var(--burgundy, #6b0f1a));
+  outline: 2px solid var(--color-accent, var(--burgundy, #1B1A18));
   outline-offset: 2px;
 }
 
@@ -652,6 +652,6 @@ body.product-page {
 
 .pdp-not-found__text {
   font-size: 16px;
-  color: var(--color-text-muted, var(--muted, #6e6e6e));
+  color: var(--color-text-muted, var(--muted, #1B1A18));
   margin-bottom: 32px;
 }

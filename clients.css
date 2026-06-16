@@ -1,7 +1,7 @@
-/* PALOMA — клиентские страницы (дополнение к styles.css) */
+﻿/* PALOMA — клиентские страницы (дополнение к styles.css) */
 
 :root {
-  --color-bg-dark: #1f1d1b;
+  --color-bg-dark: #1B1A18;
   --transition-base: 0.3s ease;
   --transition-smooth: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -31,7 +31,7 @@ button.site-header__link.site-header__link--has-dropdown {
   right: 0;
   top: var(--paloma-header-offset);
   background: var(--color-bg);
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 24px 64px rgba(27, 26, 24, 0.1);
   border-top: 1px solid var(--color-border);
   z-index: 105;
   opacity: 0;
@@ -344,7 +344,7 @@ button.site-header__link.site-header__link--has-dropdown {
 
 .info-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 24px 56px rgba(27, 26, 24, 0.07);
 }
 
 .info-card__num {
@@ -520,7 +520,7 @@ button.site-header__link.site-header__link--has-dropdown {
 
 .hscroll-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 28px 60px rgba(27, 26, 24, 0.08);
 }
 
 .hscroll-card--case {
@@ -543,7 +543,7 @@ button.site-header__link.site-header__link--has-dropdown {
 }
 
 .hscroll-card--case .hscroll-card__desc {
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(251, 246, 232, 0.88);
 }
 
 .hscroll-card__num {
@@ -879,9 +879,9 @@ button.site-header__link.site-header__link--has-dropdown {
   background:
     linear-gradient(
       135deg,
-      #b88478 0%,
-      #5a342a 45%,
-      #2a1410 100%
+      #1B1A18 0%,
+      #1B1A18 45%,
+      #1B1A18 100%
     );
 }
 
@@ -890,8 +890,8 @@ button.site-header__link.site-header__link--has-dropdown {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.18) 0%,
-    rgba(0, 0, 0, 0.58) 100%
+    rgba(27, 26, 24, 0.18) 0%,
+    rgba(27, 26, 24, 0.58) 100%
   );
   z-index: 1;
 }
@@ -1258,7 +1258,7 @@ button.site-header__link.site-header__link--has-dropdown {
   width: 100%;
   padding: clamp(22px, 4vw, 32px);
   position: relative;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 32px 80px rgba(27, 26, 24, 0.14);
 }
 
 .checkout-sheet:focus {

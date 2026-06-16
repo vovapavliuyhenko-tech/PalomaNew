@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════════════
    PALOMA — QA: контраст кнопок
    ═══════════════════════════════════════════════════════════════ */
 .btn--dark,
@@ -13,8 +13,8 @@
 .btn--dark:hover,
 .cart-page-summary__checkout:hover,
 .checkout-summary__pay-btn:hover {
-  background: var(--burgundy, #6b0f1a);
-  border-color: var(--burgundy, #6b0f1a);
+  background: var(--burgundy, #1B1A18);
+  border-color: var(--burgundy, #1B1A18);
   color: var(--ivory, #fbf6e8);
 }
 

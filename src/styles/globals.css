@@ -1,4 +1,4 @@
-@theme {
+﻿@theme {
   --color-pink: var(--paloma-orange);
   --color-beige: var(--paloma-white);
   --color-black: var(--paloma-coal);
@@ -160,10 +160,10 @@
   --color-bg-secondary-token: color-mix(in srgb, var(--paloma-white) 94%, var(--paloma-coal));
   --color-border-token: color-mix(in srgb, var(--paloma-coal) 12%, transparent);
   --color-text-secondary-token: color-mix(in srgb, var(--paloma-coal) 45%, transparent);
-  --color-status-success: #4caf50;
-  --color-status-error: #e53935;
-  --color-status-warning: #fb8500;
-  --color-status-info: #2196f3;
+  --color-status-success: #FBF6E8;
+  --color-status-error: #FBF6E8;
+  --color-status-warning: #FBF6E8;
+  --color-status-info: #FBF6E8;
   --font-display-spec: "EB Garamond", var(--font-serif);
   --space-unit-xs: 0.5rem;
   --space-unit-sm: 1rem;
@@ -619,7 +619,7 @@ small,
 
 .catalog-category-tab--active,
 .catalog-category-tab.catalog-category-tab--active {
-  background: #d8d2c8;
+  background: #FBF6E8;
   color: color-mix(in srgb, var(--paloma-coal) 88%, transparent);
   opacity: 1;
 }

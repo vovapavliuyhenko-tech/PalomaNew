@@ -1,4 +1,4 @@
-/* PALOMA — дополнительные блоки клиентских страниц */
+﻿/* PALOMA — дополнительные блоки клиентских страниц */
 
 .client-page .client-hero__actions {
   margin-top: 32px;
@@ -61,7 +61,7 @@
 
 .client-methods__card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 24px 56px rgba(27, 26, 24, 0.07);
 }
 
 .client-methods__card-title {
@@ -339,27 +339,27 @@
 }
 
 .faq-lines__thumb--a {
-  background-image: linear-gradient(145deg, #d4b8a8, #6b2a32);
+  background-image: linear-gradient(145deg, #FBF6E8, #1B1A18);
 }
 
 .faq-lines__thumb--b {
-  background-image: linear-gradient(145deg, #c9a99a, #5a2830);
+  background-image: linear-gradient(145deg, #FBF6E8, #1B1A18);
 }
 
 .faq-lines__thumb--c {
-  background-image: linear-gradient(145deg, #e8d4c8, #7a3840);
+  background-image: linear-gradient(145deg, #FBF6E8, #1B1A18);
 }
 
 .faq-lines__thumb--d {
-  background-image: linear-gradient(145deg, #b89088, #4a2028);
+  background-image: linear-gradient(145deg, #FBF6E8, #1B1A18);
 }
 
 .faq-lines__thumb--e {
-  background-image: linear-gradient(145deg, #dcc4b8, #8a4048);
+  background-image: linear-gradient(145deg, #FBF6E8, #1B1A18);
 }
 
 .faq-lines__thumb--f {
-  background-image: linear-gradient(145deg, #cdb0a0, #623038);
+  background-image: linear-gradient(145deg, #FBF6E8, #1B1A18);
 }
 
 @media (max-width: 768px) {

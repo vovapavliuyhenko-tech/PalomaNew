@@ -1,4 +1,4 @@
-/* =====================================================
+﻿/* =====================================================
    PALOMA HOME HERO — SPLIT EDITORIAL COVER
    Loaded separately to avoid stale styles.css cache.
    ===================================================== */
@@ -10,7 +10,7 @@ body.is-home .paloma-hero {
   max-width: 100%;
   min-height: max(720px, 100svh);
   margin-top: calc(-1 * var(--paloma-header-offset, 88px));
-  background: #f7f1e8;
+  background: #FBF6E8;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -25,11 +25,11 @@ body.is-home .paloma-hero__left {
     calc(var(--paloma-header-offset, 88px) + clamp(36px, 4vw, 48px))
     clamp(32px, 4vw, 48px)
     clamp(42px, 5vw, 56px);
-  color: #f7efe4;
+  color: #FBF6E8;
   background:
     radial-gradient(circle at 28% 18%, rgba(156, 111, 78, 0.48), transparent 38%),
     radial-gradient(circle at 88% 78%, rgba(64, 29, 18, 0.42), transparent 44%),
-    linear-gradient(160deg, #8b6549 0%, #5a3827 45%, #2a120c 100%);
+    linear-gradient(160deg, #FBF6E8 0%, #1B1A18 45%, #1B1A18 100%);
 }
 
 body.is-home .paloma-hero__top {
@@ -70,7 +70,7 @@ body.is-home .paloma-hero__title {
   font-weight: 500;
   line-height: 0.92;
   letter-spacing: -0.045em;
-  color: #f7efe4;
+  color: #FBF6E8;
 }
 
 body.is-home .paloma-hero__title span,
@@ -81,7 +81,7 @@ body.is-home .paloma-hero__title em {
 body.is-home .paloma-hero__title em {
   font-weight: 400;
   font-style: italic;
-  color: #e6ad95;
+  color: #FBF6E8;
 }
 
 body.is-home .paloma-hero__text {
@@ -154,34 +154,34 @@ body.is-home .paloma-hero__btn {
 
 body.is-home .paloma-hero__btn--primary {
   background: rgba(247, 239, 228, 0.94);
-  color: #35180f;
+  color: #1B1A18;
   border: 1px solid rgba(247, 239, 228, 0.75);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 14px 34px rgba(27, 26, 24, 0.16);
 }
 
 body.is-home .paloma-hero__btn--primary:hover {
-  background: #fff7ec;
-  border-color: #fff7ec;
+  background: #FBF6E8;
+  border-color: #FBF6E8;
   transform: translateY(-2px);
 }
 
 body.is-home .paloma-hero__btn--glass {
-  background: rgba(255, 255, 255, 0.07);
-  color: #f7efe4;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(251, 246, 232, 0.07);
+  color: #FBF6E8;
+  border: 1px solid rgba(251, 246, 232, 0.28);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
 body.is-home .paloma-hero__btn--glass:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.45);
-  color: #fff7ec;
+  background: rgba(251, 246, 232, 0.14);
+  border-color: rgba(251, 246, 232, 0.45);
+  color: #FBF6E8;
   transform: translateY(-2px);
 }
 
 body.is-home .paloma-hero__btn:focus-visible {
-  outline: 2px solid #f7efe4;
+  outline: 2px solid #FBF6E8;
   outline-offset: 4px;
 }
 
@@ -198,7 +198,7 @@ body.is-home .paloma-hero__right {
   position: relative;
   min-height: inherit;
   overflow: hidden;
-  background: #f7f1e8;
+  background: #FBF6E8;
 }
 
 body.is-home .paloma-hero__image,
@@ -221,9 +221,9 @@ body.is-home .paloma-hero__image-placeholder {
   justify-content: flex-start;
   padding: clamp(32px, 4vw, 48px);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(0, 0, 0, 0.04)),
-    radial-gradient(circle at 62% 34%, rgba(107, 15, 26, 0.06), transparent 32%),
-    #f7f1e8;
+    linear-gradient(180deg, rgba(251, 246, 232, 0.26), rgba(27, 26, 24, 0.04)),
+    radial-gradient(circle at 62% 34%, rgba(27, 26, 24, 0.06), transparent 32%),
+    #FBF6E8;
 }
 
 body.is-home .paloma-hero__image-placeholder::before {

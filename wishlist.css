@@ -1,4 +1,4 @@
-/* ════════════════════════════════════════════════════════
+﻿/* ════════════════════════════════════════════════════════
    wishlist.css — страница избранного PALOMA
    ════════════════════════════════════════════════════════ */
 
@@ -13,7 +13,7 @@ body.wishlist-page {
 
 .wishlist-hero {
   padding: clamp(28px, 4vw, 48px) 0 0;
-  background: var(--color-bg, var(--milk, #faf8f4));
+  background: var(--color-bg, var(--milk, #FBF6E8));
 }
 
 .wishlist-hero__inner {
@@ -33,7 +33,7 @@ body.wishlist-page {
   font-weight: 400;
   line-height: 0.94;
   letter-spacing: -0.02em;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   margin: 0;
 }
 
@@ -42,7 +42,7 @@ body.wishlist-page {
   font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-muted, var(--muted, #6e6e6e));
+  color: var(--color-text-muted, var(--muted, #1B1A18));
   margin: 0;
 }
 
@@ -104,14 +104,14 @@ body.wishlist-page {
   font-weight: 400;
   letter-spacing: -0.015em;
   line-height: 1.1;
-  color: var(--color-text, var(--ink, #1a1a1a));
+  color: var(--color-text, var(--ink, #1B1A18));
   margin: 0 0 12px;
 }
 
 .wishlist-empty__text {
   font-size: 15px;
   line-height: 1.65;
-  color: var(--color-text-muted, var(--muted, #6e6e6e));
+  color: var(--color-text-muted, var(--muted, #1B1A18));
   margin: 0 0 32px;
 }
 

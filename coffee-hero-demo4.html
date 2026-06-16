@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PALOMA Coffee — видео + плавающие карточки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Great+Vibes&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#fbf6e8;--cream:#FBF6E8;--dark:#1B1A18;--burgundy:#1B1A18;--crema:#FBF6E8;
+  --font-display:'Italiana',serif;--font-script:'Great Vibes',cursive;--font-sans:'Manrope',sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);background:#000;color:var(--cream);overflow:hidden}
+img{display:block}
+
+.hero{position:relative;height:100vh;width:100%;overflow:hidden;background:#1B1A18}
+
+/* ── ВИДЕО-ФОН ── */
+.hero__video{position:absolute;inset:0;z-index:0;animation:bgZoom 10s var(--ease) forwards}
+.hero__video video,.hero__video img{width:100%;height:100%;object-fit:cover;display:block}
+/* пока нет видео: имитируем «живой» кадр зумом+зерном */
+.hero__video img{filter:brightness(.62) saturate(1.05);animation:kb 16s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.06)}to{transform:scale(1.18)}}
+@keyframes bgZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero__grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.06;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero__overlay{position:absolute;inset:0;z-index:1;
+  background:radial-gradient(ellipse at 50% 30%,transparent 30%,rgba(12,7,4,.55) 100%),
+             linear-gradient(180deg,rgba(12,7,4,.4) 0%,transparent 25%,transparent 60%,rgba(12,7,4,.55) 100%)}
+
+/* ── ЦЕНТР: слово + подпись ── */
+.hero__center{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+.hero__eyebrow{font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--crema);margin-bottom:16px;opacity:0;animation:up 1s .2s var(--ease) forwards}
+.hero__word{font-family:var(--font-display);font-style:italic;font-size:clamp(64px,18vw,300px);line-height:.84;letter-spacing:-.02em;color:var(--cream);
+  text-shadow:0 10px 60px rgba(0,0,0,.45);opacity:0;transform:translateY(48px);animation:up 1.4s .45s var(--ease) forwards}
+.hero__script{font-family:var(--font-script);font-size:clamp(28px,3.2vw,46px);color:rgba(247,241,232,.92);margin-top:8px;opacity:0;animation:up 1s 1.1s var(--ease) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+
+/* ── ПЛАВАЮЩИЕ КАРТОЧКИ поверх видео ── */
+.hero__cards{position:absolute;inset:0;z-index:4;transition:transform .4s ease-out}
+.fcard{position:absolute;background:#fff;padding:8px 8px 26px;box-shadow:0 22px 50px rgba(0,0,0,.45);border-radius:3px;
+  opacity:0;animation:cardIn 1s var(--ease) forwards, floaty 8s ease-in-out infinite}
+.fcard img{width:100%;height:100%;object-fit:cover;border-radius:1px}
+.fcard span{position:absolute;left:8px;bottom:7px;font-family:var(--font-display);font-size:10px;letter-spacing:.12em;color:#FBF6E8}
+@keyframes cardIn{to{opacity:1}}
+@keyframes floaty{0%,100%{transform:translateY(-9px) rotate(var(--r))}50%{transform:translateY(9px) rotate(calc(var(--r)*-1))}}
+/* позиции */
+.fcard--1{top:14%;left:6%;width:140px;height:186px;--r:-5deg;animation-delay:.7s,0s}
+.fcard--2{bottom:16%;left:11%;width:120px;height:160px;--r:4deg;animation-delay:1s,1.3s}
+.fcard--3{top:18%;right:7%;width:150px;height:200px;--r:6deg;animation-delay:.85s,.6s}
+.fcard--4{bottom:14%;right:10%;width:128px;height:170px;--r:-4deg;animation-delay:1.15s,2s}
+
+/* ── НИЖНИЙ БАР (как на главной) ── */
+.bar{position:absolute;bottom:0;left:0;right:0;z-index:6;display:flex;align-items:flex-end;justify-content:space-between;
+  padding:0 clamp(24px,5vw,72px) clamp(26px,3.6vw,48px);opacity:0;animation:up 1s 1.5s var(--ease) forwards}
+.bar address{font-style:normal;font-size:12px;letter-spacing:.07em;color:rgba(247,241,232,.85);line-height:1.7}
+.bar address span{display:block}
+.bar .line{width:1px;height:44px;overflow:hidden;align-self:flex-end}
+.bar .line i{display:block;width:1px;height:44px;background:rgba(247,241,232,.6);transform:translateY(-100%);animation:scl 2.4s ease-in-out infinite 2.6s}
+.bar .cta{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-display);font-style:italic;font-size:clamp(15px,1.2vw,20px);
+  color:var(--cream);text-decoration:none;border-bottom:1px solid rgba(247,241,232,.55);padding-bottom:3px}
+.bar .cta b{font-weight:400;transition:transform .35s var(--ease)}
+.bar .cta:hover b{transform:translateX(5px)}
+@keyframes scl{0%{transform:translateY(-100%)}55%{transform:translateY(0)}100%{transform:translateY(100%)}}
+
+@media(max-width:760px){.fcard--2,.fcard--4{display:none}.fcard--1{left:4%;width:96px;height:128px}.fcard--3{right:4%;width:104px;height:138px}}
+</style>
+</head>
+<body>
+<section class="hero">
+  <!-- ВИДЕО: на бою раскомментируй <video> и положи coffee-bg.mp4 -->
+  <div class="hero__video">
+    <!--
+    <video autoplay muted loop playsinline poster="images/paloma/coffee/hero.jpg">
+      <source src="images/paloma/coffee/coffee-bg.mp4" type="video/mp4">
+    </video>
+    -->
+    <img src="images/paloma/coffee/hero.jpg" alt="">
+  </div>
+  <div class="hero__grain"></div>
+  <div class="hero__overlay"></div>
+
+  <!-- плавающие фото поверх видео -->
+  <div class="hero__cards" id="cards">
+    <figure class="fcard fcard--1"><img src="images/paloma/catalog/d1.jpg" alt=""><span>ESPRESSO</span></figure>
+    <figure class="fcard fcard--2"><img src="images/paloma/catalog/d2.jpg" alt=""><span>DESSERT</span></figure>
+    <figure class="fcard fcard--3"><img src="images/paloma/catalog/d3.jpg" alt=""><span>FILTER</span></figure>
+    <figure class="fcard fcard--4"><img src="images/paloma/catalog/c9.jpg" alt=""><span>BLEND</span></figure>
+  </div>
+
+  <div class="hero__center">
+    <div class="hero__eyebrow">PALOMA Coffee · Энгельса 74/82</div>
+    <h1 class="hero__word">coffee</h1>
+    <div class="hero__script">кофе, который дополняет цветы</div>
+  </div>
+
+  <div class="bar">
+    <address><span>ул. Энгельса, 74/82</span><span>+7 989 770 70 00</span></address>
+    <div class="line"><i></i></div>
+    <a class="cta" href="#">в меню <b>→</b></a>
+  </div>
+</section>
+
+<script>
+/* лёгкий параллакс карточек к курсору */
+const hero=document.querySelector('.hero'),cards=document.getElementById('cards');
+hero.addEventListener('mousemove',e=>{
+  const r=hero.getBoundingClientRect();
+  const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  cards.style.transform=`translate(${x*26}px,${y*26}px)`;
+});
+hero.addEventListener('mouseleave',()=>cards.style.transform='');
+</script>
+</body>
+</html>

@@ -1,14 +1,14 @@
-/* PALOMA Coffee — блоки страницы coffee.html */
+﻿/* PALOMA Coffee — блоки страницы coffee.html */
 
 .coffee-page {
-  --coffee-bg: #0c0b0a;
-  --coffee-surface: #141210;
-  --coffee-surface-2: #1c1916;
-  --coffee-text: #f5f0e8;
+  --coffee-bg: #1B1A18;
+  --coffee-surface: #1B1A18;
+  --coffee-surface-2: #1B1A18;
+  --coffee-text: #FBF6E8;
   --coffee-muted: rgba(245, 240, 232, 0.55);
   --coffee-border: rgba(245, 240, 232, 0.12);
-  --coffee-accent: #c4a882;
-  --coffee-accent-dim: #8a6248;
+  --coffee-accent: #FBF6E8;
+  --coffee-accent-dim: #1B1A18;
   background: var(--coffee-bg);
   color: var(--coffee-text);
 }
@@ -53,10 +53,10 @@
   z-index: 1;
   background: linear-gradient(
     135deg,
-    #3d2b1f 0%,
-    #5c3d28 35%,
-    #8a6a48 70%,
-    #c4a882 100%
+    #1B1A18 0%,
+    #1B1A18 35%,
+    #1B1A18 70%,
+    #FBF6E8 100%
   );
   transition:
     opacity 0.55s ease,
@@ -75,9 +75,9 @@
   z-index: 2;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.12) 0%,
-    rgba(0, 0, 0, 0.08) 40%,
-    rgba(0, 0, 0, 0.45) 100%
+    rgba(27, 26, 24, 0.12) 0%,
+    rgba(27, 26, 24, 0.08) 40%,
+    rgba(27, 26, 24, 0.45) 100%
   );
 }
 
@@ -92,7 +92,7 @@
   background: rgba(250, 248, 244, 0.9);
   backdrop-filter: blur(12px);
   overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 32px 80px rgba(27, 26, 24, 0.25);
 }
 
 .coffee-hero__mini-video {
@@ -107,11 +107,11 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #d4b894 0%, #8a5c34 100%);
+  background: linear-gradient(180deg, #FBF6E8 0%, #1B1A18 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(251, 246, 232, 0.35);
   font-family: var(--font-display);
   font-size: 12px;
   letter-spacing: 0.3em;
@@ -167,7 +167,7 @@
   font-weight: 500;
   color: var(--color-white);
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(251, 246, 232, 0.5);
   padding-bottom: 4px;
   transition:
     border-color 0.3s ease,
@@ -246,11 +246,11 @@
 }
 
 .coffee-intro__small-img--1 {
-  background: linear-gradient(135deg, #5c3d28 0%, #8a6248 100%);
+  background: linear-gradient(135deg, #1B1A18 0%, #1B1A18 100%);
 }
 
 .coffee-intro__small-img--2 {
-  background: linear-gradient(135deg, #c4a882 0%, #8a6a48 100%);
+  background: linear-gradient(135deg, #FBF6E8 0%, #1B1A18 100%);
 }
 
 .coffee-intro__right {
@@ -261,7 +261,7 @@
   width: 100%;
   height: 100%;
   min-height: 480px;
-  background: linear-gradient(160deg, #3d2b1f 0%, #6b4a30 50%, #a07850 100%);
+  background: linear-gradient(160deg, #1B1A18 0%, #1B1A18 50%, #1B1A18 100%);
 }
 
 @media (max-width: 1024px) {
@@ -405,7 +405,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  border-top: 1px solid var(--color-accent, #6b1f2a);
+  border-top: 1px solid var(--color-accent, #1B1A18);
   position: relative;
   z-index: 1;
 }
@@ -416,7 +416,7 @@
   gap: 24px;
   align-items: center;
   padding: clamp(18px, 2.5vw, 28px) 0;
-  border-bottom: 1px solid var(--color-accent, #6b1f2a);
+  border-bottom: 1px solid var(--color-accent, #1B1A18);
   transition:
     padding-left 0.4s ease,
     background 0.3s ease;
@@ -429,7 +429,7 @@
 
 .menu-item:hover {
   padding-left: 20px;
-  background: var(--color-bg-alt, #f2efe8);
+  background: var(--color-bg-alt, #FBF6E8);
 }
 
 .menu-item.is-hidden {
@@ -515,7 +515,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: linear-gradient(160deg, #5c3d28, #8a6248);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 @media (max-width: 640px) {
@@ -561,9 +561,9 @@
   overflow: hidden;
   background: linear-gradient(
     135deg,
-    #c4a882 0%,
-    #8a6248 50%,
-    #5c3d28 100%
+    #FBF6E8 0%,
+    #1B1A18 50%,
+    #1B1A18 100%
   );
 }
 
@@ -654,26 +654,26 @@
 }
 
 .coffee-story__bg-bw--1 {
-  background: linear-gradient(160deg, #3a2a1f, #1a0e08);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 .coffee-story__bg-bw--2 {
-  background: linear-gradient(160deg, #2a2018, #0a0806);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 .coffee-story__bg-bw--3 {
-  background: linear-gradient(160deg, #4a3828, #1a1008);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 .coffee-story__bg-bw--4 {
-  background: linear-gradient(160deg, #1a1210, #060402);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 .coffee-story__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(27, 26, 24, 0.4);
   pointer-events: none;
 }
 
@@ -693,14 +693,14 @@
   font-size: clamp(80px, 12vw, 180px);
   font-weight: 300;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.18);
+  color: rgba(251, 246, 232, 0.18);
   margin-bottom: 16px;
 }
 
 .coffee-story__text {
   font-size: clamp(14px, 1.2vw, 17px);
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(251, 246, 232, 0.88);
   max-width: 420px;
   font-weight: 300;
 }
@@ -710,7 +710,7 @@
   font-weight: 500;
   font-size: clamp(16px, 1.4vw, 20px);
   margin-bottom: 8px;
-  color: #fff;
+  color: #FBF6E8;
   font-style: normal;
 }
 
@@ -733,19 +733,19 @@
 }
 
 .coffee-story__mini--1 {
-  background: linear-gradient(160deg, #c4a8b4, #7a4850);
+  background: linear-gradient(160deg, #FBF6E8, #1B1A18);
 }
 
 .coffee-story__mini--2 {
-  background: linear-gradient(160deg, #d4b894, #5a3820);
+  background: linear-gradient(160deg, #FBF6E8, #1B1A18);
 }
 
 .coffee-story__mini--3 {
-  background: linear-gradient(160deg, #e0d4bc, #7a6248);
+  background: linear-gradient(160deg, #FBF6E8, #FBF6E8);
 }
 
 .coffee-story__mini--4 {
-  background: linear-gradient(160deg, #b8a090, #4a3020);
+  background: linear-gradient(160deg, #FBF6E8, #1B1A18);
 }
 
 @media (max-width: 768px) {
@@ -984,23 +984,23 @@
 }
 
 .coffee-process__card-bg--1 {
-  background: linear-gradient(160deg, #c4a882 0%, #5c3d28 100%);
+  background: linear-gradient(160deg, #FBF6E8 0%, #1B1A18 100%);
 }
 
 .coffee-process__card-bg--2 {
-  background: linear-gradient(160deg, #8a6248 0%, #3d2010 100%);
+  background: linear-gradient(160deg, #1B1A18 0%, #1B1A18 100%);
 }
 
 .coffee-process__card-bg--3 {
-  background: linear-gradient(160deg, #d4b894 0%, #8a5c34 100%);
+  background: linear-gradient(160deg, #FBF6E8 0%, #1B1A18 100%);
 }
 
 .coffee-process__card-bg--4 {
-  background: linear-gradient(160deg, #6b4a30 0%, #2a1408 100%);
+  background: linear-gradient(160deg, #1B1A18 0%, #1B1A18 100%);
 }
 
 .coffee-process__card-bg--5 {
-  background: linear-gradient(160deg, #a07850 0%, #4a2c14 100%);
+  background: linear-gradient(160deg, #1B1A18 0%, #1B1A18 100%);
 }
 
 .coffee-process__card-overlay {
@@ -1008,8 +1008,8 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.08) 0%,
-    rgba(0, 0, 0, 0.55) 100%
+    rgba(27, 26, 24, 0.08) 0%,
+    rgba(27, 26, 24, 0.55) 100%
   );
   z-index: 1;
 }
@@ -1242,8 +1242,8 @@
 .coffee-atmosphere__media {
   min-height: 320px;
   background:
-    linear-gradient(165deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)),
-    linear-gradient(160deg, #3d2b1f 0%, #6b4a30 45%, #a07850 100%);
+    linear-gradient(165deg, rgba(27, 26, 24, 0.15), rgba(27, 26, 24, 0.45)),
+    linear-gradient(160deg, #1B1A18 0%, #1B1A18 45%, #1B1A18 100%);
   background-size: cover;
   background-position: center;
 }
@@ -1396,7 +1396,7 @@
   transition:
     opacity 0.35s ease,
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 64px rgba(27, 26, 24, 0.45);
 }
 
 .menu-hover-photo-slot.is-visible .menu-hover-photo {
@@ -1407,7 +1407,7 @@
 .menu-hover-photo__img {
   width: 100%;
   aspect-ratio: 4 / 5;
-  background: linear-gradient(160deg, #5c3d28, #8a6248);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 @media (max-width: 900px), (hover: none), (pointer: coarse) {
@@ -1465,19 +1465,19 @@
 }
 
 .coffee-curtain__bg-placeholder--1 {
-  background: linear-gradient(160deg, #2a1810, #5c3d28);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 .coffee-curtain__bg-placeholder--2 {
-  background: linear-gradient(160deg, #1a1210, #4a3020);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 .coffee-curtain__bg-placeholder--3 {
-  background: linear-gradient(160deg, #3d2818, #6b4a30);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 .coffee-curtain__bg-placeholder--4 {
-  background: linear-gradient(160deg, #1a1008, #8a6248);
+  background: linear-gradient(160deg, #1B1A18, #1B1A18);
 }
 
 .coffee-curtain__overlay {
@@ -1486,9 +1486,9 @@
   z-index: 2;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.25) 0%,
-    rgba(0, 0, 0, 0.35) 50%,
-    rgba(0, 0, 0, 0.65) 100%
+    rgba(27, 26, 24, 0.25) 0%,
+    rgba(27, 26, 24, 0.35) 50%,
+    rgba(27, 26, 24, 0.65) 100%
   );
 }
 
@@ -1501,24 +1501,24 @@
   width: clamp(120px, 14vw, 200px);
   aspect-ratio: 3 / 4;
   background: rgba(245, 240, 232, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(251, 246, 232, 0.15);
+  box-shadow: 0 20px 60px rgba(27, 26, 24, 0.35);
 }
 
 .coffee-curtain__mini--1 {
-  background: linear-gradient(180deg, #8a6248, #3d2818);
+  background: linear-gradient(180deg, #1B1A18, #1B1A18);
 }
 
 .coffee-curtain__mini--2 {
-  background: linear-gradient(180deg, #6b4a30, #2a1810);
+  background: linear-gradient(180deg, #1B1A18, #1B1A18);
 }
 
 .coffee-curtain__mini--3 {
-  background: linear-gradient(180deg, #c4a882, #5c3d28);
+  background: linear-gradient(180deg, #FBF6E8, #1B1A18);
 }
 
 .coffee-curtain__mini--4 {
-  background: linear-gradient(180deg, #d4b894, #4a3020);
+  background: linear-gradient(180deg, #FBF6E8, #1B1A18);
 }
 
 .coffee-curtain__content {
@@ -1535,7 +1535,7 @@
   font-size: clamp(72px, 12vw, 140px);
   line-height: 1;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(251, 246, 232, 0.2);
   margin-bottom: 8px;
 }
 
@@ -1550,7 +1550,7 @@
 .coffee-curtain__text {
   font-size: clamp(14px, 1.2vw, 17px);
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(251, 246, 232, 0.82);
   font-weight: 300;
 }
 

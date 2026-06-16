@@ -1,26 +1,25 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FBF6E8">
-  <title>PALOMA — Каталог</title>
-  <meta name="description" content="Каталог PALOMA: букеты, композиции, сезонная витрина и подарки. Новороссийск.">
+  <title>Оформление мероприятий — цветочный декор PALOMA</title>
+  <meta name="description" content="Цветочное оформление мероприятий в Новороссийске: свадьбы, корпоративы, частные события. Заявка и портфолио PALOMA.">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="preloader.css?v=16">
-  <link rel="stylesheet" href="styles.css?v=fonts5">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="preloader.css?v=14">
+  <link rel="stylesheet" href="styles.css?v=footband">
   <link rel="stylesheet" href="paloma-animations.css">
 <link rel="stylesheet" href="cart.css">
-  <link rel="stylesheet" href="catalog.css?v=cat2">
-  <link rel="stylesheet" href="paloma-wave.css?v=9">
   <link rel="stylesheet" href="clients.css">
+  <link rel="stylesheet" href="clients-pages.css">
   <link rel="stylesheet" href="paloma-responsive.css">
-  <link rel="stylesheet" href="cursor.css?v=13">
+  <link rel="stylesheet" href="cursor.css?v=12">
 </head>
-<body>
+<body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
   <!-- PALOMA PAGE LOADER — premium curtain transition -->
   <div class="paloma-page-loader" id="palomaPageLoader" aria-hidden="true">
@@ -71,11 +70,11 @@
 
         <nav class="site-header__nav" aria-label="Основная навигация">
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--catalog" data-dropdown="catalog">
-            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerCatalog" data-cursor="hover">
+            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerDelivery" data-cursor="hover">
               Каталог
               <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
             </button>
-            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerCatalog">
+            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerDelivery">
               <div class="catalog-dropdown__inner">
                 <div class="catalog-dropdown__grid">
 
@@ -209,12 +208,12 @@
           <a href="event-decoration.html" class="site-header__link">Оформление</a>
 
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
-          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerCatalog" data-cursor="hover">
+          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerDelivery" data-cursor="hover">
             Клиентам
             <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
           </button>
 
-          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerCatalog">
+          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerDelivery">
             <div class="clients-dropdown__inner">
               <div class="clients-dropdown__grid">
                 <a href="delivery.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h13v10H3zM16 10h4l2 3v4h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Доставка</div><div class="client-nav-card__desc">Зоны, сроки и стоимость</div></div></a>
@@ -268,62 +267,259 @@
     </header>
   </div>
 
-  <main id="main" class="catalog-page">
-
-  <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки">
-    <div class="catalog-breadcrumbs__inner">
-      <ol class="catalog-breadcrumbs__list">
-        <li><a href="index.html">Главная</a></li>
-        <li aria-hidden="true">/</li>
-        <li><span aria-current="page">Каталог</span></li>
-      </ol>
+  <main id="main" class="client-page">
+    <div class="page-compact-header">
+      <nav class="page-compact-header__breadcrumbs" aria-label="Навигация">
+        <a href="index.html">Главная</a>
+        <span class="sep" aria-hidden="true">—</span>
+        <span class="current" aria-current="page">Оформление</span>
+      </nav>
+      <h1 class="page-compact-header__title">
+        Цветочное оформление событий
+      </h1>
     </div>
-  </nav>
 
-  <div class="catalog-hero">
-    <div class="catalog-hero__inner">
-      <h1 class="catalog-hero__title">Каталог <em class="catalog-hero__title-accent">Paloma</em></h1>
+    <section class="client-event-intro">
+      <div class="client-event-intro__inner">
+        <header class="client-event-intro__header">
+          <span class="client-event-intro__eyebrow">[ Услуга ]</span>
+          <h2 class="client-event-intro__title">Что мы делаем</h2>
+        </header>
+        <div class="client-event-intro__grid">
+          <article class="client-event-intro__card" data-cursor="hover">
+            <h3 class="client-event-intro__card-title">Букеты и композиции</h3>
+            <p class="client-event-intro__card-text">Букеты невесты, бутоньерки, настольные и напольные инсталляции.</p>
+          </article>
+          <article class="client-event-intro__card" data-cursor="hover">
+            <h3 class="client-event-intro__card-title">Арки и фотозоны</h3>
+            <p class="client-event-intro__card-text">Церемония, welcome-зона, фон для гостей и пресс-волл.</p>
+          </article>
+          <article class="client-event-intro__card" data-cursor="hover">
+            <h3 class="client-event-intro__card-title">Декор пространства</h3>
+            <p class="client-event-intro__card-text">Столы, подиумы, подвесы — в единой палитре события.</p>
+          </article>
+        </div>
+        <p class="client-event-intro__note">
+          Подробные кейсы, этапы работы и портфолио — на странице
+          <a href="events.html">Оформление</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         КАК МЫ РАБОТАЕМ НАД ОФОРМЛЕНИЕМ
+         ═══════════════════════════════════════════════════ -->
+    <section class="ev-process" id="evProcess"
+             aria-label="Этапы работы над оформлением">
+
+      <div class="ev-process__intro">
+        <div class="ev-process__intro-inner">
+          <span class="ev-process__label">Процесс</span>
+          <h2 class="ev-process__title">
+            Как мы работаем<br>
+            над оформлением
+          </h2>
+          <p class="ev-process__sub">
+            От знакомства до монтажа — каждый этап
+            продуман и согласован с вами.
+          </p>
+        </div>
+      </div>
+
+      <div class="ev-process__viewport" id="evProcessViewport">
+
+        <div class="ev-process__track" id="evProcessTrack">
+
+          <article class="ev-card" data-index="0">
+            <div class="ev-card__inner">
+              <header class="ev-card__header">
+                <span class="ev-card__num" aria-hidden="true">01</span>
+              </header>
+              <div class="ev-card__body">
+                <h3 class="ev-card__title">Знакомство</h3>
+                <p class="ev-card__desc">
+                  Обсуждаем событие, площадку, дату
+                  и бюджет. Определяем общее направление.
+                </p>
               </div>
+              <footer class="ev-card__foot">
+                <span class="ev-card__tag">Бесплатная консультация</span>
+              </footer>
             </div>
+          </article>
 
-  <!-- PALOMA фирменная волнистая строка -->
-  <div class="paloma-wave paloma-wave-band" aria-hidden="true">
-    <svg class="paloma-wave__svg" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-        <path id="palomaWaveCatalog" fill="none"
-          d="M0,75 Q200,16 400,75 T800,75 T1200,75"/>
-      </defs>
-      <text class="paloma-wave__text">
-        <textPath href="#palomaWaveCatalog" xlink:href="#palomaWaveCatalog" startOffset="0">×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×</textPath>
-      </text>
-    </svg>
-  </div>
-
-  <div class="catalog-filters-wrap" id="catalogFiltersWrap">
-    <div class="catalog-filters" id="catalogFilters" role="group" aria-label="Фильтры каталога">
-      <button type="button" class="catalog-filter-btn is-active" data-filter="all" aria-pressed="true">Все</button>
-      <button type="button" class="catalog-filter-btn" data-filter="online" aria-pressed="false">Онлайн-витрина</button>
-      <button type="button" class="catalog-filter-btn" data-filter="season" aria-pressed="false">Самый сезон</button>
-      <button type="button" class="catalog-filter-btn" data-filter="bestsellers" aria-pressed="false">Бестселлеры</button>
-      <button type="button" class="catalog-filter-btn" data-filter="compositions" aria-pressed="false">Композиции</button>
-      <button type="button" class="catalog-filter-btn" data-filter="mono" aria-pressed="false">Моно</button>
-      <button type="button" class="catalog-filter-btn" data-filter="wedding" aria-pressed="false">Свадебные</button>
-      <button type="button" class="catalog-filter-btn" data-filter="vases" aria-pressed="false">Вазы и подарки</button>
-      <button type="button" class="catalog-filter-btn" data-filter="desserts" aria-pressed="false">Десерты</button>
-      <button type="button" class="catalog-filter-btn" data-filter="subscription" aria-pressed="false">Подписка</button>
-      <button type="button" class="catalog-filter-btn" data-filter="events" aria-pressed="false">Оформление</button>
+          <article class="ev-card" data-index="1">
+            <div class="ev-card__inner">
+              <header class="ev-card__header">
+                <span class="ev-card__num" aria-hidden="true">02</span>
+              </header>
+              <div class="ev-card__body">
+                <h3 class="ev-card__title">Концепция</h3>
+                <p class="ev-card__desc">
+                  Разрабатываем палитру, стиль и расстановку
+                  зон с учётом пространства площадки.
+                </p>
               </div>
+              <footer class="ev-card__foot">
+                <span class="ev-card__tag">Мудборд и план</span>
+              </footer>
             </div>
+          </article>
 
-  <div class="catalog-count" id="catalogCount" aria-live="polite"></div>
-
-  <div class="catalog-grid" id="catalogGrid" aria-label="Товары каталога"></div>
-
-  <div class="catalog-empty" id="catalogEmpty" hidden aria-live="polite">
-    <p>В этой категории пока нет товаров.</p>
-    <button type="button" class="btn btn--dark" data-filter="all" id="catalogResetBtn">Показать все</button>
+          <article class="ev-card" data-index="2">
+            <div class="ev-card__inner">
+              <header class="ev-card__header">
+                <span class="ev-card__num" aria-hidden="true">03</span>
+              </header>
+              <div class="ev-card__body">
+                <h3 class="ev-card__title">Подбор цветов</h3>
+                <p class="ev-card__desc">
+                  Выбираем сезонные сорта, оттенки и фактуры.
+                  Учитываем освещение, стиль и длительность события.
+                </p>
+              </div>
+              <footer class="ev-card__foot">
+                <span class="ev-card__tag">Сезонные материалы</span>
+              </footer>
             </div>
+          </article>
 
+          <article class="ev-card" data-index="3">
+            <div class="ev-card__inner">
+              <header class="ev-card__header">
+                <span class="ev-card__num" aria-hidden="true">04</span>
+              </header>
+              <div class="ev-card__body">
+                <h3 class="ev-card__title">Смета</h3>
+                <p class="ev-card__desc">
+                  Прозрачный расчёт по позициям: цветы,
+                  аренда, доставка, монтаж. Без скрытых статей.
+                </p>
+              </div>
+              <footer class="ev-card__foot">
+                <span class="ev-card__tag">Фиксированная цена</span>
+              </footer>
+            </div>
+          </article>
+
+          <article class="ev-card" data-index="4">
+            <div class="ev-card__inner">
+              <header class="ev-card__header">
+                <span class="ev-card__num" aria-hidden="true">05</span>
+              </header>
+              <div class="ev-card__body">
+                <h3 class="ev-card__title">Подготовка</h3>
+                <p class="ev-card__desc">
+                  Закупаем цветы, собираем композиции в студии
+                  и готовим всё к монтажному дню.
+                </p>
+              </div>
+              <footer class="ev-card__foot">
+                <span class="ev-card__tag">За 1–2 дня до события</span>
+              </footer>
+            </div>
+          </article>
+
+          <article class="ev-card" data-index="5">
+            <div class="ev-card__inner">
+              <header class="ev-card__header">
+                <span class="ev-card__num" aria-hidden="true">06</span>
+              </header>
+              <div class="ev-card__body">
+                <h3 class="ev-card__title">Монтаж</h3>
+                <p class="ev-card__desc">
+                  Оформляем площадку в согласованное окно.
+                  Проверяем каждую деталь и фотографируем результат.
+                </p>
+              </div>
+              <footer class="ev-card__foot">
+                <span class="ev-card__tag">День события</span>
+              </footer>
+            </div>
+          </article>
+
+          <article class="ev-card ev-card--last" data-index="6">
+            <div class="ev-card__inner">
+              <header class="ev-card__header">
+                <span class="ev-card__num" aria-hidden="true">07</span>
+              </header>
+              <div class="ev-card__body">
+                <h3 class="ev-card__title">
+                  Демонтаж&nbsp;&amp;<br>сопровождение
+                </h3>
+                <p class="ev-card__desc">
+                  Аккуратно убираем декор после события.
+                  Живые цветы можно забрать с собой.
+                </p>
+              </div>
+              <footer class="ev-card__foot">
+                <a href="#event-deco-form"
+                   class="ev-card__cta"
+                   aria-label="Обсудить оформление вашего события">
+                  Обсудить оформление →
+                </a>
+              </footer>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="ev-process__progress" aria-hidden="true">
+          <div class="ev-process__progress-fill"
+               id="evProgressFill"></div>
+        </div>
+
+      </div>
+
+      <div class="ev-process__hint" aria-hidden="true">
+        <span class="ev-process__hint-text">листайте →</span>
+      </div>
+
+    </section>
+
+    <section class="client-lead" id="event-deco-form" aria-labelledby="event-deco-form-heading">
+      <div class="client-lead__inner">
+        <header class="client-lead__header">
+          <span class="client-lead__eyebrow">[ Заявка ]</span>
+          <h2 class="client-lead__title" id="event-deco-form-heading">Оставить заявку</h2>
+          <p class="client-lead__lead">Опишите событие — перезвоним и предложим концепцию оформления.</p>
+        </header>
+        <form class="client-lead__form" id="eventDecoForm" novalidate>
+          <div class="client-lead__field">
+            <label class="client-lead__label" for="edf-name">Имя</label>
+            <input class="client-lead__input" type="text" id="edf-name" name="name" autocomplete="name" required placeholder="Ваше имя" />
+          </div>
+          <div class="client-lead__field">
+            <label class="client-lead__label" for="edf-phone">Телефон</label>
+            <input class="client-lead__input" type="tel" id="edf-phone" name="phone" autocomplete="tel" required placeholder="+7 ___ ___ __ __" />
+          </div>
+          <div class="client-lead__field">
+            <label class="client-lead__label" for="edf-date">Дата события</label>
+            <input class="client-lead__input" type="text" id="edf-date" name="date" placeholder="Например, 14 июня 2026" />
+          </div>
+          <div class="client-lead__field client-lead__field--full">
+            <label class="client-lead__label" for="edf-type">Тип события</label>
+            <select class="client-lead__input client-lead__select" id="edf-type" name="eventType">
+              <option value="">Выберите</option>
+              <option value="wedding">Свадьба</option>
+              <option value="corporate">Корпоратив</option>
+              <option value="private">Частное событие</option>
+              <option value="other">Другое</option>
+            </select>
+          </div>
+          <div class="client-lead__field client-lead__field--full">
+            <label class="client-lead__label" for="edf-comment">Комментарий</label>
+            <textarea class="client-lead__input client-lead__textarea" id="edf-comment" name="comment" rows="4" placeholder="Площадка, палитра, зоны оформления…"></textarea>
+          </div>
+          <div class="client-lead__field client-lead__field--full">
+            <button type="submit" class="btn btn--dark client-lead__submit" data-cursor="hover">Отправить заявку</button>
+          </div>
+          <div class="client-lead__success" id="eventDecoSuccess" hidden>
+            <p>Спасибо! Мы получили заявку и свяжемся с вами в ближайшее время.</p>
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
@@ -376,7 +572,7 @@
           </a>
           <p class="footer-contacts__address">
             Новороссийск,<br>
-            ул. Энгельса, 74/82
+            ул. Энгельса, 74
           </p>
           <div class="footer-contacts__messengers">
             <a href="https://t.me/paloma_novorossiysk"
@@ -523,8 +719,6 @@
     <div class="custom-cursor__ring"></div>
   </div>
 
-  <script src="paloma-products.js?v=p32"></script>
-  <script src="catalog-data.js?v=p32"></script>
   <script src="preloader.js?v=9"></script>
   <script src="cart-core.js"></script>
   <script src="script.js"></script>
@@ -533,8 +727,8 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js"></script>
-  <script src="catalog.js?v=p32"></script>
   <script src="clients.js"></script>
+  <script src="clients-pages.js"></script>
   <script src="cursor.js?v=12"></script>
 </body>
 </html>
