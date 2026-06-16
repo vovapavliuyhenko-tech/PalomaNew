@@ -786,26 +786,49 @@
    COFFEE MENU — карточки и разделы как в каталоге
    ════════════════════════════════════════════════════════ */
 
-/* обёртка использует .catalog-page для квадратных карточек/кнопок,
-   но без большого верхнего отступа страницы-каталога */
+/* обёртка использует .catalog-page для квадратных карточек/кнопок;
+   растянута во всю ширину экрана (full-bleed), без верхнего отступа каталога.
+   main{overflow-x:hidden} гарантирует отсутствие горизонтального скролла. */
 .cf-menu .cf-menu-catalog.catalog-page {
-  padding-top: 0;
+  padding: 0 clamp(12px, 3vw, 48px);
   margin-top: clamp(20px, 3vw, 36px);
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
-/* фильтры разделов по центру секции */
+/* фильтры разделов — по левому краю, без липкости/«погони» при скролле */
 .cf-menu .catalog-filters-wrap {
+  position: static;
+  top: auto;
+  z-index: auto;
   background: transparent;
 }
 
+.cf-menu .catalog-filters-wrap::after {
+  display: none;
+}
+
 .cf-menu .catalog-filters {
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  max-width: 1100px;
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .cf-menu .catalog-count {
-  text-align: center;
+  text-align: left;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* сетка карточек — во всю ширину */
+.cf-menu .catalog-grid {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* бейдж с объёмом — компактный тёмный пилл */
@@ -825,7 +848,75 @@
 
 @media (max-width: 768px) {
   .cf-menu .catalog-filters {
-    justify-content: flex-start;
     flex-wrap: nowrap;
   }
+}
+
+/* ── Hero / Философия: заметная кнопка как на главной + центровка списков ── */
+
+/* кнопка-CTA: тёмная, скруглённая, ~в пол экрана (full-width своей колонки),
+   размеры и радиус — как у кнопки на первом экране главной (.paloma-cover__cta) */
+.cf-hero .ea-hero__right .ea-btn,
+.cf-philo .ea-hero__right .ea-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: min(100%, 560px);
+  margin-top: clamp(20px, 2.4vw, 32px);
+  padding: clamp(14px, 1.5vw, 18px) 24px;
+  background: #1B1A18;
+  color: #FBF6E8;
+  border-radius: 12px;
+  font-family: var(--fsans, "Manrope", sans-serif);
+  font-size: clamp(13px, 0.95vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 34px rgba(27, 26, 24, 0.30);
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.cf-hero .ea-hero__right .ea-btn:hover,
+.cf-philo .ea-hero__right .ea-btn:hover {
+  background: #FBF6E8;
+  color: #1B1A18;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(27, 26, 24, 0.22);
+}
+
+.cf-hero .ea-hero__right .ea-btn svg,
+.cf-philo .ea-hero__right .ea-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.35s ease;
+}
+
+.cf-hero .ea-hero__right .ea-btn:hover svg,
+.cf-philo .ea-hero__right .ea-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* списки преимуществ — без буллитов, текст по центру */
+.cf-hero .cf-uls,
+.cf-philo .cf-uls {
+  text-align: center;
+  align-items: center;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cf-hero .cf-uls li,
+.cf-philo .cf-uls li {
+  padding-left: 0;
+}
+
+.cf-hero .cf-uls li::before,
+.cf-philo .cf-uls li::before {
+  display: none;
 }
