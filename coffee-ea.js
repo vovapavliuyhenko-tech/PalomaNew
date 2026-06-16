@@ -109,19 +109,23 @@
             esc(it.imageBg || "") + ';" aria-hidden="true"></div>'
         : '<div class="product-card__ph" style="background:' +
             esc(it.imageBg || "") + ';" aria-hidden="true"></div>';
+      var href = "coffee-item.html?id=" + encodeURIComponent(it.id);
       return (
         '<div class="product-card__media">' +
-          media +
+          '<a class="product-card__media-link" href="' + href + '" aria-label="' + esc(it.title) + '">' +
+            media +
+          "</a>" +
           '<span class="product-card__badge product-card__badge--coffee">' +
-            esc(it.volumes || "") + "</span>" +
+            esc(catLabels[it.category] || "") + "</span>" +
         "</div>" +
         '<div class="product-card__body">' +
-          '<h3 class="product-card__name">' + esc(it.title) + "</h3>" +
+          '<a class="product-card__name-link" href="' + href + '">' +
+            '<h3 class="product-card__name">' + esc(it.title) + "</h3>" +
+          "</a>" +
           (it.desc ? '<p class="product-card__desc">' + esc(it.desc) + "</p>" : "") +
           '<p class="product-card__price">' + esc(it.priceLabel || it.price + " ₽") + "</p>" +
           '<div class="product-card__btns">' +
-            '<button type="button" class="product-card__btn product-card__btn--detail" data-cf-detail aria-label="Подробнее: ' +
-              esc(it.title) + '">Подробнее</button>' +
+            '<a class="product-card__btn product-card__btn--detail" href="' + href + '">Подробнее</a>' +
             '<button type="button" class="product-card__btn product-card__btn--cart" data-cf-add aria-label="Добавить в корзину: ' +
               esc(it.title) + '">В корзину</button>' +
           "</div>" +
@@ -183,7 +187,7 @@
           setTimeout(function () { btn.textContent = prev; btn.disabled = false; }, 1200);
           return;
         }
-        openModal(it);
+        /* переход на страницу напитка — по ссылкам в карточке (попап отключён) */
       });
     }
 
