@@ -67,19 +67,8 @@ body.coffee-page{overflow-x:clip!important}
 .cf-menu__pop.is-on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .cf-menu__pop img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* ── БЛОК ЛИМОНАДОВ — яркий, с фото/видео ── */
-.cf-lemon{color:#FBF6E8;background:#1B1A18;justify-content:center;align-items:center;text-align:center}
-.cf-lemon .cf-video{filter:saturate(1.05)}
-.cf-lemon::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(120,8,24,.42),rgba(120,8,24,.62))}
-.cf-lemon__inner{position:relative;z-index:2;max-width:880px;padding:0 var(--ea-px)}
-.cf-lemon__eyebrow{font-family:var(--fdisplay);letter-spacing:.3em;text-transform:lowercase;font-size:clamp(13px,1.1vw,16px);color:rgba(251, 246, 232, .8)}
-.cf-lemon__title{font-family:var(--fhead);font-size:clamp(40px,7vw,108px);line-height:1.02;margin:14px 0 18px;color:#FBF6E8}
-.cf-lemon__lead{font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:rgba(251, 246, 232, .9);max-width:620px;margin:0 auto 34px}
-.cf-lemon .ea-btn{background:#FBF6E8;color:var(--wine)}
-.cf-lemon .ea-btn:hover{background:var(--ink);color:#FBF6E8}
-.cf-lemon__chips{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-.cf-lemon__chip{border:1px solid rgba(251, 246, 232, .45);border-radius:40px;padding:9px 20px;font-family:var(--fdisplay);
-  font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#FBF6E8}
+/* ── БЛОК ЛИМОНАДОВ — тот же макет, что первый блок: лево видео / право текст ── */
+.cf-lemon .cf-video{filter:saturate(1.08)}
 
 /* ── АКЦЕНТНЫЕ ДЕТАЛИ в пустых углах (цветок-иконка, как на брендинге) ── */
 .cf-accent{position:absolute;z-index:4;pointer-events:none;opacity:.9}

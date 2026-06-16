@@ -857,7 +857,8 @@
 /* кнопка-CTA: тёмная, скруглённая, ~в пол экрана (full-width своей колонки),
    размеры и радиус — как у кнопки на первом экране главной (.paloma-cover__cta) */
 .cf-hero .ea-hero__right .ea-btn,
-.cf-philo .ea-hero__right .ea-btn {
+.cf-philo .ea-hero__right .ea-btn,
+.cf-lemon .ea-hero__right .ea-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -882,7 +883,8 @@
 }
 
 .cf-hero .ea-hero__right .ea-btn:hover,
-.cf-philo .ea-hero__right .ea-btn:hover {
+.cf-philo .ea-hero__right .ea-btn:hover,
+.cf-lemon .ea-hero__right .ea-btn:hover {
   background: #FBF6E8;
   color: #1B1A18;
   transform: translateY(-2px);
@@ -890,14 +892,16 @@
 }
 
 .cf-hero .ea-hero__right .ea-btn svg,
-.cf-philo .ea-hero__right .ea-btn svg {
+.cf-philo .ea-hero__right .ea-btn svg,
+.cf-lemon .ea-hero__right .ea-btn svg {
   width: 18px;
   height: 18px;
   transition: transform 0.35s ease;
 }
 
 .cf-hero .ea-hero__right .ea-btn:hover svg,
-.cf-philo .ea-hero__right .ea-btn:hover svg {
+.cf-philo .ea-hero__right .ea-btn:hover svg,
+.cf-lemon .ea-hero__right .ea-btn:hover svg {
   transform: translateX(3px);
 }
 
