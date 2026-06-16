@@ -60,6 +60,24 @@
     var grid = document.getElementById("cfMenuGrid");
     var countBox = document.getElementById("cfMenuCount");
     var active = "all";
+    var PAGE_SIZE = 12;
+    var shown = PAGE_SIZE;
+
+    /* кнопка «Смотреть дальше» — по центру под сеткой */
+    var moreBtn = null;
+    if (grid) {
+      moreBtn = document.createElement("button");
+      moreBtn.type = "button";
+      moreBtn.className = "cf-more";
+      moreBtn.setAttribute("data-cursor", "hover");
+      moreBtn.textContent = "Смотреть дальше";
+      moreBtn.style.display = "none";
+      moreBtn.addEventListener("click", function () {
+        shown += PAGE_SIZE;
+        render();
+      });
+      grid.parentNode.insertBefore(moreBtn, grid.nextSibling);
+    }
 
     function plural(n) {
       var m10 = n % 10, m100 = n % 100;
@@ -87,6 +105,7 @@
         b.addEventListener("click", function () {
           if (active === c) return;
           active = c;
+          shown = PAGE_SIZE;
           [].forEach.call(filtersBox.children, function (x) {
             var on = x === b;
             x.classList.toggle("is-active", on);
@@ -140,8 +159,10 @@
         return active === "all" || it.category === active;
       });
       if (countBox) countBox.textContent = plural(items.length);
+      var visible = items.slice(0, shown);
+      if (moreBtn) moreBtn.style.display = items.length > shown ? "" : "none";
       var frag = document.createDocumentFragment();
-      items.forEach(function (it) {
+      visible.forEach(function (it) {
         var card = document.createElement("article");
         card.className = "product-card";
         card.dataset.id = it.id;
