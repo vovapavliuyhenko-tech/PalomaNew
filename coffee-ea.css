@@ -69,6 +69,14 @@ body.coffee-page{overflow-x:clip!important}
 
 /* ── БЛОК ЛИМОНАДОВ — тот же макет, что первый блок: лево видео / право текст ── */
 .cf-lemon .cf-video{filter:saturate(1.08)}
+/* рамка с фото — меньше, чтобы видео на фоне было больше видно */
+.cf-lemon .cf-lemon__frame{width:min(20vw,272px);overflow:visible}
+/* два цветка-акцента по углам фото (лево-верх + право-низ), золотой контур */
+.cf-lemon .cf-accent--lemon{z-index:5;opacity:1}
+.cf-lemon .cf-accent--lemon .cf-flower{width:clamp(40px,4.4vw,64px)}
+.cf-lemon .cf-accent--lemon .cf-flower path{stroke:#C9A24B;stroke-width:1.6;paint-order:stroke}
+.cf-lemon .cf-accent--tl.cf-accent--lemon{top:clamp(-20px,-1.6vw,-12px);left:clamp(-20px,-1.6vw,-12px);bottom:auto;right:auto}
+.cf-lemon .cf-accent--br.cf-accent--lemon{bottom:clamp(-20px,-1.6vw,-12px);right:clamp(-20px,-1.6vw,-12px);top:auto;left:auto}
 
 /* ── АКЦЕНТНЫЕ ДЕТАЛИ в пустых углах (цветок-иконка, как на брендинге) ── */
 .cf-accent{position:absolute;z-index:4;pointer-events:none;opacity:.9}
