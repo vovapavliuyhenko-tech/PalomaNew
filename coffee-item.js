@@ -18,12 +18,12 @@
     cold: "Холодные напитки",
   };
   var imgByCat = {
-    classic: "images/paloma/coffee/hero.jpg",
-    cacaoraf: "images/paloma/coffee/hero.jpg",
-    smoothie: "images/paloma/desserts/dessert-01.jpg",
-    milkshake: "images/paloma/desserts/dessert-02.jpg",
-    tea: "images/paloma/coffee/hero.jpg",
-    cold: "images/paloma/desserts/dessert-01.jpg",
+    classic: "images/paloma/coffee/cup-classic.jpg",
+    cacaoraf: "images/paloma/coffee/cup-raf.jpg",
+    smoothie: "images/paloma/coffee/cup-smoothie.jpg",
+    milkshake: "images/paloma/coffee/cup-milkshake.jpg",
+    tea: "images/paloma/coffee/cup-tea.jpg",
+    cold: "images/paloma/coffee/cup-cold.jpg",
   };
 
   function init() {
