@@ -905,6 +905,20 @@
   transform: translateX(3px);
 }
 
+/* брендовый рукописный Classica One для крупных заголовков кофейни —
+   как на остальном сайте (каталог/главная). Скоуп .coffee-ea = только эта
+   страница, «Оформление» (.ea-page без .coffee-ea) остаётся на Montserrat. */
+.ea-page.coffee-ea {
+  --fhead: "Classica One", "Italiana", cursive;
+}
+.coffee-ea .ea-title,
+.coffee-ea .ea-hero__h1,
+.coffee-ea .ea-serv__ctitle {
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.12;
+}
+
 /* кнопка «Смотреть дальше» — по центру под сеткой меню, тёмная как бренд */
 .cf-more {
   display: block;
