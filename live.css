@@ -1,0 +1,262 @@
+﻿/* =====================================================
+   PALOMA Coffee — editorial page
+   Inspired by sjostrand.tilda.ws:
+   cinematic dark panels, floating card photos,
+   cursor-follow menu images, horizontal stages.
+   ===================================================== */
+
+/* ── Hero — Typographic Fullscreen ───────────────────────── */
+
+.cof-hero {
+  position: relative;
+  height: 100vh;        /* fallback for browsers without dvh */
+  height: 100dvh;       /* dynamic viewport — correct on mobile chrome */
+  min-height: 640px;
+  overflow: hidden;
+  background: #FBF6E8;  /* light fallback while photo loads */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Background photo: slow zoom-out on load, JS takes over on scroll */
+.cof-hero__bg {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  animation: cofBgZoom 7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.cof-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;  /* frame the table/flowers centrepiece */
+  display: block;
+}
+
+/* Overlay — light in the centre so the bright photo breathes,
+   dark only at the bottom so the white tagline + address stay readable */
+.cof-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to bottom,
+      rgba(240, 234, 224, 0.08) 0%,   /* barely-there warm tint at top */
+      rgba(20, 10, 5, 0.0)  62%,       /* fully transparent in the upper half */
+      rgba(20, 10, 5, 0.72) 100%);     /* dark at bottom for text contrast */
+}
+
+/* Giant ghost word — the visual centrepiece */
+.cof-hero__word {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(130px, 20vw, 360px);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: rgba(20, 10, 5, 0.52);   /* dark on light photo — reads as a shadow */
+  white-space: nowrap;
+  will-change: transform, opacity;
+
+  opacity: 0;
+  transform: scale(0.9);
+  animation: cofWordReveal 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+/* Bottom content bar */
+.cof-hero__content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 clamp(24px, 5vw, 80px) clamp(44px, 5.5vw, 76px);
+}
+
+.cof-hero__content-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cof-hero__eyebrow {
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(251, 246, 232, 0.42);
+
+  opacity: 0;
+  transform: translateY(14px);
+  animation: cofFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+}
+
+.cof-hero__tagline {
+  margin: 0;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(26px, 3vw, 44px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.15;
+  color: rgba(251, 246, 232, 0.88);
+  letter-spacing: -0.01em;
+
+  opacity: 0;
+  transform: translateY(18px);
+  animation: cofFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
+}
+
+.cof-hero__tagline em {
+  font-style: normal;
+  color: rgba(251, 246, 232, 0.5);
+}
+
+/* Scroll hint CTA */
+.cof-hero__scroll-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: rgba(251, 246, 232, 0.5);
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  margin-top: 4px;
+
+  opacity: 0;
+  animation: cofFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.35s forwards;
+}
+
+.cof-hero__scroll-cta:hover { color: rgba(251, 246, 232, 0.88); }
+
+.cof-hero__scroll-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+  transform-origin: left center;
+  animation: cofLineDraw 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.6s both;
+}
+
+@keyframes cofLineDraw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Address — bottom right */
+.cof-hero__address {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-style: normal;
+  padding-bottom: 6px;
+
+  opacity: 0;
+  animation: cofFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.45s forwards;
+}
+
+.cof-hero__address span {
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(251, 246, 232, 0.38);
+}
+
+/* ── Hero keyframes ───────────────────────────────────────── */
+
+@keyframes cofBgZoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+@keyframes cofWordReveal {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes cofFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile hero adjustments */
+@media (max-width: 768px) {
+  .cof-hero__word {
+    font-size: clamp(80px, 24vw, 160px);
+    color: rgba(20, 10, 5, 0.42);
+  }
+  .cof-hero__content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .cof-hero__address {
+    align-items: flex-start;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cof-hero__bg   { animation: none !important; }
+  .cof-hero__word { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .cof-hero__eyebrow,
+  .cof-hero__tagline,
+  .cof-hero__scroll-cta,
+  .cof-hero__address { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .cof-hero__scroll-line { animation: none !important; }
+}
+
+/* ── Menu section ─────────────────────────────────────────── */
+
+.cof-menu {
+  position: relative;
+  padding: clamp(56px, 7vw, 96px) clamp(16px, 2.5vw, 40px);
+  background: #fbf6e8;
+}
+
+.cof-menu__eyebrow {
+  display: block;
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(42, 18, 12, 0.38);
+  margin-bottom: clamp(36px, 4.5vw, 64px);
+}
+
+.cof-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cof-menu__item {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(12px, 2vw, 24px);
+  padding: clamp(20px, 2.4vw, 30px) 0;
+  border-top: 1px solid rgba(42, 18, 12, 0.1);
+  cursor: default;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.co
