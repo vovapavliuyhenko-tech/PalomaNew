@@ -368,6 +368,9 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-faq__item.is-open .ea-faq__q::after{background:var(--wine-d)}
 .ea-faq__a{max-height:0;overflow:hidden;transition:max-height .45s var(--eease)}
 .ea-faq__a p{padding:0 60px 22px 0;font-weight:400;font-size:14px;line-height:1.75;color:var(--body)}
+/* Оформление #faq: заголовок и круглые кнопки «+» розовым */
+#faq .ea-title{color:#E7385A}
+#faq .ea-faq__q::after,#faq .ea-faq__item.is-open .ea-faq__q::after{background:#E7385A}
 
 /* ── PREFOOTER — фото-полоса с фразой Tenor Sans ── */
 .ea-prefooter{position:relative;height:clamp(360px,58vh,660px);overflow:hidden}
