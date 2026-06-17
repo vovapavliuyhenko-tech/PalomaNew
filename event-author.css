@@ -231,23 +231,24 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proc__ph--e{top:50%;left:62%;width:clamp(300px,27vw,400px);aspect-ratio:4/3.2;filter:grayscale(1)}
 .ea-proc-step:last-child .ea-step__t--top{left:36%}
 
-/* ── Оформление #process: ВЕРНЫЙ референсу разворот (eventauthor) — широкие
-   «сцены», разбросанные фото, рукописные стрелки-связки между этапами.
-   Используем базовую раскладку .ea-proc (760–1120px панели, 520vh, позиции под
-   референс). Кастом только: РОЗОВЫЙ акцент заголовков + ЗАГЛАВНЫЕ + рукописная
-   нумерация + видимые коричневые стрелки. Скоуп #process = только эта страница. ── */
+/* ── Разворот процесса (eventauthor) — общий для Оформления (#process) и Кофейни
+   (#cf-steps): широкие «сцены», разбросанные фото, рукописные стрелки-связки.
+   Базовая раскладка .ea-proc (760–1120px панели, позиции под референс). Кастом:
+   РОЗОВЫЙ акцент заголовков + ЗАГЛАВНЫЕ + рукописная нумерация + видимые стрелки. ── */
 /* заголовки этапов — РОЗОВЫЙ акцент, ЗАГЛАВНЫЕ */
-#process .ea-step__t{font-size:clamp(32px,3.6vw,54px);color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
+.ea-proc .ea-step__t{font-size:clamp(32px,3.6vw,54px);color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
 /* нумерация 01/ 02/ 03/ — рукописным Classica One, как курсивные цифры на референсе */
-#process .ea-step__n{font-family:'Classica One','Italiana',cursive;font-weight:400;letter-spacing:0;margin-right:.12em}
+.ea-proc .ea-step__n{font-family:'Classica One','Italiana',cursive;font-weight:400;letter-spacing:0;margin-right:.12em;text-transform:none}
 /* рукописные стрелки между этапами — тёплый коричневый штрих (был кремовый = невидимый) */
-#process .ea-proc__arrow{opacity:.9}
-#process .ea-proc__arrow path{stroke:#b08a55}
+.ea-proc .ea-proc__arrow{opacity:.9}
+.ea-proc .ea-proc__arrow path{stroke:#b08a55}
 /* верхний контент опущен ниже фикс-шапки (~14vh), чтобы заголовки и верхние фото
    не срезались сверху при скролле */
-#process .ea-step__t--top{top:18%}
-#process .ea-proc__ph--a{top:15%}
-#process .ea-proc__ph--c{top:15%}
+.ea-proc .ea-step__t--top{top:18%}
+.ea-proc .ea-proc__ph--a{top:15%}
+.ea-proc .ea-proc__ph--c{top:15%}
+/* кофейня: 5 этапов → выше обёртка, чтобы скорость прокрутки совпадала с Оформлением */
+#cf-steps{height:880vh}
 /* текст шага 1 опущен — не налезает на верхнее фото (фото опущено под шапку) */
 #process .ea-step__body--lo{top:52%}
 
