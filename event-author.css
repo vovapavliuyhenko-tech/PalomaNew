@@ -331,18 +331,21 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
    РОЗОВЫЙ акцент, компактнее по высоте (виден край следующего блока) ── */
 #contact{padding-top:clamp(56px,7vh,92px);padding-bottom:clamp(40px,5vh,64px)}
 #contact .ea-title{color:#E7385A}
-#contact .ea-form{gap:11px;margin-top:clamp(16px,1.8vw,24px)}
-/* поля с обводкой как на референсе */
-#contact .ea-form input,#contact .ea-form select{background:#fff;border:1px solid #d9cdb4;border-radius:12px;padding:13px 18px}
+#contact .ea-form{gap:14px;margin-top:clamp(16px,1.8vw,24px)}
+/* поля с обводкой как на референсе: белые, крупные, мягко скруглённые, светлая рамка */
+#contact .ea-form input,#contact .ea-form select{background:#fff;border:1px solid #e4ddcc;border-radius:14px;padding:17px 22px;font-size:16px;box-shadow:0 1px 2px rgba(40,24,12,.03)}
+#contact .ea-form input::placeholder{color:#9b9385}
+#contact .ea-form select{background-position:right 22px center}
 #contact .ea-form input:focus,#contact .ea-form select:focus{border-color:#E7385A;box-shadow:0 0 0 2px rgba(231,56,90,.15)}
 /* розовая рамка фото */
 #contact .ea-cta__media{border-color:#E7385A;background:#E7385A;min-height:clamp(340px,60vh,560px)}
-/* розовый слайдер бюджета + компактнее */
-#contact .ea-range{padding-top:32px}
-#contact .ea-range__minmax{margin-top:10px}
-#contact .ea-range input[type=range]::-webkit-slider-thumb{background:#E7385A;box-shadow:0 0 0 1px #E7385A}
-#contact .ea-range input[type=range]::-moz-range-thumb{background:#E7385A;box-shadow:0 0 0 1px #E7385A}
-#contact .ea-range__bubble{background:#E7385A}
+/* ползунок бюджета как на референсе: тонкий трек, БЕЛЫЙ кружок, белый бабл со светлой рамкой */
+#contact .ea-range{padding-top:34px}
+#contact .ea-range input[type=range]{height:3px;background:#ddd4c1}
+#contact .ea-range__minmax{margin-top:14px}
+#contact .ea-range input[type=range]::-webkit-slider-thumb{width:26px;height:26px;background:#fff;border:1px solid #d9cdb4;box-shadow:0 2px 8px rgba(40,24,12,.18);margin-top:-12px}
+#contact .ea-range input[type=range]::-moz-range-thumb{width:24px;height:24px;background:#fff;border:1px solid #d9cdb4;box-shadow:0 2px 8px rgba(40,24,12,.18)}
+#contact .ea-range__bubble{background:#fff;color:#1B1A18;border:1px solid #e4ddcc;box-shadow:0 4px 12px rgba(40,24,12,.10)}
 /* розовая кнопка-текст с сердечком */
 #contact .ea-form__submit{color:#E7385A;border-bottom-color:#E7385A}
 #contact .ea-form__submit svg{fill:#E7385A}
