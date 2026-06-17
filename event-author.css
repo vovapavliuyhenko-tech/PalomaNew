@@ -245,8 +245,17 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 #process .ea-proc__ph--b{top:55%;left:56%;width:38%;aspect-ratio:3/4}
 #process .ea-proc__ph--c{top:8%;left:4%;width:44%;aspect-ratio:3/3.8}
 #process .ea-proc__ph--d{top:6%;left:52%;width:44%;aspect-ratio:4/3.2}
-#process .ea-proc__ph--e{top:56%;left:56%;width:38%;aspect-ratio:4/3.2}
+#process .ea-proc__ph--e{top:58%;left:56%;width:36%;aspect-ratio:4/3.2}
 #process .ea-proc-step:last-child .ea-step__t--top{left:5%}
+/* панель опускается ниже фикс-шапки, чтобы верхнее фото не обрезалось */
+#process .ea-proc__sticky{top:clamp(78px,9vh,98px);height:calc(100vh - clamp(78px,9vh,98px))}
+/* фото чуть меньше, чтобы помещались по высоте без обрезки */
+#process .ea-proc__ph--a{width:42%}
+#process .ea-proc__ph--b{top:56%;width:36%}
+#process .ea-proc__ph--c{width:42%;aspect-ratio:3/3.6}
+#process .ea-proc__ph--d{width:42%}
+/* нумерация 01/ 02/ 03/ — рукописным Classica One */
+#process .ea-step__n{font-family:'Classica One','Italiana',cursive;font-weight:400;letter-spacing:0;margin-right:.12em}
 
 /* нарисованные дугообразные стрелки между этапами */
 .ea-proc__arrow{position:absolute;width:clamp(150px,14vw,220px);height:auto;z-index:2;opacity:.85}
