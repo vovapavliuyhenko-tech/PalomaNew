@@ -228,31 +228,18 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proc__ph--e{top:50%;left:62%;width:clamp(300px,27vw,400px);aspect-ratio:4/3.2;filter:grayscale(1)}
 .ea-proc-step:last-child .ea-step__t--top{left:36%}
 
-/* ── Оформление #process: компактнее — узкие панели (видно несколько сразу),
-   позиции в % (кучно, без пустых мест), ниже по высоте. Скоуп #process = только
-   эта страница; у кофейни процесс под id cf-steps и не затрагивается. ── */
-#process{height:360vh}
-/* шире панель + больше горизонтальных отступов, без линий-разделителей */
-#process .ea-proc-step{width:clamp(620px,52vw,820px);padding:0 clamp(48px,5vw,92px)}
-#process .ea-proc__arrow{display:none}
-/* заголовки этапов — РОЗОВЫЙ акцент, ЗАГЛАВНЫЕ, мельче по размеру */
-#process .ea-step__t{font-size:clamp(22px,2.5vw,38px);color:#E7385A;text-transform:uppercase;letter-spacing:.02em}
-#process .ea-step__body{width:42%}
-/* весь контент держим в полосе 15–88% высоты панели: выше — под фикс-шапкой,
-   ниже — линия прогресса. Панель остаётся 100vh (низ фото не обрезается). */
-#process .ea-step__t--top{top:15%;left:5%}
-#process .ea-step__t--mid{top:15%;left:52%}
-#process .ea-step__body--lo{top:34%;left:5%}
-#process .ea-step__body--mid{top:40%;left:52%}
-#process .ea-step__body--hi{top:36%;left:5%;width:42%}
-#process .ea-proc__ph--a{top:14%;left:56%;width:40%;aspect-ratio:4/3}
-#process .ea-proc__ph--b{top:48%;left:58%;width:34%;aspect-ratio:3/4}
-#process .ea-proc__ph--c{top:14%;left:3%;width:40%;aspect-ratio:3/3.6}
-#process .ea-proc__ph--d{top:14%;left:56%;width:40%;aspect-ratio:4/3.2}
-#process .ea-proc__ph--e{top:50%;left:58%;width:34%;aspect-ratio:4/3.2}
-#process .ea-proc-step:last-child .ea-step__t--top{left:5%}
-/* нумерация 01/ 02/ 03/ — рукописным Classica One */
+/* ── Оформление #process: ВЕРНЫЙ референсу разворот (eventauthor) — широкие
+   «сцены», разбросанные фото, рукописные стрелки-связки между этапами.
+   Используем базовую раскладку .ea-proc (760–1120px панели, 520vh, позиции под
+   референс). Кастом только: РОЗОВЫЙ акцент заголовков + ЗАГЛАВНЫЕ + рукописная
+   нумерация + видимые коричневые стрелки. Скоуп #process = только эта страница. ── */
+/* заголовки этапов — РОЗОВЫЙ акцент, ЗАГЛАВНЫЕ */
+#process .ea-step__t{font-size:clamp(32px,3.6vw,54px);color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
+/* нумерация 01/ 02/ 03/ — рукописным Classica One, как курсивные цифры на референсе */
 #process .ea-step__n{font-family:'Classica One','Italiana',cursive;font-weight:400;letter-spacing:0;margin-right:.12em}
+/* рукописные стрелки между этапами — тёплый коричневый штрих (был кремовый = невидимый) */
+#process .ea-proc__arrow{opacity:.9}
+#process .ea-proc__arrow path{stroke:#b08a55}
 
 /* нарисованные дугообразные стрелки между этапами */
 .ea-proc__arrow{position:absolute;width:clamp(150px,14vw,220px);height:auto;z-index:2;opacity:.85}
