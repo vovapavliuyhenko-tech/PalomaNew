@@ -232,9 +232,12 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
    позиции в % (кучно, без пустых мест), ниже по высоте. Скоуп #process = только
    эта страница; у кофейни процесс под id cf-steps и не затрагивается. ── */
 #process{height:360vh}
-#process .ea-proc-step{width:clamp(480px,42vw,640px);padding:0 clamp(28px,3vw,52px)}
+/* белое раз­деление как перед первым этапом — каждую «сцену» предваряет
+   вертикальный шов: панель чуть белее интро + тонкая линия слева */
+#process .ea-proc-step{width:clamp(480px,42vw,640px);padding:0 clamp(28px,3vw,52px);background:#FFFDF7;border-left:1px solid var(--eline)}
 #process .ea-proc__arrow{display:none}
-#process .ea-step__t{font-size:clamp(30px,3.3vw,50px)}
+/* заголовки этапов — РОЗОВЫЙ акцент, ЗАГЛАВНЫЕ, мельче по размеру */
+#process .ea-step__t{font-size:clamp(22px,2.5vw,38px);color:#E7385A;text-transform:uppercase;letter-spacing:.02em}
 #process .ea-step__body{width:42%}
 /* весь контент держим в полосе 15–88% высоты панели: выше — под фикс-шапкой,
    ниже — линия прогресса. Панель остаётся 100vh (низ фото не обрезается). */
