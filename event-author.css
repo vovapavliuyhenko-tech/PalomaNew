@@ -245,6 +245,8 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 #process .ea-step__t--top{top:18%}
 #process .ea-proc__ph--a{top:15%}
 #process .ea-proc__ph--c{top:15%}
+/* текст шага 1 опущен — не налезает на верхнее фото (фото опущено под шапку) */
+#process .ea-step__body--lo{top:52%}
 
 /* нарисованные дугообразные стрелки между этапами */
 .ea-proc__arrow{position:absolute;width:clamp(150px,14vw,220px);height:auto;z-index:2;opacity:.85}
@@ -371,6 +373,12 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* Оформление #faq: заголовок и круглые кнопки «+» розовым */
 #faq .ea-title{color:#E7385A}
 #faq .ea-faq__q::after,#faq .ea-faq__item.is-open .ea-faq__q::after{background:#E7385A}
+
+/* Оформление: ВСЕ крупные заголовки страницы — розовые + чуть менее жирные (450)
+   (герой, философия, проекты, отзывы, контакты, FAQ, этапы). Скоуп — только эта страница. */
+.event-decoration-page .ea-title,
+.event-decoration-page .ea-hero__h1,
+.event-decoration-page .ea-step__t{color:#E7385A;font-weight:450}
 
 /* ── PREFOOTER — фото-полоса с фразой Tenor Sans ── */
 .ea-prefooter{position:relative;height:clamp(360px,58vh,660px);overflow:hidden}
