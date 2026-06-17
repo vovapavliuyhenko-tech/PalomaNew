@@ -287,6 +287,14 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   box-shadow:0 18px 44px rgba(40,24,12,.10);align-items:stretch}
 #testimonials .ea-test__photo{aspect-ratio:auto;height:100%;min-height:300px}
 #testimonials .ea-test__body{padding:clamp(22px,2.6vw,44px) clamp(22px,3vw,52px)}
+/* по референсу + как блок этапов: заголовок секции — РОЗОВЫЙ, ЗАГЛАВНЫЕ */
+#testimonials .ea-title{color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
+/* цитата-заголовок — ЗАГЛАВНЫЕ, по центру (как на референсе) */
+#testimonials .ea-test__qtitle{text-transform:uppercase;letter-spacing:.02em;text-align:center}
+/* подпись клиента — розовый рукописный, как красная подпись на референсе */
+#testimonials .ea-test__sign{color:#E7385A}
+/* стрелки навигации — розовый ховер */
+#testimonials .ea-test__arrow:hover{background:#E7385A;border-color:#E7385A;color:#fff}
 
 /* ── CONTACT — «get in touch»: на кремовом фоне ── */
 .ea-cta{background:var(--paper2);border-top:1px solid var(--cream-line)}
