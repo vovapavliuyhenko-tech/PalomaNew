@@ -289,10 +289,15 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* ── Оформление #testimonials: компактнее — заголовок, стрелки и карточка
    умещаются в один экран; верхний отступ уводит заголовок из-под фикс-шапки;
    высота фото ограничена (было квадратное 1:1 ~560px). ── */
-#testimonials{padding-top:clamp(74px,9vh,116px);padding-bottom:clamp(44px,6vh,82px)}
-#testimonials .ea-test__slider{margin-top:clamp(18px,2.2vw,32px)}
-#testimonials .ea-test__slide{grid-template-columns:minmax(0,0.84fr) minmax(0,1.16fr);padding:clamp(14px,1.4vw,22px)}
-#testimonials .ea-test__photo{aspect-ratio:auto;height:clamp(320px,48vh,500px)}
+#testimonials{padding-top:clamp(96px,12vh,140px);padding-bottom:clamp(30px,4.5vh,56px)}
+#testimonials .ea-test__head{align-items:center}                 /* стрелки ниже — по центру с заголовком */
+#testimonials .ea-test__slider{margin-top:clamp(14px,1.8vw,26px)}
+/* белая карточка-рамка: фото вплотную слева, текст справа с отступом */
+#testimonials .ea-test__slide{grid-template-columns:minmax(0,0.88fr) minmax(0,1.12fr);gap:0;padding:0;
+  background:#fff;border:1px solid #e8ddc8;border-radius:2px;overflow:hidden;
+  box-shadow:0 18px 44px rgba(40,24,12,.10);align-items:stretch}
+#testimonials .ea-test__photo{aspect-ratio:auto;height:100%;min-height:300px}
+#testimonials .ea-test__body{padding:clamp(22px,2.6vw,44px) clamp(22px,3vw,52px)}
 
 /* ── CONTACT — «get in touch»: на кремовом фоне ── */
 .ea-cta{background:var(--paper2);border-top:1px solid var(--cream-line)}
