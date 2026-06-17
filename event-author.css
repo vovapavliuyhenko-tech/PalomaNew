@@ -384,6 +384,9 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .event-decoration-page .ea-hero,
 .event-decoration-page .ea-philo{height:100vh;min-height:100vh}
 
+/* подпись основателя заменена на логотип PALOMA (розовый вордмарк Italiana) */
+.ea-philo__logo{font-family:'Italiana',serif;font-style:normal;color:#E7385A;font-size:clamp(26px,2.2vw,38px);letter-spacing:.2em;text-transform:uppercase;line-height:1}
+
 /* ── PREFOOTER — фото-полоса с фразой Tenor Sans ── */
 .ea-prefooter{position:relative;height:clamp(360px,58vh,660px);overflow:hidden}
 .ea-prefooter img{width:100%;height:100%;object-fit:cover;filter:brightness(.86)}
