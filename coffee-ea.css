@@ -81,29 +81,42 @@ body.coffee-page{overflow-x:clip!important}
   color:#E7385A;text-transform:uppercase;font-size:clamp(26px,2.9vw,44px);
   letter-spacing:.015em;line-height:1.12;font-weight:500}
 
-/* ── РАСКЛАДКА этапов кофейни: две зоны — ТЕКСТ слева, ФОТО справа.
-   Дефолтные позиции .ea-proc подогнаны под 3 этапа Оформления; на 5 этапов
-   кофейни с другими фото они налезали друг на друга. Жёстко разводим по
-   горизонтали: текст ≤40%, фото ≥52% — пересечений не будет. ── */
-/* текст — левая зона */
-#cf-steps .ea-step__t--top{top:15%;left:5%}
-#cf-steps .ea-step__t--mid{top:15%;left:5%}
+/* ── РАСКЛАДКА этапов кофейни: ТЕКСТ в одной зоне, ФОТО в другой; стороны
+   ЧЕРЕДУЮТСЯ (зиг-заг) — чтобы не было «всё в одном положении» и пустоты.
+   Крупное фото + мелкое внахлёст (кремовая рамка) = плотный коллаж, без наезда
+   текста на фото (текст и фото всегда в разных горизонтальных половинах). ── */
+/* текст — левая зона (по умолчанию) */
+#cf-steps .ea-step__t--top{top:14%;left:5%}
+#cf-steps .ea-step__t--mid{top:14%;left:5%}
 #cf-steps .ea-proc-step:last-child .ea-step__t--top{left:5%}
-#cf-steps .ea-step__body{left:5%;width:min(35vw,430px)}
+#cf-steps .ea-step__body{left:5%;width:min(35vw,440px)}
 #cf-steps .ea-step__body--lo{top:46%}
 #cf-steps .ea-step__body--mid{top:46%}
 #cf-steps .ea-step__body--hi{top:46%}
-/* фото — правая зона: крупное сверху + мелкое снизу */
-#cf-steps .ea-proc__ph--a{top:12%;left:54%;width:clamp(280px,26vw,400px);aspect-ratio:4/3}
-#cf-steps .ea-proc__ph--b{top:55%;left:61%;width:clamp(220px,19vw,310px);aspect-ratio:4/3}
-#cf-steps .ea-proc__ph--c{top:12%;left:55%;width:clamp(260px,23vw,350px);aspect-ratio:4/3.2}
-#cf-steps .ea-proc__ph--d{top:13%;left:53%;width:clamp(260px,24vw,360px);aspect-ratio:4/3}
-#cf-steps .ea-proc__ph--e{top:55%;left:61%;width:clamp(220px,19vw,310px);aspect-ratio:4/3}
-/* этап 05 «доставка»: ph--a уводим вниз, чтобы не накрыть верхнее ph--c */
-#cf-steps .ea-proc-step:last-child .ea-proc__ph--a{top:52%;left:61%;width:clamp(220px,19vw,310px);aspect-ratio:4/3}
+/* фото — правая зона: крупное сверху + мелкое внахлёст снизу-слева (крупнее) */
+#cf-steps .ea-proc__ph--a{top:11%;left:53%;width:clamp(330px,31vw,480px);aspect-ratio:4/3}
+#cf-steps .ea-proc__ph--b{top:50%;left:46%;width:clamp(240px,22vw,340px);aspect-ratio:4/3}
+#cf-steps .ea-proc__ph--c{top:11%;left:54%;width:clamp(310px,29vw,440px);aspect-ratio:4/3.4}
+#cf-steps .ea-proc__ph--d{top:11%;left:53%;width:clamp(330px,31vw,480px);aspect-ratio:4/3}
+#cf-steps .ea-proc__ph--e{top:51%;left:47%;width:clamp(240px,22vw,340px);aspect-ratio:4/3}
+/* этап 05 «доставка»: ph--a — мелкое внахлёст под верхним ph--c */
+#cf-steps .ea-proc-step:last-child .ea-proc__ph--a{top:50%;left:47%;width:clamp(240px,22vw,340px);aspect-ratio:4/3}
+/* мелкие фото — кремовая рамка + поверх крупного (читается коллаж) */
+#cf-steps .ea-proc__ph--b,
+#cf-steps .ea-proc__ph--e,
+#cf-steps .ea-proc-step:last-child .ea-proc__ph--a{border:7px solid var(--paper2);z-index:2}
+
+/* ── ЗИГ-ЗАГ: чётные сцены (02, 04) зеркалим — текст справа, фото слева ── */
+#cf-steps .ea-proc-step:nth-child(odd) .ea-step__t--top,
+#cf-steps .ea-proc-step:nth-child(odd) .ea-step__t--mid{left:60%}
+#cf-steps .ea-proc-step:nth-child(odd) .ea-step__body{left:60%}
+#cf-steps .ea-proc-step:nth-child(odd) .ea-proc__ph--a{left:5%}
+#cf-steps .ea-proc-step:nth-child(odd) .ea-proc__ph--b{left:13%}
 
 /* ── БЛОК ЛИМОНАДОВ — тот же макет, что первый блок: лево видео / право текст ── */
-.cf-lemon .cf-video{filter:saturate(1.08)}
+/* видео лимонадов: без зума (не вылезает за рамки) + светлее, чтобы было видно сюжет */
+.cf-lemon .cf-video{transform:none;filter:saturate(1.06) brightness(1.12)}
+.cf-lemon .cf-hero__left::after{background:linear-gradient(180deg,rgba(20,12,8,.1),rgba(20,12,8,.2))}
 /* рамка с фото — меньше, чтобы видео на фоне было больше видно */
 .cf-lemon .cf-lemon__frame{width:min(20vw,272px);overflow:visible}
 /* два цветка-акцента по углам фото (лево-верх + право-низ), золотой контур */

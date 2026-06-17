@@ -905,18 +905,24 @@
   transform: translateX(3px);
 }
 
-/* брендовый рукописный Classica One для крупных заголовков кофейни —
-   как на остальном сайте (каталог/главная). Скоуп .coffee-ea = только эта
-   страница, «Оформление» (.ea-page без .coffee-ea) остаётся на Montserrat. */
+/* Заголовки всей страницы кофейни — Montserrat ЗАГЛАВНЫЕ розовые, как в блоке
+   этапов (по просьбе 2026-06-18; раньше был script Classica). Логотип PALOMA
+   остаётся Italiana (--logo, отдельно). «Оформление» не затрагивается. */
 .ea-page.coffee-ea {
-  --fhead: "Classica One", "Italiana", cursive;
+  --fhead: "Montserrat", Arial, sans-serif;
 }
 .coffee-ea .ea-title,
 .coffee-ea .ea-hero__h1,
-.coffee-ea .ea-serv__ctitle {
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1.12;
+.coffee-ea .ea-serv__ctitle,
+.coffee-ea .cf-menu__name,
+.coffee-ea .cf-modal__title {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: #E7385A;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.14;
 }
 
 /* кнопка «Смотреть дальше» — по центру под сеткой меню, тёмная как бренд */
