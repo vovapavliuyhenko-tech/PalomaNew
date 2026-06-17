@@ -67,29 +67,15 @@ body.coffee-page{overflow-x:clip!important}
 .cf-menu__pop.is-on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .cf-menu__pop img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* ── ЭТАПЫ кофейни: плотная 2-колонка (текст + крупное и мелкое фото впритык), как на референсе ── */
-.cf-steps{height:380vh}                                   /* ниже, чем дефолтные 520vh */
-.cf-steps .ea-proc-step.cf-step{width:clamp(560px,50vw,780px);padding:0 clamp(24px,3vw,56px);
-  display:flex;flex-direction:row;align-items:center;gap:clamp(28px,3.2vw,60px)}
-.cf-steps .cf-step:nth-child(even){flex-direction:row-reverse}
-.cf-step__text{flex:1 1 44%;display:flex;flex-direction:column;gap:clamp(14px,1.4vw,20px)}
-.cf-step__t{font-family:var(--fhead);font-weight:500;color:var(--wine);margin:0;
-  font-size:clamp(30px,3.4vw,52px);line-height:1.05;letter-spacing:.005em}
-.cf-step__d{font-size:clamp(14px,1.05vw,16.5px);line-height:1.7;color:var(--body)}
-.cf-step__media{flex:1 1 56%;position:relative;display:flex;align-items:center}
-.cf-step__big{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:5px;box-shadow:0 26px 56px rgba(40,24,12,.24)}
-.cf-step__small{position:absolute;width:48%;aspect-ratio:4/3.2;object-fit:cover;border-radius:5px;bottom:-7%;
-  box-shadow:0 16px 34px rgba(40,24,12,.28);border:6px solid var(--paper2)}
-.cf-step:not(:nth-child(even)) .cf-step__small{left:-9%}
-.cf-step:nth-child(even) .cf-step__small{right:-9%}
-@media(max-width:640px){
-  .cf-steps .ea-proc-step.cf-step{flex-direction:column;width:84vw;gap:18px;justify-content:center}
-  .cf-step__text,.cf-step__media{flex:none;width:100%}
-  .cf-step__big{aspect-ratio:4/3.4}
-  .cf-step__small{width:42%;bottom:-8%}
-  .cf-step:nth-child(even) .cf-step__small,
-  .cf-step:not(:nth-child(even)) .cf-step__small{right:-6%;left:auto}
-}
+/* ── ЭТАПЫ кофейни (#cf-steps): идентично блоку «процесс» на Оформлении ──
+   Та же раскладка .ea-proc (разбросанные фото, рукописные стрелки), но на странице
+   кофейни --fhead = Classica (script) — поэтому заголовки этапов раздувались и
+   налезали. Возвращаем им Montserrat ЗАГЛАВНЫЕ + РОЗОВЫЙ (как на референсе),
+   меньше по размеру; нумерация 01/ 02/ остаётся рукописной (наследует .ea-proc). */
+#cf-steps .ea-step__t{font-family:'Montserrat',Arial,sans-serif;font-style:normal;
+  font-size:clamp(26px,2.9vw,44px)}
+/* белое вертикальное разделение между интро и первым этапом, как на референсе */
+#cf-steps .ea-proc__intro{border-right:1px solid var(--eline)}
 
 /* ── БЛОК ЛИМОНАДОВ — тот же макет, что первый блок: лево видео / право текст ── */
 .cf-lemon .cf-video{filter:saturate(1.08)}
