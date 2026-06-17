@@ -232,9 +232,8 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
    позиции в % (кучно, без пустых мест), ниже по высоте. Скоуп #process = только
    эта страница; у кофейни процесс под id cf-steps и не затрагивается. ── */
 #process{height:360vh}
-/* белое раз­деление как перед первым этапом — каждую «сцену» предваряет
-   вертикальный шов: панель чуть белее интро + тонкая линия слева */
-#process .ea-proc-step{width:clamp(480px,42vw,640px);padding:0 clamp(28px,3vw,52px);background:#FFFDF7;border-left:1px solid var(--eline)}
+/* шире панель + больше горизонтальных отступов, без линий-разделителей */
+#process .ea-proc-step{width:clamp(620px,52vw,820px);padding:0 clamp(48px,5vw,92px)}
 #process .ea-proc__arrow{display:none}
 /* заголовки этапов — РОЗОВЫЙ акцент, ЗАГЛАВНЫЕ, мельче по размеру */
 #process .ea-step__t{font-size:clamp(22px,2.5vw,38px);color:#E7385A;text-transform:uppercase;letter-spacing:.02em}
@@ -246,11 +245,11 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 #process .ea-step__body--lo{top:34%;left:5%}
 #process .ea-step__body--mid{top:40%;left:52%}
 #process .ea-step__body--hi{top:36%;left:5%;width:42%}
-#process .ea-proc__ph--a{top:14%;left:52%;width:42%;aspect-ratio:4/3}
-#process .ea-proc__ph--b{top:48%;left:54%;width:36%;aspect-ratio:3/4}
-#process .ea-proc__ph--c{top:14%;left:4%;width:42%;aspect-ratio:3/3.6}
-#process .ea-proc__ph--d{top:14%;left:52%;width:42%;aspect-ratio:4/3.2}
-#process .ea-proc__ph--e{top:50%;left:54%;width:36%;aspect-ratio:4/3.2}
+#process .ea-proc__ph--a{top:14%;left:56%;width:40%;aspect-ratio:4/3}
+#process .ea-proc__ph--b{top:48%;left:58%;width:34%;aspect-ratio:3/4}
+#process .ea-proc__ph--c{top:14%;left:3%;width:40%;aspect-ratio:3/3.6}
+#process .ea-proc__ph--d{top:14%;left:56%;width:40%;aspect-ratio:4/3.2}
+#process .ea-proc__ph--e{top:50%;left:58%;width:34%;aspect-ratio:4/3.2}
 #process .ea-proc-step:last-child .ea-step__t--top{left:5%}
 /* нумерация 01/ 02/ 03/ — рукописным Classica One */
 #process .ea-step__n{font-family:'Classica One','Italiana',cursive;font-weight:400;letter-spacing:0;margin-right:.12em}
