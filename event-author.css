@@ -277,6 +277,14 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-test__qtext{font-weight:400;font-size:clamp(12px,0.85vw,14px);line-height:1.75;color:var(--body);margin-bottom:10px}
 .ea-test__sign{font-family:'Classica One','Italiana',cursive;font-style:normal;font-size:clamp(22px,2vw,32px);color:var(--wine);margin-top:18px;align-self:flex-end;letter-spacing:.01em}
 
+/* ── Оформление #testimonials: компактнее — заголовок, стрелки и карточка
+   умещаются в один экран; верхний отступ уводит заголовок из-под фикс-шапки;
+   высота фото ограничена (было квадратное 1:1 ~560px). ── */
+#testimonials{padding-top:clamp(74px,9vh,116px);padding-bottom:clamp(44px,6vh,82px)}
+#testimonials .ea-test__slider{margin-top:clamp(18px,2.2vw,32px)}
+#testimonials .ea-test__slide{grid-template-columns:minmax(0,0.84fr) minmax(0,1.16fr);padding:clamp(14px,1.4vw,22px)}
+#testimonials .ea-test__photo{aspect-ratio:auto;height:clamp(320px,48vh,500px)}
+
 /* ── CONTACT — «get in touch»: на кремовом фоне ── */
 .ea-cta{background:var(--paper2);border-top:1px solid var(--cream-line)}
 .ea-cta__inner{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,5vw,90px);align-items:center;width:100%;max-width:var(--ea-maxw);margin:0 auto}
