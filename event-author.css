@@ -240,6 +240,11 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* рукописные стрелки между этапами — тёплый коричневый штрих (был кремовый = невидимый) */
 #process .ea-proc__arrow{opacity:.9}
 #process .ea-proc__arrow path{stroke:#b08a55}
+/* верхний контент опущен ниже фикс-шапки (~14vh), чтобы заголовки и верхние фото
+   не срезались сверху при скролле */
+#process .ea-step__t--top{top:18%}
+#process .ea-proc__ph--a{top:15%}
+#process .ea-proc__ph--c{top:15%}
 
 /* нарисованные дугообразные стрелки между этапами */
 .ea-proc__arrow{position:absolute;width:clamp(150px,14vw,220px);height:auto;z-index:2;opacity:.85}
