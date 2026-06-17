@@ -296,7 +296,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* по референсу + как блок этапов: заголовок секции — РОЗОВЫЙ, ЗАГЛАВНЫЕ */
 #testimonials .ea-title{color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
 /* цитата-заголовок — ЗАГЛАВНЫЕ, по центру (как на референсе), крупнее */
-#testimonials .ea-test__qtitle{text-transform:uppercase;letter-spacing:.02em;text-align:center;font-size:clamp(24px,2.3vw,38px);margin-bottom:24px}
+#testimonials .ea-test__qtitle{text-transform:uppercase;letter-spacing:.02em;text-align:left;font-size:clamp(24px,2.3vw,38px);margin-bottom:24px}
 /* текст отзыва крупнее */
 #testimonials .ea-test__qtext{font-size:clamp(14px,1.05vw,17px);line-height:1.8;margin-bottom:14px}
 /* подпись клиента — розовый рукописный, как красная подпись на референсе, крупнее */
@@ -336,7 +336,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 
 /* ── Оформление #contact: по референсу — поля с обводкой (белые, скруглённые),
    РОЗОВЫЙ акцент, компактнее по высоте (виден край следующего блока) ── */
-#contact{padding-top:clamp(56px,7vh,92px);padding-bottom:clamp(40px,5vh,64px)}
+#contact{padding-top:clamp(100px,14vh,180px);padding-bottom:clamp(40px,5vh,64px)}
 #contact .ea-title{color:#E7385A}
 #contact .ea-form{gap:14px;margin-top:clamp(16px,1.8vw,24px)}
 /* поля с обводкой как на референсе: белые, крупные, мягко скруглённые, светлая рамка */
