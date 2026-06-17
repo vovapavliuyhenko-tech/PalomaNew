@@ -236,24 +236,19 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 #process .ea-proc__arrow{display:none}
 #process .ea-step__t{font-size:clamp(30px,3.3vw,50px)}
 #process .ea-step__body{width:42%}
-#process .ea-step__t--top{top:13%;left:5%}
-#process .ea-step__t--mid{top:17%;left:52%}
-#process .ea-step__body--lo{top:39%;left:5%}
-#process .ea-step__body--mid{top:45%;left:52%}
-#process .ea-step__body--hi{top:42%;left:5%;width:42%}
-#process .ea-proc__ph--a{top:6%;left:52%;width:44%;aspect-ratio:4/3}
-#process .ea-proc__ph--b{top:55%;left:56%;width:38%;aspect-ratio:3/4}
-#process .ea-proc__ph--c{top:8%;left:4%;width:44%;aspect-ratio:3/3.8}
-#process .ea-proc__ph--d{top:6%;left:52%;width:44%;aspect-ratio:4/3.2}
-#process .ea-proc__ph--e{top:58%;left:56%;width:36%;aspect-ratio:4/3.2}
+/* весь контент держим в полосе 15–88% высоты панели: выше — под фикс-шапкой,
+   ниже — линия прогресса. Панель остаётся 100vh (низ фото не обрезается). */
+#process .ea-step__t--top{top:15%;left:5%}
+#process .ea-step__t--mid{top:15%;left:52%}
+#process .ea-step__body--lo{top:34%;left:5%}
+#process .ea-step__body--mid{top:40%;left:52%}
+#process .ea-step__body--hi{top:36%;left:5%;width:42%}
+#process .ea-proc__ph--a{top:14%;left:52%;width:42%;aspect-ratio:4/3}
+#process .ea-proc__ph--b{top:48%;left:54%;width:36%;aspect-ratio:3/4}
+#process .ea-proc__ph--c{top:14%;left:4%;width:42%;aspect-ratio:3/3.6}
+#process .ea-proc__ph--d{top:14%;left:52%;width:42%;aspect-ratio:4/3.2}
+#process .ea-proc__ph--e{top:50%;left:54%;width:36%;aspect-ratio:4/3.2}
 #process .ea-proc-step:last-child .ea-step__t--top{left:5%}
-/* панель опускается ниже фикс-шапки, чтобы верхнее фото не обрезалось */
-#process .ea-proc__sticky{top:clamp(78px,9vh,98px);height:calc(100vh - clamp(78px,9vh,98px))}
-/* фото чуть меньше, чтобы помещались по высоте без обрезки */
-#process .ea-proc__ph--a{width:42%}
-#process .ea-proc__ph--b{top:56%;width:36%}
-#process .ea-proc__ph--c{width:42%;aspect-ratio:3/3.6}
-#process .ea-proc__ph--d{width:42%}
 /* нумерация 01/ 02/ 03/ — рукописным Classica One */
 #process .ea-step__n{font-family:'Classica One','Italiana',cursive;font-weight:400;letter-spacing:0;margin-right:.12em}
 
