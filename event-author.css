@@ -278,21 +278,24 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* ── Оформление #testimonials: компактнее — заголовок, стрелки и карточка
    умещаются в один экран; верхний отступ уводит заголовок из-под фикс-шапки;
    высота фото ограничена (было квадратное 1:1 ~560px). ── */
-#testimonials{padding-top:clamp(96px,12vh,140px);padding-bottom:clamp(30px,4.5vh,56px)}
+#testimonials{padding-top:clamp(120px,16vh,190px);padding-bottom:clamp(60px,8vh,110px)}
 #testimonials .ea-test__head{align-items:center}                 /* стрелки ниже — по центру с заголовком */
 #testimonials .ea-test__slider{margin-top:clamp(14px,1.8vw,26px)}
 /* белая карточка-рамка: фото вплотную слева, текст справа с отступом */
 #testimonials .ea-test__slide{grid-template-columns:minmax(0,0.88fr) minmax(0,1.12fr);gap:0;padding:0;
   background:#fff;border:1px solid #e8ddc8;border-radius:2px;overflow:hidden;
   box-shadow:0 18px 44px rgba(40,24,12,.10);align-items:stretch}
-#testimonials .ea-test__photo{aspect-ratio:auto;height:100%;min-height:300px}
-#testimonials .ea-test__body{padding:clamp(22px,2.6vw,44px) clamp(22px,3vw,52px)}
+/* карточка выше + больше внутренние отступы */
+#testimonials .ea-test__photo{aspect-ratio:auto;height:100%;min-height:480px}
+#testimonials .ea-test__body{padding:clamp(36px,3.6vw,64px) clamp(34px,4vw,72px)}
 /* по референсу + как блок этапов: заголовок секции — РОЗОВЫЙ, ЗАГЛАВНЫЕ */
 #testimonials .ea-title{color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
-/* цитата-заголовок — ЗАГЛАВНЫЕ, по центру (как на референсе) */
-#testimonials .ea-test__qtitle{text-transform:uppercase;letter-spacing:.02em;text-align:center}
-/* подпись клиента — розовый рукописный, как красная подпись на референсе */
-#testimonials .ea-test__sign{color:#E7385A}
+/* цитата-заголовок — ЗАГЛАВНЫЕ, по центру (как на референсе), крупнее */
+#testimonials .ea-test__qtitle{text-transform:uppercase;letter-spacing:.02em;text-align:center;font-size:clamp(24px,2.3vw,38px);margin-bottom:24px}
+/* текст отзыва крупнее */
+#testimonials .ea-test__qtext{font-size:clamp(14px,1.05vw,17px);line-height:1.8;margin-bottom:14px}
+/* подпись клиента — розовый рукописный, как красная подпись на референсе, крупнее */
+#testimonials .ea-test__sign{color:#E7385A;font-size:clamp(26px,2.4vw,40px);margin-top:24px}
 /* стрелки навигации — розовый ховер */
 #testimonials .ea-test__arrow:hover{background:#E7385A;border-color:#E7385A;color:#fff}
 
