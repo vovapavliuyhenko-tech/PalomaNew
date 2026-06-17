@@ -72,7 +72,8 @@ body.coffee-page{overflow-x:clip!important}
 /* рамка с фото — меньше, чтобы видео на фоне было больше видно */
 .cf-lemon .cf-lemon__frame{width:min(20vw,272px);overflow:visible}
 /* два цветка-акцента по углам фото (лево-верх + право-низ), золотой контур */
-/* колонка не должна обрезать цветы по краям */
+/* ни секция, ни колонка не должны обрезать цветы по краям */
+.cf-lemon.ea-panel{overflow:visible}
 .cf-lemon .cf-hero__left{overflow:visible}
 .cf-lemon .cf-accent--lemon{z-index:5;opacity:1;filter:drop-shadow(0 8px 16px rgba(20,12,6,.26))}
 .cf-lemon .cf-accent--lemon .cf-flower-img{width:clamp(56px,6.6vw,96px);height:auto;display:block}
