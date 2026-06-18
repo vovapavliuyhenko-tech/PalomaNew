@@ -3396,6 +3396,7 @@ body.is-nav-open {
 
 .site-header__icon--wishlist {
   position: relative;
+  display: none !important; /* кнопка «Избранное» убрана из шапки */
 }
 
 .header-wishlist-count,
