@@ -235,8 +235,11 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
    (#cf-steps): широкие «сцены», разбросанные фото, рукописные стрелки-связки.
    Базовая раскладка .ea-proc (760–1120px панели, позиции под референс). Кастом:
    РОЗОВЫЙ акцент заголовков + ЗАГЛАВНЫЕ + рукописная нумерация + видимые стрелки. ── */
-/* заголовки этапов — РОЗОВЫЙ акцент, ЗАГЛАВНЫЕ */
-.ea-proc .ea-step__t{font-size:clamp(32px,3.6vw,54px);color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
+/* заголовки этапов — РОЗОВЫЙ акцент, ЗАГЛАВНЫЕ, чистый гротеск (как на Оформлении) */
+.ea-proc .ea-step__t{font-family:'Montserrat',Arial,sans-serif;font-size:clamp(32px,3.6vw,54px);color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
+/* интро-заголовок и текст процесса — те же шрифт/цвета, что на Оформлении */
+.ea-proc .ea-title{font-family:'Montserrat',Arial,sans-serif}
+.ea-proc .ea-step__d,.ea-proc .ea-proc__lead{font-family:'Montserrat',Arial,sans-serif;font-style:normal;color:#1B1A18}
 /* нумерация 01/ 02/ 03/ — рукописным Classica One, как курсивные цифры на референсе */
 .ea-proc .ea-step__n{font-family:'Classica One','Italiana',cursive;font-weight:400;letter-spacing:0;margin-right:.12em;text-transform:none}
 /* рукописные стрелки между этапами — тёплый коричневый штрих (был кремовый = невидимый) */
@@ -249,6 +252,14 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proc .ea-proc__ph--c{top:15%}
 /* кофейня: 5 этапов → выше обёртка, чтобы скорость прокрутки совпадала с Оформлением */
 #cf-steps{height:880vh}
+/* кофейня: чистая раскладка в две зоны (текст слева, фото справа), шире и воздушнее,
+   тексты не залезают на фото; розовый интро-заголовок как на Оформлении */
+#cf-steps .ea-proc-step{width:clamp(900px,68vw,1280px);padding:0 clamp(48px,5vw,96px)}
+#cf-steps .ea-title{color:#E7385A}
+#cf-steps .ea-step__t--top{top:16%;left:3%}
+#cf-steps .ea-step__body--lo{top:44%;left:3%;width:34%}
+#cf-steps .ea-proc__ph--a{top:14%;left:48%;width:26%;aspect-ratio:4/3;filter:none}
+#cf-steps .ea-proc__ph--b{top:45%;left:52%;width:40%;aspect-ratio:4/3.2;filter:none}
 /* текст шага 1 опущен — не налезает на верхнее фото (фото опущено под шапку) */
 #process .ea-step__body--lo{top:52%}
 
