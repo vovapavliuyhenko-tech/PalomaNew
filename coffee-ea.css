@@ -115,7 +115,8 @@ body.coffee-page{overflow-x:clip!important}
 
 /* ── БЛОК ЛИМОНАДОВ — тот же макет, что первый блок: лево видео / право текст ── */
 /* видео лимонадов: без зума (не вылезает за рамки) + светлее, чтобы было видно сюжет */
-.cf-lemon .cf-video{transform:none;filter:saturate(1.06) brightness(1.12)}
+/* видео видно ЦЕЛИКОМ (contain) и не вылезает за рамки; кремовые поля сливаются с фоном страницы */
+.cf-lemon .cf-video{transform:none;object-fit:contain;background:#FBF6E8;filter:saturate(1.06) brightness(1.12)}
 .cf-lemon .cf-hero__left::after{background:linear-gradient(180deg,rgba(20,12,8,.1),rgba(20,12,8,.2))}
 /* рамка с фото — меньше, чтобы видео на фоне было больше видно */
 .cf-lemon .cf-lemon__frame{width:min(20vw,272px);overflow:visible}
@@ -126,8 +127,8 @@ body.coffee-page{overflow-x:clip!important}
 .cf-lemon .cf-accent--lemon{z-index:5;opacity:1;filter:drop-shadow(0 8px 16px rgba(20,12,6,.26))}
 .cf-lemon .cf-accent--lemon .cf-flower-img{width:clamp(56px,6.6vw,96px);height:auto;display:block}
 /* цветы сидят в углах, в основном снаружи фото — перекрывают лишь уголок */
-.cf-lemon .cf-accent--tl.cf-accent--lemon{top:clamp(-30px,-2.6vw,-18px);left:clamp(-30px,-2.6vw,-18px);bottom:auto;right:auto}
-.cf-lemon .cf-accent--br.cf-accent--lemon{bottom:clamp(-30px,-2.6vw,-18px);right:clamp(-30px,-2.6vw,-18px);top:auto;left:auto}
+.cf-lemon .cf-accent--tl.cf-accent--lemon{top:clamp(-14px,-1.2vw,-8px);left:clamp(-14px,-1.2vw,-8px);bottom:auto;right:auto}
+.cf-lemon .cf-accent--br.cf-accent--lemon{bottom:clamp(-14px,-1.2vw,-8px);right:clamp(-14px,-1.2vw,-8px);top:auto;left:auto}
 
 /* ── АКЦЕНТНЫЕ ДЕТАЛИ в пустых углах (цветок-иконка, как на брендинге) ── */
 .cf-accent{position:absolute;z-index:4;pointer-events:none;opacity:.9}
