@@ -485,6 +485,48 @@ body.product-page {
   color: var(--color-accent, var(--burgundy, #1B1A18));
 }
 
+/* что входит в букет — небольшие фото с подписями */
+.pdp-included {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.pdp-included__item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pdp-included__img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  background: #efe9da;
+}
+.pdp-included__cap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.pdp-included__t {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-text, var(--ink, #1B1A18));
+}
+.pdp-included__d {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-text-muted, var(--muted, #6b6357));
+}
+@media (max-width: 560px) {
+  .pdp-included { grid-template-columns: 1fr; gap: 12px; }
+  .pdp-included__item { flex-direction: row; align-items: center; gap: 14px; }
+  .pdp-included__img { width: 88px; aspect-ratio: 1; flex: 0 0 auto; }
+}
+
 .pdp-delivery {
   margin-top: 16px;
   display: flex;
