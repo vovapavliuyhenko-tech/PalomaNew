@@ -29,9 +29,9 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   /* +header-offset компенсирует отрицательный margin-top ниже, чтобы
      видимая часть героя гарантированно перекрывала весь экран и бегущая
      строка не выглядывала снизу до скролла. */
-  /* компактнее (как референс ~65-72vh), было 110vh — слишком высокий герой */
-  height: calc(72vh + var(--paloma-header-offset, 88px));
-  min-height: calc(500px + var(--paloma-header-offset, 88px));
+  /* герой — ровно во всю высоту экрана (было 110vh = больше экрана) */
+  height: calc(100vh + var(--paloma-header-offset, 88px));
+  min-height: calc(640px + var(--paloma-header-offset, 88px));
   overflow: hidden;
   background: #1B1A18;
   margin-top: calc(-1 * var(--paloma-header-offset, 88px));
