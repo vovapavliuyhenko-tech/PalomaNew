@@ -38,7 +38,7 @@ body.coffee-page{overflow-x:clip!important}
 .cf-uls{list-style:none;margin:22px 0 34px;display:flex;flex-direction:column;gap:12px;text-align:left;max-width:400px}
 .cf-uls li{position:relative;padding-left:26px;font-size:clamp(14px,1.05vw,16px);line-height:1.5;color:var(--body)}
 .cf-uls li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;border-radius:50%;
-  background:var(--wine);box-shadow:0 0 0 4px rgba(217, 138, 160,.12)}
+  background:var(--wine);box-shadow:0 0 0 4px rgba(231, 56, 90,.12)}
 
 /* ── БЛОК МЕНЮ (как на скриншотах sjostrand: строки + фото при наведении) ── */
 .cf-menu{background:var(--paper);border-top:1px solid var(--cream-line)}
@@ -51,7 +51,7 @@ body.coffee-page{overflow-x:clip!important}
 .cf-menu__row{display:grid;grid-template-columns:auto 1fr auto auto;align-items:baseline;gap:clamp(14px,2vw,30px);
   padding:clamp(20px,2.4vw,30px) clamp(8px,1vw,16px);border-bottom:1px solid var(--eline);cursor:pointer;
   transition:background .3s var(--eease),padding-left .35s var(--eease)}
-.cf-menu__row:hover{background:rgba(217, 138, 160,.035);padding-left:clamp(16px,2vw,34px)}
+.cf-menu__row:hover{background:rgba(231, 56, 90,.035);padding-left:clamp(16px,2vw,34px)}
 .cf-menu__num{font-family:var(--fdisplay);font-size:13px;color:var(--muted);letter-spacing:.1em}
 .cf-menu__name{font-family:var(--fhead);font-size:clamp(24px,2.6vw,40px);color:var(--ink);line-height:1;transition:color .3s}
 .cf-menu__row:hover .cf-menu__name{color:var(--wine)}
@@ -78,7 +78,7 @@ body.coffee-page{overflow-x:clip!important}
 /* интро «От заказа до вашего стола» — тоже Montserrat ЗАГЛАВНЫЕ розовые (был script) */
 #cf-steps .ea-proc__intro{border-right:1px solid var(--eline)}
 #cf-steps .ea-proc__intro .ea-title{font-family:'Montserrat',Arial,sans-serif;font-style:normal;
-  color:#D98AA0;text-transform:uppercase;font-size:clamp(26px,2.9vw,44px);
+  color:#E7385A;text-transform:uppercase;font-size:clamp(26px,2.9vw,44px);
   letter-spacing:.015em;line-height:1.12;font-weight:500}
 
 /* ── РАСКЛАДКА этапов кофейни: ТЕКСТ в одной зоне, ФОТО в другой; стороны

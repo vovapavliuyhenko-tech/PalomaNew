@@ -29,14 +29,14 @@
   --ink-30: rgba(27, 26, 24, 0.3);
   --line: rgba(27, 26, 24, 0.12);
   --line-strong: rgba(27, 26, 24, 0.22);
-  --burgundy: #D98AA0;       /* акцент сайта — пудрово-розовый */
-  --bord-deep: #C56F89;      /* тёмный розовый для hover/active */
-  --orange: #D98AA0;
-  --orange-deep: #C56F89;
-  --magenta: #D98AA0;
-  --ochre: #D98AA0;
-  --olive: #D98AA0;
-  --coffee-tone: #D98AA0;
+  --burgundy: #E7385A;       /* акцент сайта — розовый */
+  --bord-deep: #C82847;      /* тёмный розовый для hover/active */
+  --orange: #E7385A;
+  --orange-deep: #C82847;
+  --magenta: #E7385A;
+  --ochre: #E7385A;
+  --olive: #E7385A;
+  --coffee-tone: #E7385A;
   --pollen: #FFFFFF;
 
   /* Логотип PALOMA — высококонтрастный сериф, как в нарисованном файле */
