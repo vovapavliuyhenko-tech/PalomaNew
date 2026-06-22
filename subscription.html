@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="cart.css?v=w1">
   <link rel="stylesheet" href="clients.css?v=w1">
-  <link rel="stylesheet" href="subscription.css?v=w2">
+  <link rel="stylesheet" href="subscription.css?v=w3">
   <link rel="stylesheet" href="paloma-responsive.css?v=w1">
   <link rel="stylesheet" href="cursor.css?v=w1">
 </head>
@@ -374,43 +374,121 @@
 
   </section>
 
-  <section class="sub-included" aria-label="Что входит в подписку">
-    <div class="sub-included__inner">
-      <header class="sub-included__head">
-        <p class="sub-included__eyebrow">Подписка PALOMA</p>
-        <h2 class="sub-included__title">Свежие цветы<br>приезжают сами</h2>
-        <p class="sub-included__lead">
-          Настраиваете формат один раз — а дальше мы привозим сезонные букеты
-          по вашему графику. Без напоминаний, забот о свежести и поиска повода.
-        </p>
-      </header>
+  <section class="home-showcase sub-showcase" aria-label="Букеты PALOMA" data-product-carousel>
 
-      <div class="sub-included__grid">
-        <article class="sub-included__item">
-          <span class="sub-included__num">01</span>
-          <h3 class="sub-included__item-title">Букет в боксе с аквавазой</h3>
-          <p>Привозим в фирменном боксе — не нужно обновлять срез, достаточно переставить в вазу. Подкормку прикладываем к каждой доставке.</p>
-        </article>
-        <article class="sub-included__item">
-          <span class="sub-included__num">02</span>
-          <h3 class="sub-included__item-title">Сезонная флористика</h3>
-          <p>Каждый раз — свежая композиция от флористов PALOMA из стойких сортов, которые радуют 7 дней и дольше. Учтём пожелания по цвету и настроению.</p>
-        </article>
-        <article class="sub-included__item">
-          <span class="sub-included__num">03</span>
-          <h3 class="sub-included__item-title">Бесплатная доставка и бонусы</h3>
-          <p>Доставка по Новороссийску — бесплатно. Начисляем 5% бонусов с каждой покупки и дарим −10% на пробную неделю.</p>
-        </article>
-      </div>
+    <div class="home-showcase__head">
+      <h2 class="home-showcase__title">Букеты в наличии</h2>
+      <a href="catalog.html" class="home-showcase__catalog-link">Все букеты</a>
+    </div>
 
-      <div class="sub-included__foot">
-        <p class="sub-included__foot-text">Остались вопросы? Подберём формат под вас.</p>
-        <div class="sub-included__actions">
-          <a href="https://t.me/paloma_novorossiysk" class="sub-included__btn" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
-          <a href="catalog.html" class="sub-included__btn sub-included__btn--ghost">В каталог букетов</a>
+    <div class="home-showcase__carousel">
+
+      <button
+        class="home-showcase__arrow home-showcase__arrow--prev"
+        type="button"
+        aria-label="Предыдущие товары"
+        data-carousel-prev>
+        <span aria-hidden="true">←</span>
+      </button>
+
+      <div class="home-showcase__viewport" data-carousel-viewport>
+        <div class="home-showcase__track" data-carousel-track>
+
+          <article class="home-product-card">
+            <a href="product.html?slug=buket-7" class="home-product-card__media" aria-label="Подробнее: Букет из 7 пионов">
+              <img src="images/paloma/catalog/h1.jpg" alt="Букет из 7 пионов — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+            </a>
+            <div class="home-product-card__body">
+              <h3 class="home-product-card__title"><a href="product.html?slug=buket-7">Букет из 7 пионов</a></h3>
+              <p class="home-product-card__price">от 2 930 ₽</p>
+              <div class="home-product-card__actions">
+                <a href="product.html?slug=buket-7" class="home-product-card__more">Подробнее</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <a href="product.html?slug=buket-11" class="home-product-card__media" aria-label="Подробнее: Букет из 11 пионов">
+              <img src="images/paloma/catalog/h2.jpg" alt="Букет из 11 пионов — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+            </a>
+            <div class="home-product-card__body">
+              <h3 class="home-product-card__title"><a href="product.html?slug=buket-11">Букет из 11 пионов</a></h3>
+              <p class="home-product-card__price">от 4 570 ₽</p>
+              <div class="home-product-card__actions">
+                <a href="product.html?slug=buket-11" class="home-product-card__more">Подробнее</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <a href="product.html?slug=buket-15" class="home-product-card__media" aria-label="Подробнее: Букет из 15 пионов">
+              <img src="images/paloma/catalog/h3.jpg" alt="Букет из 15 пионов — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+            </a>
+            <div class="home-product-card__body">
+              <h3 class="home-product-card__title"><a href="product.html?slug=buket-15">Букет из 15 пионов</a></h3>
+              <p class="home-product-card__price">от 6 200 ₽</p>
+              <div class="home-product-card__actions">
+                <a href="product.html?slug=buket-15" class="home-product-card__more">Подробнее</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <a href="product.html?slug=buket-21" class="home-product-card__media" aria-label="Подробнее: Букет из 21 пиона">
+              <img src="images/paloma/catalog/h4.jpg" alt="Букет из 21 пиона — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+            </a>
+            <div class="home-product-card__body">
+              <h3 class="home-product-card__title"><a href="product.html?slug=buket-21">Букет из 21 пиона</a></h3>
+              <p class="home-product-card__price">от 8 680 ₽</p>
+              <div class="home-product-card__actions">
+                <a href="product.html?slug=buket-21" class="home-product-card__more">Подробнее</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <a href="product.html?slug=avtorskiy" class="home-product-card__media" aria-label="Подробнее: Авторский букет Paloma">
+              <img src="images/paloma/catalog/h5.jpg" alt="Авторский букет Paloma" loading="lazy" decoding="async" width="600" height="870">
+            </a>
+            <div class="home-product-card__body">
+              <h3 class="home-product-card__title"><a href="product.html?slug=avtorskiy">Авторский букет Paloma</a></h3>
+              <p class="home-product-card__price">от 5 500 ₽</p>
+              <div class="home-product-card__actions">
+                <a href="product.html?slug=avtorskiy" class="home-product-card__more">Подробнее</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <a href="product.html?slug=nezhnyy" class="home-product-card__media" aria-label="Подробнее: Нежный сезонный букет">
+              <img src="images/paloma/catalog/h6.jpg" alt="Нежный сезонный букет — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+            </a>
+            <div class="home-product-card__body">
+              <h3 class="home-product-card__title"><a href="product.html?slug=nezhnyy">Нежный сезонный букет</a></h3>
+              <p class="home-product-card__price">от 4 900 ₽</p>
+              <div class="home-product-card__actions">
+                <a href="product.html?slug=nezhnyy" class="home-product-card__more">Подробнее</a>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
+
+      <button
+        class="home-showcase__arrow home-showcase__arrow--next"
+        type="button"
+        aria-label="Следующие товары"
+        data-carousel-next>
+        <span aria-hidden="true">→</span>
+      </button>
+
     </div>
+
+    <div class="home-showcase__progress" aria-hidden="true">
+      <span class="home-showcase__progress-bar" data-carousel-progress></span>
+    </div>
+
   </section>
 
 </main>
