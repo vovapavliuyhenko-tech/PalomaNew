@@ -316,7 +316,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
     clamp(340px, 42vw, 680px);
   grid-template-rows: 1fr;
   gap: 0;
-  padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 64px) 80px;
+  padding: clamp(28px, 3.3vw, 44px) clamp(24px, 5vw, 64px) 80px;
   align-items: center;
 }
 
@@ -378,7 +378,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-hero__title {
   font-family: var(--cf-display);
-  font-size: clamp(52px, 8.5vw, 124px);
+  font-size: clamp(30px, 4.93vw, 64px);
   font-weight: 400;
   line-height: 0.93;
   letter-spacing: -0.025em;
@@ -719,7 +719,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   }
 
   .coffee-hero__title {
-    font-size: clamp(44px, 7vw, 92px);
+    font-size: clamp(30px, 4.06vw, 51px);
   }
 }
 
@@ -843,7 +843,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
    ════════════════════════════════════════════════════════ */
 .coffee-product-showcase {
   background: var(--coffee-bg, var(--cf-bg, #FBF6E8));
-  padding: clamp(96px, 12vw, 160px) 0;
+  padding: clamp(28px, 6.6vw, 76px) 0;
 }
 
 .coffee-page .coffee-product-showcase {
@@ -866,7 +866,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-product-showcase__title {
   font-family: var(--cf-display);
-  font-size: clamp(48px, 7.5vw, 112px);
+  font-size: clamp(30px, 4.35vw, 62px);
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.025em;
@@ -1160,7 +1160,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
    ════════════════════════════════════════════════════════ */
 .coffee-format-track {
   background: var(--coffee-bg, var(--cf-bg, #FBF6E8));
-  padding: clamp(96px, 12vw, 160px) 0;
+  padding: clamp(28px, 6.6vw, 76px) 0;
 }
 
 .coffee-page .coffee-format-track {
@@ -1183,7 +1183,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-format-track__title {
   font-family: var(--cf-display);
-  font-size: clamp(36px, 5.5vw, 80px);
+  font-size: clamp(30px, 3.19vw, 44px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.022em;
@@ -1365,7 +1365,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 @media (max-width: 640px) {
   .coffee-format-track {
-    padding: clamp(64px, 10vw, 96px) 0;
+    padding: clamp(28px, 5.5vw, 53px) 0;
   }
 
   .coffee-format-track__head {
@@ -1518,7 +1518,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-story-panel__content--bottom {
   align-self: flex-end;
-  padding-bottom: clamp(56px, 8vw, 112px);
+  padding-bottom: clamp(28px, 4.4vw, 62px);
 }
 
 .coffee-story-panel__content--left {
@@ -1539,7 +1539,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   max-width: 980px;
   margin: 0;
   font-family: var(--cf-display);
-  font-size: clamp(44px, 6.6vw, 112px);
+  font-size: clamp(30px, 3.83vw, 62px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.94;
@@ -1753,7 +1753,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   overflow: hidden;
   background: var(--coffee-bg, #FBF6E8);
   color: var(--coffee-dark, #1B1A18);
-  padding: clamp(88px, 10vw, 168px) clamp(16px, 4vw, 72px);
+  padding: clamp(28px, 5.5vw, 76px) clamp(16px, 4vw, 72px);
 }
 
 .coffee-gift-split__inner {
@@ -1785,7 +1785,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-gift-split__title {
   margin: 0;
   font-family: var(--cf-display);
-  font-size: clamp(56px, 8.6vw, 142px);
+  font-size: clamp(30px, 4.3vw, 64px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.82;
@@ -2091,7 +2091,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   align-items: center;
   background: var(--coffee-bg, #FBF6E8);
   color: var(--coffee-dark, #1B1A18);
-  padding: clamp(80px, 10vw, 160px) clamp(16px, 4vw, 72px);
+  padding: clamp(28px, 5.5vw, 76px) clamp(16px, 4vw, 72px);
 }
 
 .coffee-page .coffee-bean-mood {
@@ -2201,7 +2201,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-bean-mood__title {
   margin: 0;
   font-family: var(--cf-display);
-  font-size: clamp(52px, 7.8vw, 128px);
+  font-size: clamp(30px, 4.52vw, 64px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.86;
@@ -2356,7 +2356,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   overflow: hidden;
   background: #fbf6e8;
   color: var(--coffee-dark, #1B1A18);
-  padding: clamp(80px, 10vw, 160px) clamp(12px, 4vw, 72px);
+  padding: clamp(28px, 5.5vw, 76px) clamp(12px, 4vw, 72px);
   border-top: 1px solid rgba(26, 26, 26, 0.12);
 }
 
@@ -2475,7 +2475,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-bouquet-add__title {
   margin: 0;
   font-family: var(--cf-display);
-  font-size: clamp(48px, 7.2vw, 118px);
+  font-size: clamp(30px, 4.18vw, 64px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.88;
@@ -2616,7 +2616,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   overflow: hidden;
   background: var(--coffee-bg, #FBF6E8);
   color: var(--coffee-dark, #1B1A18);
-  padding: clamp(80px, 10vw, 160px) clamp(12px, 4vw, 72px);
+  padding: clamp(28px, 5.5vw, 76px) clamp(12px, 4vw, 72px);
   border-top: 1px solid rgba(26, 26, 26, 0.12);
 }
 
@@ -2652,7 +2652,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-menu__title {
   margin: 0;
   font-family: var(--cf-display);
-  font-size: clamp(52px, 8vw, 132px);
+  font-size: clamp(30px, 4vw, 59px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.88;
@@ -2992,7 +2992,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   overflow: hidden;
   background: var(--coffee-bg, #FBF6E8);
   color: var(--coffee-dark, #1B1A18);
-  padding: clamp(80px, 10vw, 160px) clamp(12px, 4vw, 72px);
+  padding: clamp(28px, 5.5vw, 76px) clamp(12px, 4vw, 72px);
   border-top: 1px solid rgba(26, 26, 26, 0.12);
 }
 
@@ -3090,7 +3090,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-location__title {
   margin: 0;
   font-family: var(--cf-display);
-  font-size: clamp(56px, 8vw, 132px);
+  font-size: clamp(30px, 4vw, 59px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.86;
@@ -3294,7 +3294,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-final-cta__title {
   font-family: var(--cf-display);
-  font-size: clamp(48px, 9vw, 128px);
+  font-size: clamp(30px, 5.22vw, 64px);
   font-weight: 400;
   font-style: normal;
   line-height: 0.92;
@@ -3482,7 +3482,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
    COFFEE INTRO — философия (новый блок)
    ════════════════════════════════════════════════════════ */
 .coffee-intro {
-  padding: clamp(96px, 12vw, 160px) 0;
+  padding: clamp(28px, 6.6vw, 76px) 0;
   background: #FBF6E8;
   color: #1b1a18;
 }

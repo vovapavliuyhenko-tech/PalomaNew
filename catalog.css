@@ -57,7 +57,7 @@
 
 .catalog-hero__title {
   font-family: "Montserrat", system-ui, sans-serif;
-  font-size: clamp(40px, 5.8vw, 88px);
+  font-size: clamp(30px, 3.36vw, 48px);
   font-weight: 200;
   line-height: 1.04;
   letter-spacing: -0.02em;

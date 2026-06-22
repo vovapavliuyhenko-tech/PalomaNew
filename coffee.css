@@ -191,7 +191,7 @@
 
 .coffee-intro {
   background: var(--color-bg);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(28px, 4.4vw, 62px) 0;
 }
 
 .coffee-intro__grid {
@@ -283,7 +283,7 @@
 
 .coffee-menu-section {
   background: var(--color-bg);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(28px, 4.4vw, 62px) 0;
   position: relative;
   overflow: hidden;
 }
@@ -336,7 +336,7 @@
 
 .coffee-menu-section__title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 7vw, 104px);
+  font-size: clamp(30px, 4.06vw, 57px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -543,7 +543,7 @@
 
 .coffee-combo {
   background: var(--color-bg-alt);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(28px, 4.4vw, 62px) 0;
 }
 
 .coffee-combo__inner {
@@ -578,7 +578,7 @@
 
 .coffee-combo__title {
   font-family: var(--font-display);
-  font-size: clamp(56px, 8vw, 128px);
+  font-size: clamp(30px, 4.64vw, 64px);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.03em;
@@ -680,7 +680,7 @@
 .coffee-story__left {
   position: relative;
   z-index: 2;
-  padding: clamp(40px, 5vw, 80px) clamp(40px, 5vw, 80px);
+  padding: clamp(28px, 2.75vw, 44px) clamp(40px, 5vw, 80px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -690,7 +690,7 @@
 
 .coffee-story__num {
   font-family: var(--ital);
-  font-size: clamp(80px, 12vw, 180px);
+  font-size: clamp(30px, 6vw, 64px);
   font-weight: 300;
   line-height: 1;
   color: rgba(251, 246, 232, 0.18);
@@ -766,7 +766,7 @@
 
 .coffee-contacts {
   background: var(--color-bg-alt);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(28px, 4.4vw, 62px) 0;
 }
 
 .coffee-contacts__inner {
@@ -790,7 +790,7 @@
 
 .coffee-contacts__title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 7vw, 96px);
+  font-size: clamp(30px, 4.06vw, 53px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -907,7 +907,7 @@
 
 /* ── COFFEE PROCESS ── */
 .coffee-process {
-  padding-top: clamp(64px, 8vw, 112px);
+  padding-top: clamp(28px, 4.4vw, 62px);
   background: var(--color-bg);
   overflow-x: clip;
 }
@@ -929,7 +929,7 @@
 
 .coffee-process__title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 7vw, 104px);
+  font-size: clamp(30px, 4.06vw, 57px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -1027,7 +1027,7 @@
 
 .coffee-process__num {
   font-family: var(--font-display);
-  font-size: clamp(56px, 7vw, 96px);
+  font-size: clamp(30px, 4.06vw, 53px);
   font-weight: 300;
   line-height: 1;
   opacity: 0.9;
@@ -1252,7 +1252,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(40px, 6vw, 96px) clamp(24px, 5vw, 80px);
+  padding: clamp(28px, 3.3vw, 53px) clamp(24px, 5vw, 80px);
   gap: 20px;
 }
 
@@ -1298,7 +1298,7 @@
 /* Меню — на всю ширину, тёмное */
 .coffee-page .coffee-menu-section {
   background: var(--coffee-bg);
-  padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 64px);
+  padding: clamp(28px, 4.95vw, 66px) clamp(20px, 4vw, 64px);
   position: relative;
   overflow: hidden;
 }
@@ -1524,7 +1524,7 @@
 .coffee-curtain__content {
   position: relative;
   z-index: 4;
-  padding: clamp(40px, 6vw, 96px) clamp(24px, 5vw, 80px);
+  padding: clamp(28px, 3.3vw, 53px) clamp(24px, 5vw, 80px);
   max-width: 520px;
   color: var(--coffee-text);
 }
@@ -1532,7 +1532,7 @@
 .coffee-curtain__num {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(72px, 12vw, 140px);
+  font-size: clamp(30px, 6vw, 63px);
   line-height: 1;
   font-weight: 300;
   color: rgba(251, 246, 232, 0.2);
@@ -1565,14 +1565,14 @@
   }
 
   .coffee-curtain__content {
-    padding-bottom: clamp(56px, 14vw, 80px);
+    padding-bottom: clamp(28px, 7.7vw, 44px);
   }
 }
 
 /* Финальный CTA */
 .coffee-cta-final {
   background: var(--coffee-surface);
-  padding: clamp(80px, 12vw, 140px) clamp(24px, 5vw, 80px);
+  padding: clamp(28px, 6.6vw, 76px) clamp(24px, 5vw, 80px);
   text-align: center;
 }
 

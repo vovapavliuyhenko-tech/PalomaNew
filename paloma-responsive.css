@@ -404,7 +404,7 @@ svg {
 
 @media (max-width: 430px) {
   .process__card-num {
-    font-size: clamp(56px, 14vw, 96px);
+    font-size: clamp(30px, 8.12vw, 53px);
   }
 }
 

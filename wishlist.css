@@ -8,7 +8,7 @@ body.wishlist-page {
 
 .wishlist-main {
   min-height: 60vh;
-  padding-bottom: clamp(64px, 8vw, 100px);
+  padding-bottom: clamp(28px, 4.4vw, 55px);
 }
 
 .wishlist-hero {
@@ -29,7 +29,7 @@ body.wishlist-page {
 
 .wishlist-hero__title {
   font-family: var(--font-display, var(--serif, "Italiana"), serif);
-  font-size: clamp(40px, 6vw, 88px);
+  font-size: clamp(30px, 3.48vw, 48px);
   font-weight: 400;
   line-height: 0.94;
   letter-spacing: -0.02em;
@@ -62,7 +62,7 @@ body.wishlist-page {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: clamp(64px, 10vw, 140px) clamp(24px, 5vw, 48px);
+  padding: clamp(28px, 5.5vw, 76px) clamp(24px, 5vw, 48px);
   max-width: 480px;
   margin: 0 auto;
 }

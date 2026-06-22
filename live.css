@@ -199,7 +199,7 @@
 /* Mobile hero adjustments */
 @media (max-width: 768px) {
   .cof-hero__word {
-    font-size: clamp(80px, 24vw, 160px);
+    font-size: clamp(30px, 12vw, 64px);
     color: rgba(20, 10, 5, 0.42);
   }
   .cof-hero__content {
@@ -227,7 +227,7 @@
 
 .cof-menu {
   position: relative;
-  padding: clamp(56px, 7vw, 96px) clamp(16px, 2.5vw, 40px);
+  padding: clamp(28px, 3.85vw, 53px) clamp(16px, 2.5vw, 40px);
   background: #fbf6e8;
 }
 

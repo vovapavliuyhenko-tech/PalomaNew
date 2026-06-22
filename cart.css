@@ -6,7 +6,7 @@
 }
 .cart-page__title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 7vw, 96px);
+  font-size: clamp(30px, 4.06vw, 53px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -16,7 +16,7 @@
 .cart-content__inner {
   max-width: 1440px;
   margin: 0 auto;
-  padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 80px);
+  padding: clamp(28px, 3.3vw, 44px) clamp(24px, 5vw, 80px);
 }
 
 .cart-layout {
@@ -719,7 +719,7 @@
 }
 .cart-page-title {
   font-family: var(--font-display, "Italiana", serif);
-  font-size: clamp(40px, 6vw, 88px);
+  font-size: clamp(30px, 3.48vw, 48px);
   font-weight: 400;
   line-height: 0.94;
   margin: 0;

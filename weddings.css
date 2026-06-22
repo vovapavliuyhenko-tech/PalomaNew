@@ -48,7 +48,7 @@
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 80px);
+  padding: clamp(28px, 3.3vw, 44px) clamp(24px, 5vw, 80px);
 }
 
 .w-hero__eyebrow {
@@ -162,7 +162,7 @@
 
 .w-intro__title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 5.5vw, 84px);
+  font-size: clamp(30px, 3.19vw, 46px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.022em;
@@ -500,7 +500,7 @@
 
 .w-process__title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 5.5vw, 84px);
+  font-size: clamp(30px, 3.19vw, 46px);
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: -0.022em;
@@ -608,7 +608,7 @@
 
 .w-process__num {
   font-family: var(--font-display);
-  font-size: clamp(56px, 6vw, 88px);
+  font-size: clamp(30px, 3.48vw, 48px);
   font-weight: 300;
   line-height: 1;
   opacity: 0.9;

@@ -215,7 +215,7 @@
 .home-categories__title {
   margin: 0 0 26px;
   font-family: var(--font-display, var(--font-serif, Georgia, serif));
-  font-size: clamp(46px, 5vw, 82px);
+  font-size: clamp(30px, 2.9vw, 45px);
   font-weight: 400;
   font-style: italic;
   line-height: 1.04;
