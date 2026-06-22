@@ -49,18 +49,6 @@
   transform: translateY(28px);
 }
 
-/* розовые цветы-контуры по углам карточки */
-.home-subscription__flower {
-  position: absolute;
-  z-index: 1;
-  width: clamp(120px, 17vw, 200px);
-  height: auto;
-  pointer-events: none;
-  user-select: none;
-}
-.home-subscription__flower--tl { top: 0; left: 0; }
-.home-subscription__flower--br { bottom: 0; right: 0; }
-
 .home-subscription.is-visible .home-subscription__card {
   opacity: 1;
   transform: translateY(0);
