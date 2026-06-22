@@ -137,7 +137,7 @@
 /* ── W INTRO ── */
 .w-intro {
   background: var(--color-bg);
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(40px, 5vw, 74px) 0;
   overflow-x: clip;
 }
 
@@ -246,7 +246,7 @@
 /* ── W SERVICES ── */
 .w-services {
   background: var(--color-bg);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(36px, 4.5vw, 60px) 0;
 }
 
 .w-services__inner {
@@ -393,7 +393,7 @@
 /* ── W GALLERY ── */
 .w-gallery {
   background: var(--color-bg-alt);
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(40px, 5vw, 74px) 0;
   overflow-x: clip;
 }
 
@@ -478,7 +478,7 @@
 /* ── W PROCESS ── */
 .w-process {
   background: var(--color-bg);
-  padding-top: clamp(64px, 8vw, 112px);
+  padding-top: clamp(36px, 4.5vw, 60px);
   overflow-x: clip;
 }
 
@@ -650,7 +650,7 @@
 /* ── W PORTFOLIO ── */
 .w-portfolio {
   background: var(--color-bg-alt);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(36px, 4.5vw, 60px) 0;
 }
 
 .w-portfolio__inner {
@@ -761,7 +761,7 @@
 /* ── W PACKAGES ── */
 .w-packages {
   background: var(--color-bg);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(36px, 4.5vw, 60px) 0;
 }
 
 .w-packages__inner {
@@ -986,7 +986,7 @@
 /* ── W FAQ ── */
 .w-faq {
   background: var(--color-bg);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(36px, 4.5vw, 60px) 0;
 }
 
 .w-faq__inner {
@@ -1024,7 +1024,7 @@
 /* ── W FORM ── */
 .w-form {
   background: var(--color-bg-alt);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: clamp(36px, 4.5vw, 60px) 0;
 }
 
 .w-form__inner {
