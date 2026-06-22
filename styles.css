@@ -74,9 +74,10 @@
   --space-8: 64px;
   --space-9: 96px;
 
-  /* section vertical rhythm */
-  --section-y: clamp(64px, 8vw, 120px);
-  --section-y-sm: clamp(40px, 5vw, 72px);
+  /* section vertical rhythm — компактнее (как референс skladcvetov73.ru ~40-60px),
+     было clamp(64,8vw,120)/clamp(40,5vw,72) — слишком растянуто */
+  --section-y: clamp(40px, 5vw, 76px);
+  --section-y-sm: clamp(28px, 3.4vw, 48px);
 
   /* shadows */
   --shadow-soft: 0 6px 24px rgba(27, 26, 24, 0.08);

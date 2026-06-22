@@ -111,7 +111,7 @@ body.subscription-page {
 .sub-how__num {
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(26px, 2.4vw, 38px);
+  font-size: clamp(34px, 3vw, 50px);
   line-height: 1;
   color: #E7385A;
 }
@@ -119,9 +119,9 @@ body.subscription-page {
 .sub-how__item p {
   margin: 0;
   font-family: var(--sans);
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--paloma-muted, #1B1A18);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.62;
+  color: var(--paloma-text, #1B1A18);
 }
 
 .sub-how__item p b {
@@ -130,9 +130,9 @@ body.subscription-page {
 }
 
 .sub-how__note {
-  margin: clamp(22px, 2.4vw, 30px) 0 0;
+  margin: clamp(24px, 2.6vw, 34px) 0 0;
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: clamp(15px, 1.2vw, 18px);
   font-weight: 600;
   color: #E7385A;
 }

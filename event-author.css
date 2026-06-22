@@ -31,7 +31,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   --flat:'Montserrat',Arial,sans-serif;
   --eease:cubic-bezier(.22,1,.36,1);
   --ea-px:clamp(28px,5.2vw,96px);
-  --ea-py:clamp(84px,9vw,150px);
+  --ea-py:clamp(48px,6vw,88px); /* компактнее (как референс), было clamp(84,9vw,150) */
   --ea-maxw:1440px;
   position:relative;width:100%;background:var(--paper);
   font-family:var(--fsans);color:var(--body);

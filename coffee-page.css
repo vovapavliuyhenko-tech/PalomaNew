@@ -3549,7 +3549,7 @@ body.coffee-page {
   --coffee-line: rgba(27, 26, 24, 0.1);
   --coffee-accent: #1B1A18;
   --coffee-white: #FBF6E8;
-  --section-pad-v: clamp(96px, 12vw, 160px);
+  --section-pad-v: clamp(52px, 7vw, 92px); /* компактнее (как референс), было clamp(96,12vw,160) */
   --h-pad: clamp(24px, 5vw, 80px);
 }
 
