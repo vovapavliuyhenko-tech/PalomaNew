@@ -34,7 +34,7 @@
 
 /* Полноширинная полоса-разделитель на кремовом фоне */
 .paloma-wave-band {
-  background: #fbf6e8;
+  background: #FFFFFF;
   padding: clamp(8px, 1.6vw, 20px) 0;
 }
 

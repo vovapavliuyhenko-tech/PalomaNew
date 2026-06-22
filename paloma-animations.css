@@ -64,7 +64,7 @@
   font-size: clamp(10px, 2vw, 12px);
   letter-spacing: 0.32em;
   text-transform: lowercase;
-  color: rgba(251, 246, 232, 0.82);
+  color: rgba(255, 255, 255, 0.82);
   margin: 0;
 }
 
@@ -142,7 +142,7 @@ body.paloma-cursor-on .custom-cursor__ring {
   height: 28px;
   margin: -14px 0 0 -14px;
   border: 1px solid rgba(27, 26, 24, 0.35);
-  background: rgba(251, 246, 232, 0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 body.paloma-cursor-on .custom-cursor.is-hovering .custom-cursor__ring {

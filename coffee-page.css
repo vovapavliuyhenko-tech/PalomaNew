@@ -5,14 +5,14 @@
 
 /* ── Light theme overrides for coffee-page body/header ── */
 body.coffee-page:has(#main) {
-  --coffee-bg: #FBF6E8;
+  --coffee-bg: #FFFFFF;
   --coffee-dark: #1b1a18;
   --coffee-accent: #1B1A18;
   --coffee-text: #1b1a18;
   --coffee-muted: rgba(27, 26, 24, 0.5);
   --coffee-border: rgba(27, 26, 24, 0.1);
   --header-height: 88px;
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1b1a18;
   overflow-x: hidden;
 }
@@ -54,8 +54,8 @@ body.coffee-page:has(#main) .site-header.coffee-hero-active.is-scrolled {
 
 body.coffee-page:has(#main) .site-footer {
   background: #1B1A18;
-  border-top-color: rgba(251, 246, 232, 0.12);
-  color: rgba(251, 246, 232, 0.55);
+  border-top-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 body.coffee-page:has(#main) .site-footer a {
@@ -64,22 +64,22 @@ body.coffee-page:has(#main) .site-footer a {
 
 body.coffee-page:has(#main) .footer-logo__text,
 body.coffee-page:has(#main) .footer-contacts__phone {
-  color: rgba(251, 246, 232, 0.90);
+  color: rgba(255, 255, 255, 0.90);
 }
 
 /* ════════════════
    ПЕРЕМЕННЫЕ
    ════════════════ */
 .coffee-page main {
-  --cf-bg: #FBF6E8;
-  --cf-bg-alt: #FBF6E8;
+  --cf-bg: #FFFFFF;
+  --cf-bg-alt: #FFFFFF;
   --cf-bg-dark: #1b1a18;
   --cf-text: #1b1a18;
   --cf-muted: rgba(27, 26, 24, 0.5);
   --cf-line: rgba(27, 26, 24, 0.1);
   --cf-accent: #1B1A18;
   --cf-coffee: #1B1A18;
-  --cf-white: #FBF6E8;
+  --cf-white: #FFFFFF;
   --cf-display: var(--font-display, "Italiana", serif);
   --cf-mono: var(--font-mono, "JetBrains Mono", monospace);
   --cf-sans: var(--font-sans, "Manrope", sans-serif);
@@ -108,7 +108,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 }
 
 .coffee-eyebrow--light {
-  color: rgba(251, 246, 232, 0.55);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .coffee-btn {
@@ -134,14 +134,14 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-btn--dark {
   background: #1b1a18;
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: #1b1a18;
 }
 
 .coffee-btn--dark:hover {
   background: var(--cf-accent);
   border-color: var(--cf-accent);
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 
 .coffee-btn--ghost {
@@ -152,34 +152,34 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-btn--ghost:hover {
   background: #1b1a18;
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: #1b1a18;
 }
 
 .coffee-btn--light {
-  background: rgba(251, 246, 232, 0.1);
-  color: rgba(251, 246, 232, 0.9);
-  border-color: rgba(251, 246, 232, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
 .coffee-btn--light:hover {
-  background: rgba(251, 246, 232, 0.2);
-  border-color: rgba(251, 246, 232, 0.6);
-  color: #FBF6E8;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #FFFFFF;
 }
 
 .coffee-btn--ghost-light {
   background: transparent;
-  color: rgba(251, 246, 232, 0.88);
-  border-color: rgba(251, 246, 232, 0.3);
+  color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .coffee-btn--ghost-light:hover {
-  background: rgba(251, 246, 232, 0.08);
-  border-color: rgba(251, 246, 232, 0.6);
-  color: #FBF6E8;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #FFFFFF;
 }
 
 .coffee-btn:focus-visible,
@@ -214,13 +214,13 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 }
 
 .coffee-link--light {
-  color: rgba(251, 246, 232, 0.88);
-  box-shadow: 0 1px 0 rgba(251, 246, 232, 0.3);
+  color: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .coffee-link--light:hover {
-  color: #FBF6E8;
-  box-shadow: 0 1px 0 rgba(251, 246, 232, 0.7);
+  color: #FFFFFF;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 /* Placeholder / media */
@@ -257,7 +257,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 }
 
 .coffee-final-cta__bg-ph {
-  background: linear-gradient(165deg, #FBF6E8, #1B1A18);
+  background: linear-gradient(165deg, #FFFFFF, #1B1A18);
 }
 
 .coffee-hero__media,
@@ -276,7 +276,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-hero {
   position: relative;
   min-height: 100svh;
-  background: var(--coffee-bg, var(--cf-bg, #FBF6E8));
+  background: var(--coffee-bg, var(--cf-bg, #FFFFFF));
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -514,7 +514,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-hero__btn--primary {
   background: var(--coffee-dark, var(--cf-text, #1b1a18));
-  color: var(--coffee-bg, var(--cf-bg, #FBF6E8));
+  color: var(--coffee-bg, var(--cf-bg, #FFFFFF));
   border: 1px solid var(--coffee-dark, var(--cf-text, #1b1a18));
 }
 
@@ -531,7 +531,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-hero__btn--secondary:hover {
   background: var(--coffee-dark, var(--cf-text, #1b1a18));
-  color: var(--coffee-bg, var(--cf-bg, #FBF6E8));
+  color: var(--coffee-bg, var(--cf-bg, #FFFFFF));
   border-color: var(--coffee-dark, var(--cf-text, #1b1a18));
 }
 
@@ -584,10 +584,10 @@ body.coffee-page:has(#main) .footer-contacts__phone {
     ),
     linear-gradient(
       165deg,
-      #FBF6E8 0%,
-      #FBF6E8 20%,
-      #FBF6E8 40%,
-      #FBF6E8 65%,
+      #FFFFFF 0%,
+      #FFFFFF 20%,
+      #FFFFFF 40%,
+      #FFFFFF 65%,
       #1B1A18 85%,
       #1B1A18 100%
     );
@@ -607,7 +607,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-hero__media-border {
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(251, 246, 232, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   z-index: 2;
   pointer-events: none;
 }
@@ -632,7 +632,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(251, 246, 232, 0.55);
+  color: rgba(255, 255, 255, 0.55);
   user-select: none;
 }
 
@@ -842,12 +842,12 @@ body.coffee-page:has(#main) .footer-contacts__phone {
    Референс: sjostrand.tilda.ws
    ════════════════════════════════════════════════════════ */
 .coffee-product-showcase {
-  background: var(--coffee-bg, var(--cf-bg, #FBF6E8));
+  background: var(--coffee-bg, var(--cf-bg, #FFFFFF));
   padding: clamp(28px, 6.6vw, 76px) 0;
 }
 
 .coffee-page .coffee-product-showcase {
-  background: var(--coffee-bg, #FBF6E8);
+  background: var(--coffee-bg, #FFFFFF);
   color: var(--coffee-dark, #1b1a18);
 }
 
@@ -900,7 +900,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  background: var(--coffee-bg, var(--cf-bg, #FBF6E8));
+  background: var(--coffee-bg, var(--cf-bg, #FFFFFF));
   border-right: 1px solid rgba(27, 26, 24, 0.1);
   border-bottom: 1px solid rgba(27, 26, 24, 0.1);
   border-radius: 0;
@@ -949,7 +949,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: #FBF6E8;
+  background: #FFFFFF;
   flex-shrink: 0;
 }
 
@@ -1031,7 +1031,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-product-card__add-btn:hover {
   background: var(--coffee-dark, #1b1a18);
-  color: var(--coffee-bg, #FBF6E8);
+  color: var(--coffee-bg, #FFFFFF);
   border-color: var(--coffee-dark, #1b1a18);
 }
 
@@ -1042,7 +1042,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-product-card__add-btn.is-added {
   background: var(--coffee-accent, var(--cf-accent, #1B1A18));
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: var(--coffee-accent, var(--cf-accent, #1B1A18));
 }
 
@@ -1159,12 +1159,12 @@ body.coffee-page:has(#main) .footer-contacts__phone {
    Референс: sjostrand.tilda.ws / four-blend-coffee
    ════════════════════════════════════════════════════════ */
 .coffee-format-track {
-  background: var(--coffee-bg, var(--cf-bg, #FBF6E8));
+  background: var(--coffee-bg, var(--cf-bg, #FFFFFF));
   padding: clamp(28px, 6.6vw, 76px) 0;
 }
 
 .coffee-page .coffee-format-track {
-  background: var(--coffee-bg, #FBF6E8);
+  background: var(--coffee-bg, #FFFFFF);
   color: var(--coffee-dark, #1b1a18);
 }
 
@@ -1249,7 +1249,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   border-right: 1px solid rgba(27, 26, 24, 0.1);
   border-top: 1px solid rgba(27, 26, 24, 0.1);
   border-bottom: 1px solid rgba(27, 26, 24, 0.1);
-  background: #FBF6E8;
+  background: #FFFFFF;
   border-radius: 0;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
@@ -1271,12 +1271,12 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 }
 
 .coffee-format-card:hover {
-  background: #FBF6E8;
+  background: #FFFFFF;
 }
 
 @media (hover: none) {
   .coffee-format-card:hover {
-    background: #FBF6E8;
+    background: #FFFFFF;
   }
 }
 
@@ -1411,7 +1411,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-story {
   position: relative;
   background: #1B1A18;
-  color: #FBF6E8;
+  color: #FFFFFF;
   overflow: visible;
 }
 
@@ -1544,7 +1544,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   font-style: italic;
   line-height: 0.94;
   letter-spacing: -0.06em;
-  color: #FBF6E8;
+  color: #FFFFFF;
   opacity: 0;
   transform: translateY(64px);
   clip-path: inset(0 0 100% 0);
@@ -1564,7 +1564,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   position: absolute;
   z-index: 4;
   overflow: hidden;
-  background: #FBF6E8;
+  background: #FFFFFF;
   box-shadow: 0 24px 80px rgba(27, 26, 24, 0.24);
   border-radius: 0;
   opacity: 0;
@@ -1617,21 +1617,21 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 238, 220, 0.5), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(132, 84, 52, 0.32), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #1B1A18 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #1B1A18 48%, #1B1A18 100%);
 }
 
 .coffee-story-card__image--detail {
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 246, 230, 0.48), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(27, 26, 24, 0.22), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #FBF6E8 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 48%, #1B1A18 100%);
 }
 
 .coffee-story-card__image--dessert {
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 232, 214, 0.52), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(168, 96, 72, 0.22), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #FBF6E8 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 48%, #1B1A18 100%);
 }
 
 .coffee-story-card__image span {
@@ -1751,7 +1751,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-gift-split {
   position: relative;
   overflow: hidden;
-  background: var(--coffee-bg, #FBF6E8);
+  background: var(--coffee-bg, #FFFFFF);
   color: var(--coffee-dark, #1B1A18);
   padding: clamp(28px, 5.5vw, 76px) clamp(16px, 4vw, 72px);
 }
@@ -1828,7 +1828,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   aspect-ratio: 4 / 5;
   margin-top: clamp(48px, 7vw, 96px);
   overflow: hidden;
-  background: #FBF6E8;
+  background: #FFFFFF;
   will-change: transform;
 }
 
@@ -1838,7 +1838,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   width: 100%;
   min-height: clamp(620px, 74svh, 860px);
   overflow: hidden;
-  background: #FBF6E8;
+  background: #FFFFFF;
 }
 
 .coffee-gift-split__img,
@@ -1860,21 +1860,21 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 238, 220, 0.42), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(132, 84, 52, 0.24), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #1B1A18 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #1B1A18 48%, #1B1A18 100%);
 }
 
 .coffee-gift-split__placeholder--main {
   background:
     radial-gradient(circle at 28% 24%, rgba(255, 238, 220, 0.4), transparent 31%),
     radial-gradient(circle at 72% 58%, rgba(27, 26, 24, 0.22), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #FBF6E8 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 48%, #1B1A18 100%);
 }
 
 .coffee-gift-split__placeholder--small {
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 232, 214, 0.52), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(168, 96, 72, 0.22), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #FBF6E8 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 48%, #1B1A18 100%);
 }
 
 .coffee-gift-split__placeholder::after {
@@ -2089,13 +2089,13 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   overflow: hidden;
   display: flex;
   align-items: center;
-  background: var(--coffee-bg, #FBF6E8);
+  background: var(--coffee-bg, #FFFFFF);
   color: var(--coffee-dark, #1B1A18);
   padding: clamp(28px, 5.5vw, 76px) clamp(16px, 4vw, 72px);
 }
 
 .coffee-page .coffee-bean-mood {
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1B1A18;
 }
 
@@ -2127,7 +2127,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   background:
     radial-gradient(circle at 34% 28%, rgba(255, 250, 242, 0.65), transparent 22%),
     radial-gradient(circle at 62% 72%, rgba(27, 26, 24, 0.14), transparent 34%),
-    linear-gradient(135deg, #1B1A18 0%, #FBF6E8 48%, #1B1A18 100%);
+    linear-gradient(135deg, #1B1A18 0%, #FFFFFF 48%, #1B1A18 100%);
   filter: blur(0.2px);
   will-change: transform;
   pointer-events: none;
@@ -2142,7 +2142,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   width: 12%;
   height: 86%;
   border-radius: 50%;
-  border-left: 2px solid rgba(251, 246, 232, 0.64);
+  border-left: 2px solid rgba(255, 255, 255, 0.64);
   transform: rotate(7deg);
 }
 
@@ -2354,14 +2354,14 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-bouquet-add {
   position: relative;
   overflow: hidden;
-  background: #fbf6e8;
+  background: #FFFFFF;
   color: var(--coffee-dark, #1B1A18);
   padding: clamp(28px, 5.5vw, 76px) clamp(12px, 4vw, 72px);
   border-top: 1px solid rgba(26, 26, 26, 0.12);
 }
 
 .coffee-page .coffee-bouquet-add {
-  background: #fbf6e8;
+  background: #FFFFFF;
   color: #1B1A18;
 }
 
@@ -2378,7 +2378,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   position: relative;
   overflow: hidden;
   min-height: clamp(520px, 72svh, 820px);
-  background: #FBF6E8;
+  background: #FFFFFF;
 }
 
 .coffee-bouquet-add__img,
@@ -2401,7 +2401,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
     radial-gradient(circle at 30% 24%, rgba(255, 224, 232, 0.48), transparent 31%),
     radial-gradient(circle at 72% 58%, rgba(27, 26, 24, 0.26), transparent 36%),
     radial-gradient(circle at 44% 78%, rgba(132, 84, 52, 0.18), transparent 34%),
-    linear-gradient(135deg, #FBF6E8 0%, #FBF6E8 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 48%, #1B1A18 100%);
 }
 
 .coffee-bouquet-add__placeholder::after {
@@ -2521,7 +2521,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-bouquet-add__button--primary {
   background: var(--coffee-accent, #1B1A18);
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 
 .coffee-bouquet-add__button--secondary {
@@ -2532,7 +2532,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-bouquet-add__button:hover {
   background: var(--coffee-dark, #1B1A18);
   border-color: var(--coffee-dark, #1B1A18);
-  color: #FBF6E8;
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
@@ -2614,14 +2614,14 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-menu {
   position: relative;
   overflow: hidden;
-  background: var(--coffee-bg, #FBF6E8);
+  background: var(--coffee-bg, #FFFFFF);
   color: var(--coffee-dark, #1B1A18);
   padding: clamp(28px, 5.5vw, 76px) clamp(12px, 4vw, 72px);
   border-top: 1px solid rgba(26, 26, 26, 0.12);
 }
 
 .coffee-page .coffee-menu {
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1B1A18;
 }
 
@@ -2696,7 +2696,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-menu__tab:hover,
 .coffee-menu__tab.is-active {
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: var(--coffee-accent, #1B1A18);
   background: var(--coffee-accent, #1B1A18);
 }
@@ -2789,7 +2789,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-menu-item__add:hover {
   background: var(--coffee-accent, #1B1A18);
-  color: #FBF6E8;
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
@@ -2814,7 +2814,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   position: relative;
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: #FBF6E8;
+  background: #FFFFFF;
 }
 
 .coffee-menu__preview-placeholder {
@@ -2823,7 +2823,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 238, 220, 0.48), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(132, 84, 52, 0.28), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #1B1A18 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #1B1A18 48%, #1B1A18 100%);
   opacity: 1;
   transform: scale(1);
   transition:
@@ -2850,7 +2850,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 238, 220, 0.52), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(132, 84, 52, 0.3), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #1B1A18 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #1B1A18 48%, #1B1A18 100%);
 }
 
 .coffee-menu__preview-placeholder--americano,
@@ -2858,7 +2858,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 238, 220, 0.36), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(72, 42, 30, 0.36), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #1B1A18 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #1B1A18 48%, #1B1A18 100%);
 }
 
 .coffee-menu__preview-placeholder--green-tea,
@@ -2867,7 +2867,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   background:
     radial-gradient(circle at 28% 24%, rgba(232, 242, 230, 0.5), transparent 31%),
     radial-gradient(circle at 76% 58%, rgba(88, 108, 82, 0.24), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #1B1A18 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #1B1A18 48%, #1B1A18 100%);
 }
 
 .coffee-menu__preview-placeholder--croissant,
@@ -2877,14 +2877,14 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   background:
     radial-gradient(circle at 32% 24%, rgba(255, 229, 176, 0.52), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(142, 86, 38, 0.24), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #FBF6E8 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 48%, #1B1A18 100%);
 }
 
 .coffee-menu__preview-placeholder--berry-lemonade {
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 224, 232, 0.5), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(27, 26, 24, 0.24), transparent 36%),
-    linear-gradient(135deg, #FBF6E8 0%, #1B1A18 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #1B1A18 48%, #1B1A18 100%);
 }
 
 @media (max-width: 900px) {
@@ -2961,7 +2961,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
     overflow: hidden;
     aspect-ratio: 4 / 3;
     margin-top: 12px;
-    background: #FBF6E8;
+    background: #FFFFFF;
   }
 }
 
@@ -2990,14 +2990,14 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-location {
   position: relative;
   overflow: hidden;
-  background: var(--coffee-bg, #FBF6E8);
+  background: var(--coffee-bg, #FFFFFF);
   color: var(--coffee-dark, #1B1A18);
   padding: clamp(28px, 5.5vw, 76px) clamp(12px, 4vw, 72px);
   border-top: 1px solid rgba(26, 26, 26, 0.12);
 }
 
 .coffee-page .coffee-location {
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1B1A18;
 }
 
@@ -3014,7 +3014,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   position: relative;
   overflow: hidden;
   min-height: clamp(520px, 72svh, 820px);
-  background: #FBF6E8;
+  background: #FFFFFF;
   will-change: transform;
 }
 
@@ -3037,7 +3037,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
     radial-gradient(circle at 28% 24%, rgba(255, 238, 220, 0.42), transparent 31%),
     radial-gradient(circle at 74% 60%, rgba(27, 26, 24, 0.24), transparent 36%),
     radial-gradient(circle at 46% 78%, rgba(132, 84, 52, 0.18), transparent 34%),
-    linear-gradient(135deg, #FBF6E8 0%, #1B1A18 48%, #1B1A18 100%);
+    linear-gradient(135deg, #FFFFFF 0%, #1B1A18 48%, #1B1A18 100%);
 }
 
 .coffee-location__placeholder::after {
@@ -3171,7 +3171,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 
 .coffee-location__button--primary {
   background: var(--coffee-accent, #1B1A18);
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 
 .coffee-location__button--secondary {
@@ -3182,7 +3182,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-location__button:hover {
   background: var(--coffee-dark, #1B1A18);
   border-color: var(--coffee-dark, #1B1A18);
-  color: #FBF6E8;
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
@@ -3299,7 +3299,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
   font-style: normal;
   line-height: 0.92;
   letter-spacing: -0.025em;
-  color: #FBF6E8;
+  color: #FFFFFF;
   margin: 0 0 20px;
 }
 
@@ -3310,7 +3310,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-final-cta__sub {
   font-size: clamp(14px, 1.3vw, 18px);
   line-height: 1.6;
-  color: rgba(251, 246, 232, 0.72);
+  color: rgba(255, 255, 255, 0.72);
   max-width: 480px;
   margin: 0 auto 32px;
 }
@@ -3410,19 +3410,19 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 }
 
 .coffee-page main > section:not(.coffee-final-cta):not(.coffee-gift-split):not(.coffee-bouquet-add):not(.coffee-location):not(.coffee-story) {
-  background-color: var(--coffee-bg, #FBF6E8);
+  background-color: var(--coffee-bg, #FFFFFF);
 }
 
 .coffee-page .coffee-gift-split {
-  background-color: #FBF6E8;
+  background-color: #FFFFFF;
 }
 
 .coffee-page .coffee-bouquet-add {
-  background-color: #fbf6e8;
+  background-color: #FFFFFF;
 }
 
 .coffee-page .coffee-location {
-  background-color: #FBF6E8;
+  background-color: #FFFFFF;
 }
 
 .coffee-page .coffee-story,
@@ -3483,7 +3483,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
    ════════════════════════════════════════════════════════ */
 .coffee-intro {
   padding: clamp(28px, 6.6vw, 76px) 0;
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1b1a18;
 }
 
@@ -3515,7 +3515,7 @@ body.coffee-page:has(#main) .footer-contacts__phone {
 .coffee-intro__ph {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #FBF6E8 0%, #FBF6E8 100%);
+  background: linear-gradient(160deg, #FFFFFF 0%, #FFFFFF 100%);
   background-size: cover;
   background-position: center;
 }
@@ -3542,13 +3542,13 @@ body.coffee-page {
 }
 
 .coffee-page main {
-  --coffee-bg: #FBF6E8;
-  --coffee-bg-card: #FBF6E8;
+  --coffee-bg: #FFFFFF;
+  --coffee-bg-card: #FFFFFF;
   --coffee-dark: #1b1a18;
   --coffee-muted: rgba(27, 26, 24, 0.5);
   --coffee-line: rgba(27, 26, 24, 0.1);
   --coffee-accent: #1B1A18;
-  --coffee-white: #FBF6E8;
+  --coffee-white: #FFFFFF;
   --section-pad-v: clamp(52px, 7vw, 92px); /* компактнее (как референс), было clamp(96,12vw,160) */
   --h-pad: clamp(24px, 5vw, 80px);
 }
@@ -3595,7 +3595,7 @@ body.coffee-page {
 .coffee-page .coffee-product-card__add-btn.is-added,
 .coffee-page .coffee-menu-item__add.is-added {
   background: var(--coffee-accent) !important;
-  color: #FBF6E8 !important;
+  color: #FFFFFF !important;
   border-color: var(--coffee-accent) !important;
 }
 

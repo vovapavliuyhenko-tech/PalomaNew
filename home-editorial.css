@@ -34,7 +34,7 @@
   width: min(820px, calc(100% - 48px));
   min-height: 600px;
   padding: 88px 72px 56px;
-  background: #fbf6e8;
+  background: #FFFFFF;
   color: #1B1A18;
   display: flex;
   flex-direction: column;
@@ -194,7 +194,7 @@
    ===================================================== */
 
 .home-categories {
-  background: var(--color-bg, #fbf6e8);
+  background: var(--color-bg, #FFFFFF);
   color: #1B1A18;
   padding: 84px 24px 92px;
   overflow: hidden;
@@ -306,7 +306,7 @@
   height: clamp(280px, 24vw, 420px);
   display: block;
   overflow: hidden;
-  background-color: #FBF6E8;
+  background-color: #FFFFFF;
   background-size: cover;
   background-position: center top;
   filter: saturate(0.96) contrast(1.02);
@@ -479,7 +479,7 @@
 /* hero «Выбрать букет» — на ховере розовая заливка */
 body.is-home .paloma-cover__cta:hover {
   background: #E7385A;
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: #E7385A;
   box-shadow: none;
 }
@@ -495,7 +495,7 @@ body.is-home .home-showcase__arrow:hover,
 body.is-home .home-showcase__arrow:focus-visible {
   background: #E7385A;
   border-color: #E7385A;
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 
 /* текстовые ссылки-кнопки */

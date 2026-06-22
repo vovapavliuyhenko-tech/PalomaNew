@@ -13,7 +13,7 @@
   height: 100dvh;       /* dynamic viewport — correct on mobile chrome */
   min-height: 640px;
   overflow: hidden;
-  background: #FBF6E8;  /* light fallback while photo loads */
+  background: #FFFFFF;  /* light fallback while photo loads */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -96,7 +96,7 @@
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(251, 246, 232, 0.42);
+  color: rgba(255, 255, 255, 0.42);
 
   opacity: 0;
   transform: translateY(14px);
@@ -110,7 +110,7 @@
   font-weight: 300;
   font-style: italic;
   line-height: 1.15;
-  color: rgba(251, 246, 232, 0.88);
+  color: rgba(255, 255, 255, 0.88);
   letter-spacing: -0.01em;
 
   opacity: 0;
@@ -120,7 +120,7 @@
 
 .cof-hero__tagline em {
   font-style: normal;
-  color: rgba(251, 246, 232, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* Scroll hint CTA */
@@ -129,7 +129,7 @@
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: rgba(251, 246, 232, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-sans, 'Manrope', sans-serif);
   font-size: 11px;
   font-weight: 500;
@@ -142,7 +142,7 @@
   animation: cofFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.35s forwards;
 }
 
-.cof-hero__scroll-cta:hover { color: rgba(251, 246, 232, 0.88); }
+.cof-hero__scroll-cta:hover { color: rgba(255, 255, 255, 0.88); }
 
 .cof-hero__scroll-line {
   display: block;
@@ -176,7 +176,7 @@
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.08em;
-  color: rgba(251, 246, 232, 0.38);
+  color: rgba(255, 255, 255, 0.38);
 }
 
 /* ── Hero keyframes ───────────────────────────────────────── */
@@ -228,7 +228,7 @@
 .cof-menu {
   position: relative;
   padding: clamp(28px, 3.85vw, 53px) clamp(16px, 2.5vw, 40px);
-  background: #fbf6e8;
+  background: #FFFFFF;
 }
 
 .cof-menu__eyebrow {

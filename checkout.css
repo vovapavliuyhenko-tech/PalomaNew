@@ -3,8 +3,8 @@
    ════════════════════════════════════════════════════════ */
 
 .checkout-page {
-  --co-bg: #FBF6E8;
-  --co-bg-card: #FBF6E8;
+  --co-bg: #FFFFFF;
+  --co-bg-card: #FFFFFF;
   --co-dark: #1B1A18;
   --co-muted: rgba(27, 26, 24, 0.50);
   --co-line: rgba(27, 26, 24, 0.10);
@@ -30,7 +30,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(251, 246, 232, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--co-line);
@@ -1022,7 +1022,7 @@
   left: 0;
   right: 0;
   z-index: 200;
-  background: rgba(251, 246, 232, 0.96);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid var(--co-line);

@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PALOMA Coffee — hero в стиле SOROBOKA</title>
-<link rel="stylesheet" href="fonts/paloma-fonts.css?v=1">
+<link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
 <style>
 :root{
-  --ivory:#fbf6e8;--cream:#FBF6E8;--dark:#1B1A18;--burgundy:#1B1A18;--burg2:#1B1A18;--crema:#FBF6E8;
+  --ivory:#FFFFFF;--cream:#FFFFFF;--dark:#1B1A18;--burgundy:#1B1A18;--burg2:#1B1A18;--crema:#FFFFFF;
   --font-display:'Italiana',serif;--font-script:'Great Vibes',cursive;
   --font-sans:'Manrope',sans-serif;--font-mono:'JetBrains Mono',monospace;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -51,11 +51,11 @@ img{display:block}
 .chero__frame-wrap{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);z-index:6;width:min(31vw,286px);text-align:left;
   opacity:0;animation:frameIn 1.2s .5s var(--ease) forwards}
 @keyframes frameIn{from{opacity:0;transform:translate(-50%,-46%) scale(.94);filter:blur(8px)}to{opacity:1;transform:translate(-50%,-50%) scale(1);filter:blur(0)}}
-.chero__frame{position:relative;background:linear-gradient(180deg,#FBF6E8,#FBF6E8);padding:14px;border-radius:4px;
+.chero__frame{position:relative;background:linear-gradient(180deg,#FFFFFF,#FFFFFF);padding:14px;border-radius:4px;
   box-shadow:0 40px 90px rgba(0,0,0,.5),0 4px 14px rgba(0,0,0,.25);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .chero__frame::after{content:"";position:absolute;inset:7px;border:1px solid rgba(26,13,8,.1);border-radius:2px;pointer-events:none}
 .chero__frame-wrap:hover .chero__frame{transform:translateY(-6px);box-shadow:0 54px 110px rgba(0,0,0,.55),0 6px 18px rgba(0,0,0,.3)}
-.chero__frame-stage{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#FBF6E8;border-radius:2px}
+.chero__frame-stage{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#FFFFFF;border-radius:2px}
 .chero__frame-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);
   transition:opacity 1.1s var(--ease),transform 6s linear}
 .chero__frame-stage img.is-on{opacity:1;transform:scale(1)}

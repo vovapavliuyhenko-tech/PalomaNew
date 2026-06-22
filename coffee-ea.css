@@ -11,10 +11,10 @@
 body.coffee-page{overflow-x:clip!important}
 .coffee-page main{overflow-x:clip!important;overflow-y:visible!important}
 
-.coffee-ea{--cf-cream:var(--paper);--cf-wine:var(--wine);--cf-coffee:#1B1A18;--cf-latte:#FBF6E8}
+.coffee-ea{--cf-cream:var(--paper);--cf-wine:var(--wine);--cf-coffee:#1B1A18;--cf-latte:#FFFFFF}
 
 /* ── ВИДЕО-ФОН в герое/блоках (вместо .ea-hero__bg) ── */
-.cf-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#FBF6E8}
+.cf-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#FFFFFF}
 .cf-hero__left .cf-video,.cf-svc .cf-video{transform:scale(1.04)}
 /* лёгкий «живой» зум, пока нет mp4 (постер-фото оживает как видео) */
 .cf-kenburns{animation:cfKen 18s ease-in-out infinite alternate}
@@ -22,7 +22,7 @@ body.coffee-page{overflow-x:clip!important}
 
 /* герой/зеркальный блок: фото-сторона центрирует рамку + тёмная вуаль */
 .cf-hero__left,.cf-mir__media{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;
-  background:#FBF6E8;padding:clamp(120px,15vh,170px) clamp(24px,4vw,56px) clamp(40px,6vh,72px)}
+  background:#FFFFFF;padding:clamp(120px,15vh,170px) clamp(24px,4vw,56px) clamp(40px,6vh,72px)}
 .cf-hero__left::after,.cf-mir__media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(20,12,8,.3),rgba(20,12,8,.46))}
 .cf-hero__left .ea-hero__frame,.cf-mir__media .ea-hero__frame{z-index:2}
@@ -63,7 +63,7 @@ body.coffee-page{overflow-x:clip!important}
 /* плавающее фото товара при наведении (следует за курсором) */
 .cf-menu__pop{position:fixed;z-index:80;width:clamp(150px,15vw,220px);aspect-ratio:4/5;pointer-events:none;
   border-radius:4px;overflow:hidden;box-shadow:0 30px 70px rgba(40,24,12,.4);opacity:0;transform:translate(-50%,-46%) scale(.9);
-  transition:opacity .3s var(--eease),transform .3s var(--eease);background-size:cover;background-position:center;background-color:#FBF6E8}
+  transition:opacity .3s var(--eease),transform .3s var(--eease);background-size:cover;background-position:center;background-color:#FFFFFF}
 .cf-menu__pop.is-on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .cf-menu__pop img{width:100%;height:100%;object-fit:cover;display:block}
 
@@ -149,7 +149,7 @@ body.coffee-page{overflow-x:clip!important}
 .cf-modal__panel{position:relative;display:grid;grid-template-columns:1fr 1fr;max-width:900px;width:100%;max-height:88vh;
   background:var(--paper2);box-shadow:0 50px 120px rgba(20,12,8,.5);overflow:hidden;animation:cfPop .4s var(--eease)}
 @keyframes cfPop{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.cf-modal__img{background-size:cover;background-position:center;background-color:#FBF6E8;min-height:340px}
+.cf-modal__img{background-size:cover;background-position:center;background-color:#FFFFFF;min-height:340px}
 .cf-modal__body{padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;justify-content:center}
 .cf-modal__cat{font-family:var(--fdisplay);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .cf-modal__title{font-family:var(--fhead);font-size:clamp(30px,3.2vw,48px);color:var(--wine);line-height:1.05;margin:8px 0 16px}
@@ -160,7 +160,7 @@ body.coffee-page{overflow-x:clip!important}
 .cf-modal__price{font-family:var(--fhead);font-size:clamp(26px,2.4vw,36px);color:var(--wine)}
 .cf-modal__close{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:none;
   background:rgba(244,242,234,.9);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center;z-index:2;transition:.3s}
-.cf-modal__close:hover{background:var(--wine);color:#FBF6E8}
+.cf-modal__close:hover{background:var(--wine);color:#FFFFFF}
 .cf-modal__added{font-family:var(--fdisplay);font-size:13px;color:var(--wine);margin-top:14px;opacity:0;transition:.3s}
 .cf-modal__added.is-on{opacity:1}
 body.cf-modal-open{overflow:hidden}

@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Цветочное оформление событий — PALOMA</title>
 <meta name="description" content="PALOMA — студия цветочного оформления событий в Новороссийске: свадьбы, корпоративы, частные праздники. Концепция, декор, монтаж.">
-<link rel="stylesheet" href="fonts/paloma-fonts.css?v=1">
+<link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
 <style>
 :root{
-  --paper:#FBF6E8;--paper2:#FBF6E8;--paper3:#FBF6E8;
-  --ink:#1B1A18;--muted:#FBF6E8;
+  --paper:#FFFFFF;--paper2:#FFFFFF;--paper3:#FFFFFF;
+  --ink:#1B1A18;--muted:#FFFFFF;
   --wine:#1B1A18;--wine2:#1B1A18;--wine-d:#1B1A18;
   --line:rgba(42,26,20,.14);
   --fdisplay:'Italiana',serif;--fserif:'Cormorant',serif;--fscript:'Marck Script',cursive;--fsans:'Manrope',sans-serif;
@@ -89,7 +89,7 @@ a{text-decoration:none;color:inherit}
 .ea-case__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s var(--ease);transform:scale(1.04)}
 .ea-case__stage img.is-on{opacity:1;transform:scale(1)}
 .ea-case__cap{position:absolute;left:16px;bottom:14px;z-index:2;display:flex;gap:14px;font-family:var(--fserif);font-size:13px;letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4)}
-.ea-case__cap b{color:#FBF6E8;font-weight:500}
+.ea-case__cap b{color:#FFFFFF;font-weight:500}
 .ea-case__title{font-family:var(--fserif);font-weight:500;font-size:clamp(24px,2.6vw,40px);line-height:1.1;color:var(--ink);margin-bottom:18px}
 .ea-case__text{font-weight:300;font-size:16px;line-height:1.75;color:#1B1A18;margin-bottom:26px;min-height:84px}
 .ea-case__dots{display:flex;gap:8px;margin-bottom:26px}
@@ -99,17 +99,17 @@ a{text-decoration:none;color:inherit}
 /* ───────── SERVICES ───────── */
 .ea-serv{background:var(--ink);color:var(--paper3)}
 .ea-serv .ea-head__ru{color:var(--paper3)}
-.ea-serv .ea-head__en{color:#FBF6E8}
+.ea-serv .ea-head__en{color:#FFFFFF}
 .ea-serv__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,30px)}
 .ea-card{border:1px solid rgba(247,236,221,.16);padding:clamp(26px,2.4vw,40px);border-radius:3px;display:flex;flex-direction:column;
   background:rgba(247,236,221,.02);transition:background .4s,border-color .4s,transform .4s var(--ease)}
 .ea-card:hover{background:rgba(247,236,221,.05);border-color:rgba(247,236,221,.34);transform:translateY(-5px)}
-.ea-card__num{font-family:var(--fdisplay);font-size:40px;color:#FBF6E8;line-height:1;margin-bottom:18px}
+.ea-card__num{font-family:var(--fdisplay);font-size:40px;color:#FFFFFF;line-height:1;margin-bottom:18px}
 .ea-card__title{font-family:var(--fserif);font-size:24px;font-weight:500;margin-bottom:18px;color:var(--paper3)}
 .ea-card__list{list-style:none;margin-bottom:24px;flex:1}
 .ea-card__list li{font-size:14px;line-height:1.5;color:rgba(247,236,221,.72);padding:9px 0;border-bottom:1px dashed rgba(247,236,221,.12)}
 .ea-card__price{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,236,221,.5)}
-.ea-card__price b{display:block;font-family:var(--fserif);font-size:24px;letter-spacing:0;text-transform:none;color:#FBF6E8;margin-top:6px}
+.ea-card__price b{display:block;font-family:var(--fserif);font-size:24px;letter-spacing:0;text-transform:none;color:#FFFFFF;margin-top:6px}
 
 /* ───────── PROCESS ───────── */
 .ea-proc{background:var(--paper3)}
@@ -131,10 +131,10 @@ a{text-decoration:none;color:inherit}
 /* ───────── CONTACT ───────── */
 .ea-cta{background:var(--wine);color:var(--paper3)}
 .ea-cta .ea-head__ru{color:var(--paper3)}
-.ea-cta .ea-head__en{color:#FBF6E8}
+.ea-cta .ea-head__en{color:#FFFFFF}
 .ea-cta__inner{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:center}
 .ea-cta__lead{font-family:var(--fserif);font-size:clamp(22px,2.4vw,34px);line-height:1.4;font-weight:400}
-.ea-cta__lead span{font-family:var(--fscript);color:#FBF6E8;font-size:1.2em}
+.ea-cta__lead span{font-family:var(--fscript);color:#FFFFFF;font-size:1.2em}
 .ea-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .ea-form__field{display:flex;flex-direction:column;gap:7px}
 .ea-form__field--full{grid-column:1/-1}
@@ -142,11 +142,11 @@ a{text-decoration:none;color:inherit}
 .ea-form input,.ea-form select,.ea-form textarea{background:transparent;border:none;border-bottom:1px solid rgba(247,236,221,.32);
   color:var(--paper3);font-family:var(--fsans);font-size:15px;padding:10px 2px;outline:none;transition:border-color .3s}
 .ea-form input::placeholder,.ea-form textarea::placeholder{color:rgba(247,236,221,.4)}
-.ea-form input:focus,.ea-form select:focus,.ea-form textarea:focus{border-color:#FBF6E8}
+.ea-form input:focus,.ea-form select:focus,.ea-form textarea:focus{border-color:#FFFFFF}
 .ea-form select option{color:#1B1A18}
 .ea-form__submit{grid-column:1/-1;justify-self:start;background:var(--paper3);color:var(--wine);margin-top:8px}
 .ea-form__submit:hover{background:var(--ink);color:var(--paper3)}
-.ea-form__ok{grid-column:1/-1;font-family:var(--fserif);font-size:18px;color:#FBF6E8}
+.ea-form__ok{grid-column:1/-1;font-family:var(--fserif);font-size:18px;color:#FFFFFF}
 
 /* ───────── FAQ ───────── */
 .ea-faq{background:var(--paper3)}
@@ -167,7 +167,7 @@ a{text-decoration:none;color:inherit}
 .ea-foot__logo small{display:block;font-family:var(--fsans);font-size:9px;letter-spacing:.4em;color:rgba(247,236,221,.5);margin-top:6px}
 .ea-foot__nav{display:flex;gap:clamp(20px,3vw,46px);flex-wrap:wrap}
 .ea-foot__nav a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,236,221,.7);transition:.25s}
-.ea-foot__nav a:hover{color:#FBF6E8}
+.ea-foot__nav a:hover{color:#FFFFFF}
 .ea-foot__brand{font-family:var(--fdisplay);font-size:clamp(60px,17vw,260px);line-height:.8;color:rgba(247,236,221,.05);
   text-align:center;margin:clamp(30px,4vw,60px) 0 0;letter-spacing:.04em;user-select:none}
 .ea-foot__bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(247,236,221,.1);
@@ -315,8 +315,8 @@ a{text-decoration:none;color:inherit}
       <div class="ea-step" data-reveal style="--d:.24s"><div class="ea-step__num">05</div><h3 class="ea-step__title">Подготовка</h3><p class="ea-step__text">Закупаем цветы и собираем композиции в студии к монтажному дню.</p></div>
       <div class="ea-step" data-reveal style="--d:.3s"><div class="ea-step__num">06</div><h3 class="ea-step__title">Монтаж</h3><p class="ea-step__text">Оформляем площадку в согласованное окно и фотографируем результат.</p></div>
       <div class="ea-step" data-reveal style="--d:.36s"><div class="ea-step__num">07</div><h3 class="ea-step__title">Демонтаж</h3><p class="ea-step__text">Аккуратно убираем декор. Живые цветы можно забрать с собой.</p></div>
-      <div class="ea-step" data-reveal style="--d:.42s;background:var(--wine);color:#fff;border-top-color:#FBF6E8">
-        <div class="ea-step__num" style="color:#FBF6E8">♥</div><h3 class="ea-step__title" style="color:#fff">Готово</h3><p class="ea-step__text" style="color:rgba(255,255,255,.85)">Ваше событие сияет, а гости — в восторге.</p></div>
+      <div class="ea-step" data-reveal style="--d:.42s;background:var(--wine);color:#fff;border-top-color:#FFFFFF">
+        <div class="ea-step__num" style="color:#FFFFFF">♥</div><h3 class="ea-step__title" style="color:#fff">Готово</h3><p class="ea-step__text" style="color:rgba(255,255,255,.85)">Ваше событие сияет, а гости — в восторге.</p></div>
     </div>
   </section>
 

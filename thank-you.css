@@ -63,7 +63,7 @@
 }
 .ty-order-summary {
   width: 100%;
-  background: var(--color-bg-alt, #FBF6E8);
+  background: var(--color-bg-alt, #FFFFFF);
   padding: 20px;
   border-radius: 4px;
   margin-bottom: 28px;
@@ -110,7 +110,7 @@
 .ty-btn-wa {
   background: #1B1A18;
   border-color: #1B1A18;
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 .ty-btn-wa:hover {
   background: #1B1A18;

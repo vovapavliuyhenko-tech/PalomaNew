@@ -5,11 +5,11 @@
 
 /* ── Light theme overrides for coffee-page body/header ── */
 body.coffee-page:has(.cf-page) {
-  --coffee-bg: #FBF6E8;
+  --coffee-bg: #FFFFFF;
   --coffee-text: #1b1a18;
   --coffee-muted: rgba(27, 26, 24, 0.5);
   --coffee-border: rgba(27, 26, 24, 0.1);
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1b1a18;
   overflow-x: hidden;
 }
@@ -38,8 +38,8 @@ body.coffee-page:has(.cf-page) .site-header.is-scrolled {
 
 body.coffee-page:has(.cf-page) .site-footer {
   background: #1B1A18;
-  border-top-color: rgba(251, 246, 232, 0.12);
-  color: rgba(251, 246, 232, 0.55);
+  border-top-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 body.coffee-page:has(.cf-page) .site-footer a {
@@ -48,22 +48,22 @@ body.coffee-page:has(.cf-page) .site-footer a {
 
 body.coffee-page:has(.cf-page) .footer-logo__text,
 body.coffee-page:has(.cf-page) .footer-contacts__phone {
-  color: rgba(251, 246, 232, 0.90);
+  color: rgba(255, 255, 255, 0.90);
 }
 
 /* ════════════════
    ПЕРЕМЕННЫЕ
    ════════════════ */
 .cf-page {
-  --cf-bg: #FBF6E8;
-  --cf-bg-alt: #FBF6E8;
+  --cf-bg: #FFFFFF;
+  --cf-bg-alt: #FFFFFF;
   --cf-bg-dark: #1b1a18;
   --cf-text: #1b1a18;
   --cf-muted: rgba(27, 26, 24, 0.5);
   --cf-line: rgba(27, 26, 24, 0.1);
   --cf-accent: #1B1A18;
   --cf-coffee: #1B1A18;
-  --cf-white: #FBF6E8;
+  --cf-white: #FFFFFF;
   --cf-display: var(--font-display, "Italiana", serif);
   --cf-mono: var(--font-mono, "JetBrains Mono", monospace);
   --cf-sans: var(--font-sans, "Manrope", sans-serif);
@@ -95,7 +95,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 }
 
 .cf-eyebrow--light {
-  color: rgba(251, 246, 232, 0.55);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .cf-btn {
@@ -121,14 +121,14 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 
 .cf-btn--dark {
   background: #1b1a18;
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: #1b1a18;
 }
 
 .cf-btn--dark:hover {
   background: var(--cf-accent);
   border-color: var(--cf-accent);
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 
 .cf-btn--ghost {
@@ -139,34 +139,34 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 
 .cf-btn--ghost:hover {
   background: #1b1a18;
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: #1b1a18;
 }
 
 .cf-btn--light {
-  background: rgba(251, 246, 232, 0.1);
-  color: rgba(251, 246, 232, 0.9);
-  border-color: rgba(251, 246, 232, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
 .cf-btn--light:hover {
-  background: rgba(251, 246, 232, 0.2);
-  border-color: rgba(251, 246, 232, 0.6);
-  color: #FBF6E8;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #FFFFFF;
 }
 
 .cf-btn--ghost-light {
   background: transparent;
-  color: rgba(251, 246, 232, 0.88);
-  border-color: rgba(251, 246, 232, 0.3);
+  color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .cf-btn--ghost-light:hover {
-  background: rgba(251, 246, 232, 0.08);
-  border-color: rgba(251, 246, 232, 0.6);
-  color: #FBF6E8;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #FFFFFF;
 }
 
 .cf-btn:focus-visible,
@@ -201,13 +201,13 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 }
 
 .cf-link--light {
-  color: rgba(251, 246, 232, 0.88);
-  box-shadow: 0 1px 0 rgba(251, 246, 232, 0.3);
+  color: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .cf-link--light:hover {
-  color: #FBF6E8;
-  box-shadow: 0 1px 0 rgba(251, 246, 232, 0.7);
+  color: #FFFFFF;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 /* Placeholder / media */
@@ -232,7 +232,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 }
 
 .cf-hero__photo-ph {
-  background: linear-gradient(160deg, #FBF6E8 0%, #FBF6E8 100%);
+  background: linear-gradient(160deg, #FFFFFF 0%, #FFFFFF 100%);
 }
 
 .cfs-scene__bg-ph--1 {
@@ -252,15 +252,15 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 }
 
 .cfs-scene__card-ph--1 {
-  background: linear-gradient(135deg, #FBF6E8 0%, #1B1A18 50%, #1B1A18 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #1B1A18 50%, #1B1A18 100%);
 }
 
 .cfs-scene__ph--2 {
-  background: linear-gradient(160deg, #FBF6E8 0%, #FBF6E8 50%, #1B1A18 100%);
+  background: linear-gradient(160deg, #FFFFFF 0%, #FFFFFF 50%, #1B1A18 100%);
 }
 
 .cfs-scene__ph--3 {
-  background: linear-gradient(160deg, #FBF6E8 0%, #1B1A18 50%, #1B1A18 100%);
+  background: linear-gradient(160deg, #FFFFFF 0%, #1B1A18 50%, #1B1A18 100%);
 }
 
 .cfs-scene__video {
@@ -278,23 +278,23 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 }
 
 .cf-union__photo-ph {
-  background: linear-gradient(135deg, #FBF6E8, #FBF6E8);
+  background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
 }
 
 .cf-union__mini-ph {
-  background: linear-gradient(135deg, #FBF6E8, #FBF6E8);
+  background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
 }
 
 .cf-plus__photo-ph {
-  background: linear-gradient(135deg, #FBF6E8, #1B1A18);
+  background: linear-gradient(135deg, #FFFFFF, #1B1A18);
 }
 
 .cf-location__map-ph {
-  background: linear-gradient(135deg, #FBF6E8, #FBF6E8);
+  background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
 }
 
 .cf-final__bg-ph {
-  background: linear-gradient(165deg, #FBF6E8, #1B1A18);
+  background: linear-gradient(165deg, #FFFFFF, #1B1A18);
 }
 
 .cf-hero__media,
@@ -443,12 +443,12 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
    "Выберите свой вкус"
    ════════════════════════════════════════════════════════ */
 .ct-taste {
-  background: #FBF6E8;
+  background: #FFFFFF;
   padding: clamp(28px, 6.6vw, 76px) 0;
 }
 
 .coffee-page .ct-taste {
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1b1a18;
 }
 
@@ -513,7 +513,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  background: #FBF6E8;
+  background: #FFFFFF;
   border-right: 1px solid rgba(27, 26, 24, 0.1);
   border-bottom: 1px solid rgba(27, 26, 24, 0.1);
   border-radius: 0;
@@ -548,7 +548,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #FBF6E8;
+  background: #FFFFFF;
   flex-shrink: 0;
   cursor: pointer;
 }
@@ -627,7 +627,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 
 .ct-product-card__cta-btn:hover {
   background: #1b1a18;
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: #1b1a18;
 }
 
@@ -639,7 +639,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 .ct-product-card__cta-btn.is-added {
   background: var(--cf-accent, #1B1A18);
   border-color: var(--cf-accent, #1B1A18);
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 
 .ct-product-card__body {
@@ -649,7 +649,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
   flex-direction: column;
   gap: 8px;
   flex: 1;
-  background: #FBF6E8;
+  background: #FFFFFF;
 }
 
 .ct-product-card__name {
@@ -753,12 +753,12 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
    ════════════════════════════════════════════════════════ */
 .cf-moods {
   padding: clamp(28px, 6.6vw, 76px) 0;
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1b1a18;
 }
 
 .coffee-page .cf-moods {
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1b1a18;
 }
 
@@ -842,7 +842,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  background: #FBF6E8;
+  background: #FFFFFF;
   transition: background 0.4s ease;
 }
 
@@ -851,7 +851,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 }
 
 .cf-mood-card:hover {
-  background: #FBF6E8;
+  background: #FFFFFF;
 }
 
 .cf-mood-card__bg-img {
@@ -959,7 +959,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 
 .cf-moods__arrow:hover {
   background: #1b1a18;
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: #1b1a18;
 }
 
@@ -1102,7 +1102,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 0;
-  border: 1px solid rgba(251, 246, 232, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   opacity: 0;
   transform: translate(-50%, calc(-50% + 20px)) scale(0.96);
   transition:
@@ -1150,7 +1150,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: -0.015em;
-  color: rgba(251, 246, 232, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   margin: 0 0 clamp(20px, 2.5vw, 28px);
 }
 
@@ -1218,7 +1218,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
     position: relative;
     height: 100svh;
     min-height: 100svh;
-    border-bottom: 1px solid rgba(251, 246, 232, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .cfs-scene__content--split {
@@ -1362,14 +1362,14 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
    ════════════ */
 .cfgr {
   position: relative;
-  background: #FBF6E8;
+  background: #FFFFFF;
   overflow: hidden;
   padding: clamp(28px, 6.6vw, 76px) 0;
   color: #1b1a18;
 }
 
 .coffee-page .cfgr {
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1b1a18;
 }
 
@@ -1613,13 +1613,13 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
    09. МЕНЮ (.cfm)
    ═══════════════ */
 .cfm {
-  background: #FBF6E8;
+  background: #FFFFFF;
   padding: clamp(28px, 6.6vw, 76px) 0;
   color: #1b1a18;
 }
 
 .coffee-page .cfm {
-  background: #FBF6E8;
+  background: #FFFFFF;
   color: #1b1a18;
 }
 
@@ -1860,13 +1860,13 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 
 .cfm__item-btn:hover {
   background: #1b1a18;
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: #1b1a18;
 }
 
 .cfm__item-btn.is-added {
   background: var(--cf-accent);
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: var(--cf-accent);
 }
 
@@ -1929,7 +1929,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: lowercase;
-  color: rgba(251, 246, 232, 0.7);
+  color: rgba(255, 255, 255, 0.7);
   background: rgba(27, 26, 24, 0.25);
   padding: 4px 8px;
   backdrop-filter: blur(4px);
@@ -2110,7 +2110,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
   font-style: normal;
   line-height: 0.92;
   letter-spacing: -0.025em;
-  color: #FBF6E8;
+  color: #FFFFFF;
   margin: 0 0 20px;
 }
 
@@ -2121,7 +2121,7 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 .cf-final__sub {
   font-size: clamp(14px, 1.3vw, 18px);
   line-height: 1.6;
-  color: rgba(251, 246, 232, 0.72);
+  color: rgba(255, 255, 255, 0.72);
   max-width: 480px;
   margin: 0 auto 32px;
 }
@@ -2245,13 +2245,13 @@ body.coffee-page:has(.cf-page) .footer-contacts__phone {
 }
 
 .coffee-page main > section:not(.cfs-scene):not(.cf-final):not(.cf-union):not(.cf-plus):not(.cf-location) {
-  background-color: var(--coffee-bg, #FBF6E8);
+  background-color: var(--coffee-bg, #FFFFFF);
 }
 
 .coffee-page .cf-union,
 .coffee-page .cf-plus,
 .coffee-page .cf-location {
-  background-color: var(--cf-bg-alt, #FBF6E8);
+  background-color: var(--cf-bg-alt, #FFFFFF);
 }
 
 .coffee-page .cfs-scene,

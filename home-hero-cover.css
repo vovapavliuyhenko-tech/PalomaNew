@@ -94,7 +94,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   font-weight: 400;
   font-style: normal;
   line-height: 0.88;
-  color: #FBF6E8;
+  color: #FFFFFF;
   letter-spacing: -0.02em;
   opacity: 0;
   transform: translateY(48px);
@@ -111,7 +111,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   font-weight: 400;
   letter-spacing: 0.28em;
   text-transform: lowercase;
-  color: rgba(251, 246, 232, 0.58);
+  color: rgba(255, 255, 255, 0.58);
   opacity: 0;
   animation: coverFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.15s forwards;
 }
@@ -145,7 +145,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .paloma-cover__scroll-line {
   width: 1px;
   height: 44px;
-  background: rgba(251, 246, 232, 0.45);
+  background: rgba(255, 255, 255, 0.45);
   display: block;
   transform: translateY(-100%);
   animation: coverScrollLine 2.4s ease-in-out infinite 2.8s;
@@ -170,7 +170,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #1B1A18;
-  background: #FBF6E8;
+  background: #FFFFFF;
   text-decoration: none;
   border: 1px solid transparent;
   border-radius: 12px;
@@ -182,14 +182,14 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 }
 
 .paloma-cover__cta:hover {
-  color: #FBF6E8;
+  color: #FFFFFF;
   background: transparent;
-  border-color: rgba(251, 246, 232, 0.85);
+  border-color: rgba(255, 255, 255, 0.85);
   box-shadow: none;
 }
 
 .paloma-cover__cta:focus-visible {
-  outline: 2px solid rgba(251, 246, 232, 0.85);
+  outline: 2px solid rgba(255, 255, 255, 0.85);
   outline-offset: 4px;
 }
 

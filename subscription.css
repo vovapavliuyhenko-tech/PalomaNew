@@ -71,7 +71,7 @@ body.subscription-page {
 /* ── Общие компактные секции (Как это работает / Что классного) ── */
 .sub-block {
   padding: clamp(44px, 5vw, 68px) clamp(16px, 3vw, 48px);
-  background: var(--paloma-bg, #FBF6E8);
+  background: var(--paloma-bg, #FFFFFF);
 }
 
 .sub-block__inner {
@@ -173,7 +173,7 @@ body.subscription-page {
 .sub-cta {
   padding: clamp(40px, 5vw, 64px) clamp(16px, 3vw, 48px) clamp(56px, 6vw, 90px);
   text-align: center;
-  background: var(--paloma-bg, #FBF6E8);
+  background: var(--paloma-bg, #FFFFFF);
 }
 
 .sub-cta__inner {
@@ -203,7 +203,7 @@ body.subscription-page {
   min-height: 50px;
   padding: 0 28px;
   background: #E7385A;
-  color: #FBF6E8;
+  color: #FFFFFF;
   font-family: var(--sans);
   font-size: 12px;
   font-weight: 600;
@@ -226,7 +226,7 @@ body.subscription-page {
 
 .sub-cta__btn--ghost:hover {
   background: #E7385A;
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 
 /* Адаптив */

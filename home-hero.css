@@ -10,7 +10,7 @@ body.is-home .paloma-hero {
   max-width: 100%;
   min-height: max(720px, 100svh);
   margin-top: calc(-1 * var(--paloma-header-offset, 88px));
-  background: #FBF6E8;
+  background: #FFFFFF;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -25,11 +25,11 @@ body.is-home .paloma-hero__left {
     calc(var(--paloma-header-offset, 88px) + clamp(36px, 4vw, 48px))
     clamp(32px, 4vw, 48px)
     clamp(42px, 5vw, 56px);
-  color: #FBF6E8;
+  color: #FFFFFF;
   background:
     radial-gradient(circle at 28% 18%, rgba(156, 111, 78, 0.48), transparent 38%),
     radial-gradient(circle at 88% 78%, rgba(64, 29, 18, 0.42), transparent 44%),
-    linear-gradient(160deg, #FBF6E8 0%, #1B1A18 45%, #1B1A18 100%);
+    linear-gradient(160deg, #FFFFFF 0%, #1B1A18 45%, #1B1A18 100%);
 }
 
 body.is-home .paloma-hero__top {
@@ -70,7 +70,7 @@ body.is-home .paloma-hero__title {
   font-weight: 500;
   line-height: 0.92;
   letter-spacing: -0.045em;
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 
 body.is-home .paloma-hero__title span,
@@ -81,7 +81,7 @@ body.is-home .paloma-hero__title em {
 body.is-home .paloma-hero__title em {
   font-weight: 400;
   font-style: italic;
-  color: #FBF6E8;
+  color: #FFFFFF;
 }
 
 body.is-home .paloma-hero__text {
@@ -160,28 +160,28 @@ body.is-home .paloma-hero__btn--primary {
 }
 
 body.is-home .paloma-hero__btn--primary:hover {
-  background: #FBF6E8;
-  border-color: #FBF6E8;
+  background: #FFFFFF;
+  border-color: #FFFFFF;
   transform: translateY(-2px);
 }
 
 body.is-home .paloma-hero__btn--glass {
-  background: rgba(251, 246, 232, 0.07);
-  color: #FBF6E8;
-  border: 1px solid rgba(251, 246, 232, 0.28);
+  background: rgba(255, 255, 255, 0.07);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
 body.is-home .paloma-hero__btn--glass:hover {
-  background: rgba(251, 246, 232, 0.14);
-  border-color: rgba(251, 246, 232, 0.45);
-  color: #FBF6E8;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
 body.is-home .paloma-hero__btn:focus-visible {
-  outline: 2px solid #FBF6E8;
+  outline: 2px solid #FFFFFF;
   outline-offset: 4px;
 }
 
@@ -198,7 +198,7 @@ body.is-home .paloma-hero__right {
   position: relative;
   min-height: inherit;
   overflow: hidden;
-  background: #FBF6E8;
+  background: #FFFFFF;
 }
 
 body.is-home .paloma-hero__image,
@@ -221,9 +221,9 @@ body.is-home .paloma-hero__image-placeholder {
   justify-content: flex-start;
   padding: clamp(32px, 4vw, 48px);
   background:
-    linear-gradient(180deg, rgba(251, 246, 232, 0.26), rgba(27, 26, 24, 0.04)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(27, 26, 24, 0.04)),
     radial-gradient(circle at 62% 34%, rgba(27, 26, 24, 0.06), transparent 32%),
-    #FBF6E8;
+    #FFFFFF;
 }
 
 body.is-home .paloma-hero__image-placeholder::before {

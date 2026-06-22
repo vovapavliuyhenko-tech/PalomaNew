@@ -340,7 +340,7 @@
   font-size: clamp(96px, 18vw, 280px);
   font-weight: 400;
   line-height: 1;
-  color: rgba(251, 246, 232, 0.06);
+  color: rgba(255, 255, 255, 0.06);
   white-space: nowrap;
   pointer-events: none;
   position: absolute;
@@ -610,7 +610,7 @@
   aspect-ratio: 3/4;
   background-size: cover;
   background-position: center;
-  background-color: #FBF6E8;
+  background-color: #FFFFFF;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .article-gallery__item:hover {

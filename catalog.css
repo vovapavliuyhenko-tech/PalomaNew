@@ -7,7 +7,7 @@
 }
 
 .catalog-breadcrumbs {
-  background: var(--color-bg, var(--milk, #FBF6E8));
+  background: var(--color-bg, var(--milk, #FFFFFF));
   padding: 12px 0;
   border-bottom: 1px solid var(--color-border, rgba(27, 26, 24, 0.1));
 }
@@ -46,7 +46,7 @@
 
 .catalog-hero {
   padding: clamp(24px, 3vw, 40px) 0 0;
-  background: #fbf6e8;
+  background: #FFFFFF;
 }
 
 .catalog-hero__inner {
@@ -102,7 +102,7 @@
 
 .catalog-filters-wrap {
   position: static;
-  background: #fbf6e8;
+  background: #FFFFFF;
   padding: clamp(16px, 2vw, 24px) 0 0;
   border-bottom: none;
 }
@@ -144,12 +144,12 @@
 
 .catalog-filter-btn:hover {
   border-color: var(--color-text, var(--ink, #1B1A18));
-  background: var(--color-bg-alt, var(--cream, #FBF6E8));
+  background: var(--color-bg-alt, var(--cream, #FFFFFF));
 }
 
 .catalog-filter-btn.is-active {
   background: var(--color-text, var(--ink, #1B1A18));
-  color: #FBF6E8;
+  color: #FFFFFF;
   border-color: var(--color-text, var(--ink, #1B1A18));
 }
 
@@ -201,7 +201,7 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   background: var(--color-accent, var(--burgundy, #1B1A18));
-  color: #FBF6E8;
+  color: #FFFFFF;
   pointer-events: none;
 }
 

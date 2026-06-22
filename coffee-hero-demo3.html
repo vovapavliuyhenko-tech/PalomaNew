@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PALOMA Coffee — премиум, в стиле главной</title>
-<link rel="stylesheet" href="fonts/paloma-fonts.css?v=1">
+<link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
 <style>
 :root{
-  --ivory:#fbf6e8; --cream:#FBF6E8; --paper:#FBF6E8;
-  --dark:#1B1A18; --burgundy:#1B1A18; --crema:#FBF6E8;
+  --ivory:#FFFFFF; --cream:#FFFFFF; --paper:#FFFFFF;
+  --dark:#1B1A18; --burgundy:#1B1A18; --crema:#FFFFFF;
   --font-display:'Italiana',serif; --font-script:'Great Vibes',cursive;
   --font-sans:'Manrope',sans-serif; --ease:cubic-bezier(.22,1,.36,1);
 }
@@ -42,7 +42,7 @@ img{display:block}
    P1 — «ДВОЙНАЯ ЭКСПОЗИЦИЯ» : фото живёт ВНУТРИ букв слова
    ════════════════════════════════════════════════════════════ */
 .P1{position:relative;height:100vh;overflow:hidden;
-  background:radial-gradient(120% 90% at 50% 0%,#FBF6E8,var(--paper))}
+  background:radial-gradient(120% 90% at 50% 0%,#FFFFFF,var(--paper))}
 .P1::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E")}
 .P1__ghost{position:absolute;inset:0;background:url('images/paloma/coffee/hero.jpg') center/cover;opacity:.1;filter:grayscale(.3)}
@@ -81,12 +81,12 @@ img{display:block}
    P3 — «ПАРЯЩАЯ ГАЛЕРЕЯ» : полароиды дрейфуют, параллакс к мышке
    ════════════════════════════════════════════════════════════ */
 .P3{position:relative;height:100vh;overflow:hidden;
-  background:radial-gradient(130% 100% at 50% 30%,#FBF6E8 0%,var(--ivory) 60%,var(--paper) 100%)}
+  background:radial-gradient(130% 100% at 50% 30%,#FFFFFF 0%,var(--ivory) 60%,var(--paper) 100%)}
 .P3__layer{position:absolute;inset:0;transition:transform .4s ease-out}
 .P3__pic{position:absolute;background:#fff;padding:10px 10px 30px;box-shadow:0 24px 50px rgba(42,18,12,.16);
   animation:drift 9s ease-in-out infinite}
 .P3__pic img{width:100%;height:100%;object-fit:cover;display:block}
-.P3__pic span{position:absolute;left:10px;bottom:9px;font-family:var(--font-display);font-size:10px;letter-spacing:.12em;color:#FBF6E8}
+.P3__pic span{position:absolute;left:10px;bottom:9px;font-family:var(--font-display);font-size:10px;letter-spacing:.12em;color:#FFFFFF}
 @keyframes drift{0%,100%{transform:translateY(-10px) rotate(var(--r))}50%{transform:translateY(10px) rotate(calc(var(--r) * -1))}}
 .P3__center{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
 .P3__eyebrow{font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--burgundy);margin-bottom:16px;opacity:0;animation:fadeUp 1s .2s var(--ease) forwards}

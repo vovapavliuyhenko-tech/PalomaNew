@@ -25,7 +25,7 @@ body.is-paloma-loading {
   justify-content: center;
   gap: 14px;
   overflow: hidden;
-  background: #fbf6e8;
+  background: #FFFFFF;
   pointer-events: auto;
 
   /* Начальное состояние: виден, стоит на месте */
