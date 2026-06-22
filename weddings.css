@@ -62,7 +62,7 @@
 
 .w-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(72px, 12vw, 200px);
+  font-size: clamp(30px, 6.96vw, 64px);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.03em;
@@ -271,7 +271,7 @@
 
 .w-services__title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 7vw, 104px);
+  font-size: clamp(30px, 4.06vw, 52px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -674,7 +674,7 @@
 
 .w-portfolio__title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 7vw, 104px);
+  font-size: clamp(30px, 4.06vw, 52px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -786,7 +786,7 @@
 
 .w-packages__title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 7vw, 104px);
+  font-size: clamp(30px, 4.06vw, 52px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -1011,7 +1011,7 @@
 
 .w-faq__title {
   font-family: var(--font-display);
-  font-size: clamp(56px, 9vw, 140px);
+  font-size: clamp(30px, 5.22vw, 64px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.03em;

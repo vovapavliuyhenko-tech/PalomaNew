@@ -992,7 +992,7 @@ body.is-nav-open {
 
 .showcase__title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 7vw, 104px);
+  font-size: clamp(30px, 4.06vw, 52px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -2567,7 +2567,7 @@ body.is-nav-open {
 
 .faq__title {
   font-family: var(--font-display);
-  font-size: clamp(64px, 10vw, 160px);
+  font-size: clamp(30px, 5.8vw, 64px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -2835,7 +2835,7 @@ body.is-nav-open {
 
 .contacts-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(56px, 8vw, 120px);
+  font-size: clamp(30px, 4.64vw, 60px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -3106,7 +3106,7 @@ body.is-nav-open {
 
 .contacts-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(56px, 8vw, 120px);
+  font-size: clamp(30px, 4.64vw, 60px);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
@@ -3736,7 +3736,7 @@ body.is-nav-open {
 
 .process__heading {
   font-family: var(--font-display, "Italiana", serif);
-  font-size: clamp(48px, 9vw, 120px);
+  font-size: clamp(30px, 5.22vw, 60px);
   font-weight: 400;
   line-height: 0.94;
   letter-spacing: -0.02em;
@@ -3842,7 +3842,7 @@ body.is-nav-open {
 
 .process__card-num {
   font-family: var(--font-display, "Italiana", serif);
-  font-size: clamp(80px, 12vw, 160px);
+  font-size: clamp(30px, 6.96vw, 64px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -4563,7 +4563,7 @@ h3,
 .page-hero__title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(40px, 7vw, 96px);
+  font-size: clamp(30px, 4.06vw, 48px);
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--graphite);
@@ -6692,7 +6692,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .home-about-scene__title {
   margin: 0;
   font-family: "Montserrat", system-ui, sans-serif;
-  font-size: clamp(40px, 5.8vw, 96px);
+  font-size: clamp(30px, 3.36vw, 48px);
   font-weight: 200;
   font-style: normal;
   line-height: 1.04;
@@ -7155,7 +7155,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 }
 
 .subscription-hero {
-  min-height: 100svh;
+  min-height: 78svh;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
   background: var(--paloma-bg, #FBF6E8);
@@ -7166,7 +7166,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .subscription-hero__media {
   position: relative;
-  min-height: 100svh;
+  min-height: 78svh;
   overflow: hidden;
   background: #FBF6E8;
 }
@@ -7221,9 +7221,9 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   flex-direction: column;
   justify-content: center;
   padding:
-    clamp(96px, 10vw, 140px)
+    clamp(44px, 5vw, 78px)
     clamp(28px, 6vw, 88px)
-    clamp(56px, 7vw, 96px);
+    clamp(32px, 4vw, 54px);
 }
 
 .subscription-hero__eyebrow {
@@ -7239,7 +7239,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .subscription-hero__title {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(48px, 7vw, 112px);
+  font-size: clamp(34px, 4vw, 58px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.9;
@@ -7416,7 +7416,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   max-width: 900px;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(42px, 6vw, 96px);
+  font-size: clamp(30px, 3.48vw, 48px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.94;
@@ -7478,7 +7478,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .subscription-related__title {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(42px, 6vw, 96px);
+  font-size: clamp(30px, 3.48vw, 48px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.94;
@@ -8304,7 +8304,7 @@ body.event-decoration-page .client-hero {
 .ev-card__num {
   display: block;
   font-family: var(--font-display, "Italiana", serif);
-  font-size: clamp(72px, 10vw, 120px);
+  font-size: clamp(30px, 5.8vw, 60px);
   font-weight: 400;
   line-height: 0.85;
   letter-spacing: -0.02em;
