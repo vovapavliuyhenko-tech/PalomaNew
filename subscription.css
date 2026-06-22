@@ -68,6 +68,65 @@ body.subscription-page {
   color: #E7385A;
 }
 
+/* ── Чуть больше воздуха между группами и легендой ── */
+.subscription-form__legend {
+  margin-bottom: 12px;
+}
+
+.subscription-options {
+  gap: 10px;
+}
+
+.subscription-option {
+  letter-spacing: 0.06em;
+}
+
+/* ── Сводка расчёта — аккуратнее и читабельнее ── */
+.subscription-summary {
+  margin: clamp(24px, 3vw, 32px) 0 0;
+  padding: clamp(18px, 2vw, 24px) clamp(18px, 2vw, 26px);
+  border-radius: 4px;
+  background: #FBF6E8;
+  border-color: rgba(27, 26, 24, 0.1);
+}
+
+.subscription-summary__row {
+  padding: 7px 0;
+  font-size: 14.5px;
+}
+
+.subscription-summary__total {
+  margin-top: 14px;
+  padding-top: 16px;
+  align-items: center;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Итоговая цена — читаемый sans вместо курсивного serif */
+.subscription-summary__total span:last-child {
+  font-family: var(--sans);
+  font-size: clamp(22px, 2vw, 28px);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #E7385A;
+}
+
+/* ── Кнопка оформления — больше воздуха, читаемая цена ── */
+.subscription-form__submit {
+  margin-top: clamp(18px, 2vw, 24px);
+  min-height: 60px;
+  gap: 6px;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+}
+
+[data-sum-total-btn] {
+  font-weight: 700;
+}
+
 /* =====================================================
    ВИТРИНА ПОД ПОДПИСКОЙ — карточки товаров как на главной
    (используется разметка .home-showcase / .home-product-card)
