@@ -18,8 +18,8 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   --ink:#1B1A18;         /* тёплый тёмно-коричневый — основной текст-акцент */
   --body:#1B1A18;        /* коричневый текст параграфов */
   --muted:#FBF6E8;       /* приглушённый таупе — подписи/мета */
-  --wine:#1B1A18;        /* фирменный винно-красный акцент */
-  --wine-d:#1B1A18;
+  --wine:#D98AA0;        /* акцент — пудрово-розовый */
+  --wine-d:#C56F89;
   --eline:rgba(74,53,38,.16);
   /* крупные заголовки (ea-title/ea-hero__h1) — Classica One (--fhead);
      остальные подзаголовки/текст — Montserrat 275 italic */
@@ -192,7 +192,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   display:flex;flex-direction:column;justify-content:center;box-shadow:0 40px 100px rgba(20,12,8,.45)}
 .ea-serv__num{display:block;text-align:center;font-family:var(--fdisplay);font-size:14px;color:var(--muted);letter-spacing:.24em}
 /* заголовок — розовый, ЗАГЛАВНЫЕ, по центру, крупнее (как на референсе) */
-.ea-serv__ctitle{font-family:var(--fhead);font-weight:450;font-size:clamp(24px,2.4vw,40px);color:#E7385A;margin:10px 0 22px;line-height:1.16;text-transform:uppercase;text-align:center;letter-spacing:.02em}
+.ea-serv__ctitle{font-family:var(--fhead);font-weight:450;font-size:clamp(24px,2.4vw,40px);color:#D98AA0;margin:10px 0 22px;line-height:1.16;text-transform:uppercase;text-align:center;letter-spacing:.02em}
 .ea-serv__thumb{width:108px;height:108px;object-fit:cover;margin:2px auto 24px;box-shadow:0 14px 32px rgba(40,24,12,.18)}
 .ea-serv__slash{font-size:clamp(13px,1vw,15px);line-height:1.75;color:var(--body);font-weight:400;margin-bottom:24px}
 .ea-serv__price{font-family:var(--fdisplay);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
@@ -236,7 +236,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
    Базовая раскладка .ea-proc (760–1120px панели, позиции под референс). Кастом:
    РОЗОВЫЙ акцент заголовков + ЗАГЛАВНЫЕ + рукописная нумерация + видимые стрелки. ── */
 /* заголовки этапов — РОЗОВЫЙ акцент, ЗАГЛАВНЫЕ, чистый гротеск (как на Оформлении) */
-.ea-proc .ea-step__t{font-family:'Montserrat',Arial,sans-serif;font-size:clamp(32px,3.6vw,54px);color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
+.ea-proc .ea-step__t{font-family:'Montserrat',Arial,sans-serif;font-size:clamp(32px,3.6vw,54px);color:#D98AA0;text-transform:uppercase;letter-spacing:.015em}
 /* интро-заголовок и текст процесса — те же шрифт/цвета, что на Оформлении */
 .ea-proc .ea-title{font-family:'Montserrat',Arial,sans-serif}
 .ea-proc .ea-step__d,.ea-proc .ea-proc__lead{font-family:'Montserrat',Arial,sans-serif;font-style:normal;color:#1B1A18}
@@ -255,7 +255,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* кофейня: чистая раскладка в две зоны (текст слева, фото справа), шире и воздушнее,
    тексты не залезают на фото; розовый интро-заголовок как на Оформлении */
 #cf-steps .ea-proc-step{width:clamp(900px,68vw,1280px);padding:0 clamp(48px,5vw,96px)}
-#cf-steps .ea-title{color:#E7385A}
+#cf-steps .ea-title{color:#D98AA0}
 #cf-steps .ea-step__t--top{top:16%;left:3%}
 #cf-steps .ea-step__body--lo{top:44%;left:3%;width:34%}
 #cf-steps .ea-proc__ph--a{top:14%;left:48%;width:26%;aspect-ratio:4/3;filter:none}
@@ -306,15 +306,15 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 #testimonials .ea-test__photo{aspect-ratio:auto;height:100%;min-height:480px}
 #testimonials .ea-test__body{padding:clamp(36px,3.6vw,64px) clamp(34px,4vw,72px)}
 /* по референсу + как блок этапов: заголовок секции — РОЗОВЫЙ, ЗАГЛАВНЫЕ */
-#testimonials .ea-title{color:#E7385A;text-transform:uppercase;letter-spacing:.015em}
+#testimonials .ea-title{color:#D98AA0;text-transform:uppercase;letter-spacing:.015em}
 /* цитата-заголовок — ЗАГЛАВНЫЕ, по центру (как на референсе), крупнее */
 #testimonials .ea-test__qtitle{text-transform:uppercase;letter-spacing:.02em;text-align:left;font-size:clamp(24px,2.3vw,38px);margin-bottom:24px}
 /* текст отзыва крупнее */
 #testimonials .ea-test__qtext{font-size:clamp(14px,1.05vw,17px);line-height:1.8;margin-bottom:14px}
 /* подпись клиента — розовый рукописный, как красная подпись на референсе, крупнее */
-#testimonials .ea-test__sign{color:#E7385A;font-size:clamp(26px,2.4vw,40px);margin-top:24px}
+#testimonials .ea-test__sign{color:#D98AA0;font-size:clamp(26px,2.4vw,40px);margin-top:24px}
 /* стрелки навигации — розовый ховер */
-#testimonials .ea-test__arrow:hover{background:#E7385A;border-color:#E7385A;color:#fff}
+#testimonials .ea-test__arrow:hover{background:#D98AA0;border-color:#D98AA0;color:#fff}
 
 /* ── CONTACT — «get in touch»: на кремовом фоне ── */
 .ea-cta{background:var(--paper2);border-top:1px solid var(--cream-line)}
@@ -325,7 +325,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-form input,.ea-form select,.ea-form textarea{background:#FBF6E8;border:1px solid var(--cream-line);border-radius:10px;
   color:var(--ink);font-family:var(--fsans);font-size:15px;padding:16px 20px;outline:none;transition:border-color .3s,box-shadow .3s}
 .ea-form input::placeholder,.ea-form textarea::placeholder{color:rgba(103,77,58,.5)}
-.ea-form input:focus,.ea-form select:focus,.ea-form textarea:focus{border-color:var(--wine);box-shadow:0 0 0 2px rgba(183,14,45,.12)}
+.ea-form input:focus,.ea-form select:focus,.ea-form textarea:focus{border-color:var(--wine);box-shadow:0 0 0 2px rgba(217, 138, 160,.12)}
 .ea-form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239a8a6f' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 20px center}
 .ea-form select option{color:#1B1A18}
 .ea-form__submit{justify-self:start;margin-top:8px}
@@ -349,15 +349,15 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* ── Оформление #contact: по референсу — поля с обводкой (белые, скруглённые),
    РОЗОВЫЙ акцент, компактнее по высоте (виден край следующего блока) ── */
 #contact{padding-top:clamp(100px,14vh,180px);padding-bottom:clamp(40px,5vh,64px)}
-#contact .ea-title{color:#E7385A}
+#contact .ea-title{color:#D98AA0}
 #contact .ea-form{gap:14px;margin-top:clamp(16px,1.8vw,24px)}
 /* поля с обводкой как на референсе: белые, крупные, мягко скруглённые, светлая рамка */
 #contact .ea-form input,#contact .ea-form select{background:#fff;border:1px solid #e4ddcc;border-radius:14px;padding:17px 22px;font-size:16px;box-shadow:0 1px 2px rgba(40,24,12,.03)}
 #contact .ea-form input::placeholder{color:#9b9385}
 #contact .ea-form select{background-position:right 22px center}
-#contact .ea-form input:focus,#contact .ea-form select:focus{border-color:#E7385A;box-shadow:0 0 0 2px rgba(231,56,90,.15)}
+#contact .ea-form input:focus,#contact .ea-form select:focus{border-color:#D98AA0;box-shadow:0 0 0 2px rgba(217, 138, 160,.15)}
 /* розовая рамка фото */
-#contact .ea-cta__media{border-color:#E7385A;background:#E7385A;min-height:clamp(340px,60vh,560px)}
+#contact .ea-cta__media{border-color:#D98AA0;background:#D98AA0;min-height:clamp(340px,60vh,560px)}
 /* ползунок бюджета как на референсе: тонкий трек, БЕЛЫЙ кружок, белый бабл со светлой рамкой */
 #contact .ea-range{padding-top:34px}
 #contact .ea-range input[type=range]{height:3px;background:#ddd4c1}
@@ -366,10 +366,10 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 #contact .ea-range input[type=range]::-moz-range-thumb{width:24px;height:24px;background:#fff;border:1px solid #d9cdb4;box-shadow:0 2px 8px rgba(40,24,12,.18)}
 #contact .ea-range__bubble{background:#fff;color:#1B1A18;border:1px solid #e4ddcc;box-shadow:0 4px 12px rgba(40,24,12,.10)}
 /* розовая кнопка-текст с сердечком */
-#contact .ea-form__submit{color:#E7385A;border-bottom-color:#E7385A}
-#contact .ea-form__submit svg{fill:#E7385A}
-#contact .ea-form__submit:hover{color:#E7385A;border-bottom-color:#E7385A}
-#contact .ea-form__submit:hover svg{fill:#E7385A}
+#contact .ea-form__submit{color:#D98AA0;border-bottom-color:#D98AA0}
+#contact .ea-form__submit svg{fill:#D98AA0}
+#contact .ea-form__submit:hover{color:#D98AA0;border-bottom-color:#D98AA0}
+#contact .ea-form__submit:hover svg{fill:#D98AA0}
 
 /* ── FAQ — «faq»: 2 колонки, винно-красные круглые кнопки ── */
 .ea-faq{background:var(--paper);border-top:1px solid var(--cream-line)}
@@ -386,14 +386,14 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-faq__a{max-height:0;overflow:hidden;transition:max-height .45s var(--eease)}
 .ea-faq__a p{padding:0 60px 22px 0;font-weight:400;font-size:14px;line-height:1.75;color:var(--body)}
 /* Оформление #faq: заголовок и круглые кнопки «+» розовым */
-#faq .ea-title{color:#E7385A}
-#faq .ea-faq__q::after,#faq .ea-faq__item.is-open .ea-faq__q::after{background:#E7385A}
+#faq .ea-title{color:#D98AA0}
+#faq .ea-faq__q::after,#faq .ea-faq__item.is-open .ea-faq__q::after{background:#D98AA0}
 
 /* Оформление: ВСЕ крупные заголовки страницы — розовые + чуть менее жирные (450)
    (герой, философия, проекты, отзывы, контакты, FAQ, этапы). Скоуп — только эта страница. */
 .event-decoration-page .ea-title,
 .event-decoration-page .ea-hero__h1,
-.event-decoration-page .ea-step__t{color:#E7385A;font-weight:450}
+.event-decoration-page .ea-step__t{color:#D98AA0;font-weight:450}
 
 /* Оформление: герой и философия — ровно один экран (как на референсе), не выше */
 .event-decoration-page .ea-hero,

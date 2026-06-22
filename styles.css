@@ -30,14 +30,14 @@
   --ink-30: rgba(27, 26, 24, 0.3);
   --line: rgba(27, 26, 24, 0.12);
   --line-strong: rgba(27, 26, 24, 0.22);
-  --burgundy: #1B1A18;
-  --bord-deep: #1B1A18;
-  --orange: #1B1A18;
-  --orange-deep: #1B1A18;
-  --magenta: #1B1A18;
-  --ochre: #1B1A18;
-  --olive: #1B1A18;
-  --coffee-tone: #1B1A18;
+  --burgundy: #D98AA0;       /* акцент сайта — пудрово-розовый */
+  --bord-deep: #C56F89;      /* тёмный розовый для hover/active */
+  --orange: #D98AA0;
+  --orange-deep: #C56F89;
+  --magenta: #D98AA0;
+  --ochre: #D98AA0;
+  --olive: #D98AA0;
+  --coffee-tone: #D98AA0;
   --pollen: #FBF6E8;
 
   /* Логотип PALOMA — высококонтрастный сериф, как в нарисованном файле */
@@ -5056,10 +5056,10 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   align-items: center;
   overflow: hidden;
   max-width: 100%;
-  background: #D98AA0;
-  color: #1B1A18;
-  border-top: 1px solid rgba(27, 26, 24, 0.14);
-  border-bottom: 1px solid rgba(27, 26, 24, 0.14);
+  background: #E7385A;
+  color: #FBF6E8;
+  border-top: 1px solid rgba(231, 56, 90, 0.55);
+  border-bottom: 1px solid rgba(231, 56, 90, 0.55);
 }
 
 .home-marquee__viewport {
@@ -5094,7 +5094,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   line-height: 1;
   letter-spacing: 0.01em;
   text-transform: none;
-  color: #1B1A18;
+  color: #FBF6E8;
 }
 
 .home-marquee__separator {
@@ -5104,7 +5104,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   margin: 0 clamp(18px, 2.6vw, 38px);
   font-size: 12px;
   line-height: 1;
-  color: rgba(27, 26, 24, 0.55);
+  color: rgba(251, 246, 232, 0.6);
 }
 
 @keyframes homeMarqueeMove {
@@ -5183,7 +5183,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .home-showcase__title {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(36px, 5.8vw, 86px);
+  font-size: clamp(44px, 6.8vw, 104px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.95;

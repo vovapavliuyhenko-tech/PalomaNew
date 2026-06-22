@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="preloader.css?v=16">
-  <link rel="stylesheet" href="styles.css?v=fonts10">
+  <link rel="stylesheet" href="styles.css?v=fonts12">
   <link rel="stylesheet" href="paloma-animations.css">
 <link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="product.css?v=2">
@@ -312,46 +312,7 @@
 
         <p class="pdp-info__desc" id="pdpDesc"></p>
 
-        <div class="pdp-gift">
-          <label class="pdp-gift__toggle">
-            <input type="checkbox" id="pdpGiftToggle" data-pdp-gift-toggle>
-            <span>Это подарок — добавим открытку и доставим адресату</span>
-          </label>
-          <div class="pdp-gift__fields" id="pdpGiftFields" hidden>
-            <label class="pdp-field">
-              <span class="pdp-field__label">Текст открытки</span>
-              <textarea class="pdp-field__input" rows="3" maxlength="300" id="pdpCardText" placeholder="Например: С днём рождения! Будь счастлива."></textarea>
-            </label>
-            <div class="pdp-field-row">
-              <label class="pdp-field">
-                <span class="pdp-field__label">Имя получателя</span>
-                <input class="pdp-field__input" type="text" id="pdpRecipientName" placeholder="Имя">
-              </label>
-              <label class="pdp-field">
-                <span class="pdp-field__label">Телефон получателя</span>
-                <input class="pdp-field__input" type="tel" id="pdpRecipientPhone" placeholder="+7">
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="pdp-fulfill">
-          <span class="pdp-fulfill__label">Получение</span>
-          <div class="pdp-fulfill__btns" id="pdpFulfillBtns" role="group" aria-label="Способ получения">
-            <button type="button" class="pdp-fulfill__btn is-active" data-fulfill="delivery">Доставка по Новороссийску</button>
-            <button type="button" class="pdp-fulfill__btn" data-fulfill="pickup">Самовывоз · Энгельса, 74/82</button>
-          </div>
-          <div class="pdp-fulfill__row">
-            <label class="pdp-field">
-              <span class="pdp-field__label">Желаемая дата</span>
-              <input class="pdp-field__input" type="date" id="pdpDeliveryDate">
-            </label>
-            <label class="pdp-photo">
-              <input type="checkbox" id="pdpPhotoBefore" checked>
-              <span>Пришлём фото букета перед отправкой</span>
-            </label>
-          </div>
-        </div>
+        <!-- Подарок, получатель, способ получения и дата заполняются в корзине/оформлении -->
 
         <div class="pdp-actions">
           <div class="pdp-qty" role="group" aria-label="Количество">

@@ -100,7 +100,7 @@
   font-style: italic;
   font-weight: 400;
   line-height: 1.08;
-  color: #D98AA0;
+  color: #E7385A;
 }
 
 .home-subscription__text {
@@ -117,7 +117,7 @@
 .home-subscription__link {
   display: inline-block;
   margin-bottom: auto;
-  color: #D98AA0;
+  color: #E7385A;
   font-family: var(--font-display, var(--font-serif, Georgia, serif));
   font-size: 20px;
   font-style: italic;
@@ -127,12 +127,12 @@
 }
 
 .home-subscription__link:hover {
-  color: #C56F89;
+  color: #C82847;
   transform: translateY(-1px);
 }
 
 .home-subscription__link:focus-visible {
-  outline: 2px solid #D98AA0;
+  outline: 2px solid #E7385A;
   outline-offset: 4px;
 }
 
@@ -476,34 +476,34 @@
    Заскоплено на body.is-home, чтобы не задеть другие страницы.
    ===================================================== */
 
-/* hero «В каталог» — заливка розовым */
+/* hero «Выбрать букет» — на ховере розовая заливка */
 body.is-home .paloma-cover__cta:hover {
-  background: #D98AA0;
-  color: #1B1A18;
-  box-shadow: 0 16px 40px rgba(217, 138, 160, 0.42);
+  background: #E7385A;
+  color: #FBF6E8;
+  border-color: #E7385A;
+  box-shadow: none;
 }
 
-/* карточки витрины — «В корзину» и «Подробнее» */
+/* карточки витрины — «В корзину», «Подробнее» и стрелки карусели */
 body.is-home .product-card__btn--cart:hover,
 body.is-home .product-card__btn--cart:focus-visible,
 body.is-home .product-card__btn--detail:hover,
-body.is-home .product-card__btn--detail:focus-visible {
-  background: #D98AA0;
-  border-color: #D98AA0;
-  color: #1B1A18;
-}
-
-/* стрелки карусели витрины */
-body.is-home .home-showcase__arrow:hover {
-  background: #D98AA0;
-  border-color: #D98AA0;
-  color: #1B1A18;
+body.is-home .product-card__btn--detail:focus-visible,
+body.is-home .home-product-card__more:hover,
+body.is-home .home-product-card__more:focus-visible,
+body.is-home .home-showcase__arrow:hover,
+body.is-home .home-showcase__arrow:focus-visible {
+  background: #E7385A;
+  border-color: #E7385A;
+  color: #FBF6E8;
 }
 
 /* текстовые ссылки-кнопки */
 body.is-home .home-showcase__catalog-link:hover,
 body.is-home .home-categories__all-link:hover,
-body.is-home .home-categories__all:hover {
-  color: #D98AA0;
+body.is-home .home-categories__all:hover,
+body.is-home .home-blog__all-link:hover,
+body.is-home .home-about-scene__link:hover {
+  color: #E7385A;
   opacity: 1;
 }

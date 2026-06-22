@@ -168,22 +168,23 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #FBF6E8;
-  background: #1B1A18;
+  color: #1B1A18;
+  background: #FBF6E8;
   text-decoration: none;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 12px;
   padding: clamp(14px, 1.5vw, 18px) 24px;
   box-shadow: 0 14px 34px rgba(27, 26, 24, 0.30);
   opacity: 0;
   animation: coverFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.7s forwards;
-  transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+  transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 .paloma-cover__cta:hover {
-  color: #1B1A18;
-  background: #FFFFFF;
-  box-shadow: 0 16px 40px rgba(27, 26, 24, 0.36);
+  color: #FBF6E8;
+  background: transparent;
+  border-color: rgba(251, 246, 232, 0.85);
+  box-shadow: none;
 }
 
 .paloma-cover__cta:focus-visible {
