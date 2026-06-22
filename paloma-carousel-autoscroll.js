@@ -18,6 +18,11 @@
       var track    = section.querySelector('[data-carousel-track]');
       if (!viewport || !track) return;
 
+      /* ── Пропускаем пустые (ещё не отрисованные) и уже инициализированные ── */
+      if (!track.children.length) return;
+      if (section.dataset.autoscrollInit === '1') return;
+      section.dataset.autoscrollInit = '1';
+
       /* ── Clone cards for seamless infinite loop ── */
       var origCards = Array.prototype.slice.call(track.children);
       origCards.forEach(function (card) {
@@ -82,6 +87,10 @@
       }, 1800);
     });
   }
+
+  /* Доступно для повторного вызова после динамической отрисовки карточек
+     (например, блок «С этим часто покупают» на странице товара). */
+  window.initPalomaAutoScroll = init;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

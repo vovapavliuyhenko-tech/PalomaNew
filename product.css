@@ -697,3 +697,21 @@ body.product-page {
   color: var(--color-text-muted, var(--muted, #1B1A18));
   margin-bottom: 32px;
 }
+
+/* =====================================================
+   «С этим часто покупают» — карусель как на главной
+   (розовый ховер кнопок/стрелок, как на is-home)
+   ===================================================== */
+.product-page .home-product-card__more:hover,
+.product-page .home-product-card__more:focus-visible,
+.product-page .home-showcase__arrow:hover,
+.product-page .home-showcase__arrow:focus-visible {
+  background: #E7385A;
+  border-color: #E7385A;
+  color: #FBF6E8;
+}
+
+.product-page .home-showcase__catalog-link:hover {
+  color: #E7385A;
+  opacity: 1;
+}

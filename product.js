@@ -505,18 +505,29 @@
       .map(function (p) {
         const href = "product.html?slug=" + encodeURIComponent(p.slug || p.id);
         const media = p.image
-          ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy">'
-          : '<span class="pdp-similar-card__ph" style="background:' + esc(p.placeholderBg || "") + '"></span>';
+          ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="600" height="870">'
+          : '<span class="home-product-card__ph" style="background:' + esc(p.placeholderBg || "") + '"></span>';
         return (
-          '<a class="pdp-similar-card" href="' + href + '">' +
-          '<span class="pdp-similar-card__media">' + media + "</span>" +
-          '<span class="pdp-similar-card__name">' + esc(p.name) + "</span>" +
-          '<span class="pdp-similar-card__price">' + formatPrice(p.price) + "</span>" +
-          "</a>"
+          '<article class="home-product-card">' +
+          '<a href="' + href + '" class="home-product-card__media" aria-label="Подробнее: ' + esc(p.name) + '">' + media + "</a>" +
+          '<div class="home-product-card__body">' +
+          '<h3 class="home-product-card__title"><a href="' + href + '">' + esc(p.name) + "</a></h3>" +
+          '<p class="home-product-card__price">' + formatPrice(p.price) + "</p>" +
+          '<div class="home-product-card__actions">' +
+          '<a href="' + href + '" class="home-product-card__more">Подробнее</a>' +
+          "</div></div></article>"
         );
       })
       .join("");
     similarSection.hidden = false;
+
+    // Запускаем карусель как на главной: стрелки/прогресс + автопрокрутка
+    if (typeof window.initProductCarousels === "function") {
+      window.initProductCarousels();
+    }
+    if (typeof window.initPalomaAutoScroll === "function") {
+      window.initPalomaAutoScroll();
+    }
   }
 
   function init() {

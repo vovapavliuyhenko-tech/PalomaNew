@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="styles.css?v=fonts12">
   <link rel="stylesheet" href="paloma-animations.css">
 <link rel="stylesheet" href="cart.css">
-  <link rel="stylesheet" href="product.css?v=2">
+  <link rel="stylesheet" href="product.css?v=3">
   <link rel="stylesheet" href="clients.css">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=13">
@@ -384,21 +384,33 @@
 
     </div>
 
-    <section class="pdp-addons" id="pdpAddons" aria-label="Идеально подойдёт к этому товару">
-      <div class="pdp-addons__inner">
-        <h2 class="pdp-addons__title">Отлично дополнит букет</h2>
-        <div class="pdp-addons__grid" id="pdpAddonsGrid"></div>
-      </div>
-    </section>
+    <section class="home-showcase pdp-similar" id="pdpSimilar" aria-label="С этим часто покупают" data-product-carousel hidden>
 
-    <section class="pdp-similar" id="pdpSimilar" aria-label="Похожие букеты" hidden>
-      <div class="pdp-similar__inner">
-        <div class="pdp-similar__head">
-          <h2 class="pdp-similar__title">С этим часто покупают</h2>
-          <a href="catalog.html" class="pdp-similar__link">В каталог</a>
-        </div>
-        <div class="pdp-similar__grid" id="pdpSimilarGrid"></div>
+      <div class="home-showcase__head">
+        <h2 class="home-showcase__title">С этим часто покупают</h2>
+        <a href="catalog.html" class="home-showcase__catalog-link">В каталог</a>
       </div>
+
+      <div class="home-showcase__carousel">
+
+        <button class="home-showcase__arrow home-showcase__arrow--prev" type="button" aria-label="Предыдущие товары" data-carousel-prev>
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <div class="home-showcase__viewport" data-carousel-viewport>
+          <div class="home-showcase__track" id="pdpSimilarGrid" data-carousel-track></div>
+        </div>
+
+        <button class="home-showcase__arrow home-showcase__arrow--next" type="button" aria-label="Следующие товары" data-carousel-next>
+          <span aria-hidden="true">→</span>
+        </button>
+
+      </div>
+
+      <div class="home-showcase__progress" aria-hidden="true">
+        <span class="home-showcase__progress-bar" data-carousel-progress></span>
+      </div>
+
     </section>
 
     <div class="pdp-not-found" id="pdpNotFound" hidden aria-label="Товар не найден">
@@ -617,7 +629,8 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js"></script>
-  <script src="product.js?v=2"></script>
+  <script src="paloma-carousel-autoscroll.js?v=2"></script>
+  <script src="product.js?v=3"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=12"></script>
 </body>
