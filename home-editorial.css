@@ -31,14 +31,16 @@
 .home-subscription__card {
   position: relative;
   z-index: 2;
-  width: min(820px, calc(100% - 48px));
-  min-height: 600px;
-  padding: 88px 72px 56px;
+  width: min(640px, calc(100% - 48px));
+  aspect-ratio: 1 / 1;            /* квадрат, как на референсе */
+  min-height: 0;
+  padding: clamp(48px, 6vw, 84px) clamp(40px, 5vw, 72px);
   background: #FFFFFF;
   color: #1B1A18;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;        /* контент по центру квадрата */
   text-align: center;
   overflow: hidden;
   isolation: isolate;
@@ -46,6 +48,18 @@
   opacity: 0;
   transform: translateY(28px);
 }
+
+/* розовые цветы-контуры по углам карточки */
+.home-subscription__flower {
+  position: absolute;
+  z-index: 1;
+  width: clamp(120px, 17vw, 200px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+.home-subscription__flower--tl { top: 0; left: 0; }
+.home-subscription__flower--br { bottom: 0; right: 0; }
 
 .home-subscription.is-visible .home-subscription__card {
   opacity: 1;
@@ -104,8 +118,8 @@
 }
 
 .home-subscription__text {
-  max-width: 520px;
-  margin: 0 auto 62px;
+  max-width: 460px;
+  margin: 0 auto clamp(22px, 2.6vw, 36px);
   font-family: var(--font-sans, inherit);
   font-size: 15px;
   line-height: 1.5;
@@ -116,7 +130,7 @@
 
 .home-subscription__link {
   display: inline-block;
-  margin-bottom: auto;
+  margin-bottom: 0;
   color: #E7385A;
   font-family: var(--font-display, var(--font-serif, Georgia, serif));
   font-size: 20px;
@@ -137,7 +151,7 @@
 }
 
 .home-subscription__note {
-  margin: 72px auto 0;
+  margin: clamp(28px, 3.4vw, 48px) auto 0;
   max-width: 280px;
   font-family: var(--font-sans, inherit);
   font-size: 16px;
