@@ -5056,10 +5056,10 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   align-items: center;
   overflow: hidden;
   max-width: 100%;
-  background: #E7385A;
-  color: #FBF6E8;
-  border-top: 1px solid rgba(231, 56, 90, 0.55);
-  border-bottom: 1px solid rgba(231, 56, 90, 0.55);
+  background: #FBF6E8;
+  color: #E7385A;
+  border-top: 1px solid rgba(231, 56, 90, 0.3);
+  border-bottom: 1px solid rgba(231, 56, 90, 0.3);
 }
 
 .home-marquee__viewport {
@@ -5094,7 +5094,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   line-height: 1;
   letter-spacing: 0.01em;
   text-transform: none;
-  color: #FBF6E8;
+  color: #E7385A;
 }
 
 .home-marquee__separator {
@@ -5104,7 +5104,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   margin: 0 clamp(18px, 2.6vw, 38px);
   font-size: 12px;
   line-height: 1;
-  color: rgba(251, 246, 232, 0.6);
+  color: rgba(231, 56, 90, 0.5);
 }
 
 @keyframes homeMarqueeMove {
