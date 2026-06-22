@@ -29,8 +29,9 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   /* +header-offset компенсирует отрицательный margin-top ниже, чтобы
      видимая часть героя гарантированно перекрывала весь экран и бегущая
      строка не выглядывала снизу до скролла. */
-  height: calc(110vh + var(--paloma-header-offset, 88px));
-  min-height: calc(720px + var(--paloma-header-offset, 88px));
+  /* компактнее (как референс ~65-72vh), было 110vh — слишком высокий герой */
+  height: calc(72vh + var(--paloma-header-offset, 88px));
+  min-height: calc(500px + var(--paloma-header-offset, 88px));
   overflow: hidden;
   background: #1B1A18;
   margin-top: calc(-1 * var(--paloma-header-offset, 88px));
@@ -89,7 +90,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .paloma-cover__word {
   margin: 0;
   font-family: var(--logo);
-  font-size: clamp(64px, 18vw, 290px);
+  font-size: clamp(56px, 13vw, 200px);
   font-weight: 400;
   font-style: normal;
   line-height: 0.88;

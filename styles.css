@@ -5157,7 +5157,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .home-showcase {
   position: relative;
   overflow: hidden;
-  padding: clamp(56px, 7vw, 96px) clamp(12px, 2vw, 28px);
+  padding: clamp(30px, 3.6vw, 54px) clamp(12px, 2vw, 28px);
   background: var(--paloma-bg, #FBF6E8);
   color: var(--paloma-text, #1B1A18);
 }
@@ -5173,7 +5173,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: clamp(44px, 5vw, 76px);
+  margin-bottom: clamp(18px, 2.2vw, 32px);
   padding: 0 clamp(4px, 1vw, 12px);
   max-width: var(--container);
   margin-left: auto;
@@ -5183,7 +5183,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .home-showcase__title {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(44px, 6.8vw, 104px);
+  font-size: clamp(28px, 3.4vw, 50px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.95;
@@ -5269,7 +5269,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   position: relative;
   display: block;
   overflow: hidden;
-  aspect-ratio: 3 / 4.35;
+  aspect-ratio: 3 / 3.5; /* компактнее (было 3/4.35 — карточки слишком высокие) */
   background: #FBF6E8;
   color: inherit;
   text-decoration: none;
@@ -5583,7 +5583,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .home-categories {
   position: relative;
-  padding: clamp(56px, 7vw, 104px) clamp(8px, 1.8vw, 28px);
+  padding: clamp(30px, 3.6vw, 54px) clamp(8px, 1.8vw, 28px);
   background: var(--paloma-bg, #FBF6E8);
   color: var(--paloma-text, #1B1A18);
   overflow: hidden;
@@ -5608,7 +5608,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .home-categories__title {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(38px, 6vw, 92px);
+  font-size: clamp(28px, 3.4vw, 50px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.95;
@@ -5907,7 +5907,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 }
 
 .home-showcase--choice .home-product-card__media {
-  aspect-ratio: 3 / 4.45;
+  aspect-ratio: 3 / 3.6;
 }
 
 .home-product-card__placeholder--daisies {
@@ -6295,7 +6295,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 }
 
 .home-showcase--accessories .home-product-card__media {
-  aspect-ratio: 3 / 4.35;
+  aspect-ratio: 3 / 3.5;
 }
 
 .home-product-card--accessory .home-product-card__title {
@@ -6351,7 +6351,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .home-blog {
   position: relative;
   overflow: hidden;
-  padding: clamp(56px, 7vw, 104px) clamp(8px, 1.8vw, 28px);
+  padding: clamp(30px, 3.6vw, 54px) clamp(8px, 1.8vw, 28px);
   background: var(--paloma-bg-soft, #fbf6e8);
   color: var(--paloma-text, #1B1A18);
   border-top: 1px solid var(--paloma-border, rgba(26, 26, 26, 0.12));
@@ -6369,7 +6369,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 .home-blog__title {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(38px, 6vw, 92px);
+  font-size: clamp(28px, 3.4vw, 50px);
   font-weight: 400;
   font-style: italic;
   line-height: 0.95;
