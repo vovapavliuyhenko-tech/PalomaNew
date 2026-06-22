@@ -35,12 +35,10 @@
       var progress = (viewH - rect.top) / (viewH + sectH);
       progress = Math.max(0, Math.min(1, progress));
 
-      /* Bg travels ±200px (400px total) — CSS sets top/bottom: -200px
-         so the image always covers the section completely.
-         At progress=0  → bgY = -200 (bg shifted up, shows lower part of photo)
-         At progress=0.5 → bgY =  0  (centered)
-         At progress=1  → bgY = +200 (bg shifted down, shows upper part)       */
-      var bgY = (progress * 520 - 260).toFixed(2);
+      /* Bg travels ±380px (760px total) — CSS sets top/bottom: -400px
+         so the image always covers the section completely. Большой ход =
+         заметный параллакс: фото ощутимо «плывёт» за карточкой при скролле. */
+      var bgY = (progress * 760 - 380).toFixed(2);
       bg.style.transform = 'translateY(' + bgY + 'px)';
     }
 
