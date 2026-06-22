@@ -11,26 +11,26 @@ function initSubscriptionPage() {
 
   const SUB_ID_PREFIX = "paloma-flower-subscription";
   const SUB_BG =
-    "linear-gradient(135deg, #eaded1 0%, #b98d8b 48%, #643640 100%)";
+    "linear-gradient(135deg, #FBF6E8 0%, #E7385A 60%, #C82847 100%)";
 
   /* Текущий выбор */
   const state = {
-    period: "3",
-    frequency: "biweekly",
+    plan: "month",
+    count: "2",
+    composition: "mono",
     size: "M",
-    fulfillment: "pickup",
-    contact: "Telegram",
+    fulfillment: "delivery",
   };
 
   const fmt = (n) => n.toLocaleString("ru-RU") + " ₽";
 
   /* Группы кнопок-переключателей */
   const groups = [
-    { sel: "[data-sub-period]",      attr: "period" },
-    { sel: "[data-sub-frequency]",   attr: "frequency" },
-    { sel: "[data-sub-size]",        attr: "size" },
+    { sel: "[data-sub-plan]", attr: "plan" },
+    { sel: "[data-sub-count]", attr: "count" },
+    { sel: "[data-sub-composition]", attr: "composition" },
+    { sel: "[data-sub-size]", attr: "size" },
     { sel: "[data-sub-fulfillment]", attr: "fulfillment" },
-    { sel: "[data-sub-contact]",     attr: "contact" },
   ];
 
   function bindGroup(container, key) {
@@ -57,14 +57,17 @@ function initSubscriptionPage() {
 
   groups.forEach((g) => bindGroup(page.querySelector(g.sel), g.attr));
 
+  const countGroup = page.querySelector("[data-sub-count-group]");
+
   /* Элементы вывода */
   const out = {
     deliveries: page.querySelector("[data-sum-deliveries]"),
-    bouquets: page.querySelector("[data-sum-bouquets]"),
-    deliveryRow: page.querySelector("[data-sum-delivery-row]"),
-    delivery: page.querySelector("[data-sum-delivery]"),
+    meta: page.querySelector("[data-sum-meta]"),
+    discountRow: page.querySelector("[data-sum-discount-row]"),
+    discount: page.querySelector("[data-sum-discount]"),
     total: page.querySelector("[data-sum-total]"),
     totalBtn: page.querySelector("[data-sum-total-btn]"),
+    submitLabel: page.querySelector("[data-submit-label]"),
     priceTop: page.querySelector("[data-sub-price-top]"),
   };
 
@@ -73,19 +76,31 @@ function initSubscriptionPage() {
   function recalc() {
     if (typeof window.PalomaSubscriptionCalc !== "function") return;
     const r = window.PalomaSubscriptionCalc({
+      plan: state.plan,
+      count: state.count,
+      composition: state.composition,
       size: state.size,
-      period: state.period,
-      frequency: state.frequency,
       fulfillment: state.fulfillment,
     });
     last = r;
-    if (out.deliveries) out.deliveries.textContent = r.deliveries + " шт";
-    if (out.bouquets) out.bouquets.textContent = fmt(r.bouquetsTotal);
-    if (out.delivery) out.delivery.textContent = fmt(r.deliveryTotal);
-    if (out.deliveryRow) out.deliveryRow.hidden = r.deliveryTotal === 0;
+
+    /* «Количество букетов» не нужно для пробной недели */
+    if (countGroup) countGroup.hidden = r.isTrial;
+
+    if (out.deliveries) out.deliveries.textContent = r.count + " шт";
+    if (out.meta) {
+      out.meta.textContent = "Размер " + r.labels.size + " · " + r.labels.composition;
+    }
+    if (out.discountRow) out.discountRow.hidden = !r.isTrial;
+    if (out.discount) out.discount.textContent = "−" + fmt(r.discount);
     if (out.total) out.total.textContent = fmt(r.total);
     if (out.totalBtn) out.totalBtn.textContent = fmt(r.total);
     if (out.priceTop) out.priceTop.textContent = fmt(r.total);
+    if (out.submitLabel) {
+      out.submitLabel.textContent = r.isTrial
+        ? "Оформить пробную неделю"
+        : "Оформить подписку";
+    }
   }
 
   recalc();
@@ -96,8 +111,8 @@ function initSubscriptionPage() {
 
     const lbl = last ? last.labels : {};
     const cartId =
-      SUB_ID_PREFIX + "-" + state.period + "m-" + state.frequency +
-      "-" + state.size + "-" + state.fulfillment;
+      SUB_ID_PREFIX + "-" + state.plan + "-" + state.count + "-" +
+      state.size + "-" + state.composition + "-" + state.fulfillment;
 
     if (window.PalomaCart && typeof window.PalomaCart.add === "function") {
       window.PalomaCart.getItems().forEach((item) => {
@@ -108,7 +123,7 @@ function initSubscriptionPage() {
 
       window.PalomaCart.add({
         id: cartId,
-        name: "Цветочная подписка",
+        name: last && last.isTrial ? "Пробная неделя подписки" : "Цветочная подписка",
         price: last ? last.total : 0,
         qty: 1,
         size: state.size,
@@ -116,9 +131,10 @@ function initSubscriptionPage() {
         type: "subscription",
         bg: SUB_BG,
         addons: [
-          lbl.period || "",
-          lbl.frequency || "",
+          lbl.plan || "",
+          (last ? last.count : 2) + " букета",
           "Размер " + state.size,
+          lbl.composition || "",
           lbl.fulfillment || "",
         ].filter(Boolean),
       });
@@ -135,9 +151,4 @@ function initSubscriptionPage() {
 
 document.addEventListener("DOMContentLoaded", function () {
   initSubscriptionPage();
-  /* Тот же проверенный механизм горизонтального скролла, что и на главной.
-     Функция объявлена глобально в script.js. */
-  if (typeof initHomeAboutScroll === "function") {
-    initHomeAboutScroll();
-  }
 });

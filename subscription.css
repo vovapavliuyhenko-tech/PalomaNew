@@ -1,5 +1,258 @@
-/* subscription.html — основные стили в styles.css (SUBSCRIPTION PAGE) */
+/* subscription.html — базовые стили в styles.css (SUBSCRIPTION PAGE);
+   здесь — обновление 2026: розовые акценты как на главной + компактные блоки. */
 
 body.subscription-page {
   overflow-x: clip;
+}
+
+/* ── Розовый акцент как на главной (#E7385A) на всей странице подписки ── */
+body.subscription-page {
+  --paloma-accent: #E7385A;
+}
+
+/* Подзаголовок героя */
+.subscription-hero__subtitle {
+  margin: 14px 0 0;
+  font-family: var(--sans);
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: #E7385A;
+}
+
+.subscription-hero__price {
+  font-weight: 600;
+  color: #E7385A;
+}
+
+/* Форма — компактнее по вертикали */
+.subscription-form {
+  margin-top: clamp(22px, 2.6vw, 34px);
+}
+
+.subscription-form__group {
+  margin: 0 0 clamp(15px, 1.8vw, 22px);
+}
+
+/* Размеры — 5 в ряд, компактные */
+.subscription-sizes--5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.subscription-sizes--5 .subscription-size {
+  min-height: 82px;
+  padding: 12px 8px;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.subscription-sizes--5 .subscription-size__name {
+  font-size: clamp(22px, 2vw, 30px);
+}
+
+.subscription-sizes--5 .subscription-size__text {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.subscription-size.is-active {
+  border-color: #E7385A;
+  background: rgba(231, 56, 90, 0.08);
+}
+
+[data-sum-discount] {
+  color: #E7385A;
+}
+
+/* ── Общие компактные секции (Как это работает / Что классного) ── */
+.sub-block {
+  padding: clamp(44px, 5vw, 68px) clamp(16px, 3vw, 48px);
+  background: var(--paloma-bg, #FBF6E8);
+}
+
+.sub-block__inner {
+  max-width: var(--container, 1180px);
+  margin: 0 auto;
+}
+
+.sub-block__title {
+  margin: 0 0 clamp(24px, 3vw, 40px);
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 56px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--paloma-text, #1B1A18);
+}
+
+/* Как это работает — шаги в ряд */
+.sub-how__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+}
+
+.sub-how__item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(27, 26, 24, 0.18);
+}
+
+.sub-how__num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(26px, 2.4vw, 38px);
+  line-height: 1;
+  color: #E7385A;
+}
+
+.sub-how__item p {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--paloma-muted, #1B1A18);
+}
+
+.sub-how__item p b {
+  font-weight: 600;
+  color: var(--paloma-text, #1B1A18);
+}
+
+.sub-how__note {
+  margin: clamp(22px, 2.4vw, 30px) 0 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: #E7385A;
+}
+
+/* Что классного — карточки в ряд */
+.sub-perks__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px);
+}
+
+.sub-perk {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid rgba(27, 26, 24, 0.12);
+  background: rgba(255, 250, 242, 0.55);
+}
+
+.sub-perk__num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1;
+  color: #E7385A;
+}
+
+.sub-perk p {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--paloma-muted, #1B1A18);
+}
+
+/* CTA снизу */
+.sub-cta {
+  padding: clamp(40px, 5vw, 64px) clamp(16px, 3vw, 48px) clamp(56px, 6vw, 90px);
+  text-align: center;
+  background: var(--paloma-bg, #FBF6E8);
+}
+
+.sub-cta__inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.sub-cta__text {
+  margin: 0 0 24px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1.2;
+  color: var(--paloma-text, #1B1A18);
+}
+
+.sub-cta__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sub-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 50px;
+  padding: 0 28px;
+  background: #E7385A;
+  color: #FBF6E8;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #E7385A;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.sub-cta__btn:hover {
+  background: #C82847;
+  border-color: #C82847;
+}
+
+.sub-cta__btn--ghost {
+  background: transparent;
+  color: #E7385A;
+}
+
+.sub-cta__btn--ghost:hover {
+  background: #E7385A;
+  color: #FBF6E8;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+  /* На мобильных фото-герой не должен занимать пол-экрана перед формой */
+  .subscription-hero__media {
+    min-height: 34svh;
+  }
+}
+
+@media (max-width: 768px) {
+  .subscription-sizes--5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .sub-how__list,
+  .sub-perks__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .subscription-sizes--5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sub-how__list,
+  .sub-perks__grid {
+    grid-template-columns: 1fr;
+  }
 }

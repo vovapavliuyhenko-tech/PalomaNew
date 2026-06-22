@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="paloma-animations.css">
 <link rel="stylesheet" href="cart.css">
   <link rel="stylesheet" href="clients.css">
-  <link rel="stylesheet" href="subscription.css">
+  <link rel="stylesheet" href="subscription.css?v=2">
   <link rel="stylesheet" href="paloma-responsive.css">
   <link rel="stylesheet" href="cursor.css?v=13">
 </head>
@@ -281,49 +281,59 @@
 
       <h1 class="subscription-hero__title">Цветочная подписка</h1>
 
-      <p class="subscription-hero__price" data-sub-price-top>от 6 400 ₽</p>
+      <p class="subscription-hero__subtitle">Букет из свежих сезонных цветов от PALOMA каждую неделю</p>
+
+      <p class="subscription-hero__price" data-sub-price-top>—</p>
 
       <p class="subscription-hero__lead">
-        Свежие букеты привозим регулярно — для дома, офиса или в подарок.
-        Каждую доставку флорист собирает новое сезонное сочетание, вам не нужно
-        выбирать заново. Укажите срок, частоту, размер и способ получения —
-        стоимость посчитается сразу.
+        Всегда свежие цветы у вас дома: подбираем стойкие сезонные сорта, которые
+        радуют 7 дней и даже дольше. Оформите подписку один раз — время, день и
+        место доставки выбираете сами, стоимость считается сразу.
       </p>
 
       <form class="subscription-form" id="subscriptionForm" novalidate>
 
         <fieldset class="subscription-form__group">
-          <legend class="subscription-form__legend">Срок</legend>
-          <div class="subscription-options" data-sub-period>
-            <button class="subscription-option" type="button" data-period="1">1 месяц</button>
-            <button class="subscription-option is-active" type="button" data-period="3">3 месяца</button>
-            <button class="subscription-option" type="button" data-period="6">6 месяцев</button>
+          <legend class="subscription-form__legend">Формат</legend>
+          <div class="subscription-options" data-sub-plan>
+            <button class="subscription-option is-active" type="button" data-plan="month">Подписка на месяц</button>
+            <button class="subscription-option" type="button" data-plan="trial">Пробная неделя −10%</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="subscription-form__group" data-sub-count-group>
+          <legend class="subscription-form__legend">Количество букетов</legend>
+          <div class="subscription-options" data-sub-count>
+            <button class="subscription-option is-active" type="button" data-count="2">2 букета</button>
+            <button class="subscription-option" type="button" data-count="4">4 букета</button>
           </div>
         </fieldset>
 
         <fieldset class="subscription-form__group">
-          <legend class="subscription-form__legend">Как часто привозить</legend>
-          <div class="subscription-options" data-sub-frequency>
-            <button class="subscription-option" type="button" data-frequency="weekly">Раз в неделю</button>
-            <button class="subscription-option is-active" type="button" data-frequency="biweekly">Раз в 2 недели</button>
-            <button class="subscription-option" type="button" data-frequency="monthly">Раз в месяц</button>
+          <legend class="subscription-form__legend">Состав букета</legend>
+          <div class="subscription-options" data-sub-composition>
+            <button class="subscription-option is-active" type="button" data-composition="mono">Моно — один вид</button>
+            <button class="subscription-option" type="button" data-composition="author">Авторский — микс</button>
           </div>
         </fieldset>
 
         <fieldset class="subscription-form__group">
-          <legend class="subscription-form__legend">Размер букета</legend>
-          <div class="subscription-sizes" data-sub-size>
+          <legend class="subscription-form__legend">Размер букета · сумма на букет</legend>
+          <div class="subscription-sizes subscription-sizes--5" data-sub-size>
             <button class="subscription-size" type="button" data-size="S">
-              <span class="subscription-size__name">S</span>
-              <span class="subscription-size__text">Компактный · 3 200 ₽</span>
+              <span class="subscription-size__name">S</span><span class="subscription-size__text">2 000 ₽</span>
             </button>
             <button class="subscription-size is-active" type="button" data-size="M">
-              <span class="subscription-size__name">M</span>
-              <span class="subscription-size__text">Средний · 5 200 ₽</span>
+              <span class="subscription-size__name">M</span><span class="subscription-size__text">3 500 ₽</span>
             </button>
             <button class="subscription-size" type="button" data-size="L">
-              <span class="subscription-size__name">L</span>
-              <span class="subscription-size__text">Большой · 7 200 ₽</span>
+              <span class="subscription-size__name">L</span><span class="subscription-size__text">4 500 ₽</span>
+            </button>
+            <button class="subscription-size" type="button" data-size="XL">
+              <span class="subscription-size__name">XL</span><span class="subscription-size__text">5 500 ₽</span>
+            </button>
+            <button class="subscription-size" type="button" data-size="XXL">
+              <span class="subscription-size__name">XXL</span><span class="subscription-size__text">7 500 ₽</span>
             </button>
           </div>
         </fieldset>
@@ -331,8 +341,8 @@
         <fieldset class="subscription-form__group">
           <legend class="subscription-form__legend">Получение</legend>
           <div class="subscription-options" data-sub-fulfillment>
-            <button class="subscription-option is-active" type="button" data-fulfillment="pickup">Самовывоз · Энгельса, 74/82</button>
-            <button class="subscription-option" type="button" data-fulfillment="delivery">Доставка по Новороссийску · бесплатно</button>
+            <button class="subscription-option is-active" type="button" data-fulfillment="delivery">Доставка по Новороссийску · бесплатно</button>
+            <button class="subscription-option" type="button" data-fulfillment="pickup">Самовывоз · Энгельса, 74/82</button>
           </div>
         </fieldset>
 
@@ -341,18 +351,21 @@
             <span>Букетов за период</span><span data-sum-deliveries>—</span>
           </div>
           <div class="subscription-summary__row">
-            <span>Букеты</span><span data-sum-bouquets>—</span>
+            <span>Размер и состав</span><span data-sum-meta>—</span>
           </div>
-          <div class="subscription-summary__row" data-sum-delivery-row hidden>
-            <span>Доставка</span><span data-sum-delivery>—</span>
+          <div class="subscription-summary__row" data-sum-discount-row hidden>
+            <span>Скидка пробной недели</span><span data-sum-discount>—</span>
+          </div>
+          <div class="subscription-summary__row">
+            <span>Доставка</span><span>0 ₽</span>
           </div>
           <div class="subscription-summary__total">
-            <span>Итого за период</span><span data-sum-total>—</span>
+            <span>Итого</span><span data-sum-total>—</span>
           </div>
         </div>
 
         <button class="subscription-form__submit" type="submit" data-subscription-submit>
-          Оформить подписку — <span data-sum-total-btn>—</span>
+          <span data-submit-label>Оформить подписку</span> — <span data-sum-total-btn>—</span>
         </button>
 
       </form>
@@ -361,65 +374,51 @@
 
   </section>
 
-  <section class="subscription-included" aria-label="Что входит в подписку">
-    <div class="subscription-included__head">
-      <h2 class="subscription-included__title">Что входит в подписку</h2>
-    </div>
-    <div class="subscription-included__grid">
-      <article class="subscription-included-card">
-        <span class="subscription-included-card__num">01</span>
-        <h3 class="subscription-included-card__title">Сезонные цветы</h3>
-      </article>
-      <article class="subscription-included-card">
-        <span class="subscription-included-card__num">02</span>
-        <h3 class="subscription-included-card__title">Согласованный график доставки</h3>
-      </article>
-      <article class="subscription-included-card">
-        <span class="subscription-included-card__num">03</span>
-        <h3 class="subscription-included-card__title">Фото букета перед отправкой</h3>
-      </article>
-      <article class="subscription-included-card">
-        <span class="subscription-included-card__num">04</span>
-        <h3 class="subscription-included-card__title">Возможность добавить открытку, кофе или вазу</h3>
-      </article>
-      <article class="subscription-included-card">
-        <span class="subscription-included-card__num">05</span>
-        <h3 class="subscription-included-card__title">Доставка по Новороссийску</h3>
-      </article>
+  <section class="sub-block sub-how" aria-label="Как это работает">
+    <div class="sub-block__inner">
+      <h2 class="sub-block__title">Как это работает</h2>
+      <ol class="sub-how__list">
+        <li class="sub-how__item">
+          <span class="sub-how__num">01</span>
+          <p>Выбираете количество букетов для доставки — <b>2 или 4</b>.</p>
+        </li>
+        <li class="sub-how__item">
+          <span class="sub-how__num">02</span>
+          <p>Определяете состав: <b>моно</b> из одного вида цветов или <b>авторский</b> из нескольких.</p>
+        </li>
+        <li class="sub-how__item">
+          <span class="sub-how__num">03</span>
+          <p>Выбираете размер и сумму на каждый букет — S, M, L, XL или XXL.</p>
+        </li>
+        <li class="sub-how__item">
+          <span class="sub-how__num">04</span>
+          <p>Оплачиваете подписку (доставка бесплатная) и наслаждаетесь красотой целый месяц.</p>
+        </li>
+      </ol>
+      <p class="sub-how__note">Кстати, на пробную неделю мы дарим скидку 10%.</p>
     </div>
   </section>
 
-  <section class="home-about-scroll sub-steps-scroll" id="homeAboutScroll" aria-label="Как работает подписка">
-    <div class="home-about-scroll__sticky">
-      <div class="home-about-scroll__track" id="homeAboutTrack">
-
-        <div class="sub-hscroll__intro">
-          <p class="sub-hscroll__eyebrow">Цветочная подписка</p>
-          <h2 class="sub-hscroll__title">Как это работает</h2>
-          <p class="sub-hscroll__hint">Листайте вниз — карточки едут вбок&nbsp;→</p>
-        </div>
-
-        <article class="sub-step">
-          <span class="sub-step__num">01</span>
-          <h3 class="sub-step__title">Выбираете параметры</h3>
-          <p class="sub-step__text">Срок, частоту, размер букета и способ получения. Цена считается сразу.</p>
+  <section class="sub-block sub-perks" aria-label="Что вы получаете с подпиской">
+    <div class="sub-block__inner">
+      <h2 class="sub-block__title">Что классного вы получаете вместе с подпиской</h2>
+      <div class="sub-perks__grid">
+        <article class="sub-perk">
+          <span class="sub-perk__num">01</span>
+          <p>Привозим букет в фирменном боксе с аквавазой. Не нужно обновлять срез стеблей — достаточно переставить букет в вазу.</p>
         </article>
-        <article class="sub-step">
-          <span class="sub-step__num">02</span>
-          <h3 class="sub-step__title">Оформляете заказ</h3>
-          <p class="sub-step__text">Добавляете подписку в корзину — мы свяжемся, согласуем график и удобную оплату.</p>
+        <article class="sub-perk">
+          <span class="sub-perk__num">02</span>
+          <p>К каждому букету прикладываем специальную подкормку, чтобы цветы радовали вас как можно дольше.</p>
         </article>
-        <article class="sub-step">
-          <span class="sub-step__num">03</span>
-          <h3 class="sub-step__title">Собираем букет</h3>
-          <p class="sub-step__text">Флористы PALOMA готовят свежую сезонную композицию и присылают фото перед отправкой.</p>
+        <article class="sub-perk">
+          <span class="sub-perk__num">03</span>
+          <p>Начисляем 5% бонусов с каждой покупки по системе лояльности — потратите их на следующие заказы.</p>
         </article>
-        <article class="sub-step">
-          <span class="sub-step__num">04</span>
-          <h3 class="sub-step__title">Получаете цветы</h3>
-          <p class="sub-step__text">Забираете сами или бесплатно привозим по Новороссийску точно по графику.</p>
+        <article class="sub-perk">
+          <span class="sub-perk__num">04</span>
+          <p>Нет подходящей вазы — подберём стильный вариант из ассортимента. И секатор тоже можем положить в заказ.</p>
         </article>
-
       </div>
     </div>
   </section>
@@ -452,45 +451,13 @@
     </div>
   </section>
 
-  <section class="subscription-related" aria-label="Смотрите также">
-    <div class="subscription-related__head">
-      <h2 class="subscription-related__title">Смотрите также</h2>
-      <a href="catalog.html" class="subscription-related__link">В каталог</a>
-    </div>
-    <div class="subscription-related__grid">
-      <article class="subscription-related-card">
-        <a href="product.html" class="subscription-related-card__media" aria-label="Подробнее: Авторский букет Paloma">
-          <span class="subscription-related-card__placeholder subscription-related-card__placeholder--bouquet" aria-hidden="true">
-            <span>PALOMA bouquet photo</span>
-          </span>
-        </a>
-        <h3 class="subscription-related-card__title">
-          <a href="product.html">Авторский букет Paloma</a>
-        </h3>
-        <p class="subscription-related-card__price">от 5 500 ₽</p>
-      </article>
-      <article class="subscription-related-card">
-        <a href="product.html" class="subscription-related-card__media" aria-label="Подробнее: Ваза Paloma 01">
-          <span class="subscription-related-card__placeholder subscription-related-card__placeholder--vase" aria-hidden="true">
-            <span>PALOMA vase photo</span>
-          </span>
-        </a>
-        <h3 class="subscription-related-card__title">
-          <a href="product.html">Ваза Paloma 01</a>
-        </h3>
-        <p class="subscription-related-card__price">3 500 ₽</p>
-      </article>
-      <article class="subscription-related-card">
-        <a href="product.html" class="subscription-related-card__media" aria-label="Подробнее: Открытка">
-          <span class="subscription-related-card__placeholder subscription-related-card__placeholder--postcard" aria-hidden="true">
-            <span>PALOMA postcard photo</span>
-          </span>
-        </a>
-        <h3 class="subscription-related-card__title">
-          <a href="product.html">Открытка</a>
-        </h3>
-        <p class="subscription-related-card__price">300 ₽</p>
-      </article>
+  <section class="sub-cta" aria-label="Связаться с PALOMA">
+    <div class="sub-cta__inner">
+      <p class="sub-cta__text">Остались вопросы по подписке? Напишите нам — подберём формат под вас.</p>
+      <div class="sub-cta__actions">
+        <a href="https://t.me/paloma_novorossiysk" class="sub-cta__btn" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+        <a href="catalog.html" class="sub-cta__btn sub-cta__btn--ghost">В каталог букетов</a>
+      </div>
     </div>
   </section>
 
@@ -701,8 +668,8 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js"></script>
-  <script src="subscription-pricing.js?v=3"></script>
-  <script src="subscription.js?v=5"></script>
+  <script src="subscription-pricing.js?v=4"></script>
+  <script src="subscription.js?v=6"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=12"></script>
 </body>
