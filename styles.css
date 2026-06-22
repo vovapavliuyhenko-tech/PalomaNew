@@ -1223,7 +1223,9 @@ body.is-nav-open {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  margin-top: 12px;
+  /* прижимаем к низу карточки: при названии в 2 строки кнопки остаются на одной линии */
+  margin-top: auto;
+  padding-top: 12px;
 }
 
 .product-card__btn {
@@ -5257,6 +5259,10 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   min-width: 0;
   background: transparent;
   color: var(--paloma-text, #1B1A18);
+  /* колонка на всю высоту — кнопки выравниваются по низу */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .home-product-card__media {
@@ -5320,6 +5326,9 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .home-product-card__body {
   padding-top: 14px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .home-product-card__title {
@@ -5353,6 +5362,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   display: flex;
   gap: 8px;
   align-items: center;
+  /* прижать к низу: кнопки в ряду на одной линии при названиях в 1 и 2 строки */
+  margin-top: auto;
 }
 
 .home-product-card__more {
@@ -6476,9 +6487,11 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   font-size: clamp(24px, 2.6vw, 42px);
   font-weight: 400;
   font-style: italic;
-  line-height: 1;
+  line-height: 1.05;
   letter-spacing: -0.035em;
   color: var(--paloma-text, #1B1A18);
+  /* резервируем 2 строки — описания всех карточек начинаются на одной линии */
+  min-height: 2.1em;
 }
 
 .home-article-card__title a {
@@ -6582,6 +6595,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   .home-article-card__title {
     font-size: clamp(26px, 8vw, 40px);
     line-height: 1.02;
+    min-height: 0;
   }
 
   .home-article-card__text {
@@ -8825,7 +8839,7 @@ body.event-decoration-page .client-hero {
    Тёмная версия — на светлом фоне, светлая — на тёмном.
    ═══════════════════════════════════════════════════════════════════ */
 :root{
-  --logo-img: url('images/paloma/logo/paloma-wordmark.png');
+  --logo-img: url('images/paloma/logo/paloma-wordmark-pink.png');
   --logo-img-light: url('images/paloma/logo/paloma-wordmark-light.png');
 }
 .site-header__logo, .footer-logo, .paloma-page-loader__logo, .paloma-cover__word, .footer-brand{
