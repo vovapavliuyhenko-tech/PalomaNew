@@ -533,3 +533,223 @@ body.is-home .home-article-card__photo,
 body.is-home .home-article-card__placeholder {
   border-radius: inherit;
 }
+
+/* ============================================================
+   PALOMA НА ЭНГЕЛЬСА — редакционный блок с фото-карточками
+   (замена горизонтального скролла: плотно, с фото, без пустот)
+   ============================================================ */
+.home-place {
+  padding: clamp(56px, 8vw, 116px) clamp(16px, 4vw, 56px);
+  background: #FFFFFF;
+}
+
+.home-place__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-place__head {
+  max-width: 640px;
+  margin: 0 auto clamp(40px, 5vw, 68px);
+  text-align: center;
+}
+
+.home-place__eyebrow {
+  margin: 0 0 14px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(27, 26, 24, 0.5);
+}
+
+.home-place__title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1.02;
+  color: #1B1A18;
+}
+
+.home-place__lead {
+  margin: clamp(16px, 2vw, 24px) auto 0;
+  max-width: 520px;
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.6;
+  color: rgba(27, 26, 24, 0.68);
+}
+
+.home-place__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(18px, 2.4vw, 30px);
+  margin-top: clamp(20px, 2.4vw, 30px);
+}
+
+.home-place__head .home-place__actions {
+  justify-content: center;
+}
+
+.home-place__link {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1B1A18;
+  text-decoration: none;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(27, 26, 24, 0.32);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.home-place__link:hover {
+  color: #E7385A;
+  border-color: #E7385A;
+}
+
+/* Сетка фото-карточек */
+.home-place__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 24px);
+}
+
+.home-place-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-place-card__media {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 3 / 3.7;
+  background: #f3efe6;
+}
+
+.home-place-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-place-card:hover .home-place-card__media img {
+  transform: scale(1.05);
+}
+
+.home-place-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 2px 0;
+}
+
+.home-place-card__kicker {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #E7385A;
+}
+
+.home-place-card__name {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.2;
+  color: #1B1A18;
+}
+
+.home-place-card__text {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(27, 26, 24, 0.6);
+}
+
+.home-place-card__more {
+  margin-top: 4px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #1B1A18;
+  transition: color 0.3s ease;
+}
+
+.home-place-card:hover .home-place-card__more {
+  color: #E7385A;
+}
+
+/* Тёмная CTA-полоса внизу */
+.home-place__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: clamp(40px, 5vw, 72px);
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: 16px;
+  background: #1B1A18;
+  color: #FBF6E8;
+}
+
+.home-place__cta-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1.05;
+  color: #FBF6E8;
+}
+
+.home-place__cta-text {
+  margin: 10px 0 0;
+  max-width: 440px;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(251, 246, 232, 0.7);
+}
+
+.home-place__cta .home-place__link {
+  color: #FBF6E8;
+  border-color: rgba(251, 246, 232, 0.4);
+}
+
+.home-place__cta .home-place__link:hover {
+  color: #E7385A;
+  border-color: #E7385A;
+}
+
+@media (max-width: 900px) {
+  .home-place__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .home-place__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-place__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
