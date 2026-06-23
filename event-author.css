@@ -367,7 +367,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 #contact .ea-range input[type=range]::-moz-range-progress{height:4px;border-radius:4px;background:#E7385A}
 #contact .ea-range__bubble{background:#E7385A;color:#fff;border:none;font-weight:600;box-shadow:0 6px 16px rgba(231,56,90,.3)}
 /* кнопка отправки — как CTA на первом блоке главной: светлая, скруглённая, ховер — розовая */
-#contact .ea-form__submit{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#1B1A18;
+#contact .ea-form__submit{display:flex;width:100%;justify-self:stretch;align-items:center;justify-content:center;gap:10px;background:#fff;color:#1B1A18;
   padding:16px 30px;border:1px solid rgba(27,26,24,.14);border-radius:12px;
   font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   box-shadow:0 14px 34px rgba(27,26,24,.12);
