@@ -64,12 +64,12 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   position: absolute;
   inset: 0;
   z-index: 1;
-  /* Светлый фон: мягкая дымка сверху/снизу для читаемости заголовка,
-     без сплошного затемнения — фото остаётся светлым и воздушным. */
+  /* Фото пионов + лёгкое затемнение для читаемости белого заголовка:
+     дымка сверху/снизу плюс ровный полупрозрачный слой по всему кадру. */
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(27, 26, 24, 0.34) 0%, transparent 58%),
-    radial-gradient(ellipse at 50% 100%, rgba(27, 26, 24, 0.42) 0%, transparent 55%),
-    rgba(27, 26, 24, 0.1);
+    radial-gradient(ellipse at 50% 0%, rgba(27, 26, 24, 0.42) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(27, 26, 24, 0.5) 0%, transparent 58%),
+    rgba(27, 26, 24, 0.28);
 }
 
 /* ── Center content group ────────────────────────────── */
