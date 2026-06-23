@@ -854,55 +854,68 @@
 
 /* ── Hero / Философия: заметная кнопка как на главной + центровка списков ── */
 
-/* кнопка-CTA: тёмная, скруглённая, ~в пол экрана (full-width своей колонки),
-   размеры и радиус — как у кнопки на первом экране главной (.paloma-cover__cta) */
+/* кнопка-CTA: как на странице «Оформление» (.ea-btn) — розовая (#E7385A),
+   Montserrat ЗАГЛАВНЫЕ, прямые углы, компактная (inline, не во всю колонку) */
 .cf-hero .ea-hero__right .ea-btn,
 .cf-philo .ea-hero__right .ea-btn,
 .cf-lemon .ea-hero__right .ea-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  width: min(100%, 560px);
+  gap: 13px;
+  width: auto;
   margin-top: clamp(20px, 2.4vw, 32px);
-  padding: clamp(14px, 1.5vw, 18px) 24px;
-  background: #1B1A18;
+  padding: 18px 38px;
+  background: var(--wine, #E7385A);
   color: #FFFFFF;
-  border-radius: 12px;
-  font-family: var(--fsans, "Manrope", sans-serif);
-  font-size: clamp(13px, 0.95vw, 15px);
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  border: none;
+  border-radius: 0;
+  font-family: var(--fdisplay, "Montserrat", sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  box-shadow: 0 14px 34px rgba(27, 26, 24, 0.30);
+  box-shadow: none;
   transition:
     background 0.35s ease,
-    color 0.35s ease,
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
+    transform 0.35s ease;
 }
 
 .cf-hero .ea-hero__right .ea-btn:hover,
 .cf-philo .ea-hero__right .ea-btn:hover,
 .cf-lemon .ea-hero__right .ea-btn:hover {
-  background: #FFFFFF;
-  color: #1B1A18;
+  background: var(--wine-d, #C82847);
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(27, 26, 24, 0.22);
+  box-shadow: none;
 }
 
 .cf-hero .ea-hero__right .ea-btn svg,
 .cf-philo .ea-hero__right .ea-btn svg,
 .cf-lemon .ea-hero__right .ea-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   transition: transform 0.35s ease;
 }
 
 .cf-hero .ea-hero__right .ea-btn:hover svg,
 .cf-philo .ea-hero__right .ea-btn:hover svg,
 .cf-lemon .ea-hero__right .ea-btn:hover svg {
-  transform: translateX(3px);
+  transform: scale(1.22);
+}
+
+/* карточки меню кофейни — скруглённые (12px), как на главной странице:
+   медиа товара + кнопки «Подробнее»/«В корзину» */
+.cf-menu .product-card__media {
+  border-radius: 12px;
+}
+.cf-menu .product-card__media .product-card__image,
+.cf-menu .product-card__media .product-card__img,
+.cf-menu .product-card__media .product-card__ph {
+  border-radius: inherit;
+}
+.cf-menu .product-card__btn {
+  border-radius: 12px;
 }
 
 /* Заголовки всей страницы кофейни — Montserrat ЗАГЛАВНЫЕ розовые, как в блоке

@@ -28,10 +28,13 @@ body.coffee-page{overflow-x:clip!important}
 .cf-hero__left .ea-hero__frame,.cf-mir__media .ea-hero__frame{z-index:2}
 
 /* ── БЛОК-ГЕРОЙ кофейни: логотип Paloma coffee сверху по центру ── */
-.cf-hero__logo{font-family:var(--logo);color:var(--wine);font-size:clamp(20px,1.7vw,27px);
-  letter-spacing:.12em;text-transform:none;text-align:center}
-.cf-hero__logo small{display:block;font-family:var(--fdisplay);font-size:.5em;letter-spacing:.4em;
-  text-transform:uppercase;color:var(--muted);margin-top:8px}
+/* логотип-герой = «отрисованный» PALOMA как на странице Оформления:
+   Italiana, розовый (--wine), широкий трекинг; опущен чуть ниже под шапку */
+.cf-hero__logo{font-family:var(--logo);color:var(--wine);font-size:clamp(24px,2.4vw,34px);
+  letter-spacing:.16em;text-transform:none;text-align:center;line-height:1;
+  margin-top:clamp(24px,5vh,64px)}
+.cf-hero__logo small{display:block;font-family:var(--fsans,'Manrope',sans-serif);font-size:9px;
+  letter-spacing:.42em;text-transform:uppercase;color:var(--muted);margin-top:6px;padding-left:.42em}
 /* зеркальный вариант (фото справа, текст слева) — блок 2 */
 .ea-hero--mirror .ea-hero__left{order:2;border-left:1px solid var(--eline)}
 .ea-hero--mirror .ea-hero__right{order:1;border-left:none}
@@ -85,22 +88,25 @@ body.coffee-page{overflow-x:clip!important}
    ЧЕРЕДУЮТСЯ (зиг-заг) — чтобы не было «всё в одном положении» и пустоты.
    Крупное фото + мелкое внахлёст (кремовая рамка) = плотный коллаж, без наезда
    текста на фото (текст и фото всегда в разных горизонтальных половинах). ── */
-/* текст — левая зона (по умолчанию) */
-#cf-steps .ea-step__t--top{top:14%;left:5%}
-#cf-steps .ea-step__t--mid{top:14%;left:5%}
+/* ТЕКСТ — компактная группа (заголовок + абзац рядом), левая зона.
+   Заголовок и текст стоят близко друг к другу (как на Оформлении), без большого
+   пустого провала между ними. */
+#cf-steps .ea-step__t--top{top:22%;left:5%}
+#cf-steps .ea-step__t--mid{top:22%;left:5%}
 #cf-steps .ea-proc-step:last-child .ea-step__t--top{left:5%}
-#cf-steps .ea-step__body{left:5%;width:min(35vw,440px)}
-#cf-steps .ea-step__body--lo{top:46%}
-#cf-steps .ea-step__body--mid{top:46%}
-#cf-steps .ea-step__body--hi{top:46%}
-/* фото — правая зона: крупное сверху + мелкое внахлёст снизу-слева (крупнее) */
-#cf-steps .ea-proc__ph--a{top:11%;left:53%;width:clamp(330px,31vw,480px);aspect-ratio:4/3}
-#cf-steps .ea-proc__ph--b{top:50%;left:46%;width:clamp(240px,22vw,340px);aspect-ratio:4/3}
-#cf-steps .ea-proc__ph--c{top:11%;left:54%;width:clamp(310px,29vw,440px);aspect-ratio:4/3.4}
-#cf-steps .ea-proc__ph--d{top:11%;left:53%;width:clamp(330px,31vw,480px);aspect-ratio:4/3}
-#cf-steps .ea-proc__ph--e{top:51%;left:47%;width:clamp(240px,22vw,340px);aspect-ratio:4/3}
+#cf-steps .ea-step__body{left:5%;width:min(34vw,410px)}
+#cf-steps .ea-step__body--lo{top:35%}
+#cf-steps .ea-step__body--mid{top:35%}
+#cf-steps .ea-step__body--hi{top:35%}
+/* ФОТО — правая зона, крупнее и заполняют площадь, чтобы не было пустых мест:
+   крупное сверху-справа + мелкое внахлёст по центру-снизу (мостик к тексту). */
+#cf-steps .ea-proc__ph--a{top:13%;left:51%;width:clamp(340px,33vw,500px);aspect-ratio:4/3.3}
+#cf-steps .ea-proc__ph--b{top:56%;left:40%;width:clamp(250px,23vw,360px);aspect-ratio:4/3}
+#cf-steps .ea-proc__ph--c{top:13%;left:51%;width:clamp(340px,32vw,480px);aspect-ratio:4/3.4}
+#cf-steps .ea-proc__ph--d{top:13%;left:51%;width:clamp(340px,33vw,500px);aspect-ratio:4/3.3}
+#cf-steps .ea-proc__ph--e{top:57%;left:41%;width:clamp(250px,23vw,360px);aspect-ratio:4/3}
 /* этап 05 «доставка»: ph--a — мелкое внахлёст под верхним ph--c */
-#cf-steps .ea-proc-step:last-child .ea-proc__ph--a{top:50%;left:47%;width:clamp(240px,22vw,340px);aspect-ratio:4/3}
+#cf-steps .ea-proc-step:last-child .ea-proc__ph--a{top:56%;left:41%;width:clamp(250px,23vw,360px);aspect-ratio:4/3}
 /* мелкие фото — кремовая рамка + поверх крупного (читается коллаж) */
 #cf-steps .ea-proc__ph--b,
 #cf-steps .ea-proc__ph--e,
@@ -108,10 +114,10 @@ body.coffee-page{overflow-x:clip!important}
 
 /* ── ЗИГ-ЗАГ: чётные сцены (02, 04) зеркалим — текст справа, фото слева ── */
 #cf-steps .ea-proc-step:nth-child(odd) .ea-step__t--top,
-#cf-steps .ea-proc-step:nth-child(odd) .ea-step__t--mid{left:60%}
-#cf-steps .ea-proc-step:nth-child(odd) .ea-step__body{left:60%}
-#cf-steps .ea-proc-step:nth-child(odd) .ea-proc__ph--a{left:5%}
-#cf-steps .ea-proc-step:nth-child(odd) .ea-proc__ph--b{left:13%}
+#cf-steps .ea-proc-step:nth-child(odd) .ea-step__t--mid{left:56%}
+#cf-steps .ea-proc-step:nth-child(odd) .ea-step__body{left:56%}
+#cf-steps .ea-proc-step:nth-child(odd) .ea-proc__ph--a{left:6%}
+#cf-steps .ea-proc-step:nth-child(odd) .ea-proc__ph--b{left:15%}
 
 /* ── БЛОК ЛИМОНАДОВ — тот же макет, что первый блок: лево видео / право текст ── */
 /* видео лимонадов: без зума (не вылезает за рамки) + светлее, чтобы было видно сюжет */
