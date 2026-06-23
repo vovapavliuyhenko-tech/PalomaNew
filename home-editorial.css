@@ -109,7 +109,9 @@
 
 .home-subscription__text {
   max-width: 440px;
-  margin: clamp(14px, 2.4vw, 28px) auto clamp(22px, 3vw, 38px);
+  /* нижний отступ убран — авто-маржины ссылки и цитаты центрируют кнопку ровно
+     посередине между текстом сверху и цитатой снизу */
+  margin: clamp(14px, 2.4vw, 28px) auto 0;
   font-family: var(--font-sans, inherit);
   font-size: 13.5px;
   line-height: 1.55;
@@ -168,7 +170,7 @@
 
   .home-subscription__text {
     font-size: 16px;
-    margin-bottom: 44px;
+    margin-bottom: 0;
   }
 
   .home-subscription__giraffe {
@@ -521,4 +523,13 @@ body.is-home .home-article-card__media,
 body.is-home .home-product-card__more,
 body.is-home .product-card__btn {
   border-radius: 12px;
+}
+
+/* Внутренние слои (img/фон/плейсхолдер) скругляем тоже — при hover-зуме
+   overflow:hidden не всегда обрезает трансформируемого ребёнка по радиусу */
+body.is-home .home-product-card__media img,
+body.is-home .home-product-card__placeholder,
+body.is-home .home-article-card__photo,
+body.is-home .home-article-card__placeholder {
+  border-radius: inherit;
 }
