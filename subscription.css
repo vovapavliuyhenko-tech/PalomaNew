@@ -34,6 +34,31 @@ body.subscription-page {
   color: #E7385A;
 }
 
+/* Плашка-уведомление о согласовании доставки */
+.subscription-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: clamp(18px, 2vw, 24px);
+  padding: 12px 14px;
+  background: rgba(27, 26, 24, 0.06);
+  border-radius: 8px;
+}
+
+.subscription-notice svg {
+  flex: none;
+  margin-top: 2px;
+  color: #1B1A18;
+}
+
+.subscription-notice p {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--paloma-text, #1B1A18);
+}
+
 /* Форма — компактнее по вертикали */
 .subscription-form {
   margin-top: clamp(22px, 2.6vw, 34px);
