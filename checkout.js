@@ -12,7 +12,7 @@
   const ORDER_KEY = "paloma_last_order";
   const DELIVERY_COST = 300;
   const FREE_DELIVERY = 10000;
-  const CARD_COST = 100;
+  const CARD_COST = 0;
 
   const UPSELL_ITEMS = [
     {
