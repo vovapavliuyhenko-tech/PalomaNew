@@ -400,7 +400,9 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .event-decoration-page .ea-philo{height:100vh;min-height:100vh}
 
 /* подпись основателя заменена на логотип PALOMA из файла (розовый вордмарк) */
-.ea-philo__logoimg{width:clamp(170px,15vw,220px);height:auto;display:block;margin:0 auto}
+.ea-philo__logoimg{width:clamp(170px,15vw,220px);height:auto;display:block;margin:clamp(28px,6vh,72px) auto 0}
+/* «философия» выше, логотип ниже — раздвигаем по вертикали */
+.ea-philo__text .ea-eyebrow{margin-bottom:clamp(24px,5vh,60px)}
 
 /* ── PREFOOTER — фото-полоса с фразой Tenor Sans ── */
 .ea-prefooter{position:relative;height:clamp(360px,58vh,660px);overflow:hidden}
