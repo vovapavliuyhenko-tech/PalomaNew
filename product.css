@@ -369,6 +369,10 @@ body.product-page {
   outline-offset: 2px;
 }
 
+.pdp-toast[hidden] {
+  display: none;
+}
+
 .pdp-toast {
   display: flex;
   align-items: center;
