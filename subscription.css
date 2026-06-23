@@ -88,18 +88,19 @@ body.subscription-page {
   letter-spacing: 0.06em;
 }
 
-/* ── Сводка расчёта — аккуратнее и читабельнее ── */
+/* ── Сводка расчёта — тёмная плашка как на сайте ── */
 .subscription-summary {
   margin: clamp(24px, 3vw, 32px) 0 0;
   padding: clamp(18px, 2vw, 24px) clamp(18px, 2vw, 26px);
   border-radius: 4px;
-  background: #FBF6E8;
-  border-color: rgba(27, 26, 24, 0.1);
+  background: #1B1A18;
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .subscription-summary__row {
   padding: 7px 0;
   font-size: 14.5px;
+  color: rgba(251, 246, 232, 0.72);
 }
 
 .subscription-summary__total {
@@ -109,6 +110,8 @@ body.subscription-page {
   font-size: 15px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: #FBF6E8;
+  border-top-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Итоговая цена — читаемый sans вместо курсивного serif */
