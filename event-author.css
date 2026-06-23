@@ -358,18 +358,23 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 #contact .ea-form input:focus,#contact .ea-form select:focus{border-color:#E7385A;box-shadow:0 0 0 2px rgba(231, 56, 90,.15)}
 /* розовая рамка фото */
 #contact .ea-cta__media{border-color:#E7385A;background:#E7385A;min-height:clamp(340px,60vh,560px)}
-/* ползунок бюджета как на референсе: тонкий трек, БЕЛЫЙ кружок, белый бабл со светлой рамкой */
-#contact .ea-range{padding-top:34px}
-#contact .ea-range input[type=range]{height:3px;background:#ddd4c1}
+/* ползунок бюджета в фирменном розовом: тонкий трек, белый кружок в розовой обводке, розовый бабл */
+#contact .ea-range{padding-top:38px}
+#contact .ea-range input[type=range]{height:4px;border-radius:4px;background:#EFE2E6;accent-color:#E7385A}
 #contact .ea-range__minmax{margin-top:14px}
-#contact .ea-range input[type=range]::-webkit-slider-thumb{width:26px;height:26px;background:#fff;border:1px solid #d9cdb4;box-shadow:0 2px 8px rgba(40,24,12,.18);margin-top:-12px}
-#contact .ea-range input[type=range]::-moz-range-thumb{width:24px;height:24px;background:#fff;border:1px solid #d9cdb4;box-shadow:0 2px 8px rgba(40,24,12,.18)}
-#contact .ea-range__bubble{background:#fff;color:#1B1A18;border:1px solid #e4ddcc;box-shadow:0 4px 12px rgba(40,24,12,.10)}
-/* розовая кнопка-текст с сердечком */
-#contact .ea-form__submit{color:#E7385A;border-bottom-color:#E7385A}
-#contact .ea-form__submit svg{fill:#E7385A}
-#contact .ea-form__submit:hover{color:#E7385A;border-bottom-color:#E7385A}
-#contact .ea-form__submit:hover svg{fill:#E7385A}
+#contact .ea-range input[type=range]::-webkit-slider-thumb{width:24px;height:24px;background:#fff;border:2px solid #E7385A;box-shadow:0 4px 12px rgba(231,56,90,.35);margin-top:-10px}
+#contact .ea-range input[type=range]::-moz-range-thumb{width:22px;height:22px;background:#fff;border:2px solid #E7385A;box-shadow:0 4px 12px rgba(231,56,90,.35)}
+#contact .ea-range input[type=range]::-moz-range-progress{height:4px;border-radius:4px;background:#E7385A}
+#contact .ea-range__bubble{background:#E7385A;color:#fff;border:none;font-weight:600;box-shadow:0 6px 16px rgba(231,56,90,.3)}
+/* кнопка отправки — как CTA на первом блоке главной: светлая, скруглённая, ховер — розовая */
+#contact .ea-form__submit{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#1B1A18;
+  padding:16px 30px;border:1px solid rgba(27,26,24,.14);border-radius:12px;
+  font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  box-shadow:0 14px 34px rgba(27,26,24,.12);
+  transition:background .35s ease,color .35s ease,border-color .35s ease,box-shadow .35s ease}
+#contact .ea-form__submit svg{width:16px;height:16px;fill:currentColor}
+#contact .ea-form__submit:hover{background:#E7385A;color:#fff;border-color:#E7385A;box-shadow:none;transform:translateY(-2px)}
+#contact .ea-form__submit:hover svg{fill:currentColor}
 
 /* ── FAQ — «faq»: 2 колонки, винно-красные круглые кнопки ── */
 .ea-faq{background:var(--paper);border-top:1px solid var(--cream-line)}
