@@ -115,7 +115,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-hero__lead{max-width:360px;margin:22px auto 38px;font-weight:400;font-size:clamp(13px,0.95vw,15px);line-height:1.6;color:var(--body)}
 /* hero CTA на референсе — винный ТЕКСТ с подчёркиванием и сердечком, без заливки */
 /* кнопка «Оформить событие» — точно как кнопка отправки формы: светлая, скруглённая, ховер розовый */
-.ea-hero__right .ea-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+.ea-hero__right .ea-btn{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;
   background:#fff;color:#1B1A18;padding:16px 30px;border:1px solid rgba(27,26,24,.14);border-radius:12px;
   font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   box-shadow:0 14px 34px rgba(27,26,24,.12);
@@ -123,7 +123,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-hero__right .ea-btn svg{width:16px;height:16px;fill:currentColor}
 .ea-hero__right .ea-btn:hover{background:#E7385A;color:#fff;border-color:#E7385A;box-shadow:none;transform:translateY(-2px)}
 .ea-hero__right .ea-btn:hover svg{fill:currentColor}
-.ea-hero__btn-txt{border-bottom:1px solid currentColor;padding-bottom:3px}
+.ea-hero__btn-txt{border-bottom:none;padding-bottom:0}
 /* HERO-СЛАЙДЕР: плавная смена (crossfade) без стрелок и точек */
 .ea-hero__arrow,.ea-hero__dots{display:none!important}
 
