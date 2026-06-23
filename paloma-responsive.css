@@ -29,27 +29,15 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --paloma-topbar: 34px;
+  /* Бегущая строка над шапкой убрана — топбар не занимает место */
+  --paloma-topbar: 0px;
   --paloma-header-h: 88px;
   --paloma-header-offset: calc(var(--paloma-topbar) + var(--paloma-header-h));
 }
 
 @media (max-width: 1024px) {
   :root {
-    --paloma-topbar: 30px;
     --paloma-header-h: 56px;
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --paloma-topbar: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --paloma-topbar: 26px;
   }
 }
 

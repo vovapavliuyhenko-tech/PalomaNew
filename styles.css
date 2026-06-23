@@ -4907,8 +4907,9 @@ body.is-home {
   --hero-overlay: rgba(27, 26, 24, 0.38);
 }
 
-body.is-home .top-marquee {
-  display: none;
+/* Бегущая строка над шапкой убрана со всех страниц */
+.site-top .top-marquee {
+  display: none !important;
 }
 
 body.is-home .site-header:not(.is-scrolled) {
