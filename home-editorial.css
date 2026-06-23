@@ -512,3 +512,13 @@ body.is-home .home-about-scene__link:hover {
   color: #E7385A;
   opacity: 1;
 }
+
+/* Скруглённые углы (12px) — как у кнопки в первом блоке главной:
+   карточки товаров (витрина/допы), категории, статьи блога и кнопки «Подробнее» */
+body.is-home .home-product-card__media,
+body.is-home .home-categories__photo,
+body.is-home .home-article-card__media,
+body.is-home .home-product-card__more,
+body.is-home .product-card__btn {
+  border-radius: 12px;
+}
