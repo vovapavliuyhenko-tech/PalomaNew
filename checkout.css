@@ -20,6 +20,17 @@
   font-family: var(--font-sans, "Manrope", sans-serif);
 }
 
+/* Глобальные body/main используют overflow-x:hidden, что ломает
+   position:sticky у «Состав заказа». clip даёт ту же защиту по горизонтали,
+   но не превращает элемент в скролл-контейнер — sticky снова работает. */
+body.checkout-page {
+  overflow-x: clip;
+}
+
+body.checkout-page .co-main {
+  overflow-x: clip;
+}
+
 .checkout-page .site-top,
 .checkout-page .site-header,
 .checkout-page .site-footer {
