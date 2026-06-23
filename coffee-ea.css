@@ -33,8 +33,8 @@ body.coffee-page{overflow-x:clip!important}
 .cf-hero__logo{font-family:var(--logo);color:var(--wine);font-size:clamp(24px,2.4vw,34px);
   letter-spacing:.16em;text-transform:none;text-align:center;line-height:1;
   margin-top:clamp(24px,5vh,64px)}
-.cf-hero__logo small{display:block;font-family:var(--fsans,'Manrope',sans-serif);font-size:9px;
-  letter-spacing:.42em;text-transform:uppercase;color:var(--muted);margin-top:6px;padding-left:.42em}
+.cf-hero__logo small{display:block;font-family:var(--logo);font-size:.34em;
+  letter-spacing:.18em;text-transform:lowercase;color:var(--wine);opacity:.92;margin-top:9px}
 /* зеркальный вариант (фото справа, текст слева) — блок 2 */
 .ea-hero--mirror .ea-hero__left{order:2;border-left:1px solid var(--eline)}
 .ea-hero--mirror .ea-hero__right{order:1;border-left:none}
