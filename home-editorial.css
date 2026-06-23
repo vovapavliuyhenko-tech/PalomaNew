@@ -25,7 +25,7 @@
   will-change: transform;
   background:
     linear-gradient(rgba(27, 26, 24, 0.54), rgba(27, 26, 24, 0.54)),
-    url("images/paloma/catalog/bouquet-01.jpg") center 40% / cover no-repeat;
+    url("images/paloma/hero/subscription-bg.jpg") center 35% / cover no-repeat;
 }
 
 .home-subscription__card {
