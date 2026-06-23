@@ -517,6 +517,10 @@ body.checkout-page .co-main {
   flex-shrink: 0;
 }
 
+.co-notice[hidden] {
+  display: none;
+}
+
 .co-notice {
   display: flex;
   align-items: flex-start;

@@ -10,7 +10,7 @@
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="styles.css?v=pink1">
-  <link rel="stylesheet" href="checkout.css?v=w3">
+  <link rel="stylesheet" href="checkout.css?v=w4">
 </head>
 <body class="checkout-page">
 
@@ -317,13 +317,22 @@
                      min="09:00" max="22:00">
             </div>
 
-            <div class="co-notice" id="coDeliveryNotice" hidden>
+            <div class="co-notice" id="coDeliveryNotice">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                 <circle cx="12" cy="12" r="10"/>
                 <path d="M12 8v4M12 16h.01"/>
               </svg>
               <p>Для онлайн-витрины доставка возможна сегодня или завтра.</p>
+            </div>
+
+            <div class="co-notice" id="coSubNotice" hidden>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4M12 16h.01"/>
+              </svg>
+              <p>Менеджер заранее согласует день и время каждой доставки.</p>
             </div>
           </fieldset>
 
@@ -492,6 +501,6 @@
   </div>
 
   <script src="cart-core.js"></script>
-  <script src="checkout.js?v=w3"></script>
+  <script src="checkout.js?v=w4"></script>
 </body>
 </html>

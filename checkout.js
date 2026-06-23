@@ -213,6 +213,16 @@
     if ($success) $success.hidden = true;
     if ($mobileBar) $mobileBar.hidden = empty;
 
+    const $subNotice = document.getElementById("coSubNotice");
+    if ($subNotice) {
+      const hasSubscription = cart.some(
+        (it) =>
+          it.type === "subscription" ||
+          String(it.id).startsWith("paloma-flower-subscription")
+      );
+      $subNotice.hidden = !hasSubscription;
+    }
+
     if (!empty) {
       renderItems(cart);
       renderUpsell(cart);
