@@ -16,10 +16,10 @@
 
   const UPSELL_ITEMS = [
     {
-      id: "upsell-card",
-      name: "Открытка с текстом",
-      price: 100,
-      ph: "linear-gradient(135deg,#f0e8d8,#e0d0b8)",
+      id: "upsell-coffee",
+      name: "Кофе PALOMA",
+      price: 280,
+      ph: "linear-gradient(135deg,#d8c0a8,#a07848)",
       image: "",
     },
     {
@@ -30,17 +30,10 @@
       image: "",
     },
     {
-      id: "upsell-coffee",
-      name: "Кофе PALOMA",
-      price: 280,
-      ph: "linear-gradient(135deg,#d8c0a8,#a07848)",
-      image: "",
-    },
-    {
-      id: "upsell-choco",
-      name: "Шоколад ручной работы",
-      price: 350,
-      ph: "linear-gradient(135deg,#c8a878,#785830)",
+      id: "upsell-secateurs",
+      name: "Секатор",
+      price: 450,
+      ph: "linear-gradient(135deg,#cdd2d0,#8a9690)",
       image: "",
     },
     {
