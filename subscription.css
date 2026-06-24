@@ -178,6 +178,16 @@ body.subscription-page {
   padding-top: clamp(48px, 6vw, 88px);
 }
 
+/* Скругление карточек и кнопок «Подробнее» — как на главной (body.is-home) */
+.sub-showcase .home-product-card__media,
+.sub-showcase .home-product-card__more {
+  border-radius: 12px;
+}
+.sub-showcase .home-product-card__media img,
+.sub-showcase .home-product-card__placeholder {
+  border-radius: inherit;
+}
+
 /* Адаптив */
 @media (max-width: 1024px) {
   /* На мобильных фото-герой не должен занимать пол-экрана перед формой */
