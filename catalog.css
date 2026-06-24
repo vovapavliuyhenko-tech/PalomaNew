@@ -61,7 +61,7 @@
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--color-text, var(--ink, #1B1A18));
   margin: 0;
 }
