@@ -483,11 +483,11 @@
    Заскоплено на body.is-home, чтобы не задеть другие страницы.
    ===================================================== */
 
-/* hero «Выбрать букет» — на ховере розовая заливка */
+/* hero «Выбрать букет» — на ховере прозрачный фон, белая обводка и текст */
 body.is-home .paloma-cover__cta:hover {
-  background: #E7385A;
+  background: transparent;
   color: #FFFFFF;
-  border-color: #E7385A;
+  border-color: rgba(255, 255, 255, 0.9);
   box-shadow: none;
 }
 
