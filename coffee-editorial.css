@@ -868,12 +868,13 @@
   padding: 20px 38px;
   background: var(--wine, #E7385A);
   color: #FFFFFF;
-  border: 2px solid var(--wine, #E7385A);
-  border-radius: 16px;
-  font-family: var(--fdisplay, "Montserrat", sans-serif);
+  border: 1px solid var(--wine, #E7385A);
+  border-radius: 12px;
+  font-family: "Montserrat", system-ui, sans-serif;
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   box-shadow: 0 14px 34px rgba(231, 56, 90, 0.26);
   transition:
