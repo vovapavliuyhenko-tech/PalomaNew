@@ -56,11 +56,12 @@
 }
 
 .catalog-hero__title {
-  font-family: "Montserrat", system-ui, sans-serif;
-  font-size: clamp(30px, 3.36vw, 48px);
-  font-weight: 200;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
+  font-family: var(--logo, "Italiana", "Times New Roman", serif);
+  font-size: clamp(40px, 4.6vw, 66px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--color-text, var(--ink, #1B1A18));
   margin: 0;
 }
@@ -85,6 +86,18 @@
 .catalog-page .product-card {
   border-radius: 0;
   background: transparent;
+}
+
+/* Скруглённые углы (12px) — фото-карточки и кнопки, как на главной */
+.catalog-page .product-card__media,
+.catalog-page .product-card__btn {
+  border-radius: 12px;
+}
+.catalog-page .product-card__media .product-card__image,
+.catalog-page .product-card__media .product-card__img,
+.catalog-page .product-card__media .product-card__ph,
+.catalog-page .product-card__media img {
+  border-radius: inherit;
 }
 
 .catalog-page .product-card__name {
@@ -126,7 +139,7 @@
 .catalog-filter-btn {
   flex-shrink: 0;
   padding: 9px 18px;
-  border-radius: 0;
+  border-radius: 10px;
   border: 1px solid var(--color-border, rgba(27, 26, 24, 0.22));
   background: transparent;
   font-family: var(--font-sans, var(--sans, "Manrope"), sans-serif);
