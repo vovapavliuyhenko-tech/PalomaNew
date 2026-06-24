@@ -35,6 +35,10 @@ body.coffee-page{overflow-x:clip!important}
   margin-top:clamp(24px,5vh,64px)}
 .cf-hero__logo small{display:block;font-family:var(--logo);font-size:.34em;
   letter-spacing:.18em;text-transform:lowercase;color:var(--wine);opacity:.92;margin-top:9px}
+/* логотип-картинка в первом блоке вместо текста */
+.cf-hero__logoimg{width:clamp(200px,18vw,280px);height:auto;display:block;margin:clamp(24px,5vh,64px) auto 0}
+/* блок «философия кофейни» — на всю высоту, как на странице оформления */
+.coffee-page .ea-philo{height:100vh;min-height:100vh}
 /* зеркальный вариант (фото справа, текст слева) — блок 2 */
 .ea-hero--mirror .ea-hero__left{order:2;border-left:1px solid var(--eline)}
 .ea-hero--mirror .ea-hero__right{order:1;border-left:none}
