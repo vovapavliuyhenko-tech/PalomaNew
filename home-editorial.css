@@ -241,13 +241,19 @@
 .home-categories__all {
   margin-top: 70px;
   flex-shrink: 0;
-  font-family: var(--font-display, var(--font-serif, Georgia, serif));
-  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  padding-bottom: 7px;
+  font-family: var(--sans);
+  font-size: 12px;
   font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: #1B1A18;
-  text-decoration: underline;
-  text-underline-offset: 6px;
-  transition: opacity 0.3s ease;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .home-categories__all:hover {
