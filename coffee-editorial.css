@@ -919,8 +919,13 @@
 .cf-menu .product-card__media .product-card__ph {
   border-radius: inherit;
 }
+/* Кнопки карточек меню — каждая во всю ширину карточки (одна колонка) */
+.cf-menu .product-card__btns {
+  grid-template-columns: 1fr;
+}
 .cf-menu .product-card__btn {
   border-radius: 12px;
+  width: 100%;
 }
 
 /* Заголовки всей страницы кофейни — Montserrat ЗАГЛАВНЫЕ розовые, как в блоке
