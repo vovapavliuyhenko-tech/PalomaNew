@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="cursor.css?v=w1">
   <link rel="stylesheet" href="home-hero-cover.css?v=peony1">
   <link rel="stylesheet" href="home-editorial.css?v=place3">
+  <link rel="stylesheet" href="advantages.css?v=adv1">
   <link rel="stylesheet" href="paloma-wave.css?v=w1">
 </head>
 <body class="is-home">
@@ -921,108 +922,87 @@
     </section>
 
     <!-- =====================================================
-         PALOMA НА ЭНГЕЛЬСА — редакционный блок с фото-карточками
+         ПРЕИМУЩЕСТВА — закреплённая на скролле секция, карточки-«пилюли»
+         разъезжаются веером (эффект как на giftplaygame.ru, бренд PALOMA)
          ===================================================== -->
-    <section class="home-place" id="homeAboutScroll" aria-label="PALOMA на Энгельса 74/82">
-      <div class="home-place__inner">
+    <section class="adv" id="advantages" aria-label="Преимущества PALOMA">
+      <div class="adv__pin">
+        <div class="adv__stage">
 
-        <header class="home-place__head home-reveal">
-          <p class="home-place__eyebrow">Новороссийск · Энгельса 74/82</p>
-          <h2 class="home-place__title">PALOMA на Энгельса</h2>
-          <p class="home-place__lead">
-            Заберите букет, останьтесь на чашку кофе среди цветов и выберите подарок —
-            всё в одном месте на Энгельса.
-          </p>
-          <div class="home-place__actions">
-            <a
-              href="https://yandex.ru/maps/?text=Новороссийск%2C+ул.+Энгельса%2C+74"
-              class="home-place__link"
-              target="_blank"
-              rel="noopener noreferrer">
-              Построить маршрут
-            </a>
-            <a href="coffee.html" class="home-place__link">Смотреть кофейню</a>
-          </div>
-        </header>
+          <span class="adv__eyebrow">Преимущества</span>
 
-        <div class="home-place__grid">
+          <span class="adv__photo adv__photo--a" style="background-image:url('images/paloma/catalog/h1.jpg')" aria-hidden="true"></span>
+          <span class="adv__photo adv__photo--b" style="background-image:url('images/paloma/catalog/bouquet-01.jpg')" aria-hidden="true"></span>
+          <span class="adv__photo adv__photo--c" style="background-image:url('images/paloma/events/event-01.jpg')" aria-hidden="true"></span>
 
-          <a class="home-place-card home-reveal" href="catalog.html">
-            <span class="home-place-card__media">
-              <img src="images/paloma/catalog/bouquet-01.jpg" alt="Авторские букеты PALOMA" loading="lazy">
-            </span>
-            <span class="home-place-card__body">
-              <span class="home-place-card__kicker">Цветы</span>
-              <span class="home-place-card__name">Цветы каждый день</span>
-              <span class="home-place-card__text">
-                Авторские букеты под повод, настроение и сезон — от комплимента за минуту
-                до композиции, которую запомнят.
+          <svg class="adv__spark" viewBox="0 0 64 96" fill="currentColor" aria-hidden="true">
+            <path d="M40 0 6 54h20L20 96l38-58H36z"/>
+          </svg>
+
+          <div class="adv__cards">
+
+            <article class="adv__card">
+              <span class="adv__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B1A18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
               </span>
-              <span class="home-place-card__more">Смотреть каталог →</span>
-            </span>
-          </a>
+              <div class="adv__text">
+                <h3 class="adv__t">Быстрые решения</h3>
+                <p class="adv__p">Отвечаем на заявку и собираем букет в день обращения.</p>
+              </div>
+            </article>
 
-          <a class="home-place-card home-reveal" href="coffee.html" style="--d:.06s">
-            <span class="home-place-card__media">
-              <img src="images/paloma/coffee/cup-raf.jpg" alt="Кофе в PALOMA" loading="lazy">
-            </span>
-            <span class="home-place-card__body">
-              <span class="home-place-card__kicker">Кофейня</span>
-              <span class="home-place-card__name">Кофе рядом</span>
-              <span class="home-place-card__text">
-                Не «кофе для вида»: фирменный раф, матча и сезонные напитки от бариста.
-                Возьмите с собой или добавьте к букету.
+            <article class="adv__card">
+              <span class="adv__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B1A18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0"/></svg>
               </span>
-              <span class="home-place-card__more">В кофейню →</span>
-            </span>
-          </a>
+              <div class="adv__text">
+                <h3 class="adv__t">Любой повод</h3>
+                <p class="adv__p">От комплимента за минуту до большой композиции под событие.</p>
+              </div>
+            </article>
 
-          <a class="home-place-card home-reveal" href="catalog.html?cat=accessories" style="--d:.12s">
-            <span class="home-place-card__media">
-              <img src="images/paloma/vases/vase-01.jpg" alt="Подарки и аксессуары PALOMA" loading="lazy">
-            </span>
-            <span class="home-place-card__body">
-              <span class="home-place-card__kicker">Подарки</span>
-              <span class="home-place-card__name">Подарки и аксессуары</span>
-              <span class="home-place-card__text">
-                Вазы, открытки и сладости — чтобы букет стал законченным подарком,
-                а не просто цветами.
+            <article class="adv__card">
+              <span class="adv__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B1A18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
               </span>
-              <span class="home-place-card__more">Выбрать дополнение →</span>
-            </span>
-          </a>
+              <div class="adv__text">
+                <h3 class="adv__t">Авторская сборка</h3>
+                <p class="adv__p">Каждый букет собираем вручную — под настроение, повод и сезон.</p>
+              </div>
+            </article>
 
-          <a class="home-place-card home-reveal" href="event-decoration.html" style="--d:.18s">
-            <span class="home-place-card__media">
-              <img src="images/paloma/events/event-01.jpg" alt="Цветочное оформление событий PALOMA" loading="lazy">
-            </span>
-            <span class="home-place-card__body">
-              <span class="home-place-card__kicker">Оформление</span>
-              <span class="home-place-card__name">Оформление событий</span>
-              <span class="home-place-card__text">
-                Берём на себя цветочную часть свадеб, ужинов и съёмок — концепция,
-                сборка и монтаж. Вы наслаждаетесь — мы оформляем.
+            <article class="adv__card">
+              <span class="adv__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B1A18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
               </span>
-              <span class="home-place-card__more">Обсудить оформление →</span>
-            </span>
-          </a>
+              <div class="adv__text">
+                <h3 class="adv__t">Работа «под ключ»</h3>
+                <p class="adv__p">Концепция, сборка, доставка и оформление — берём на себя полностью.</p>
+              </div>
+            </article>
 
-        </div>
+            <article class="adv__card">
+              <span class="adv__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B1A18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8 12 3l9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
+              </span>
+              <div class="adv__text">
+                <h3 class="adv__t">Бережная упаковка</h3>
+                <p class="adv__p">Фирменная упаковка и стабилизация — букет доедет свежим и аккуратным.</p>
+              </div>
+            </article>
 
-        <div class="home-place__cta home-reveal">
-          <div class="home-place__cta-text-wrap">
-            <h3 class="home-place__cta-title">Ждём вас в Paloma</h3>
-            <p class="home-place__cta-text">
-              Новороссийск, Энгельса 74/82. Букеты, кофе и маленькие радости —
-              каждый день, без пауз в цветах.
-            </p>
-          </div>
-          <div class="home-place__actions">
-            <a href="contacts.html" class="home-place__link">Связаться</a>
-            <a href="catalog.html" class="home-place__link">В каталог</a>
+            <article class="adv__card">
+              <span class="adv__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B1A18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </span>
+              <div class="adv__text">
+                <h3 class="adv__t">Честные цены</h3>
+                <p class="adv__p">Стоимость с упаковкой и сборкой — без скрытых доплат.</p>
+              </div>
+            </article>
+
           </div>
         </div>
-
       </div>
     </section>
 
@@ -1244,5 +1224,6 @@
   <script src="home-hero-cover.js"></script>
   <script src="paloma-carousel-autoscroll.js?v=2"></script>
   <script src="paloma-parallax.js?v=2"></script>
+  <script src="advantages.js?v=adv1"></script>
 </body>
 </html>
