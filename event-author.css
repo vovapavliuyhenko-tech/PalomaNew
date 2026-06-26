@@ -374,7 +374,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-cta .ea-form__submit:hover{background:transparent;transform:none;color:var(--wine-d);border-color:var(--wine-d)}
 .ea-cta .ea-form__submit svg{width:16px;height:16px;fill:var(--wine)}
 .ea-cta .ea-form__submit:hover svg{transform:none;fill:var(--wine-d)}
-.ea-cta__media{position:relative;align-self:stretch;min-height:clamp(380px,56vh,620px);border:7px solid var(--wine);background:var(--wine)}
+.ea-cta__media{position:relative;align-self:stretch;min-height:clamp(380px,56vh,620px);border:7px solid var(--wine);background:var(--wine);border-radius:18px;overflow:hidden}
 .ea-cta__media img{width:100%;height:100%;object-fit:cover}
 
 /* ── Оформление #contact: по референсу — поля с обводкой (белые, скруглённые),
