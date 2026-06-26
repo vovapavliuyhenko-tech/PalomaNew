@@ -763,6 +763,8 @@
 .blog-page .page-compact-header__title {
   font-family: var(--font-display);
   font-weight: 400;
+  line-height: 1.25;
+  margin-top: clamp(18px, 3vw, 40px);
 }
 
 /* ── Скругление картинок, блоков и кнопок на странице блога ── */
