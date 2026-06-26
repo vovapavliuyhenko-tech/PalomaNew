@@ -130,9 +130,8 @@
 /* ── Изнанка: розовая, с описанием ────────────────────── */
 .fmt__back {
   transform: rotateY(180deg);
-  background: #FFFFFF;
-  color: var(--burgundy, #E7385A);
-  border: 1px solid rgba(231, 56, 90, 0.22);
+  background: var(--burgundy, #E7385A);
+  color: #FFFFFF;
   display: flex;
   flex-direction: column;
   padding: clamp(22px, 2.4vw, 36px);
@@ -153,7 +152,7 @@
   font-weight: 400;
   font-size: clamp(13px, 1.05vw, 15px);
   line-height: 1.5;
-  color: rgba(231, 56, 90, 0.85);
+  color: rgba(255, 255, 255, 0.94);
 }
 .fmt__more {
   margin-top: auto;
@@ -164,13 +163,25 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--burgundy, #E7385A);
+  color: #FFFFFF;
   text-decoration: none;
-  border-bottom: 1px solid rgba(231, 56, 90, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
   padding-bottom: 2px;
   transition: opacity 0.25s ease;
 }
 .fmt__more:hover { opacity: 0.72; }
+
+/* светлый вариант изнанки — белый фон + розовый текст и кнопка */
+.fmt__card--light .fmt__back {
+  background: #FFFFFF;
+  color: var(--burgundy, #E7385A);
+  border: 1px solid rgba(231, 56, 90, 0.22);
+}
+.fmt__card--light .fmt__back-text { color: rgba(231, 56, 90, 0.85); }
+.fmt__card--light .fmt__more {
+  color: var(--burgundy, #E7385A);
+  border-bottom-color: rgba(231, 56, 90, 0.6);
+}
 
 /* ── Адаптив ──────────────────────────────────────────── */
 @media (max-width: 899px) {
