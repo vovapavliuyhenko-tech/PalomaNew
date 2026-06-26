@@ -171,6 +171,24 @@
 }
 .fmt__more:hover { opacity: 0.72; }
 
+/* строка-оффер на изнанке (прижата к низу, с разделителем) */
+.fmt__offer {
+  margin: clamp(14px, 1.8vw, 22px) 0 0;
+  padding-top: clamp(13px, 1.5vw, 17px);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-style: italic;
+  font-size: clamp(12px, 0.95vw, 13.5px);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+.fmt__offer::before {
+  content: "→";
+  font-style: normal;
+  font-weight: 600;
+  margin-right: 7px;
+}
+
 /* светлый вариант изнанки — белый фон + розовый текст и кнопка */
 .fmt__card--light .fmt__back {
   background: #FFFFFF;
@@ -181,6 +199,10 @@
 .fmt__card--light .fmt__more {
   color: var(--burgundy, #E7385A);
   border-bottom-color: rgba(231, 56, 90, 0.6);
+}
+.fmt__card--light .fmt__offer {
+  color: rgba(231, 56, 90, 0.9);
+  border-top-color: rgba(231, 56, 90, 0.22);
 }
 
 /* ── Адаптив ──────────────────────────────────────────── */
@@ -197,7 +219,7 @@
 
 @media (max-width: 560px) {
   .fmt__grid { grid-template-columns: 1fr; }
-  .fmt__card { aspect-ratio: 5 / 4; }
+  .fmt__card { aspect-ratio: 4 / 5; }
 }
 
 @media (prefers-reduced-motion: reduce) {
