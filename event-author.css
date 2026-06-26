@@ -442,7 +442,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 /* ── ПОПАП-ГАЛЕРЕЯ кейсов ── */
 .ea-lb{position:fixed;inset:0;z-index:1000;background:rgba(40,24,12,.94);display:none;align-items:center;justify-content:center;padding:6vh 7vw}
 .ea-lb.is-open{display:flex}
-.ea-lb__img{max-width:86vw;max-height:84vh;object-fit:contain;box-shadow:0 40px 90px rgba(27, 26, 24, .5);background:#1B1A18}
+.ea-lb__img{max-width:80vw;max-height:80vh;object-fit:contain;border-radius:22px;box-shadow:0 40px 90px rgba(27, 26, 24, .5);background:#1B1A18}
 .ea-lb__close{position:absolute;top:clamp(18px,3vw,34px);right:clamp(20px,3vw,40px);width:52px;height:52px;border-radius:50%;
   border:1px solid rgba(247,242,233,.4);background:transparent;color:#FFFFFF;font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:.3s}
 .ea-lb__close:hover{background:#FFFFFF;color:#1B1A18}
