@@ -331,7 +331,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 #testimonials .ea-test__slider{margin-top:clamp(14px,1.8vw,26px)}
 /* белая карточка-рамка: фото вплотную слева, текст справа с отступом */
 #testimonials .ea-test__slide{grid-template-columns:minmax(0,0.88fr) minmax(0,1.12fr);gap:0;padding:0;
-  background:#fff;border:1px solid #e8ddc8;border-radius:2px;overflow:hidden;
+  background:#fff;border:1px solid #e8ddc8;border-radius:22px;overflow:hidden;
   box-shadow:0 18px 44px rgba(40,24,12,.10);align-items:stretch}
 /* карточка выше + больше внутренние отступы */
 #testimonials .ea-test__photo{aspect-ratio:auto;height:100%;min-height:480px}
