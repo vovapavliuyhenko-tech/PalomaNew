@@ -1102,6 +1102,20 @@
         </section>
 
       </div>
+
+      <!-- FAQ — как на странице «Оформление» -->
+      <section class="ea-panel ea-faq ea-panel--pad" id="ea-home-faq">
+        <span class="ea-eyebrow" data-reveal>частые вопросы</span>
+        <h2 class="ea-title" data-reveal style="--d:.05s">Частые вопросы</h2>
+        <div class="ea-faq__grid ea-faq__list" data-reveal>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Сколько стоит оформление?</button><div class="ea-faq__a"><p>Стоимость зависит от площадки, количества зон, сезона и пожеланий по декору. Покажем концепцию и смету до старта — вы платите, понимая результат, без сюрпризов в счёте.</p></div></div>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">С чего начинается работа?</button><div class="ea-faq__a"><p>С бесплатного знакомства: обсуждаем дату, площадку, стиль и бюджет. Затем готовим концепцию с палитрой и мудбордом и фиксируем смету.</p></div></div>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">За какое время лучше начать подготовку?</button><div class="ea-faq__a"><p>Оптимально — за 1–3 месяца до события: так мы успеваем заложить сезонные цветы и собрать команду на монтаж. Но беремся и за срочные задачи.</p></div></div>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Можно ли использовать свой декор и вазы?</button><div class="ea-faq__a"><p>Конечно. Мы можем работать с вашими вазами, тканями и реквизитом, дополнив их живыми цветами в единой палитре события.</p></div></div>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Чем отличается оформление от полной организации?</button><div class="ea-faq__a"><p>Мы отвечаем за цветочную часть и декор пространства: концепцию, композиции, монтаж и демонтаж. Координацию площадки и подрядчиков ведёт ваш организатор.</p></div></div>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Почему стоит выбрать именно нас?</button><div class="ea-faq__a"><p>Своя студия в Новороссийске, 5,0 на Яндекс Картах и 2ГИС, авторская флористика. Вы видите проект заранее и получаете ровно то, что согласовали.</p></div></div>
+        </div>
+      </section>
     </div>
 
     <script>
@@ -1118,6 +1132,17 @@
       window.addEventListener('load',revealVisible);
       window.addEventListener('scroll',revealVisible,{passive:true});
       window.addEventListener('resize',revealVisible,{passive:true});
+
+      /* FAQ-аккордеон */
+      var faqItems=[].slice.call(root.querySelectorAll('.ea-faq__item'));
+      faqItems.forEach(function(item){
+        var q=item.querySelector('.ea-faq__q'),a=item.querySelector('.ea-faq__a');
+        q.addEventListener('click',function(){
+          var open=item.classList.contains('is-open');
+          faqItems.forEach(function(i){i.classList.remove('is-open');i.querySelector('.ea-faq__a').style.maxHeight=null;});
+          if(!open){item.classList.add('is-open');a.style.maxHeight=a.scrollHeight+'px';}
+        });
+      });
 
       /* HERO-СЛАЙДЕР: фон + фото-рамка меняются вместе, авто-прокрутка + стрелки */
       var track=document.getElementById('eaHeroTrack'); if(!track)return;
