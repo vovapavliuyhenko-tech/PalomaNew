@@ -792,3 +792,16 @@
   color: #FFFFFF;
   border-color: var(--color-accent, #E7385A);
 }
+
+/* Кнопки «Читать» — прижаты к низу карточки (выровнены по одной линии)
+   и в общем стиле сайта: скруглённые, при наведении розовая заливка */
+.blog-page .blog-card__link {
+  margin-top: auto;
+  border-radius: 10px;
+  border-color: var(--color-border, rgba(27, 26, 24, 0.22));
+}
+.blog-page .blog-card__link:hover {
+  background: var(--color-accent, #E7385A);
+  border-color: var(--color-accent, #E7385A);
+  color: #FFFFFF;
+}
