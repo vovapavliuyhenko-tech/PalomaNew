@@ -625,9 +625,9 @@
       inner.insertAdjacentHTML(
         "beforeend",
         `<div class="site-header__mobile-footer" data-mobile-footer-injected>
-          <a href="https://t.me/paloma_novorossiysk" class="site-header__mobile-muted" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a href="https://wa.me/79180000000" class="site-header__mobile-muted" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a href="tel:+78612000000" class="btn btn--dark site-header__mobile-cta">Позвонить нам</a>
+          <a href="https://t.me/palomanvrsk" class="site-header__mobile-muted" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a href="https://wa.me/79897707000" class="site-header__mobile-muted" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="tel:+79897707000" class="btn btn--dark site-header__mobile-cta">Позвонить нам</a>
         </div>`,
       );
     }
