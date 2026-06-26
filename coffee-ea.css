@@ -138,7 +138,11 @@ body.coffee-page{overflow-x:clip!important}
 /* два цветка-акцента по углам фото (лево-верх + право-низ), золотой контур */
 /* ни секция, ни колонка не должны обрезать цветы по краям */
 .cf-lemon.ea-panel{overflow:visible}
-.cf-lemon .cf-hero__left{overflow:visible}
+.cf-lemon .ea-hero{overflow:visible}
+/* колонку с фото поднимаем над текстовой — иначе её панель закрывает цветы,
+   что вылезают за край фото вправо/вниз (выглядело как обрезка по углам) */
+.cf-lemon .cf-hero__left{overflow:visible;z-index:3}
+.cf-lemon .cf-lemon__frame,.cf-lemon .cf-accent--lemon{overflow:visible}
 .cf-lemon .cf-accent--lemon{z-index:5;opacity:1;filter:drop-shadow(0 8px 16px rgba(20,12,6,.26))}
 .cf-lemon .cf-accent--lemon .cf-flower-img{width:clamp(56px,6.6vw,96px);height:auto;display:block}
 /* цветы сидят в углах, в основном снаружи фото — перекрывают лишь уголок */
