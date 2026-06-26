@@ -205,6 +205,22 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-serv__price{font-family:var(--fdisplay);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .ea-serv__price b{display:block;font-family:var(--fdisplay);font-size:22px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--wine);margin-top:5px}
 
+/* ── ФЛИП-КАРТОЧКА услуги: лицо — фото, при наведении/тапе плавно
+   переворачивается, сзади текст (как в блоке «Наши преимущества») ── */
+.ea-serv__card--flip{display:block;background:transparent;padding:0;box-shadow:none;outline:none;
+  perspective:2000px;overflow:visible}
+.ea-serv__flip{position:relative;width:100%;height:clamp(440px,74vh,660px);
+  transform-style:preserve-3d;transition:transform 1.15s cubic-bezier(.65,0,.18,1);will-change:transform}
+@media (hover:hover) and (pointer:fine){.ea-serv__card--flip:hover .ea-serv__flip{transform:rotateY(180deg)}}
+.ea-serv__card--flip:focus-within .ea-serv__flip{transform:rotateY(180deg)}
+.ea-serv__face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;
+  overflow:hidden;box-shadow:0 40px 100px rgba(20,12,8,.45)}
+.ea-serv__face--front img{width:100%;height:100%;object-fit:cover;display:block}
+.ea-serv__face--back{transform:rotateY(180deg);background:var(--paper2);
+  padding:clamp(40px,3.6vw,68px) clamp(32px,3vw,56px);
+  display:flex;flex-direction:column;justify-content:center}
+@media (prefers-reduced-motion:reduce){.ea-serv__flip{transition:none}}
+
 /* ── PROCESS — самостоятельная ГОРИЗОНТАЛЬНАЯ прокрутка скроллом ──
    Высокая обёртка (320vh) + липкий экран + трек, сдвигаемый по X по прогрессу. */
 .ea-proc{position:relative;height:520vh;background:var(--paper2);border-top:1px solid var(--cream-line);z-index:2}
