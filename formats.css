@@ -191,3 +191,6 @@
 @media (prefers-reduced-motion: reduce) {
   .fmt__flip { transition: none; }
 }
+
+/* убираем «шторочную» тень панелей оформления на главной — затемнение между блоками */
+#ea-home .ea-panel { box-shadow: none; }
