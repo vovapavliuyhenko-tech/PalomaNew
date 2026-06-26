@@ -136,7 +136,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-philo__name{font-family:var(--fdisplay);font-style:italic;font-weight:400;font-size:clamp(18px,1.4vw,23px);color:var(--ink);margin-top:32px;letter-spacing:.02em;text-align:center}
 .ea-philo__role{font-family:var(--fdisplay);font-size:11px;letter-spacing:.22em;text-transform:lowercase;color:var(--muted);margin-top:7px;text-align:center}
 .ea-philo__media{position:relative;overflow:hidden;background:#FFFFFF}
-.ea-philo__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ea-philo__media img,.ea-philo__media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 /* ── PORTFOLIO — сетка кейсов (как «our events» на референсе) ── */
 .ea-hx{position:relative;background:var(--paper2);padding:var(--ea-py) 0;border-top:1px solid var(--cream-line)}
