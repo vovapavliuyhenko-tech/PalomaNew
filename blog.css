@@ -757,3 +757,26 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Заголовок страницы — в фирменном шрифте, как остальные заголовки блога
+   (Classica One script вместо тонкого Montserrat) ── */
+.blog-page .page-compact-header__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+/* ── Скругление картинок, блоков и кнопок на странице блога ── */
+.blog-page .blog-card,
+.blog-page .blog-card__image,
+.blog-page .blog-card--large .blog-card__image,
+.blog-page .blog-featured__image,
+.blog-page .blog-hero__media,
+.blog-page .blog-hero__placeholder {
+  border-radius: 18px;
+}
+.blog-page .blog-card__cat {
+  border-radius: 999px;
+}
+.blog-page .blog-filters .filter-chip {
+  border-radius: 999px;
+}
