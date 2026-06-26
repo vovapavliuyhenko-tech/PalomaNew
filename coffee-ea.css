@@ -26,6 +26,10 @@ body.coffee-page{overflow-x:clip!important}
 .cf-hero__left::after,.cf-mir__media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(20,12,8,.3),rgba(20,12,8,.46))}
 .cf-hero__left .ea-hero__frame,.cf-mir__media .ea-hero__frame{z-index:2}
+/* Статичное фото слева — как в блоке «философия»: без рамки, вуали и паддингов */
+.cf-hero__left--static{padding:0}
+.cf-hero__left--static::after{display:none}
+.cf-hero__left--static img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 /* ── БЛОК-ГЕРОЙ кофейни: логотип Paloma coffee сверху по центру ── */
 /* логотип-герой = «отрисованный» PALOMA как на странице Оформления:
