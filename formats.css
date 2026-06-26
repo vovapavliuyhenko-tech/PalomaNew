@@ -1,0 +1,187 @@
+/* =====================================================
+   PALOMA — БЛОК «ФОРМАТЫ» (флип-карточки)
+   Реплика блока serafimafadeeva.ru: тёмно-винная секция,
+   крупный сериф-заголовок слева + заметка с рукописным
+   подчёркиванием справа, сетка 3×2 карточек. При наведении
+   (или тапе на мобильном) карточка аккуратно переворачивается
+   по оси Y — сзади розовая «изнанка» с описанием и «подробнее».
+   ===================================================== */
+
+.fmt {
+  background: #45101C;
+  color: #FFFFFF;
+  padding: clamp(64px, 8vw, 132px) 0 clamp(72px, 9vw, 150px);
+  overflow: hidden;
+}
+
+.fmt__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--gutter, clamp(20px, 4vw, 64px));
+}
+
+/* ── Шапка: заголовок + заметка ───────────────────────── */
+.fmt__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(28px, 5vw, 80px);
+  margin: 0 0 clamp(40px, 5vw, 64px);
+}
+
+.fmt__title {
+  margin: 0;
+  font-family: var(--logo, "Italiana", serif);
+  font-weight: 400;
+  font-size: clamp(36px, 6vw, 84px);
+  line-height: 0.98;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.fmt__note {
+  flex: 0 1 clamp(280px, 30vw, 400px);
+  margin: clamp(6px, 1vw, 14px) 0 0;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+}
+.fmt__note-wave {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: 14px;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ── Сетка карточек ───────────────────────────────────── */
+.fmt__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 1.7vw, 28px);
+}
+
+.fmt__card {
+  position: relative;
+  aspect-ratio: 5 / 6;
+  perspective: 1700px;
+  outline: none;
+}
+
+.fmt__flip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fmt__card:hover .fmt__flip { transform: rotateY(180deg); }
+}
+/* тап / клавиатура (мобильные и доступность) */
+.fmt__card:focus-within .fmt__flip { transform: rotateY(180deg); }
+
+.fmt__face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* ── Лицевая сторона: фото + название ─────────────────── */
+.fmt__front {
+  background-size: cover;
+  background-position: center;
+  background-color: #2C0A12;
+}
+.fmt__front::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 5, 9, 0) 38%, rgba(20, 5, 9, 0.62) 100%);
+}
+.fmt__front-title {
+  position: absolute;
+  left: clamp(18px, 2vw, 28px);
+  right: clamp(18px, 2vw, 28px);
+  bottom: clamp(18px, 2vw, 26px);
+  z-index: 2;
+  margin: 0;
+  font-family: var(--logo, "Italiana", serif);
+  font-weight: 400;
+  font-size: clamp(20px, 1.9vw, 30px);
+  line-height: 1.02;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+/* ── Изнанка: розовая, с описанием ────────────────────── */
+.fmt__back {
+  transform: rotateY(180deg);
+  background: var(--burgundy, #E7385A);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 2.4vw, 36px);
+}
+.fmt__back-title {
+  margin: 0 0 clamp(12px, 1.4vw, 18px);
+  font-family: var(--logo, "Italiana", serif);
+  font-weight: 400;
+  font-size: clamp(20px, 1.9vw, 30px);
+  line-height: 1.04;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.fmt__back-text {
+  margin: 0;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-weight: 400;
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.94);
+}
+.fmt__more {
+  margin-top: auto;
+  padding-top: clamp(18px, 2vw, 26px);
+  align-self: flex-start;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  padding-bottom: 2px;
+  transition: opacity 0.25s ease;
+}
+.fmt__more:hover { opacity: 0.72; }
+
+/* ── Адаптив ──────────────────────────────────────────── */
+@media (max-width: 899px) {
+  .fmt__head {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .fmt__note { flex: none; }
+  .fmt__grid { grid-template-columns: repeat(2, 1fr); }
+  .fmt__card { aspect-ratio: 4 / 5; }
+}
+
+@media (max-width: 560px) {
+  .fmt__grid { grid-template-columns: 1fr; }
+  .fmt__card { aspect-ratio: 5 / 4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fmt__flip { transition: none; }
+}
