@@ -161,7 +161,8 @@
   font-family: var(--sans, "Montserrat", sans-serif);
   font-weight: 500;
   font-size: 13px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: #FFFFFF;
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.85);
