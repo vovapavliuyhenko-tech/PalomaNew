@@ -130,8 +130,9 @@
 /* ── Изнанка: розовая, с описанием ────────────────────── */
 .fmt__back {
   transform: rotateY(180deg);
-  background: var(--burgundy, #E7385A);
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: var(--burgundy, #E7385A);
+  border: 1px solid rgba(231, 56, 90, 0.22);
   display: flex;
   flex-direction: column;
   padding: clamp(22px, 2.4vw, 36px);
@@ -152,7 +153,7 @@
   font-weight: 400;
   font-size: clamp(13px, 1.05vw, 15px);
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.94);
+  color: rgba(231, 56, 90, 0.85);
 }
 .fmt__more {
   margin-top: auto;
@@ -163,9 +164,9 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: var(--burgundy, #E7385A);
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(231, 56, 90, 0.6);
   padding-bottom: 2px;
   transition: opacity 0.25s ease;
 }
@@ -194,3 +195,6 @@
 
 /* убираем «шторочную» тень панелей оформления на главной — затемнение между блоками */
 #ea-home .ea-panel { box-shadow: none; }
+
+/* hero на главной — одна статичная фотография слева (как медиа в блоке «философия») */
+#ea-home .ea-hero__static { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
