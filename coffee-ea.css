@@ -187,19 +187,21 @@ body.cf-modal-open{overflow:hidden}
    тексты заметно длиннее, чем на «Оформлении» (заголовок-хук + абзац + оффер
    со стрелкой + цена) → карточка выше, верхнее выравнивание, нижний блок
    (оффер + цена) прижат вниз, ничего не обрезается. */
-.cf-svc .ea-serv__flip{height:clamp(480px,76vh,660px)}
+.cf-svc .ea-serv__flip{height:clamp(420px,64vh,560px)}
 .cf-svc .ea-serv__face--back{justify-content:flex-start;overflow-y:auto;
   padding:clamp(30px,3vw,52px) clamp(28px,2.6vw,46px)}
 .cf-svc .ea-serv__num{color:rgba(231,56,90,.65)}
 .cf-svc .ea-serv__ctitle{font-size:clamp(23px,2.2vw,36px);margin:7px 0 14px;line-height:1.1}
-.cf-svc .ea-serv__slash{margin:0;font-size:clamp(13px,1.02vw,15px);line-height:1.62}
-/* оффер со стрелкой → отделён линией; auto-сверху прижимает блок к низу */
-.cf-svc .ea-serv__offer{margin:auto 0 0;padding-top:clamp(14px,1.6vw,18px);
+/* тело по центру (как на «Оформлении») — auto сверху и снизу делит свободное
+   место пополам, текст не прижат к заголовку и не «растянут» одним провалом */
+.cf-svc .ea-serv__slash{margin:auto 0;font-size:clamp(13px,1.02vw,15px);line-height:1.62}
+/* нижний блок: разделительная линия + оффер со стрелкой → + цена, прижат к низу */
+.cf-svc .ea-serv__offer{margin:0;padding-top:clamp(14px,1.6vw,18px);
   border-top:1px solid rgba(231,56,90,.22);font-family:var(--sans);font-style:italic;
   font-weight:400;font-size:clamp(12px,.98vw,14px);line-height:1.5;color:rgba(231,56,90,.9)}
 .cf-svc .ea-serv__offer::before{content:"\2192";font-style:normal;font-weight:600;margin-right:8px}
 /* цена — отдельной строкой под оффером, без стрелки и линии, крупнее */
-.cf-svc .ea-serv__price{margin:11px 0 0;padding-top:0;border-top:none;
+.cf-svc .ea-serv__price{margin:9px 0 0;padding-top:0;border-top:none;
   font-style:normal;font-size:clamp(15px,1.3vw,19px)}
 .cf-svc .ea-serv__price::before{content:none}
 .cf-svc .ea-serv__price b{font-size:1em;margin:0}
