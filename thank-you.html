@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="preloader.css?v=w1">
-  <link rel="stylesheet" href="styles.css?v=nomarq1">
+  <link rel="stylesheet" href="styles.css?v=footer1">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="catalog.css?v=pink1">
   <link rel="stylesheet" href="thank-you.css?v=w1">
@@ -348,92 +348,91 @@
 
   </main>
 
-<footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
+  <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
+    <div class="sf2">
 
-    <div class="footer-inner">
+      <!-- ЛЕВО: подписка + соцсети -->
+      <div class="sf2-col sf2-col--lead">
+        <p class="sf2-lead">Не пропускайте сезонные букеты — подпишитесь<br>и будьте в курсе наших нескучных новостей</p>
 
-      <div class="footer-col footer-col--brand">
-        <a class="footer-logo" href="index.html" aria-label="PALOMA — главная">
-          <span class="footer-logo__text">PALOMA</span>
-          <span class="footer-logo__sub">flowers · coffee · you</span>
-        </a>
-        <p class="footer-tagline">
-          Букеты, кофе и подарки
-          в Новороссийске.
-        </p>
+        <div class="sf2-sub">
+          <p class="sf2-sub__label">Телефон</p>
+          <form class="sf2-form" onsubmit="return false" aria-label="Подписка на новости">
+            <input class="sf2-input" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" aria-label="Ваш телефон">
+            <button class="sf2-send" type="submit" aria-label="Подписаться">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </form>
+          <label class="sf2-consent">
+            <input type="checkbox" aria-label="Согласие на обработку персональных данных">
+            <span>Даю <a href="privacy.html">согласие</a> на обработку персональных данных и соглашаюсь с <a href="privacy.html">Политикой&nbsp;конфиденциальности</a></span>
+          </label>
+        </div>
+
+        <div class="sf2-socials">
+          <a class="sf2-soc" href="https://www.instagram.com/paloma.nvrsk" target="_blank" rel="noopener noreferrer">
+            <span class="sf2-soc__ph" style="background-image:url('images/paloma/decor/real/w1-bride.jpg')"></span>
+            <span class="sf2-soc__name">Instagram*</span>
+          </a>
+          <a class="sf2-soc" href="https://t.me/palomanvrsk" target="_blank" rel="noopener noreferrer">
+            <span class="sf2-soc__ph" style="background-image:url('images/paloma/coffee/hero.jpg')"></span>
+            <span class="sf2-soc__name">Telegram</span>
+          </a>
+          <a class="sf2-soc" href="https://wa.me/79897707000" target="_blank" rel="noopener noreferrer">
+            <span class="sf2-soc__ph" style="background-image:url('images/paloma/decor/real/e1-table.jpg')"></span>
+            <span class="sf2-soc__name">WhatsApp</span>
+          </a>
+        </div>
       </div>
 
-      <nav class="footer-col footer-col--nav" aria-label="Навигация в подвале">
-        <p class="footer-col__label">Магазин</p>
-        <ul class="footer-nav">
+      <!-- ЦЕНТР: Каталог -->
+      <nav class="sf2-col sf2-col--nav" aria-label="Каталог">
+        <p class="sf2-head">Каталог</p>
+        <ul class="sf2-links">
           <li><a href="catalog.html">Каталог</a></li>
           <li><a href="catalog.html?cat=online">Онлайн-витрина</a></li>
           <li><a href="catalog.html?cat=season">Самый сезон</a></li>
           <li><a href="catalog.html?cat=best">Бестселлеры</a></li>
-          <li><a href="subscription.html">Цветочная подписка</a></li>
           <li><a href="coffee.html">Кофейня</a></li>
           <li><a href="event-decoration.html">Оформление</a></li>
+          <li><a href="subscription.html">Цветочная подписка<sup class="sf2-badge">NEW</sup></a></li>
         </ul>
+        <a class="sf2-phone" href="tel:+79897707000">+7 (989) 770-70-00</a>
+        <p class="sf2-undertext">Принимаем заказы ежедневно</p>
+        <div class="sf2-round">
+          <a class="sf2-round__btn" href="https://t.me/palomanvrsk" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.05-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          </a>
+          <a class="sf2-round__btn" href="https://wa.me/79897707000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.69-6.16a11.87 11.87 0 01-1.6-5.95C.15 5.34 5.5 0 12.06 0a11.82 11.82 0 018.4 3.49 11.82 11.82 0 013.48 8.42c0 6.56-5.35 11.9-11.91 11.9a11.94 11.94 0 01-5.7-1.45L.06 24zM6.6 20.2l.36.22a9.9 9.9 0 005.04 1.38 9.9 9.9 0 009.89-9.88 9.82 9.82 0 00-2.9-6.99 9.82 9.82 0 00-6.98-2.9 9.9 9.9 0 00-9.89 9.88c0 1.86.52 3.68 1.51 5.25l.24.38-1 3.65 3.73-.98zM17.5 14.38c-.07-.12-.26-.19-.55-.33-.29-.15-1.7-.84-1.96-.94-.26-.1-.46-.14-.65.14-.19.29-.74.94-.91 1.13-.17.19-.34.22-.62.07-.29-.14-1.22-.45-2.32-1.43-.86-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.44.12-.59.13-.13.29-.34.43-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.14-.65-1.57-.89-2.15-.24-.56-.47-.48-.65-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.41 1.02 2.77 1.17 2.96.14.19 2.01 3.08 4.88 4.32.68.29 1.21.47 1.63.6.68.22 1.31.19 1.8.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36z"/></svg>
+          </a>
+        </div>
       </nav>
 
-      <nav class="footer-col footer-col--info" aria-label="Информация для клиентов">
-        <p class="footer-col__label">Клиентам</p>
-        <ul class="footer-nav">
-          <li><a href="delivery.html">Доставка</a></li>
-          <li><a href="payment.html">Оплата</a></li>
+      <!-- ПРАВО: Информация -->
+      <nav class="sf2-col sf2-col--nav" aria-label="Информация">
+        <p class="sf2-head">Информация</p>
+        <ul class="sf2-links">
+          <li><a href="delivery.html">Доставка и оплата</a></li>
           <li><a href="care.html">Уход за букетом</a></li>
           <li><a href="faq.html">Вопрос-ответ</a></li>
-          <li><a href="blog.html">Блог</a></li>
+          <li><a href="blog.html">Полезные статьи</a></li>
           <li><a href="contacts.html">Контакты</a></li>
         </ul>
+        <p class="sf2-addr">Новороссийск,<br>ул. Энгельса, 74/82</p>
+        <p class="sf2-undertext">Студия цветов и кофе PALOMA</p>
       </nav>
 
-      <div class="footer-col footer-col--contacts">
-        <p class="footer-col__label">Контакты</p>
-        <address class="footer-contacts">
-          <a class="footer-contacts__phone"
-             href="tel:+78612000000"
-             aria-label="Позвонить в PALOMA">
-            +7 (861) 200-00-00
-          </a>
-          <p class="footer-contacts__address">
-            Новороссийск,<br>
-            ул. Энгельса, 74/82
-          </p>
-          <div class="footer-contacts__messengers">
-            <a href="https://t.me/paloma_novorossiysk"
-               class="footer-messenger-btn"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Написать в Telegram">
-              Telegram
-            </a>
-            <a href="https://wa.me/79180000000"
-               class="footer-messenger-btn"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Написать в WhatsApp">
-              WhatsApp
-            </a>
-          </div>
-        </address>
-      </div>
-
-    </div>
-
-    <div class="footer-brand" aria-hidden="true">
-      <svg class="footer-brand__text" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax meet" role="img" aria-label="PALOMA"><text x="600" y="188" text-anchor="middle" textLength="1180" lengthAdjust="spacingAndGlyphs" font-size="210">PALOMA</text></svg>
     </div>
 
     <div class="footer-bottom">
-      <p class="footer-copy">
-        © 2026 PALOMA — flowers, coffee, you
-      </p>
+      <p class="footer-copy">© 2026 PALOMA — flowers, coffee, you</p>
       <div class="footer-legal">
         <a href="privacy.html">Политика конфиденциальности</a>
         <span class="footer-legal__sep" aria-hidden="true">·</span>
         <a href="offer.html">Публичная оферта</a>
       </div>
     </div>
-
   </footer>
 
   <div class="product-modal" id="productModal" aria-hidden="true">
