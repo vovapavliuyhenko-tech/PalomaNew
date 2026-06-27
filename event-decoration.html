@@ -359,6 +359,7 @@
     <button type="button" class="ea-lb__close" id="eaLbClose" aria-label="Закрыть">&times;</button>
     <button type="button" class="ea-lb__arrow ea-lb__arrow--prev" id="eaLbPrev" aria-label="Предыдущее фото">&lsaquo;</button>
     <img class="ea-lb__img" id="eaLbImg" src="" alt="">
+    <video class="ea-lb__img" id="eaLbVideo" src="" controls playsinline style="display:none"></video>
     <button type="button" class="ea-lb__arrow ea-lb__arrow--next" id="eaLbNext" aria-label="Следующее фото">&rsaquo;</button>
     <div class="ea-lb__counter" id="eaLbCount"></div>
   </div>
@@ -849,47 +850,36 @@
     (function(){
       var lb=document.getElementById('eaLb');
       if(!lb)return;
-      var lbImg=document.getElementById('eaLbImg'),lbCount=document.getElementById('eaLbCount');
+      var lbImg=document.getElementById('eaLbImg'),lbVid=document.getElementById('eaLbVideo'),lbCount=document.getElementById('eaLbCount');
       var list=[],idx=0;
-      function show(){ if(!list.length)return; lbImg.src=list[idx]; lbCount.textContent=(idx+1)+' / '+list.length; }
+      function isVid(src){ return /\.(mp4|webm|mov)(\?|$)/i.test(src); }
+      function show(){
+        if(!list.length)return;
+        var src=list[idx];
+        if(isVid(src)){
+          lbImg.style.display='none'; lbImg.removeAttribute('src');
+          lbVid.style.display=''; lbVid.src=src; lbVid.currentTime=0;
+          var p=lbVid.play(); if(p&&p.catch)p.catch(function(){});
+        }else{
+          lbVid.pause(); lbVid.removeAttribute('src'); lbVid.style.display='none';
+          lbImg.style.display=''; lbImg.src=src;
+        }
+        lbCount.textContent=(idx+1)+' / '+list.length;
+      }
       function open(g,start){ list=g; idx=start||0; show(); lb.classList.add('is-open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('ea-lb-open'); }
-      function close(){ lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('ea-lb-open'); }
+      function close(){ lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('ea-lb-open'); lbVid.pause(); }
       function step(d){ if(!list.length)return; idx=(idx+d+list.length)%list.length; show(); }
 
-      document.querySelectorAll('.ea-proj[data-gallery]').forEach(function(card){
-        var g=(card.getAttribute('data-gallery')||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
-        if(!g.length)return;
-        var wrap=card.querySelector('.ea-proj__photo-wrap');
-        var plus=wrap.querySelector('.ea-proj__plus');
-        var firstAlt=(wrap.querySelector('.ea-proj__photo')||{}).alt||'';
-        // строим слайды из data-gallery
-        var slidesBox=document.createElement('div'); slidesBox.className='ea-proj__slides';
-        g.forEach(function(src,i){
-          var im=document.createElement('img');
-          im.className='ea-proj__photo'+(i===0?' is-on':'');
-          im.src=src; im.alt=(i===0?firstAlt:''); im.loading='lazy';
-          slidesBox.appendChild(im);
-        });
-        wrap.innerHTML=''; wrap.appendChild(slidesBox);
-        var slides=slidesBox.querySelectorAll('.ea-proj__photo');
-        var ci=0;
-        function go(n){ ci=(n+g.length)%g.length; slides.forEach(function(s,k){s.classList.toggle('is-on',k===ci);}); if(dotsEls)dotsEls.forEach(function(d,k){d.classList.toggle('is-on',k===ci);}); }
-        var dotsEls=null;
-        if(g.length>1){
-          var prev=document.createElement('button'); prev.type='button'; prev.className='ea-proj__nav ea-proj__nav--prev'; prev.setAttribute('aria-label','Предыдущее фото'); prev.innerHTML='&lsaquo;';
-          var next=document.createElement('button'); next.type='button'; next.className='ea-proj__nav ea-proj__nav--next'; next.setAttribute('aria-label','Следующее фото'); next.innerHTML='&rsaquo;';
-          prev.addEventListener('click',function(e){e.stopPropagation();go(ci-1);});
-          next.addEventListener('click',function(e){e.stopPropagation();go(ci+1);});
-          wrap.appendChild(prev); wrap.appendChild(next);
-          var dots=document.createElement('div'); dots.className='ea-proj__dots';
-          g.forEach(function(_,i){var d=document.createElement('span'); d.className='ea-proj__dot'+(i===0?' is-on':''); dots.appendChild(d);});
-          wrap.appendChild(dots);
-          dotsEls=dots.querySelectorAll('.ea-proj__dot');
-        }
-        if(plus) wrap.appendChild(plus);
-        // клик по карточке (не по стрелкам) — попап с текущего фото
-        card.addEventListener('click',function(){ open(g,ci); });
-        card.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();open(g,ci);} });
+      // карточки портфолио с видео → единая галерея видео, клик открывает попап
+      var vids=[];
+      document.querySelectorAll('.ea-proj video.ea-proj__photo').forEach(function(v){ if(v.getAttribute('src')) vids.push(v.getAttribute('src')); });
+      document.querySelectorAll('.ea-proj').forEach(function(card){
+        var v=card.querySelector('video.ea-proj__photo'); if(!v)return;
+        var my=vids.indexOf(v.getAttribute('src')); if(my<0)my=0;
+        card.style.cursor='pointer';
+        card.setAttribute('role','button'); card.setAttribute('tabindex','0');
+        card.addEventListener('click',function(){ open(vids,my); });
+        card.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();open(vids,my);} });
       });
 
       document.getElementById('eaLbClose').addEventListener('click',close);
