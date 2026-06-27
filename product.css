@@ -815,3 +815,12 @@ body.product-page {
   color: #E7385A;
   opacity: 1;
 }
+
+/* ── «С этим часто покупают»: закруглённые карточки и кнопки (стиль главной) ── */
+.pdp-similar .home-product-card__media {
+  border-radius: 18px;
+}
+
+.pdp-similar .home-product-card__more {
+  border-radius: 999px;
+}
