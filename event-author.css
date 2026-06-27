@@ -253,7 +253,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-step__d{font-size:clamp(15.5px,1.2vw,18px);line-height:1.8;color:var(--body);font-weight:400}
 .ea-step__script{font-family:'Classica One','Italiana',cursive;color:var(--wine);font-size:1.7em;line-height:1;white-space:nowrap;display:inline-block;transform:rotate(-4deg);margin-left:.12em;vertical-align:-.1em}
 /* фото — крупнее и расставлены как на референсе */
-.ea-proc__ph{position:absolute;object-fit:cover;box-shadow:0 24px 54px rgba(40,24,12,.22);z-index:1;border:1px solid #E7385A;border-radius:18px;box-sizing:border-box}
+.ea-proc__ph{position:absolute;object-fit:cover;box-shadow:0 24px 54px rgba(40,24,12,.22);z-index:1;border:3px solid #E7385A;border-radius:18px;box-sizing:border-box}
 /* шаг 1: фото сада сверху + портрет с розой слева */
 .ea-proc__ph--a{top:3%;left:54%;width:clamp(280px,24vw,400px);aspect-ratio:4/3}
 .ea-proc__ph--b{top:33%;left:0;width:clamp(280px,22vw,380px);aspect-ratio:3/4}
