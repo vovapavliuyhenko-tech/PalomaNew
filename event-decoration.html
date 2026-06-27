@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="clients-pages.css?v=w1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=w1">
-  <link rel="stylesheet" href="event-author.css?v=form7">
+  <link rel="stylesheet" href="event-author.css?v=form8">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -548,7 +548,11 @@
             <div class="ea-form__field"><label for="ea-date">Дата события</label><input id="ea-date" type="text" placeholder="Дата события"></div>
             <div class="ea-form__field"><label for="ea-guests">Количество гостей</label><input id="ea-guests" type="text" placeholder="Сколько гостей? Например, 60"></div>
             <div class="ea-form__field ea-form__field--full"><label for="ea-venue">Тип площадки</label>
-              <select id="ea-venue"><option value="">Выберите</option><option>На побережье</option><option>Загородная площадка</option><option>Ресторан / лофт</option><option>Частный дом / сад</option></select>
+              <select id="ea-venue"><option value="">Выберите</option><option>На побережье</option><option>Загородная площадка</option><option>Ресторан / лофт</option><option>Частный дом / сад</option><option value="__other">Свой вариант</option></select>
+            </div>
+            <div class="ea-form__field ea-form__field--full" id="ea-venue-other-field" hidden>
+              <label for="ea-venue-other">Опишите площадку</label>
+              <input id="ea-venue-other" type="text" placeholder="Например, яхта, крыша, оранжерея…">
             </div>
             <div class="ea-form__field ea-form__field--full">
               <label for="ea-budget">Планируемый бюджет</label>
@@ -921,6 +925,10 @@
     var budget=document.getElementById('ea-budget'),bubble=document.getElementById('budgetBubble');
     function updBudget(){if(!budget||!bubble)return;bubble.textContent=Number(budget.value).toLocaleString('ru-RU');var min=+budget.min,max=+budget.max;var pct=(budget.value-min)/(max-min);bubble.style.left=(pct*100)+'%';}
     if(budget){budget.addEventListener('input',updBudget);updBudget();}
+
+    /* «Свой вариант» площадки — показать поле ввода */
+    var venue=document.getElementById('ea-venue'),venueOther=document.getElementById('ea-venue-other-field');
+    if(venue&&venueOther){venue.addEventListener('change',function(){var on=venue.value==='__other';venueOther.hidden=!on;if(on){var inp=document.getElementById('ea-venue-other');if(inp)inp.focus();}});}
 
     /* форма-заявка */
     var f=document.getElementById('eaForm');

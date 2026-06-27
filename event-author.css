@@ -352,6 +352,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-cta__inner{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,5vw,90px);align-items:center;width:100%;max-width:var(--ea-maxw);margin:0 auto}
 .ea-form{display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(24px,2.6vw,36px);max-width:560px}
 .ea-form__field{display:flex;flex-direction:column;gap:0}
+.ea-form__field[hidden]{display:none}
 .ea-form__field label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .ea-form input,.ea-form select,.ea-form textarea{background:#FFFFFF;border:1px solid var(--cream-line);border-radius:10px;
   color:var(--ink);font-family:var(--fsans);font-size:15px;padding:16px 20px;outline:none;transition:border-color .3s,box-shadow .3s}
