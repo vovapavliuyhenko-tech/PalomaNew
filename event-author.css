@@ -247,7 +247,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-step__t--top{position:absolute;top:12%;left:clamp(40px,5vw,80px)}
 .ea-step__t--mid{position:absolute;top:38%;left:clamp(440px,36vw,560px)}
 .ea-step__body{position:absolute;width:min(30vw,380px);z-index:3}
-.ea-step__body--lo{top:42%;left:clamp(330px,30vw,450px)}
+.ea-step__body--lo{top:42%;left:clamp(330px,30vw,450px);width:min(40vw,540px)}
 .ea-step__body--mid{top:56%;left:clamp(440px,36vw,560px);width:min(42vw,560px)}
 .ea-step__body--hi{top:26%;left:40%;width:min(40vw,540px)}
 .ea-step__d{font-size:clamp(15.5px,1.2vw,18px);line-height:1.8;color:var(--body);font-weight:400}
@@ -288,7 +288,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
    она идентична блоку «наш процесс» (#process) на Оформлении. */
 #cf-steps{height:880vh}
 /* текст шага 1 опущен — не налезает на верхнее фото (одинаково для Оформления и кофейни) */
-#process .ea-step__body--lo,#cf-steps .ea-step__body--lo{top:52%}
+#process .ea-step__body--lo,#cf-steps .ea-step__body--lo{top:56%}
 
 /* нарисованные дугообразные стрелки между этапами */
 .ea-proc__arrow{position:absolute;width:clamp(150px,14vw,220px);height:auto;z-index:2;opacity:.85}
