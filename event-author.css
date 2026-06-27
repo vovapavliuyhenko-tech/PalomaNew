@@ -248,8 +248,8 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-step__t--mid{position:absolute;top:38%;left:clamp(440px,36vw,560px)}
 .ea-step__body{position:absolute;width:min(30vw,380px);z-index:3}
 .ea-step__body--lo{top:42%;left:clamp(330px,30vw,450px)}
-.ea-step__body--mid{top:56%;left:clamp(440px,36vw,560px)}
-.ea-step__body--hi{top:26%;left:40%;width:min(28vw,360px)}
+.ea-step__body--mid{top:56%;left:clamp(440px,36vw,560px);width:min(42vw,560px)}
+.ea-step__body--hi{top:26%;left:40%;width:min(40vw,540px)}
 .ea-step__d{font-size:clamp(15.5px,1.2vw,18px);line-height:1.8;color:var(--body);font-weight:400}
 .ea-step__script{font-family:'Classica One','Italiana',cursive;color:var(--wine);font-size:1.7em;line-height:1;white-space:nowrap;display:inline-block;transform:rotate(-4deg);margin-left:.12em;vertical-align:-.1em}
 /* фото — крупнее и расставлены как на референсе */
