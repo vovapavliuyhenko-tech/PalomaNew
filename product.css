@@ -281,6 +281,69 @@ body.product-page {
   outline-offset: 2px;
 }
 
+/* ── ДОП. ИНГРЕДИЕНТЫ (страница напитка кофейни) ── */
+.pdp-addons {
+  margin-bottom: 22px;
+}
+
+.pdp-addons__label {
+  display: block;
+  font-family: var(--font-mono, var(--mono, "JetBrains Mono"), monospace);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, var(--muted, #1B1A18));
+  margin-bottom: 8px;
+}
+
+.pdp-addons__list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border, rgba(27, 26, 24, 0.1));
+}
+
+.pdp-addon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid rgba(27, 26, 24, 0.08);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pdp-addon:hover {
+  background: rgba(27, 26, 24, 0.025);
+}
+
+.pdp-addon__cb {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-text, var(--ink, #1B1A18));
+  flex-shrink: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.pdp-addon__name {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text, var(--ink, #1B1A18));
+}
+
+.pdp-addon__cb:checked ~ .pdp-addon__name {
+  font-weight: 600;
+}
+
+.pdp-addon__price {
+  font-family: var(--font-mono, var(--mono, "JetBrains Mono"), monospace);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted, var(--muted, #1B1A18));
+  white-space: nowrap;
+}
+
 .pdp-actions {
   display: flex;
   align-items: center;

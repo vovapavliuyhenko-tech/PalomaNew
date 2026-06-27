@@ -27,9 +27,9 @@
   <link rel="stylesheet" href="cursor.css?v=w1">
   <link rel="stylesheet" href="event-author.css?v=form7">
   <link rel="stylesheet" href="coffee-ea.css?v=stat3">
-  <link rel="stylesheet" href="product.css?v=w1">
+  <link rel="stylesheet" href="product.css?v=w2">
 </head>
-<body class="coffee-page">
+<body class="product-page coffee-item-page">
   <a href="#main" class="skip-link">К содержимому</a>
   <!-- PALOMA PAGE LOADER — premium curtain transition -->
   <div class="paloma-page-loader" id="palomaPageLoader" aria-hidden="true">
@@ -315,6 +315,11 @@
 
           <p class="pdp-info__desc" id="pdpDesc"></p>
 
+          <div class="pdp-addons" id="pdpAddons" hidden>
+            <span class="pdp-addons__label">Добавить к напитку</span>
+            <div class="pdp-addons__list" id="pdpAddonsList" role="group" aria-label="Дополнительные ингредиенты"></div>
+          </div>
+
           <div class="pdp-actions">
             <div class="pdp-qty" role="group" aria-label="Количество">
               <button type="button" class="pdp-qty__btn pdp-qty__btn--dec" id="pdpQtyDec" aria-label="Уменьшить количество">
@@ -567,7 +572,7 @@
   <script src="wishlist.js?v=7"></script>
   <script src="clients.js?v=7"></script>
   <script src="coffee-menu-data.js?v=8"></script>
-  <script src="coffee-item.js?v=2"></script>
+  <script src="coffee-item.js?v=3"></script>
   <script src="cursor.js?v=12"></script>
 </body>
 </html>
