@@ -149,7 +149,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   transition:transform .5s var(--eease),box-shadow .5s var(--eease)}
 .ea-proj:hover{box-shadow:0 30px 64px rgba(74,53,38,.16)}
 .ea-proj:hover .ea-proj__photo{transform:scale(1.04)}
-.ea-proj__photo-wrap{overflow:hidden;position:relative;aspect-ratio:4/3.4}
+.ea-proj__photo-wrap{overflow:hidden;position:relative;aspect-ratio:4/3.4;border-radius:14px}
 .ea-proj__slides{position:absolute;inset:0}
 /* стрелки и точки внутри карточек портфолио скрыты — навигация через попап по клику */
 .ea-proj__nav,.ea-proj__dots{display:none!important}
