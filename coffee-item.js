@@ -28,39 +28,48 @@
     cold: "images/paloma/coffee/cup-cold.jpg",
   };
 
-  /* ── доп. ингредиенты по разделам меню ── */
+  /* вкусы сиропа — раскрываются при выборе «Сироп на выбор» */
+  var SYRUPS = ["Карамель", "Ваниль", "Солёная карамель", "Лесной орех", "Кокос", "Миндаль"];
+  var syrup = { id: "syrup", name: "Сироп на выбор", price: 50, syrups: SYRUPS };
+
+  /* ── доп. ингредиенты по разделам меню (по смыслу к напитку) ── */
   var addonsByCat = {
     classic: [
       { id: "milk", name: "Альтернативное молоко", price: 60 },
       { id: "shot", name: "Дополнительный эспрессо", price: 70 },
-      { id: "syrup", name: "Сироп на выбор", price: 50 },
+      syrup,
       { id: "cream", name: "Взбитые сливки", price: 60 },
+      { id: "cinnamon", name: "Корица", price: 20 },
     ],
     cacaoraf: [
-      { id: "syrup", name: "Сироп на выбор", price: 50 },
+      syrup,
       { id: "cream", name: "Взбитые сливки", price: 60 },
       { id: "marsh", name: "Маршмеллоу", price: 40 },
+      { id: "cinnamon", name: "Корица", price: 20 },
       { id: "milk", name: "Альтернативное молоко", price: 60 },
     ],
     tea: [
       { id: "honey", name: "Мёд", price: 40 },
       { id: "lemon", name: "Лимон", price: 20 },
       { id: "ginger", name: "Имбирь", price: 30 },
-      { id: "syrup", name: "Сироп на выбор", price: 50 },
+      { id: "cinnamon", name: "Корица", price: 20 },
+      syrup,
     ],
     smoothie: [
       { id: "protein", name: "Протеин", price: 90 },
       { id: "berries", name: "Дополнительные ягоды", price: 70 },
       { id: "banana", name: "Банан", price: 40 },
+      { id: "seeds", name: "Семена чиа", price: 40 },
     ],
     milkshake: [
       { id: "cream", name: "Взбитые сливки", price: 60 },
       { id: "choco", name: "Шоколадная крошка", price: 50 },
-      { id: "syrup", name: "Сироп на выбор", price: 50 },
+      syrup,
+      { id: "cinnamon", name: "Корица", price: 20 },
     ],
     cold: [
       { id: "shot", name: "Дополнительный эспрессо", price: 70 },
-      { id: "syrup", name: "Сироп на выбор", price: 50 },
+      syrup,
       { id: "fruit", name: "Свежие фрукты", price: 60 },
       { id: "mint", name: "Мята", price: 20 },
     ],
@@ -157,6 +166,9 @@
     if (addons.length && addonsWrap && addonsList) {
       addonsWrap.hidden = false;
       addons.forEach(function (a) {
+        var wrap = document.createElement("div");
+        wrap.className = "pdp-addon-item";
+
         var label = document.createElement("label");
         label.className = "pdp-addon";
         label.setAttribute("data-cursor", "hover");
@@ -164,13 +176,41 @@
           '<input type="checkbox" class="pdp-addon__cb">' +
           '<span class="pdp-addon__name">' + esc(a.name) + "</span>" +
           '<span class="pdp-addon__price">+' + a.price + " ₽</span>";
+        wrap.appendChild(label);
         var cb = label.querySelector(".pdp-addon__cb");
+
+        /* подвыбор вкуса сиропа */
+        var sub = null;
+        if (a.syrups && a.syrups.length) {
+          a._flavor = a.syrups[0];
+          sub = document.createElement("div");
+          sub.className = "pdp-addon__sub";
+          sub.hidden = true;
+          a.syrups.forEach(function (fl, fi) {
+            var chip = document.createElement("button");
+            chip.type = "button";
+            chip.className = "pdp-syrup" + (fi === 0 ? " is-active" : "");
+            chip.textContent = fl;
+            chip.setAttribute("data-cursor", "hover");
+            chip.addEventListener("click", function () {
+              a._flavor = fl;
+              [].forEach.call(sub.children, function (x) {
+                x.classList.toggle("is-active", x === chip);
+              });
+            });
+            sub.appendChild(chip);
+          });
+          wrap.appendChild(sub);
+        }
+
         cb.addEventListener("change", function () {
           if (cb.checked) selected.push(a);
           else selected = selected.filter(function (x) { return x.id !== a.id; });
+          if (sub) sub.hidden = !cb.checked;
           updatePrice();
         });
-        addonsList.appendChild(label);
+
+        addonsList.appendChild(wrap);
       });
     }
 
@@ -204,8 +244,12 @@
     var toast = document.getElementById("pdpToast");
     if (addBtn) addBtn.addEventListener("click", function () {
       if (window.PalomaCart && window.PalomaCart.add) {
-        var addonIds = selected.map(function (a) { return a.id; }).sort().join("-");
-        var addonNames = selected.map(function (a) { return a.name; });
+        var addonIds = selected.map(function (a) {
+          return a.id + (a.syrups && a._flavor ? "-" + a._flavor : "");
+        }).sort().join("-");
+        var addonNames = selected.map(function (a) {
+          return a.syrups && a._flavor ? "Сироп: " + a._flavor : a.name;
+        });
         window.PalomaCart.add({
           id: item.id +
               (current && current.vol ? "-" + current.vol.replace(/\s/g, "") : "") +
