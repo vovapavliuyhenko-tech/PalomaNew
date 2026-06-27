@@ -281,18 +281,12 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-proc .ea-step__t--top{top:18%}
 .ea-proc .ea-proc__ph--a{top:15%}
 .ea-proc .ea-proc__ph--c{top:15%}
-/* кофейня: 5 этапов → выше обёртка, чтобы скорость прокрутки совпадала с Оформлением */
+/* кофейня: 5 этапов → выше обёртка, чтобы скорость прокрутки совпадала с Оформлением.
+   ВСЯ визуальная раскладка #cf-steps наследуется из базовых .ea-proc-правил выше —
+   она идентична блоку «наш процесс» (#process) на Оформлении. */
 #cf-steps{height:880vh}
-/* кофейня: чистая раскладка в две зоны (текст слева, фото справа), шире и воздушнее,
-   тексты не залезают на фото; розовый интро-заголовок как на Оформлении */
-#cf-steps .ea-proc-step{width:clamp(900px,68vw,1280px);padding:0 clamp(48px,5vw,96px)}
-#cf-steps .ea-title{color:#E7385A}
-#cf-steps .ea-step__t--top{top:16%;left:3%}
-#cf-steps .ea-step__body--lo{top:44%;left:3%;width:34%}
-#cf-steps .ea-proc__ph--a{top:14%;left:48%;width:26%;aspect-ratio:4/3;filter:none}
-#cf-steps .ea-proc__ph--b{top:45%;left:52%;width:40%;aspect-ratio:4/3.2;filter:none}
-/* текст шага 1 опущен — не налезает на верхнее фото (фото опущено под шапку) */
-#process .ea-step__body--lo{top:52%}
+/* текст шага 1 опущен — не налезает на верхнее фото (одинаково для Оформления и кофейни) */
+#process .ea-step__body--lo,#cf-steps .ea-step__body--lo{top:52%}
 
 /* нарисованные дугообразные стрелки между этапами */
 .ea-proc__arrow{position:absolute;width:clamp(150px,14vw,220px);height:auto;z-index:2;opacity:.85}
