@@ -92,6 +92,16 @@ body.paloma-cursor-active .cursor-trail-dot {
   opacity: 0;
 }
 
+/* ── На тёмном фоне — розовая капля с тёмным текстом ──── */
+.paloma-cursor.on-dark,
+.paloma-cursor.on-dark.is-hovering,
+.paloma-cursor.on-dark.is-text {
+  background: #E7385A;
+}
+.paloma-cursor.on-dark .paloma-cursor__label {
+  color: #1B1A18;
+}
+
 /* ── Touch / грубый pointer — всё скрыть ─────────────── */
 @media (hover: none), (pointer: coarse) {
   .paloma-cursor {

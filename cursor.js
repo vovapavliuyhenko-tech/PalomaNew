@@ -58,6 +58,9 @@
   const TEXT_SELECTOR =
     'input[type="text"],input[type="tel"],input[type="email"],input[type="date"],input[type="number"],input[type="search"],textarea';
 
+  /* Тёмные секции — курсор инвертируется (розовый + тёмный текст) */
+  const DARK_SELECTOR = ".site-footer, [data-cursor-dark]";
+
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   function setHover(on) {
@@ -97,6 +100,7 @@
   document.addEventListener("mouseover", (e) => {
     const el = e.target;
     if (!(el instanceof Element)) return;
+    cursor.classList.toggle("on-dark", !!el.closest(DARK_SELECTOR));
     if (el.matches(TEXT_SELECTOR))      { setTextMode(true);  return; }
     if (el.closest(HOVER_SELECTOR))       setHover(true);
   }, { passive: true });
