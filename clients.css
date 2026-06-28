@@ -13,7 +13,12 @@ body {
 }
 
 button.site-header__link.site-header__link--has-dropdown {
-  font: inherit;
+  /* кнопки-триггеры выглядят как остальные ссылки в шапке (а не как body) */
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.16em;
   border: none;
   background: none;
   cursor: pointer;
