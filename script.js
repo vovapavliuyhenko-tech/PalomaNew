@@ -1588,3 +1588,46 @@ if (document.body.classList.contains("is-home")) {
 if (document.body.classList.contains("event-decoration-page")) {
   initEvProcess();
 }
+
+/* ── Маска телефона в подвале (.sf2-input): +7 (___) ___-__-__ ── */
+(function(){
+  "use strict";
+  var TPL_SLOTS = [4,5,6,9,10,11,13,14,16,17]; // позиции цифр в "+7 (___) ___-__-__"
+  function digitsFrom(str){
+    var d = (str||"").replace(/\D/g,"");
+    if (d[0] === "7" || d[0] === "8") d = d.slice(1);
+    return d.slice(0,10);
+  }
+  function format(d){
+    return "+7 (" +
+      (d.slice(0,3)+"___").slice(0,3) + ") " +
+      (d.slice(3,6)+"___").slice(0,3) + "-" +
+      (d.slice(6,8)+"__").slice(0,2) + "-" +
+      (d.slice(8,10)+"__").slice(0,2);
+  }
+  function caretPos(n){ return n === 0 ? 4 : TPL_SLOTS[Math.min(n,10)-1] + 1; }
+  function setCaret(input,pos){ try{ input.setSelectionRange(pos,pos); }catch(e){} }
+
+  function attach(input){
+    if (input.dataset.phoneMask) return;
+    input.dataset.phoneMask = "1";
+    input.addEventListener("focus", function(){
+      if (!input.value){ input.value = format(""); requestAnimationFrame(function(){ setCaret(input,4); }); }
+    });
+    input.addEventListener("blur", function(){
+      if (digitsFrom(input.value).length === 0) input.value = "";
+    });
+    input.addEventListener("input", function(){
+      var d = digitsFrom(input.value);
+      input.value = format(d);
+      setCaret(input, caretPos(d.length));
+    });
+    input.addEventListener("click", function(){
+      var d = digitsFrom(input.value);
+      setCaret(input, caretPos(d.length));
+    });
+  }
+  function init(){ document.querySelectorAll(".sf2-input").forEach(attach); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
