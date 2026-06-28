@@ -35,11 +35,15 @@
     });
 
     trigger?.addEventListener("click", (e) => {
-      if (window.innerWidth <= 1024) {
+      /* Сенсор/узкий экран: первый тап раскрывает категории, чтобы их можно
+         было выбрать. Десктоп (и повторный тап) — переход ко ВСЕМ товарам. */
+      if (window.innerWidth <= 1024 && !wrap.classList.contains("is-open")) {
         e.preventDefault();
-        const open = wrap.classList.toggle("is-open");
-        trigger?.setAttribute("aria-expanded", open ? "true" : "false");
+        wrap.classList.add("is-open");
+        trigger?.setAttribute("aria-expanded", "true");
+        return;
       }
+      window.location.href = "catalog.html";
     });
 
     document.addEventListener("click", (e) => {
