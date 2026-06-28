@@ -8893,6 +8893,10 @@ body.is-home .site-header:not(.is-scrolled) .site-header__logo{background-image:
 .sf2-consent span{font-size:11px;line-height:1.5;color:rgba(255,255,255,.4)}
 .sf2-consent a{color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:2px}
 .sf2-consent a:hover{color:#E7385A}
+.sf2-form--err .sf2-input{border-color:#E7385A;animation:sf2shake .4s ease}
+.sf2-consent--err span{color:#E7385A}
+@keyframes sf2shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.sf2-ok{font-family:var(--font-sans,'Manrope',sans-serif);font-size:14px;line-height:1.5;color:#fff;background:rgba(231,56,90,.14);border:1px solid rgba(231,56,90,.45);border-radius:12px;padding:14px 18px;max-width:380px;margin:0}
 
 /* соцсети-миниатюры */
 .sf2-socials{display:flex;gap:14px;margin-top:auto;padding-top:clamp(36px,5vw,72px);flex-wrap:wrap}

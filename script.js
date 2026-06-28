@@ -1631,3 +1631,34 @@ if (document.body.classList.contains("event-decoration-page")) {
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
+
+/* ── Подписка в подвале (.sf2-form): валидация + подтверждение ── */
+(function(){
+  "use strict";
+  function onlyDigits(v){ return (v||"").replace(/\D/g,"").replace(/^[78]/,"").slice(0,10); }
+  function flash(el,cls){ if(!el)return; el.classList.add(cls); setTimeout(function(){el.classList.remove(cls);},700); }
+  function init(){
+    document.querySelectorAll(".sf2-form").forEach(function(form){
+      if (form.dataset.sf2bound) return;
+      form.dataset.sf2bound = "1";
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+        var box = form.closest(".sf2-sub") || form.parentElement;
+        var input = form.querySelector(".sf2-input");
+        var consent = box ? box.querySelector('.sf2-consent input[type="checkbox"]') : null;
+        if (onlyDigits(input && input.value).length < 10){ if(input)input.focus(); flash(form,"sf2-form--err"); return; }
+        if (consent && !consent.checked){ flash(box.querySelector(".sf2-consent"),"sf2-consent--err"); return; }
+        if (form) form.style.display = "none";
+        var c = box.querySelector(".sf2-consent"); if (c) c.style.display = "none";
+        if (!box.querySelector(".sf2-ok")){
+          var ok = document.createElement("p");
+          ok.className = "sf2-ok";
+          ok.textContent = "Спасибо! Мы свяжемся с вами в ближайшее время.";
+          box.appendChild(ok);
+        }
+      });
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
