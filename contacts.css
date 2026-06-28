@@ -57,6 +57,16 @@
   margin-bottom: 0;
 }
 
+/* Контакты: оффсет фикс-шапки задан на <body>; класс .contacts-page висит ещё
+   и на <main>, и .page-compact-header тоже добавляет свой оффсет — итого тройной
+   отступ сверху (~400px пустоты). Убираем лишние два — оставляем только на body. */
+main.contacts-page {
+  padding-top: 0;
+}
+.contacts-page .page-compact-header {
+  padding-top: clamp(10px, 1.6vw, 18px);
+}
+
 .contacts-studio {
   padding: clamp(10px, 1.6vw, 18px) 0 clamp(20px, 3vw, 40px);
   background: var(--color-bg-alt);
