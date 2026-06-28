@@ -51,4 +51,36 @@
   }
 
   initContactsForm();
+
+  /* ── Видео студии: кнопка включения звука ──
+     Автозапуск возможен только без звука, поэтому видео стартует
+     muted, а звук включается по клику на кнопку-динамик. */
+  function initStudioVideoSound() {
+    const video = document.querySelector(".contacts-studio__video");
+    const btn = document.getElementById("contactsVideoSound");
+    if (!video || !btn) return;
+
+    const ICON_MUTED =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>';
+    const ICON_ON =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8 8 0 0 1 0 12"/></svg>';
+
+    function render() {
+      btn.innerHTML = video.muted ? ICON_MUTED : ICON_ON;
+      btn.setAttribute("aria-label", video.muted ? "Включить звук" : "Выключить звук");
+    }
+    render();
+
+    btn.addEventListener("click", () => {
+      video.muted = !video.muted;
+      if (!video.muted) {
+        video.volume = 1;
+        const p = video.play();
+        if (p && p.catch) p.catch(() => {});
+      }
+      render();
+    });
+  }
+
+  initStudioVideoSound();
 })();

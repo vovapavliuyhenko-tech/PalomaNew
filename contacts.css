@@ -82,6 +82,36 @@
   display: block;
 }
 
+.contacts-studio__sound {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(27, 26, 24, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contacts-studio__sound:hover {
+  background: rgba(27, 26, 24, 0.8);
+  transform: scale(1.06);
+}
+
+.contacts-studio__sound svg {
+  width: 20px;
+  height: 20px;
+}
+
 .contacts-studio__photo {
   position: absolute;
   inset: 0;
@@ -121,11 +151,11 @@
 }
 
 .contacts-studio__brand {
-  font-family: "Great Vibes", "Marck Script", cursive;
-  font-size: clamp(46px, 6.2vw, 82px);
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.4vw, 50px);
   font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   text-transform: lowercase;
   margin-bottom: 6px;
 }
