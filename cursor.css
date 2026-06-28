@@ -1,7 +1,7 @@
-﻿/* ════════════════════════════════════════════════════════
-   PALOMA CUSTOM CURSOR
-   Эластичная тёмная капля: вытягивается по движению (JS-transform).
-   На ховере кнопок — большой круг «смотреть».
+/* ════════════════════════════════════════════════════════
+   PALOMA CUSTOM CURSOR — «чернильный» курсор (как doka.digital)
+   Цепочка точек + SVG goo-фильтр = жидкая капля, тянущаяся
+   за мышью. При наведении на кнопки/фото — кружок «смотреть».
    ════════════════════════════════════════════════════════ */
 
 /* Скрыть legacy-курсор при активном новом */
@@ -18,105 +18,114 @@ body.paloma-cursor-active .cursor-trail-dot {
   }
 }
 
-/* ── Тёмная капля ────────────────────────────────────── */
-.paloma-cursor {
+.ink-icon {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ── Чернильная капля ───────────────────────────────── */
+.ink-cursor {
+  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99999;
-  pointer-events: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #1B1A18;
-  border: none;
-  /* transform управляется из JS (растяжение) — без перехода,
-     переход только на размер/цвет при ховере. */
-  transition:
-    width  0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.3s ease,
-    opacity 0.3s ease;
-  will-change: transform, width, height, opacity;
-  user-select: none;
+  display: block;
+  transform-origin: center center;
+  filter: url("#palomaGoo");
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
-/* Hover — большой заполненный круг с надписью «смотреть» */
-.paloma-cursor.is-hovering {
+.ink-cursor.is-visible {
+  opacity: 1;
+}
+
+/* капля прячется при наведении (вместо неё — кружок «смотреть») */
+.ink-cursor.is-hidden {
+  opacity: 0;
+}
+
+.ink-cursor span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #fff;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* в текстовых полях капля тоньше/менее заметна */
+.ink-cursor.is-text {
+  opacity: 0.6;
+}
+
+/* ── Кружок «смотреть» (наше поведение при наведении) ── */
+.ink-look {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000;
   width: 72px;
   height: 72px;
-  background: #1B1A18;
+  border-radius: 50%;
+  background: #1b1a18;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  scale: 0.2;
+  transform: translate(-100px, -100px) translate(-50%, -50%);
+  transition:
+    opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    scale 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity, scale;
 }
 
-.paloma-cursor__label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Montserrat', sans-serif;
+.ink-look.is-on {
+  opacity: 1;
+  scale: 1;
+}
+
+.ink-look.is-pressing {
+  scale: 0.88;
+}
+
+.ink-look__label {
+  font-family: "Montserrat", sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #fff;
   white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  pointer-events: none;
   user-select: none;
 }
 
-.paloma-cursor.is-hovering .paloma-cursor__label {
-  opacity: 1;
+/* На тёмном фоне — розовый кружок с тёмным текстом */
+.ink-look.on-dark {
+  background: #e7385a;
 }
-
-/* Press — капля слегка сжимается */
-.paloma-cursor.is-pressing {
-  width: 12px;
-  height: 12px;
-  transition: width 0.12s ease, height 0.12s ease;
-}
-
-/* Текстовое поле — тонкая вертикальная черта */
-.paloma-cursor.is-text {
-  width: 2px;
-  height: 24px;
-  border-radius: 1px;
-  background: rgba(42, 18, 12, 0.75);
-}
-
-.paloma-cursor.is-hidden {
-  opacity: 0;
-}
-
-/* ── На тёмном фоне — розовая капля с тёмным текстом ──── */
-.paloma-cursor.on-dark,
-.paloma-cursor.on-dark.is-hovering,
-.paloma-cursor.on-dark.is-text {
-  background: #E7385A;
-}
-.paloma-cursor.on-dark .paloma-cursor__label {
-  color: #1B1A18;
+.ink-look.on-dark .ink-look__label {
+  color: #1b1a18;
 }
 
 /* ── Touch / грубый pointer — всё скрыть ─────────────── */
-@media (hover: none), (pointer: coarse) {
-  .paloma-cursor {
+@media (hover: none), (pointer: coarse), (max-width: 480px) {
+  .ink-cursor,
+  .ink-look {
     display: none !important;
   }
-
   body.paloma-cursor-active,
   body.paloma-cursor-active * {
     cursor: auto !important;
-  }
-}
-
-/* ── Reduced motion ──────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .paloma-cursor {
-    transition: width 0.1s ease, height 0.1s ease, opacity 0.1s ease;
   }
 }

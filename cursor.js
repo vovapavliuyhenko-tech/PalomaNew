@@ -1,7 +1,9 @@
 /* ════════════════════════════════════════════════════════
    cursor.js — кастомный курсор PALOMA
-   Эластичная капля: кружок вытягивается по направлению движения
-   и возвращается в круг в покое. На ховере кнопок — круг «смотреть».
+   База: «чернильный/жидкий» курсор (как на doka.digital) —
+   цепочка из 20 точек, слипающихся в каплю через SVG goo-фильтр.
+   Поверх — наше поведение: при наведении на кнопки/фото капля
+   уходит, появляется увеличенный кружок со словом «смотреть».
    ════════════════════════════════════════════════════════ */
 (function initPalomaCursor() {
   "use strict";
@@ -13,138 +15,244 @@
     navigator.maxTouchPoints > 0;
 
   if (isTouch) return;
-  if (document.getElementById("palomaCursorEl")) return;
+  if (document.getElementById("inkCursor")) return;
 
   const noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Плавность следования (меньше = больше инерции/растяжения) */
-  const CURSOR_LAG  = noMotion ? 1 : 0.22;
-  /* Сила растяжения капли от скорости движения */
-  const STRETCH_K   = 0.020;
-  const STRETCH_MAX = 0.6;
-
-  /* ── Создаём элемент ── */
   document.body.classList.add("paloma-cursor-active");
 
+  /* ── SVG goo-фильтр (слипание точек в чернильную каплю) ── */
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("class", "ink-icon");
+  svg.setAttribute("aria-hidden", "true");
+  svg.innerHTML =
+    '<defs><filter id="palomaGoo">' +
+    '<feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>' +
+    '<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="goo"/>' +
+    '<feComposite in="SourceGraphic" in2="goo" operator="atop"/>' +
+    "</filter></defs>";
+  document.body.appendChild(svg);
+
+  /* ── Контейнер капли + точки ── */
   const cursor = document.createElement("div");
-  cursor.className = "paloma-cursor is-hidden";
-  cursor.id = "palomaCursorEl";
+  cursor.className = "ink-cursor";
+  cursor.id = "inkCursor";
   cursor.setAttribute("aria-hidden", "true");
-  cursor.innerHTML = '<span class="paloma-cursor__label">смотреть</span>';
   document.body.appendChild(cursor);
 
-  /* ── Состояние ── */
-  let mx = -300, my = -300;
-  let cx = -300, cy = -300;
-  let px = -300, py = -300;
-  let isHovering = false, isTextField = false, isVisible = false;
+  /* ── Кружок «смотреть» (наше поведение при наведении) ── */
+  const look = document.createElement("div");
+  look.className = "ink-look";
+  look.id = "inkLook";
+  look.setAttribute("aria-hidden", "true");
+  look.innerHTML = '<span class="ink-look__label">смотреть</span>';
+  document.body.appendChild(look);
+
+  /* ── Параметры (как на doka.digital) ── */
+  const amount = 20;
+  const sineDots = Math.floor(amount * 0.3);
+  const width = 26;
+  const idleTimeout = 150;
+  const TRAIL = 0.35;
+
+  let mousePosition = { x: -100, y: -100 };
+  let lookX = -100, lookY = -100;
+  const dots = [];
+  let timeoutID;
+  let idle = false;
+  let visible = false;
+  let isHovering = false;
+  let isTextField = false;
   let raf;
 
   const HOVER_SELECTOR = [
     "a", "button", "[role='button']",
     "input[type='submit']", "input[type='button']",
-    ".product-card", ".product-card__wishlist", ".product-card__btn",
-    ".catalog-filter-btn", ".filter-chip", ".filter-btn",
+    "label[for]", "select",
+    ".product-card", ".product-card__media", ".product-card__wishlist",
+    ".product-card__btn", ".catalog-filter-btn", ".filter-chip", ".filter-btn",
     ".site-header__icon", ".site-header__cart",
     ".reviews-arrow", ".cart-qty-btn", ".pdp-size-btn",
     ".checkout-delivery-card", ".checkout-payment-card",
     ".checkout-interval-btn", ".checkout-toggle-btn",
     "[data-add-to-cart]", "[data-wishlist-btn]", "[data-cursor='hover']",
     ".curtain__card-btn", ".process-step__cta", ".paloma-hero__cta",
-    ".client-nav-card", ".hscroll-card", ".menu-item",
-    ".cof-menu__item", "label[for]", "select",
+    ".client-nav-card", ".hscroll-card", ".menu-item", ".cof-menu__item",
+    /* фото */
+    ".ea-proj", ".ea-proc__ph", ".home-article-card", ".home-article-card__media",
+    ".gallery img", "[data-lightbox]", ".sf2-soc",
   ].join(", ");
 
   const TEXT_SELECTOR =
     'input[type="text"],input[type="tel"],input[type="email"],input[type="date"],input[type="number"],input[type="search"],textarea';
 
-  /* Тёмные секции — курсор инвертируется (розовый + тёмный текст) */
+  /* Тёмные секции — кружок «смотреть» становится розовым */
   const DARK_SELECTOR = ".site-footer, [data-cursor-dark]";
 
-  function lerp(a, b, t) { return a + (b - a) * t; }
+  /* ── Точка цепочки ── */
+  class Dot {
+    constructor(index) {
+      this.index = index;
+      this.anglespeed = 0.05;
+      this.x = 0;
+      this.y = 0;
+      this.scale = 1 - 0.05 * index;
+      this.range = width / 2 - (width / 2) * this.scale + 2;
+      this.angleX = 0;
+      this.angleY = 0;
+      this.lockX = 0;
+      this.lockY = 0;
+      this.el = document.createElement("span");
+      this.el.style.transform = `scale(${this.scale})`;
+      cursor.appendChild(this.el);
+    }
+    lock() {
+      this.lockX = this.x;
+      this.lockY = this.y;
+      this.angleX = Math.PI * 2 * Math.random();
+      this.angleY = Math.PI * 2 * Math.random();
+    }
+    draw() {
+      if (!idle || this.index <= sineDots) {
+        this._set(this.x, this.y);
+      } else {
+        this.angleX += this.anglespeed;
+        this.angleY += this.anglespeed;
+        this.y = this.lockY + Math.sin(this.angleY) * this.range;
+        this.x = this.lockX + Math.sin(this.angleX) * this.range;
+        this._set(this.x, this.y);
+      }
+    }
+    _set(x, y) {
+      this.el.style.transform =
+        `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${this.scale})`;
+    }
+  }
 
+  for (let i = 0; i < amount; i++) dots.push(new Dot(i));
+
+  /* ── Idle (капля расплывается, как на doka) ── */
+  function startIdleTimer() {
+    timeoutID = window.setTimeout(goInactive, idleTimeout);
+    idle = false;
+  }
+  function resetIdleTimer() {
+    clearTimeout(timeoutID);
+    startIdleTimer();
+  }
+  function goInactive() {
+    idle = true;
+    for (const dot of dots) dot.lock();
+  }
+
+  /* ── Наведение / текстовые поля ── */
   function setHover(on) {
     if (isTextField) return;
     isHovering = on;
-    cursor.classList.toggle("is-hovering", on);
-    cursor.classList.remove("is-text");
+    cursor.classList.toggle("is-hidden", on);   // капля прячется
+    look.classList.toggle("is-on", on);          // кружок «смотреть» появляется
   }
-
   function setTextMode(on) {
     isTextField = on;
-    isHovering  = false;
-    cursor.classList.toggle("is-text", on);
-    cursor.classList.remove("is-hovering");
+    if (on) {
+      isHovering = false;
+      look.classList.remove("is-on");
+      cursor.classList.add("is-text");
+    } else {
+      cursor.classList.remove("is-text");
+    }
   }
 
-  /* ── Events ── */
-  document.addEventListener("mousemove", (e) => {
-    mx = e.clientX;
-    my = e.clientY;
-    if (!isVisible) {
-      cx = mx; cy = my; px = mx; py = my;
-      cursor.classList.remove("is-hidden");
-      isVisible = true;
-    }
-  }, { passive: true });
+  /* ── События ── */
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      mousePosition.x = e.clientX - width / 2;
+      mousePosition.y = e.clientY - width / 2;
+      lookX = e.clientX;
+      lookY = e.clientY;
+      if (!visible) {
+        visible = true;
+        cursor.classList.add("is-visible");
+      }
+      resetIdleTimer();
+    },
+    { passive: true },
+  );
 
   document.addEventListener("mouseleave", () => {
-    cursor.classList.add("is-hidden");
-    isVisible = false;
+    cursor.classList.remove("is-visible");
+    look.classList.remove("is-on");
+    visible = false;
   });
-
   document.addEventListener("mouseenter", () => {
-    if (mx > -300) { cursor.classList.remove("is-hidden"); isVisible = true; }
+    if (mousePosition.x > -100) {
+      cursor.classList.add("is-visible");
+      visible = true;
+    }
   });
 
-  document.addEventListener("mouseover", (e) => {
-    const el = e.target;
-    if (!(el instanceof Element)) return;
-    cursor.classList.toggle("on-dark", !!el.closest(DARK_SELECTOR));
-    if (el.matches(TEXT_SELECTOR))      { setTextMode(true);  return; }
-    if (el.closest(HOVER_SELECTOR))       setHover(true);
-  }, { passive: true });
+  document.addEventListener(
+    "mouseover",
+    (e) => {
+      const el = e.target;
+      if (!(el instanceof Element)) return;
+      look.classList.toggle("on-dark", !!el.closest(DARK_SELECTOR));
+      if (el.matches(TEXT_SELECTOR)) {
+        setTextMode(true);
+        return;
+      }
+      if (el.closest(HOVER_SELECTOR)) setHover(true);
+    },
+    { passive: true },
+  );
+  document.addEventListener(
+    "mouseout",
+    (e) => {
+      const el = e.target;
+      if (!(el instanceof Element)) return;
+      if (el.matches(TEXT_SELECTOR)) {
+        setTextMode(false);
+        return;
+      }
+      const rel = e.relatedTarget;
+      if (!(rel instanceof Element) || !rel.closest(HOVER_SELECTOR)) setHover(false);
+    },
+    { passive: true },
+  );
 
-  document.addEventListener("mouseout", (e) => {
-    const el = e.target;
-    if (!(el instanceof Element)) return;
-    if (el.matches(TEXT_SELECTOR)) { setTextMode(false); return; }
-    const rel = e.relatedTarget;
-    if (!(rel instanceof Element) || !rel.closest(HOVER_SELECTOR)) setHover(false);
-  }, { passive: true });
+  document.addEventListener("mousedown", () => look.classList.add("is-pressing"), { passive: true });
+  document.addEventListener("mouseup", () => look.classList.remove("is-pressing"), { passive: true });
 
-  document.addEventListener("mousedown", () => cursor.classList.add("is-pressing"),    { passive: true });
-  document.addEventListener("mouseup",   () => cursor.classList.remove("is-pressing"), { passive: true });
+  /* ── Цикл отрисовки (чернильный трейл) ── */
+  function render() {
+    raf = requestAnimationFrame(render);
 
-  /* ── RAF loop ── */
-  function loop() {
-    raf = requestAnimationFrame(loop);
-    if (!isVisible) return;
+    /* кружок «смотреть» плавно следует за курсором */
+    look.style.transform =
+      `translate(${lookX}px, ${lookY}px) translate(-50%, -50%)`;
 
-    px = cx; py = cy;
-    cx = lerp(cx, mx, CURSOR_LAG);
-    cy = lerp(cy, my, CURSOR_LAG);
-
-    /* Скорость движения → растяжение капли в её направлении */
-    const vx = cx - px;
-    const vy = cy - py;
-    const speed = Math.hypot(vx, vy);
-
-    if (noMotion || isHovering || isTextField || speed < 0.5) {
-      cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
-    } else {
-      const angle = Math.atan2(vy, vx) * 180 / Math.PI;
-      const s = Math.min(speed * STRETCH_K, STRETCH_MAX);
-      const sx = 1 + s;
-      const sy = 1 - s * 0.55;
-      cursor.style.transform =
-        `translate(${cx}px,${cy}px) translate(-50%,-50%) rotate(${angle}deg) scale(${sx},${sy})`;
-    }
+    let x = mousePosition.x;
+    let y = mousePosition.y;
+    dots.forEach((dot, index) => {
+      const nextDot = dots[index + 1] || dots[0];
+      dot.x = x;
+      dot.y = y;
+      dot.draw();
+      if (!idle || index <= sineDots) {
+        x += (nextDot.x - dot.x) * TRAIL;
+        y += (nextDot.y - dot.y) * TRAIL;
+      }
+    });
   }
+  render();
 
-  loop();
+  window.addEventListener("beforeunload", () => {
+    if (raf) cancelAnimationFrame(raf);
+  });
 
-  window.addEventListener("beforeunload", () => { if (raf) cancelAnimationFrame(raf); });
+  /* Совместимость со старым API */
   window.PalomaCursor = { setHover, setTextMode, isActive: true };
   window.palomaRebindCursorHovers = function () {};
 })();
