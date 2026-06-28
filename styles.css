@@ -8899,11 +8899,11 @@ body.is-home .site-header:not(.is-scrolled) .site-header__logo{background-image:
 .sf2-ok{font-family:var(--font-sans,'Manrope',sans-serif);font-size:14px;line-height:1.5;color:#fff;background:rgba(231,56,90,.14);border:1px solid rgba(231,56,90,.45);border-radius:12px;padding:14px 18px;max-width:380px;margin:0}
 
 /* соцсети-миниатюры */
-.sf2-socials{display:flex;gap:14px;margin-top:auto;padding-top:clamp(36px,5vw,72px);flex-wrap:wrap}
+.sf2-socials{display:flex;gap:18px;margin-top:auto;padding-top:clamp(36px,5vw,72px);flex-wrap:wrap}
 .sf2-soc{display:block;text-decoration:none}
-.sf2-soc__ph{display:block;width:clamp(62px,5.2vw,86px);aspect-ratio:1/1.1;border-radius:6px;background-size:cover;background-position:center;transition:transform .4s ease}
-.sf2-soc:hover .sf2-soc__ph{transform:translateY(-4px)}
-.sf2-soc__name{display:block;margin-top:8px;font-size:12px;font-weight:600;color:#fff}
+.sf2-soc__ph{display:block;width:clamp(110px,9vw,150px);aspect-ratio:1/1.1;border-radius:10px;background-size:cover;background-position:center;transition:transform .4s ease}
+.sf2-soc:hover .sf2-soc__ph{transform:translateY(-5px)}
+.sf2-soc__name{display:block;margin-top:10px;font-size:14px;font-weight:600;color:#fff}
 
 /* колонки навигации */
 .sf2-head{font-family:var(--font-sans,'Manrope',sans-serif);font-size:clamp(13.5px,1vw,15px);font-weight:600;color:rgba(255,255,255,.85);margin:0 0 clamp(15px,1.6vw,20px)}
