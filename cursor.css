@@ -1,9 +1,7 @@
 /* ════════════════════════════════════════════════════════
-   PALOMA CUSTOM CURSOR — «чернильный» жидкий курсор
-   Цепочка точек + SVG goo-фильтр = капля, тянущаяся за мышью.
-   При наведении на кнопки/фото — кружок «смотреть».
-   Оптимизация: меньше точек, без idle-анимации (петля
-   останавливается в покое) — поэтому не лагает и не залипает.
+   PALOMA CUSTOM CURSOR — «чернильный» курсор (как doka.digital)
+   Цепочка точек + SVG goo-фильтр = жидкая капля, тянущаяся
+   за мышью. При наведении на кнопки/фото — кружок «смотреть».
    ════════════════════════════════════════════════════════ */
 
 /* Скрыть legacy-курсор при активном новом */
@@ -56,8 +54,8 @@ body.paloma-cursor-active .cursor-trail-dot {
   top: 0;
   left: 0;
   display: block;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background-color: #fff;
   transform-origin: center center;
@@ -84,21 +82,23 @@ body.paloma-cursor-active .cursor-trail-dot {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  scale: 1;
+  scale: 0.7;
   transform-origin: center center;
   transform: translate(-100px, -100px) translate(-50%, -50%);
-  /* меняется на месте, мгновенно — без появления/подтягивания */
-  transition: none;
-  will-change: transform, opacity;
+  /* появляется мгновенно, без долгого «подтягивания» */
+  transition:
+    opacity 0.05s linear,
+    scale 0.07s ease-out;
+  will-change: transform, opacity, scale;
 }
 
 .ink-look.is-on {
   opacity: 1;
+  scale: 1;
 }
 
 .ink-look.is-pressing {
   scale: 0.9;
-  transition: scale 0.08s ease-out;
 }
 
 .ink-look__label {
