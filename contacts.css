@@ -49,8 +49,16 @@
 
 /* ── Фото + информация ── */
 
+/* Контакты: убираем лишнее пустое поле между крошками и студией */
+.contacts-page .page-compact-header {
+  padding-bottom: clamp(8px, 1.2vw, 14px);
+}
+.contacts-page .page-compact-header__breadcrumbs {
+  margin-bottom: 0;
+}
+
 .contacts-studio {
-  padding: clamp(20px, 3vw, 40px) 0;
+  padding: clamp(10px, 1.6vw, 18px) 0 clamp(20px, 3vw, 40px);
   background: var(--color-bg-alt);
 }
 
