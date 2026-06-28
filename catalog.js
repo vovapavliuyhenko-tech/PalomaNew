@@ -251,23 +251,21 @@
       const card = cartBtn.closest(".product-card");
       if (!card || !window.PalomaCart) return;
 
-      const main =
-        card.querySelector(".product-card__ph") ||
-        card.querySelector(".product-card__image--main") ||
-        card.querySelector(".product-card__img--main");
       const rawCat = (card.dataset.category || "")
         .trim()
         .split(/\s+/)
         .filter(Boolean);
-      let bg = "";
-      if (main) {
-        if (main.tagName === "IMG") {
-          const u = main.currentSrc || main.src;
-          bg = u ? `url(${u}) center/cover` : "";
-        } else {
-          bg = getComputedStyle(main).background;
-        }
+
+      /* реальное фото товара (для корзины), плейсхолдер-градиент как фон-запас */
+      const imgEl =
+        card.querySelector(".product-card__img--main") ||
+        card.querySelector(".product-card__image--main");
+      let image = "";
+      if (imgEl && imgEl.tagName === "IMG") {
+        image = imgEl.getAttribute("src") || imgEl.currentSrc || "";
       }
+      const phEl = card.querySelector(".product-card__ph");
+      const bg = phEl ? getComputedStyle(phEl).background : "";
 
       window.PalomaCart.add({
         id: card.dataset.id + "-quick-m-" + (card.dataset.price || "0"),
@@ -276,6 +274,7 @@
         addons: [],
         price: parseInt(card.dataset.price, 10) || 0,
         qty: 1,
+        image,
         bg,
         category: rawCat[0] || "",
       });

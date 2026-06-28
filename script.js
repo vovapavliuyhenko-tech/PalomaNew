@@ -156,20 +156,22 @@
         "click",
         (e) => {
           e.stopPropagation();
-          const main =
-            card.querySelector(".product-card__image--main") ||
-            card.querySelector(".product-card__img--main");
+          const imgEl =
+            card.querySelector(".product-card__img--main") ||
+            card.querySelector(".product-card__image--main");
+          const phEl = card.querySelector(".product-card__ph");
           const rawCat = (card.dataset.category || "")
             .trim()
             .split(/\s+/)
             .filter(Boolean);
+          let image = "";
           let bg = "";
-          if (main) {
-            if (main.tagName === "IMG") {
-              const u = main.currentSrc || main.src;
-              bg = u ? `url(${u}) center/cover` : "";
-            } else bg = getComputedStyle(main).background;
+          if (imgEl && imgEl.tagName === "IMG") {
+            image = imgEl.getAttribute("src") || imgEl.currentSrc || "";
           }
+          if (phEl) bg = getComputedStyle(phEl).background;
+          else if (imgEl && imgEl.tagName !== "IMG")
+            bg = getComputedStyle(imgEl).background;
           window.PalomaCart?.add({
             id:
               card.dataset.id +
@@ -180,6 +182,7 @@
             addons: [],
             price: parseInt(card.dataset.price, 10) || 0,
             qty: 1,
+            image,
             bg,
             category: rawCat[0] || "",
           });
@@ -265,6 +268,8 @@
         currentMod +
         addonSum();
 
+      const mainBg = modalMainImg.style.background || "";
+      const urlMatch = mainBg.match(/url\((['"]?)(.*?)\1\)/i);
       window.PalomaCart?.add({
         id:
           currentProduct.id +
@@ -277,7 +282,8 @@
         addons,
         price: lineTotal,
         qty: 1,
-        bg: modalMainImg.style.background || "",
+        image: urlMatch ? urlMatch[2] : "",
+        bg: mainBg,
         category: currentProduct.category || "",
       });
       closeModal();

@@ -364,8 +364,10 @@
         qty,
         size: sizeLabel,
         addons: collectExtras(),
+        image: product.image || "",
         bg: product.placeholderBg || "",
         category: product.category || "",
+        slug: product.slug || "",
       });
 
       showToast(`«${product.name}» добавлен в корзину`);
