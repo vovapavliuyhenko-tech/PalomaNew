@@ -64,6 +64,7 @@
   let isTextField = false;
   let raf = 0;
   let lastMoveAt = 0;
+  let idlePhase = 0;
 
   const dots = [];
 
@@ -196,28 +197,41 @@
     look.style.transform =
       `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
 
-    /* цепочка: каждая точка догоняет предыдущую (голова — мышь) */
-    let prevX = mouseX, prevY = mouseY;
-    let maxDelta = 0;
-    for (let i = 0; i < dots.length; i++) {
-      const d = dots[i];
-      d.x += (prevX - d.x) * TRAIL;
-      d.y += (prevY - d.y) * TRAIL;
-      d.el.style.transform =
-        `translate(${d.x}px, ${d.y}px) translate(-50%, -50%) scale(${d.scale})`;
-      const dx = Math.abs(prevX - d.x), dy = Math.abs(prevY - d.y);
-      if (dx > maxDelta) maxDelta = dx;
-      if (dy > maxDelta) maxDelta = dy;
-      prevX = d.x; prevY = d.y;
+    const still = performance.now() - lastMoveAt > 140;
+
+    if (still) {
+      /* ПОКОЙ: капля «дышит» — компактно шевелится вокруг курсора */
+      idlePhase += 0.05;
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        const a = idlePhase + (i / dots.length) * Math.PI * 2;
+        const r = 4 + 2.5 * Math.sin(idlePhase * 0.7 + i);
+        const tx = mouseX + Math.cos(a) * r;
+        const ty = mouseY + Math.sin(a * 1.1) * r;
+        d.x += (tx - d.x) * 0.18;
+        d.y += (ty - d.y) * 0.18;
+        d.el.style.transform =
+          `translate(${d.x}px, ${d.y}px) translate(-50%, -50%) scale(${d.scale})`;
+      }
+    } else {
+      /* ДВИЖЕНИЕ: цепочка тянется за мышью (голова — курсор) */
+      let prevX = mouseX, prevY = mouseY;
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        d.x += (prevX - d.x) * TRAIL;
+        d.y += (prevY - d.y) * TRAIL;
+        d.el.style.transform =
+          `translate(${d.x}px, ${d.y}px) translate(-50%, -50%) scale(${d.scale})`;
+        prevX = d.x; prevY = d.y;
+      }
     }
 
-    /* остановка в покое: мышь стоит ≥120мс и капля догнала курсор */
-    const still = performance.now() - lastMoveAt > 120;
-    if (still && maxDelta < 0.5) {
-      raf = 0; // цикл уснул — нагрузка ноль, перезапустится на mousemove
-      return;
+    /* петля крутится, пока курсор в окне; уходит — засыпает */
+    if (visible) {
+      raf = requestAnimationFrame(render);
+    } else {
+      raf = 0;
     }
-    raf = requestAnimationFrame(render);
   }
 
   /* перезапуск после возврата на вкладку */
