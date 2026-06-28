@@ -82,11 +82,13 @@ body.paloma-cursor-active .cursor-trail-dot {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  scale: 0.2;
+  scale: 0.7;
+  transform-origin: center center;
   transform: translate(-100px, -100px) translate(-50%, -50%);
+  /* появляется мгновенно, без долгого «подтягивания» */
   transition:
-    opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    scale 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.05s linear,
+    scale 0.07s ease-out;
   will-change: transform, opacity, scale;
 }
 
@@ -96,7 +98,7 @@ body.paloma-cursor-active .cursor-trail-dot {
 }
 
 .ink-look.is-pressing {
-  scale: 0.88;
+  scale: 0.9;
 }
 
 .ink-look__label {

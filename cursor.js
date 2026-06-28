@@ -151,6 +151,11 @@
     if (isTextField) return;
     isHovering = on;
     cursor.classList.toggle("is-hidden", on);   // капля прячется
+    if (on) {
+      /* мгновенно ставим кружок под курсор — без «магнитного» подлёта из угла */
+      look.style.transform =
+        `translate(${lookX}px, ${lookY}px) translate(-50%, -50%)`;
+    }
     look.classList.toggle("is-on", on);          // кружок «смотреть» появляется
   }
   function setTextMode(on) {
