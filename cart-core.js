@@ -234,9 +234,21 @@ window.PalomaCart = (function () {
     });
   }
 
+  function _resolveImage(item) {
+    if (item.image) return item.image;
+    /* запасной путь: тянем фото из каталога по базовому id (c12, c3-… → c12/c3) */
+    const baseId = String(item.id || "").match(/^([a-z]?\d+)/i)?.[1];
+    if (baseId && window.PALOMA_CATALOG?.getById) {
+      const p = window.PALOMA_CATALOG.getById(baseId);
+      if (p?.image) return p.image;
+    }
+    return "";
+  }
+
   function _mediaHtml(item, imgClass) {
-    if (item.image) {
-      return `<img src="${esc(item.image)}" alt="${esc(item.name)}"
+    const src = _resolveImage(item);
+    if (src) {
+      return `<img src="${esc(src)}" alt="${esc(item.name)}"
               class="${imgClass}" loading="lazy"
               onerror="this.style.display='none'">`;
     }
