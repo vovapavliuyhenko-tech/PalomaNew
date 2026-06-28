@@ -231,3 +231,6 @@
 
 /* hero на главной — одна статичная фотография слева (как медиа в блоке «философия») */
 #ea-home .ea-hero__static { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Главная: текст блока «Оформляем» шире */
+#ea-home .ea-hero__lead{max-width:720px;font-size:clamp(14px,1.05vw,17px)}
