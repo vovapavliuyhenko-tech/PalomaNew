@@ -31,6 +31,7 @@
     bar.setAttribute("role", "region");
     bar.setAttribute("aria-label", "Уведомление об использовании cookie");
     bar.innerHTML =
+      '<div class="cookie-bar__inner">' +
       '<p class="cookie-bar__text">Мы используем файлы cookie, чтобы сайт работал корректно и удобно. ' +
       "Оставаясь на сайте, вы соглашаетесь с обработкой cookie и данных в соответствии с " +
       '<a href="cookies.html">Политикой в отношении cookie</a> и ' +
@@ -38,6 +39,7 @@
       '<div class="cookie-bar__actions">' +
       '<button type="button" class="cookie-bar__btn cookie-bar__btn--accept" id="cookieAccept" data-cursor="hover">Принять</button>' +
       '<button type="button" class="cookie-bar__btn cookie-bar__btn--decline" id="cookieDecline" data-cursor="hover">Только необходимые</button>' +
+      "</div>" +
       "</div>";
     document.body.appendChild(bar);
 

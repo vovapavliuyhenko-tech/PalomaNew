@@ -1,7 +1,8 @@
 /* ════════════════════════════════════════════════════════
-   PALOMA CUSTOM CURSOR — «чернильный» курсор (как doka.digital)
-   Цепочка точек + SVG goo-фильтр = жидкая капля, тянущаяся
-   за мышью. При наведении на кнопки/фото — кружок «смотреть».
+   PALOMA CUSTOM CURSOR — лёгкая версия
+   Точка-следящая (transform, без SVG-фильтров и blend-слоёв)
+   + кружок «смотреть» при наведении на кнопки/фото.
+   Производительность: 1–2 transform-апдейта за кадр.
    ════════════════════════════════════════════════════════ */
 
 /* Скрыть legacy-курсор при активном новом */
@@ -18,53 +19,38 @@ body.paloma-cursor-active .cursor-trail-dot {
   }
 }
 
-.ink-icon {
-  position: absolute;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-
-/* ── Чернильная капля ───────────────────────────────── */
-.ink-cursor {
-  pointer-events: none;
+/* ── Точка-курсор ─────────────────────────────────────── */
+.ink-dot {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99999;
-  display: block;
-  transform-origin: center center;
-  filter: url("#palomaGoo");
-  mix-blend-mode: difference;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.ink-cursor.is-visible {
-  opacity: 1;
-}
-
-/* капля прячется при наведении (вместо неё — кружок «смотреть») */
-.ink-cursor.is-hidden {
-  opacity: 0;
-}
-
-.ink-cursor span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 26px;
-  height: 26px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background-color: #fff;
-  transform-origin: center center;
+  background: #fff;
+  /* difference-смешивание делает точку видимой и на светлом, и на тёмном
+     фоне — одного маленького элемента это почти не нагружает */
+  mix-blend-mode: difference;
+  pointer-events: none;
+  transform: translate(-100px, -100px) translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
   will-change: transform;
 }
 
-/* в текстовых полях капля тоньше/менее заметна */
-.ink-cursor.is-text {
-  opacity: 0.6;
+.ink-dot.is-visible {
+  opacity: 1;
+}
+
+/* при наведении точка прячется — вместо неё кружок «смотреть» */
+.ink-dot.is-hidden {
+  opacity: 0;
+}
+
+/* в текстовых полях точка чуть тусклее */
+.ink-dot.is-text {
+  opacity: 0.55;
 }
 
 /* ── Кружок «смотреть» (наше поведение при наведении) ── */
@@ -120,7 +106,7 @@ body.paloma-cursor-active .cursor-trail-dot {
 
 /* ── Touch / грубый pointer — всё скрыть ─────────────── */
 @media (hover: none), (pointer: coarse), (max-width: 480px) {
-  .ink-cursor,
+  .ink-dot,
   .ink-look {
     display: none !important;
   }
