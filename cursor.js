@@ -1,8 +1,15 @@
 /* ════════════════════════════════════════════════════════
-   cursor.js — кастомный курсор PALOMA (лёгкая версия)
-   Одна точка-следящая (transform только) + кружок «смотреть»
-   при наведении на кнопки/фото. Без SVG-фильтров, blend-цепочек
-   и idle-анимаций — поэтому не лагает и не «залипает».
+   cursor.js — кастомный курсор PALOMA
+   «Чернильный/жидкий» курсор: цепочка точек слипается в каплю
+   через SVG goo-фильтр и тянется за мышью. При наведении на
+   кнопки/фото капля уходит, появляется кружок «смотреть».
+
+   Оптимизация против лагов и «залипания»:
+   • 12 точек вместо 20;
+   • НЕТ idle-swirl (он давал застывший сгусток);
+   • цикл отрисовки ОСТАНАВЛИВАЕТСЯ, когда мышь стоит и капля
+     догнала курсор — поэтому в покое нагрузка нулевая;
+   • перезапуск на mousemove и при возврате на вкладку.
    ════════════════════════════════════════════════════════ */
 (function initPalomaCursor() {
   "use strict";
@@ -14,16 +21,29 @@
     navigator.maxTouchPoints > 0;
 
   if (isTouch) return;
-  if (document.getElementById("inkDot")) return;
+  if (document.getElementById("inkCursor")) return;
 
   document.body.classList.add("paloma-cursor-active");
 
-  /* ── Точка-курсор ── */
-  const dot = document.createElement("div");
-  dot.className = "ink-dot";
-  dot.id = "inkDot";
-  dot.setAttribute("aria-hidden", "true");
-  document.body.appendChild(dot);
+  /* ── SVG goo-фильтр (слипание точек в чернильную каплю) ── */
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("class", "ink-icon");
+  svg.setAttribute("aria-hidden", "true");
+  svg.innerHTML =
+    '<defs><filter id="palomaGoo">' +
+    '<feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>' +
+    '<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 32 -14" result="goo"/>' +
+    '<feComposite in="SourceGraphic" in2="goo" operator="atop"/>' +
+    "</filter></defs>";
+  document.body.appendChild(svg);
+
+  /* ── Контейнер капли + точки ── */
+  const cursor = document.createElement("div");
+  cursor.className = "ink-cursor";
+  cursor.id = "inkCursor";
+  cursor.setAttribute("aria-hidden", "true");
+  document.body.appendChild(cursor);
 
   /* ── Кружок «смотреть» ── */
   const look = document.createElement("div");
@@ -33,15 +53,19 @@
   look.innerHTML = '<span class="ink-look__label">смотреть</span>';
   document.body.appendChild(look);
 
-  /* Мягкое подтягивание точки (1 = мгновенно, меньше = плавный шлейф) */
-  const FOLLOW = 0.28;
+  /* ── Параметры ── */
+  const amount = 12;
+  const width = 24;
+  const TRAIL = 0.42; // жёстче = быстрее догоняет, меньше «подтягивания»
 
   let mouseX = -100, mouseY = -100;
-  let dotX = -100, dotY = -100;
   let visible = false;
   let isHovering = false;
   let isTextField = false;
   let raf = 0;
+  let lastMoveAt = 0;
+
+  const dots = [];
 
   const HOVER_SELECTOR = [
     "a", "button", "[role='button']",
@@ -68,13 +92,21 @@
   /* Тёмные секции — кружок «смотреть» становится розовым */
   const DARK_SELECTOR = ".site-footer, [data-cursor-dark]";
 
+  /* ── Точка цепочки ── */
+  for (let i = 0; i < amount; i++) {
+    const el = document.createElement("span");
+    const scale = 1 - 0.05 * i;
+    el.style.transform = `translate(-100px, -100px) translate(-50%, -50%) scale(${scale})`;
+    cursor.appendChild(el);
+    dots.push({ x: -100, y: -100, scale: scale, el: el });
+  }
+
   /* ── Наведение / текстовые поля ── */
   function setHover(on) {
     if (isTextField) return;
     isHovering = on;
-    dot.classList.toggle("is-hidden", on);
+    cursor.classList.toggle("is-hidden", on);
     if (on) {
-      /* мгновенно ставим кружок под курсор */
       look.style.transform =
         `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
     }
@@ -86,10 +118,16 @@
     if (on) {
       isHovering = false;
       look.classList.remove("is-on");
-      dot.classList.add("is-text");
+      cursor.classList.add("is-text");
     } else {
-      dot.classList.remove("is-text");
+      cursor.classList.remove("is-text");
     }
+  }
+
+  /* ── Запуск/перезапуск цикла ── */
+  function kick() {
+    lastMoveAt = performance.now();
+    if (!raf) raf = requestAnimationFrame(render);
   }
 
   /* ── События ── */
@@ -100,21 +138,23 @@
       mouseY = e.clientY;
       if (!visible) {
         visible = true;
-        dot.classList.add("is-visible");
+        cursor.classList.add("is-visible");
       }
+      kick();
     },
     { passive: true },
   );
 
   document.addEventListener("mouseleave", () => {
-    dot.classList.remove("is-visible");
+    cursor.classList.remove("is-visible");
     look.classList.remove("is-on");
     visible = false;
   });
   document.addEventListener("mouseenter", () => {
     if (mouseX > -100) {
-      dot.classList.add("is-visible");
+      cursor.classList.add("is-visible");
       visible = true;
+      kick();
     }
   });
 
@@ -150,22 +190,39 @@
   document.addEventListener("mousedown", () => look.classList.add("is-pressing"), { passive: true });
   document.addEventListener("mouseup", () => look.classList.remove("is-pressing"), { passive: true });
 
-  /* ── Цикл отрисовки (лёгкий: только transform) ── */
+  /* ── Цикл отрисовки ── */
   function render() {
-    raf = requestAnimationFrame(render);
-    dotX += (mouseX - dotX) * FOLLOW;
-    dotY += (mouseY - dotY) * FOLLOW;
-    dot.style.transform =
-      `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+    /* кружок «смотреть» — мгновенно под курсором */
     look.style.transform =
       `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-  }
-  render();
 
-  /* На случай сворачивания вкладки — перезапуск цикла, чтобы курсор
-     не «застывал» после возврата на страницу */
+    /* цепочка: каждая точка догоняет предыдущую (голова — мышь) */
+    let prevX = mouseX, prevY = mouseY;
+    let maxDelta = 0;
+    for (let i = 0; i < dots.length; i++) {
+      const d = dots[i];
+      d.x += (prevX - d.x) * TRAIL;
+      d.y += (prevY - d.y) * TRAIL;
+      d.el.style.transform =
+        `translate(${d.x}px, ${d.y}px) translate(-50%, -50%) scale(${d.scale})`;
+      const dx = Math.abs(prevX - d.x), dy = Math.abs(prevY - d.y);
+      if (dx > maxDelta) maxDelta = dx;
+      if (dy > maxDelta) maxDelta = dy;
+      prevX = d.x; prevY = d.y;
+    }
+
+    /* остановка в покое: мышь стоит ≥120мс и капля догнала курсор */
+    const still = performance.now() - lastMoveAt > 120;
+    if (still && maxDelta < 0.5) {
+      raf = 0; // цикл уснул — нагрузка ноль, перезапустится на mousemove
+      return;
+    }
+    raf = requestAnimationFrame(render);
+  }
+
+  /* перезапуск после возврата на вкладку */
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && !raf) render();
+    if (!document.hidden) kick();
   });
 
   window.addEventListener("beforeunload", () => {
