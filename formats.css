@@ -134,10 +134,11 @@
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  padding: clamp(22px, 2.4vw, 36px);
+  /* отступы и расположение как в референс-карточке .ea-serv__card */
+  padding: clamp(30px, 2.8vw, 46px) clamp(26px, 2.4vw, 40px);
 }
 .fmt__back-title {
-  margin: 0 0 clamp(12px, 1.4vw, 18px);
+  margin: clamp(4px, 0.6vw, 8px) 0 clamp(12px, 1.4vw, 18px);
   font-family: var(--serif, "Classica One", cursive);
   font-weight: 400;
   font-style: italic;
@@ -147,11 +148,13 @@
   text-transform: none;
 }
 .fmt__back-text {
-  margin: 0;
+  /* как .ea-serv__slash — текст занимает свободное место по центру,
+     оффер уходит к низу карточки */
+  margin: auto 0;
   font-family: var(--sans, "Montserrat", sans-serif);
   font-weight: 400;
   font-size: clamp(13px, 1.05vw, 15px);
-  line-height: 1.5;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.94);
 }
 .fmt__more {
