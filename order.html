@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="preloader.css?v=w1">
-  <link rel="stylesheet" href="styles.css?v=footer5">
+  <link rel="stylesheet" href="styles.css?v=wl1">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="clients.css?v=w1">
   <link rel="stylesheet" href="cart.css?v=w1">
@@ -229,7 +229,7 @@
 
         <div class="site-header__actions">
           <a href="tel:+78612000000" class="site-header__phone">+7 (861) 200-00-00</a>
-          <a href="wishlist.html" class="site-header__icon site-header__icon--wishlist" aria-label="Избранное" data-cursor="hover">
+          <a href="wishlist.html" id="wishlistOpenBtn" data-wishlist-open class="site-header__icon site-header__icon--wishlist" aria-label="Избранное, открыть панель" aria-expanded="false" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
             <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
           </a>
@@ -752,9 +752,49 @@
   <script src="paloma-media-paths.js"></script>
   <script src="paloma-media.js"></script>
 
-  <script src="wishlist.js"></script>
+  <script src="wishlist.js?v=wl1"></script>
   <script src="clients.js"></script>
   <script src="cart.js"></script>
   <script src="cursor.js?v=dark1"></script>
+  <!-- Выезжающая панель «Избранное» -->
+  <div class="cart-drawer wishlist-drawer" id="wishlistDrawer"
+       aria-label="Избранное" aria-hidden="true" role="dialog" hidden>
+    <div class="cart-drawer__backdrop" id="wishlistDrawerBackdrop"
+         data-wishlist-close aria-hidden="true"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Избранное</h2>
+        <button type="button" class="cart-drawer__close" id="wishlistDrawerClose"
+                data-wishlist-close aria-label="Закрыть избранное" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="cart-drawer__empty" id="wishlistDrawerEmpty">
+        <div class="cart-drawer__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/>
+          </svg>
+        </div>
+        <p class="cart-drawer__empty-title">В избранном пусто</p>
+        <p class="cart-drawer__empty-text">Нажмите на сердечко у понравившегося букета</p>
+        <a href="catalog.html" class="btn btn--dark cart-drawer__empty-cta"
+           data-wishlist-close>Перейти в каталог</a>
+      </div>
+      <div class="cart-drawer__body" id="wishlistDrawerBody" hidden>
+        <div class="cart-drawer__list" id="wishlistDrawerList"
+             aria-label="Товары в избранном"></div>
+        <div class="cart-drawer__footer">
+          <a href="wishlist.html" class="btn btn--dark cart-drawer__checkout"
+             aria-label="Открыть страницу избранного">Открыть избранное</a>
+          <button type="button" class="cart-drawer__continue"
+                  data-wishlist-close aria-label="Продолжить покупки">Продолжить покупки</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
