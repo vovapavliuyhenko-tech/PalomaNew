@@ -4,21 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FFFFFF">
-  <title>Корзина — PALOMA Flowers Coffee You</title>
-  <meta name="description" content="Корзина PALOMA: букеты, кофе и подарки. Новороссийск.">
+  <title>Политика в отношении файлов cookie — PALOMA flowers coffee you</title>
+  <meta name="description" content="Какие файлы cookie использует сайт PALOMA, для чего они нужны и как ими управлять.">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="preloader.css?v=w1">
   <link rel="stylesheet" href="styles.css?v=wl1">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="cart.css?v=w1">
-  <link rel="stylesheet" href="catalog.css?v=pink1">
   <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=ink4">
   <link rel="stylesheet" href="legal.css?v=1">
 </head>
-<body class="cart-page">
+<body>
   <a href="#main" class="skip-link">К содержимому</a>
   <!-- PALOMA PAGE LOADER — premium curtain transition -->
   <div class="paloma-page-loader" id="palomaPageLoader" aria-hidden="true">
@@ -69,11 +68,11 @@
 
         <nav class="site-header__nav" aria-label="Основная навигация">
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--catalog" data-dropdown="catalog">
-            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerCart" data-cursor="hover">
+            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerPrivacy" data-cursor="hover">
               Каталог
               <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
             </button>
-            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerCart">
+            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerPrivacy">
               <div class="catalog-dropdown__inner">
                 <div class="catalog-dropdown__grid">
 
@@ -207,12 +206,12 @@
           <a href="event-decoration.html" class="site-header__link">Оформление</a>
 
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
-          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerCatalog" data-cursor="hover">
+          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerPrivacy" data-cursor="hover">
             Клиентам
             <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
           </button>
 
-          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerCatalog">
+          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerPrivacy">
             <div class="clients-dropdown__inner">
               <div class="clients-dropdown__grid">
                 <a href="delivery.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h13v10H3zM16 10h4l2 3v4h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Доставка</div><div class="client-nav-card__desc">Зоны, сроки и стоимость</div></div></a>
@@ -235,11 +234,12 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
             <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
           </a>
-          <a href="cart.html" class="site-header__icon site-header__icon--cart site-header__cart"
-        aria-label="Корзина" aria-current="page" data-cursor="hover">
+          <button type="button" class="site-header__icon site-header__icon--cart site-header__cart"
+        id="cartOpenBtn" data-cart-open
+        aria-label="Корзина" aria-expanded="false" aria-controls="cartDrawer" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
             <span class="site-header__cart-count site-header__badge cart-count" id="cartCount" data-cart-count style="display:none" aria-hidden="true">0</span>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -265,80 +265,106 @@
     </header>
   </div>
 
-    <main class="cart-main" id="main" aria-label="Корзина">
-
-    <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки">
-      <div class="catalog-breadcrumbs__inner">
-        <ol class="catalog-breadcrumbs__list">
-          <li><a href="index.html">Главная</a></li>
-          <li aria-hidden="true">/</li>
-          <li aria-current="page">Корзина</li>
+  <main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <div class="breadcrumbs__inner">
+        <ol class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="index.html" itemprop="item"><span itemprop="name">Главная</span></a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li class="breadcrumbs__sep" aria-hidden="true">/</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">Политика в отношении cookie</span>
+            <meta itemprop="position" content="2">
+          </li>
         </ol>
       </div>
     </nav>
+    <section class="client-hero">
+      <div class="client-hero__inner">
+        <span class="client-hero__eyebrow" aria-hidden="true">[ Юридическое ]</span>
+        <h1 class="client-hero__title">Политика в отношении файлов cookie</h1>
+        <p class="client-hero__lead">Что такое cookie, какие из них использует сайт PALOMA, зачем они нужны и как вы можете ими управлять.</p>
+      </div>
+    </section>
 
-    <div class="cart-page-empty" id="cartPageEmpty">
-      <div class="cart-page-empty__inner">
-        <div class="cart-page-empty__icon" aria-hidden="true">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1" aria-hidden="true">
-            <path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/>
-          </svg>
-        </div>
-        <h1 class="cart-page-empty__title">Корзина пуста</h1>
-        <p class="cart-page-empty__text">
-          Добавьте букеты, кофе или подарки из каталога
+    <section class="legal" aria-label="Текст политики в отношении cookie">
+      <div class="legal__inner">
+
+        <p class="legal__meta">
+          <b>Редакция от 28 июня 2026 г.</b><br>
+          Настоящая Политика разъясняет, какие файлы cookie использует сайт PALOMA (далее — «Сайт»), для каких целей и как пользователь может ими управлять. Политика является дополнением к <a href="privacy.html">Политике конфиденциальности</a>.
         </p>
-        <a href="catalog.html" class="btn btn--dark cart-page-empty__cta">
-          Перейти в каталог
-        </a>
-      </div>
-    </div>
 
-    <div class="cart-page-content" id="cartPageContent" hidden>
-      <div class="cart-page-inner">
-        <div class="cart-page-header">
-          <h1 class="cart-page-title">Корзина</h1>
-          <p class="cart-page-count" id="cartPageCount" aria-live="polite"></p>
-        </div>
-        <div class="cart-page-layout">
-          <div class="cart-page-left">
-            <div class="cart-page__list" id="cartPageList"
-                 aria-label="Товары в корзине"></div>
-            <section class="cart-addons" aria-label="Рекомендации">
-              <h2 class="cart-addons__title">Идеально дополнят ваш выбор</h2>
-              <div class="cart-addons__grid" id="cartAddonsGrid"></div>
-            </section>
-          </div>
-          <aside class="cart-page-summary" id="cartPageSummary" aria-label="Итог заказа">
-            <h2 class="cart-page-summary__title">Итог</h2>
-            <div class="cart-page-summary__rows">
-              <div class="cart-page-summary__row">
-                <span>Товары</span>
-                <span id="cartPageSubtotal">0 ₽</span>
-              </div>
-              <div class="cart-page-summary__row cart-page-summary__row--delivery">
-                <span>Доставка</span>
-                <span>Уточняется</span>
-              </div>
-              <div class="cart-page-summary__row cart-page-summary__row--total">
-                <span>Итого</span>
-                <span id="cartPageTotal" class="cart-page-summary__total">0 ₽</span>
-              </div>
-            </div>
-            <a href="checkout.html"
-               class="btn btn--dark cart-page-summary__checkout"
-               id="cartCheckoutBtn"
-               aria-label="Перейти к оформлению заказа">Оформить заказ</a>
-            <div class="cart-page-summary__meta">
-              <p>Доставка по Новороссийску. Самовывоз — Энгельса, 74/82.</p>
-              <p>Интервалы: 9:30–12:30, 12:00–15:00, 15:00–18:00, 18:00–22:00.</p>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </div>
+        <nav class="legal__toc" aria-label="Содержание">
+          <p class="legal__toc-title">Содержание</p>
+          <ol>
+            <li><a href="#c1">Что такое файлы cookie</a></li>
+            <li><a href="#c2">Какие cookie мы используем</a></li>
+            <li><a href="#c3">Цели использования</a></li>
+            <li><a href="#c4">Согласие и правовые основания</a></li>
+            <li><a href="#c5">Как управлять cookie и отключить их</a></li>
+            <li><a href="#c6">Изменения политики</a></li>
+          </ol>
+        </nav>
 
+        <div class="legal__sec" id="c1">
+          <h2><span class="legal__num">1.</span>Что такое файлы cookie</h2>
+          <p>1.1. Cookie — это небольшие текстовые файлы, которые сохраняются в браузере вашего устройства при посещении Сайта. Они позволяют запоминать действия и настройки (например, содержимое корзины, избранное, факт согласия с уведомлениями), чтобы вам не приходилось вводить их повторно.</p>
+          <p>1.2. Похожие технологии (localStorage, пиксели, счётчики) используются в тех же целях, и в настоящей Политике под «cookie» понимаются все подобные технологии.</p>
+        </div>
+
+        <div class="legal__sec" id="c2">
+          <h2><span class="legal__num">2.</span>Какие cookie мы используем</h2>
+          <p>2.1. <strong>Строго необходимые (технические)</strong> — обеспечивают базовую работу Сайта: сохранение корзины и избранного, запоминание выбора по cookie-уведомлению, корректное отображение страниц. Без них Сайт не может работать правильно. Хранятся в браузере (localStorage) и не требуют отдельного согласия.</p>
+          <p>2.2. <strong>Аналитические</strong> — собирают обезличенные сведения о том, как посетители пользуются Сайтом (посещённые страницы, источник перехода, тип устройства), чтобы мы могли улучшать сервис. Могут устанавливаться сторонними сервисами веб-аналитики.</p>
+          <p>2.3. <strong>Функциональные</strong> — запоминают ваши предпочтения и повышают удобство использования Сайта.</p>
+        </div>
+
+        <div class="legal__sec" id="c3">
+          <h2><span class="legal__num">3.</span>Цели использования</h2>
+          <ul>
+            <li>обеспечение работоспособности и безопасности Сайта;</li>
+            <li>сохранение корзины, избранного и пользовательских настроек;</li>
+            <li>анализ посещаемости и поведения пользователей в обезличенном виде;</li>
+            <li>улучшение содержания, структуры и удобства Сайта.</li>
+          </ul>
+          <p>3.1. Данные, собираемые с помощью cookie, носят обезличенный характер и сами по себе не позволяют идентифицировать вас как конкретное лицо.</p>
+        </div>
+
+        <div class="legal__sec" id="c4">
+          <h2><span class="legal__num">4.</span>Согласие и правовые основания</h2>
+          <p>4.1. При первом посещении Сайта показывается уведомление об использовании cookie. Продолжая пользоваться Сайтом и/или нажимая «Принять», вы выражаете согласие на использование cookie в соответствии с настоящей Политикой.</p>
+          <p>4.2. Строго необходимые cookie используются на основании законного интереса для обеспечения работы Сайта и не требуют согласия. Аналитические и функциональные cookie используются на основании вашего согласия, которое вы можете отозвать в любой момент (раздел 5).</p>
+        </div>
+
+        <div class="legal__sec" id="c5">
+          <h2><span class="legal__num">5.</span>Как управлять cookie и отключить их</h2>
+          <p>5.1. Вы можете в любой момент изменить или отозвать согласие, удалив сохранённые данные Сайта в настройках браузера, а также настроив или полностью запретив приём cookie.</p>
+          <p>5.2. Инструкции по управлению cookie доступны в справке вашего браузера (Google Chrome, Safari, Mozilla Firefox, Microsoft Edge, Яндекс.Браузер — раздел «Настройки → Конфиденциальность»).</p>
+          <div class="legal__note">Отключение строго необходимых cookie может привести к некорректной работе отдельных функций Сайта — например, корзины или избранного.</div>
+        </div>
+
+        <div class="legal__sec" id="c6">
+          <h2><span class="legal__num">6.</span>Изменения политики</h2>
+          <p>6.1. Оператор вправе вносить изменения в настоящую Политику. Новая редакция вступает в силу с момента её размещения на Сайте. Актуальная версия всегда доступна на этой странице.</p>
+        </div>
+
+        <div class="legal__req">
+          <p class="legal__req-title">Реквизиты Оператора</p>
+          <dl>
+            <dt>Оператор</dt><dd>Индивидуальный предприниматель Карагоз Светлана Сергеевна</dd>
+            <dt>ИНН</dt><dd>143103908905</dd>
+            <dt>ОГРНИП</dt><dd><mark>[ОГРНИП]</mark></dd>
+            <dt>Адрес</dt><dd>г. Новороссийск, ул. Энгельса, 74/82</dd>
+            <dt>E-mail</dt><dd><mark>[e-mail]</mark></dd>
+            <dt>Телефон</dt><dd><a href="tel:+79897707000">+7 (989) 770-70-00</a></dd>
+          </dl>
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
@@ -480,13 +506,65 @@
     <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
   </div>
 
+  <!-- ── CART DRAWER ── -->
+  <div class="cart-drawer" id="cartDrawer"
+       aria-label="Корзина" aria-hidden="true"
+       role="dialog" hidden>
+    <div class="cart-drawer__backdrop"
+         id="cartDrawerBackdrop"
+         aria-hidden="true"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Корзина</h2>
+        <button type="button" class="cart-drawer__close"
+                id="cartDrawerClose"
+                data-cart-close
+                aria-label="Закрыть корзину" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="cart-drawer__empty" id="cartDrawerEmpty">
+        <div class="cart-drawer__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/>
+          </svg>
+        </div>
+        <p class="cart-drawer__empty-title">Корзина пуста</p>
+        <p class="cart-drawer__empty-text">Добавьте букет, кофе или подарок</p>
+        <a href="catalog.html"
+           class="btn btn--dark cart-drawer__empty-cta"
+           data-cart-close>Перейти в каталог</a>
+      </div>
+      <div class="cart-drawer__body" id="cartDrawerBody" hidden>
+        <div class="cart-drawer__list" id="cartDrawerList"
+             aria-label="Товары в корзине"></div>
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__total-row">
+            <span class="cart-drawer__total-label">Итого</span>
+            <span class="cart-drawer__total-val" id="cartDrawerTotal">0 ₽</span>
+          </div>
+          <a href="cart.html"
+             class="btn btn--dark cart-drawer__checkout"
+             aria-label="Перейти к оформлению заказа">Оформить заказ</a>
+          <button type="button" class="cart-drawer__continue"
+                  data-cart-close
+                  aria-label="Продолжить покупки">Продолжить покупки</button>
+        </div>
+      </div>
+    </div>
+    <p class="paloma-page-loader__tagline">flowers · coffee · you</p>
+    <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
+  </div>
+
   <div class="custom-cursor" id="customCursor" aria-hidden="true">
     <div class="custom-cursor__dot"></div>
     <div class="custom-cursor__ring"></div>
   </div>
 
-  <script src="paloma-products.js?v=p32"></script>
-  <script src="catalog-data.js?v=p32"></script>
   <script src="preloader.js?v=9"></script>
   <script src="cart-core.js?v=img1"></script>
   <script src="script.js?v=img2"></script>
@@ -495,7 +573,6 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js?v=wl1"></script>
-  <script src="cart-page.js"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=ink4"></script>
   <script src="cookie-consent.js?v=1"></script>
