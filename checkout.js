@@ -175,14 +175,28 @@
       0,
     );
     const deliveryType = getDeliveryType();
+    /* сертификат свадебной копилки — нематериальный, доставка не нужна;
+       если в заказе нет физических товаров — доставка отсутствует */
+    const hasPhysical = cart.some(
+      (i) =>
+        i.type !== "wedding-piggy" &&
+        !String(i.id).startsWith("paloma-wedding-piggy"),
+    );
     const delivery =
-      deliveryType === "pickup" || deliveryType === "ask_recipient"
+      !hasPhysical
         ? 0
-        : subtotal >= FREE_DELIVERY
+        : deliveryType === "pickup" || deliveryType === "ask_recipient"
           ? 0
-          : DELIVERY_COST;
+          : subtotal >= FREE_DELIVERY
+            ? 0
+            : DELIVERY_COST;
     const cardCost = hasCard() ? CARD_COST : 0;
     const total = subtotal + delivery + cardCost;
+
+    /* строку «Доставка» прячем для заказов без физических товаров
+       (inline display — атрибут hidden перебивается классом display:flex) */
+    const deliveryRow = document.getElementById("coDeliveryRow");
+    if (deliveryRow) deliveryRow.style.display = hasPhysical ? "" : "none";
 
     if ($subtotal) {
       $subtotal.textContent = subtotal.toLocaleString("ru-RU") + " ₽";
