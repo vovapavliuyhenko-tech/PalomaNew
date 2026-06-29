@@ -1,0 +1,249 @@
+/* ════════════════════════════════════════════════════════
+   wedding-piggy.css — Свадебная копилка
+   Дополнение к styles.css + subscription.css (база — те же
+   .subscription-hero / -form / -option / -size / -summary).
+   ════════════════════════════════════════════════════════ */
+
+.wpb-page {
+  --paloma-accent: #e7385a;
+  overflow-x: clip;
+}
+
+/* хлебные крошки в герое */
+.wpb-crumbs {
+  font-family: var(--mono, "JetBrains Mono", monospace);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(27, 26, 24, 0.55);
+  margin-bottom: clamp(14px, 1.6vw, 20px);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.wpb-crumbs a {
+  color: inherit;
+  text-decoration: none;
+}
+.wpb-crumbs a:hover {
+  color: #e7385a;
+}
+
+/* вводный абзац */
+.wpb-lead {
+  margin: clamp(14px, 1.8vw, 22px) 0 0;
+  max-width: 46ch;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: rgba(27, 26, 24, 0.78);
+}
+
+/* текстовое/числовое поле — в стиле .subscription-option */
+.wpb-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 16px;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 14px;
+  color: #1b1a18;
+  background: #fff;
+  border: 1px solid rgba(27, 26, 24, 0.18);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.wpb-input::placeholder {
+  color: rgba(27, 26, 24, 0.4);
+}
+.wpb-input:focus {
+  outline: none;
+  border-color: #e7385a;
+  box-shadow: 0 0 0 3px rgba(231, 56, 90, 0.12);
+}
+
+/* «своя сумма» */
+.wpb-custom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.wpb-custom__toggle {
+  flex: none;
+}
+.wpb-custom__input {
+  flex: 1 1 180px;
+  margin: 0;
+}
+
+/* подсказка под кнопкой */
+.wpb-hint {
+  margin: 12px 0 0;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(27, 26, 24, 0.5);
+}
+
+/* состояние ошибки */
+.wpb-err {
+  border-color: #e7385a !important;
+  box-shadow: 0 0 0 3px rgba(231, 56, 90, 0.16) !important;
+  animation: wpbShake 0.4s ease;
+  border-radius: 12px;
+}
+@keyframes wpbShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ── Как это работает ─────────────────────────────────── */
+.wpb-how {
+  background: #faf5ec;
+  padding: clamp(48px, 6vw, 92px) clamp(20px, 5vw, 80px);
+}
+.wpb-how__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.wpb-how__eyebrow {
+  display: block;
+  font-family: var(--mono, "JetBrains Mono", monospace);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e7385a;
+  margin-bottom: 14px;
+}
+.wpb-how__title {
+  margin: 0 0 clamp(28px, 4vw, 52px);
+  font-family: "Classica One", var(--serif, cursive);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(30px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #e7385a;
+}
+.wpb-how__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 2.4vw, 36px);
+}
+.wpb-how__step {
+  background: #fff;
+  border: 1px solid rgba(231, 56, 90, 0.16);
+  border-radius: 18px;
+  padding: clamp(24px, 2.4vw, 34px);
+  display: flex;
+  flex-direction: column;
+}
+.wpb-how__num {
+  font-family: var(--mono, "JetBrains Mono", monospace);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: rgba(231, 56, 90, 0.7);
+  margin-bottom: clamp(28px, 3vw, 48px);
+}
+.wpb-how__step-title {
+  margin: auto 0 8px;
+  font-family: "Classica One", var(--serif, cursive);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.1;
+  color: #1b1a18;
+}
+.wpb-how__step-desc {
+  margin: 0;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: clamp(13px, 1vw, 14.5px);
+  line-height: 1.6;
+  color: rgba(27, 26, 24, 0.72);
+}
+
+/* ── Создать копилку (для пары) ───────────────────────── */
+.wpb-create {
+  background: #1b1a18;
+  color: #fff;
+  padding: clamp(52px, 7vw, 104px) clamp(20px, 5vw, 80px);
+  text-align: center;
+}
+.wpb-create__inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.wpb-create__eyebrow {
+  display: block;
+  font-family: var(--mono, "JetBrains Mono", monospace);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e7385a;
+  margin-bottom: 16px;
+}
+.wpb-create__title {
+  margin: 0 0 clamp(14px, 1.6vw, 20px);
+  font-family: "Classica One", var(--serif, cursive);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(30px, 4.4vw, 60px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.wpb-create__lead {
+  margin: 0 auto clamp(28px, 3.4vw, 40px);
+  max-width: 52ch;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+.wpb-create__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.wpb-create__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+/* главная кнопка — акцентная (на тёмном фоне graphite-кнопка теряется) */
+.wpb-create .btn--dark {
+  background: #e7385a;
+  border-color: #e7385a;
+  color: #fff;
+}
+.wpb-create .btn--dark:hover {
+  background: #c82847;
+  border-color: #c82847;
+}
+/* кнопки-контуры на тёмном фоне */
+.wpb-create .btn--outline {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: transparent;
+}
+.wpb-create .btn--outline:hover {
+  background: #fff;
+  color: #1b1a18;
+}
+
+/* ── Адаптив ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .wpb-how__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 540px) {
+  .wpb-how__grid {
+    grid-template-columns: 1fr;
+  }
+}

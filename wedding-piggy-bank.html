@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FFFFFF">
-  <title>Свадебная копилка PALOMA — как мы готовим вашу свадьбу</title>
-  <meta name="description" content="Этапы подготовки свадебной флористики с PALOMA: от первой встречи до дня торжества. Новороссийск, Геленджик, Анапа.">
+  <title>Свадебная копилка PALOMA — цветочный депозит для молодожёнов</title>
+  <meta name="description" content="Свадебная копилка PALOMA: гости пополняют цветочный депозит молодожёнов сертификатом на любую сумму. В конце вечера дарим итог паре — тратить можно без ограничений по времени. Новороссийск.">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="preloader.css?v=w1">
@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="cart.css?v=w1">
   <link rel="stylesheet" href="clients.css?v=nav1">
+  <link rel="stylesheet" href="subscription.css?v=w9">
+  <link rel="stylesheet" href="wedding-piggy.css?v=wpb1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=ink3">
   <link rel="stylesheet" href="legal.css?v=3">
@@ -259,125 +261,243 @@
     </header>
   </div>
 
-  <main id="main" class="client-page">
-    <div class="page-compact-header">
-      <nav class="page-compact-header__breadcrumbs" aria-label="Навигация">
-        <a href="index.html">Главная</a>
-        <span class="sep" aria-hidden="true">—</span>
-        <span class="current" aria-current="page">Свадебная копилка</span>
-      </nav>
-      <h1 class="page-compact-header__title">Свадебная копилка</h1>
-      <p class="page-compact-header__sub">
-        Этапы подготовки к свадебному оформлению.
-      </p>
-    </div>
-    <section class="info-cards-section info-cards-section--alt">
-      <div class="info-cards-section__inner">
-        <header class="info-cards-section__header">
-          <span class="info-cards-section__eyebrow">[ Свадебная копилка ]</span>
-          <h2 class="info-cards-section__title">Этапы подготовки</h2>
-        </header>
-        <div class="info-cards-grid" data-cols="3">
-          <article class="info-card" data-cursor="hover"><div class="info-card__num">01</div><h3 class="info-card__title">Знакомство</h3><p class="info-card__desc">Встреча в студии или онлайн — дата, площадка, палитра, бюджет.</p></article>
-          <article class="info-card" data-cursor="hover"><div class="info-card__num">02</div><h3 class="info-card__title">Концепция</h3><p class="info-card__desc">Moodboard, референсы и ключевые моменты обряда.</p></article>
-          <article class="info-card" data-cursor="hover"><div class="info-card__num">03</div><h3 class="info-card__title">Смета и договор</h3><p class="info-card__desc">Фиксируем состав работ, объёмы и финальную сумму.</p></article>
-          <article class="info-card" data-cursor="hover"><div class="info-card__num">04</div><h3 class="info-card__title">Закупка</h3><p class="info-card__desc">Сезонный цвет заказывается за 2–3 дня до события.</p></article>
-          <article class="info-card" data-cursor="hover"><div class="info-card__num">05</div><h3 class="info-card__title">Сборка</h3><p class="info-card__desc">Букет невесты, бутоньерки, арки и настольные композиции.</p></article>
-          <article class="info-card" data-cursor="hover"><div class="info-card__num">06</div><h3 class="info-card__title">Монтаж</h3><p class="info-card__desc">Приезжаем на площадку утром или накануне, снимаем и убираем по сценарию.</p></article>
+  <main class="subscription-page wpb-page" id="weddingPiggyPage" aria-label="Свадебная копилка PALOMA">
+
+    <!-- HERO + форма взноса гостя -->
+    <section class="subscription-hero" aria-label="Свадебная копилка PALOMA">
+
+      <div class="subscription-hero__media" aria-hidden="true">
+        <img class="subscription-hero__img" src="images/paloma/wedding/hero.jpg"
+             alt="" width="862" height="1080" loading="eager" decoding="async">
+      </div>
+
+      <div class="subscription-hero__content">
+
+        <nav class="wpb-crumbs" aria-label="Навигация">
+          <a href="index.html">Главная</a>
+          <span aria-hidden="true">—</span>
+          <span aria-current="page">Свадебная копилка</span>
+        </nav>
+
+        <h1 class="subscription-hero__title">Свадебная копилка</h1>
+
+        <p class="wpb-lead">На свадьбе дарят столько цветов, что порой не все доезжают до дома. Подарите паре цветочный депозит — пусть радуют себя букетами тогда, когда захочется. Пополнить копилку может любой гость.</p>
+
+        <div class="subscription-notice">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4M12 16h.01"/>
+          </svg>
+          <p>В конце вечера менеджеры подсчитают сумму и передадут её молодожёнам. Депозитом можно пользоваться без ограничений по времени и количеству.</p>
+        </div>
+
+        <form class="subscription-form" id="wpbForm" novalidate>
+
+          <fieldset class="subscription-form__group">
+            <legend class="subscription-form__legend">Кому пополняем</legend>
+            <input class="wpb-input" type="text" data-wpb-couple
+                   placeholder="Имена молодожёнов или код свадьбы" autocomplete="off"
+                   aria-label="Имена молодожёнов или код свадьбы">
+          </fieldset>
+
+          <fieldset class="subscription-form__group">
+            <legend class="subscription-form__legend">Сумма сертификата</legend>
+            <div class="subscription-sizes subscription-sizes--5" data-wpb-amounts>
+              <button class="subscription-size" type="button" data-amount="1000"><span class="subscription-size__name">1 000 ₽</span></button>
+              <button class="subscription-size" type="button" data-amount="2000"><span class="subscription-size__name">2 000 ₽</span></button>
+              <button class="subscription-size" type="button" data-amount="3000"><span class="subscription-size__name">3 000 ₽</span></button>
+              <button class="subscription-size is-active" type="button" data-amount="5000"><span class="subscription-size__name">5 000 ₽</span></button>
+              <button class="subscription-size" type="button" data-amount="10000"><span class="subscription-size__name">10 000 ₽</span></button>
+            </div>
+            <div class="wpb-custom">
+              <button class="subscription-option wpb-custom__toggle" type="button" data-wpb-custom-toggle>Своя сумма</button>
+              <input class="wpb-input wpb-custom__input" type="number" inputmode="numeric" min="500" step="100"
+                     placeholder="Введите сумму, ₽" data-wpb-custom-input hidden aria-label="Своя сумма в рублях">
+            </div>
+          </fieldset>
+
+          <div class="subscription-summary" data-wpb-summary>
+            <div class="subscription-summary__row">
+              <span>Кому</span><span data-wpb-sum-couple>—</span>
+            </div>
+            <div class="subscription-summary__row">
+              <span>Сертификат на цветы</span><span data-wpb-sum-amount>—</span>
+            </div>
+            <div class="subscription-summary__total">
+              <span>К пополнению</span><span data-wpb-sum-total>—</span>
+            </div>
+          </div>
+
+          <button class="subscription-form__submit" type="submit" data-wpb-submit>
+            <span>Пополнить копилку</span> — <span data-wpb-sum-btn>—</span>
+          </button>
+
+          <p class="wpb-hint">Заявка попадёт в корзину и оформится как заказ — менеджер свяжется и подтвердит оплату.</p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <!-- КАК ЭТО РАБОТАЕТ -->
+    <section class="wpb-how" aria-label="Как работает свадебная копилка">
+      <div class="wpb-how__inner">
+        <span class="wpb-how__eyebrow">[ Как это работает ]</span>
+        <h2 class="wpb-how__title">Цветочный депозит за&nbsp;четыре шага</h2>
+        <div class="wpb-how__grid">
+          <article class="wpb-how__step">
+            <div class="wpb-how__num">01</div>
+            <h3 class="wpb-how__step-title">Пара создаёт копилку</h3>
+            <p class="wpb-how__step-desc">Готовим индивидуальную страницу свадьбы с именами молодожёнов.</p>
+          </article>
+          <article class="wpb-how__step">
+            <div class="wpb-how__num">02</div>
+            <h3 class="wpb-how__step-title">Гости пополняют</h3>
+            <p class="wpb-how__step-desc">Каждый выбирает сумму сертификата на любой бюджет и оформляет взнос.</p>
+          </article>
+          <article class="wpb-how__step">
+            <div class="wpb-how__num">03</div>
+            <h3 class="wpb-how__step-title">Считаем в конце вечера</h3>
+            <p class="wpb-how__step-desc">Менеджеры суммируют все взносы и передают итог молодожёнам.</p>
+          </article>
+          <article class="wpb-how__step">
+            <div class="wpb-how__num">04</div>
+            <h3 class="wpb-how__step-title">Дарим депозит паре</h3>
+            <p class="wpb-how__step-desc">Молодожёны тратят его на цветы без ограничений по времени и количеству.</p>
+          </article>
         </div>
       </div>
     </section>
-    <section class="info-cards-section info-cards-section--light">
-      <div class="info-cards-section__inner">
-        <header class="info-cards-section__header">
-          <span class="info-cards-section__eyebrow">[ Программа дня ]</span>
-          <h2 class="info-cards-section__title">Что мы оформляем</h2>
-        </header>
-        <div class="info-cards-grid" data-cols="3">
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Букет невесты</h3><p class="info-card__desc">Геометрия под платье, фактура и палитру.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Бутоньерки и причёски</h3><p class="info-card__desc">Стойкий микроклимат на весь день.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Арки и церемония</h3><p class="info-card__desc">Крупные живые конструкции и фактурная флористика.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Сервировка столов</h3><p class="info-card__desc">Центральные композиции, свечи, лёгкая зелень.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Welcome‑зона</h3><p class="info-card__desc">Первый акцент, с которым гости фотографируются.</p></article>
-          <article class="info-card" data-cursor="hover"><h3 class="info-card__title">Фотозоны</h3><p class="info-card__desc">Съёмочные острова без перегрузки палитрой.</p></article>
-        </div>
-      </div>
-    </section>
-    <section class="hscroll-section">
-      <div class="hscroll-section__header-wrap">
-        <span class="hscroll-section__eyebrow">[ Портфолио ]</span>
-        <h2 class="hscroll-section__title">Ключевые проекты</h2>
-        <p class="hscroll-section__lead">Подборка образов палитры — замените на реальные фото когда будут материалы.</p>
-      </div>
-      <div class="hscroll-section__outer" data-hscroll-outer>
-        <button type="button" class="hscroll-section__arrow hscroll-section__arrow--prev" data-hscroll-prev data-cursor="hover" aria-label="Назад"><svg width="20" height="12" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 7H1M1 7l6-6M1 7l6 6"/></svg></button>
-        <div class="hscroll-section__track" data-hscroll-track>
-          <article class="hscroll-card" data-cursor="hover" style="background:linear-gradient(135deg,#FFFFFF,#FFFFFF);"><div><h3 class="hscroll-card__title">Свадьба на утёсе</h3><p class="hscroll-card__desc">Песочная палитра с золотыми акцентами.</p></div></article>
-          <article class="hscroll-card" data-cursor="hover" style="background:linear-gradient(135deg,#FFFFFF,#FFFFFF);"><div><h3 class="hscroll-card__title">Садовый вечер</h3><p class="hscroll-card__desc">Спирея и текстурный злак.</p></div></article>
-          <article class="hscroll-card" data-cursor="hover" style="background:linear-gradient(135deg,#FFFFFF,#FFFFFF);"><div><h3 class="hscroll-card__title">Набережная</h3><p class="hscroll-card__desc">Ярко-белые гортензии на фоне моря.</p></div></article>
-          <article class="hscroll-card" data-cursor="hover" style="background:linear-gradient(135deg,#FFFFFF,#FFFFFF);"><div><h3 class="hscroll-card__title">Классический банкет</h3><p class="hscroll-card__desc">Насыщенная бургунди и акценты вишни.</p></div></article>
-          <article class="hscroll-card" data-cursor="hover" style="background:linear-gradient(135deg,#FFFFFF,#FFFFFF);"><div><h3 class="hscroll-card__title">Эко‑церемония</h3><p class="hscroll-card__desc">Полевая палитра и текстиль.</p></div></article>
-        </div>
-        <button type="button" class="hscroll-section__arrow hscroll-section__arrow--next" data-hscroll-next data-cursor="hover" aria-label="Вперёд"><svg width="20" height="12" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h22M23 7l-6-6M23 7l-6 6"/></svg></button>
-      </div>
-    </section>
-    <section class="client-faq">
-      <div class="client-faq__inner">
-        <header class="client-faq__header"><span class="client-faq__eyebrow">[ Вопрос-ответ ]</span><h2 class="client-faq__title">Про оформление</h2></header>
-        <div class="client-faq__list">
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover">
-              <span class="faq-acc__q">За сколько нужно бронировать?</span>
-              <span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span>
-            </button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">За 2–3 месяца для высокого сезона; вне сезона часто достаточно 4–6 недель.</p></div>
-          </div>
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover">
-              <span class="faq-acc__q">Можно ли посмотреть состав заранее?</span>
-              <span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span>
-            </button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">Да, составим moodboard и сметную карту перед подписанием договора.</p></div>
-          </div>
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover">
-              <span class="faq-acc__q">Работаете ли выездом за пределы Новороссийска?</span>
-              <span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span>
-            </button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">Да — Геленджик, Анапа и побережье по расписанию выездов.</p></div>
-          </div>
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover">
-              <span class="faq-acc__q">Какой аванс нужно внести?</span>
-              <span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span>
-            </button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">30% при подписании договора, остаток за 3 дня до торжества.</p></div>
-          </div>
-          <div class="faq-acc">
-            <button type="button" class="faq-acc__head" aria-expanded="false" data-cursor="hover">
-              <span class="faq-acc__q">Что если погода испортится на выездной церемонии?</span>
-              <span class="faq-acc__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12"/><path class="faq-acc__icon-v" d="M7 1v12"/></svg></span>
-            </button>
-            <div class="faq-acc__body" role="region"><p class="faq-acc__a">Готовим запасную сцену под навес, усиливаем устойчивые виды или переносим часть установки во внутренний зал площадки.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="client-cta">
-      <div class="client-cta__inner">
-        <h2 class="client-cta__title">Остались вопросы?</h2>
-        <p class="client-cta__lead">Обсудим дату и настроение свадебной флористики.</p>
-        <div class="client-cta__actions">
-          <a href="https://wa.me/79180000000" target="_blank" rel="noopener" class="btn btn--dark client-cta__btn" data-cursor="hover" aria-label="Обсудить оформление в WhatsApp">
+
+    <!-- СОЗДАТЬ КОПИЛКУ (для молодожёнов) -->
+    <section class="wpb-create" aria-label="Создать свадебную копилку">
+      <div class="wpb-create__inner">
+        <span class="wpb-create__eyebrow">[ Для молодожёнов ]</span>
+        <h2 class="wpb-create__title">Создайте копилку для своей свадьбы</h2>
+        <p class="wpb-create__lead">Подготовим персональную страницу с вашими именами — поделитесь ссылкой с гостями, и они легко пополнят ваш цветочный депозит. Без ограничений по сумме и времени использования.</p>
+        <div class="wpb-create__actions">
+          <a href="https://wa.me/79897707000?text=Хочу%20создать%20свадебную%20копилку%20PALOMA" target="_blank" rel="noopener noreferrer" class="btn btn--dark wpb-create__btn" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 14.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.9 4.3 2.9 1.2 2.9.8 3.4.8.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
-            Обсудить оформление
+            Создать копилку
           </a>
-          <a href="https://t.me/paloma_novorossiysk" target="_blank" rel="noopener" class="btn btn--outline client-cta__btn" data-cursor="hover">Telegram</a>
-          <a href="tel:+78612000000" class="btn btn--outline client-cta__btn" data-cursor="hover">Позвонить</a>
-          <a href="catalog.html" class="btn btn--ghost client-cta__btn" data-cursor="hover">В каталог</a>
+          <a href="https://t.me/palomanvrsk" target="_blank" rel="noopener noreferrer" class="btn btn--outline wpb-create__btn" data-cursor="hover">Telegram</a>
+          <a href="tel:+79897707000" class="btn btn--outline wpb-create__btn" data-cursor="hover">Позвонить</a>
         </div>
       </div>
     </section>
+
+    <!-- БУКЕТЫ -->
+    <section class="home-showcase sub-showcase" aria-label="Букеты PALOMA" data-product-carousel>
+
+      <div class="home-showcase__head">
+        <h2 class="home-showcase__title">Что можно подарить</h2>
+        <a href="catalog.html" class="home-showcase__catalog-link">Все букеты</a>
+      </div>
+
+      <div class="home-showcase__carousel">
+
+        <button class="home-showcase__arrow home-showcase__arrow--prev" type="button" aria-label="Предыдущие товары" data-carousel-prev>
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <div class="home-showcase__viewport" data-carousel-viewport>
+          <div class="home-showcase__track" data-carousel-track>
+
+            <article class="home-product-card">
+              <a href="product.html?slug=buket-7" class="home-product-card__media" aria-label="Подробнее: Букет из 7 пионов">
+                <img src="images/paloma/catalog/h1.jpg" alt="Букет из 7 пионов — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+              </a>
+              <div class="home-product-card__body">
+                <h3 class="home-product-card__title"><a href="product.html?slug=buket-7">Букет из 7 пионов</a></h3>
+                <p class="home-product-card__price">от 2 930 ₽</p>
+                <div class="home-product-card__actions">
+                  <a href="product.html?slug=buket-7" class="home-product-card__more">Подробнее</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="home-product-card">
+              <a href="product.html?slug=buket-11" class="home-product-card__media" aria-label="Подробнее: Букет из 11 пионов">
+                <img src="images/paloma/catalog/h2.jpg" alt="Букет из 11 пионов — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+              </a>
+              <div class="home-product-card__body">
+                <h3 class="home-product-card__title"><a href="product.html?slug=buket-11">Букет из 11 пионов</a></h3>
+                <p class="home-product-card__price">от 4 570 ₽</p>
+                <div class="home-product-card__actions">
+                  <a href="product.html?slug=buket-11" class="home-product-card__more">Подробнее</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="home-product-card">
+              <a href="product.html?slug=buket-15" class="home-product-card__media" aria-label="Подробнее: Букет из 15 пионов">
+                <img src="images/paloma/catalog/h3.jpg" alt="Букет из 15 пионов — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+              </a>
+              <div class="home-product-card__body">
+                <h3 class="home-product-card__title"><a href="product.html?slug=buket-15">Букет из 15 пионов</a></h3>
+                <p class="home-product-card__price">от 6 200 ₽</p>
+                <div class="home-product-card__actions">
+                  <a href="product.html?slug=buket-15" class="home-product-card__more">Подробнее</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="home-product-card">
+              <a href="product.html?slug=buket-21" class="home-product-card__media" aria-label="Подробнее: Букет из 21 пиона">
+                <img src="images/paloma/catalog/h4.jpg" alt="Букет из 21 пиона — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+              </a>
+              <div class="home-product-card__body">
+                <h3 class="home-product-card__title"><a href="product.html?slug=buket-21">Букет из 21 пиона</a></h3>
+                <p class="home-product-card__price">от 8 680 ₽</p>
+                <div class="home-product-card__actions">
+                  <a href="product.html?slug=buket-21" class="home-product-card__more">Подробнее</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="home-product-card">
+              <a href="product.html?slug=avtorskiy" class="home-product-card__media" aria-label="Подробнее: Авторский букет Paloma">
+                <img src="images/paloma/catalog/h5.jpg" alt="Авторский букет Paloma" loading="lazy" decoding="async" width="600" height="870">
+              </a>
+              <div class="home-product-card__body">
+                <h3 class="home-product-card__title"><a href="product.html?slug=avtorskiy">Авторский букет Paloma</a></h3>
+                <p class="home-product-card__price">от 5 500 ₽</p>
+                <div class="home-product-card__actions">
+                  <a href="product.html?slug=avtorskiy" class="home-product-card__more">Подробнее</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="home-product-card">
+              <a href="product.html?slug=nezhnyy" class="home-product-card__media" aria-label="Подробнее: Нежный сезонный букет">
+                <img src="images/paloma/catalog/h6.jpg" alt="Нежный сезонный букет — PALOMA" loading="lazy" decoding="async" width="600" height="870">
+              </a>
+              <div class="home-product-card__body">
+                <h3 class="home-product-card__title"><a href="product.html?slug=nezhnyy">Нежный сезонный букет</a></h3>
+                <p class="home-product-card__price">от 4 900 ₽</p>
+                <div class="home-product-card__actions">
+                  <a href="product.html?slug=nezhnyy" class="home-product-card__more">Подробнее</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <button class="home-showcase__arrow home-showcase__arrow--next" type="button" aria-label="Следующие товары" data-carousel-next>
+          <span aria-hidden="true">→</span>
+        </button>
+
+      </div>
+
+      <div class="home-showcase__progress" aria-hidden="true">
+        <span class="home-showcase__progress-bar" data-carousel-progress></span>
+      </div>
+
+    </section>
+
   </main>
 
   <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
@@ -586,6 +706,7 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js?v=wl1"></script>
+  <script src="wedding-piggy.js?v=wpb1"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=ink3"></script>
   <script src="cookie-consent.js?v=2"></script>
