@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=ink9">
   <link rel="stylesheet" href="legal.css?v=3">
+  <link rel="stylesheet" href="contacts.css?v=wow7">
 </head>
 <body class="delivery-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -273,27 +274,107 @@
       </p>
     </div>
 
-    <section class="info-cards-section info-cards-section--alt">
-      <div class="info-cards-section__inner">
-        <header class="info-cards-section__header info-cards-section--centered">
-          <span class="info-cards-section__eyebrow">[ Зоны ]</span>
-          <h2 class="info-cards-section__title">Зоны доставки</h2>
+    <section class="contacts-studio" aria-labelledby="delivery-studio-heading">
+      <div class="contacts-studio__inner">
+        <div class="contacts-studio__visual">
+          <video class="contacts-studio__video" src="videos/paloma/contacts.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Студия PALOMA на ул. Энгельса"></video>
+        </div>
+
+        <div class="contacts-studio__panel">
+          <h2 class="contacts-studio__brand" id="delivery-studio-heading">Доставка по побережью</h2>
+          <p class="contacts-studio__subtitle">Новороссийск · Геленджик · Анапа</p>
+
+          <ul class="contacts-studio__rows">
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">Новороссийск</span>
+              <span>от 350 ₽ — день в день в выбранный интервал</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">Геленджик</span>
+              <span>от 600 ₽ — согласуем маршрут при оформлении</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">Анапа</span>
+              <span>от 800 ₽ — день в день по возможности маршрута</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">Самовывоз</span>
+              <span>ул. Энгельса, 74/82 — ежедневно 9:00 – 21:00</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">Фото букета</span>
+              <span>Пришлём перед отправкой по запросу</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts-channels" aria-label="Преимущества доставки PALOMA">
+      <div class="contacts-channels__inner">
+        <header class="contacts-channels__head">
+          <span class="contacts-channels__eyebrow">[ Почему удобно ]</span>
+          <h2 class="contacts-channels__title">С нами доставка спокойная</h2>
         </header>
-        <div class="info-cards-grid" data-cols="3">
-          <article class="info-card" data-cursor="hover">
-            <div class="info-card__num" aria-hidden="true">01</div>
-            <h3 class="info-card__title">Новороссийск</h3>
-            <p class="info-card__desc">Доставка курьером — от 350 ₽. День в день в выбранный интервал.</p>
+        <div class="contacts-channels__grid">
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Доставка день в день</span>
+              <span class="ch-card__sub">Закажете до 18:00 — привезём сегодня</span>
+            </span>
           </article>
-          <article class="info-card" data-cursor="hover">
-            <div class="info-card__num" aria-hidden="true">02</div>
-            <h3 class="info-card__title">Геленджик</h3>
-            <p class="info-card__desc">Доставка курьером — от 600 ₽. Согласуем маршрут при оформлении.</p>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-2h5L16 7"/><circle cx="12" cy="13.5" r="3.2"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Фото перед отправкой</span>
+              <span class="ch-card__sub">Покажем готовый букет до выезда курьера</span>
+            </span>
           </article>
-          <article class="info-card" data-cursor="hover">
-            <div class="info-card__num" aria-hidden="true">03</div>
-            <h3 class="info-card__title">Анапа</h3>
-            <p class="info-card__desc">Доставка курьером — от 800 ₽. День в день по возможности маршрута.</p>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Бережная упаковка</span>
+              <span class="ch-card__sub">Довезём букет свежим и нетронутым</span>
+            </span>
+          </article>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.5-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1l-2.1 2.3z"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Курьер позвонит заранее</span>
+              <span class="ch-card__sub">Согласует удобное время и адрес</span>
+            </span>
+          </article>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9l1-4h14l1 4M4 9h16v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9zM9 9v3h6V9"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Самовывоз из студии</span>
+              <span class="ch-card__sub">Энгельса, 74/82 · 9:00 – 21:00</span>
+            </span>
+          </article>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Оплата онлайн</span>
+              <span class="ch-card__sub">Картой или через ЮKassa — безопасно</span>
+            </span>
           </article>
         </div>
       </div>
