@@ -41,10 +41,10 @@ body.paloma-cursor-active .cursor-trail-dot {
   opacity: 0;
   transition: opacity 0.25s ease;
   /* выносим каплю в отдельный композиционный слой, чтобы goo-фильтр
-     не перерисовывал фон под собой */
+     не перерисовывал фон под собой (без contain: paint — он обрезал
+     точки по нулевому боксу контейнера и курсор пропадал) */
   transform: translateZ(0);
   will-change: transform, opacity;
-  contain: layout style paint;
 }
 
 .ink-cursor.is-visible {
