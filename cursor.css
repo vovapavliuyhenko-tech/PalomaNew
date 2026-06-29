@@ -27,6 +27,7 @@ body.paloma-cursor-active .cursor-trail-dot {
 
 /* ── Чернильная капля ───────────────────────────────── */
 .ink-cursor {
+  --ink-col: #1b1a18;
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -34,10 +35,17 @@ body.paloma-cursor-active .cursor-trail-dot {
   z-index: 99999;
   display: block;
   transform-origin: center center;
+  /* gooey-эффект слипания точек — оставляем; mix-blend убран,
+     т.к. инверсия поверх автоплей-видео вешала компоновщик (лаги/фриз) */
   filter: url("#palomaGoo");
-  mix-blend-mode: difference;
+  transform: translateZ(0); /* свой GPU-слой — рисуется поверх, не трогая страницу */
   opacity: 0;
   transition: opacity 0.25s ease;
+}
+
+/* на тёмных секциях капля светлая (на светлых — тёмная) */
+.ink-cursor.on-dark {
+  --ink-col: #ffffff;
 }
 
 .ink-cursor.is-visible {
@@ -57,7 +65,7 @@ body.paloma-cursor-active .cursor-trail-dot {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: var(--ink-col, #1b1a18);
   transform-origin: center center;
   will-change: transform;
 }

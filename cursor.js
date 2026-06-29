@@ -203,7 +203,9 @@
     (e) => {
       const el = e.target;
       if (!(el instanceof Element)) return;
-      look.classList.toggle("on-dark", !!el.closest(DARK_SELECTOR));
+      const onDark = !!el.closest(DARK_SELECTOR);
+      look.classList.toggle("on-dark", onDark);
+      cursor.classList.toggle("on-dark", onDark);
       if (el.matches(TEXT_SELECTOR)) {
         setTextMode(true);
         return;
