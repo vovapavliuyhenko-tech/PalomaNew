@@ -35,9 +35,16 @@ body.paloma-cursor-active .cursor-trail-dot {
   display: block;
   transform-origin: center center;
   filter: url("#palomaGoo");
-  mix-blend-mode: difference;
+  /* mix-blend-mode убран: difference заставлял браузер пересчитывать
+     композицию со всем содержимым под курсором каждый кадр (особенно
+     поверх видео) — это и вызывало подвисания. */
   opacity: 0;
   transition: opacity 0.25s ease;
+  /* выносим каплю в отдельный композиционный слой, чтобы goo-фильтр
+     не перерисовывал фон под собой */
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  contain: layout style paint;
 }
 
 .ink-cursor.is-visible {
@@ -57,7 +64,9 @@ body.paloma-cursor-active .cursor-trail-dot {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background-color: #fff;
+  /* раньше была #fff в паре с mix-blend difference (инверсия фона);
+     теперь — фирменный розовый, читается и на светлом, и на тёмном */
+  background-color: #e7385a;
   transform-origin: center center;
   will-change: transform;
 }
