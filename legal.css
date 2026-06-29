@@ -319,3 +319,9 @@
 .client-page .page-compact-header + section {
   padding-top: clamp(18px, 2.4vw, 30px);
 }
+
+/* ── Доставка: шапка-заголовок убрана, поэтому добавляем отступ сверху,
+   чтобы видео-блок не уходил под фиксированную шапку сайта (~65px). ── */
+.delivery-page main.client-page {
+  padding-top: clamp(84px, 9vw, 110px);
+}
