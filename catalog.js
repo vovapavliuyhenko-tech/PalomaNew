@@ -204,7 +204,7 @@
 
   function setActiveFilter(filter) {
     const resolved = window.PALOMA_CATALOG.resolveFilter(filter);
-    filters?.querySelectorAll(".catalog-filter-btn").forEach((b) => {
+    filters?.querySelectorAll(".catalog-filter-btn:not(a)").forEach((b) => {
       const btnCat = window.PALOMA_CATALOG.resolveFilter(
         b.dataset.filter || "all",
       );
@@ -221,6 +221,7 @@
     filters.addEventListener("click", (e) => {
       const btn = e.target.closest(".catalog-filter-btn");
       if (!btn) return;
+      if (btn.tagName === "A") return; // ссылка-пилюля (Свадебная копилка) — даём перейти
 
       const filter = btn.dataset.filter || "all";
       const resolved = window.PALOMA_CATALOG.resolveFilter(filter);

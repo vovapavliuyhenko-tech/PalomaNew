@@ -182,6 +182,13 @@
   outline-offset: 2px;
 }
 
+/* Пилюля-ссылка (напр. «Свадебная копилка») — выглядит как фильтр, но ведёт на страницу */
+.catalog-filter-btn--link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .catalog-count {
   max-width: 1440px;
   margin: 0 auto;
