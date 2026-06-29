@@ -35,16 +35,11 @@ body.paloma-cursor-active .cursor-trail-dot {
   display: block;
   transform-origin: center center;
   filter: url("#palomaGoo");
-  /* mix-blend-mode убран: difference заставлял браузер пересчитывать
-     композицию со всем содержимым под курсором каждый кадр (особенно
-     поверх видео) — это и вызывало подвисания. */
+  /* mix-blend-mode: difference убран — он заставлял браузер каждый кадр
+     пересчитывать композицию со всем, что под курсором (особенно поверх
+     видео), и вызывал подвисания. Капля теперь розовая (см. .ink-cursor span). */
   opacity: 0;
   transition: opacity 0.25s ease;
-  /* выносим каплю в отдельный композиционный слой, чтобы goo-фильтр
-     не перерисовывал фон под собой (без contain: paint — он обрезал
-     точки по нулевому боксу контейнера и курсор пропадал) */
-  transform: translateZ(0);
-  will-change: transform, opacity;
 }
 
 .ink-cursor.is-visible {
