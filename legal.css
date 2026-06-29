@@ -306,3 +306,16 @@
     text-align: center;
   }
 }
+
+/* ── Компактный верх клиентских страниц (как на Контактах) ──
+   Меньше пустоты между шапкой-крошками/заголовком и первым блоком контента.
+   Действует на Доставка/Оплата/Уход/Вопрос-ответ/Свадебная копилка (main.client-page). */
+.client-page .page-compact-header {
+  padding-bottom: clamp(10px, 1.4vw, 18px);
+}
+.client-page .page-compact-header__breadcrumbs {
+  margin-bottom: clamp(6px, 0.8vw, 10px);
+}
+.client-page .page-compact-header + section {
+  padding-top: clamp(18px, 2.4vw, 30px);
+}
