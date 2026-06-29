@@ -3,6 +3,23 @@
   background: var(--color-bg);
 }
 
+/* Блог: убраны заголовок и фильтры — блок статей поднят под шапку.
+   Класс .blog-page висит и на <body>, и на <main>: оффсет фикс-шапки дублировался
+   (ещё и .page-compact-header добавлял свой). Оставляем оффсет только на body. */
+main.blog-page {
+  padding-top: 0;
+}
+.blog-page .page-compact-header {
+  padding-top: clamp(10px, 1.6vw, 18px);
+  padding-bottom: clamp(8px, 1.2vw, 14px);
+}
+.blog-page .page-compact-header__breadcrumbs {
+  margin-bottom: 0;
+}
+.blog-page .blog-grid-section {
+  padding-top: clamp(16px, 2vw, 24px);
+}
+
 .blog-page .breadcrumbs {
   margin-top: 0;
 }
