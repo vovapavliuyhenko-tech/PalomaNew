@@ -35,9 +35,7 @@ body.paloma-cursor-active .cursor-trail-dot {
   display: block;
   transform-origin: center center;
   filter: url("#palomaGoo");
-  /* mix-blend-mode: difference убран — он заставлял браузер каждый кадр
-     пересчитывать композицию со всем, что под курсором (особенно поверх
-     видео), и вызывал подвисания. Капля теперь розовая (см. .ink-cursor span). */
+  mix-blend-mode: difference;
   opacity: 0;
   transition: opacity 0.25s ease;
 }
@@ -59,9 +57,7 @@ body.paloma-cursor-active .cursor-trail-dot {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  /* раньше была #fff в паре с mix-blend difference (инверсия фона);
-     теперь — фирменный розовый, читается и на светлом, и на тёмном */
-  background-color: #e7385a;
+  background-color: #fff;
   transform-origin: center center;
   will-change: transform;
 }
