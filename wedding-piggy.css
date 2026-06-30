@@ -102,7 +102,7 @@
 
 /* ── Как это работает ─────────────────────────────────── */
 .wpb-how {
-  background: #faf5ec;
+  background: #fff;
   padding: clamp(48px, 6vw, 92px) clamp(20px, 5vw, 80px);
 }
 .wpb-how__inner {
@@ -135,9 +135,10 @@
 }
 .wpb-how__step {
   background: #fff;
-  border: 1px solid rgba(231, 56, 90, 0.16);
+  border: 1.5px solid #E7385A; /* розовая обводка на белом фоне блока */
   border-radius: 18px;
-  padding: clamp(24px, 2.4vw, 34px);
+  padding: clamp(30px, 3vw, 46px);
+  min-height: clamp(300px, 25vw, 360px); /* карточки крупнее */
   display: flex;
   flex-direction: column;
 }
@@ -167,7 +168,7 @@
 
 /* ── Создать копилку (для пары) ───────────────────────── */
 .wpb-create {
-  background: #1b1a18;
+  background: #0e0d0c; /* точно как фон подвала (.site-footer) */
   color: #fff;
   padding: clamp(52px, 7vw, 104px) clamp(20px, 5vw, 80px);
   text-align: center;
@@ -203,6 +204,14 @@
   font-size: clamp(14px, 1.05vw, 16px);
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.82);
+}
+.wpb-create__offer {
+  margin: 0 auto clamp(28px, 3.4vw, 40px);
+  max-width: 52ch;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.6;
+  color: #E7385A;
 }
 .wpb-create__actions {
   display: flex;
