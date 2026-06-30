@@ -134,7 +134,7 @@
 }
 
 .home-subscription__link:hover {
-  color: #C82847;
+  color: #1B1A18; /* при наведении — заметно другой, тёмный цвет */
   transform: translateY(-1px);
 }
 

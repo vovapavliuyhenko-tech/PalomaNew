@@ -229,16 +229,19 @@
     { passive: true },
   );
 
-  document.addEventListener("mousedown", () => look.classList.add("is-pressing"), { passive: true });
-  document.addEventListener("mouseup", () => look.classList.remove("is-pressing"), { passive: true });
+  let isPressing = false;
+  document.addEventListener("mousedown", () => { isPressing = true; look.classList.add("is-pressing"); }, { passive: true });
+  document.addEventListener("mouseup", () => { isPressing = false; look.classList.remove("is-pressing"); }, { passive: true });
 
   /* ── Цикл отрисовки (чернильный трейл) ── */
   function render() {
     raf = requestAnimationFrame(render);
 
-    /* кружок «смотреть» плавно следует за курсором */
+    /* кружок «смотреть» плавно следует за курсором; масштаб нажатия —
+       в той же transform-строке (как у точек капли), иначе CSS-свойство
+       scale умножало translate и кружок смещался при нажатии */
     look.style.transform =
-      `translate(${lookX}px, ${lookY}px) translate(-50%, -50%)`;
+      `translate(${lookX}px, ${lookY}px) translate(-50%, -50%) scale(${isPressing ? 0.9 : 1})`;
 
     let x = mousePosition.x;
     let y = mousePosition.y;

@@ -695,8 +695,9 @@ body.is-paloma-loading .custom-cursor {
 
 .site-header__phone {
   font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   color: var(--coal);
   text-decoration: none;
   white-space: nowrap;
@@ -3400,6 +3401,13 @@ body.is-nav-open {
 .site-header__icon--wishlist {
   position: relative;
   display: flex; /* кнопка «Избранное» в шапке — открывает панель */
+  border-radius: 50%;
+  border: 1px solid var(--graphite); /* такая же обводка, как у корзины рядом */
+}
+
+.site-header__icon--wishlist:hover {
+  background: var(--graphite);
+  color: var(--ivory);
 }
 
 .header-wishlist-count,

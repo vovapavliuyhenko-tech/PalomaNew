@@ -90,7 +90,6 @@ body.paloma-cursor-active .cursor-trail-dot {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  scale: 1;
   transform-origin: center center;
   transform: translate(-100px, -100px) translate(-50%, -50%);
   /* включается на месте, мгновенно — без вырастания/подтягивания */
@@ -102,10 +101,8 @@ body.paloma-cursor-active .cursor-trail-dot {
   opacity: 1;
 }
 
-.ink-look.is-pressing {
-  scale: 0.9;
-  transition: scale 0.08s ease-out;
-}
+/* масштаб нажатия задаётся в transform через JS (cursor.js),
+   CSS-свойство scale убрано — оно смещало кружок при нажатии */
 
 .ink-look__label {
   font-family: "Montserrat", sans-serif;
