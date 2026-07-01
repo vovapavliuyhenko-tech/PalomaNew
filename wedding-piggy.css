@@ -153,25 +153,105 @@
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(16px, 1.6vw, 24px);
 }
+/* флип-карточка этапа: лицо — текст (заголовок сверху, описание снизу),
+   изнанка при наведении — крупная заблюренная цифра на розовом фоне */
 .wpb-how__step {
-  background: #fff;
-  border: 1.5px solid #E7385A; /* розовая обводка на белом фоне блока */
+  background: transparent;
+  border: none;
+  padding: 0;
+  outline: none;
+  perspective: 1600px;
+}
+.wpb-how__flip {
+  position: relative;
+  width: 100%;
+  min-height: clamp(300px, 26vw, 360px);
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.18, 1);
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  .wpb-how__step:hover .wpb-how__flip { transform: rotateY(180deg); }
+}
+.wpb-how__step:focus-within .wpb-how__flip { transform: rotateY(180deg); }
+@media (prefers-reduced-motion: reduce) {
+  .wpb-how__flip { transition: none; }
+}
+.wpb-how__face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1.5px solid #E7385A;
   border-radius: 18px;
-  padding: clamp(26px, 2.2vw, 38px) clamp(24px, 2vw, 34px);
+  overflow: hidden;
+}
+/* лицо: заголовок сверху, текст снизу */
+.wpb-how__face--front {
+  background: #fff;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(26px, 2.2vw, 38px) clamp(24px, 2vw, 34px);
 }
-.wpb-how__num {
+/* изнанка: розовый фон + огромная заблюренная цифра во всю карточку */
+.wpb-how__face--back {
+  transform: rotateY(180deg);
+  background: #e7385a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wpb-how__bignum {
   font-family: var(--mono, "JetBrains Mono", monospace);
-  font-size: clamp(30px, 3vw, 46px);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  color: #e7385a;
-  margin-bottom: clamp(18px, 1.8vw, 26px);
+  font-weight: 600;
+  font-size: clamp(170px, 26vw, 300px);
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: rgba(255, 255, 255, 0.92);
+  filter: blur(5px);
+  transform: scale(1.15);
+  user-select: none;
+  pointer-events: none;
 }
+/* подсказка «наведите» — как на других флип-карточках сайта */
+.wpb-how__hint {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 9px 5px 8px;
+  border-radius: 999px;
+  background: rgba(231, 56, 90, 0.08);
+  color: rgba(231, 56, 90, 0.9);
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.wpb-how__hint svg {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  color: rgba(231, 56, 90, 0.7);
+  animation: wpbHintSpin 4.5s ease-in-out infinite;
+}
+@media (hover: hover) and (pointer: fine) {
+  .wpb-how__step:hover .wpb-how__hint { opacity: 0; transform: translateY(-6px) scale(0.9); }
+}
+.wpb-how__step:focus-within .wpb-how__hint { opacity: 0; transform: translateY(-6px) scale(0.9); }
+@keyframes wpbHintSpin { 0%, 70%, 100% { transform: rotate(0deg); } 85% { transform: rotate(180deg); } }
+@media (prefers-reduced-motion: reduce) { .wpb-how__hint svg { animation: none; } }
+
 .wpb-how__step-title {
-  margin: 0 0 clamp(10px, 1.2vw, 14px);
+  margin: 0;
+  padding-right: 76px; /* место под бейдж «наведите» */
   font-family: "Classica One", var(--serif, cursive);
   font-weight: 400;
   font-style: italic;
