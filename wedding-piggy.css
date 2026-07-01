@@ -186,21 +186,21 @@
   border-radius: 18px;
   overflow: hidden;
 }
-/* лицо: заголовок сверху, текст снизу */
+/* лицо (по умолчанию): розовый фон + огромная заблюренная цифра во всю карточку */
 .wpb-how__face--front {
+  background: #e7385a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* изнанка (при наведении): заголовок сверху, текст снизу */
+.wpb-how__face--back {
+  transform: rotateY(180deg);
   background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: clamp(26px, 2.2vw, 38px) clamp(24px, 2vw, 34px);
-}
-/* изнанка: розовый фон + огромная заблюренная цифра во всю карточку */
-.wpb-how__face--back {
-  transform: rotateY(180deg);
-  background: #e7385a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .wpb-how__bignum {
   font-family: var(--mono, "JetBrains Mono", monospace);
@@ -225,8 +225,8 @@
   gap: 5px;
   padding: 5px 9px 5px 8px;
   border-radius: 999px;
-  background: rgba(231, 56, 90, 0.08);
-  color: rgba(231, 56, 90, 0.9);
+  background: rgba(255, 255, 255, 0.9);
+  color: #e7385a;
   font-family: var(--sans, "Montserrat", sans-serif);
   font-size: 9.5px;
   font-weight: 500;
@@ -239,7 +239,7 @@
   width: 12px;
   height: 12px;
   flex: none;
-  color: rgba(231, 56, 90, 0.7);
+  color: #e7385a;
   animation: wpbHintSpin 4.5s ease-in-out infinite;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -251,7 +251,6 @@
 
 .wpb-how__step-title {
   margin: 0;
-  padding-right: 76px; /* место под бейдж «наведите» */
   font-family: "Classica One", var(--serif, cursive);
   font-weight: 400;
   font-style: italic;
