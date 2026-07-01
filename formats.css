@@ -113,34 +113,34 @@
 /* ── Подсказка «наведите, чтобы перевернуть» ──────────── */
 .fmt__hint {
   position: absolute;
-  top: clamp(14px, 1.4vw, 20px);
-  right: clamp(14px, 1.4vw, 20px);
+  top: clamp(12px, 1.2vw, 16px);
+  right: clamp(12px, 1.2vw, 16px);
   z-index: 3;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 13px 8px 11px;
+  gap: 5px;
+  padding: 5px 9px 5px 8px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #1b1a18;
+  background: rgba(255, 255, 255, 0.72);
+  color: rgba(27, 26, 24, 0.78);
   font-family: var(--sans, "Montserrat", sans-serif);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(20, 5, 9, 0.22);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  animation: fmtHintPulse 2.6s ease-in-out infinite;
+  box-shadow: 0 2px 8px rgba(20, 5, 9, 0.12);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0.9;
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 .fmt__hint svg {
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   flex: none;
-  color: var(--burgundy, #E7385A);
-  animation: fmtHintSpin 2.6s ease-in-out infinite;
+  color: rgba(27, 26, 24, 0.55);
+  animation: fmtHintSpin 4.5s ease-in-out infinite;
 }
 /* при наведении/перевороте — плавно убрать, чтобы не мелькала на изнанке */
 @media (hover: hover) and (pointer: fine) {
@@ -154,10 +154,6 @@
   opacity: 0;
   transform: translateY(-6px) scale(0.9);
   animation: none;
-}
-@keyframes fmtHintPulse {
-  0%, 100% { transform: translateY(0); box-shadow: 0 4px 16px rgba(20, 5, 9, 0.22); }
-  50% { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(20, 5, 9, 0.30); }
 }
 @keyframes fmtHintSpin {
   0%, 70%, 100% { transform: rotate(0deg); }
