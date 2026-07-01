@@ -110,6 +110,63 @@
   inset: 0;
   background: linear-gradient(180deg, rgba(20, 5, 9, 0) 38%, rgba(20, 5, 9, 0.62) 100%);
 }
+/* ── Подсказка «наведите, чтобы перевернуть» ──────────── */
+.fmt__hint {
+  position: absolute;
+  top: clamp(14px, 1.4vw, 20px);
+  right: clamp(14px, 1.4vw, 20px);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px 8px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1b1a18;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(20, 5, 9, 0.22);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  animation: fmtHintPulse 2.6s ease-in-out infinite;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.fmt__hint svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: var(--burgundy, #E7385A);
+  animation: fmtHintSpin 2.6s ease-in-out infinite;
+}
+/* при наведении/перевороте — плавно убрать, чтобы не мелькала на изнанке */
+@media (hover: hover) and (pointer: fine) {
+  .fmt__card:hover .fmt__hint {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.9);
+    animation: none;
+  }
+}
+.fmt__card:focus-within .fmt__hint {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.9);
+  animation: none;
+}
+@keyframes fmtHintPulse {
+  0%, 100% { transform: translateY(0); box-shadow: 0 4px 16px rgba(20, 5, 9, 0.22); }
+  50% { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(20, 5, 9, 0.30); }
+}
+@keyframes fmtHintSpin {
+  0%, 70%, 100% { transform: rotate(0deg); }
+  85% { transform: rotate(180deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fmt__hint, .fmt__hint svg { animation: none; }
+}
+
 .fmt__front-title {
   position: absolute;
   left: clamp(18px, 2vw, 28px);
