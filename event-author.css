@@ -231,6 +231,20 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   display:flex;flex-direction:column;justify-content:flex-start;text-align:left}
 @media (prefers-reduced-motion:reduce){.ea-serv__flip{transition:none}}
 
+/* подсказка «наведите, чтобы перевернуть» — как в блоке «Наши преимущества» */
+.ea-serv__hint{position:absolute;top:16px;right:16px;z-index:3;display:inline-flex;align-items:center;gap:5px;
+  padding:5px 9px 5px 8px;border-radius:999px;background:rgba(255,255,255,.72);color:rgba(27,26,24,.78);
+  font-family:var(--sans,"Montserrat",sans-serif);font-size:9.5px;font-weight:500;letter-spacing:.06em;
+  text-transform:uppercase;white-space:nowrap;box-shadow:0 2px 8px rgba(20,12,8,.14);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:.9;
+  transition:opacity .35s ease,transform .35s ease}
+.ea-serv__hint svg{width:12px;height:12px;flex:none;color:rgba(27,26,24,.55);
+  animation:eaServHintSpin 4.5s ease-in-out infinite}
+@media (hover:hover) and (pointer:fine){.ea-serv__card--flip:hover .ea-serv__hint{opacity:0;transform:translateY(-6px) scale(.9)}}
+.ea-serv__card--flip:focus-within .ea-serv__hint{opacity:0;transform:translateY(-6px) scale(.9)}
+@keyframes eaServHintSpin{0%,70%,100%{transform:rotate(0deg)}85%{transform:rotate(180deg)}}
+@media (prefers-reduced-motion:reduce){.ea-serv__hint svg{animation:none}}
+
 /* ── PROCESS — самостоятельная ГОРИЗОНТАЛЬНАЯ прокрутка скроллом ──
    Высокая обёртка (320vh) + липкий экран + трек, сдвигаемый по X по прогрессу. */
 .ea-proc{position:relative;height:520vh;background:var(--paper2);border-top:1px solid var(--cream-line);z-index:2}
