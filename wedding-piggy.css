@@ -100,14 +100,20 @@
   75% { transform: translateX(5px); }
 }
 
-/* фото в герое заканчивается там же, где форма справа (не свисает ниже кнопки) */
+/* фото в герое = высоте всей правой части: без отступа сверху,
+   тянется от самого верха и заканчивается там же, где форма (кнопка + текст) */
 @media (min-width: 1025px) {
   .wpb-page .subscription-hero {
     min-height: 0;
     align-items: stretch;
+    padding-top: 0; /* убираем верхний отступ — фото прижато к верху */
   }
   .wpb-page .subscription-hero__media {
     min-height: 0;
+  }
+  /* смещение под фикс-шапку переносим только на форму, чтобы текст не ушёл под шапку */
+  .wpb-page .subscription-hero__content {
+    padding-top: calc(var(--paloma-header-offset, 120px) + clamp(16px, 2vw, 32px));
   }
 }
 
@@ -182,13 +188,13 @@
   inset: 0;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border: 1.5px solid #E7385A;
+  border: 1px solid rgba(231, 56, 90, 0.35);
   border-radius: 18px;
   overflow: hidden;
 }
-/* лицо (по умолчанию): розовый фон + огромная заблюренная цифра во всю карточку */
+/* лицо (по умолчанию): спокойный светло-розовый фон + крупная тонкая цифра-контур */
 .wpb-how__face--front {
-  background: #e7385a;
+  background: #fbf2f1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,13 +210,12 @@
 }
 .wpb-how__bignum {
   font-family: var(--mono, "JetBrains Mono", monospace);
-  font-weight: 600;
-  font-size: clamp(170px, 26vw, 300px);
+  font-weight: 500;
+  font-size: clamp(150px, 22vw, 260px);
   line-height: 0.8;
-  letter-spacing: -0.06em;
-  color: rgba(255, 255, 255, 0.92);
-  filter: blur(5px);
-  transform: scale(1.15);
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(231, 56, 90, 0.3);
   user-select: none;
   pointer-events: none;
 }
@@ -225,8 +230,8 @@
   gap: 5px;
   padding: 5px 9px 5px 8px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #e7385a;
+  background: rgba(231, 56, 90, 0.08);
+  color: rgba(231, 56, 90, 0.8);
   font-family: var(--sans, "Montserrat", sans-serif);
   font-size: 9.5px;
   font-weight: 500;
@@ -239,7 +244,7 @@
   width: 12px;
   height: 12px;
   flex: none;
-  color: #e7385a;
+  color: rgba(231, 56, 90, 0.7);
   animation: wpbHintSpin 4.5s ease-in-out infinite;
 }
 @media (hover: hover) and (pointer: fine) {
