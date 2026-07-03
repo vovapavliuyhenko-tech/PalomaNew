@@ -247,7 +247,7 @@
   justify-content: center;
   min-width: clamp(220px, 20vw, 320px);
   padding: 18px 56px;
-  border-radius: 999px;
+  border-radius: 14px;
   border: 2px solid #e7385a;
   background: #e7385a;
   color: #fff;
