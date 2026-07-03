@@ -552,15 +552,10 @@
   }
 
   function showSuccess(orderId) {
-    if ($grid) $grid.hidden = true;
-    if ($empty) $empty.hidden = true;
-    if ($mobileBar) $mobileBar.hidden = true;
-    if ($success) {
-      $success.hidden = false;
-      const numEl = document.getElementById("coSuccessOrderNum");
-      if (numEl) numEl.textContent = "№ " + orderId;
-    }
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    /* заказ уже сохранён в paloma_last_order — уходим на отдельную
+       страницу успеха; повторное открытие/обновление заказ не создаёт */
+    void orderId;
+    window.location.href = "thank-you.html";
   }
 
   function initPayment(orderData) {

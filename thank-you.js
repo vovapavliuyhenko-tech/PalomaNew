@@ -1,209 +1,265 @@
 /* ════════════════════════════════════════════════════════
-   thank-you.js — страница «Заказ сформирован» PALOMA
+   thank-you.js — страница «Заявка создана» PALOMA
+   Читает заказ из localStorage (paloma_last_order, формат checkout.js).
+   Заказ уже создан на этапе checkout — здесь ничего не создаётся,
+   поэтому обновление/повторное открытие безопасно.
    ════════════════════════════════════════════════════════ */
-
 (function initThankYou() {
   "use strict";
-
   if (!document.body.classList.contains("thank-you-page")) return;
 
   const STORAGE_ORDER = "paloma_last_order";
-  const SESSION_SUCCESS = "paloma_checkout_success";
-  const CFG = window.PALOMA_PAYMENT_CONFIG || {
-    WHATSAPP_NUMBER: "79180000000",
-    TELEGRAM_HANDLE: "paloma_novorossiysk",
-    ADDRESS: "ул. Энгельса, 74",
-  };
+  const M = window.PALOMA_MANAGER || {};
+  const PICKUP_ADDR = "ул. Энгельса, 74/82";
 
-  const params = new URLSearchParams(window.location.search);
-  const orderIdFromUrl = params.get("orderId");
-
-  const orderIdEl = document.getElementById("tyOrderId");
+  const order = loadOrder();
   const emptyEl = document.getElementById("tyEmpty");
   const contentEl = document.getElementById("tyContent");
 
-  const order = loadOrder();
-  const canShow = canShowThankYou(orderIdFromUrl, order);
-
-  if (!canShow) {
-    showEmptyState();
+  if (!order || !Array.isArray(order.items) || !order.items.length) {
+    if (emptyEl) emptyEl.hidden = false;
+    if (contentEl) contentEl.hidden = true;
     return;
   }
+  if (emptyEl) emptyEl.hidden = true;
+  if (contentEl) contentEl.hidden = false;
 
-  const orderId = orderIdFromUrl || order.orderId;
-  showSuccessState(orderId, order);
+  const f = order.form || {};
+  renderSummary(order, f);
 
-  const orderText = buildOrderText(order, orderId);
-  const encoded = encodeURIComponent(orderText);
+  const message = buildMessage(order, f);
+  const messageBox = document.getElementById("tyMessage");
+  if (messageBox) messageBox.value = message;
 
-  document.getElementById("tyBtnWa")?.addEventListener("click", () => {
-    const phone = String(CFG.WHATSAPP_NUMBER || "").replace(/\D/g, "");
-    window.open(
-      `https://wa.me/${phone}?text=${encoded}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
+  markRecommended(order.messenger);
+
+  const encoded = encodeURIComponent(message);
+
+  /* WhatsApp — официальный wa.me с prefill (digits only) */
+  on("tyBtnWa", () => {
+    const phone = String(M.whatsappPhone || "").replace(/\D/g, "");
+    if (!phone) return copyFallback("Не задан номер WhatsApp. Скопируйте сообщение вручную.");
+    openExternal(`https://wa.me/${phone}?text=${encoded}`);
   });
 
-  document.getElementById("tyBtnTg")?.addEventListener("click", () => {
-    window.open(
-      `https://t.me/share/url?text=${encoded}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
+  /* Telegram — открывает чат менеджера; prefill в личный чат не
+     поддерживается, поэтому копируем текст и подсказываем вставить */
+  on("tyBtnTg", async () => {
+    await copyMessage(message);
+    toast("Текст заказа скопирован. Вставьте его в чат с менеджером.");
+    if (M.telegramUrl) openExternal(M.telegramUrl);
   });
+
+  /* MAX — публичной ссылки-по-номеру и prefill нет: копируем текст.
+     Если задан персональный max.ru/u/... — дополнительно откроем профиль */
+  on("tyBtnMax", async () => {
+    await copyMessage(message);
+    if (M.maxProfileUrl) {
+      toast("Текст заказа скопирован. Вставьте его в чат с менеджером в MAX.");
+      openExternal(M.maxProfileUrl);
+    } else {
+      toast(
+        `Текст заказа скопирован. Откройте MAX, найдите менеджера по номеру ${M.maxPhone || ""} и вставьте сообщение.`,
+      );
+    }
+  });
+
+  /* Явная кнопка копирования */
+  on("tyBtnCopy", async () => {
+    const ok = await copyMessage(message);
+    toast(ok ? "Сообщение скопировано." : "Не удалось скопировать — выделите текст и скопируйте вручную.");
+    if (!ok && messageBox) {
+      messageBox.focus();
+      messageBox.select();
+    }
+  });
+
+  /* ── helpers ── */
 
   function loadOrder() {
     try {
-      const raw = localStorage.getItem(STORAGE_ORDER);
-      return raw ? JSON.parse(raw) : null;
+      return JSON.parse(localStorage.getItem(STORAGE_ORDER) || "null");
     } catch {
       return null;
     }
   }
 
-  function canShowThankYou(orderId, order) {
-    if (!orderId || !order || order.orderId !== orderId) return false;
-    if (sessionStorage.getItem(SESSION_SUCCESS) === orderId) return true;
-    if (!order.createdAt) return false;
-    const age = Date.now() - new Date(order.createdAt).getTime();
-    return age >= 0 && age < 30 * 60 * 1000;
+  function on(id, fn) {
+    document.getElementById(id)?.addEventListener("click", fn);
   }
 
-  function showEmptyState() {
-    if (orderIdEl) orderIdEl.textContent = "—";
-    if (emptyEl) emptyEl.hidden = false;
-    if (contentEl) contentEl.hidden = true;
+  function money(n) {
+    return (Number(n) || 0).toLocaleString("ru-RU") + " ₽";
   }
 
-  function showSuccessState(orderId, order) {
-    if (emptyEl) emptyEl.hidden = true;
-    if (contentEl) contentEl.hidden = false;
-    if (orderIdEl) orderIdEl.textContent = orderId;
+  function itemOptions(i) {
+    const parts = [];
+    if (i.size && i.size !== "—") parts.push(i.size);
+    if (Array.isArray(i.addons)) parts.push(...i.addons.filter(Boolean));
+    return parts.length ? " (" + parts.join(", ") + ")" : "";
+  }
 
-    if (order?.items?.length) {
-      const summaryEl = document.getElementById("tyOrderSummary");
-      const itemsEl = document.getElementById("tyOrderItems");
-      const totalEl = document.getElementById("tyOrderTotal");
+  function fulfillment(f) {
+    if (f.delivery_type === "pickup") return `Самовывоз — ${PICKUP_ADDR}`;
+    if (f.delivery_type === "ask_recipient") return "Доставка — адрес уточнить у получателя";
+    return "Доставка курьером";
+  }
 
-      if (summaryEl) summaryEl.hidden = false;
+  function timeStr(f) {
+    if (f.exact_time) return f.exact_time;
+    if (f.time_from || f.time_to) return `${f.time_from || "…"}–${f.time_to || "…"}`;
+    return "—";
+  }
 
-      if (itemsEl) {
-        itemsEl.innerHTML = order.items
-          .map((item) => {
-            const qty = item.qty || 1;
-            const lineSum = (item.price * qty).toLocaleString("ru-RU");
-            return `
-          <div class="ty-order-summary__item">
-            <span>${esc(item.name)}${item.size ? " · " + esc(item.size) : ""} × ${qty}</span>
-            <span>${lineSum} ₽</span>
-          </div>`;
-          })
-          .join("");
-      }
+  function dateRu(iso) {
+    if (!iso) return "—";
+    const p = String(iso).split("-");
+    return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : iso;
+  }
 
-      if (totalEl) {
-        totalEl.textContent =
-          (order.total || 0).toLocaleString("ru-RU") + " ₽";
-      }
+  function paymentText(p) {
+    return p === "qr_after_manager_confirmation"
+      ? "Перевод по QR-коду после подтверждения наличия и итоговой стоимости менеджером."
+      : "Оплата при получении после подтверждения наличия и итоговой стоимости менеджером.";
+  }
+
+  function messengerLabel(m) {
+    return { telegram: "Telegram", whatsapp: "WhatsApp", max: "MAX" }[m] || m || "—";
+  }
+
+  function renderSummary(o, f) {
+    setText("tyOrderId", "№ " + (o.id || "—"));
+    const itemsEl = document.getElementById("tyOrderItems");
+    if (itemsEl) {
+      itemsEl.innerHTML = o.items
+        .map((i) => {
+          const qty = i.qty || 1;
+          return `<div class="ty-order-summary__item"><span>${esc(i.name)}${esc(itemOptions(i))} × ${qty}</span><span>${money(i.price * qty)}</span></div>`;
+        })
+        .join("");
     }
+    setText("tyOrderCount", String(o.items.reduce((s, i) => s + (i.qty || 1), 0)));
+    setText("tyOrderTotal", money(o.total));
+    setText("tyMetaFulfil", fulfillment(f));
+    setText(
+      "tyMetaPayment",
+      o.payment === "qr_after_manager_confirmation"
+        ? "Перевод по QR после согласования"
+        : "Оплата при получении",
+    );
   }
 
-  function buildOrderText(o, id) {
-    const delivMap = {
-      pickup: `Самовывоз — ${CFG.ADDRESS || "ул. Энгельса, 74"}`,
-      courier: "Доставка курьером",
-    };
-    const payMap = {
-      bank_card: "Банковская карта (ЮKassa)",
-      sbp: "СБП (ЮKassa)",
-      yandex_pay: "Яндекс Пэй",
-    };
-
-    const itemLines = (o.items || []).map((i) => {
-      const qty = i.qty || 1;
-      const sum = (i.price * qty).toLocaleString("ru-RU");
-      const sizePart = i.size && i.size !== "—" ? `, размер ${i.size}` : "";
-      return `• ${i.name}${sizePart} — ${qty} шт. — ${sum} ₽`;
-    });
+  /* Сообщение менеджеру — по шаблону ТЗ, без HTML */
+  function buildMessage(o, f) {
+    const items = o.items
+      .map((i, idx) => `${idx + 1}. ${i.name}${itemOptions(i)} — ${i.qty || 1} шт. — ${money(i.price * (i.qty || 1))}`)
+      .join("\n");
 
     const lines = [
-      "🌸 Заказ PALOMA flowers coffee you",
+      "Здравствуйте! Я оформил(а) заказ на сайте.",
       "",
-      `📋 Номер заказа: ${id}`,
+      `Номер заказа: №${o.id || "—"}`,
       "",
-      "📦 Товары:",
-      itemLines.length ? itemLines.join("\n") : "—",
+      "Состав заказа:",
       "",
-      `💰 Сумма: ${(o.total || 0).toLocaleString("ru-RU")} ₽`,
+      items || "—",
       "",
-      `👤 Имя: ${o.customer?.name || "—"}`,
-      `📞 Телефон: ${o.customer?.phone || "—"}`,
+      `Предварительная сумма: ${money(o.total)}`,
+      "",
+      `Способ получения: ${fulfillment(f)}`,
     ];
 
-    if (o.customer?.email) {
-      lines.push(`✉️ Email: ${o.customer.email}`);
-    }
-    if (o.customer?.messenger) {
-      lines.push(`💬 Telegram/WhatsApp: ${o.customer.messenger}`);
-    }
-
-    if (o.recipient?.type === "other") {
-      lines.push("");
-      lines.push(
-        `🎁 Получатель: ${o.recipient.name || "—"}${o.recipient.phone ? ", " + o.recipient.phone : ""}`,
-      );
+    if (f.delivery_type === "courier") {
+      const addr = [f.city, f.address, f.apt ? "кв. " + f.apt : ""]
+        .filter(Boolean)
+        .join(", ");
+      if (addr) lines.push("", `Адрес доставки: ${addr}`);
     }
 
-    lines.push("");
-    lines.push(
-      `🚚 Способ получения: ${delivMap[o.delivery?.method] || o.delivery?.method || "—"}`,
-    );
+    lines.push("", `Желаемая дата: ${dateRu(f.delivery_date)}`);
+    lines.push(`Желаемое время: ${timeStr(f)}`);
 
-    if (o.delivery?.method === "courier" && o.delivery?.address) {
-      lines.push(`📍 Адрес: ${o.delivery.address}`);
+    if (f.recipient_type === "other") {
+      lines.push("", `Получатель: ${f.recipient_name || "—"}`);
+      lines.push(`Телефон получателя: ${f.recipient_phone || "—"}`);
+    } else {
+      lines.push("", "Получатель: я (покупатель)");
     }
 
-    if (o.delivery?.courierComment) {
-      lines.push(`🚪 Комментарий курьеру: ${o.delivery.courierComment}`);
-    }
+    lines.push("", `Ваш телефон: ${f.phone || "—"}`);
+    lines.push(`Связь через ${messengerLabel(o.messenger)}: ${o.messengerContact || "—"}`);
+    if (f.email) lines.push(`Email: ${f.email}`);
 
-    if (o.delivery?.date) {
-      lines.push(`📅 Дата: ${formatDateRu(o.delivery.date)}`);
-    }
-
-    if (o.delivery?.interval) {
-      lines.push(`🕐 Интервал: ${o.delivery.interval}`);
-    }
-
-    lines.push("");
-    lines.push(
-      `💳 Способ оплаты: ${payMap[o.paymentMethod] || o.paymentMethod || "—"}`,
-    );
-
-    const commentParts = [];
-    if (o.cardText) commentParts.push(`Открытка: ${o.cardText}`);
-    if (o.comment) commentParts.push(o.comment);
-
-    if (commentParts.length) {
-      lines.push("");
-      lines.push("📝 Комментарий:");
-      lines.push(commentParts.join("\n"));
-    }
-
-    lines.push("");
-    lines.push(
-      "Прошу подтвердить состав, время и детали доставки. Спасибо!",
-    );
+    lines.push("", `Комментарий к заказу: ${f.comment ? f.comment : "—"}`);
+    lines.push("", `Выбранный способ оплаты: ${paymentText(o.payment)}`);
+    lines.push("", "Прошу подтвердить наличие товаров, возможность выполнения заказа и итоговую стоимость.");
 
     return lines.join("\n");
   }
 
-  function formatDateRu(iso) {
-    if (!iso) return "—";
-    const [y, m, d] = iso.split("-");
-    if (!d) return iso;
-    return `${d}.${m}.${y}`;
+  function markRecommended(m) {
+    const map = { telegram: "tyBtnTg", whatsapp: "tyBtnWa", max: "tyBtnMax" };
+    const id = map[m];
+    if (!id) return;
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    btn.classList.add("ty-btn--recommended");
+    const badge = document.createElement("span");
+    badge.className = "ty-btn__badge";
+    badge.textContent = "Вы выбрали этот способ";
+    btn.appendChild(badge);
+  }
+
+  async function copyMessage(text) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {
+      /* fall through */
+    }
+    /* fallback без Clipboard API */
+    try {
+      const ta = document.getElementById("tyMessage") || document.createElement("textarea");
+      ta.value = text;
+      ta.focus();
+      ta.select();
+      const ok = document.execCommand("copy");
+      return !!ok;
+    } catch {
+      return false;
+    }
+  }
+
+  function copyFallback(msg) {
+    copyMessage(document.getElementById("tyMessage")?.value || "");
+    toast(msg);
+  }
+
+  function openExternal(url) {
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  let toastTimer;
+  function toast(msg) {
+    let el = document.getElementById("tyToast");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "tyToast";
+      el.className = "ty-toast";
+      el.setAttribute("role", "status");
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.classList.add("is-visible");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("is-visible"), 4000);
+  }
+
+  function setText(id, v) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = v;
   }
 
   function esc(str) {
@@ -213,4 +269,7 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
   }
+
+  /* экспорт для теста генерации сообщения */
+  window.__tyBuildMessage = buildMessage;
 })();

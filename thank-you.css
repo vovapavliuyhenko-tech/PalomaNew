@@ -147,3 +147,116 @@
   color: var(--color-accent, #1B1A18);
   flex-shrink: 0;
 }
+
+/* ── Заявка: уведомление, мета, сообщение, кнопки мессенджеров ── */
+.ty-notice {
+  margin: 16px auto;
+  max-width: 560px;
+  padding: 12px 16px;
+  border-left: 3px solid #e7385a;
+  background: rgba(231, 56, 90, 0.06);
+  border-radius: 0 8px 8px 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(27, 26, 24, 0.82);
+  text-align: left;
+}
+.ty-order-summary__meta {
+  margin: 14px 0 4px;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+.ty-order-summary__meta > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ty-order-summary__meta > div span:first-child {
+  color: rgba(27, 26, 24, 0.55);
+}
+.ty-order-summary__hint {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: rgba(27, 26, 24, 0.5);
+}
+.ty-msg {
+  margin: 22px auto 0;
+  max-width: 560px;
+  text-align: left;
+}
+.ty-msg__label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(27, 26, 24, 0.7);
+}
+.ty-msg__box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid rgba(27, 26, 24, 0.18);
+  border-radius: 12px;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 13px;
+  line-height: 1.5;
+  color: #1b1a18;
+  background: #fafafa;
+  resize: vertical;
+}
+.ty-msg__copy {
+  margin-top: 10px;
+  width: 100%;
+}
+.ty-actions {
+  margin: 22px auto 0;
+  max-width: 560px;
+  display: grid;
+  gap: 10px;
+}
+.ty-btn {
+  position: relative;
+}
+.ty-btn--recommended {
+  outline: 2px solid #e7385a;
+  outline-offset: 2px;
+}
+.ty-btn__badge {
+  position: absolute;
+  top: -9px;
+  right: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #e7385a;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.ty-btn-catalog {
+  margin: 12px auto 0;
+  display: inline-block;
+}
+.ty-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(20px);
+  max-width: 90vw;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: #1b1a18;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 9999;
+}
+.ty-toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
