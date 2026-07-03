@@ -124,7 +124,7 @@
   /* прижимаем правую часть к верху (а не центрируем), смещение — только под фикс-шапку */
   .wpb-page .subscription-hero__content {
     justify-content: flex-start;
-    padding-top: calc(var(--paloma-header-offset, 120px) + clamp(4px, 1vw, 12px));
+    padding-top: calc(var(--paloma-header-offset, 120px) + clamp(28px, 3vw, 56px));
   }
 }
 
