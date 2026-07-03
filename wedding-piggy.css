@@ -224,12 +224,12 @@
   border-radius: 20px;
 }
 .wpb-cta__title {
-  margin: 0 0 10px;
+  margin: 0 0 clamp(16px, 1.8vw, 26px);
   font-family: "Classica One", var(--serif, cursive);
   font-weight: 400;
   font-style: italic;
   font-size: clamp(26px, 2.6vw, 40px);
-  line-height: 1.05;
+  line-height: 1.35; /* скрипт-шрифт с высокими росчерками — нужен запас, чтобы не налезал на текст */
   color: #e7385a;
 }
 .wpb-cta__desc {
