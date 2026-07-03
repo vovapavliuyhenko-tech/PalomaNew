@@ -78,6 +78,7 @@ body.subscription-page {
   min-height: 82px;
   padding: 12px 8px;
   align-items: center;
+  justify-content: center;
   text-align: center;
   gap: 4px;
 }
