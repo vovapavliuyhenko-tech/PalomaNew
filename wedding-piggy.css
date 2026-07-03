@@ -211,6 +211,59 @@
   color: rgba(27, 26, 24, 0.82);
 }
 
+/* горизонтальная CTA-карточка под шагами */
+.wpb-cta {
+  margin-top: clamp(20px, 2.4vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(28px, 3vw, 48px) clamp(28px, 3.4vw, 56px);
+  background: #fbf2f1;
+  border: 1px solid rgba(231, 56, 90, 0.28);
+  border-radius: 20px;
+}
+.wpb-cta__title {
+  margin: 0 0 10px;
+  font-family: "Classica One", var(--serif, cursive);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(26px, 2.6vw, 40px);
+  line-height: 1.05;
+  color: #e7385a;
+}
+.wpb-cta__desc {
+  margin: 0;
+  max-width: 70ch;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.6;
+  color: rgba(27, 26, 24, 0.82);
+}
+.wpb-cta__btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 44px;
+  border-radius: 999px;
+  background: #e7385a;
+  color: #fff;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.wpb-cta__btn:hover { background: #c82847; transform: translateY(-2px); }
+@media (max-width: 720px) {
+  .wpb-cta { flex-direction: column; align-items: flex-start; text-align: left; }
+  .wpb-cta__btn { width: 100%; }
+}
+
 /* ── Создать копилку (для пары) ───────────────────────── */
 .wpb-create {
   background: #0e0d0c; /* точно как фон подвала (.site-footer) */
