@@ -111,9 +111,10 @@
   .wpb-page .subscription-hero__media {
     min-height: 0;
   }
-  /* смещение под фикс-шапку переносим только на форму, чтобы текст не ушёл под шапку */
+  /* прижимаем правую часть к верху (а не центрируем), смещение — только под фикс-шапку */
   .wpb-page .subscription-hero__content {
-    padding-top: calc(var(--paloma-header-offset, 120px) + clamp(16px, 2vw, 32px));
+    justify-content: flex-start;
+    padding-top: calc(var(--paloma-header-offset, 120px) + clamp(4px, 1vw, 12px));
   }
 }
 
