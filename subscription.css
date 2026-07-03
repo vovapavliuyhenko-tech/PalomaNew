@@ -10,6 +10,22 @@ body.subscription-page {
   --paloma-accent: #E7385A;
 }
 
+/* Убираем белый зазор между шапкой и фото: фото-колонка поднимается под
+   фикс-шапку (сдвиг вверх на высоту шапки) и компенсирует высоту, чтобы низ
+   остался на месте. Форма (правая колонка) по-прежнему ниже шапки. */
+.subscription-page .subscription-hero__media {
+  margin-top: calc(-1 * var(--paloma-header-offset, 120px));
+}
+@media (min-width: 1025px) {
+  .subscription-page .subscription-hero {
+    align-items: stretch;
+  }
+  /* компенсируем сдвиг вверх, чтобы низ фото остался на уровне формы */
+  .subscription-page .subscription-hero__media {
+    min-height: calc(78svh + var(--paloma-header-offset, 120px));
+  }
+}
+
 /* Заголовок героя — приподнят, с запасом снизу под хвосты букв */
 .subscription-hero__title {
   margin-top: -0.12em;
