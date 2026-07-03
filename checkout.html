@@ -10,7 +10,7 @@
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="styles.css?v=ph2">
-  <link rel="stylesheet" href="checkout.css?v=w4">
+  <link rel="stylesheet" href="checkout.css?v=w5">
 </head>
 <body class="checkout-page">
 
@@ -104,51 +104,9 @@
             </div>
 
             <div class="co-field">
-              <label class="co-label" for="co-telegram">Никнейм в Telegram</label>
-              <input class="co-input" type="text" id="co-telegram" name="telegram"
-                     placeholder="@username">
-            </div>
-
-            <div class="co-field">
               <label class="co-label" for="co-email">Email</label>
               <input class="co-input" type="email" id="co-email" name="email"
                      autocomplete="email" placeholder="example@mail.ru">
-            </div>
-          </fieldset>
-
-          <fieldset class="co-fieldset">
-            <legend class="co-fieldset__legend">Как с вами связаться</legend>
-            <p class="co-fieldset__sub">Для подтверждения заказа</p>
-
-            <div class="co-radio-group" role="group" aria-label="Способ связи">
-              <label class="co-radio-card">
-                <input type="radio" name="contact_method" value="telegram" checked>
-                <span class="co-radio-card__inner">
-                  <span class="co-radio-card__icon" aria-hidden="true">✈</span>
-                  <span class="co-radio-card__label">Telegram</span>
-                </span>
-              </label>
-              <label class="co-radio-card">
-                <input type="radio" name="contact_method" value="whatsapp">
-                <span class="co-radio-card__inner">
-                  <span class="co-radio-card__icon" aria-hidden="true">💬</span>
-                  <span class="co-radio-card__label">WhatsApp</span>
-                </span>
-              </label>
-              <label class="co-radio-card">
-                <input type="radio" name="contact_method" value="call">
-                <span class="co-radio-card__inner">
-                  <span class="co-radio-card__icon" aria-hidden="true">📞</span>
-                  <span class="co-radio-card__label">Позвонить</span>
-                </span>
-              </label>
-              <label class="co-radio-card co-radio-card--wide">
-                <input type="radio" name="contact_method" value="none">
-                <span class="co-radio-card__inner">
-                  <span class="co-radio-card__label">Связываться не нужно</span>
-                  <span class="co-radio-card__note">только если нужно согласовать</span>
-                </span>
-              </label>
             </div>
           </fieldset>
 
@@ -355,6 +313,53 @@
             </div>
           </fieldset>
 
+          <fieldset class="co-fieldset" id="co-messenger">
+            <legend class="co-fieldset__legend">Удобный способ связи</legend>
+            <p class="co-field__hint">Менеджер напишет вам сюда, чтобы подтвердить наличие, состав и стоимость.</p>
+            <div class="co-messenger__options" role="radiogroup" aria-label="Мессенджер для связи">
+              <label class="co-messenger-option">
+                <input type="radio" name="messenger" value="telegram" data-messenger>
+                <span class="co-messenger-option__label">Telegram</span>
+              </label>
+              <label class="co-messenger-option">
+                <input type="radio" name="messenger" value="whatsapp" data-messenger>
+                <span class="co-messenger-option__label">WhatsApp</span>
+              </label>
+              <label class="co-messenger-option">
+                <input type="radio" name="messenger" value="max" data-messenger>
+                <span class="co-messenger-option__label">MAX</span>
+              </label>
+            </div>
+            <p class="co-error" id="co-messenger-error" hidden>Выберите мессенджер для связи.</p>
+
+            <div class="co-field co-messenger__field" data-messenger-field="telegram" hidden>
+              <label class="co-field__label" for="co-msg-telegram">Ваш Telegram</label>
+              <input class="co-input" id="co-msg-telegram" name="messenger_telegram"
+                     type="text" inputmode="text" autocomplete="username"
+                     placeholder="@username или +7 999 000-00-00"
+                     aria-describedby="co-msg-telegram-error">
+              <p class="co-error" id="co-msg-telegram-error" hidden>Укажите @username или телефон в Telegram.</p>
+            </div>
+
+            <div class="co-field co-messenger__field" data-messenger-field="whatsapp" hidden>
+              <label class="co-field__label" for="co-msg-whatsapp">Ваш WhatsApp</label>
+              <input class="co-input" id="co-msg-whatsapp" name="messenger_whatsapp"
+                     type="tel" inputmode="tel" autocomplete="tel"
+                     placeholder="+7 999 000-00-00"
+                     aria-describedby="co-msg-whatsapp-error">
+              <p class="co-error" id="co-msg-whatsapp-error" hidden>Укажите номер WhatsApp в международном формате.</p>
+            </div>
+
+            <div class="co-field co-messenger__field" data-messenger-field="max" hidden>
+              <label class="co-field__label" for="co-msg-max">Ваш контакт в MAX</label>
+              <input class="co-input" id="co-msg-max" name="messenger_max"
+                     type="text" inputmode="text" autocomplete="off"
+                     placeholder="Телефон или @username в MAX"
+                     aria-describedby="co-msg-max-error">
+              <p class="co-error" id="co-msg-max-error" hidden>Укажите телефон или username в MAX.</p>
+            </div>
+          </fieldset>
+
           <fieldset class="co-fieldset">
             <legend class="co-fieldset__legend">Комментарий к заказу</legend>
             <div class="co-field">
@@ -402,25 +407,33 @@
             <h3 class="co-payment__title">Способ оплаты</h3>
             <div class="co-payment__options" role="group" aria-label="Способ оплаты">
               <label class="co-payment-option">
-                <input type="radio" name="payment" value="online" checked>
+                <input type="radio" name="payment" value="payment_on_receipt" checked>
                 <span class="co-payment-option__inner">
-                  <span class="co-payment-option__label">Онлайн картой</span>
-                  <span class="co-payment-option__badges">
-                    <span class="co-payment-badge">Visa</span>
-                    <span class="co-payment-badge">MC</span>
-                    <span class="co-payment-badge">МИР</span>
-                  </span>
+                  <span class="co-payment-option__label">Оплата при получении</span>
+                  <span class="co-payment-option__sub">Менеджер сначала подтвердит наличие и итоговую стоимость. Оплата производится при получении заказа.</span>
                 </span>
               </label>
               <label class="co-payment-option">
-                <input type="radio" name="payment" value="upon_delivery">
+                <input type="radio" name="payment" value="qr_after_manager_confirmation">
                 <span class="co-payment-option__inner">
-                  <span class="co-payment-option__label">При получении</span>
-                  <span class="co-payment-option__sub">Наличные или карта</span>
+                  <span class="co-payment-option__label">Перевод по QR-коду после согласования</span>
+                  <span class="co-payment-option__sub">После подтверждения наличия и согласования итоговой стоимости менеджер отправит QR-код для оплаты в выбранный мессенджер.</span>
                 </span>
               </label>
             </div>
           </div>
+
+          <p class="co-manager-notice" role="note">
+            После оформления заказа менеджер проверит наличие цветов и товаров, свяжется с вами,
+            подтвердит состав заказа и итоговую стоимость. Оплата производится только после согласования заказа.
+          </p>
+
+          <label class="co-consent" for="co-consent">
+            <input type="checkbox" id="co-consent" name="consent" value="1">
+            <span>Я согласен(на) на обработку персональных данных и принимаю
+              <a href="privacy.html" target="_blank" rel="noopener">Политику конфиденциальности</a>.</span>
+          </label>
+          <p class="co-error" id="co-consent-error" hidden>Нужно согласие на обработку персональных данных.</p>
 
           <button type="button" class="co-btn co-btn--primary co-summary__submit"
                   id="coSubmitBtn" aria-label="Оформить заказ">
@@ -428,9 +441,9 @@
           </button>
 
           <p class="co-summary__legal">
-            Нажимая «Оформить заказ», вы соглашаетесь с
-            <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>
-            и <a href="offer.html" target="_blank" rel="noopener">публичной офертой</a>.
+            Оформляя заказ, вы соглашаетесь с
+            <a href="offer.html" target="_blank" rel="noopener">публичной офертой</a>.
+            Сумма предварительная — итог подтверждает менеджер.
           </p>
 
         </div>
@@ -494,6 +507,6 @@
   </div>
 
   <script src="cart-core.js?v=img1"></script>
-  <script src="checkout.js?v=wpb3"></script>
+  <script src="checkout.js?v=order1"></script>
 </body>
 </html>

@@ -341,6 +341,47 @@
 
   document.addEventListener("paloma-cart-updated", updateView);
 
+  const ALLOWED_PAYMENTS = ["payment_on_receipt", "qr_after_manager_confirmation"];
+  let submitting = false;
+
+  /* показать поле выбранного мессенджера, скрыть остальные */
+  function updateMessengerFields() {
+    const sel = document.querySelector('[name="messenger"]:checked')?.value;
+    document.querySelectorAll("[data-messenger-field]").forEach((f) => {
+      f.hidden = f.getAttribute("data-messenger-field") !== sel;
+    });
+  }
+  document.querySelectorAll("[data-messenger]").forEach((r) =>
+    r.addEventListener("change", () => {
+      updateMessengerFields();
+      const me = document.getElementById("co-messenger-error");
+      if (me) me.hidden = true;
+    }),
+  );
+
+  /* нормализация + валидация контакта; серверного пересчёта нет (статика) */
+  function normContact(kind, raw) {
+    const v = (raw || "").trim();
+    const digits = v.replace(/\D/g, "");
+    const isPhone = /^\+?\d[\d\s()\-]{8,}$/.test(v);
+    if (kind === "telegram") {
+      if (isPhone && digits.length >= 10) return { ok: true, value: "+" + digits };
+      const u = v.replace(/^@/, "");
+      if (/^[A-Za-z0-9_]{5,32}$/.test(u)) return { ok: true, value: "@" + u };
+      return { ok: false };
+    }
+    if (kind === "whatsapp") {
+      if (digits.length >= 10 && digits.length <= 15) return { ok: true, value: "+" + digits };
+      return { ok: false };
+    }
+    if (kind === "max") {
+      if (isPhone && digits.length >= 10) return { ok: true, value: "+" + digits };
+      if (v.replace(/^@/, "").length >= 3) return { ok: true, value: "@" + v.replace(/^@/, "") };
+      return { ok: false };
+    }
+    return { ok: false };
+  }
+
   function validateForm() {
     let valid = true;
 
@@ -397,6 +438,32 @@
       }
     }
 
+    /* мессенджер: выбран + валидный контакт (только видимое поле обязательно) */
+    const messenger = document.querySelector('[name="messenger"]:checked')?.value;
+    const mErr = document.getElementById("co-messenger-error");
+    if (!messenger) {
+      if (mErr) mErr.hidden = false;
+      valid = false;
+    } else {
+      if (mErr) mErr.hidden = true;
+      const input = document.getElementById("co-msg-" + messenger);
+      const fErr = document.getElementById("co-msg-" + messenger + "-error");
+      const res = normContact(messenger, input?.value);
+      if (input) input.classList.toggle("is-error", !res.ok);
+      if (fErr) fErr.hidden = res.ok;
+      if (!res.ok) valid = false;
+    }
+
+    /* согласие на обработку ПДн */
+    const consent = document.getElementById("co-consent");
+    const cErr = document.getElementById("co-consent-error");
+    if (consent && !consent.checked) {
+      if (cErr) cErr.hidden = false;
+      valid = false;
+    } else if (cErr) {
+      cErr.hidden = true;
+    }
+
     return valid;
   }
 
@@ -413,6 +480,7 @@
   }
 
   function handleSubmit() {
+    if (submitting) return; /* защита от двойного клика/повторной отправки */
     const cart = getCart();
     if (!cart.length) {
       updateView();
@@ -427,8 +495,29 @@
       return;
     }
 
+    submitting = true;
+    [
+      document.getElementById("coSubmitBtn"),
+      document.getElementById("coSubmitMobile"),
+    ].forEach((b) => {
+      if (b) {
+        b.disabled = true;
+        b.setAttribute("aria-busy", "true");
+      }
+    });
+
     const totals = calcTotals(cart);
     const orderId = "ORD-" + Date.now().toString(36).toUpperCase();
+
+    /* оплата — только из allowlist, не доверяем произвольному value */
+    const payEl = document.querySelector('[name="payment"]:checked');
+    const payment = ALLOWED_PAYMENTS.includes(payEl?.value)
+      ? payEl.value
+      : ALLOWED_PAYMENTS[0];
+
+    const messenger = document.querySelector('[name="messenger"]:checked')?.value;
+    const rawContact = document.getElementById("co-msg-" + messenger)?.value || "";
+    const messengerContact = normContact(messenger, rawContact).value || "";
 
     const orderData = {
       id: orderId,
@@ -438,6 +527,12 @@
       delivery: totals.delivery,
       cardCost: totals.cardCost,
       total: totals.total,
+      payment,
+      messenger,
+      messengerContact,
+      consent: true,
+      preliminary: true,
+      status: "new_awaiting_manager",
       form: collectFormData(),
     };
 
@@ -474,9 +569,12 @@
     showSuccess(orderData.id);
   }
 
+  window.__coNormContact = normContact; /* для проверки валидации из теста */
+
   function init() {
     updateView();
     handleDeliveryToggle();
+    updateMessengerFields();
 
     const dateInput = document.getElementById("co-date");
     if (dateInput) {

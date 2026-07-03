@@ -1114,3 +1114,78 @@ body.checkout-page .co-main {
     grid-column: 1 / -1;
   }
 }
+
+/* ── Мессенджер-блок / согласие / уведомление менеджера ── */
+.co-messenger__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 6px 0 4px;
+}
+.co-messenger-option {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 96px;
+  cursor: pointer;
+}
+.co-messenger-option input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+.co-messenger-option__label {
+  display: block;
+  text-align: center;
+  padding: 12px 10px;
+  border: 1px solid rgba(27, 26, 24, 0.18);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: border-color 0.15s, background 0.15s;
+}
+.co-messenger-option input:checked + .co-messenger-option__label {
+  border-color: #e7385a;
+  background: rgba(231, 56, 90, 0.07);
+  color: #c82847;
+}
+.co-messenger-option input:focus-visible + .co-messenger-option__label {
+  outline: 2px solid #e7385a;
+  outline-offset: 2px;
+}
+.co-messenger__field {
+  margin-top: 12px;
+}
+.co-field__hint {
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(27, 26, 24, 0.55);
+}
+.co-manager-notice {
+  margin: 14px 0;
+  padding: 12px 14px;
+  border-left: 3px solid #e7385a;
+  background: rgba(231, 56, 90, 0.06);
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(27, 26, 24, 0.8);
+}
+.co-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 4px 0 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.co-consent input {
+  margin-top: 2px;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  accent-color: #e7385a;
+  cursor: pointer;
+}
