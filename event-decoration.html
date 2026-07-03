@@ -554,8 +554,15 @@
               <div class="ea-range">
                 <output class="ea-range__bubble" id="budgetBubble">100 000</output>
                 <input type="range" id="ea-budget" min="30000" max="5000000" step="10000" value="100000">
-                <div class="ea-range__minmax"><span>30 000</span><span>1 000 000</span></div>
+                <div class="ea-range__minmax"><span>30 000</span><span>5 000 000</span></div>
               </div>
+            </div>
+            <div class="ea-form__field ea-form__field--full">
+              <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;cursor:pointer;color:#1b1a18;">
+                <input type="checkbox" id="ea-consent" name="consent" style="margin-top:2px;width:18px;height:18px;flex:none;accent-color:#e7385a;cursor:pointer;">
+                <span>Я согласен(на) на обработку персональных данных и принимаю <a href="privacy.html" target="_blank" rel="noopener" style="color:#e7385a;">Политику конфиденциальности</a>.</span>
+              </label>
+              <p id="ea-consent-err" hidden style="margin:6px 0 0;color:#e7385a;font-size:12px;">Нужно согласие на обработку персональных данных.</p>
             </div>
             <button type="submit" class="ea-btn ea-form__submit">Отправить данные
               <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
@@ -918,7 +925,7 @@
 
     /* форма-заявка */
     var f=document.getElementById('eaForm');
-    if(f)f.addEventListener('submit',function(e){e.preventDefault();var ok=document.getElementById('eaOk');if(ok)ok.hidden=false;f.querySelectorAll('input,select,textarea,button').forEach(function(el){el.disabled=true;});});
+    if(f)f.addEventListener('submit',function(e){e.preventDefault();var c=document.getElementById('ea-consent'),ce=document.getElementById('ea-consent-err');if(c&&!c.checked){if(ce)ce.hidden=false;c.focus();return;}if(ce)ce.hidden=true;var ok=document.getElementById('eaOk');if(ok)ok.hidden=false;f.querySelectorAll('input,select,textarea,button').forEach(function(el){el.disabled=true;});});
   })();
   </script>
 
