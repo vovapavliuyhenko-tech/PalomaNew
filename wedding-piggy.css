@@ -111,6 +111,16 @@
   .wpb-page .subscription-hero__media {
     min-height: 0;
   }
+  /* фото не должно раздувать высоту строки своим портретным соотношением:
+     вынимаем img из потока — высота строки задаётся правой колонкой (формой),
+     а фото заполняет ровно эту высоту (заканчивается на тексте под кнопкой). */
+  .wpb-page .subscription-hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   /* прижимаем правую часть к верху (а не центрируем), смещение — только под фикс-шапку */
   .wpb-page .subscription-hero__content {
     justify-content: flex-start;
