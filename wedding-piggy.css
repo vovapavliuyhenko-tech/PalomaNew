@@ -248,6 +248,7 @@
   min-width: clamp(220px, 20vw, 320px);
   padding: 18px 56px;
   border-radius: 999px;
+  border: 2px solid #e7385a;
   background: #e7385a;
   color: #fff;
   font-family: var(--sans, "Montserrat", sans-serif);
@@ -257,9 +258,9 @@
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-.wpb-cta__btn:hover { background: #c82847; transform: translateY(-2px); }
+.wpb-cta__btn:hover { background: transparent; color: #e7385a; border-color: #e7385a; }
 @media (max-width: 720px) {
   .wpb-cta { flex-direction: column; align-items: flex-start; text-align: left; }
   .wpb-cta__btn { width: 100%; }
