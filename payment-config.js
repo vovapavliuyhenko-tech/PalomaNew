@@ -21,7 +21,7 @@ window.PALOMA_PAYMENT_CONFIG = {
   RETURN_URL_SUCCESS: "thank-you.html",
   RETURN_URL_FAIL: "checkout.html?payment=failed",
 
-  WHATSAPP_NUMBER: "79180000000",
+  WHATSAPP_NUMBER: "79897707000",
   TELEGRAM_HANDLE: "paloma_novorossiysk",
 
   CITY: "Новороссийск",

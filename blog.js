@@ -160,7 +160,7 @@
           <p class="article-cta__text">Загляните в каталог или напишите нам — поможем с выбором.</p>
           <${tag} class="article-cta__actions">
             <a href="catalog.html" class="btn btn--dark" data-cursor="hover">В каталог</a>
-            <a href="https://wa.me/79180000000" target="_blank" rel="noopener" class="btn btn--outline" data-cursor="hover">Задать вопрос</a>
+            <a href="https://wa.me/79897707000" target="_blank" rel="noopener" class="btn btn--outline" data-cursor="hover">Задать вопрос</a>
           </${tag}>
         </${tag}>
       </section>`;
