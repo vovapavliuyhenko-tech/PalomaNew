@@ -219,7 +219,7 @@
   justify-content: space-between;
   gap: clamp(24px, 4vw, 64px);
   padding: clamp(28px, 3vw, 48px) clamp(28px, 3.4vw, 56px);
-  background: #fbf2f1;
+  background: #0e0d0c;
   border: 1px solid rgba(231, 56, 90, 0.28);
   border-radius: 20px;
 }
@@ -238,14 +238,15 @@
   font-family: var(--sans, "Montserrat", sans-serif);
   font-size: clamp(14px, 1.05vw, 16px);
   line-height: 1.6;
-  color: rgba(27, 26, 24, 0.82);
+  color: rgba(255, 255, 255, 0.82);
 }
 .wpb-cta__btn {
   flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 44px;
+  min-width: clamp(220px, 20vw, 320px);
+  padding: 18px 56px;
   border-radius: 999px;
   background: #e7385a;
   color: #fff;
