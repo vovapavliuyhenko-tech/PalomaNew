@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="clients-pages.css?v=w1">
   <link rel="stylesheet" href="contacts.css?v=wow9">
+  <link rel="stylesheet" href="event-author.css?v=ea4">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
   <link rel="stylesheet" href="legal.css?v=3">
@@ -368,46 +369,33 @@
       </div>
     </section>
 
-    <section class="faq-lines" aria-labelledby="care-faq-heading">
-      <div class="faq-lines__inner">
-        <header class="faq-lines__header">
-          <span class="faq-lines__eyebrow">[ FAQ ]</span>
-          <h2 class="faq-lines__title" id="care-faq-heading">Частые вопросы об уходе</h2>
-        </header>
-        <div class="faq-lines__list">
-          <article class="faq-lines__row" data-cursor="hover">
-            <p class="faq-lines__q">Сколько простоит букет?</p>
-            <p class="faq-lines__a">В среднем 5–10 дней при правильном уходе. Хризантемы, гвоздики и альстромерии радуют дольше, пионы и тюльпаны — меньше.</p>
-            <div class="faq-lines__thumb faq-lines__thumb--a" aria-hidden="true"></div>
-          </article>
-          <article class="faq-lines__row" data-cursor="hover">
-            <p class="faq-lines__q">Нужно ли добавлять сахар или аспирин?</p>
-            <p class="faq-lines__a">Лучше использовать флористическую подкормку — она даёт питание и обеззараживает воду. Домашние средства работают слабее.</p>
-            <div class="faq-lines__thumb faq-lines__thumb--b" aria-hidden="true"></div>
-          </article>
-          <article class="faq-lines__row" data-cursor="hover">
-            <p class="faq-lines__q">Почему опустились головки цветов?</p>
-            <p class="faq-lines__a">Чаще всего не хватает воды. Обновите косой срез, смените воду и дайте букету напиться в прохладе пару часов.</p>
-            <div class="faq-lines__thumb faq-lines__thumb--c" aria-hidden="true"></div>
-          </article>
-          <article class="faq-lines__row" data-cursor="hover">
-            <p class="faq-lines__q">Можно ли ставить букет у окна?</p>
-            <p class="faq-lines__a">На рассеянном свету — да, но избегайте прямого солнца, подоконника над батареей и сквозняков.</p>
-            <div class="faq-lines__thumb faq-lines__thumb--d" aria-hidden="true"></div>
-          </article>
-          <article class="faq-lines__row" data-cursor="hover">
-            <p class="faq-lines__q">Как ухаживать за розами?</p>
-            <p class="faq-lines__a">Косой срез под водой, чистая ваза, удалите нижние листья и шипы. Если голова поникла — заверните в бумагу и опустите в воду на несколько часов.</p>
-            <div class="faq-lines__thumb faq-lines__thumb--e" aria-hidden="true"></div>
-          </article>
-          <article class="faq-lines__row" data-cursor="hover">
-            <p class="faq-lines__q">Что делать с увядшими цветами?</p>
-            <p class="faq-lines__a">Убирайте отдельные увядшие стебли и листья — так оставшиеся цветы простоят заметно дольше.</p>
-            <div class="faq-lines__thumb faq-lines__thumb--f" aria-hidden="true"></div>
-          </article>
-        </div>
+    <section class="ea-panel ea-faq ea-panel--pad" id="care-faq" aria-labelledby="care-faq-heading">
+      <span class="ea-eyebrow">частые вопросы</span>
+      <h2 class="ea-title" id="care-faq-heading">Частые вопросы об уходе</h2>
+      <div class="ea-faq__grid ea-faq__list">
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Сколько простоит букет?</button><div class="ea-faq__a"><p>В среднем 5–10 дней при правильном уходе. Хризантемы, гвоздики и альстромерии радуют дольше, пионы и тюльпаны — меньше.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Нужно ли добавлять сахар или аспирин?</button><div class="ea-faq__a"><p>Лучше использовать флористическую подкормку — она даёт питание и обеззараживает воду. Домашние средства работают слабее.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Почему опустились головки цветов?</button><div class="ea-faq__a"><p>Чаще всего не хватает воды. Обновите косой срез, смените воду и дайте букету напиться в прохладе пару часов.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Можно ли ставить букет у окна?</button><div class="ea-faq__a"><p>На рассеянном свету — да, но избегайте прямого солнца, подоконника над батареей и сквозняков.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Как ухаживать за розами?</button><div class="ea-faq__a"><p>Косой срез под водой, чистая ваза, удалите нижние листья и шипы. Если голова поникла — заверните в бумагу и опустите в воду на несколько часов.</p></div></div>
+        <div class="ea-faq__item"><button type="button" class="ea-faq__q">Что делать с увядшими цветами?</button><div class="ea-faq__a"><p>Убирайте отдельные увядшие стебли и листья — так оставшиеся цветы простоят заметно дольше.</p></div></div>
       </div>
     </section>
+
+    <script>
+    (function(){
+      var root=document.getElementById('care-faq'); if(!root)return;
+      var faqItems=[].slice.call(root.querySelectorAll('.ea-faq__item'));
+      faqItems.forEach(function(item){
+        var q=item.querySelector('.ea-faq__q'),a=item.querySelector('.ea-faq__a');
+        q.addEventListener('click',function(){
+          var open=item.classList.contains('is-open');
+          faqItems.forEach(function(i){i.classList.remove('is-open');i.querySelector('.ea-faq__a').style.maxHeight=null;});
+          if(!open){item.classList.add('is-open');a.style.maxHeight=a.scrollHeight+'px';}
+        });
+      });
+    })();
+    </script>
   </main>
 
   <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
