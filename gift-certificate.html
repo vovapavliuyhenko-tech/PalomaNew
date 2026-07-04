@@ -4,22 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FFFFFF">
-  <title>Купить букет в Новороссийске с доставкой — каталог PALOMA</title>
-  <meta name="description" content="Авторские букеты, композиции и подарки PALOMA. Фото букета до отправки, доставка точно в срок по Новороссийску, свежесть на неделю.">
+  <title>Подарочный сертификат PALOMA — цветы и кофейня в подарок</title>
+  <meta name="description" content="Подарочный сертификат PALOMA на любую сумму: электронный на email или бумажный с получением в студии. Идеальный подарок на цветы, кофе и десерты. Новороссийск.">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="preloader.css?v=w1">
   <link rel="stylesheet" href="styles.css?v=ph2">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="cart.css?v=w1">
-  <link rel="stylesheet" href="catalog.css?v=pink6">
-  <link rel="stylesheet" href="paloma-wave.css?v=w1">
   <link rel="stylesheet" href="clients.css?v=nav1">
+  <link rel="stylesheet" href="subscription.css?v=w12">
+  <link rel="stylesheet" href="wedding-piggy.css?v=wpb18">
+  <link rel="stylesheet" href="gift-certificate.css?v=gc1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
-  <link rel="stylesheet" href="legal.css?v=2">
+  <link rel="stylesheet" href="legal.css?v=3">
 </head>
-<body>
+<body class="gift-page">
   <a href="#main" class="skip-link">К содержимому</a>
   <!-- PALOMA PAGE LOADER — premium curtain transition -->
   <div class="paloma-page-loader" id="palomaPageLoader" aria-hidden="true">
@@ -70,11 +71,11 @@
 
         <nav class="site-header__nav" aria-label="Основная навигация">
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--catalog" data-dropdown="catalog">
-            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerCatalog" data-cursor="hover">
+            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerGift" data-cursor="hover">
               Каталог
               <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
             </button>
-            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerCatalog">
+            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerGift">
               <div class="catalog-dropdown__inner">
                 <div class="catalog-dropdown__grid">
 
@@ -201,20 +202,6 @@
                     </div>
                   </a>
 
-                  <a href="gift-certificate.html"
-                     class="catalog-nav-item" data-cursor="hover">
-                    <div class="catalog-nav-item__icon" aria-hidden="true">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <rect x="3" y="9" width="18" height="11" rx="1.5"/>
-                        <path d="M3 13h18M12 9v11M12 9S9.6 4 7.6 5.1 8 9 12 9zM12 9s2.4-5 4.4-3.9S16 9 12 9z"/>
-                      </svg>
-                    </div>
-                    <div class="catalog-nav-item__body">
-                      <span class="catalog-nav-item__title">Подарочный сертификат</span>
-                      <span class="catalog-nav-item__sub">Электронный или бумажный</span>
-                    </div>
-                  </a>
-
                 </div>
               </div>
             </div>
@@ -223,12 +210,12 @@
           <a href="event-decoration.html" class="site-header__link">Оформление</a>
 
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
-          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerCatalog" data-cursor="hover">
+          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerWedding" data-cursor="hover">
             Клиентам
             <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
           </button>
 
-          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerCatalog">
+          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerWedding">
             <div class="clients-dropdown__inner">
               <div class="clients-dropdown__grid">
                 <a href="delivery.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h13v10H3zM16 10h4l2 3v4h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Доставка</div><div class="client-nav-card__desc">Зоны, сроки и стоимость</div></div></a>
@@ -276,61 +263,135 @@
     </header>
   </div>
 
-  <main id="main" class="catalog-page">
+  <main class="subscription-page wpb-page gc-page" id="giftCertPage" aria-label="Подарочный сертификат PALOMA">
 
-  <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки">
-    <div class="catalog-breadcrumbs__inner">
-      <ol class="catalog-breadcrumbs__list">
-        <li><a href="index.html">Главная</a></li>
-        <li aria-hidden="true">/</li>
-        <li><span aria-current="page">Каталог</span></li>
-      </ol>
-    </div>
-  </nav>
+    <!-- HERO + конфигуратор сертификата -->
+    <section class="subscription-hero" aria-label="Подарочный сертификат PALOMA">
 
-  <div class="catalog-hero">
-    <div class="catalog-hero__inner">
-      <h1 class="catalog-hero__title">Каталог</h1>
-              </div>
+      <div class="subscription-hero__media" aria-hidden="true">
+        <img class="subscription-hero__img" src="images/paloma/decor/bouquet-2.jpg"
+             alt="" width="1080" height="1350" loading="eager" decoding="async">
+      </div>
+
+      <div class="subscription-hero__content">
+
+        <h1 class="subscription-hero__title">Подарочный сертификат</h1>
+
+        <form class="subscription-form" id="gcForm" novalidate>
+
+          <fieldset class="subscription-form__group">
+            <legend class="subscription-form__legend">Сумма сертификата</legend>
+            <div class="subscription-sizes subscription-sizes--5" data-gc-amounts>
+              <button class="subscription-size" type="button" data-amount="2000"><span class="subscription-size__name">2 000 ₽</span></button>
+              <button class="subscription-size" type="button" data-amount="3000"><span class="subscription-size__name">3 000 ₽</span></button>
+              <button class="subscription-size is-active" type="button" data-amount="5000"><span class="subscription-size__name">5 000 ₽</span></button>
+              <button class="subscription-size" type="button" data-amount="7000"><span class="subscription-size__name">7 000 ₽</span></button>
+              <button class="subscription-size" type="button" data-amount="10000"><span class="subscription-size__name">10 000 ₽</span></button>
             </div>
-
-  <!-- PALOMA фирменная волнистая строка -->
-  <div class="paloma-wave paloma-wave-band" aria-hidden="true">
-    <svg class="paloma-wave__svg" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-        <path id="palomaWaveCatalog" fill="none"
-          d="M0,75 Q200,16 400,75 T800,75 T1200,75"/>
-      </defs>
-      <text class="paloma-wave__text">
-        <textPath href="#palomaWaveCatalog" xlink:href="#palomaWaveCatalog" startOffset="0">×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×</textPath>
-      </text>
-    </svg>
-  </div>
-
-  <div class="catalog-filters-wrap" id="catalogFiltersWrap">
-    <div class="catalog-filters" id="catalogFilters" role="group" aria-label="Фильтры каталога">
-      <button type="button" class="catalog-filter-btn is-active" data-filter="all" aria-pressed="true">Все</button>
-      <button type="button" class="catalog-filter-btn" data-filter="online" aria-pressed="false">Онлайн-витрина</button>
-      <button type="button" class="catalog-filter-btn" data-filter="season" aria-pressed="false">Самый сезон</button>
-      <button type="button" class="catalog-filter-btn" data-filter="bestsellers" aria-pressed="false">Бестселлеры</button>
-      <button type="button" class="catalog-filter-btn" data-filter="compositions" aria-pressed="false">Композиции</button>
-      <button type="button" class="catalog-filter-btn" data-filter="mono" aria-pressed="false">Моно</button>
-      <button type="button" class="catalog-filter-btn" data-filter="wedding" aria-pressed="false">Свадебные</button>
-      <button type="button" class="catalog-filter-btn" data-filter="vases" aria-pressed="false">Вазы и подарки</button>
-      <a href="wedding-piggy-bank.html" class="catalog-filter-btn catalog-filter-btn--link" data-cursor="hover">Свадебная копилка</a>
-      <button type="button" class="catalog-filter-btn" data-filter="subscription" aria-pressed="false">Подписка</button>
-      <button type="button" class="catalog-filter-btn" data-filter="events" aria-pressed="false">Оформление</button>
-              </div>
+            <div class="wpb-custom">
+              <button class="subscription-option wpb-custom__toggle" type="button" data-gc-custom-toggle>Своя сумма</button>
+              <input class="wpb-input wpb-custom__input" type="number" inputmode="numeric" min="1000" step="100"
+                     placeholder="Введите сумму, ₽" data-gc-custom-input hidden aria-label="Своя сумма в рублях">
             </div>
+          </fieldset>
 
-  <div class="catalog-count" id="catalogCount" aria-live="polite"></div>
-
-  <div class="catalog-grid" id="catalogGrid" aria-label="Товары каталога"></div>
-
-  <div class="catalog-empty" id="catalogEmpty" hidden aria-live="polite">
-    <p>В этой категории пока нет товаров.</p>
-    <button type="button" class="btn btn--dark" data-filter="all" id="catalogResetBtn">Показать все</button>
+          <fieldset class="subscription-form__group">
+            <legend class="subscription-form__legend">Формат сертификата</legend>
+            <div class="gc-formats" data-gc-formats role="radiogroup" aria-label="Формат сертификата">
+              <button class="gc-format is-active" type="button" data-format="electronic" role="radio" aria-checked="true">
+                <span class="gc-format__title">Электронный</span>
+                <span class="gc-format__desc">Пришлём на email — можно подарить сразу</span>
+              </button>
+              <button class="gc-format" type="button" data-format="paper" role="radio" aria-checked="false">
+                <span class="gc-format__title">Бумажный</span>
+                <span class="gc-format__desc">Красивый бланк — забрать в студии на Энгельса, 74</span>
+              </button>
             </div>
+          </fieldset>
+
+          <fieldset class="subscription-form__group">
+            <legend class="subscription-form__legend">Имя получателя</legend>
+            <input class="wpb-input" type="text" data-gc-recipient
+                   placeholder="Кому предназначен сертификат" autocomplete="off"
+                   aria-label="Имя получателя">
+          </fieldset>
+
+          <fieldset class="subscription-form__group" data-gc-email-field>
+            <legend class="subscription-form__legend">Email для отправки</legend>
+            <input class="wpb-input" type="email" data-gc-email inputmode="email"
+                   placeholder="name@example.com" autocomplete="email"
+                   aria-label="Email для отправки электронного сертификата">
+          </fieldset>
+
+          <fieldset class="subscription-form__group">
+            <legend class="subscription-form__legend">Текст поздравления <span class="wpb-legend-opt">— по желанию</span></legend>
+            <textarea class="wpb-input wpb-textarea" data-gc-message rows="3" maxlength="300"
+                      placeholder="Поздравление, которое напечатаем в сертификате…"
+                      aria-label="Текст поздравления"></textarea>
+          </fieldset>
+
+          <div class="subscription-summary" data-gc-summary>
+            <div class="subscription-summary__row">
+              <span>Формат</span><span data-gc-sum-format>Электронный</span>
+            </div>
+            <div class="subscription-summary__row">
+              <span>Получатель</span><span data-gc-sum-recipient>—</span>
+            </div>
+            <div class="subscription-summary__row" data-gc-message-row hidden>
+              <span>Поздравление</span><span data-gc-sum-message>—</span>
+            </div>
+            <div class="subscription-summary__total">
+              <span>К оплате</span><span data-gc-sum-total>—</span>
+            </div>
+          </div>
+
+          <button class="subscription-form__submit" type="submit" data-gc-submit>
+            <span>Оформить и оплатить</span> — <span data-gc-sum-btn>—</span>
+          </button>
+
+          <p class="wpb-hint">Оформите заявку — пришлём ссылку на оплату Яндекс&nbsp;Пей. Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a> и <a href="offer.html" target="_blank" rel="noopener">офертой</a>.</p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <!-- КАК ЭТО РАБОТАЕТ -->
+    <section class="wpb-how" aria-label="Как работает подарочный сертификат">
+      <div class="wpb-how__inner">
+        <div class="wpb-how__grid">
+          <article class="wpb-how__step">
+            <span class="wpb-how__badge">Шаг 1</span>
+            <h3 class="wpb-how__step-title">Выбираете сертификат</h3>
+            <p class="wpb-how__step-desc">Сумма, формат, получатель и текст поздравления.</p>
+          </article>
+          <article class="wpb-how__step">
+            <span class="wpb-how__badge">Шаг 2</span>
+            <h3 class="wpb-how__step-title">Оплачиваете онлайн</h3>
+            <p class="wpb-how__step-desc">Пришлём ссылку на оплату Яндекс Пей — картой или СБП.</p>
+          </article>
+          <article class="wpb-how__step">
+            <span class="wpb-how__badge">Шаг 3</span>
+            <h3 class="wpb-how__step-title">Получаете сертификат</h3>
+            <p class="wpb-how__step-desc">Электронный — на email, бумажный — забрать в студии.</p>
+          </article>
+          <article class="wpb-how__step">
+            <span class="wpb-how__badge">Шаг 4</span>
+            <h3 class="wpb-how__step-title">Дарите</h3>
+            <p class="wpb-how__step-desc">Получатель тратит сумму на цветы, кофе и десерты PALOMA.</p>
+          </article>
+        </div>
+
+        <div class="wpb-cta">
+          <div class="wpb-cta__text">
+            <h3 class="wpb-cta__title">Сертификат — всегда в точку</h3>
+            <p class="wpb-cta__desc">Электронный сертификат приходит на email сразу после оплаты — успеете подарить даже в последний момент. Бумажный на фирменном бланке можно забрать в студии на Энгельса, 74. Сумму получатель тратит на любые букеты, напитки и десерты без ограничений по времени.</p>
+          </div>
+          <a href="#giftCertPage" class="wpb-cta__btn" data-cursor="hover">Оформить</a>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -531,8 +592,6 @@
     <div class="custom-cursor__ring"></div>
   </div>
 
-  <script src="paloma-products.js?v=p32"></script>
-  <script src="catalog-data.js?v=p32"></script>
   <script src="preloader.js?v=9"></script>
   <script src="cart-core.js?v=img1"></script>
   <script src="script.js?v=img2"></script>
@@ -541,7 +600,7 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js?v=wl1"></script>
-  <script src="catalog.js?v=img2"></script>
+  <script src="gift-certificate.js?v=gc1"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=press1"></script>
   <script src="cookie-consent.js?v=2"></script>

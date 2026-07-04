@@ -1,0 +1,47 @@
+/* gift-certificate.css — специфика страницы подарочного сертификата.
+   Базовые стили формы наследуются из wedding-piggy.css + subscription.css. */
+
+/* переключатель формата (электронный / бумажный) */
+.gc-formats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.gc-format {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid rgba(27, 26, 24, 0.18);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.gc-format:hover {
+  border-color: rgba(231, 56, 90, 0.5);
+}
+.gc-format.is-active {
+  border-color: #e7385a;
+  background: rgba(231, 56, 90, 0.06);
+  box-shadow: 0 0 0 2px rgba(231, 56, 90, 0.12);
+}
+.gc-format__title {
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: #1b1a18;
+}
+.gc-format__desc {
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(27, 26, 24, 0.6);
+}
+
+@media (max-width: 480px) {
+  .gc-formats {
+    grid-template-columns: 1fr;
+  }
+}
