@@ -110,42 +110,33 @@ function initSubscriptionPage() {
     if (!last) recalc();
 
     const lbl = last ? last.labels : {};
-    const cartId =
-      SUB_ID_PREFIX + "-" + state.plan + "-" + state.count + "-" +
-      state.size + "-" + state.composition + "-" + state.fulfillment;
 
-    if (window.PalomaCart && typeof window.PalomaCart.add === "function") {
-      window.PalomaCart.getItems().forEach((item) => {
-        if (String(item.id).startsWith(SUB_ID_PREFIX)) {
-          window.PalomaCart.remove(item.id);
-        }
-      });
+    /* оплата — модель «ссылки на оплату»: заявка админу в WhatsApp,
+       админ присылает ссылку на оплату Яндекс Пей */
+    const money = last ? last.total : 0;
+    const isTrial = !!(last && last.isTrial);
+    const lines = [
+      "Здравствуйте! Хочу оформить " +
+        (isTrial ? "пробную неделю цветочной подписки" : "цветочную подписку") +
+        " PALOMA.",
+      "",
+      "Тариф: " + (lbl.plan || "—"),
+    ];
+    if (!isTrial) lines.push("Букетов: " + (last ? last.count : 2) + " шт");
+    lines.push(
+      "Размер: " + state.size,
+      "Состав: " + (lbl.composition || "—"),
+      "Получение: " + (lbl.fulfillment || "—"),
+      "Сумма: " + fmt(money),
+      "",
+      "Пришлите, пожалуйста, ссылку на оплату Яндекс Пей.",
+    );
 
-      window.PalomaCart.add({
-        id: cartId,
-        name: last && last.isTrial ? "Пробная неделя подписки" : "Цветочная подписка",
-        price: last ? last.total : 0,
-        qty: 1,
-        size: state.size,
-        category: "subscription",
-        type: "subscription",
-        bg: SUB_BG,
-        addons: [
-          lbl.plan || "",
-          (last ? last.count : 2) + " букета",
-          "Размер " + state.size,
-          lbl.composition || "",
-          lbl.fulfillment || "",
-        ].filter(Boolean),
-      });
-
-      if (typeof window.PalomaCart.openDrawer === "function") {
-        window.PalomaCart.openDrawer();
-      }
-      return;
-    }
-
-    window.location.href = "checkout.html";
+    window.open(
+      "https://wa.me/79897707000?text=" + encodeURIComponent(lines.join("\n")),
+      "_blank",
+      "noopener",
+    );
   });
 }
 

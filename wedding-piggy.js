@@ -121,36 +121,24 @@
 
       const wish = (wishInput && wishInput.value.trim()) || "";
 
-      if (window.PalomaCart && typeof window.PalomaCart.add === "function") {
-        /* один взнос — заменяем прежний, если гость менял сумму */
-        window.PalomaCart.getItems().forEach((item) => {
-          if (String(item.id).startsWith(PIGGY_PREFIX)) {
-            window.PalomaCart.remove(item.id);
-          }
-        });
+      /* оплата — модель «ссылки на оплату»: заявка админу в WhatsApp,
+         админ присылает ссылку на оплату Яндекс Пей */
+      const fmt = (n) => Number(n || 0).toLocaleString("ru-RU") + " ₽";
+      const lines = [
+        "Здравствуйте! Хочу пополнить свадебную копилку PALOMA.",
+        "",
+        "Кому: " + couple,
+        "Сумма сертификата: " + fmt(state.amount),
+      ];
+      if (wish) lines.push("Пожелание для открытки: " + wish);
+      lines.push("", "Пришлите, пожалуйста, ссылку на оплату Яндекс Пей.");
 
-        const addons = ["Кому: " + couple, "Цветочный депозит молодожёнам"];
-        if (wish) addons.push("Открытка: " + wish);
-
-        window.PalomaCart.add({
-          id: PIGGY_PREFIX + "-" + state.amount,
-          name: "Свадебная копилка — сертификат",
-          price: state.amount,
-          qty: 1,
-          size: "—",
-          category: "wedding-piggy",
-          type: "wedding-piggy",
-          bg: PIGGY_BG,
-          addons: addons,
-        });
-
-        if (typeof window.PalomaCart.openDrawer === "function") {
-          window.PalomaCart.openDrawer();
-        }
-        return;
-      }
-
-      window.location.href = "checkout.html";
+      window.open(
+        "https://wa.me/79897707000?text=" +
+          encodeURIComponent(lines.join("\n")),
+        "_blank",
+        "noopener",
+      );
     });
 
     recalc();
