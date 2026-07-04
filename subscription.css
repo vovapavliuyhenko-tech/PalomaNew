@@ -26,6 +26,19 @@ body.subscription-page {
   }
 }
 
+/* выноска про скидку 10% на первую неделю */
+.sub-trial-note {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  border: 1px solid rgba(231, 56, 90, 0.28);
+  border-radius: 12px;
+  background: rgba(231, 56, 90, 0.06);
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 13px;
+  line-height: 1.45;
+  color: #b02a44;
+}
+
 /* Заголовок героя — приподнят, с запасом снизу под хвосты букв */
 .subscription-hero__title {
   margin-top: -0.12em;

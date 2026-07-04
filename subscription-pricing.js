@@ -1,19 +1,20 @@
 /* PALOMA — расчёт цветочной подписки
    Модель: итог = количество букетов × цена выбранного размера.
-   «Пробная неделя» = 1 букет со скидкой 10%. Доставка бесплатная. */
+   Скидка 10% на первую неделю — отдельная выноска, учитывается менеджером
+   при первом заказе (не как отдельный формат). Доставка бесплатная. */
 window.PALOMA_SUBSCRIPTION_PRICING = {
   sizes: {
-    S: { label: "S", bouquetPrice: 2000 },
-    M: { label: "M", bouquetPrice: 3500 },
-    L: { label: "L", bouquetPrice: 4500 },
-    XL: { label: "XL", bouquetPrice: 5500 },
-    XXL: { label: "XXL", bouquetPrice: 7500 },
+    S: { label: "S", bouquetPrice: 3000 },
+    M: { label: "M", bouquetPrice: 5000 },
+    L: { label: "L", bouquetPrice: 7000 },
+    XL: { label: "XL", bouquetPrice: 9000 },
+    XXL: { label: "XXL", bouquetPrice: 11000 },
   },
   plans: {
     month: { label: "Подписка на месяц", trial: false },
-    trial: { label: "Пробная неделя", trial: true, discount: 0.1 },
+    two_months: { label: "Подписка на два месяца", trial: false },
   },
-  counts: { 2: 2, 4: 4 },
+  counts: { 2: 2, 4: 4, 8: 8 },
   composition: {
     mono: "Моно",
     author: "Авторский",
