@@ -509,7 +509,7 @@
         <div class="ea-cta__formcol">
           <span class="ea-eyebrow" data-reveal>контакты</span>
           <h2 class="ea-title" data-reveal style="--d:.05s">Оформить событие</h2>
-          <form class="ea-form" id="eaForm" novalidate data-reveal style="--d:.1s">
+          <form class="ea-form" id="eaForm" data-reveal style="--d:.1s">
             <div class="ea-form__field ea-form__field--full"><label for="ea-name">Имя</label><input id="ea-name" type="text" placeholder="Ваше имя" required></div>
             <div class="ea-form__field ea-form__field--full"><label for="ea-phone">Телефон</label><input id="ea-phone" type="tel" placeholder="+7 (000) 000-00-00" required></div>
             <div class="ea-form__field"><label for="ea-date">Дата события</label><input id="ea-date" type="text" placeholder="Дата события"></div>
@@ -896,7 +896,7 @@
 
     /* форма-заявка */
     var f=document.getElementById('eaForm');
-    if(f)f.addEventListener('submit',function(e){e.preventDefault();var c=document.getElementById('ea-consent'),ce=document.getElementById('ea-consent-err');if(c&&!c.checked){if(ce)ce.hidden=false;c.focus();return;}if(ce)ce.hidden=true;var ok=document.getElementById('eaOk');if(ok)ok.hidden=false;f.querySelectorAll('input,select,textarea,button').forEach(function(el){el.disabled=true;});});
+    if(f)f.addEventListener('submit',function(e){e.preventDefault();if(!f.checkValidity()){f.reportValidity();return;}var c=document.getElementById('ea-consent'),ce=document.getElementById('ea-consent-err');if(c&&!c.checked){if(ce)ce.hidden=false;c.focus();return;}if(ce)ce.hidden=true;var ok=document.getElementById('eaOk');if(ok)ok.hidden=false;f.querySelectorAll('input,select,textarea,button').forEach(function(el){el.disabled=true;});});
   })();
   </script>
 
