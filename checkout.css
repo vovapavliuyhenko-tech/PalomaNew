@@ -845,6 +845,13 @@ body.checkout-page .co-main {
   margin-bottom: clamp(24px, 3vw, 36px);
 }
 
+.co-upsell__hint {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--co-muted, rgba(27, 26, 24, 0.6));
+}
+
 .co-upsell__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
