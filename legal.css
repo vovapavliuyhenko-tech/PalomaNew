@@ -374,7 +374,7 @@
 }
 /* компактнее по высоте — весь блок в один экран */
 .care-page .contacts-studio__visual {
-  min-height: clamp(360px, 74vh, 620px);
+  min-height: clamp(320px, 52vh, 540px);
 }
 .care-page .contacts-studio__rows,
 .care-page .care-steps {
