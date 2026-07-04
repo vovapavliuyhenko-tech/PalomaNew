@@ -61,6 +61,18 @@
   border-color: #e7385a;
   box-shadow: 0 0 0 3px rgba(231, 56, 90, 0.12);
 }
+/* пожелание — многострочное поле */
+.wpb-textarea {
+  min-height: 84px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.wpb-legend-opt {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: rgba(27, 26, 24, 0.4);
+}
 
 /* «своя сумма» */
 .wpb-custom {

@@ -21,12 +21,15 @@
     const customToggle = page.querySelector("[data-wpb-custom-toggle]");
     const customInput = page.querySelector("[data-wpb-custom-input]");
     const coupleInput = page.querySelector("[data-wpb-couple]");
+    const wishInput = page.querySelector("[data-wpb-wish]");
 
     const out = {
       couple: page.querySelector("[data-wpb-sum-couple]"),
       amount: page.querySelector("[data-wpb-sum-amount]"),
       total: page.querySelector("[data-wpb-sum-total]"),
       btn: page.querySelector("[data-wpb-sum-btn]"),
+      wish: page.querySelector("[data-wpb-sum-wish]"),
+      wishRow: page.querySelector("[data-wpb-wish-row]"),
     };
 
     const state = { amount: 5000, custom: false };
@@ -48,6 +51,13 @@
       if (out.amount) out.amount.textContent = amt ? fmt(amt) : "—";
       if (out.total) out.total.textContent = amt ? fmt(amt) : "—";
       if (out.btn) out.btn.textContent = amt ? fmt(amt) : "—";
+      const wish = (wishInput && wishInput.value.trim()) || "";
+      if (out.wishRow) out.wishRow.hidden = !wish;
+      if (out.wish) {
+        out.wish.textContent = wish
+          ? (wish.length > 40 ? wish.slice(0, 40) + "…" : wish)
+          : "—";
+      }
     }
 
     /* пресеты */
@@ -87,6 +97,7 @@
     }
 
     if (coupleInput) coupleInput.addEventListener("input", recalc);
+    if (wishInput) wishInput.addEventListener("input", recalc);
 
     function flash(el) {
       if (!el) return;
@@ -108,6 +119,8 @@
         return;
       }
 
+      const wish = (wishInput && wishInput.value.trim()) || "";
+
       if (window.PalomaCart && typeof window.PalomaCart.add === "function") {
         /* один взнос — заменяем прежний, если гость менял сумму */
         window.PalomaCart.getItems().forEach((item) => {
@@ -115,6 +128,9 @@
             window.PalomaCart.remove(item.id);
           }
         });
+
+        const addons = ["Кому: " + couple, "Цветочный депозит молодожёнам"];
+        if (wish) addons.push("Открытка: " + wish);
 
         window.PalomaCart.add({
           id: PIGGY_PREFIX + "-" + state.amount,
@@ -125,7 +141,7 @@
           category: "wedding-piggy",
           type: "wedding-piggy",
           bg: PIGGY_BG,
-          addons: ["Кому: " + couple, "Цветочный депозит молодожёнам"],
+          addons: addons,
         });
 
         if (typeof window.PalomaCart.openDrawer === "function") {
