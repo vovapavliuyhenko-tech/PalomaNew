@@ -214,6 +214,9 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
   font-size:clamp(12px,.98vw,14px);line-height:1.45;letter-spacing:0;text-transform:none;color:rgba(231,56,90,.9)}
 .ea-serv__price::before{content:"→";font-style:normal;font-weight:600;margin-right:8px}
 .ea-serv__price b{display:inline;font-family:var(--sans);font-style:normal;font-weight:700;font-size:1em;letter-spacing:0;text-transform:none;color:var(--wine);margin:0 0 0 5px}
+/* CTA-ссылка на обороте карточки (переиспользует стиль .ea-serv__price) */
+a.ea-serv__price{display:block;text-decoration:none;cursor:pointer;transition:color .25s ease}
+a.ea-serv__price:hover{color:var(--wine)}
 
 /* ── ФЛИП-КАРТОЧКА услуги: лицо — фото, при наведении/тапе плавно
    переворачивается, сзади текст (как в блоке «Наши преимущества») ── */
