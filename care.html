@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="cart.css?v=w1">
   <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="clients-pages.css?v=w1">
+  <link rel="stylesheet" href="contacts.css?v=wow9">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
   <link rel="stylesheet" href="legal.css?v=3">
@@ -262,73 +263,148 @@
   </div>
 
   <main id="main" class="client-page">
-    <div class="page-compact-header">
-      <nav class="page-compact-header__breadcrumbs" aria-label="Навигация">
-        <a href="index.html">Главная</a>
-        <span class="sep" aria-hidden="true">—</span>
-        <span class="current" aria-current="page">Уход за букетом</span>
-      </nav>
-      <h1 class="page-compact-header__title">Уход за букетом</h1>
-      <p class="page-compact-header__sub">
-        Пять простых правил от наших флористов — и букет простоит свежим 7 дней и дольше.
-      </p>
-    </div>
+    <section class="contacts-studio" aria-labelledby="care-studio-heading">
+      <div class="contacts-studio__inner">
+        <div class="contacts-studio__visual">
+          <img class="contacts-studio__video" src="images/paloma/decor/bouquet-1.jpg" alt="Свежий букет PALOMA" loading="eager" decoding="async">
+        </div>
 
-    <section class="video-block video-block--care" aria-label="Видео об уходе за букетом">
-      <div class="video-block__media">
-        <div class="video-block__placeholder" aria-hidden="true"></div>
-      </div>
-      <div class="video-block__overlay" aria-hidden="true"></div>
-      <div class="video-block__content">
-        <span class="video-block__eyebrow">PALOMA · care</span>
-        <h2 class="video-block__title">Как продлить жизнь букета</h2>
-        <p class="video-block__lead">Скоро здесь будет короткое видео от нашей команды.</p>
+        <div class="contacts-studio__panel">
+          <h2 class="contacts-studio__brand" id="care-studio-heading">Уход за букетом</h2>
+          <p class="contacts-studio__subtitle">5 шагов · свежесть 7 дней и дольше</p>
+
+          <ul class="contacts-studio__rows">
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">1 · Подрезка</span>
+              <span>Косой срез 2–3 см острым ножом сразу после получения</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">2 · Вода</span>
+              <span>Чистая, комнатной температуры — меняйте каждые 1–2 дня</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">3 · Место</span>
+              <span>Прохлада без прямых лучей, батарей и сквозняков</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">4 · Упаковка</span>
+              <span>Снимите плёнку, если ставите цветы в вазу — так легче дышать</span>
+            </li>
+            <li class="contacts-studio__row">
+              <span class="contacts-studio__label">5 · Подкормка</span>
+              <span>Добавьте флористическую подкормку при каждой смене воды</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="info-cards-section info-cards-section--light">
-      <div class="info-cards-section__inner">
-        <header class="info-cards-section__header info-cards-section--centered">
-          <span class="info-cards-section__eyebrow">[ Советы ]</span>
-          <h2 class="info-cards-section__title">Пять правил ухода</h2>
+    <section class="contacts-channels" aria-label="Рекомендации по уходу за букетом">
+      <div class="contacts-channels__inner">
+        <header class="contacts-channels__head">
+          <h2 class="contacts-channels__title">Рекомендации флориста</h2>
         </header>
-        <div class="info-cards-grid" data-cols="3">
-          <article class="info-card" data-cursor="hover">
-            <div class="info-card__num" aria-hidden="true">01</div>
-            <h3 class="info-card__title">Подрезать стебли</h3>
-            <p class="info-card__desc">Под углом 45° острым ножом на 2–3 см — сразу после получения букета.</p>
+        <div class="contacts-channels__grid">
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v4a6 6 0 0 1-12 0V3zM6 21h12M9 21v-4M15 21v-4"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Чистая ваза</span>
+              <span class="ch-card__sub">Мойте вазу перед каждой сменой воды</span>
+            </span>
           </article>
-          <article class="info-card" data-cursor="hover">
-            <div class="info-card__num" aria-hidden="true">02</div>
-            <h3 class="info-card__title">Менять воду</h3>
-            <p class="info-card__desc">Каждые 1–2 дня наливайте чистую воду комнатной температуры.</p>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3s6 6 6 10a6 6 0 0 1-12 0c0-4 6-10 6-10z"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Комнатная вода</span>
+              <span class="ch-card__sub">Не ледяная — цветы пьют её охотнее</span>
+            </span>
           </article>
-          <article class="info-card" data-cursor="hover">
-            <div class="info-card__num" aria-hidden="true">03</div>
-            <h3 class="info-card__title">Держать вдали от солнца</h3>
-            <p class="info-card__desc">Прохладное место без прямых лучей, батарей и сквозняков.</p>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Вдали от солнца</span>
+              <span class="ch-card__sub">Прямые лучи и жара ускоряют увядание</span>
+            </span>
           </article>
-          <article class="info-card" data-cursor="hover">
-            <div class="info-card__num" aria-hidden="true">04</div>
-            <h3 class="info-card__title">Убрать упаковку при необходимости</h3>
-            <p class="info-card__desc">Снимите декоративную плёнку, если цветы в вазе — так им легче дышать.</p>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h16M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M6 8l1 12h10l1-12"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Без фруктов рядом</span>
+              <span class="ch-card__sub">Этилен от фруктов сокращает жизнь цветов</span>
+            </span>
           </article>
-          <article class="info-card" data-cursor="hover">
-            <div class="info-card__num" aria-hidden="true">05</div>
-            <h3 class="info-card__title">Обновлять срез</h3>
-            <p class="info-card__desc">При смене воды слегка подрежьте стебли — так цветы лучше пьют влагу.</p>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c4-3 7-6 7-10a5 5 0 0 0-7-4.6A5 5 0 0 0 5 11c0 4 3 7 7 10z"/><path d="M12 6v9"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Удаляйте листья</span>
+              <span class="ch-card__sub">Ниже уровня воды — чтобы она не мутнела</span>
+            </span>
+          </article>
+
+          <article class="ch-card">
+            <span class="ch-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M5 9l7-3 7 3M5 15l7-3 7 3"/></svg>
+            </span>
+            <span class="ch-card__body">
+              <span class="ch-card__name">Обновляйте срез</span>
+              <span class="ch-card__sub">Подрезайте стебли при каждой смене воды</span>
+            </span>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="client-cta">
-      <div class="client-cta__inner">
-        <h2 class="client-cta__title">Нужен свежий букет?</h2>
-        <p class="client-cta__lead">Соберём из свежих цветов и привезём день в день — или подготовим к самовывозу на Энгельса, 74/82.</p>
-        <div class="client-cta__actions">
-          <a href="catalog.html" class="btn btn--dark client-cta__btn" data-cursor="hover">В каталог</a>
-          <a href="delivery.html" class="btn btn--outline client-cta__btn" data-cursor="hover">Доставка</a>
+    <section class="faq-lines" aria-labelledby="care-faq-heading">
+      <div class="faq-lines__inner">
+        <header class="faq-lines__header">
+          <span class="faq-lines__eyebrow">[ FAQ ]</span>
+          <h2 class="faq-lines__title" id="care-faq-heading">Частые вопросы об уходе</h2>
+        </header>
+        <div class="faq-lines__list">
+          <article class="faq-lines__row" data-cursor="hover">
+            <p class="faq-lines__q">Сколько простоит букет?</p>
+            <p class="faq-lines__a">В среднем 5–10 дней при правильном уходе. Хризантемы, гвоздики и альстромерии радуют дольше, пионы и тюльпаны — меньше.</p>
+            <div class="faq-lines__thumb faq-lines__thumb--a" aria-hidden="true"></div>
+          </article>
+          <article class="faq-lines__row" data-cursor="hover">
+            <p class="faq-lines__q">Нужно ли добавлять сахар или аспирин?</p>
+            <p class="faq-lines__a">Лучше использовать флористическую подкормку — она даёт питание и обеззараживает воду. Домашние средства работают слабее.</p>
+            <div class="faq-lines__thumb faq-lines__thumb--b" aria-hidden="true"></div>
+          </article>
+          <article class="faq-lines__row" data-cursor="hover">
+            <p class="faq-lines__q">Почему опустились головки цветов?</p>
+            <p class="faq-lines__a">Чаще всего не хватает воды. Обновите косой срез, смените воду и дайте букету напиться в прохладе пару часов.</p>
+            <div class="faq-lines__thumb faq-lines__thumb--c" aria-hidden="true"></div>
+          </article>
+          <article class="faq-lines__row" data-cursor="hover">
+            <p class="faq-lines__q">Можно ли ставить букет у окна?</p>
+            <p class="faq-lines__a">На рассеянном свету — да, но избегайте прямого солнца, подоконника над батареей и сквозняков.</p>
+            <div class="faq-lines__thumb faq-lines__thumb--d" aria-hidden="true"></div>
+          </article>
+          <article class="faq-lines__row" data-cursor="hover">
+            <p class="faq-lines__q">Как ухаживать за розами?</p>
+            <p class="faq-lines__a">Косой срез под водой, чистая ваза, удалите нижние листья и шипы. Если голова поникла — заверните в бумагу и опустите в воду на несколько часов.</p>
+            <div class="faq-lines__thumb faq-lines__thumb--e" aria-hidden="true"></div>
+          </article>
+          <article class="faq-lines__row" data-cursor="hover">
+            <p class="faq-lines__q">Что делать с увядшими цветами?</p>
+            <p class="faq-lines__a">Убирайте отдельные увядшие стебли и листья — так оставшиеся цветы простоят заметно дольше.</p>
+            <div class="faq-lines__thumb faq-lines__thumb--f" aria-hidden="true"></div>
+          </article>
         </div>
       </div>
     </section>
