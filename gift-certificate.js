@@ -31,6 +31,8 @@
     var recipientInput = page.querySelector("[data-gc-recipient]");
     var emailField = page.querySelector("[data-gc-email-field]");
     var emailInput = page.querySelector("[data-gc-email]");
+    var addressField = page.querySelector("[data-gc-address-field]");
+    var addressInput = page.querySelector("[data-gc-address]");
     var messageInput = page.querySelector("[data-gc-message]");
 
     var out = {
@@ -62,7 +64,11 @@
       if (out.btn) out.btn.textContent = amt ? fmt(amt) : "—";
       if (out.format) {
         out.format.textContent =
-          state.format === "paper" ? "Бумажный · самовывоз" : "Электронный";
+          state.format === "pickup"
+            ? "Бумажный · самовывоз"
+            : state.format === "delivery"
+              ? "Бумажный · доставка"
+              : "Электронный";
       }
       var recipient = (recipientInput && recipientInput.value.trim()) || "";
       if (out.recipient) out.recipient.textContent = recipient || "—";
@@ -77,12 +83,18 @@
       }
     }
 
-    /* email нужен только для электронного формата */
-    function updateEmailField() {
-      if (!emailField) return;
+    /* email — только для электронного, адрес — только для доставки */
+    function updateConditionalFields() {
       var isElectronic = state.format === "electronic";
-      emailField.hidden = !isElectronic;
-      if (!isElectronic && emailInput) emailInput.classList.remove("wpb-err");
+      var isDelivery = state.format === "delivery";
+      if (emailField) {
+        emailField.hidden = !isElectronic;
+        if (!isElectronic && emailInput) emailInput.classList.remove("wpb-err");
+      }
+      if (addressField) {
+        addressField.hidden = !isDelivery;
+        if (!isDelivery && addressInput) addressInput.classList.remove("wpb-err");
+      }
     }
 
     /* пресеты суммы */
@@ -124,13 +136,13 @@
     /* формат */
     formatBtns.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        state.format = btn.dataset.format === "paper" ? "paper" : "electronic";
+        state.format = btn.dataset.format || "electronic";
         formatBtns.forEach(function (b) {
           var on = b === btn;
           b.classList.toggle("is-active", on);
           b.setAttribute("aria-checked", on ? "true" : "false");
         });
-        updateEmailField();
+        updateConditionalFields();
         recalc();
       });
     });
@@ -169,19 +181,30 @@
         emailInput && emailInput.focus();
         return;
       }
+      var address = (addressInput && addressInput.value.trim()) || "";
+      if (state.format === "delivery" && address.length < 5) {
+        flash(addressInput);
+        addressInput && addressInput.focus();
+        return;
+      }
       var message = (messageInput && messageInput.value.trim()) || "";
+
+      var formatText =
+        state.format === "pickup"
+          ? "бумажный (самовывоз в студии)"
+          : state.format === "delivery"
+            ? "бумажный (с доставкой)"
+            : "электронный (на email)";
 
       var lines = [
         "Здравствуйте! Хочу оформить подарочный сертификат PALOMA.",
         "",
         "Сумма: " + fmt(state.amount),
-        "Формат: " +
-          (state.format === "paper"
-            ? "бумажный (самовывоз в студии)"
-            : "электронный (на email)"),
+        "Формат: " + formatText,
         "Получатель: " + recipient,
       ];
       if (state.format === "electronic") lines.push("Email для отправки: " + email);
+      if (state.format === "delivery") lines.push("Адрес доставки: " + address);
       if (message) lines.push("Поздравление: " + message);
       lines.push("", "Пришлите, пожалуйста, ссылку на оплату Яндекс Пей.");
 
@@ -193,7 +216,7 @@
       window.open(url, "_blank", "noopener");
     });
 
-    updateEmailField();
+    updateConditionalFields();
     recalc();
   }
 

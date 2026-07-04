@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FFFFFF">
   <title>Подарочный сертификат PALOMA — цветы и кофейня в подарок</title>
-  <meta name="description" content="Подарочный сертификат PALOMA на любую сумму: электронный на email или бумажный с получением в студии. Идеальный подарок на цветы, кофе и десерты. Новороссийск.">
+  <meta name="description" content="Подарочный сертификат PALOMA на любую сумму: электронный на email или бумажный — самовывоз из студии либо с доставкой. Идеальный подарок на цветы, кофе и десерты. Новороссийск.">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="preloader.css?v=w1">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="subscription.css?v=w12">
   <link rel="stylesheet" href="wedding-piggy.css?v=wpb18">
-  <link rel="stylesheet" href="gift-certificate.css?v=gc1">
+  <link rel="stylesheet" href="gift-certificate.css?v=gc2">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
   <link rel="stylesheet" href="legal.css?v=3">
@@ -302,9 +302,13 @@
                 <span class="gc-format__title">Электронный</span>
                 <span class="gc-format__desc">Пришлём на email — можно подарить сразу</span>
               </button>
-              <button class="gc-format" type="button" data-format="paper" role="radio" aria-checked="false">
-                <span class="gc-format__title">Бумажный</span>
-                <span class="gc-format__desc">Красивый бланк — забрать в студии на Энгельса, 74</span>
+              <button class="gc-format" type="button" data-format="pickup" role="radio" aria-checked="false">
+                <span class="gc-format__title">Бумажный в студии</span>
+                <span class="gc-format__desc">Красивый бланк — забрать на Энгельса, 74</span>
+              </button>
+              <button class="gc-format" type="button" data-format="delivery" role="radio" aria-checked="false">
+                <span class="gc-format__title">Бумажный с доставкой</span>
+                <span class="gc-format__desc">Привезём бланк по адресу получателя</span>
               </button>
             </div>
           </fieldset>
@@ -321,6 +325,13 @@
             <input class="wpb-input" type="email" data-gc-email inputmode="email"
                    placeholder="name@example.com" autocomplete="email"
                    aria-label="Email для отправки электронного сертификата">
+          </fieldset>
+
+          <fieldset class="subscription-form__group" data-gc-address-field hidden>
+            <legend class="subscription-form__legend">Адрес доставки</legend>
+            <input class="wpb-input" type="text" data-gc-address
+                   placeholder="Город, улица, дом, квартира" autocomplete="off"
+                   aria-label="Адрес доставки сертификата">
           </fieldset>
 
           <fieldset class="subscription-form__group">
@@ -374,7 +385,7 @@
           <article class="wpb-how__step">
             <span class="wpb-how__badge">Шаг 3</span>
             <h3 class="wpb-how__step-title">Получаете сертификат</h3>
-            <p class="wpb-how__step-desc">Электронный — на email, бумажный — забрать в студии.</p>
+            <p class="wpb-how__step-desc">Электронный — на email, бумажный — в студии или с доставкой.</p>
           </article>
           <article class="wpb-how__step">
             <span class="wpb-how__badge">Шаг 4</span>
@@ -600,7 +611,7 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js?v=wl1"></script>
-  <script src="gift-certificate.js?v=gc1"></script>
+  <script src="gift-certificate.js?v=gc2"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=press1"></script>
   <script src="cookie-consent.js?v=2"></script>
