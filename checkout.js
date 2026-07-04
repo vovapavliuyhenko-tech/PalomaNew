@@ -10,8 +10,8 @@
 
   const CART_KEY = "paloma_cart_v3";
   const ORDER_KEY = "paloma_last_order";
-  const DELIVERY_COST = 300;
-  const FREE_DELIVERY = 10000;
+  const DELIVERY_COST = 350;
+  const FREE_DELIVERY = 7000;
   const CARD_COST = 0;
 
   const UPSELL_ITEMS = [
@@ -203,11 +203,11 @@
     }
     if ($deliveryTotal) {
       $deliveryTotal.textContent =
-        delivery === 0
-          ? deliveryType === "pickup"
-            ? "Бесплатно"
-            : "0 ₽"
-          : delivery.toLocaleString("ru-RU") + " ₽";
+        deliveryType === "pickup" || deliveryType === "ask_recipient"
+          ? "Бесплатно"
+          : subtotal >= FREE_DELIVERY
+            ? "Бесплатно по городу"
+            : "от 350 ₽";
     }
     if ($total) $total.textContent = total.toLocaleString("ru-RU") + " ₽";
     if ($mobileTotal) {
@@ -251,8 +251,7 @@
       $addrFields.hidden = type !== "courier";
     }
     if ($deliveryPrice) {
-      $deliveryPrice.textContent =
-        type === "pickup" ? "Бесплатно" : DELIVERY_COST + " ₽";
+      $deliveryPrice.textContent = type === "pickup" ? "Бесплатно" : "от 350 ₽";
     }
     calcTotals(getCart());
   }
@@ -341,7 +340,7 @@
 
   document.addEventListener("paloma-cart-updated", updateView);
 
-  const ALLOWED_PAYMENTS = ["payment_on_receipt", "qr_after_manager_confirmation"];
+  const ALLOWED_PAYMENTS = ["payment_on_receipt", "online"];
   let submitting = false;
 
   /* показать поле выбранного мессенджера, скрыть остальные */
