@@ -592,9 +592,14 @@ main.contacts-page {
 .ch-card__sub {
   font-size: 13px;
   color: var(--color-text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+.contacts-channels__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(28px, 4vw, 44px);
 }
 .ch-card__arrow {
   position: relative;
