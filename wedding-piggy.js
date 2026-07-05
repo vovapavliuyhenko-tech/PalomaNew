@@ -22,6 +22,8 @@
     const customInput = page.querySelector("[data-wpb-custom-input]");
     const coupleInput = page.querySelector("[data-wpb-couple]");
     const wishInput = page.querySelector("[data-wpb-wish]");
+    const consent = page.querySelector("[data-wpb-consent]");
+    const submitBtn = page.querySelector("[data-wpb-submit]");
 
     const out = {
       couple: page.querySelector("[data-wpb-sum-couple]"),
@@ -99,6 +101,16 @@
     if (coupleInput) coupleInput.addEventListener("input", recalc);
     if (wishInput) wishInput.addEventListener("input", recalc);
 
+    /* согласие: без галочки кнопка недоступна */
+    function syncConsent() {
+      if (!submitBtn) return;
+      const on = !!consent && consent.checked;
+      submitBtn.disabled = !on;
+      submitBtn.classList.toggle("is-disabled", !on);
+    }
+    if (consent) consent.addEventListener("change", syncConsent);
+    syncConsent();
+
     function flash(el) {
       if (!el) return;
       el.classList.add("wpb-err");
@@ -107,6 +119,11 @@
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
+      if (consent && !consent.checked) {
+        flash(consent.closest(".sub-consent") || consent);
+        return;
+      }
 
       const couple = (coupleInput && coupleInput.value.trim()) || "";
       if (!couple) {
