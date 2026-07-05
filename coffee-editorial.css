@@ -790,12 +790,20 @@
    растянута во всю ширину экрана (full-bleed), без верхнего отступа каталога.
    main{overflow-x:hidden} гарантирует отсутствие горизонтального скролла. */
 .cf-menu .cf-menu-catalog.catalog-page {
-  padding: 0 clamp(12px, 3vw, 48px);
+  padding: 0;
   margin-top: clamp(20px, 3vw, 36px);
   max-width: none;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* секция меню без боковых отступов панели — сетка карточек занимает всю
+   ширину контента и выравнивается по краям ровно как каталог (карточка 323px,
+   отступ слева 6px). max-width:none снимает лимит редакторского контейнера. */
+.cf-menu.ea-panel--pad {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* фильтры разделов — по левому краю, без липкости/«погони» при скролле */
@@ -814,8 +822,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   max-width: none;
-  padding-left: 0;
-  padding-right: 0;
+  /* боковой отступ фильтров наследуется от .catalog-filters (как в каталоге) */
 }
 
 .cf-menu .catalog-count {

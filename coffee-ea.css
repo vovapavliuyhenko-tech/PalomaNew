@@ -52,7 +52,7 @@ body.coffee-page{overflow-x:clip!important}
   background:var(--wine);box-shadow:0 0 0 4px rgba(231, 56, 90,.12)}
 
 /* ── БЛОК МЕНЮ (как на скриншотах sjostrand: строки + фото при наведении) ── */
-.cf-menu{background:var(--paper);border-top:1px solid var(--cream-line)}
+.cf-menu{background:transparent;border-top:none}
 .cf-menu__tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:clamp(28px,3vw,44px) 0 clamp(30px,3vw,50px)}
 .cf-menu__tab{font-family:var(--fdisplay);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--muted);background:none;border:1px solid var(--eline);border-radius:40px;padding:10px 22px;cursor:pointer;transition:.3s}
