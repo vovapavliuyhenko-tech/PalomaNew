@@ -215,6 +215,19 @@
                     </div>
                   </a>
 
+                  <a href="catalog.html#corporate"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Корпоративные букеты</span>
+                      <span class="catalog-nav-item__sub">Для бизнеса, по договору</span>
+                    </div>
+                  </a>
+
                 </div>
               </div>
             </div>
@@ -318,6 +331,7 @@
       <button type="button" class="catalog-filter-btn" data-filter="wedding" aria-pressed="false">Свадебные</button>
       <button type="button" class="catalog-filter-btn" data-filter="vases" aria-pressed="false">Вазы и подарки</button>
       <a href="wedding-piggy-bank.html" class="catalog-filter-btn catalog-filter-btn--link" data-cursor="hover">Свадебная копилка</a>
+      <a href="#corporate" class="catalog-filter-btn catalog-filter-btn--link" data-cursor="hover">Корпоративные букеты</a>
       <button type="button" class="catalog-filter-btn" data-filter="subscription" aria-pressed="false">Подписка</button>
       <button type="button" class="catalog-filter-btn" data-filter="events" aria-pressed="false">Оформление</button>
               </div>
@@ -332,7 +346,7 @@
     <button type="button" class="btn btn--dark" data-filter="all" id="catalogResetBtn">Показать все</button>
             </div>
 
-  <section class="catalog-corporate" aria-labelledby="catalogCorpHeading">
+  <section class="catalog-corporate" id="corporate" aria-labelledby="catalogCorpHeading">
     <div class="catalog-corporate__inner">
       <span class="catalog-corporate__eyebrow">Бизнесу</span>
       <h2 class="catalog-corporate__title" id="catalogCorpHeading">Корпоративные букеты</h2>
@@ -352,7 +366,7 @@
   </section>
 
   <style>
-    .catalog-corporate{margin:clamp(56px,8vw,104px) auto clamp(24px,4vw,56px);padding:0 clamp(16px,5vw,48px);max-width:1180px;}
+    .catalog-corporate{margin:clamp(56px,8vw,104px) auto clamp(24px,4vw,56px);padding:0 clamp(16px,5vw,48px);max-width:1180px;scroll-margin-top:calc(var(--paloma-header-offset, 96px) + 24px);}
     .catalog-corporate__inner{background:#1B1A18;color:#FBF6E8;border-radius:24px;padding:clamp(32px,4.5vw,64px) clamp(28px,4.5vw,64px) clamp(36px,5vw,68px);}
     .catalog-corporate__eyebrow{display:block;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#E7385A;margin:0 0 18px;}
     .catalog-corporate__title{font-size:clamp(30px,4vw,48px);margin:0 0 22px;line-height:1.08;padding-bottom:.08em;}
