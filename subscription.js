@@ -105,8 +105,21 @@ function initSubscriptionPage() {
 
   recalc();
 
+  /* Кнопка неактивна, пока не отмечено согласие */
+  const consent = page.querySelector("[data-subscription-consent]");
+  const submitBtn = page.querySelector("[data-subscription-submit]");
+  function syncConsent() {
+    if (!submitBtn) return;
+    const on = !!consent && consent.checked;
+    submitBtn.disabled = !on;
+    submitBtn.classList.toggle("is-disabled", !on);
+  }
+  if (consent) consent.addEventListener("change", syncConsent);
+  syncConsent();
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (consent && !consent.checked) return;
     if (!last) recalc();
 
     const lbl = last ? last.labels : {};

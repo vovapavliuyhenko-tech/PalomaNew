@@ -150,6 +150,18 @@
     if (recipientInput) recipientInput.addEventListener("input", recalc);
     if (messageInput) messageInput.addEventListener("input", recalc);
 
+    /* Кнопка неактивна, пока не отмечено согласие */
+    var gcConsent = page.querySelector("[data-gc-consent]");
+    var gcSubmit = page.querySelector("[data-gc-submit]");
+    function gcSyncConsent() {
+      if (!gcSubmit) return;
+      var on = !!gcConsent && gcConsent.checked;
+      gcSubmit.disabled = !on;
+      gcSubmit.classList.toggle("is-disabled", !on);
+    }
+    if (gcConsent) gcConsent.addEventListener("change", gcSyncConsent);
+    gcSyncConsent();
+
     function flash(el) {
       if (!el) return;
       el.classList.add("wpb-err");
@@ -164,6 +176,8 @@
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      if (gcConsent && !gcConsent.checked) return;
 
       if (!state.amount || state.amount < 1000) {
         flash(state.custom ? customInput : amountsWrap);

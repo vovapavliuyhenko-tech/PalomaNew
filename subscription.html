@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="cart.css?v=w1">
   <link rel="stylesheet" href="clients.css?v=nav1">
-  <link rel="stylesheet" href="subscription.css?v=w13">
+  <link rel="stylesheet" href="subscription.css?v=w14">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
   <link rel="stylesheet" href="legal.css?v=2">
@@ -372,7 +372,12 @@
           </div>
         </div>
 
-        <button class="subscription-form__submit" type="submit" data-subscription-submit>
+        <label class="sub-consent">
+          <input type="checkbox" data-subscription-consent>
+          <span>Я согласен(на) на обработку персональных данных и принимаю <a href="privacy.html" target="_blank" rel="noopener">Политику конфиденциальности</a> и <a href="offer.html" target="_blank" rel="noopener">оферту</a>.</span>
+        </label>
+
+        <button class="subscription-form__submit" type="submit" data-subscription-submit disabled>
           <span data-submit-label>Оформить подписку</span> — <span data-sum-total-btn>—</span>
         </button>
 
@@ -707,7 +712,7 @@
 
   <script src="wishlist.js?v=wl1"></script>
   <script src="subscription-pricing.js?v=sub2"></script>
-  <script src="subscription.js?v=sub3"></script>
+  <script src="subscription.js?v=sub4"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=press1"></script>
   <script src="cookie-consent.js?v=2"></script>

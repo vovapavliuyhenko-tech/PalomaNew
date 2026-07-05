@@ -187,6 +187,31 @@ body.subscription-page {
   color: #E7385A;
 }
 
+/* ── Согласие перед оформлением ── */
+.sub-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: clamp(16px, 2vw, 22px);
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--paloma-text, #1B1A18);
+  cursor: pointer;
+}
+.sub-consent input {
+  flex: none;
+  margin-top: 1px;
+  width: 18px;
+  height: 18px;
+  accent-color: #E7385A;
+  cursor: pointer;
+}
+.sub-consent a {
+  color: #E7385A;
+  text-decoration: underline;
+}
+
 /* ── Кнопка оформления — больше воздуха, читаемая цена ── */
 .subscription-form__submit {
   margin-top: clamp(18px, 2vw, 24px);
@@ -194,6 +219,12 @@ body.subscription-page {
   gap: 6px;
   font-size: 12.5px;
   letter-spacing: 0.14em;
+}
+
+.subscription-form__submit:disabled,
+.subscription-form__submit.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 [data-sum-total-btn] {

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="cart.css?v=w1">
   <link rel="stylesheet" href="clients.css?v=nav1">
-  <link rel="stylesheet" href="subscription.css?v=w12">
+  <link rel="stylesheet" href="subscription.css?v=w14">
   <link rel="stylesheet" href="wedding-piggy.css?v=wpb18">
   <link rel="stylesheet" href="gift-certificate.css?v=gc2">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
@@ -356,7 +356,12 @@
             </div>
           </div>
 
-          <button class="subscription-form__submit" type="submit" data-gc-submit>
+          <label class="sub-consent">
+            <input type="checkbox" data-gc-consent>
+            <span>Я согласен(на) на обработку персональных данных и принимаю <a href="privacy.html" target="_blank" rel="noopener">Политику конфиденциальности</a> и <a href="offer.html" target="_blank" rel="noopener">оферту</a>.</span>
+          </label>
+
+          <button class="subscription-form__submit" type="submit" data-gc-submit disabled>
             <span>Оформить и оплатить</span> — <span data-gc-sum-btn>—</span>
           </button>
 
@@ -611,7 +616,7 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js?v=wl1"></script>
-  <script src="gift-certificate.js?v=gc2"></script>
+  <script src="gift-certificate.js?v=gc3"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=press1"></script>
   <script src="cookie-consent.js?v=2"></script>
