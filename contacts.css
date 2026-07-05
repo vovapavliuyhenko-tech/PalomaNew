@@ -190,6 +190,16 @@ main.contacts-page {
   padding-bottom: clamp(20px, 2.5vw, 28px);
   border-bottom: 1px solid var(--color-accent);
 }
+/* первая строка — без разделителя, плотно к строке о доставке */
+.contacts-studio__subtitle--lead {
+  margin-bottom: 6px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+/* строка о доставке несёт розовый разделитель */
+.contacts-studio__subtitle--delivery {
+  font-size: 13px;
+}
 
 .contacts-studio__rows {
   list-style: none;
