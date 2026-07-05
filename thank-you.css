@@ -19,7 +19,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: clamp(30px, 4.4vw, 52px);
+  gap: clamp(44px, 6vw, 80px);
 }
 
 /* ── Пустой заказ ── */
@@ -299,7 +299,7 @@
 /* ── Вернуться в каталог ── */
 .ty-btn-catalog {
   align-self: center;
-  margin-top: clamp(6px, 1.4vw, 14px);
+  margin-top: clamp(16px, 2.6vw, 30px);
   padding: 14px 40px;
   border-radius: 999px;
   border: 1.5px solid rgba(27, 26, 24, 0.2);
