@@ -1,243 +1,383 @@
-﻿/* thank-you.css */
+/* ════════════════════════════════════════════════════════
+   thank-you.css — страница «Заявка создана» PALOMA
+   Пошаговый, читабельный экран подтверждения заказа.
+   Палитра: белый фон, розовый акцент #E7385A, графит #1b1a18.
+   ════════════════════════════════════════════════════════ */
+
 .thank-you-page .ty-main {
-  min-height: 80vh;
+  min-height: 70vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: clamp(28px, 4.4vw, 53px) clamp(16px, 4vw, 48px);
-  padding-top: calc(96px + clamp(24px, 4vw, 48px));
+  padding: clamp(28px, 4.4vw, 56px) clamp(16px, 4vw, 40px) clamp(56px, 8vw, 96px);
+  padding-top: calc(var(--paloma-header-offset, 96px) + clamp(20px, 4vw, 44px));
+  background:
+    radial-gradient(circle at 50% 0, rgba(231, 56, 90, 0.05), transparent 60%);
 }
+
 .ty-inner {
-  max-width: 680px;
+  max-width: 640px;
   width: 100%;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: clamp(18px, 2.6vw, 26px);
 }
+
+/* ── Пустой заказ ── */
 .ty-empty {
   max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
 }
 .ty-empty__title {
-  font-family: var(--font-display, "Italiana", serif);
-  font-size: clamp(32px, 5vw, 48px);
+  font-family: var(--font-display, "Classica One", cursive);
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 400;
   margin-bottom: 12px;
 }
 .ty-empty__text {
   color: var(--color-text-muted);
+  line-height: 1.65;
   margin-bottom: 24px;
+}
+
+/* ══════════ HERO ══════════ */
+.ty-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(6px, 2vw, 12px) 0 4px;
 }
 .ty-icon {
-  color: var(--color-accent, #1B1A18);
-  margin-bottom: 24px;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent, #E7385A);
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(231, 56, 90, 0.32);
+  margin-bottom: 20px;
+}
+.ty-hero__eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-accent, #E7385A);
+  font-weight: 600;
+  margin: 0 0 8px;
 }
 .ty-title {
-  font-family: var(--font-display, "Italiana", serif);
-  font-size: clamp(30px, 4.06vw, 44px);
+  font-family: var(--font-display, "Classica One", cursive);
+  font-size: clamp(34px, 5.4vw, 52px);
   font-weight: 400;
-  line-height: 0.94;
-  margin: 0 0 16px;
+  line-height: 1;
+  margin: 0 0 18px;
+  color: var(--color-text, #1b1a18);
 }
 .ty-order-id {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  font-size: 13px;
-  margin: 0 0 20px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(27, 26, 24, 0.05);
+  font-size: 12.5px;
+  margin: 0 0 18px;
 }
 .ty-order-id__label {
   color: var(--color-text-muted);
 }
 .ty-order-id__val {
-  font-family: var(--font-mono, "JetBrains Mono", monospace);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--color-accent, #1B1A18);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-accent, #E7385A);
 }
 .ty-text {
-  font-size: 16px;
+  font-size: 15.5px;
   line-height: 1.7;
   color: var(--color-text-muted);
-  margin: 0 0 28px;
+  max-width: 520px;
+  margin: 0 0 18px;
 }
-.ty-order-summary {
+.ty-notice {
   width: 100%;
-  background: var(--color-bg-alt, #FFFFFF);
-  padding: 20px;
-  border-radius: 4px;
-  margin-bottom: 28px;
+  box-sizing: border-box;
   text-align: left;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(231, 56, 90, 0.07);
+  border: 1px solid rgba(231, 56, 90, 0.18);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(27, 26, 24, 0.82);
 }
-.ty-order-summary__title {
-  font-family: var(--font-display, "Italiana", serif);
-  font-size: 20px;
-  margin-bottom: 12px;
+
+/* ══════════ ШАГ-КАРТОЧКА ══════════ */
+.ty-step {
+  background: #fff;
+  border: 1px solid rgba(27, 26, 24, 0.09);
+  border-radius: 22px;
+  padding: clamp(20px, 3vw, 30px);
+  box-shadow: 0 8px 30px rgba(27, 26, 24, 0.05);
 }
+.ty-step__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.ty-step__num {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent, #E7385A);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+.ty-step__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ty-step__title {
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: clamp(18px, 2.4vw, 21px);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--color-text, #1b1a18);
+}
+.ty-step__sub {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ── Состав заявки ── */
 .ty-order-summary__item {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 14.5px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(27, 26, 24, 0.07);
+}
+.ty-order-summary__item:first-child {
+  padding-top: 0;
+}
+.ty-order-summary__item > span:first-child {
+  color: var(--color-text, #1b1a18);
+}
+.ty-order-summary__item > span:last-child {
+  flex-shrink: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ty-order-summary__meta {
+  margin: 16px 0 0;
+  display: grid;
+  gap: 10px;
   font-size: 14px;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(27, 26, 24, 0.08);
+}
+.ty-order-summary__meta > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.ty-order-summary__meta > div span:first-child {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+.ty-order-summary__meta > div span:last-child {
+  text-align: right;
+  color: var(--color-text, #1b1a18);
 }
 .ty-order-summary__total {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1.5px solid rgba(27, 26, 24, 0.14);
+  font-size: 15px;
   font-weight: 600;
-  padding-top: 12px;
-  border-top: 1px solid rgba(27, 26, 24, 0.18);
 }
 .ty-order-summary__total strong {
-  font-family: var(--font-mono, "JetBrains Mono", monospace);
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-accent, #E7385A);
 }
-.ty-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  margin-bottom: 40px;
+.ty-order-summary__hint {
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
 }
-.ty-btn-wa,
-.ty-btn-tg,
-.ty-btn-catalog {
-  width: 100%;
-  justify-content: center;
-  padding: 16px;
-  gap: 10px;
-}
-.ty-btn-wa {
-  background: #1B1A18;
-  border-color: #1B1A18;
-  color: #FFFFFF;
-}
-.ty-btn-wa:hover {
-  background: #1B1A18;
-  border-color: #1B1A18;
-}
-.ty-next-steps {
-  width: 100%;
+
+/* ── Сообщение менеджеру ── */
+.ty-msg {
   text-align: left;
 }
-.ty-next-steps__title {
-  font-family: var(--font-display, "Italiana", serif);
-  font-size: 22px;
-  margin-bottom: 16px;
+.ty-msg__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
+.ty-msg__box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid rgba(27, 26, 24, 0.14);
+  border-radius: 14px;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #1b1a18;
+  background: #fbfbfa;
+  resize: vertical;
+}
+.ty-msg__box:focus {
+  outline: none;
+  border-color: var(--color-accent, #E7385A);
+  box-shadow: 0 0 0 3px rgba(231, 56, 90, 0.12);
+}
+.ty-msg__copy {
+  margin-top: 12px;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(27, 26, 24, 0.18);
+  background: #fff;
+  color: var(--color-text, #1b1a18);
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.ty-msg__copy:hover {
+  border-color: var(--color-accent, #E7385A);
+  color: var(--color-accent, #E7385A);
+}
+
+/* ── Кнопки мессенджеров ── */
+.ty-actions {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+}
+.ty-btn {
+  position: relative;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 999px;
+  border: 1.5px solid #1b1a18;
+  background: #1b1a18;
+  color: #fff;
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .18s, box-shadow .2s, background .2s;
+}
+.ty-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(27, 26, 24, 0.18);
+}
+.ty-btn--recommended {
+  background: var(--color-accent, #E7385A);
+  border-color: var(--color-accent, #E7385A);
+  box-shadow: 0 8px 22px rgba(231, 56, 90, 0.28);
+}
+.ty-btn--recommended:hover {
+  box-shadow: 0 12px 28px rgba(231, 56, 90, 0.36);
+}
+.ty-btn__badge {
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #1b1a18;
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(27, 26, 24, 0.2);
+}
+
+/* ── Что дальше ── */
 .ty-next-steps__list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 .ty-next-steps__list li {
   display: flex;
   gap: 14px;
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--color-text-muted);
+  align-items: flex-start;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--color-text, #1b1a18);
 }
 .ty-next-steps__num {
-  font-family: var(--font-mono, "JetBrains Mono", monospace);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: var(--color-accent, #1B1A18);
   flex-shrink: 0;
-}
-
-/* ── Заявка: уведомление, мета, сообщение, кнопки мессенджеров ── */
-.ty-notice {
-  margin: 16px auto;
-  max-width: 560px;
-  padding: 12px 16px;
-  border-left: 3px solid #e7385a;
-  background: rgba(231, 56, 90, 0.06);
-  border-radius: 0 8px 8px 0;
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: rgba(27, 26, 24, 0.82);
-  text-align: left;
-}
-.ty-order-summary__meta {
-  margin: 14px 0 4px;
+  width: 28px;
+  height: 28px;
   display: grid;
-  gap: 8px;
-  font-size: 14px;
-}
-.ty-order-summary__meta > div {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-}
-.ty-order-summary__meta > div span:first-child {
-  color: rgba(27, 26, 24, 0.55);
-}
-.ty-order-summary__hint {
-  margin: 8px 0 0;
-  font-size: 12px;
-  color: rgba(27, 26, 24, 0.5);
-}
-.ty-msg {
-  margin: 22px auto 0;
-  max-width: 560px;
-  text-align: left;
-}
-.ty-msg__label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(27, 26, 24, 0.7);
-}
-.ty-msg__box {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px 14px;
-  border: 1px solid rgba(27, 26, 24, 0.18);
-  border-radius: 12px;
-  font-family: var(--sans, "Montserrat", sans-serif);
-  font-size: 13px;
-  line-height: 1.5;
-  color: #1b1a18;
-  background: #fafafa;
-  resize: vertical;
-}
-.ty-msg__copy {
-  margin-top: 10px;
-  width: 100%;
-}
-.ty-actions {
-  margin: 22px auto 0;
-  max-width: 560px;
-  display: grid;
-  gap: 10px;
-}
-.ty-btn {
-  position: relative;
-}
-.ty-btn--recommended {
-  outline: 2px solid #e7385a;
-  outline-offset: 2px;
-}
-.ty-btn__badge {
-  position: absolute;
-  top: -9px;
-  right: 12px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: #e7385a;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 500;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(231, 56, 90, 0.1);
+  color: var(--color-accent, #E7385A);
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.02em;
 }
+
+/* ── Вернуться в каталог ── */
 .ty-btn-catalog {
-  margin: 12px auto 0;
-  display: inline-block;
+  align-self: center;
+  margin-top: 4px;
+  padding: 14px 40px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(27, 26, 24, 0.2);
+  background: transparent;
+  color: var(--color-text, #1b1a18);
+  font-family: var(--sans, "Montserrat", sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color .2s, color .2s;
 }
+.ty-btn-catalog:hover {
+  border-color: var(--color-accent, #E7385A);
+  color: var(--color-accent, #E7385A);
+}
+
+/* ── Тост ── */
 .ty-toast {
   position: fixed;
   left: 50%;
@@ -259,4 +399,19 @@
 .ty-toast.is-visible {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* ── Адаптив ── */
+@media (max-width: 520px) {
+  .ty-step {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+  .ty-step__head {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .ty-order-summary__item {
+    font-size: 14px;
+  }
 }

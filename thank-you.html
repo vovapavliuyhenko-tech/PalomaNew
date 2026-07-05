@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="styles.css?v=ph3">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="catalog.css?v=pink1">
-  <link rel="stylesheet" href="thank-you.css?v=order1">
+  <link rel="stylesheet" href="thank-you.css?v=order2">
   <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
@@ -301,89 +301,115 @@
       </div>
 
       <div id="tyContent" hidden>
-        <div class="ty-icon" aria-hidden="true">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M12 3l2.2 6.8H21l-5.5 4 2.1 6.7L12 16.4 6.4 20.5l2.1-6.7L3 9.8h6.8L12 3z"/>
-          </svg>
-        </div>
 
-        <h1 class="ty-title">Заявка создана</h1>
-
-        <p class="ty-order-id">
-          <span class="ty-order-id__label">Номер заказа</span>
-          <span class="ty-order-id__val" id="tyOrderId">—</span>
-        </p>
-
-        <p class="ty-text">
-          Заказ создан. Для подтверждения наличия, состава букета, времени изготовления
-          и итоговой стоимости перейдите в удобный мессенджер и отправьте подготовленное
-          сообщение менеджеру.
-        </p>
-
-        <p class="ty-notice" role="note">
-          После оформления заказа менеджер проверит наличие цветов и товаров, свяжется с вами,
-          подтвердит состав заказа и итоговую стоимость. Оплата производится только после
-          согласования заказа.
-        </p>
-
-        <div id="tyOrderSummary" class="ty-order-summary">
-          <h2 class="ty-order-summary__title">Состав заявки</h2>
-          <div id="tyOrderItems"></div>
-          <div class="ty-order-summary__meta">
-            <div><span>Позиций</span><span id="tyOrderCount">0</span></div>
-            <div><span>Получение</span><span id="tyMetaFulfil">—</span></div>
-            <div><span>Оплата</span><span id="tyMetaPayment">—</span></div>
+        <!-- ── HERO: подтверждение ── -->
+        <header class="ty-hero">
+          <div class="ty-icon" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
           </div>
-          <div class="ty-order-summary__total">
-            <span>Предварительно</span>
-            <strong id="tyOrderTotal">0 ₽</strong>
+          <p class="ty-hero__eyebrow">Спасибо за заказ</p>
+          <h1 class="ty-title">Заявка создана</h1>
+          <p class="ty-order-id">
+            <span class="ty-order-id__label">Номер заказа</span>
+            <span class="ty-order-id__val" id="tyOrderId">—</span>
+          </p>
+          <p class="ty-text">
+            Осталось отправить готовое сообщение менеджеру в удобный мессенджер.
+            Мы подтвердим наличие, состав букета, время изготовления и итоговую стоимость.
+          </p>
+          <p class="ty-notice" role="note">
+            Оплата — только после того, как менеджер подтвердит состав заказа и итоговую сумму.
+          </p>
+        </header>
+
+        <!-- ── ШАГ 1: состав заявки ── -->
+        <section class="ty-step" aria-labelledby="tyStep1Title">
+          <div class="ty-step__head">
+            <span class="ty-step__num" aria-hidden="true">1</span>
+            <div class="ty-step__heading">
+              <h2 class="ty-step__title" id="tyStep1Title">Ваш заказ</h2>
+              <p class="ty-step__sub">Состав заявки и предварительная сумма</p>
+            </div>
           </div>
-          <p class="ty-order-summary__hint">Сумма предварительная — итог подтверждает менеджер.</p>
-        </div>
+          <div id="tyOrderSummary" class="ty-order-summary">
+            <div id="tyOrderItems"></div>
+            <div class="ty-order-summary__meta">
+              <div><span>Позиций</span><span id="tyOrderCount">0</span></div>
+              <div><span>Получение</span><span id="tyMetaFulfil">—</span></div>
+              <div><span>Оплата</span><span id="tyMetaPayment">—</span></div>
+            </div>
+            <div class="ty-order-summary__total">
+              <span>Предварительно</span>
+              <strong id="tyOrderTotal">0 ₽</strong>
+            </div>
+            <p class="ty-order-summary__hint">Сумма предварительная — итог подтверждает менеджер.</p>
+          </div>
+        </section>
 
-        <div class="ty-msg">
-          <label class="ty-msg__label" for="tyMessage">Сообщение менеджеру</label>
-          <textarea class="ty-msg__box" id="tyMessage" rows="10" readonly
-                    aria-label="Подготовленное сообщение менеджеру"></textarea>
-          <button type="button" class="btn btn--ghost ty-msg__copy" id="tyBtnCopy" data-cursor="hover">
-            Скопировать сообщение
-          </button>
-        </div>
+        <!-- ── ШАГ 2: отправить сообщение ── -->
+        <section class="ty-step" aria-labelledby="tyStep2Title">
+          <div class="ty-step__head">
+            <span class="ty-step__num" aria-hidden="true">2</span>
+            <div class="ty-step__heading">
+              <h2 class="ty-step__title" id="tyStep2Title">Отправьте сообщение менеджеру</h2>
+              <p class="ty-step__sub">Сообщение уже готово — выберите удобный мессенджер</p>
+            </div>
+          </div>
 
-        <div class="ty-actions">
-          <button type="button" class="btn btn--dark ty-btn ty-btn-tg" id="tyBtnTg" data-cursor="hover">
-            Написать в Telegram
-          </button>
-          <button type="button" class="btn btn--dark ty-btn ty-btn-wa" id="tyBtnWa" data-cursor="hover">
-            Написать в WhatsApp
-          </button>
-          <button type="button" class="btn btn--dark ty-btn ty-btn-max" id="tyBtnMax" data-cursor="hover">
-            Написать в MAX
-          </button>
-        </div>
-        <a href="catalog.html" class="btn btn--ghost ty-btn-catalog" data-cursor="hover">Вернуться в каталог</a>
+          <div class="ty-msg">
+            <label class="ty-msg__label" for="tyMessage">Текст сообщения</label>
+            <textarea class="ty-msg__box" id="tyMessage" rows="8" readonly
+                      aria-label="Подготовленное сообщение менеджеру"></textarea>
+            <button type="button" class="ty-msg__copy" id="tyBtnCopy" data-cursor="hover">
+              Скопировать сообщение
+            </button>
+          </div>
 
-        <section class="ty-next-steps" aria-labelledby="tyNextStepsTitle">
-          <h2 class="ty-next-steps__title" id="tyNextStepsTitle">Что дальше</h2>
+          <div class="ty-actions">
+            <button type="button" class="ty-btn ty-btn-tg" id="tyBtnTg" data-cursor="hover">
+              Написать в Telegram
+            </button>
+            <button type="button" class="ty-btn ty-btn-wa" id="tyBtnWa" data-cursor="hover">
+              Написать в WhatsApp
+            </button>
+            <button type="button" class="ty-btn ty-btn-max" id="tyBtnMax" data-cursor="hover">
+              Написать в MAX
+            </button>
+          </div>
+        </section>
+
+        <!-- ── ШАГ 3: что дальше ── -->
+        <section class="ty-step" aria-labelledby="tyStep3Title">
+          <div class="ty-step__head">
+            <span class="ty-step__num" aria-hidden="true">3</span>
+            <div class="ty-step__heading">
+              <h2 class="ty-step__title" id="tyStep3Title">Что дальше</h2>
+              <p class="ty-step__sub">Как мы обработаем ваш заказ</p>
+            </div>
+          </div>
           <ol class="ty-next-steps__list">
             <li>
-              <span class="ty-next-steps__num">01</span>
+              <span class="ty-next-steps__num" aria-hidden="true">01</span>
               <span>Мы подтвердим заказ и уточним детали доставки или самовывоза.</span>
             </li>
             <li>
-              <span class="ty-next-steps__num">02</span>
+              <span class="ty-next-steps__num" aria-hidden="true">02</span>
               <span>Соберём букет или композицию с учётом ваших пожеланий.</span>
             </li>
             <li>
-              <span class="ty-next-steps__num">03</span>
-              <span>По запросу отправим фото перед доставкой или передачей заказа.</span>
+              <span class="ty-next-steps__num" aria-hidden="true">03</span>
+              <span>Отправим фото букета перед доставкой или передачей заказа.</span>
             </li>
             <li>
-              <span class="ty-next-steps__num">04</span>
+              <span class="ty-next-steps__num" aria-hidden="true">04</span>
               <span>Доставим курьером или подготовим заказ к самовывозу в указанное время.</span>
             </li>
           </ol>
         </section>
+
+        <a href="catalog.html" class="ty-btn-catalog" data-cursor="hover">Вернуться в каталог</a>
       </div>
 
     </div>
