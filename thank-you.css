@@ -247,35 +247,32 @@
 /* ── Цвет каждой кнопки — под свой мессенджер (прозрачный фон, обводка/текст
    в фирменном цвете; при наведении и для выбранного — мягкая заливка) ── */
 
-/* Telegram — голубой */
-.ty-btn-tg { border-color: rgba(34, 158, 217, 0.5); color: #1B93C9; }
-.ty-btn-tg:hover,
-.ty-btn-tg.ty-btn--recommended {
+/* Telegram — голубой (заливка сразу, ховер чуть насыщеннее) */
+.ty-btn-tg {
   background: rgba(34, 158, 217, 0.12);
   border-color: #229ED9;
   color: #1B93C9;
 }
-.ty-btn-tg.ty-btn--recommended:hover { background: rgba(34, 158, 217, 0.2); }
+.ty-btn-tg:hover,
+.ty-btn-tg.ty-btn--recommended { background: rgba(34, 158, 217, 0.2); }
 
 /* WhatsApp — зелёный */
-.ty-btn-wa { border-color: rgba(37, 211, 102, 0.55); color: #12A150; }
-.ty-btn-wa:hover,
-.ty-btn-wa.ty-btn--recommended {
+.ty-btn-wa {
   background: rgba(37, 211, 102, 0.14);
   border-color: #25D366;
   color: #12A150;
 }
-.ty-btn-wa.ty-btn--recommended:hover { background: rgba(37, 211, 102, 0.22); }
+.ty-btn-wa:hover,
+.ty-btn-wa.ty-btn--recommended { background: rgba(37, 211, 102, 0.24); }
 
 /* MAX — фиолетовый */
-.ty-btn-max { border-color: rgba(124, 77, 255, 0.5); color: #6C3FE0; }
-.ty-btn-max:hover,
-.ty-btn-max.ty-btn--recommended {
+.ty-btn-max {
   background: rgba(124, 77, 255, 0.12);
   border-color: #7C4DFF;
   color: #6C3FE0;
 }
-.ty-btn-max.ty-btn--recommended:hover { background: rgba(124, 77, 255, 0.2); }
+.ty-btn-max:hover,
+.ty-btn-max.ty-btn--recommended { background: rgba(124, 77, 255, 0.2); }
 .ty-btn__badge {
   position: absolute;
   top: -10px;
