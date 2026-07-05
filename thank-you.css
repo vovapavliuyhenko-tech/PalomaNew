@@ -233,28 +233,31 @@
   width: 100%;
   padding: 16px 20px;
   border-radius: 999px;
-  border: 1.5px solid #1b1a18;
-  background: #1b1a18;
-  color: #fff;
+  border: 1.5px solid rgba(27, 26, 24, 0.25);
+  background: transparent;
+  color: var(--color-text, #1b1a18);
   font-family: var(--sans, "Montserrat", sans-serif);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform .18s, box-shadow .2s, background .2s;
+  transition: background .2s, border-color .2s, color .2s;
 }
 .ty-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(27, 26, 24, 0.18);
+  background: rgba(231, 56, 90, 0.12);
+  border-color: rgba(231, 56, 90, 0.55);
+  color: var(--color-accent, #E7385A);
 }
+/* выбранный клиентом мессенджер — постоянная мягкая розовая подсветка */
 .ty-btn--recommended {
-  background: var(--color-accent, #E7385A);
-  border-color: var(--color-accent, #E7385A);
-  box-shadow: 0 8px 22px rgba(231, 56, 90, 0.28);
+  background: rgba(231, 56, 90, 0.12);
+  border-color: rgba(231, 56, 90, 0.55);
+  color: var(--color-accent, #E7385A);
 }
 .ty-btn--recommended:hover {
-  box-shadow: 0 12px 28px rgba(231, 56, 90, 0.36);
+  background: rgba(231, 56, 90, 0.2);
+  border-color: var(--color-accent, #E7385A);
 }
 .ty-btn__badge {
   position: absolute;
