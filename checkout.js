@@ -18,6 +18,7 @@
     {
       id: "upsell-coffee",
       name: "Кофе PALOMA",
+      price: 250,
       priceLabel: "от 250 ₽",
       ph: "linear-gradient(135deg,#d8c0a8,#a07848)",
       image: "",
@@ -25,6 +26,7 @@
     {
       id: "upsell-vase",
       name: "Ваза для букета",
+      price: 1500,
       priceLabel: "от 1500 ₽",
       ph: "linear-gradient(135deg,#d8e8f0,#b8c8d8)",
       image: "",
@@ -32,6 +34,7 @@
     {
       id: "upsell-secateurs",
       name: "Секатор",
+      price: 1000,
       priceLabel: "1000 ₽",
       ph: "linear-gradient(135deg,#cdd2d0,#8a9690)",
       image: "",
@@ -39,6 +42,7 @@
     {
       id: "upsell-dessert",
       name: "Десерт дня",
+      price: 190,
       priceLabel: "от 190 ₽",
       ph: "linear-gradient(135deg,#e8c8b8,#c09878)",
       image: "",
@@ -135,8 +139,9 @@
     $upsellGrid.innerHTML = "";
 
     UPSELL_ITEMS.forEach((item) => {
+      const inCart = cart.some((c) => c.id === item.id);
       const div = document.createElement("div");
-      div.className = "co-upsell-card co-upsell-card--info";
+      div.className = "co-upsell-card";
 
       const imgHtml = item.image
         ? `<img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy">`
@@ -147,6 +152,11 @@
         <div class="co-upsell-card__body">
           <p class="co-upsell-card__name">${esc(item.name)}</p>
           <p class="co-upsell-card__price">${esc(item.priceLabel)}</p>
+          <button type="button" class="co-upsell-card__btn ${inCart ? "is-added" : ""}"
+                  data-upsell-id="${esc(item.id)}"
+                  ${inCart ? "disabled" : ""}>
+            ${inCart ? "✓ Добавлено" : "Добавить"}
+          </button>
         </div>
       `;
       $upsellGrid.appendChild(div);
@@ -258,12 +268,43 @@
     updateView();
   }
 
+  function addUpsell(id) {
+    const item = UPSELL_ITEMS.find((u) => u.id === id);
+    const cart = getCart();
+    if (!item || cart.some((c) => c.id === id)) return;
+
+    const payload = {
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      qty: 1,
+      bg: item.ph,
+      image: item.image,
+      category: "upsell",
+    };
+
+    if (window.PalomaCart?.add) {
+      window.PalomaCart.add(payload);
+      window.PalomaCart.closeDrawer?.();
+    } else {
+      cart.push(payload);
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+    updateView();
+  }
+
   document.addEventListener("click", (e) => {
     const qtyBtn = e.target.closest(
       '[data-action="inc"], [data-action="dec"], [data-action="remove"]',
     );
     if (qtyBtn && $items?.contains(qtyBtn)) {
       cartAction(qtyBtn.dataset.id, qtyBtn.dataset.action);
+      return;
+    }
+
+    const upsellBtn = e.target.closest("[data-upsell-id]");
+    if (upsellBtn) {
+      addUpsell(upsellBtn.dataset.upsellId);
       return;
     }
 
