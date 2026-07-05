@@ -56,6 +56,7 @@ html{scroll-behavior:smooth;scroll-padding-top:132px}
 .ea-btn:hover{background:var(--wine-d);transform:translateY(-2px)}
 .ea-btn svg{width:16px;height:16px;fill:currentColor;transition:transform .35s var(--eease)}
 .ea-btn:hover svg{transform:scale(1.22)}
+.ea-btn:disabled,.ea-btn.is-disabled{opacity:.45;cursor:not-allowed;transform:none;pointer-events:none}
 
 .ea-page [data-reveal]{opacity:0;transform:translateY(38px);transition:opacity 1s var(--eease),transform 1s var(--eease);transition-delay:var(--d,0s)}
 .ea-page [data-reveal].is-in{opacity:1;transform:none}

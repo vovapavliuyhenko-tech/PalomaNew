@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
   <link rel="stylesheet" href="legal.css?v=2">
-  <link rel="stylesheet" href="event-author.css?v=ea4">
+  <link rel="stylesheet" href="event-author.css?v=ea5">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -911,6 +911,12 @@
     /* форма-заявка */
     var f=document.getElementById('eaForm');
     if(f)f.addEventListener('submit',function(e){e.preventDefault();if(!f.checkValidity()){f.reportValidity();return;}var c=document.getElementById('ea-consent'),ce=document.getElementById('ea-consent-err');if(c&&!c.checked){if(ce)ce.hidden=false;c.focus();return;}if(ce)ce.hidden=true;var ok=document.getElementById('eaOk');if(ok)ok.hidden=false;f.querySelectorAll('input,select,textarea,button').forEach(function(el){el.disabled=true;});});
+
+    /* Кнопка «Отправить данные» неактивна, пока не отмечено согласие */
+    var eaConsent=document.getElementById('ea-consent'),eaSubmit=f?f.querySelector('.ea-form__submit'):null;
+    function eaSyncConsent(){if(!eaSubmit)return;var on=!!eaConsent&&eaConsent.checked;eaSubmit.disabled=!on;eaSubmit.classList.toggle('is-disabled',!on);}
+    if(eaConsent)eaConsent.addEventListener('change',eaSyncConsent);
+    eaSyncConsent();
   })();
   </script>
 

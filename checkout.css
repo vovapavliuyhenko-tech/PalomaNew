@@ -167,7 +167,7 @@ body.checkout-page .co-main {
   width: 100%;
 }
 
-.co-btn--primary:hover {
+.co-btn--primary:hover:not(:disabled) {
   background: var(--co-accent);
   border-color: var(--co-accent);
 }

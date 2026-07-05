@@ -335,7 +335,26 @@
       if (tf) tf.hidden = !e.target.checked;
       calcTotals(getCart());
     }
+    if (e.target.id === "co-consent") {
+      syncConsentGate();
+    }
   });
+
+  /* Кнопки оформления неактивны, пока не отмечено согласие */
+  function syncConsentGate() {
+    const consent = document.getElementById("co-consent");
+    const enabled = !!consent && consent.checked;
+    [
+      document.getElementById("coSubmitBtn"),
+      document.getElementById("coSubmitMobile"),
+    ].forEach((b) => {
+      if (b) {
+        b.disabled = !enabled;
+        b.classList.toggle("is-disabled", !enabled);
+      }
+    });
+  }
+  syncConsentGate();
 
   $form?.addEventListener("submit", (e) => {
     e.preventDefault();
