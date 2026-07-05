@@ -19,6 +19,13 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+/* карточки-шаги лежат внутри #tyContent — отступы между ними задаём здесь.
+   :not([hidden]) чтобы flex не перебивал атрибут hidden до показа */
+#tyContent:not([hidden]) {
+  display: flex;
+  flex-direction: column;
   gap: clamp(44px, 6vw, 80px);
 }
 
