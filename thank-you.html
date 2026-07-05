@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="styles.css?v=ph3">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="catalog.css?v=pink1">
-  <link rel="stylesheet" href="thank-you.css?v=order2">
+  <link rel="stylesheet" href="thank-you.css?v=order3">
   <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
@@ -302,27 +302,12 @@
 
       <div id="tyContent" hidden>
 
-        <!-- ── HERO: подтверждение ── -->
-        <header class="ty-hero">
-          <div class="ty-icon" aria-hidden="true">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 6L9 17l-5-5"/>
-            </svg>
-          </div>
-          <p class="ty-hero__eyebrow">Спасибо за заказ</p>
-          <h1 class="ty-title">Заявка создана</h1>
-          <p class="ty-order-id">
-            <span class="ty-order-id__label">Номер заказа</span>
-            <span class="ty-order-id__val" id="tyOrderId">—</span>
-          </p>
-          <p class="ty-text">
-            Осталось отправить готовое сообщение менеджеру в удобный мессенджер.
-            Мы подтвердим наличие, состав букета, время изготовления и итоговую стоимость.
-          </p>
-          <p class="ty-notice" role="note">
-            Оплата — только после того, как менеджер подтвердит состав заказа и итоговую сумму.
-          </p>
-        </header>
+        <!-- заголовок JS всё ещё пишет сюда (скрыто), номер заказа есть в сообщении менеджеру -->
+        <span id="tyOrderId" hidden></span>
+
+        <p class="ty-notice" role="note">
+          Оплата — только после того, как менеджер подтвердит состав заказа и итоговую сумму.
+        </p>
 
         <!-- ── ШАГ 1: состав заявки ── -->
         <section class="ty-step" aria-labelledby="tyStep1Title">
