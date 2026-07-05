@@ -711,7 +711,7 @@ body.is-paloma-loading .custom-cursor {
   }
 
   .site-header__phone:hover {
-    color: var(--burgundy);
+    color: #E7385A;
   }
 }
 
