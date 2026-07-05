@@ -231,6 +231,8 @@
           ? "Бесплатно"
           : courier.label;
     }
+    /* цена на карточке «Курьер» — синхронно при любом пересчёте суммы */
+    if ($deliveryPrice) $deliveryPrice.textContent = courier.label;
     if ($total) $total.textContent = total.toLocaleString("ru-RU") + " ₽";
     if ($mobileTotal) {
       $mobileTotal.textContent = total.toLocaleString("ru-RU") + " ₽";
