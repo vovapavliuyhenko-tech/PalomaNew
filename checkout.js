@@ -168,6 +168,27 @@
     return checked ? checked.value : "courier";
   }
 
+  /* город доставки — Новороссийск или другой */
+  function isNovorossiysk() {
+    const city = document.getElementById("co-city");
+    const val = (city ? city.value : "").trim().toLowerCase();
+    if (!val) return true; /* пусто = по умолчанию Новороссийск */
+    return val.indexOf("новоросс") !== -1;
+  }
+
+  /* расчёт стоимости и подписи доставки курьером
+     — Новороссийск: от 7000 ₽ бесплатно, иначе 350 ₽
+     — другой город: от 350 ₽ (уточняем при оформлении) */
+  function courierDelivery(subtotal) {
+    if (!isNovorossiysk()) {
+      return { cost: DELIVERY_COST, label: "от 350 ₽" };
+    }
+    if (subtotal >= FREE_DELIVERY) {
+      return { cost: 0, label: "Бесплатно" };
+    }
+    return { cost: DELIVERY_COST, label: "350 ₽" };
+  }
+
   function hasCard() {
     const cb = document.getElementById("co-add-card");
     return cb && cb.checked;
@@ -186,14 +207,13 @@
         i.type !== "wedding-piggy" &&
         !String(i.id).startsWith("paloma-wedding-piggy"),
     );
+    const courier = courierDelivery(subtotal);
     const delivery =
       !hasPhysical
         ? 0
         : deliveryType === "pickup" || deliveryType === "ask_recipient"
           ? 0
-          : subtotal >= FREE_DELIVERY
-            ? 0
-            : DELIVERY_COST;
+          : courier.cost;
     const cardCost = hasCard() ? CARD_COST : 0;
     const total = subtotal + delivery + cardCost;
 
@@ -209,9 +229,7 @@
       $deliveryTotal.textContent =
         deliveryType === "pickup" || deliveryType === "ask_recipient"
           ? "Бесплатно"
-          : subtotal >= FREE_DELIVERY
-            ? "Бесплатно по городу"
-            : "от 350 ₽";
+          : courier.label;
     }
     if ($total) $total.textContent = total.toLocaleString("ru-RU") + " ₽";
     if ($mobileTotal) {
@@ -255,7 +273,12 @@
       $addrFields.hidden = type !== "courier";
     }
     if ($deliveryPrice) {
-      $deliveryPrice.textContent = type === "pickup" ? "Бесплатно" : "от 350 ₽";
+      const cart = getCart();
+      const subtotal = cart.reduce(
+        (s, i) => s + (i.price || 0) * (i.qty || 1),
+        0,
+      );
+      $deliveryPrice.textContent = courierDelivery(subtotal).label;
     }
     calcTotals(getCart());
   }
@@ -337,6 +360,13 @@
     }
     if (e.target.id === "co-consent") {
       syncConsentGate();
+    }
+  });
+
+  /* пересчёт доставки при вводе города */
+  document.addEventListener("input", (e) => {
+    if (e.target.id === "co-city") {
+      handleDeliveryToggle();
     }
   });
 
