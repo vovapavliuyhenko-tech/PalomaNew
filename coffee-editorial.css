@@ -1076,3 +1076,89 @@
 @media (prefers-reduced-motion: reduce) {
   .cfm-row { transition: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   СИНИЙ АКЦЕНТ — ТОЛЬКО НА СТРАНИЦЕ КОФЕЙНИ (body.coffee-page).
+   Все прочие страницы/блоки и coffee-item (без .coffee-page) остаются
+   розовыми. Меняем токен --wine → синий (покрывает все var(--wine)),
+   плюс точечно переопределяем «зашитые» розовые литералы контента кофейни.
+   Синий бренда: #3B4B96 (тёмный вариант #2C3A78, rgba 59,75,150).
+   ═══════════════════════════════════════════════════════════════════ */
+.coffee-page,
+.coffee-page .ea-page {
+  --wine: #3B4B96;
+  --wine-d: #2C3A78;
+  --color-accent: #3B4B96;
+  --burgundy: #3B4B96;
+}
+/* заголовки Montserrat (были заданы #E7385A напрямую, минуя переменную) */
+.coffee-page .coffee-ea .ea-title,
+.coffee-page .coffee-ea .ea-hero__h1,
+.coffee-page .coffee-ea .cf-menu__name,
+.coffee-page .coffee-ea .cf-modal__title {
+  color: var(--wine, #3B4B96);
+}
+/* тени CTA-кнопки героя (были розовые) */
+.coffee-page .cf-hero .ea-hero__right .ea-btn,
+.coffee-page .cf-philo .ea-hero__right .ea-btn,
+.coffee-page .cf-lemon .ea-hero__right .ea-btn {
+  box-shadow: 0 14px 34px rgba(59, 75, 150, 0.26);
+}
+.coffee-page .cf-hero .ea-hero__right .ea-btn:hover,
+.coffee-page .cf-philo .ea-hero__right .ea-btn:hover,
+.coffee-page .cf-lemon .ea-hero__right .ea-btn:hover {
+  box-shadow: 0 18px 40px rgba(59, 75, 150, 0.18);
+}
+/* маркеры списка «философии» (тень-ореол был розовый; сам круг = var(--wine)) */
+.coffee-page .cf-uls li::before { box-shadow: 0 0 0 4px rgba(59, 75, 150, 0.12); }
+/* блок услуг (шторка): номер + оффер были розовые */
+.coffee-page .cf-svc .ea-serv__num { color: rgba(59, 75, 150, 0.65); }
+.coffee-page .cf-svc .ea-serv__offer {
+  border-top-color: rgba(59, 75, 150, 0.22);
+  color: rgba(59, 75, 150, 0.9);
+}
+/* меню: розовая заливка строки при наведении → голубая */
+.coffee-page .cfm-row:hover { background: #EAEDF7; }
+
+/* контент кофейни с «зашитым» #E7385A из общего event-author.css
+   (этот файл нельзя править — заденет «Оформление»), переопределяем scoped */
+.coffee-page .ea-serv__ctitle { color: var(--wine, #3B4B96) !important; }
+.coffee-page .ea-serv__slash { color: rgba(59, 75, 150, 0.85) !important; }
+.coffee-page .ea-serv__price {
+  color: rgba(59, 75, 150, 0.9) !important;
+  border-top-color: rgba(59, 75, 150, 0.22) !important;
+}
+.coffee-page .ea-proc__ph { border-color: #3B4B96 !important; }
+.coffee-page .ea-proc .ea-step__t,
+.coffee-page .ea-step__t,
+.coffee-page .ea-step__n {
+  color: var(--wine, #3B4B96) !important;
+  -webkit-text-stroke-color: #3B4B96 !important;
+}
+
+/* общие элементы сайта (шапка, плавающий виджет sf2, куки-баннер) —
+   на странице кофейни тоже синие */
+.coffee-page .site-header__badge,
+.coffee-page .wishlist-count,
+.coffee-page .header-wishlist-count,
+.coffee-page .sf2-round__btn,
+.coffee-page .cookie-bar__btn--accept {
+  background-color: #3B4B96 !important;
+}
+.coffee-page .cookie-bar__btn--accept { border-color: #3B4B96 !important; }
+.coffee-page .sf2-send,
+.coffee-page .sf2-badge { color: #3B4B96 !important; }
+.coffee-page .sf2-send svg,
+.coffee-page .sf2-badge svg { color: #3B4B96 !important; stroke: #3B4B96 !important; }
+
+/* логотип PALOMA — это картинка (розовый цвет запечён в PNG), поэтому на
+   странице кофейни подменяем на синюю версию: фон (шапка/прелоадер) и <img>
+   (герой/философия). Файл paloma-wordmark-blue.png = перекраска pink-версии. */
+.coffee-page .site-header__logo,
+.coffee-page .paloma-page-loader__logo {
+  background-image: url("images/paloma/logo/paloma-wordmark-blue.png") !important;
+}
+.coffee-page .cf-hero__logoimg,
+.coffee-page .ea-philo__logoimg {
+  content: url("images/paloma/logo/paloma-wordmark-blue.png");
+}
