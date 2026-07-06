@@ -197,14 +197,13 @@
 
     function addToCart(it, size, btn) {
       if (window.PalomaCart && window.PalomaCart.add) {
-        var img = itemImg(it);
+        /* фото в корзине для позиций кофейни пока не ставим — нейтральный фон */
         window.PalomaCart.add({
           id: it.id + (size.suffix || ""),
           name: it.title + (size.label ? " · " + size.label : ""),
           price: Number(size.price) || 0,
           qty: 1,
           category: "coffee",
-          bg: img ? "url(" + img + ") center/cover" : it.imageBg || "",
         });
       }
       if (btn) {
@@ -295,7 +294,6 @@
             id: it.id,
             name: it.title,
             price: Number(it.price) || 0,
-            image: itemImg(it),
             category: "coffee",
             qty: 1,
           });
