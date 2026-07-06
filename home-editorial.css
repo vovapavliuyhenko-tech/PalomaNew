@@ -37,6 +37,7 @@
   /* меньше вертикальных полей → заголовок выше, цитата ниже */
   padding: clamp(30px, 3.4vw, 50px) clamp(40px, 5vw, 72px);
   background: #FFFFFF;
+  border-radius: 16px;
   color: #1B1A18;
   display: flex;
   flex-direction: column;
