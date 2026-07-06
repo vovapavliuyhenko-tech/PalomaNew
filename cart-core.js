@@ -109,7 +109,7 @@ window.PalomaCart = (function () {
       name: product.name || "Товар",
       price: Number(product.price) || 0,
       qty: qtyAdd,
-      size: product.size ?? "S",
+      size: product.size ?? "",
       bg: product.bg || "",
       image: product.image || "",
       category: product.category || "",

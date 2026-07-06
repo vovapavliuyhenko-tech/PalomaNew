@@ -90,8 +90,8 @@ body.coffee-page{overflow-x:clip!important}
 /* видео лимонадов: без зума (не вылезает за рамки) + светлее, чтобы было видно сюжет */
 /* видео заполняет свою половину как в первом блоке, но без зума (ken burns) —
    при overflow:visible (ради цветов) зум заставлял видео вылезать за рамку */
-.cf-lemon .cf-video{transform:none;object-fit:cover;animation:none;filter:saturate(1.06) brightness(1.12)}
-.cf-lemon .cf-hero__left::after{background:linear-gradient(180deg,rgba(20,12,8,.1),rgba(20,12,8,.2))}
+.cf-lemon .cf-video{transform:none;object-fit:cover;animation:none;filter:saturate(1.06) brightness(1.3)}
+.cf-lemon .cf-hero__left::after{background:linear-gradient(180deg,rgba(20,12,8,.02),rgba(20,12,8,.06))}
 /* рамка с фото — меньше, чтобы видео на фоне было больше видно */
 .cf-lemon .cf-lemon__frame{width:min(20vw,272px);overflow:visible}
 /* два цветка-акцента по углам фото (лево-верх + право-низ), золотой контур */
