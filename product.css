@@ -816,11 +816,11 @@ body.product-page {
   opacity: 1;
 }
 
-/* ── «С этим часто покупают»: закруглённые карточки и кнопки (стиль главной) ── */
+/* ── «С этим часто покупают»: скругление как на главной/подписке (12px) ── */
 .pdp-similar .home-product-card__media {
-  border-radius: 18px;
+  border-radius: 12px;
 }
 
 .pdp-similar .home-product-card__more {
-  border-radius: 999px;
+  border-radius: 12px;
 }
