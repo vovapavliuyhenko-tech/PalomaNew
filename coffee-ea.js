@@ -60,23 +60,43 @@
     var grid = document.getElementById("cfMenuGrid");
     var countBox = document.getElementById("cfMenuCount");
     var active = "all";
-    var PAGE_SIZE = 12;
-    var shown = PAGE_SIZE;
 
-    /* кнопка «Смотреть дальше» — по центру под сеткой */
-    var moreBtn = null;
-    if (grid) {
-      moreBtn = document.createElement("button");
-      moreBtn.type = "button";
-      moreBtn.className = "cf-more";
-      moreBtn.setAttribute("data-cursor", "hover");
-      moreBtn.textContent = "Смотреть дальше";
-      moreBtn.style.display = "none";
-      moreBtn.addEventListener("click", function () {
-        shown += PAGE_SIZE;
-        render();
-      });
-      grid.parentNode.insertBefore(moreBtn, grid.nextSibling);
+    /* скрипт-надписи категорий (как эйбрау «our menu») */
+    var catEyebrow = {
+      classic: "coffee classics",
+      cacaoraf: "cocoa & raf",
+      smoothie: "smoothie bar",
+      milkshake: "shakes & cocktails",
+      tea: "tea ceremony",
+      cold: "cold & fresh",
+    };
+    /* порядок категорий — как встречаются в данных */
+    var catOrder = MENU.map(function (i) { return i.category; })
+      .filter(function (v, i, a) { return a.indexOf(v) === i; });
+
+    /* разбор объёмов/цен: «250 / 350 / 450 мл» + «220 / 270 / 300 ₽» → размеры */
+    function parseSizes(it) {
+      var vols = String(it.volumes || "").split("/").map(function (s) { return s.trim(); }).filter(Boolean);
+      var prices = String(it.priceLabel || "").split("/").map(function (s) { return s.trim(); }).filter(Boolean);
+      var nums = prices.map(function (s) { return parseInt(String(s).replace(/[^0-9]/g, ""), 10) || 0; });
+      if (nums.length > 1 && (vols.length === nums.length || vols.length === 0)) {
+        var unit = (String(it.volumes || "").match(/[^\d\s/]+\s*$/) || [""])[0].trim();
+        return nums.map(function (pr, i) {
+          var v = vols[i] || "";
+          if (v && /^\d+$/.test(v) && unit) v = v + " " + unit;
+          return { label: v, price: pr, priceText: pr.toLocaleString("ru-RU") + " ₽", suffix: "-" + (i + 1) };
+        });
+      }
+      var base = Number(it.price) || nums[0] || 0;
+      return [{ label: vols[0] || "", price: base, priceText: it.priceLabel || base + " ₽", suffix: "" }];
+    }
+    /* компактная цена строки: «150–180 ₽» для мультиразмерных, иначе как есть */
+    function priceRange(sizes, it) {
+      if (sizes.length > 1) {
+        var lo = sizes[0].price, hi = sizes[sizes.length - 1].price;
+        return lo.toLocaleString("ru-RU") + "–" + hi.toLocaleString("ru-RU") + " ₽";
+      }
+      return it.priceLabel || sizes[0].price + " ₽";
     }
 
     function plural(n) {
@@ -85,6 +105,15 @@
       if (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) return n + " позиции";
       return n + " позиций";
     }
+
+    var rowIO = new IntersectionObserver(
+      function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("is-in"); rowIO.unobserve(e.target); }
+        });
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -30px 0px" }
+    );
 
     if (filtersBox && grid && MENU.length) {
       var cats = ["all"].concat(
@@ -105,7 +134,6 @@
         b.addEventListener("click", function () {
           if (active === c) return;
           active = c;
-          shown = PAGE_SIZE;
           [].forEach.call(filtersBox.children, function (x) {
             var on = x === b;
             x.classList.toggle("is-active", on);
@@ -118,97 +146,114 @@
       render();
     }
 
-    function cardHtml(it) {
-      var img = itemImg(it);
-      var media = img
-        ? '<img class="product-card__img product-card__img--main" src="' +
-            esc(img) + '" alt="' + esc(it.title) +
-            '" loading="lazy" onerror="this.style.display=\'none\'">' +
-          '<div class="product-card__ph" style="background:' +
-            esc(it.imageBg || "") + ';" aria-hidden="true"></div>'
-        : '<div class="product-card__ph" style="background:' +
-            esc(it.imageBg || "") + ';" aria-hidden="true"></div>';
-      var href = "coffee-item.html?id=" + encodeURIComponent(it.id);
-      return (
-        '<div class="product-card__media">' +
-          '<a class="product-card__media-link" href="' + href + '" aria-label="' + esc(it.title) + '">' +
-            media +
-          "</a>" +
-          '<span class="product-card__badge product-card__badge--coffee">' +
-            esc(catLabels[it.category] || "") + "</span>" +
-        "</div>" +
-        '<div class="product-card__body">' +
-          '<a class="product-card__name-link" href="' + href + '">' +
-            '<h3 class="product-card__name">' + esc(it.title) + "</h3>" +
-          "</a>" +
-          (it.desc ? '<p class="product-card__desc">' + esc(it.desc) + "</p>" : "") +
-          '<p class="product-card__price">' + esc(it.priceLabel || it.price + " ₽") + "</p>" +
-          '<div class="product-card__btns">' +
-            '<a class="product-card__btn product-card__btn--detail" href="' + href + '">Подробнее</a>' +
-            '<button type="button" class="product-card__btn product-card__btn--cart" data-cf-add aria-label="Добавить в корзину: ' +
-              esc(it.title) + '">В корзину</button>' +
-          "</div>" +
-        "</div>"
-      );
-    }
-
     function render() {
       if (!grid) return;
       grid.innerHTML = "";
-      var items = MENU.filter(function (it) {
-        return active === "all" || it.category === active;
-      });
-      if (countBox) countBox.textContent = plural(items.length);
-      var visible = items.slice(0, shown);
-      if (moreBtn) moreBtn.style.display = items.length > shown ? "" : "none";
+      var cats = active === "all" ? catOrder : [active];
+      var total = 0;
       var frag = document.createDocumentFragment();
-      visible.forEach(function (it) {
-        var card = document.createElement("article");
-        card.className = "product-card";
-        card.dataset.id = it.id;
-        card._item = it;
-        card.innerHTML = cardHtml(it);
-        frag.appendChild(card);
+      cats.forEach(function (cat) {
+        var items = MENU.filter(function (it) { return it.category === cat; });
+        if (!items.length) return;
+        total += items.length;
+        var block = document.createElement("div");
+        block.className = "cfm-cat";
+        var head =
+          '<div class="cfm-cathead">' +
+            '<span class="cfm-eye">' + esc(catEyebrow[cat] || "") + "</span>" +
+            '<span class="cfm-title">' + esc(catLabels[cat] || cat) + "</span>" +
+            '<span class="cfm-count">· ' + esc(plural(items.length)) + "</span>" +
+          "</div>" +
+          '<div class="cfm-rule"></div>';
+        var rows = items.map(function (it, i) {
+          var sizes = parseSizes(it);
+          return (
+            '<div class="cfm-row" data-id="' + esc(it.id) + '"' +
+              ' style="transition-delay:' + Math.min(i * 45, 320) + 'ms">' +
+              '<span class="cfm-num">' + esc(it.num || "") + "</span>" +
+              '<span class="cfm-name">' + esc(it.title) +
+                (it.desc ? '<em class="cfm-desc">' + esc(it.desc) + "</em>" : "") +
+              "</span>" +
+              '<span class="cfm-vol">' + esc(it.volumes || "") + "</span>" +
+              '<span class="cfm-price">' + esc(priceRange(sizes, it)) + "</span>" +
+              '<button type="button" class="cfm-add" data-cursor="hover"' +
+                ' aria-label="Добавить в корзину: ' + esc(it.title) + '"></button>' +
+            "</div>"
+          );
+        }).join("");
+        block.innerHTML = head + rows;
+        var rowEls = block.querySelectorAll(".cfm-row");
+        items.forEach(function (it, idx) {
+          if (rowEls[idx]) { rowEls[idx]._item = it; rowEls[idx]._sizes = parseSizes(it); }
+        });
+        frag.appendChild(block);
       });
       grid.appendChild(frag);
-      var cards = grid.querySelectorAll(".product-card");
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        cards.forEach(function (c) { c.classList.add("is-visible", "is-revealed"); });
-      } else {
-        requestAnimationFrame(function () {
-          cards.forEach(function (c, i) {
-            setTimeout(function () { c.classList.add("is-visible", "is-revealed"); }, Math.min(i * 40, 400));
-          });
+      if (countBox) countBox.textContent = plural(total);
+      revealRows();
+      window.palomaRebindCursorHovers && window.palomaRebindCursorHovers();
+    }
+
+    function revealRows() {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      grid.querySelectorAll(".cfm-cat, .cfm-row").forEach(function (el) {
+        if (reduce) el.classList.add("is-in");
+        else rowIO.observe(el);
+      });
+    }
+
+    function addToCart(it, size, btn) {
+      if (window.PalomaCart && window.PalomaCart.add) {
+        var img = itemImg(it);
+        window.PalomaCart.add({
+          id: it.id + (size.suffix || ""),
+          name: it.title + (size.label ? " · " + size.label : ""),
+          price: Number(size.price) || 0,
+          qty: 1,
+          category: "coffee",
+          bg: img ? "url(" + img + ") center/cover" : it.imageBg || "",
         });
       }
+      if (btn) {
+        btn.classList.add("is-done");
+        setTimeout(function () { btn.classList.remove("is-done"); }, 1100);
+      }
+    }
+
+    function toggleTray(row, it, sizes) {
+      var next = row.nextElementSibling;
+      if (next && next.classList.contains("cfm-tray")) {
+        next.classList.remove("open");
+        setTimeout(function () { if (next.parentNode) next.remove(); }, 340);
+        return;
+      }
+      var tray = document.createElement("div");
+      tray.className = "cfm-tray";
+      tray.innerHTML = sizes.map(function (s) {
+        return '<button type="button" class="cfm-chip" data-cursor="hover">' +
+          "<b>" + esc(s.label) + "</b><span>" + esc(s.priceText) + "</span></button>";
+      }).join("");
+      row.after(tray);
+      Array.prototype.forEach.call(tray.querySelectorAll(".cfm-chip"), function (chip, i) {
+        chip.addEventListener("click", function (e) {
+          e.stopPropagation();
+          addToCart(it, sizes[i], row.querySelector(".cfm-add"));
+          tray.classList.remove("open");
+          setTimeout(function () { if (tray.parentNode) tray.remove(); }, 340);
+        });
+      });
+      requestAnimationFrame(function () { tray.classList.add("open"); });
       window.palomaRebindCursorHovers && window.palomaRebindCursorHovers();
     }
 
     if (grid) {
       grid.addEventListener("click", function (e) {
-        var card = e.target.closest(".product-card");
-        if (!card || !card._item) return;
-        var it = card._item;
-        if (e.target.closest("[data-cf-add]")) {
-          if (window.PalomaCart && window.PalomaCart.add) {
-            var img = itemImg(it);
-            window.PalomaCart.add({
-              id: it.id,
-              name: it.title,
-              price: Number(it.price) || 0,
-              qty: 1,
-              category: "coffee",
-              bg: img ? "url(" + img + ") center/cover" : it.imageBg || "",
-            });
-          }
-          var btn = e.target.closest("[data-cf-add]");
-          var prev = btn.textContent;
-          btn.textContent = "✓";
-          btn.disabled = true;
-          setTimeout(function () { btn.textContent = prev; btn.disabled = false; }, 1200);
-          return;
-        }
-        /* переход на страницу напитка — по ссылкам в карточке (попап отключён) */
+        var row = e.target.closest(".cfm-row");
+        if (!row || !row._item) return;
+        var it = row._item;
+        var sizes = row._sizes || parseSizes(it);
+        if (sizes.length > 1) { toggleTray(row, it, sizes); return; }
+        addToCart(it, sizes[0], row.querySelector(".cfm-add"));
       });
     }
 
