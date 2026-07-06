@@ -322,6 +322,32 @@
       window.addEventListener("resize", update);
       update();
     })();
+
+    /* ── ИСТОРИЯ КОФЕ — лёгкий параллакс фото-плиток и фонов ── */
+    (function () {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var story = document.querySelector(".cf-story");
+      if (!story || reduce) return;
+      var imgs = [].slice.call(story.querySelectorAll(".cf-story__tile img"));
+      var bgs = [].slice.call(story.querySelectorAll(".cf-story__bg"));
+      var vh = window.innerHeight;
+      function upd() {
+        imgs.forEach(function (im) {
+          var r = im.getBoundingClientRect();
+          var mid = (r.top + r.height / 2) / vh; /* 0 сверху … 1 снизу */
+          var depth = im.parentNode.classList.contains("cf-story__tile--b") ? 46 : 26;
+          im.style.transform = "translateY(" + ((0.5 - mid) * depth).toFixed(1) + "px) scale(1.06)";
+        });
+        bgs.forEach(function (bg) {
+          var r = bg.getBoundingClientRect();
+          var mid = (r.top + r.height / 2) / vh;
+          bg.style.transform = "scale(1.06) translateY(" + ((0.5 - mid) * 22).toFixed(1) + "px)";
+        });
+      }
+      window.addEventListener("scroll", upd, { passive: true });
+      window.addEventListener("resize", function () { vh = window.innerHeight; upd(); });
+      upd();
+    })();
   }
 
   function esc(s) {
