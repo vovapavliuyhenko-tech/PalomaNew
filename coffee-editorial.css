@@ -1162,3 +1162,15 @@
 .coffee-page .ea-philo__logoimg {
   content: url("images/paloma/logo/paloma-wordmark-blue.png");
 }
+
+/* шапка кофейни — сплошная (кремовая) сразу при загрузке, а не прозрачная
+   над тёмным hero (иначе тёмный текст меню не виден). Держим её видимой во
+   всех состояниях: и над hero (coffee-hero-active), и при скролле. */
+body.coffee-page .site-header,
+body.coffee-page .site-header.coffee-hero-active,
+body.coffee-page .site-header.is-scrolled {
+  background: rgba(250, 248, 244, 0.96) !important;
+  border-bottom-color: rgba(27, 26, 24, 0.1) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}

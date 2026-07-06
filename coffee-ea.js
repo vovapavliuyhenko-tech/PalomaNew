@@ -59,7 +59,7 @@
     var filtersBox = document.getElementById("cfMenuFilters");
     var grid = document.getElementById("cfMenuGrid");
     var countBox = document.getElementById("cfMenuCount");
-    var active = "all";
+    var active = null;
 
     /* скрипт-надписи категорий (как эйбрау «our menu») */
     var catEyebrow = {
@@ -134,33 +134,22 @@
         b.setAttribute("data-cursor", "hover");
         b.textContent = catLabels[c] || c;
         b.addEventListener("click", function () {
-          var block = grid.querySelector('.cfm-cat[data-cat="' + c + '"]');
-          if (block) {
-            var y = block.getBoundingClientRect().top + window.pageYOffset - 90;
-            window.scrollTo({ top: y < 0 ? 0 : y, behavior: "smooth" });
-          }
+          if (active === c) return;
+          active = c;
           setActiveChip(c);
+          render();
         });
         filtersBox.appendChild(b);
       });
+      active = catOrder[0];
+      setActiveChip(active);
       render();
-      setActiveChip(catOrder[0]);
-      /* подсветка активной категории по позиции скролла (scrollspy) */
-      var spyIO = new IntersectionObserver(
-        function (es) {
-          es.forEach(function (e) {
-            if (e.isIntersecting) setActiveChip(e.target.getAttribute("data-cat"));
-          });
-        },
-        { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
-      );
-      grid.querySelectorAll(".cfm-cat").forEach(function (b) { spyIO.observe(b); });
     }
 
     function render() {
       if (!grid) return;
       grid.innerHTML = "";
-      var cats = catOrder;
+      var cats = active ? [active] : catOrder;
       var total = 0;
       var frag = document.createDocumentFragment();
       cats.forEach(function (cat) {
