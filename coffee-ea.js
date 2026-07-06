@@ -115,41 +115,52 @@
       { threshold: 0.05, rootMargin: "0px 0px -30px 0px" }
     );
 
+    function setActiveChip(c) {
+      if (!filtersBox) return;
+      [].forEach.call(filtersBox.children, function (x) {
+        var on = x.getAttribute("data-cat") === c;
+        x.classList.toggle("is-active", on);
+        x.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+    }
+
     if (filtersBox && grid && MENU.length) {
-      var cats = ["all"].concat(
-        MENU.map(function (i) {
-          return i.category;
-        }).filter(function (v, i, a) {
-          return a.indexOf(v) === i;
-        })
-      );
-      cats.forEach(function (c) {
+      catOrder.forEach(function (c) {
         var b = document.createElement("button");
         b.type = "button";
-        b.className = "catalog-filter-btn" + (c === "all" ? " is-active" : "");
-        b.setAttribute("data-filter", c);
-        b.setAttribute("aria-pressed", c === "all" ? "true" : "false");
+        b.className = "catalog-filter-btn";
+        b.setAttribute("data-cat", c);
+        b.setAttribute("aria-pressed", "false");
         b.setAttribute("data-cursor", "hover");
         b.textContent = catLabels[c] || c;
         b.addEventListener("click", function () {
-          if (active === c) return;
-          active = c;
-          [].forEach.call(filtersBox.children, function (x) {
-            var on = x === b;
-            x.classList.toggle("is-active", on);
-            x.setAttribute("aria-pressed", on ? "true" : "false");
-          });
-          render();
+          var block = grid.querySelector('.cfm-cat[data-cat="' + c + '"]');
+          if (block) {
+            var y = block.getBoundingClientRect().top + window.pageYOffset - 90;
+            window.scrollTo({ top: y < 0 ? 0 : y, behavior: "smooth" });
+          }
+          setActiveChip(c);
         });
         filtersBox.appendChild(b);
       });
       render();
+      setActiveChip(catOrder[0]);
+      /* подсветка активной категории по позиции скролла (scrollspy) */
+      var spyIO = new IntersectionObserver(
+        function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) setActiveChip(e.target.getAttribute("data-cat"));
+          });
+        },
+        { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+      );
+      grid.querySelectorAll(".cfm-cat").forEach(function (b) { spyIO.observe(b); });
     }
 
     function render() {
       if (!grid) return;
       grid.innerHTML = "";
-      var cats = active === "all" ? catOrder : [active];
+      var cats = catOrder;
       var total = 0;
       var frag = document.createDocumentFragment();
       cats.forEach(function (cat) {
@@ -158,6 +169,7 @@
         total += items.length;
         var block = document.createElement("div");
         block.className = "cfm-cat";
+        block.setAttribute("data-cat", cat);
         var head =
           '<div class="cfm-cathead">' +
             '<span class="cfm-eye">' + esc(catEyebrow[cat] || "") + "</span>" +
@@ -170,10 +182,7 @@
           return (
             '<div class="cfm-row" data-id="' + esc(it.id) + '"' +
               ' style="transition-delay:' + Math.min(i * 45, 320) + 'ms">' +
-              '<span class="cfm-num">' + esc(it.num || "") + "</span>" +
-              '<span class="cfm-name">' + esc(it.title) +
-                (it.desc ? '<em class="cfm-desc">' + esc(it.desc) + "</em>" : "") +
-              "</span>" +
+              '<span class="cfm-name">' + esc(it.title) + "</span>" +
               '<span class="cfm-vol">' + esc(it.volumes || "") + "</span>" +
               '<span class="cfm-price">' + esc(priceRange(sizes, it)) + "</span>" +
               '<button type="button" class="cfm-add" data-cursor="hover"' +
