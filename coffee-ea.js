@@ -159,13 +159,8 @@
         var block = document.createElement("div");
         block.className = "cfm-cat";
         block.setAttribute("data-cat", cat);
-        var head =
-          '<div class="cfm-cathead">' +
-            '<span class="cfm-eye">' + esc(catEyebrow[cat] || "") + "</span>" +
-            '<span class="cfm-title">' + esc(catLabels[cat] || cat) + "</span>" +
-            '<span class="cfm-count">· ' + esc(plural(items.length)) + "</span>" +
-          "</div>" +
-          '<div class="cfm-rule"></div>';
+        /* заголовок категории убран — раздел уже выбран фильтром сверху */
+        var head = "";
         var rows = items.map(function (it, i) {
           var sizes = parseSizes(it);
           return (

@@ -1034,7 +1034,7 @@
 .cfm-row:hover { background: #FBEAF0; }
 .cfm-name {
   font-family: var(--fhead, 'Montserrat', Arial, sans-serif);
-  font-size: clamp(19px, 2.1vw, 27px); font-weight: 500; line-height: 1.15;
+  font-size: clamp(16px, 1.7vw, 22px); font-weight: 500; line-height: 1.15;
   color: var(--wine, #E7385A); letter-spacing: .005em;
   padding: 2px 0;
 }
@@ -1071,7 +1071,7 @@
 @media (max-width: 620px) {
   .cfm-row { grid-template-columns: 1fr auto 36px; gap: 8px 12px; padding: 13px 15px; }
   .cfm-vol { display: none; }
-  .cfm-name { font-size: 19px; }
+  .cfm-name { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .cfm-row { transition: none; }
