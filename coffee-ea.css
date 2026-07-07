@@ -188,3 +188,8 @@ body.cf-modal-open{overflow:hidden}
   .cf-modal__panel{grid-template-columns:1fr;max-height:92vh;overflow-y:auto}
   .cf-modal__img{min-height:230px}
 }
+
+/* FAQ кофейни: класс .ea-panel делает секцию sticky/100vh — из-за этого блок
+   пиннился поверх «лимонадов». id-специфичность гарантированно возвращает
+   обычный поток, авто-высоту и сплошной фон поверх штор-стека. */
+#cf-faq{position:relative;z-index:30;min-height:0;height:auto;background:#FFFFFF}
