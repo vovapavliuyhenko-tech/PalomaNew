@@ -363,23 +363,25 @@
         if (d > N / 2) d -= N;
         return d;
       }
+      /* Карточки лежат на цилиндре: ровный ряд с небольшим зазором, мягкий
+         изгиб к краям (как в референсе), без наложения друг на друга. */
+      var STEP_DEG = 15;               /* угол между соседними карточками */
       function layout() {
-        var step = cardW * 0.72;         /* горизонтальный шаг */
-        var zStep = cardW * 0.46;        /* глубина боковых карточек */
-        var rot = 26;                    /* градусы поворота на шаг */
+        var radius = cardW * 3.7;      /* радиус → шаг по дуге ≈ ширина + зазор */
+        var stepRad = STEP_DEG * Math.PI / 180;
         for (var i = 0; i < N; i++) {
           var d = wrap(i - pos);
           var ad = Math.abs(d);
-          var x = d * step;
-          var z = -ad * zStep;
-          var ry = -d * rot;
-          if (ry > 62) ry = 62; else if (ry < -62) ry = -62;
+          var th = d * stepRad;
+          var x = radius * Math.sin(th);
+          var z = radius * Math.cos(th) - radius;   /* центр в 0, края уходят вглубь */
+          var ry = -d * STEP_DEG;
           var c = cards[i];
           c.style.transform =
             "translate(-50%,-50%) translateX(" + x.toFixed(1) + "px) translateZ(" +
             z.toFixed(1) + "px) rotateY(" + ry.toFixed(1) + "deg)";
           c.style.zIndex = String(1000 - Math.round(ad * 10));
-          c.style.opacity = ad > N / 2 - 0.6 ? "0" : (ad > 2.6 ? "0.35" : "1");
+          c.style.opacity = ad > N / 2 - 0.55 ? "0" : (ad > 3.4 ? "0.4" : "1");
         }
       }
       function frame() {
@@ -401,7 +403,7 @@
       stage.addEventListener("pointermove", function (e) {
         if (!dragging) return;
         var dx = e.clientX - lastX; lastX = e.clientX; moved += Math.abs(dx);
-        var d = dx / (cardW * 0.72);
+        var d = dx / (cardW * 0.97);
         target -= d; pos -= d; vel = -d * 0.6;
       });
       function endDrag(e) {
