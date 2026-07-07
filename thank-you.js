@@ -97,7 +97,7 @@
 
   function itemOptions(i) {
     const parts = [];
-    if (i.size && i.size !== "—") parts.push(i.size);
+    if (i.size && i.size !== "—" && i.category !== "coffee") parts.push(i.size);
     if (Array.isArray(i.addons)) parts.push(...i.addons.filter(Boolean));
     return parts.length ? " (" + parts.join(", ") + ")" : "";
   }

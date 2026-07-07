@@ -257,7 +257,7 @@ window.PalomaCart = (function () {
 
   function _metaLine(item) {
     const parts = [];
-    if (item.size && item.size !== "—") parts.push(esc(item.size));
+    if (item.size && item.size !== "—" && item.category !== "coffee") parts.push(esc(item.size));
     if (item.addons?.length) {
       parts.push(esc(item.addons.filter(Boolean).join(", ")));
     }
@@ -501,7 +501,7 @@ window.PalomaCart = (function () {
         i.price * (i.qty || 1)
       ).toLocaleString("ru-RU")} ₽`;
       const bits = [];
-      if (i.size && i.size !== "—") bits.push(`размер ${i.size}`);
+      if (i.size && i.size !== "—" && i.category !== "coffee") bits.push(`размер ${i.size}`);
       if (i.addons?.length) bits.push(i.addons.filter(Boolean).join(", "));
       if (bits.length) line += ` (${bits.join("; ")})`;
       return line;

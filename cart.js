@@ -167,7 +167,7 @@
     summaryItems.innerHTML = items
       .map((item) => {
         const meta = [];
-        if (item.size && item.size !== "—") meta.push(`Размер ${item.size}`);
+        if (item.size && item.size !== "—" && item.category !== "coffee") meta.push(`Размер ${item.size}`);
         if (item.addons?.length) meta.push(item.addons.filter(Boolean).join(", "));
         const metaStr = meta.filter(Boolean).join(" · ");
         const mediaStyle = item.bg
