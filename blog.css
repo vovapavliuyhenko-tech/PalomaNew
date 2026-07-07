@@ -834,9 +834,10 @@ main.blog-page {
 
 /* крупный вводный абзац — «обещание» статьи */
 .article-body__inner .a-lead {
-  font-family: var(--font-display);
-  font-size: clamp(21px, 2.3vw, 29px);
-  line-height: 1.4; font-weight: 400; color: var(--color-text);
+  /* было var(--font-display) — рукописный шрифт делал вводный абзац нечитаемым */
+  font-family: inherit; font-style: normal;
+  font-size: clamp(19px, 1.7vw, 24px);
+  line-height: 1.55; font-weight: 500; color: var(--color-text);
   margin: 0 0 30px;
 }
 .article-body__inner h2 { margin: 34px 0 14px; font-size: clamp(24px, 2.4vw, 34px); }
