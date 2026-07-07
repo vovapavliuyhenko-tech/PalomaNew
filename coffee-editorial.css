@@ -1180,6 +1180,7 @@ body.coffee-page .site-header.is-scrolled {
    (референс: генератор «Film Strip»). Позиции карточек считает JS.
    ═══════════════════════════════════════════════════════════════════ */
 .cf-strip {
+  position: relative; z-index: 1; isolation: isolate;
   background: #101014; color: #F4F1EA;
   padding: clamp(56px,9vh,110px) 0 clamp(64px,10vh,120px);
   overflow: hidden;
@@ -1196,6 +1197,7 @@ body.coffee-page .site-header.is-scrolled {
   position: relative; height: clamp(300px,46vh,480px);
   perspective: 1500px; perspective-origin: 50% 50%;
   cursor: grab; touch-action: pan-y; outline: none;
+  overflow: hidden;   /* обрезаем 3D-карточки внутри рамки ленты, чтобы не вылезали на соседние блоки */
 }
 .cf-strip__stage.is-drag { cursor: grabbing; }
 .cf-strip__band { position: absolute; inset: 0; transform-style: preserve-3d; }
