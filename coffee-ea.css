@@ -93,11 +93,11 @@ body.coffee-page{overflow-x:clip!important}
 #cf-steps .ea-proc-step:nth-child(2) .ea-step__body--lo{top:62%}
 /* 03 — панель уже + контент левее, чтобы 3-й этап шёл ближе ко 2-му
    (был большой пустой отступ между ними) */
-#cf-steps .ea-proc-step:last-child{width:clamp(600px,56vw,840px)}
-#cf-steps .ea-proc-step:last-child .ea-step__t--top{left:7%}
-#cf-steps .ea-proc-step:last-child .ea-step__body--hi{left:5%}
-#cf-steps .ea-proc-step:last-child .ea-proc__ph--d{left:5%}
-#cf-steps .ea-proc-step:last-child .ea-proc__ph--e{left:41%}
+#cf-steps .ea-proc-step:last-child{width:clamp(760px,64vw,1000px)}
+#cf-steps .ea-proc-step:last-child .ea-step__t--top{left:15%}
+#cf-steps .ea-proc-step:last-child .ea-step__body--hi{left:13%}
+#cf-steps .ea-proc-step:last-child .ea-proc__ph--d{left:13%}
+#cf-steps .ea-proc-step:last-child .ea-proc__ph--e{left:55%}
 
 /* ── БЛОК ЛИМОНАДОВ — тот же макет, что первый блок: лево видео / право текст ── */
 /* видео лимонадов: без зума (не вылезает за рамки) + светлее, чтобы было видно сюжет */
