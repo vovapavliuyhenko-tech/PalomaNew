@@ -8985,3 +8985,21 @@ body.is-home .site-header:not(.is-scrolled) .site-header__logo{background-image:
 .wishlist-drawer__item .cart-drawer__item-name a:hover {
   text-decoration: underline;
 }
+
+/* ── Подвал: кнопка «Разработчик» + маленький жираф на линии ── */
+.sf2-dev {
+  display: inline-block; margin-top: 14px;
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: 12px; letter-spacing: .04em;
+  color: rgba(255, 255, 255, 0.40); text-decoration: none;
+  transition: color .25s ease;
+}
+.sf2-dev:hover, .sf2-dev:focus-visible { color: var(--color-accent, #E7385A); }
+
+/* жираф стоит ногами на линии footer-bottom, телом вверх, ничего не перекрывает */
+.footer-giraffe {
+  position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+  height: clamp(52px, 6vw, 74px); width: auto;
+  pointer-events: none; z-index: 3; margin-bottom: -1px;
+}
+@media (max-width: 700px) { .footer-giraffe { display: none; } }
