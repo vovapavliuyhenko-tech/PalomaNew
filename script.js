@@ -1637,7 +1637,19 @@ if (document.body.classList.contains("event-decoration-page")) {
       setCaret(input, caretPos(d.length));
     });
   }
-  function init(){ document.querySelectorAll(".sf2-input").forEach(attach); }
+  var SEL = 'input[type="tel"]:not([data-nomask]), input[inputmode="tel"]:not([data-nomask]), .sf2-input';
+  function init(){
+    document.querySelectorAll(SEL).forEach(attach);
+    /* делегирование: поля из попапов/модалок, добавленные позже, тоже получают маску */
+    document.addEventListener("focusin", function(e){
+      var t = e.target;
+      if (t && t.matches && t.matches(SEL)){
+        var isNew = !t.dataset.phoneMask;
+        attach(t);
+        if (isNew && !t.value){ t.value = format(""); requestAnimationFrame(function(){ setCaret(t,4); }); }
+      }
+    });
+  }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
