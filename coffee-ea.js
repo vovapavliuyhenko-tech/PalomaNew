@@ -433,6 +433,26 @@
       strip.classList.add("is-ready");
       requestAnimationFrame(frame);
     })();
+
+    /* ── FAQ-аккордеон (как на главной и «Оформлении») ── */
+    (function () {
+      var items = [].slice.call(document.querySelectorAll(".ea-faq__item"));
+      if (!items.length) return;
+      items.forEach(function (item) {
+        var q = item.querySelector(".ea-faq__q");
+        var a = item.querySelector(".ea-faq__a");
+        if (!q || !a) return;
+        q.addEventListener("click", function () {
+          var open = item.classList.contains("is-open");
+          items.forEach(function (i) {
+            i.classList.remove("is-open");
+            var ia = i.querySelector(".ea-faq__a");
+            if (ia) ia.style.maxHeight = null;
+          });
+          if (!open) { item.classList.add("is-open"); a.style.maxHeight = a.scrollHeight + "px"; }
+        });
+      });
+    })();
   }
 
   function esc(s) {
