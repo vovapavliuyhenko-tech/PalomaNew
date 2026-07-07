@@ -85,6 +85,15 @@ body.coffee-page{overflow-x:clip!important}
    оверрайд `.coffee-ea .ea-title{text-transform:uppercase}` делал интро-заголовок
    ЗАГЛАВНЫМ. Возвращаем смешанный регистр (как «Процесс оформления вашего события»). */
 #cf-steps .ea-proc__intro .ea-title{text-transform:none}
+/* Заголовки кофейни длиннее, чем на Оформлении («ЗАКАЗ ИЗ ДОМА»,
+   «ПРИВЕЗЁМ К ДВЕРИ») → налазили на фото. Точечные сдвиги (только #cf-steps). */
+/* 01 — заголовок левее, фото-а правее (чтобы не пересекались), текст ниже */
+#cf-steps .ea-proc-step:nth-child(2) .ea-step__t--top{left:2%}
+#cf-steps .ea-proc-step:nth-child(2) .ea-proc__ph--a{left:64%}
+#cf-steps .ea-proc-step:nth-child(2) .ea-step__body--lo{top:54%}
+/* 03 — заголовок и текст левее (длинный заголовок уходил вправо) */
+#cf-steps .ea-proc-step:last-child .ea-step__t--top{left:24%}
+#cf-steps .ea-proc-step:last-child .ea-step__body--hi{left:22%}
 
 /* ── БЛОК ЛИМОНАДОВ — тот же макет, что первый блок: лево видео / право текст ── */
 /* видео лимонадов: без зума (не вылезает за рамки) + светлее, чтобы было видно сюжет */
