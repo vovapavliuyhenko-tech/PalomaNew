@@ -8998,7 +8998,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__logo{background-image:
 
 /* жираф стоит ногами на линии footer-bottom, справа под адресом; фон вырезан из PNG */
 .footer-giraffe {
-  position: absolute; right: clamp(120px, 18vw, 320px); bottom: 100%;
+  position: absolute; right: clamp(95px, 15vw, 275px); bottom: 100%;
   height: clamp(130px, 16vw, 220px); width: auto;
   background: transparent; pointer-events: none; z-index: 3; margin-bottom: -1px;
 }
