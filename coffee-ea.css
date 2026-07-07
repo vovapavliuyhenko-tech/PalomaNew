@@ -193,3 +193,54 @@ body.cf-modal-open{overflow:hidden}
    пиннился поверх «лимонадов». id-специфичность гарантированно возвращает
    обычный поток, авто-высоту и сплошной фон поверх штор-стека. */
 #cf-faq{position:relative;z-index:30;min-height:0;height:auto;background:#FFFFFF}
+
+/* =====================================================================
+   МОБИЛЬНАЯ ВЕРСИЯ (≤900px) — удобная вертикальная раскладка кофейни.
+   Базовый event-author.css уже стекает .ea-hero/.ea-philo/.ea-faq в 1 колонку,
+   но: (1) .coffee-page .ea-philo насильно 100vh → две половины сдавлены;
+   (2) блок этапов #cf-steps — горизонтальная лента с абсолютным позициони-
+   рованием → на телефоне ломается. Здесь превращаем его в вертикальный стек.
+   ===================================================================== */
+@media(max-width:900px){
+  /* «Философия»: нормальный поток вместо 100vh (иначе текст+фото налазят) */
+  .coffee-page .ea-philo{height:auto;min-height:0}
+  .cf-philo .ea-philo__media{min-height:54vh}
+  /* Герой: логотип-картинка и высота под телефон */
+  .cf-hero__logoimg{width:clamp(150px,44vw,200px);margin-top:clamp(18px,4vh,40px)}
+  .coffee-page .cf-hero .ea-hero__left{min-height:60vh}
+  /* Цветки у заголовка меню — компактнее, чтобы заголовок читался */
+  .cf-menu-flower{width:clamp(26px,8vw,40px)!important}
+
+  /* ── ЭТАПЫ: из горизонтальной ленты в вертикальный стек карточек ── */
+  #cf-steps{height:auto!important;background:var(--paper2)}
+  #cf-steps .ea-proc__sticky{position:static;height:auto;overflow:visible;display:block}
+  #cf-steps .ea-proc__track{display:block;height:auto;transform:none!important;will-change:auto}
+  #cf-steps .ea-proc__panel{position:relative;width:100%!important;height:auto;display:block;
+    padding:clamp(38px,9vw,60px) clamp(20px,6vw,32px);box-sizing:border-box}
+  #cf-steps .ea-proc__panel+.ea-proc__panel{border-top:1px solid var(--eline)}
+  #cf-steps .ea-proc__intro{width:100%!important}
+  #cf-steps .ea-proc__lead{max-width:none}
+  /* заголовки/тексты этапов — из absolute в обычный поток */
+  #cf-steps .ea-step__t,
+  #cf-steps .ea-step__t--top,
+  #cf-steps .ea-step__t--mid{position:static!important;left:auto!important;top:auto!important;
+    margin:0 0 16px;font-size:clamp(30px,8vw,44px)}
+  #cf-steps .ea-step__body,
+  #cf-steps .ea-step__body--lo,
+  #cf-steps .ea-step__body--mid,
+  #cf-steps .ea-step__body--hi{position:static!important;left:auto!important;top:auto!important;
+    width:100%!important;max-width:none!important;margin:0 0 18px}
+  #cf-steps .ea-step__d{font-size:clamp(15px,4vw,17px)}
+  #cf-steps .ea-step__script{font-size:1.45em}
+  /* фото этапов — обычные блочные картинки на всю ширину */
+  #cf-steps .ea-proc__ph,
+  #cf-steps .ea-proc__ph--a,
+  #cf-steps .ea-proc__ph--b,
+  #cf-steps .ea-proc__ph--c,
+  #cf-steps .ea-proc__ph--d,
+  #cf-steps .ea-proc__ph--e{position:relative!important;left:auto!important;top:auto!important;
+    width:100%!important;max-width:none!important;height:auto;aspect-ratio:4/3;margin:0 0 14px;display:block}
+  /* декоративные стрелки и прогресс-бар (позиционированы под десктоп) — прячем */
+  #cf-steps .ea-proc__arrow{display:none!important}
+  #cf-steps .ea-proc__progress{display:none}
+}

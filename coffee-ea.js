@@ -325,6 +325,9 @@
       var track = document.getElementById("cfStepsTrack");
       var bar = document.getElementById("cfStepsBar");
       if (!sec || !track) return;
+      /* На телефоне блок этапов — вертикальный стек (CSS ≤900px), горизонтальную
+         прокрутку не запускаем, иначе трек уезжает и ломает раскладку. */
+      if (window.matchMedia("(max-width: 900px)").matches) return;
       function update() {
         var rect = sec.getBoundingClientRect();
         var dist = sec.offsetHeight - window.innerHeight;
