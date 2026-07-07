@@ -8987,12 +8987,12 @@ body.is-home .site-header:not(.is-scrolled) .site-header__logo{background-image:
 }
 
 /* ── Подвал: кнопка «Разработчик» + маленький жираф на линии ── */
+/* дев-ссылка в нижнем ряду рядом с legal-ссылками (тот же мелкий mono-стиль) */
 .sf2-dev {
-  display: inline-block; margin-top: 14px;
-  font-family: var(--font-sans, 'Manrope', sans-serif);
-  font-size: 12px; letter-spacing: .04em;
-  color: rgba(255, 255, 255, 0.40); text-decoration: none;
-  transition: color .25s ease;
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px; letter-spacing: .12em;
+  color: rgba(255, 255, 255, 0.24); text-decoration: none;
+  transition: color .22s ease;
 }
 .sf2-dev:hover, .sf2-dev:focus-visible { color: var(--color-accent, #E7385A); }
 
