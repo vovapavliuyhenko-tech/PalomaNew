@@ -1228,3 +1228,13 @@ body.coffee-page .site-header.is-scrolled {
 @media (prefers-reduced-motion: reduce) {
   .cf-strip__card { transition: none; }
 }
+
+/* бейдж «новинка» у позиций категории «Холодные» (летний продукт) */
+.cfm-new {
+  display: inline-block; vertical-align: middle; margin-left: 10px;
+  padding: 3px 10px; border-radius: 20px;
+  background: var(--wine, #3B4B96); color: #FFFFFF;
+  font-family: var(--fhead, 'Montserrat', sans-serif);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  line-height: 1.3; white-space: nowrap; transform: translateY(-2px);
+}
