@@ -144,6 +144,22 @@
       active = catOrder[0];
       setActiveChip(active);
       render();
+
+      /* кнопки-«переходы» на конкретную категорию меню (напр. «Выбрать напиток»
+         из блока лимонадов → сразу «Холодные») */
+      [].forEach.call(document.querySelectorAll("[data-cat-jump]"), function (link) {
+        link.addEventListener("click", function (e) {
+          var cat = link.getAttribute("data-cat-jump");
+          if (catOrder.indexOf(cat) === -1) return; /* нет такой категории — обычный переход */
+          e.preventDefault();
+          if (active !== cat) { active = cat; setActiveChip(cat); render(); }
+          var menu = document.getElementById("cf-menu");
+          if (menu) {
+            var y = menu.getBoundingClientRect().top + window.pageYOffset - 80;
+            window.scrollTo({ top: y < 0 ? 0 : y, behavior: "smooth" });
+          }
+        });
+      });
     }
 
     function render() {
@@ -321,6 +337,99 @@
       window.addEventListener("scroll", update, { passive: true });
       window.addEventListener("resize", update);
       update();
+    })();
+
+    /* ── FILM STRIP — 3D-изогнутая лента карточек, скользит через центр ── */
+    (function () {
+      var strip = document.getElementById("cf-strip");
+      var stage = document.getElementById("cfStripStage");
+      var band = document.getElementById("cfStripBand");
+      if (!strip || !stage || !band) return;
+      var cards = [].slice.call(band.querySelectorAll(".cf-strip__card"));
+      var N = cards.length;
+      if (!N) return;
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      var pos = 0;        /* текущий «центр» (дробный индекс) */
+      var target = 0;     /* к чему стремимся (drag/wheel) */
+      var vel = 0;        /* инерция */
+      var dragging = false, lastX = 0, moved = 0, cardW = 300;
+
+      function measure() {
+        cardW = cards[0].getBoundingClientRect().width || 300;
+      }
+      function wrap(d) {
+        d = ((d % N) + N) % N;
+        if (d > N / 2) d -= N;
+        return d;
+      }
+      function layout() {
+        var step = cardW * 0.72;         /* горизонтальный шаг */
+        var zStep = cardW * 0.46;        /* глубина боковых карточек */
+        var rot = 26;                    /* градусы поворота на шаг */
+        for (var i = 0; i < N; i++) {
+          var d = wrap(i - pos);
+          var ad = Math.abs(d);
+          var x = d * step;
+          var z = -ad * zStep;
+          var ry = -d * rot;
+          if (ry > 62) ry = 62; else if (ry < -62) ry = -62;
+          var c = cards[i];
+          c.style.transform =
+            "translate(-50%,-50%) translateX(" + x.toFixed(1) + "px) translateZ(" +
+            z.toFixed(1) + "px) rotateY(" + ry.toFixed(1) + "deg)";
+          c.style.zIndex = String(1000 - Math.round(ad * 10));
+          c.style.opacity = ad > N / 2 - 0.6 ? "0" : (ad > 2.6 ? "0.35" : "1");
+        }
+      }
+      function frame() {
+        if (!dragging) {
+          if (Math.abs(vel) > 0.0002) { target += vel; vel *= 0.92; }
+          else { target += reduce ? 0 : 0.0035; }   /* авто-скольжение */
+        }
+        pos += (target - pos) * 0.12;                /* плавное догоняние */
+        layout();
+        requestAnimationFrame(frame);
+      }
+
+      /* drag / swipe */
+      stage.addEventListener("pointerdown", function (e) {
+        dragging = true; lastX = e.clientX; moved = 0; vel = 0;
+        stage.classList.add("is-drag");
+        stage.setPointerCapture && stage.setPointerCapture(e.pointerId);
+      });
+      stage.addEventListener("pointermove", function (e) {
+        if (!dragging) return;
+        var dx = e.clientX - lastX; lastX = e.clientX; moved += Math.abs(dx);
+        var d = dx / (cardW * 0.72);
+        target -= d; pos -= d; vel = -d * 0.6;
+      });
+      function endDrag(e) {
+        if (!dragging) return;
+        dragging = false; stage.classList.remove("is-drag");
+        if (e && e.pointerId != null && stage.releasePointerCapture)
+          try { stage.releasePointerCapture(e.pointerId); } catch (x) {}
+      }
+      stage.addEventListener("pointerup", endDrag);
+      stage.addEventListener("pointercancel", endDrag);
+      stage.addEventListener("pointerleave", endDrag);
+      /* колесо — горизонтальный скролл ленты */
+      stage.addEventListener("wheel", function (e) {
+        var d = (Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY);
+        if (!d) return;
+        e.preventDefault();
+        target += d / 260; vel = d / 2600;
+      }, { passive: false });
+      /* клавиатура */
+      stage.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") { target += 1; vel = 0; }
+        else if (e.key === "ArrowLeft") { target -= 1; vel = 0; }
+      });
+
+      window.addEventListener("resize", measure);
+      measure();
+      strip.classList.add("is-ready");
+      requestAnimationFrame(frame);
     })();
   }
 
