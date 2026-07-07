@@ -246,3 +246,16 @@
 .catalog-empty p {
   margin-bottom: 24px;
 }
+
+/* Мобильные: кнопки карточки в столбик (в 2-колоночной сетке «Подробнее»+«В корзину»
+   не влезали в ряд, «В корзину» обрезалась и была недоступна) */
+@media (max-width: 600px) {
+  .catalog-page .product-card__btns {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .catalog-page .product-card__btn {
+    min-height: 46px;
+    font-size: 11px;
+  }
+}
