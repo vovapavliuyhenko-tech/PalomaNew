@@ -26,6 +26,26 @@ body.subscription-page {
   }
 }
 
+/* Фото в колонке подписки показываем ЦЕЛИКОМ (видна вшитая подпись
+   «Цветочная подписка» внизу кадра): object-fit contain вместо cover.
+   Пустоты по краям заполняем размытой копией того же фото — смотрится цельно,
+   без белых полей. */
+.subscription-page .subscription-hero__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #f2ece5 url("images/paloma/hero/subscription-bg-2.jpg?v=1") center / cover no-repeat;
+  filter: blur(26px) brightness(1.04);
+  transform: scale(1.12);
+}
+.subscription-page .subscription-hero__img {
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+  object-position: center;
+}
+
 /* выноска про скидку 10% на первую неделю */
 .sub-trial-note {
   margin: 12px 0 0;
