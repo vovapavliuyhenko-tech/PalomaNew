@@ -141,6 +141,64 @@
     return n.toLocaleString("ru-RU") + " ₽";
   }
 
+  /* ─── SEO/AI: Product + Offer + BreadcrumbList (страница динамическая,
+         поэтому схему собираем из реальных данных товара в рантайме) ─── */
+  var SITE = "https://paloma.website";
+  function absUrl(p) {
+    if (!p) return null;
+    if (/^https?:\/\//.test(p)) return p;
+    return SITE + "/" + String(p).replace(/^\/+/, "");
+  }
+  function injectSeoSchema() {
+    if (!product) return;
+    var slug = product.slug || product.id;
+    var productUrl = SITE + "/product.html?slug=" + encodeURIComponent(slug);
+    var img = absUrl((rawProduct && rawProduct.image) || product.image);
+    var descText =
+      (rawProduct && rawProduct.desc) || product.desc || product.composition || product.name;
+    var catLabel = product.categoryLabel || "Каталог";
+    var catUrl = SITE + "/catalog.html?cat=" + encodeURIComponent(product.category || "");
+    var productNode = {
+      "@type": "Product",
+      name: product.name,
+      description: descText,
+      sku: product.id,
+      url: productUrl,
+      brand: { "@type": "Brand", name: "PALOMA" },
+      offers: {
+        "@type": "Offer",
+        price: product.price,
+        priceCurrency: "RUB",
+        availability: "https://schema.org/InStock",
+        url: productUrl,
+        seller: { "@id": SITE + "/#business" },
+      },
+    };
+    if (img) productNode.image = img;
+    var graph = {
+      "@context": "https://schema.org",
+      "@graph": [
+        productNode,
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Главная", item: SITE + "/" },
+            { "@type": "ListItem", position: 2, name: "Каталог", item: SITE + "/catalog.html" },
+            { "@type": "ListItem", position: 3, name: catLabel, item: catUrl },
+            { "@type": "ListItem", position: 4, name: product.name, item: productUrl },
+          ],
+        },
+      ],
+    };
+    var old = document.getElementById("pdp-seo-jsonld");
+    if (old) old.remove();
+    var s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.id = "pdp-seo-jsonld";
+    s.textContent = JSON.stringify(graph);
+    document.head.appendChild(s);
+  }
+
   function updatePriceDisplay() {
     if (!priceEl || !product) return;
     priceEl.textContent = formatPrice(product.price + sizePriceDelta);
@@ -185,6 +243,7 @@
     renderSizes();
     renderGallery();
     bindWishlistButton();
+    injectSeoSchema();
   }
 
   function renderSizes() {
