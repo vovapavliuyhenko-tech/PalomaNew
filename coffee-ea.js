@@ -260,16 +260,128 @@
         var row = e.target.closest(".cfm-row");
         if (!row || !row._item) return;
         var it = row._item;
+        /* холодные — открываем конструктор (фото + состав + доп-ингредиенты) */
+        if (COLD[it.id]) { openModal(it); return; }
         var sizes = row._sizes || parseSizes(it);
         if (sizes.length > 1) { toggleTray(row, it, sizes); return; }
         addToCart(it, sizes[0], row.querySelector(".cfm-add"));
       });
     }
 
-    /* ── МОДАЛКА позиции меню (как карточка букета) ── */
+    /* ══ КОНСТРУКТОР ХОЛОДНЫХ НАПИТКОВ (Вариант 1) ══
+       Общие группы доп-ингредиентов + состав по каждому напитку.
+       Молоко/Лёд — один выбор (single), Сироп/Кофе — можно несколько (multi). */
+    var COLD_ADDONS = {
+      milk:  { label: "Молоко", multi: false, opts: [
+        { n: "Обычное", p: 0 }, { n: "Овсяное", p: 80 }, { n: "Кокосовое", p: 80 }, { n: "Банановое", p: 100 } ] },
+      syrup: { label: "Сироп", multi: true, opts: [
+        { n: "Карамель", p: 60 }, { n: "Ваниль", p: 60 }, { n: "Лаванда", p: 60 }, { n: "Малина", p: 60 }, { n: "Вишня", p: 60 } ] },
+      shot:  { label: "Кофе", multi: true, opts: [ { n: "Двойной эспрессо", p: 70 } ] },
+      ice:   { label: "Лёд", multi: false, opts: [ { n: "Обычный", p: 0 }, { n: "Больше льда", p: 0 }, { n: "Без льда", p: 0 } ] },
+    };
+    /* состав + какие группы предлагать: milk (молочный), cof (есть кофе) */
+    var COLD = {
+      "menu-cold-36": { c: "Эспрессо · молоко · лёд", milk: 1, cof: 1 },
+      "menu-cold-37": { c: "Эспрессо · апельсиновый сок · лёд", cof: 1 },
+      "menu-cold-38": { c: "Эспрессо · апельсин · вишнёвый сироп · лёд", cof: 1 },
+      "menu-cold-39": { c: "Эспрессо · тоник · лёд", cof: 1 },
+      "menu-cold-40": { c: "Эспрессо · молоко · розовый сироп · лёд", milk: 1, cof: 1 },
+      "menu-cold-41": { c: "Эспрессо · молоко · шоколад · мята · лёд", milk: 1, cof: 1 },
+      "menu-cold-42": { c: "Эспрессо · молоко · банан · карамель · лёд", milk: 1, cof: 1 },
+      "menu-cold-43": { c: "Эспрессо · молоко · черника · лёд", milk: 1, cof: 1 },
+      "menu-cold-44": { c: "Эспрессо · лимонад · лёд", cof: 1 },
+      "menu-cold-45": { c: "Матча · тропический тоник · лёд" },
+      "menu-cold-46": { c: "Апельсин · маракуйя · лёд" },
+      "menu-cold-47": { c: "Виноград · киви · лёд" },
+      "menu-cold-48": { c: "Манго · дыня · лёд" },
+      "menu-cold-49": { c: "Яблоко · тархун · лёд" },
+      "menu-cold-50": { c: "Огурец · мята · лёд" },
+      "menu-cold-51": { c: "Вишня · лимонад · лёд" },
+      "menu-cold-52": { c: "Лайм · мята · содовая · лёд" },
+      "menu-cold-53": { c: "Малина · апельсин · лёд" },
+      "menu-cold-54": { c: "Чёрный чай · малина · мята · лёд" },
+      "menu-cold-55": { c: "Каркаде · персик · лёд" },
+      "menu-cold-56": { c: "Тархун · маракуйя · лёд" },
+    };
+    function coldGroups(it) {
+      var x = COLD[it.id];
+      if (!x) return null;
+      var g = [];
+      if (x.milk) g.push("milk");
+      g.push("syrup");
+      if (x.cof) g.push("shot");
+      g.push("ice");
+      return { ex: x, groups: g };
+    }
+
+    /* ── МОДАЛКА-КОНСТРУКТОР позиции меню ── */
     var modal = document.getElementById("cfModal");
     function $(s) {
       return modal.querySelector(s);
+    }
+    var bstate = { it: null, sizes: [], sizeIdx: 0, sel: {} };
+
+    function calcTotal() {
+      var t = bstate.sizes.length ? bstate.sizes[bstate.sizeIdx].price : (Number(bstate.it && bstate.it.price) || 0);
+      Object.keys(bstate.sel).forEach(function (gk) {
+        var G = COLD_ADDONS[gk];
+        if (!G) return;
+        if (G.multi) Object.keys(bstate.sel[gk]).forEach(function (oi) { t += G.opts[+oi].p || 0; });
+        else t += G.opts[bstate.sel[gk]].p || 0;
+      });
+      return t;
+    }
+    function updTotal() {
+      $("#cfModalAdd").textContent = "В корзину · " + calcTotal().toLocaleString("ru-RU") + " ₽";
+    }
+    function setOne(row, chip) {
+      [].forEach.call(row.querySelectorAll(".cf-bld__chip"), function (c) { c.classList.remove("is-on"); });
+      chip.classList.add("is-on");
+    }
+    function renderBuilder(it) {
+      var build = $("#cfModalBuild");
+      var cg = coldGroups(it);
+      bstate = { it: it, sizes: parseSizes(it), sizeIdx: 0, sel: {} };
+      var html = "";
+      if (bstate.sizes.length > 1) {
+        html += '<div class="cf-bld__g"><span class="cf-bld__l">Объём</span><div class="cf-bld__chips" data-grp="size">';
+        bstate.sizes.forEach(function (s, i) {
+          html += '<button type="button" class="cf-bld__chip' + (i === 0 ? " is-on" : "") + '" data-si="' + i + '">' +
+            "<b>" + esc(s.label) + "</b><span>" + esc(s.priceText) + "</span></button>";
+        });
+        html += "</div></div>";
+      }
+      if (cg) {
+        cg.groups.forEach(function (gk) {
+          var G = COLD_ADDONS[gk];
+          bstate.sel[gk] = G.multi ? {} : 0;
+          html += '<div class="cf-bld__g"><span class="cf-bld__l">' + esc(G.label) + '</span><div class="cf-bld__chips" data-grp="' + gk + '">';
+          G.opts.forEach(function (o, i) {
+            var on = !G.multi && i === 0;
+            html += '<button type="button" class="cf-bld__chip' + (on ? " is-on" : "") + '" data-oi="' + i + '">' +
+              "<b>" + esc(o.n) + "</b>" + (o.p ? "<span>+" + o.p + " ₽</span>" : "") + "</button>";
+          });
+          html += "</div></div>";
+        });
+      }
+      build.innerHTML = html;
+      [].forEach.call(build.querySelectorAll(".cf-bld__chips"), function (row) {
+        var grp = row.getAttribute("data-grp");
+        [].forEach.call(row.querySelectorAll(".cf-bld__chip"), function (chip) {
+          chip.addEventListener("click", function () {
+            if (grp === "size") { bstate.sizeIdx = +chip.getAttribute("data-si"); setOne(row, chip); }
+            else {
+              var G = COLD_ADDONS[grp], oi = +chip.getAttribute("data-oi");
+              if (G.multi) {
+                chip.classList.toggle("is-on");
+                if (bstate.sel[grp][oi]) delete bstate.sel[grp][oi]; else bstate.sel[grp][oi] = true;
+              } else { bstate.sel[grp] = oi; setOne(row, chip); }
+            }
+            updTotal();
+          });
+        });
+      });
+      updTotal();
     }
     function openModal(it) {
       if (!modal) return;
@@ -281,8 +393,24 @@
       $("#cfModalCat").textContent = catLabels[it.category] || it.category || "Меню";
       $("#cfModalTitle").textContent = it.title;
       $("#cfModalDesc").textContent = it.desc || "";
-      $("#cfModalVol").textContent = it.volumes || "";
-      $("#cfModalPrice").textContent = it.priceLabel || it.price + " ₽";
+      var cg = coldGroups(it);
+      var comp = $("#cfModalComp");
+      if (cg) {
+        comp.innerHTML = "<b>Состав</b>" + esc(cg.ex.c);
+        comp.hidden = false;
+      } else { comp.hidden = true; }
+      var meta = $("#cfModalVol").parentNode;
+      if (cg) {
+        meta.style.display = "none";
+        renderBuilder(it);
+      } else {
+        meta.style.display = "";
+        $("#cfModalBuild").innerHTML = "";
+        bstate = { it: it, sizes: [], sizeIdx: 0, sel: {} };
+        $("#cfModalVol").textContent = it.volumes || "";
+        $("#cfModalPrice").textContent = it.priceLabel || it.price + " ₽";
+        $("#cfModalAdd").textContent = "В корзину";
+      }
       $("#cfModalAdded").classList.remove("is-on");
       modal._item = it;
       modal.classList.add("is-open");
@@ -306,11 +434,24 @@
       $("#cfModalAdd").addEventListener("click", function () {
         var it = modal._item;
         if (!it) return;
+        var size = bstate.sizes.length ? bstate.sizes[bstate.sizeIdx] : { label: "", price: Number(it.price) || 0, suffix: "" };
+        var parts = [], idkey = "";
+        Object.keys(bstate.sel).forEach(function (gk) {
+          var G = COLD_ADDONS[gk];
+          if (G.multi) {
+            Object.keys(bstate.sel[gk]).forEach(function (oi) { parts.push(G.opts[+oi].n.toLowerCase()); idkey += "-" + gk + oi; });
+          } else {
+            var oi = bstate.sel[gk];
+            if (G.opts[oi].p > 0 || oi > 0) parts.push(G.opts[oi].n.toLowerCase());
+            idkey += "-" + gk + oi;
+          }
+        });
+        var name = it.title + (size.label ? " · " + size.label : "") + (parts.length ? " (" + parts.join(", ") + ")" : "");
         if (window.PalomaCart && window.PalomaCart.add) {
           window.PalomaCart.add({
-            id: it.id,
-            name: it.title,
-            price: Number(it.price) || 0,
+            id: it.id + (size.suffix || "") + idkey,
+            name: name,
+            price: calcTotal(),
             category: "coffee",
             qty: 1,
           });

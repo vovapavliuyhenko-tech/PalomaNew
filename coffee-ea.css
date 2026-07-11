@@ -157,6 +157,25 @@ body.coffee-page{overflow-x:clip!important}
 .cf-modal__added.is-on{opacity:1}
 body.cf-modal-open{overflow:hidden}
 
+/* ── КОНСТРУКТОР ХОЛОДНЫХ (Вариант 1): состав + выбор ингредиентов ── */
+.cf-modal__body{overflow-y:auto}
+.cf-modal__comp{font-family:var(--fsans);font-size:14px;line-height:1.5;color:var(--body);
+  margin:-6px 0 18px;padding-bottom:16px;border-bottom:1px solid var(--eline)}
+.cf-modal__comp b{display:block;font-family:var(--fdisplay);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:#8A8577;font-weight:400;margin-bottom:5px}
+.cf-modal__build{display:flex;flex-direction:column;gap:15px;margin-bottom:22px}
+.cf-bld__g{display:flex;flex-direction:column;gap:9px}
+.cf-bld__l{font-family:var(--fdisplay);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A8577}
+.cf-bld__chips{display:flex;flex-wrap:wrap;gap:8px}
+.cf-bld__chip{display:inline-flex;align-items:baseline;gap:6px;padding:8px 14px;border:1px solid var(--eline);
+  border-radius:30px;background:none;cursor:pointer;font-family:var(--fsans);color:var(--ink);
+  line-height:1;transition:background .2s var(--eease),border-color .2s var(--eease),color .2s var(--eease)}
+.cf-bld__chip b{font-weight:500;font-size:13px}
+.cf-bld__chip span{font-size:11px;color:var(--wine)}
+.cf-bld__chip:hover{border-color:var(--wine)}
+.cf-bld__chip.is-on{background:var(--wine);border-color:var(--wine);color:#FFFFFF}
+.cf-bld__chip.is-on span{color:rgba(255,255,255,.85)}
+
 /* ── СЕРВИС-КАРТОЧКИ кофе: длинные «продающие» тексты на обороте флипа ──
    тексты заметно длиннее, чем на «Оформлении» (заголовок-хук + абзац + оффер
    со стрелкой + цена) → карточка выше, верхнее выравнивание, нижний блок
