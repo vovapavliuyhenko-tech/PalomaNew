@@ -85,9 +85,34 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   user-select: none;
 }
 
+/* ── Heading wrapper (semantic H1) ───────────────────── */
+
+.paloma-cover__heading {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 1.6vw, 20px);
+  font-weight: 400;
+}
+
+.paloma-cover__word-sub {
+  max-width: 24ch;
+  font-family: var(--body, inherit);
+  font-size: clamp(15px, 1.9vw, 24px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: coverFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.95s forwards;
+}
+
 /* ── Enormous main word ──────────────────────────────── */
 
 .paloma-cover__word {
+  display: block;
   margin: 0;
   font-family: var(--logo);
   font-size: clamp(56px, 13vw, 200px);
@@ -286,6 +311,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 @media (prefers-reduced-motion: reduce) {
   .paloma-cover__bg        { animation: none !important; transform: none !important; }
   .paloma-cover__word      { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .paloma-cover__word-sub  { animation: none !important; opacity: 1 !important; transform: none !important; }
   .paloma-cover__tagline   { animation: none !important; opacity: 1 !important; transform: none !important; }
   .paloma-cover__fact      { animation: none !important; opacity: 1 !important; transform: none !important; }
   .paloma-cover__bottombar { animation: none !important; opacity: 1 !important; transform: none !important; }

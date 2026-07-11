@@ -33,6 +33,10 @@
         clone.querySelectorAll('[id]').forEach(function (el) {
           el.removeAttribute('id');
         });
+        /* remove clones from tab order / a11y tree (duplicate links) */
+        clone.querySelectorAll('a, button, [tabindex]').forEach(function (el) {
+          el.setAttribute('tabindex', '-1');
+        });
         track.appendChild(clone);
       });
 
