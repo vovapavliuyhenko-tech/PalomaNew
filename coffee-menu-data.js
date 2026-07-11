@@ -169,7 +169,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "370 / 420 / 450 ₽",
     "volumes": "250 / 350 / 450 мл",
     "desc": "Раф с фисташкой и малиной.",
-    "image": "",
+    "image": "images/paloma/coffee/raf-fistashka.jpg",
     "imageBg": "linear-gradient(160deg,#cda783 0%,#9a6a48 55%,#5a3a28 100%)"
   },
   {
@@ -181,7 +181,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "420 / 450 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Раф с солёной карамелью.",
-    "image": "",
+    "image": "images/paloma/coffee/raf-karamel.jpg",
     "imageBg": "linear-gradient(160deg,#cda783 0%,#9a6a48 55%,#5a3a28 100%)"
   },
   {
@@ -217,7 +217,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "370 / 420 ₽",
     "volumes": "250 / 350 мл",
     "desc": "Авторский цветочный раф PALOMA.",
-    "image": "",
+    "image": "images/paloma/coffee/raf-cvety.jpg",
     "imageBg": "linear-gradient(160deg,#cda783 0%,#9a6a48 55%,#5a3a28 100%)"
   },
   {
@@ -541,7 +541,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "350 / 450 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Матча с тропическим тоником.",
-    "image": "",
+    "image": "images/paloma/coffee/matcha-tonik.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -674,6 +674,18 @@ if (!window.PALOMA_COFFEE_MENU) {
     "volumes": "350 / 450 мл",
     "desc": "Зелёный лимонад с маракуйей.",
     "image": "",
+    "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
+  },
+  {
+    "id": "menu-cold-57",
+    "num": "057",
+    "title": "Матча латте",
+    "category": "cold",
+    "price": 350,
+    "priceLabel": "350 / 450 ₽",
+    "volumes": "350 / 450 мл",
+    "desc": "Матча-латте на выбор цвета: зелёная, голубая или розовая.",
+    "image": "images/paloma/coffee/matcha-tricolor.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   }
 ];

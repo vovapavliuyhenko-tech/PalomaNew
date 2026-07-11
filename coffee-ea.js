@@ -278,6 +278,7 @@
         { n: "Карамель", p: 60 }, { n: "Ваниль", p: 60 }, { n: "Лаванда", p: 60 }, { n: "Малина", p: 60 }, { n: "Вишня", p: 60 } ] },
       shot:  { label: "Кофе", multi: true, opts: [ { n: "Двойной эспрессо", p: 70 } ] },
       ice:   { label: "Лёд", multi: false, opts: [ { n: "Обычный", p: 0 }, { n: "Больше льда", p: 0 }, { n: "Без льда", p: 0 } ] },
+      color: { label: "Цвет матчи", multi: false, opts: [ { n: "Зелёная", p: 0 }, { n: "Голубая", p: 0 }, { n: "Розовая", p: 0 } ] },
     };
     /* состав + какие группы предлагать: milk (молочный), cof (есть кофе) */
     var COLD = {
@@ -302,15 +303,23 @@
       "menu-cold-54": { c: "Чёрный чай · малина · мята · лёд" },
       "menu-cold-55": { c: "Каркаде · персик · лёд" },
       "menu-cold-56": { c: "Тархун · маракуйя · лёд" },
+      "menu-cold-57": { c: "Матча · молоко · лёд", g: ["color", "milk", "syrup", "ice"] },
+      "menu-cacaoraf-14": { c: "Эспрессо · сливки · фисташка · малина", g: ["milk", "syrup"] },
+      "menu-cacaoraf-15": { c: "Эспрессо · сливки · солёная карамель", g: ["milk", "syrup"] },
+      "menu-cacaoraf-18": { c: "Эспрессо · сливки · цветочный сироп", g: ["milk", "syrup"] },
     };
     function coldGroups(it) {
       var x = COLD[it.id];
       if (!x) return null;
-      var g = [];
-      if (x.milk) g.push("milk");
-      g.push("syrup");
-      if (x.cof) g.push("shot");
-      g.push("ice");
+      var g;
+      if (x.g) { g = x.g; }
+      else {
+        g = [];
+        if (x.milk) g.push("milk");
+        g.push("syrup");
+        if (x.cof) g.push("shot");
+        g.push("ice");
+      }
       return { ex: x, groups: g };
     }
 

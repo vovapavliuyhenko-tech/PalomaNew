@@ -144,8 +144,8 @@ body.coffee-page{overflow-x:clip!important}
 .cf-modal__img{background-size:cover;background-position:center;background-color:#FFFFFF;min-height:340px}
 .cf-modal__body{padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;justify-content:center}
 .cf-modal__cat{font-family:var(--fdisplay);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.cf-modal__title{font-family:var(--fhead);font-size:clamp(30px,3.2vw,48px);color:var(--wine);line-height:1.05;margin:8px 0 16px}
-.cf-modal__desc{font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--body);margin-bottom:20px}
+.cf-modal__title{font-family:var(--fhead);font-size:clamp(24px,2.4vw,36px);color:var(--wine);line-height:1.06;margin:4px 0 8px}
+.cf-modal__desc{font-size:clamp(13px,1vw,15px);line-height:1.5;color:var(--body);margin-bottom:10px}
 .cf-modal__meta{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--eline);
   border-bottom:1px solid var(--eline);padding:16px 0;margin-bottom:24px}
 .cf-modal__vol{font-family:var(--fdisplay);font-size:13px;letter-spacing:.06em;color:var(--muted)}
@@ -161,22 +161,22 @@ body.cf-modal-open{overflow:hidden}
    ВАЖНО: попап — прямой потомок <body>, вне main.ea-page, поэтому переменные
    вроде var(--eline) здесь НЕ определены → делают border/шорткаты невалидными
    (браузер откатывает к button{border:none}). Используем явные цвета. */
-.cf-modal__body{overflow-y:auto;background:#FFFFFF;
-  padding-top:clamp(34px,6vw,48px);padding-bottom:clamp(34px,6vw,48px)}
-.cf-modal__add{border-radius:30px;margin-bottom:0}
-.cf-modal__added{position:absolute;left:0;right:0;bottom:12px;text-align:center;margin:0;pointer-events:none}
-.cf-modal__comp{font-family:var(--fsans);font-size:14px;line-height:1.5;color:var(--body);
-  margin:-6px 0 18px;padding-bottom:16px;border-bottom:1px solid rgba(27,26,24,.14)}
-.cf-modal__comp b{display:block;font-family:var(--fdisplay);font-size:11px;letter-spacing:.14em;
-  text-transform:uppercase;color:#8A8577;font-weight:400;margin-bottom:5px}
-.cf-modal__build{display:flex;flex-direction:column;gap:15px;margin-bottom:22px}
-.cf-bld__g{display:flex;flex-direction:column;gap:9px}
-.cf-bld__l{font-family:var(--fdisplay);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A8577}
-.cf-bld__chips{display:flex;flex-wrap:wrap;gap:8px}
-.cf-bld__chip{display:inline-flex;align-items:baseline;gap:6px;padding:8px 14px;border:1px solid rgba(27,26,24,.3);
+.cf-modal__body{overflow-y:auto;background:#FFFFFF;justify-content:flex-start;
+  padding:clamp(22px,3.4vw,34px) clamp(26px,3vw,44px)}
+.cf-modal__add{border-radius:30px;margin-bottom:0;padding:13px 26px}
+.cf-modal__added{position:absolute;left:0;right:0;bottom:10px;text-align:center;margin:0;pointer-events:none}
+.cf-modal__comp{font-family:var(--fsans);font-size:13px;line-height:1.45;color:var(--body);
+  margin:-2px 0 12px;padding-bottom:11px;border-bottom:1px solid rgba(27,26,24,.14)}
+.cf-modal__comp b{display:block;font-family:var(--fdisplay);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:#8A8577;font-weight:400;margin-bottom:4px}
+.cf-modal__build{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.cf-bld__g{display:flex;flex-direction:column;gap:6px}
+.cf-bld__l{font-family:var(--fdisplay);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A8577}
+.cf-bld__chips{display:flex;flex-wrap:wrap;gap:6px}
+.cf-bld__chip{display:inline-flex;align-items:baseline;gap:5px;padding:6px 12px;border:1px solid rgba(27,26,24,.3);
   border-radius:30px;background:none;cursor:pointer;font-family:var(--fsans);color:var(--ink);
   line-height:1;transition:background .2s ease,border-color .2s ease,color .2s ease}
-.cf-bld__chip b{font-weight:500;font-size:13px}
+.cf-bld__chip b{font-weight:500;font-size:12.5px}
 .cf-bld__chip span{font-size:11px;color:#3B4B96}
 .cf-bld__chip:hover{border-color:#3B4B96}
 .cf-bld__chip.is-on{background:#3B4B96;border-color:#3B4B96;color:#FFFFFF}
