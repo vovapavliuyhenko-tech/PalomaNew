@@ -1667,17 +1667,29 @@ if (document.body.classList.contains("event-decoration-page")) {
         e.preventDefault();
         var box = form.closest(".sf2-sub") || form.parentElement;
         var input = form.querySelector(".sf2-input");
+        var btn = form.querySelector(".sf2-send");
         var consent = box ? box.querySelector('.sf2-consent input[type="checkbox"]') : null;
-        if (onlyDigits(input && input.value).length < 10){ if(input)input.focus(); flash(form,"sf2-form--err"); return; }
-        if (consent && !consent.checked){ flash(box.querySelector(".sf2-consent"),"sf2-consent--err"); return; }
-        if (form) form.style.display = "none";
-        var c = box.querySelector(".sf2-consent"); if (c) c.style.display = "none";
-        if (!box.querySelector(".sf2-ok")){
-          var ok = document.createElement("p");
-          ok.className = "sf2-ok";
-          ok.textContent = "Спасибо! Мы свяжемся с вами в ближайшее время.";
-          box.appendChild(ok);
+        function setErr(msg){
+          var el = box.querySelector(".sf2-err");
+          if (!el){ el = document.createElement("p"); el.className = "sf2-err"; el.setAttribute("role","alert"); form.insertAdjacentElement("afterend", el); }
+          el.textContent = msg;
         }
+        function clearErr(){ var el = box.querySelector(".sf2-err"); if (el) el.remove(); }
+        if (onlyDigits(input && input.value).length < 10){ if(input)input.focus(); flash(form,"sf2-form--err"); setErr("Введите корректный номер телефона."); return; }
+        if (consent && !consent.checked){ flash(box.querySelector(".sf2-consent"),"sf2-consent--err"); setErr("Отметьте согласие на обработку данных."); return; }
+        clearErr();
+        /* состояние загрузки */
+        if (btn){ btn.disabled = true; btn.classList.add("is-loading"); }
+        setTimeout(function(){
+          if (form) form.style.display = "none";
+          var c = box.querySelector(".sf2-consent"); if (c) c.style.display = "none";
+          if (!box.querySelector(".sf2-ok")){
+            var ok = document.createElement("p");
+            ok.className = "sf2-ok";
+            ok.textContent = "Перезвоним в течение 15 минут.";
+            box.appendChild(ok);
+          }
+        }, 550);
       });
     });
   }

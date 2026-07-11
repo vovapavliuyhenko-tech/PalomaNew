@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="assets/icons/favicon-giraffe.png?v=2">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="preloader.css?v=w1">
-  <link rel="stylesheet" href="styles.css?v=ph12">
+  <link rel="stylesheet" href="styles.css?v=cv4">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
   <link rel="stylesheet" href="cart.css?v=w1">
   <link rel="stylesheet" href="clients.css?v=nav1">
@@ -409,6 +409,23 @@
     </section>
 
     <!-- =====================================================
+         PALOMA OFFER — продающий блок сразу ПОД hero
+         (компенсирует брендовый H1, hero не тронут)
+         ===================================================== -->
+    <section class="home-offer" aria-labelledby="home-offer-title">
+      <div class="home-offer__inner">
+        <p class="home-offer__eyebrow">Готовые букеты от 1&nbsp;990&nbsp;₽</p>
+        <h2 class="home-offer__title" id="home-offer-title">Свежие букеты с доставкой день-в-день по Новороссийску</h2>
+        <p class="home-offer__sub">Фото готового букета за 30 минут перед отправкой. Не понравился — пересоберём бесплатно. Самовывоз: Энгельса,&nbsp;74/82.</p>
+        <p class="home-offer__meta">Заказы с 7:30 до 22:00 · Новороссийск, Геленджик, Анапа</p>
+        <div class="home-offer__actions">
+          <a href="catalog.html" class="home-offer__cta" data-cursor="hover">Выбрать букет с доставкой сегодня <span class="home-offer__arrow" aria-hidden="true">→</span></a>
+          <a href="delivery.html" class="home-offer__link" data-cursor="hover">Стоимость и зоны доставки</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
          PALOMA USP MARQUEE
          ===================================================== -->
     <section class="home-marquee" aria-label="Преимущества PALOMA">
@@ -792,7 +809,7 @@
                 d="M0,75 Q200,16 400,75 T800,75 T1200,75"/>
             </defs>
             <text class="paloma-wave__text">
-              <textPath href="#palomaWaveSub" xlink:href="#palomaWaveSub" startOffset="0">×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×</textPath>
+              <textPath href="#palomaWaveSub" xlink:href="#palomaWaveSub" startOffset="0">×&#160;Регулярные букеты без напоминаний&#160;×&#160;Регулярные букеты без напоминаний&#160;×&#160;Регулярные букеты без напоминаний&#160;×</textPath>
             </text>
           </svg>
         </div>
@@ -960,7 +977,7 @@
             d="M0,75 Q200,16 400,75 T800,75 T1200,75"/>
         </defs>
         <text class="paloma-wave__text">
-          <textPath href="#palomaWaveBlog" xlink:href="#palomaWaveBlog" startOffset="0">×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×</textPath>
+          <textPath href="#palomaWaveBlog" xlink:href="#palomaWaveBlog" startOffset="0">×&#160;Полезно знать перед заказом&#160;×&#160;Полезно знать перед заказом&#160;×&#160;Полезно знать перед заказом&#160;×&#160;Полезно знать перед заказом&#160;×</textPath>
         </text>
       </svg>
     </div>
@@ -987,7 +1004,7 @@
               <div class="fmt__face fmt__back">
                 <p class="fmt__back-title">Фото букета перед отправкой</p>
                 <p class="fmt__back-text">Вы подтверждаете готовый букет на фото до того, как курьер выезжает — заказ вслепую перестаёт быть риском.</p>
-                <p class="fmt__offer">Не понравился на фото — пересоберём бесплатно. Фото-подтверждение в течение 30 минут.</p>
+                <p class="fmt__offer">Не понравился на фото — пересоберём бесплатно и пришлём новое фото на согласование. Вы платите за результат, который видели.</p>
               </div>
             </div>
           </article>
@@ -1014,8 +1031,9 @@
               </div>
               <div class="fmt__face fmt__back">
                 <p class="fmt__back-title">Цветы, кофе и десерт в одном заказе</p>
-                <p class="fmt__back-text">В PALOMA можно добавить specialty-кофе и десерт к букету в одном заказе.</p>
+                <p class="fmt__back-text">В PALOMA букет, specialty-кофе и десерт собираются в один подарочный сет.</p>
                 <p class="fmt__offer">Соберём букет, кофе и десерт как готовый подарок в одной упаковке.</p>
+                <a class="fmt__link" href="#home-sets">Смотреть готовые сеты →</a>
               </div>
             </div>
           </article>
@@ -1067,6 +1085,110 @@
     </section>
 
     <!-- =====================================================
+         CTA после обещания «фото перед отправкой» (conversion п.9)
+         ===================================================== -->
+    <section class="home-cta-band" aria-label="Выбрать букет с фото перед отправкой">
+      <div class="home-cta-band__inner">
+        <p class="home-cta-band__text">Покажем фото готового букета перед отправкой. Не понравился — пересоберём бесплатно.</p>
+        <a href="catalog.html" class="home-cta-band__btn" data-cursor="hover">Выбрать букет с фото перед отправкой <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         ПОДАРОЧНЫЕ СЕТЫ — цветы + кофе + десерт (conversion п.10)
+         Составлены из существующих товаров, без выдуманных позиций.
+         ===================================================== -->
+    <section class="home-sets" id="home-sets" aria-labelledby="home-sets-title">
+      <div class="home-sets__inner">
+        <div class="home-sets__head">
+          <h2 class="home-sets__title" id="home-sets-title">Цветы, кофе и десерт в одном сете</h2>
+          <p class="home-sets__sub">В PALOMA букет, specialty-кофе и десерт собираются в один подарочный сет — в единой упаковке.</p>
+        </div>
+        <div class="home-sets__grid">
+
+          <article class="home-set-card">
+            <a class="home-set-card__media" href="product.html?slug=buket-7" aria-label="Собрать сет с букетом из 7 пионов">
+              <img src="images/paloma/catalog/h1.jpg" alt="Букет из 7 пионов с фирменным кофе и десертом" loading="lazy" decoding="async" width="600" height="600">
+            </a>
+            <div class="home-set-card__body">
+              <h3 class="home-set-card__title">Пионы + кофе + брауни</h3>
+              <ul class="home-set-card__list">
+                <li>Букет из 7 пионов</li>
+                <li>Specialty-кофе с собой</li>
+                <li>Брауни</li>
+              </ul>
+              <a class="home-set-card__btn" href="product.html?slug=buket-7" data-cursor="hover">Собрать сет <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="home-set-card">
+            <a class="home-set-card__media" href="product.html?slug=buket-11" aria-label="Собрать сет с букетом из 11 пионов">
+              <img src="images/paloma/catalog/h2.jpg" alt="Букет из 11 пионов с фирменным кофе и десертом" loading="lazy" decoding="async" width="600" height="600">
+            </a>
+            <div class="home-set-card__body">
+              <h3 class="home-set-card__title">Пионы + кофе + печенье</h3>
+              <ul class="home-set-card__list">
+                <li>Букет из 11 пионов</li>
+                <li>Specialty-кофе с собой</li>
+                <li>Печенье</li>
+              </ul>
+              <a class="home-set-card__btn" href="product.html?slug=buket-11" data-cursor="hover">Собрать сет <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="home-set-card">
+            <a class="home-set-card__media" href="catalog.html" aria-label="Собрать сезонный сет в каталоге">
+              <img src="images/paloma/catalog/bouquet-01.jpg" alt="Сезонный букет с фирменным кофе и десертом" loading="lazy" decoding="async" width="600" height="600">
+            </a>
+            <div class="home-set-card__body">
+              <h3 class="home-set-card__title">Сезонный букет + кофе + десерт</h3>
+              <ul class="home-set-card__list">
+                <li>Сезонный букет на выбор</li>
+                <li>Specialty-кофе с собой</li>
+                <li>Десерт дня</li>
+              </ul>
+              <a class="home-set-card__btn" href="catalog.html" data-cursor="hover">Собрать сет <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         ОТЗЫВЫ КЛИЕНТОВ (conversion п.14)
+         СКРЫТО (hidden) до реального контента от Альберта.
+         TODO: заменить .home-review__text/author/meta на реальные отзывы,
+         где клиент получил фото букета до отправки, затем снять hidden
+         и добавить Review-разметку schema.org.
+         ===================================================== -->
+    <section class="home-reviews" id="home-reviews" aria-labelledby="home-reviews-title" hidden data-todo="reviews">
+      <div class="home-reviews__inner">
+        <div class="home-reviews__head">
+          <h2 class="home-reviews__title" id="home-reviews-title">Отзывы клиентов</h2>
+          <p class="home-reviews__sub">Получили фото букета до отправки и остались довольны результатом.</p>
+        </div>
+        <div class="home-reviews__grid">
+          <article class="home-review">
+            <p class="home-review__text">TODO: текст отзыва №1 (клиент получил фото до отправки).</p>
+            <p class="home-review__author">TODO: имя клиента</p>
+            <p class="home-review__meta">TODO: повод · дата</p>
+          </article>
+          <article class="home-review">
+            <p class="home-review__text">TODO: текст отзыва №2.</p>
+            <p class="home-review__author">TODO: имя клиента</p>
+            <p class="home-review__meta">TODO: повод · дата</p>
+          </article>
+          <article class="home-review">
+            <p class="home-review__text">TODO: текст отзыва №3.</p>
+            <p class="home-review__author">TODO: имя клиента</p>
+            <p class="home-review__meta">TODO: повод · дата</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
          ОФОРМЛЕНИЕ — два блока, перенесённые со страницы «Оформление»
          (hero-слайдер + философия). Обёрнуты в .ea-page для scoped-стилей.
          ===================================================== -->
@@ -1084,7 +1206,7 @@
               <h2 class="ea-hero__h1" data-reveal>Оформляем однажды,<br>чтобы запомнить навсегда</h2>
               <p class="ea-hero__lead" data-reveal style="--d:.1s">Свадьбы, дни рождения, ужины и съёмки — оформление под ключ. Концепция, авторская флористика из сезонных цветов, сборка и монтаж. Всё берём на себя — вам остаётся наслаждаться моментом. Расскажите о вашем празднике прямо сейчас — бесплатно подготовим концепцию и смету уже сегодня.</p>
             </div>
-            <a class="ea-btn" href="event-decoration.html#contact" data-cursor="hover" data-reveal style="--d:.18s"><span class="ea-hero__btn-txt">Оформить событие</span>
+            <a class="ea-btn" href="event-decoration.html#contact" data-cursor="hover" data-reveal style="--d:.18s"><span class="ea-hero__btn-txt">Получить мудборд и смету бесплатно</span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
             </a>
           </div>
@@ -1106,6 +1228,56 @@
         </section>
 
       </div>
+
+    <!-- =====================================================
+         КЕЙСЫ СОБЫТИЙ (conversion п.15)
+         СКРЫТО (hidden) до реального контента от Альберта.
+         TODO: фото, формат события, город, дата, краткий результат.
+         ===================================================== -->
+    <section class="home-cases" id="home-cases" aria-labelledby="home-cases-title" hidden data-todo="cases">
+      <div class="home-cases__inner">
+        <div class="home-cases__head">
+          <h2 class="home-cases__title" id="home-cases-title">Кейсы наших событий</h2>
+          <p class="home-cases__sub">Оформление под ключ: что и как мы делали.</p>
+        </div>
+        <div class="home-cases__grid">
+          <article class="home-case">
+            <span class="home-case__photo" role="img" aria-label="TODO: фото кейса"></span>
+            <div class="home-case__body">
+              <h3 class="home-case__format">TODO: формат события</h3>
+              <p class="home-case__meta">TODO: город · дата</p>
+              <p class="home-case__result">TODO: краткий результат</p>
+            </div>
+          </article>
+          <article class="home-case">
+            <span class="home-case__photo" role="img" aria-label="TODO: фото кейса"></span>
+            <div class="home-case__body">
+              <h3 class="home-case__format">TODO: формат события</h3>
+              <p class="home-case__meta">TODO: город · дата</p>
+              <p class="home-case__result">TODO: краткий результат</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         ФЛОРИСТ / КОМАНДA (conversion п.16)
+         СКРЫТО (hidden) до реального контента от Альберта.
+         TODO: фото и имя флориста/команды.
+         ===================================================== -->
+    <section class="home-team" id="home-team" aria-labelledby="home-team-title" hidden data-todo="team">
+      <div class="home-team__inner">
+        <h2 class="home-team__title" id="home-team-title">Кто собирает ваши букеты</h2>
+        <div class="home-team__grid">
+          <article class="home-team-card">
+            <span class="home-team-card__photo" role="img" aria-label="TODO: фото флориста"></span>
+            <p class="home-team-card__name">TODO: имя</p>
+            <p class="home-team-card__role">TODO: роль (флорист)</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- =====================================================
          PALOMA USEFUL BLOG
@@ -1170,9 +1342,11 @@
         <span class="ea-eyebrow" data-reveal>частые вопросы</span>
         <h2 class="ea-title" data-reveal style="--d:.05s">Частые вопросы</h2>
         <div class="ea-faq__grid ea-faq__list" data-reveal>
-          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Покажете букет перед доставкой?</button><div class="ea-faq__a"><p>Да. Перед тем как курьер выезжает, пришлём фото готового букета. Если что-то не понравится — соберём заново, вы платите за результат, который видели.</p></div></div>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Покажете букет перед доставкой?</button><div class="ea-faq__a"><p>Да. Перед тем как курьер выезжает, пришлём фото готового букета. Если что-то не понравится — пересоберём бесплатно и пришлём новое фото на согласование. Вы платите за результат, который видели.</p></div></div>
           <div class="ea-faq__item"><button type="button" class="ea-faq__q">Доставите сегодня?</button><div class="ea-faq__a"><p>Да, доставляем день-в-день по Новороссийску, Геленджику и Анапе. Принимаем заказы с 7:30 до 22:00 и привозим в тот же день, открытка в подарок.</p></div></div>
-          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Как заказать букет?</button><div class="ea-faq__a"><p>Выберите готовый букет в каталоге или напишите нам — флорист подберёт вариант под повод и бюджет, согласует состав и оформит заказ с доставкой.</p></div></div>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Сколько стоит доставка?</button><div class="ea-faq__a"><p>Стоимость зависит от зоны и адреса. Актуальные зоны, сроки и цены собрали на отдельной странице <a href="delivery.html">«Доставка — зоны, сроки и стоимость»</a>.</p></div></div>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Как заказать букет?</button><div class="ea-faq__a"><p>Выберите букет → размер S/M/L/XL → дополнения → оформите заказ. Или напишите в WhatsApp либо Telegram — подтвердим заказ в течение 15 минут.</p></div></div>
+          <div class="ea-faq__item"><button type="button" class="ea-faq__q">Почему цена указана «от»?</button><div class="ea-faq__a"><p>Итоговая цена зависит от размера букета — S, M, L или XL — и дополнений: открытка +350 ₽, ваза +1 200 ₽, кофе с собой +320 ₽. Размер и дополнения вы выбираете при заказе.</p></div></div>
           <div class="ea-faq__item"><button type="button" class="ea-faq__q">Можно добавить кофе и десерт к букету?</button><div class="ea-faq__a"><p>Да. Соберём подарочный сет: букет, specialty-кофе и десерт в одном заказе — как готовый подарок с единой упаковкой.</p></div></div>
           <div class="ea-faq__item"><button type="button" class="ea-faq__q">Какие цветы есть в наличии?</button><div class="ea-faq__a"><p>Живой сезонный ассортимент, который флористы отбирают лично — от классики до редких сортов. Актуальное наличие подскажем при заказе.</p></div></div>
           <div class="ea-faq__item"><button type="button" class="ea-faq__q">Делаете букеты на свадьбу и событие?</button><div class="ea-faq__a"><p>Да. Берём цветочную часть мероприятия под ключ — от мудборда до оформления в день события. Покажем концепцию и смету до начала работы.</p></div></div>
@@ -1221,7 +1395,7 @@
           <label class="sf2-sub__label" for="footerPhone">Телефон</label>
           <form class="sf2-form" onsubmit="return false" aria-label="Заказать обратный звонок">
             <input class="sf2-input" type="tel" inputmode="tel" id="footerPhone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
-            <button class="sf2-send" type="submit"><span class="sf2-send__text">Отправить</span>
+            <button class="sf2-send" type="submit"><span class="sf2-send__text">Перезвоните мне</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </button>
           </form>
@@ -1300,6 +1474,22 @@
       </div>
     </div>
   </footer>
+
+  <!-- Липкая мобильная контакт-панель (conversion п.13) -->
+  <nav class="mobile-cta" aria-label="Быстрая связь">
+    <a class="mobile-cta__btn mobile-cta__btn--call" href="tel:+79897707000" aria-label="Позвонить">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Позвонить</span>
+    </a>
+    <a class="mobile-cta__btn mobile-cta__btn--wa" href="https://wa.me/79897707000" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.69-6.16a11.87 11.87 0 01-1.6-5.95C.15 5.34 5.5 0 12.06 0a11.82 11.82 0 018.4 3.49 11.82 11.82 0 013.48 8.42c0 6.56-5.35 11.9-11.91 11.9a11.94 11.94 0 01-5.7-1.45L.06 24zM6.6 20.2l.36.22a9.9 9.9 0 005.04 1.38 9.9 9.9 0 009.89-9.88 9.82 9.82 0 00-2.9-6.99 9.82 9.82 0 00-6.98-2.9 9.9 9.9 0 00-9.89 9.88c0 1.86.52 3.68 1.51 5.25l.24.38-1 3.65 3.73-.98z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a class="mobile-cta__btn mobile-cta__btn--tg" href="https://t.me/+79897707000" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.05-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+      <span>Telegram</span>
+    </a>
+  </nav>
 
   <div class="product-modal" id="productModal" aria-hidden="true">
     <div class="product-modal__backdrop" data-close></div>
@@ -1418,7 +1608,7 @@
   <script src="cart-core.js?v=nosize2"></script>
   <script src="paloma-products.js?v=p32"></script>
   <script src="catalog-data.js?v=p33"></script>
-  <script src="script.js?v=mask1"></script>
+  <script src="script.js?v=mask2"></script>
   <script src="paloma-animations.js"></script>
   <script src="paloma-media-paths.js"></script>
   <script src="paloma-media.js"></script>
@@ -1428,6 +1618,7 @@
   <script src="cursor.js?v=press1"></script>
   <script src="cookie-consent.js?v=2"></script>
   <script src="home-hero-cover.js"></script>
+  <script src="quick-add.js?v=qa1"></script>
   <script src="paloma-carousel-autoscroll.js?v=3"></script>
   <script src="paloma-parallax.js?v=2"></script>
   <!-- Выезжающая панель «Избранное» -->
