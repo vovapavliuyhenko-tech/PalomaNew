@@ -108,6 +108,32 @@
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute("content", art.excerpt);
 
+    /* ── SEO: canonical + Open Graph per article ── */
+    (function injectArticleSeo() {
+      var SITE = "https://paloma.website";
+      var url = SITE + "/blog-article.html?id=" + encodeURIComponent(art.id);
+      var img = art.image ? (art.image.indexOf("http") === 0 ? art.image : SITE + "/" + art.image) : SITE + "/images/paloma/hero/hero-main.jpg";
+      function setMeta(attr, key, val) {
+        var el = document.head.querySelector("[" + attr + '="' + key + '"]');
+        if (!el) { el = document.createElement("meta"); el.setAttribute(attr, key); document.head.appendChild(el); }
+        el.setAttribute("content", val);
+      }
+      var link = document.head.querySelector('link[rel="canonical"]');
+      if (!link) { link = document.createElement("link"); link.setAttribute("rel", "canonical"); document.head.appendChild(link); }
+      link.setAttribute("href", url);
+      setMeta("property", "og:type", "article");
+      setMeta("property", "og:site_name", "PALOMA");
+      setMeta("property", "og:locale", "ru_RU");
+      setMeta("property", "og:url", url);
+      setMeta("property", "og:title", art.title + " — Блог PALOMA");
+      setMeta("property", "og:description", art.excerpt);
+      setMeta("property", "og:image", img);
+      setMeta("name", "twitter:card", "summary_large_image");
+      setMeta("name", "twitter:title", art.title + " — Блог PALOMA");
+      setMeta("name", "twitter:description", art.excerpt);
+      setMeta("name", "twitter:image", img);
+    })();
+
     const breadTitle = document.getElementById("articleBreadcrumbTitle");
     if (breadTitle) breadTitle.textContent = art.title;
 
