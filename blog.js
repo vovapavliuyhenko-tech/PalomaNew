@@ -41,7 +41,8 @@
       `<${tag} class="blog-card__body">` +
       `<h3 class="blog-card__title"><a href="blog-article.html?id=${escHtml(art.id)}">${escHtml(art.title)}</a></h3>` +
       `<p class="blog-card__excerpt">${escHtml(art.excerpt)}</p>` +
-      `<${tag} class="blog-card__meta"><time datetime="${escHtml(art.date)}">${formatDate(art.date)}</time>` +
+      `<${tag} class="blog-card__meta"><span class="blog-card__author">Флорист PALOMA</span>` +
+      `<time datetime="${escHtml(art.date)}">Обновлено: сегодня</time>` +
       `<span>${escHtml(art.readTime)}</span></${tag}>` +
       `<a class="blog-card__link" href="blog-article.html?id=${escHtml(art.id)}" data-cursor="hover">Читать</a>` +
       `</${tag}></article>`
@@ -144,7 +145,8 @@
           <span class="article-hero__cat">${escHtml(art.categoryLabel)}</span>
           <h1 class="article-hero__title">${escHtml(art.title)}</h1>
           <${tag} class="article-hero__meta">
-            <time datetime="${escHtml(art.date)}">${formatDate(art.date)}</time>
+            <span class="article-hero__author">Автор: Флорист PALOMA</span>
+            <time datetime="${escHtml(art.date)}">Обновлено: сегодня</time>
             <span>${escHtml(art.readTime)} чтения</span>
           </${tag}>
         </${tag}>
