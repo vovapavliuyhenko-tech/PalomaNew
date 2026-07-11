@@ -8894,8 +8894,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__logo{background-image:
 .sf2-input{flex:1;height:48px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:#fff;padding:0 16px;font-size:14px;font-family:inherit;outline:none;transition:border-color .25s}
 .sf2-input::placeholder{color:rgba(255,255,255,.35)}
 .sf2-input:focus{border-color:#E7385A}
-.sf2-send{flex:0 0 auto;height:48px;padding:0 20px;border-radius:12px;border:1px solid rgba(231,56,90,.55);background:transparent;color:#E7385A;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
-.sf2-send__text{font-family:inherit;font-size:14px;font-weight:600;letter-spacing:.01em;white-space:nowrap}
+.sf2-send{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:#E7385A;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
 .sf2-send svg{width:15px;height:15px}
 .sf2-send:hover{background:#E7385A;border-color:#E7385A;color:#fff}
 .sf2-consent{display:flex;align-items:flex-start;gap:9px;margin-top:12px;max-width:380px;cursor:pointer}
