@@ -139,7 +139,7 @@ body.coffee-page{overflow-x:clip!important}
   background:rgba(40,24,12,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .cf-modal.is-open{display:flex}
 .cf-modal__panel{position:relative;display:grid;grid-template-columns:1fr 1fr;max-width:900px;width:100%;max-height:88vh;
-  background:var(--paper2);box-shadow:0 50px 120px rgba(20,12,8,.5);overflow:hidden;animation:cfPop .4s var(--eease)}
+  background:var(--paper2);box-shadow:0 50px 120px rgba(20,12,8,.5);overflow:hidden;border-radius:22px;animation:cfPop .4s var(--eease)}
 @keyframes cfPop{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .cf-modal__img{background-size:cover;background-position:center;background-color:#FFFFFF;min-height:340px}
 .cf-modal__body{padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;justify-content:center}
@@ -158,7 +158,8 @@ body.coffee-page{overflow-x:clip!important}
 body.cf-modal-open{overflow:hidden}
 
 /* ── КОНСТРУКТОР ХОЛОДНЫХ (Вариант 1): состав + выбор ингредиентов ── */
-.cf-modal__body{overflow-y:auto}
+.cf-modal__body{overflow-y:auto;background:#FFFFFF}
+.cf-modal__add{border-radius:30px}
 .cf-modal__comp{font-family:var(--fsans);font-size:14px;line-height:1.5;color:var(--body);
   margin:-6px 0 18px;padding-bottom:16px;border-bottom:1px solid var(--eline)}
 .cf-modal__comp b{display:block;font-family:var(--fdisplay);font-size:11px;letter-spacing:.14em;
