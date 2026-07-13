@@ -161,13 +161,15 @@ body.cf-modal-open{overflow:hidden}
    ВАЖНО: попап — прямой потомок <body>, вне main.ea-page, поэтому переменные
    вроде var(--eline) здесь НЕ определены → делают border/шорткаты невалидными
    (браузер откатывает к button{border:none}). Используем явные цвета. */
-.cf-modal__body{overflow-y:auto;max-height:88vh;min-height:0;background:#FFFFFF;justify-content:flex-start;
-  padding:clamp(22px,3.4vw,34px) clamp(26px,3vw,44px)}
-.cf-modal__add{position:sticky;bottom:0;z-index:3;border-radius:30px;margin:6px 0 0;padding:15px 26px;background:#3B4B96;color:#FFFFFF}
-.cf-modal__add::before{content:"";position:absolute;z-index:-1;top:-12px;bottom:-40px;
-  left:calc(-1 * clamp(26px,3vw,44px));right:calc(-1 * clamp(26px,3vw,44px));background:#FFFFFF}
+.cf-modal__body{display:flex;flex-direction:column;max-height:88vh;min-height:0;overflow:hidden;
+  background:#FFFFFF;padding:0}
+.cf-modal__scroll{flex:1 1 auto;min-height:0;overflow-y:auto;
+  padding:clamp(22px,3.4vw,34px) clamp(26px,3vw,44px) 10px}
+.cf-modal__foot{position:relative;flex-shrink:0;background:#FFFFFF;border-top:1px solid rgba(27,26,24,.08);
+  padding:12px clamp(26px,3vw,44px) clamp(16px,2.2vw,24px)}
+.cf-modal__add{display:block;width:100%;border-radius:30px;margin:0;padding:15px 26px;background:#3B4B96;color:#FFFFFF}
 .cf-modal__add:hover{background:#33417f}
-.cf-modal__added{position:absolute;left:0;right:0;bottom:10px;text-align:center;margin:0;pointer-events:none}
+.cf-modal__added{position:absolute;left:0;right:0;top:-2px;transform:translateY(-100%);text-align:center;margin:0;pointer-events:none;background:#FFFFFF;padding:4px 0}
 .cf-modal__comp{font-family:var(--fsans);font-size:13px;line-height:1.45;color:var(--body);
   margin:-2px 0 12px;padding-bottom:11px;border-bottom:1px solid rgba(27,26,24,.14)}
 .cf-modal__comp b{display:block;font-family:var(--fdisplay);font-size:10.5px;letter-spacing:.14em;
