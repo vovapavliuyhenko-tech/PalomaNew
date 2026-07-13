@@ -445,7 +445,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "330 / 370 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Эспрессо с апельсиновым соком и льдом.",
-    "image": "",
+    "image": "images/paloma/coffee/orange-bumble.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -469,7 +469,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "330 / 370 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Эспрессо с тоником и льдом.",
-    "image": "",
+    "image": "images/paloma/coffee/espresso-tonic.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -481,7 +481,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "500 / 750 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Авторский розовый латте.",
-    "image": "",
+    "image": "images/paloma/coffee/pink-latte.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
