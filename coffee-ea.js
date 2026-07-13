@@ -261,7 +261,7 @@
         if (!row || !row._item) return;
         var it = row._item;
         /* холодные — открываем конструктор (фото + состав + доп-ингредиенты) */
-        if (COLD[it.id]) { openModal(it); return; }
+        if (COLD[it.id] || it.image) { openModal(it); return; }
         var sizes = row._sizes || parseSizes(it);
         if (sizes.length > 1) { toggleTray(row, it, sizes); return; }
         addToCart(it, sizes[0], row.querySelector(".cfm-add"));
@@ -275,9 +275,7 @@
       milk:  { label: "Молоко", multi: false, opts: [
         { n: "Обычное", p: 0 }, { n: "Овсяное", p: 80 }, { n: "Кокосовое", p: 80 }, { n: "Банановое", p: 100 } ] },
       syrup: { label: "Сироп", multi: true, opts: [
-        { n: "Карамель", p: 60 }, { n: "Ваниль", p: 60 }, { n: "Лаванда", p: 60 }, { n: "Малина", p: 60 }, { n: "Вишня", p: 60 }, { n: "Сироп корицы", p: 60 } ] },
-      shot:  { label: "Кофе", multi: true, opts: [ { n: "Двойной эспрессо", p: 70 } ] },
-      cream: { label: "Сливки", multi: true, opts: [ { n: "Взбитые сливки", p: 60 } ] },
+        { n: "Карамель", p: 60 }, { n: "Ваниль", p: 60 }, { n: "Лаванда", p: 60 }, { n: "Малина", p: 60 }, { n: "Вишня", p: 60 } ] },
       extra: { label: "Топпинг", multi: true, opts: [ { n: "Сахар", p: 0 }, { n: "Корица", p: 0 } ] },
       ice:   { label: "Лёд", multi: false, opts: [ { n: "Обычный", p: 0 }, { n: "Больше льда", p: 0 }, { n: "Без льда", p: 0 } ] },
       color: { label: "Цвет матчи", multi: false, opts: [ { n: "Зелёная", p: 0 }, { n: "Голубая", p: 0 }, { n: "Розовая", p: 0 } ] },
@@ -314,15 +312,17 @@
     };
     function coldGroups(it) {
       var x = COLD[it.id];
-      if (!x) return null;
+      if (!x) {
+        /* любая позиция с фото — тоже открывает конструктор (fallback) */
+        if (!it.image) return null;
+        x = { c: "", milk: /раф|латте|какао|капучино|моккачино|молоч/i.test(it.title || "") ? 1 : 0 };
+      }
       var g;
       if (x.g) { g = x.g.slice(); }
       else {
         g = [];
         if (x.milk) g.push("milk");
         g.push("syrup");
-        if (x.cof) g.push("shot");
-        if (x.milk) g.push("cream");
         g.push("ice");
       }
       if (g.indexOf("extra") === -1) g.push("extra");
@@ -425,7 +425,7 @@
       $("#cfModalDesc").textContent = it.desc || "";
       var cg = coldGroups(it);
       var comp = $("#cfModalComp");
-      if (cg) {
+      if (cg && cg.ex.c) {
         comp.innerHTML = "<b>Состав</b>" + esc(cg.ex.c);
         comp.hidden = false;
       } else { comp.hidden = true; }
