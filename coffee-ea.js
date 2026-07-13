@@ -259,12 +259,8 @@
       grid.addEventListener("click", function (e) {
         var row = e.target.closest(".cfm-row");
         if (!row || !row._item) return;
-        var it = row._item;
-        /* холодные — открываем конструктор (фото + состав + доп-ингредиенты) */
-        if (COLD[it.id] || it.image) { openModal(it); return; }
-        var sizes = row._sizes || parseSizes(it);
-        if (sizes.length > 1) { toggleTray(row, it, sizes); return; }
-        addToCart(it, sizes[0], row.querySelector(".cfm-add"));
+        /* любая позиция меню открывает попап-конструктор */
+        openModal(row._item);
       });
     }
 
@@ -312,21 +308,28 @@
     };
     function coldGroups(it) {
       var x = COLD[it.id];
-      if (!x) {
-        /* любая позиция с фото — тоже открывает конструктор (fallback) */
-        if (!it.image) return null;
-        x = { c: "", milk: /раф|латте|какао|капучино|моккачино|молоч/i.test(it.title || "") ? 1 : 0 };
+      if (x) {
+        var g;
+        if (x.g) { g = x.g.slice(); }
+        else {
+          g = [];
+          if (x.milk) g.push("milk");
+          g.push("syrup");
+          g.push("ice");
+        }
+        if (g.indexOf("extra") === -1) g.push("extra");
+        return { ex: x, groups: g };
       }
-      var g;
-      if (x.g) { g = x.g.slice(); }
-      else {
-        g = [];
-        if (x.milk) g.push("milk");
-        g.push("syrup");
-        g.push("ice");
-      }
-      if (g.indexOf("extra") === -1) g.push("extra");
-      return { ex: x, groups: g };
+      /* остальные позиции меню — группы подбираем по типу напитка */
+      var t = it.title || "";
+      var isMilk = it.category === "cacaoraf" || /латте|капучино|раф|как[аи]о|мокк|фл[эе]т|молоч|сливоч/i.test(t);
+      var isIce = it.category === "cold" || /айс|л[её]д|холод/i.test(t);
+      var gg = [];
+      if (isMilk) gg.push("milk");
+      gg.push("syrup");
+      if (isIce) gg.push("ice");
+      gg.push("extra");
+      return { ex: { c: "" }, groups: gg };
     }
 
     /* ── МОДАЛКА-КОНСТРУКТОР позиции меню ── */
