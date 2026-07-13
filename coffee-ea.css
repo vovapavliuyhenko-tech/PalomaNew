@@ -142,6 +142,9 @@ body.coffee-page{overflow-x:clip!important}
   background:var(--paper2);box-shadow:0 50px 120px rgba(20,12,8,.5);overflow:hidden;border-radius:22px;animation:cfPop .4s var(--eease)}
 @keyframes cfPop{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .cf-modal__img{background-size:cover;background-position:center;background-color:#FFFFFF;min-height:340px}
+/* позиции без своего фото — попап одноколоночный, без фото-заглушки */
+.cf-modal__panel--noimg{grid-template-columns:1fr;max-width:520px}
+.cf-modal__panel--noimg .cf-modal__img{display:none}
 .cf-modal__body{padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;justify-content:center}
 .cf-modal__cat{font-family:var(--fdisplay);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .cf-modal__title{font-family:var(--fhead);font-size:clamp(24px,2.4vw,36px);color:var(--wine);line-height:1.06;margin:4px 0 8px}

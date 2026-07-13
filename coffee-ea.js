@@ -417,11 +417,19 @@
     }
     function openModal(it) {
       if (!modal) return;
-      var img = itemImg(it);
+      var img = it.image || "";
       var imgEl = $("#cfModalImg");
+      var panel = modal.querySelector(".cf-modal__panel");
       imgEl.style.background = "";
-      if (img) imgEl.style.backgroundImage = 'url("' + img + '")';
-      else if (it.imageBg) imgEl.style.background = it.imageBg;
+      if (img) {
+        imgEl.style.backgroundImage = 'url("' + img + '")';
+        imgEl.style.display = "";
+        panel.classList.remove("cf-modal__panel--noimg");
+      } else {
+        /* нет своего фото — без фото-колонки (не показываем градиент-заглушку) */
+        imgEl.style.display = "none";
+        panel.classList.add("cf-modal__panel--noimg");
+      }
       $("#cfModalCat").textContent = catLabels[it.category] || it.category || "Меню";
       $("#cfModalTitle").textContent = it.title;
       $("#cfModalDesc").textContent = it.desc || "";
