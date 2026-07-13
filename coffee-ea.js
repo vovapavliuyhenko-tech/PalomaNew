@@ -275,8 +275,10 @@
       milk:  { label: "Молоко", multi: false, opts: [
         { n: "Обычное", p: 0 }, { n: "Овсяное", p: 80 }, { n: "Кокосовое", p: 80 }, { n: "Банановое", p: 100 } ] },
       syrup: { label: "Сироп", multi: true, opts: [
-        { n: "Карамель", p: 60 }, { n: "Ваниль", p: 60 }, { n: "Лаванда", p: 60 }, { n: "Малина", p: 60 }, { n: "Вишня", p: 60 } ] },
+        { n: "Карамель", p: 60 }, { n: "Ваниль", p: 60 }, { n: "Лаванда", p: 60 }, { n: "Малина", p: 60 }, { n: "Вишня", p: 60 }, { n: "Сироп корицы", p: 60 } ] },
       shot:  { label: "Кофе", multi: true, opts: [ { n: "Двойной эспрессо", p: 70 } ] },
+      cream: { label: "Сливки", multi: true, opts: [ { n: "Взбитые сливки", p: 60 } ] },
+      extra: { label: "Топпинг", multi: true, opts: [ { n: "Сахар", p: 0 }, { n: "Корица", p: 0 } ] },
       ice:   { label: "Лёд", multi: false, opts: [ { n: "Обычный", p: 0 }, { n: "Больше льда", p: 0 }, { n: "Без льда", p: 0 } ] },
       color: { label: "Цвет матчи", multi: false, opts: [ { n: "Зелёная", p: 0 }, { n: "Голубая", p: 0 }, { n: "Розовая", p: 0 } ] },
     };
@@ -314,14 +316,16 @@
       var x = COLD[it.id];
       if (!x) return null;
       var g;
-      if (x.g) { g = x.g; }
+      if (x.g) { g = x.g.slice(); }
       else {
         g = [];
         if (x.milk) g.push("milk");
         g.push("syrup");
         if (x.cof) g.push("shot");
+        if (x.milk) g.push("cream");
         g.push("ice");
       }
+      if (g.indexOf("extra") === -1) g.push("extra");
       return { ex: x, groups: g };
     }
 
@@ -349,47 +353,62 @@
       [].forEach.call(row.querySelectorAll(".cf-bld__chip"), function (c) { c.classList.remove("is-on"); });
       chip.classList.add("is-on");
     }
+    function segGroup(label, grp, opts, sizeMode) {
+      var h = '<div class="cf-bld__g"><span class="cf-bld__l">' + esc(label) + '</span><div class="cf-seg" data-grp="' + grp + '">';
+      opts.forEach(function (o, i) {
+        h += '<button type="button" class="cf-seg__b' + (i === 0 ? " is-on" : "") + '" data-' + (sizeMode ? "si" : "oi") + '="' + i + '">' +
+          "<b>" + esc(o.n) + "</b>" + (o.sub ? "<span>" + esc(o.sub) + "</span>" : "") + "</button>";
+      });
+      return h + "</div></div>";
+    }
     function renderBuilder(it) {
       var build = $("#cfModalBuild");
       var cg = coldGroups(it);
       bstate = { it: it, sizes: parseSizes(it), sizeIdx: 0, sel: {} };
-      var html = "";
+      var singles = "", addons = "";
       if (bstate.sizes.length > 1) {
-        html += '<div class="cf-bld__g"><span class="cf-bld__l">Объём</span><div class="cf-bld__chips" data-grp="size">';
-        bstate.sizes.forEach(function (s, i) {
-          html += '<button type="button" class="cf-bld__chip' + (i === 0 ? " is-on" : "") + '" data-si="' + i + '">' +
-            "<b>" + esc(s.label) + "</b><span>" + esc(s.priceText) + "</span></button>";
-        });
-        html += "</div></div>";
+        singles += segGroup("Объём", "size", bstate.sizes.map(function (s) {
+          return { n: s.label, sub: s.priceText };
+        }), true);
       }
       if (cg) {
         cg.groups.forEach(function (gk) {
           var G = COLD_ADDONS[gk];
           bstate.sel[gk] = G.multi ? {} : 0;
-          html += '<div class="cf-bld__g"><span class="cf-bld__l">' + esc(G.label) + '</span><div class="cf-bld__chips" data-grp="' + gk + '">';
-          G.opts.forEach(function (o, i) {
-            var on = !G.multi && i === 0;
-            html += '<button type="button" class="cf-bld__chip' + (on ? " is-on" : "") + '" data-oi="' + i + '">' +
-              "<b>" + esc(o.n) + "</b>" + (o.p ? "<span>+" + o.p + " ₽</span>" : "") + "</button>";
-          });
-          html += "</div></div>";
+          if (G.multi) {
+            G.opts.forEach(function (o, i) {
+              addons += '<button type="button" class="cf-add" data-grp="' + gk + '" data-oi="' + i + '">' +
+                '<span class="cf-add__n">' + esc(o.n) + "</span>" +
+                '<span class="cf-add__p">' + (o.p ? "+" + o.p + " ₽" : "") + "</span></button>";
+            });
+          } else {
+            singles += segGroup(G.label, gk, G.opts.map(function (o) {
+              return { n: o.n, sub: o.p ? "+" + o.p + " ₽" : "" };
+            }), false);
+          }
         });
       }
+      var html = singles;
+      if (addons) html += '<div class="cf-bld__sec"><span class="cf-bld__l">Добавки</span><div class="cf-add-grid">' + addons + "</div></div>";
       build.innerHTML = html;
-      [].forEach.call(build.querySelectorAll(".cf-bld__chips"), function (row) {
+      [].forEach.call(build.querySelectorAll(".cf-seg"), function (row) {
         var grp = row.getAttribute("data-grp");
-        [].forEach.call(row.querySelectorAll(".cf-bld__chip"), function (chip) {
+        [].forEach.call(row.querySelectorAll(".cf-seg__b"), function (chip) {
           chip.addEventListener("click", function () {
-            if (grp === "size") { bstate.sizeIdx = +chip.getAttribute("data-si"); setOne(row, chip); }
-            else {
-              var G = COLD_ADDONS[grp], oi = +chip.getAttribute("data-oi");
-              if (G.multi) {
-                chip.classList.toggle("is-on");
-                if (bstate.sel[grp][oi]) delete bstate.sel[grp][oi]; else bstate.sel[grp][oi] = true;
-              } else { bstate.sel[grp] = oi; setOne(row, chip); }
-            }
+            if (grp === "size") bstate.sizeIdx = +chip.getAttribute("data-si");
+            else bstate.sel[grp] = +chip.getAttribute("data-oi");
+            [].forEach.call(row.querySelectorAll(".cf-seg__b"), function (c) { c.classList.remove("is-on"); });
+            chip.classList.add("is-on");
             updTotal();
           });
+        });
+      });
+      [].forEach.call(build.querySelectorAll(".cf-add"), function (chip) {
+        var grp = chip.getAttribute("data-grp"), oi = +chip.getAttribute("data-oi");
+        chip.addEventListener("click", function () {
+          chip.classList.toggle("is-on");
+          if (bstate.sel[grp][oi]) delete bstate.sel[grp][oi]; else bstate.sel[grp][oi] = true;
+          updTotal();
         });
       });
       updTotal();

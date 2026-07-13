@@ -170,18 +170,32 @@ body.cf-modal-open{overflow:hidden}
   margin:-2px 0 12px;padding-bottom:11px;border-bottom:1px solid rgba(27,26,24,.14)}
 .cf-modal__comp b{display:block;font-family:var(--fdisplay);font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:#8A8577;font-weight:400;margin-bottom:4px}
-.cf-modal__build{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
-.cf-bld__g{display:flex;flex-direction:column;gap:6px}
+.cf-modal__build{display:flex;flex-direction:column;gap:13px;margin-bottom:16px}
+.cf-bld__g{display:flex;flex-direction:column;gap:7px}
 .cf-bld__l{font-family:var(--fdisplay);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A8577}
-.cf-bld__chips{display:flex;flex-wrap:wrap;gap:6px}
-.cf-bld__chip{display:inline-flex;align-items:baseline;gap:5px;padding:6px 12px;border:1px solid rgba(27,26,24,.3);
-  border-radius:30px;background:none;cursor:pointer;font-family:var(--fsans);color:var(--ink);
-  line-height:1;transition:background .2s ease,border-color .2s ease,color .2s ease}
-.cf-bld__chip b{font-weight:500;font-size:12.5px}
-.cf-bld__chip span{font-size:11px;color:#3B4B96}
-.cf-bld__chip:hover{border-color:#3B4B96}
-.cf-bld__chip.is-on{background:#3B4B96;border-color:#3B4B96;color:#FFFFFF}
-.cf-bld__chip.is-on span{color:rgba(255,255,255,.85)}
+/* Основа — сегментные переключатели (выбор одного), крупные, во всю ширину */
+.cf-seg{display:flex;flex-wrap:wrap;gap:6px}
+.cf-seg__b{flex:1 1 calc(50% - 3px);min-width:0;display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:10px 8px;border:1px solid rgba(27,26,24,.22);border-radius:12px;background:none;cursor:pointer;
+  font-family:var(--fsans);color:#2b2a28;line-height:1.15;transition:background .2s ease,border-color .2s ease,color .2s ease}
+.cf-seg__b b{font-weight:500;font-size:13.5px}
+.cf-seg__b span{font-size:11px;color:#3B4B96}
+.cf-seg__b:hover{border-color:#3B4B96}
+.cf-seg__b.is-on{background:#3B4B96;border-color:#3B4B96;color:#FFFFFF}
+.cf-seg__b.is-on span{color:rgba(255,255,255,.85)}
+/* Добавки — плитки-тоглы вкл/выкл, 2 в ряд */
+.cf-bld__sec{display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(27,26,24,.12);padding-top:13px}
+.cf-add-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cf-add{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 13px;
+  border:1px solid rgba(27,26,24,.18);border-radius:12px;background:none;cursor:pointer;
+  font-family:var(--fsans);color:#2b2a28;text-align:left;transition:background .2s ease,border-color .2s ease,color .2s ease}
+.cf-add__n{display:flex;align-items:center;font-size:13.5px;font-weight:500}
+.cf-add__n::before{content:"+";display:inline-block;width:13px;margin-right:7px;color:#8A8577;font-weight:500;text-align:center}
+.cf-add__p{font-size:12px;color:#3B4B96;white-space:nowrap}
+.cf-add:hover{border-color:#3B4B96}
+.cf-add.is-on{background:#F2F4FB;border-color:#3B4B96}
+.cf-add.is-on .cf-add__n{color:#3B4B96}
+.cf-add.is-on .cf-add__n::before{content:"\2713";color:#3B4B96}
 
 /* ── СЕРВИС-КАРТОЧКИ кофе: длинные «продающие» тексты на обороте флипа ──
    тексты заметно длиннее, чем на «Оформлении» (заголовок-хук + абзац + оффер
