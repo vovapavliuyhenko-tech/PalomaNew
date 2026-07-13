@@ -270,8 +270,7 @@
     var COLD_ADDONS = {
       milk:  { label: "Молоко", multi: false, opts: [
         { n: "Обычное", p: 0 }, { n: "Овсяное", p: 80 }, { n: "Кокосовое", p: 80 }, { n: "Банановое", p: 100 } ] },
-      syrup: { label: "Сироп", multi: true, opts: [
-        { n: "Карамель", p: 60 }, { n: "Ваниль", p: 60 }, { n: "Лаванда", p: 60 }, { n: "Малина", p: 60 }, { n: "Вишня", p: 60 } ] },
+      syrup: { label: "Сироп", multi: true, opts: [ { n: "Сироп", p: 60 } ] },
       extra: { label: "Топпинг", multi: true, opts: [ { n: "Сахар", p: 0 }, { n: "Корица", p: 0 } ] },
       ice:   { label: "Лёд", multi: false, opts: [ { n: "Обычный", p: 0 }, { n: "Больше льда", p: 0 }, { n: "Без льда", p: 0 } ] },
       color: { label: "Цвет матчи", multi: false, opts: [ { n: "Зелёная", p: 0 }, { n: "Голубая", p: 0 }, { n: "Розовая", p: 0 } ] },
