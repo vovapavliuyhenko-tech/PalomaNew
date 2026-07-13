@@ -121,7 +121,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "300 / 350 ₽",
     "volumes": "250 / 350 мл",
     "desc": "Какао с вишнёвым акцентом.",
-    "image": "",
+    "image": "images/paloma/coffee/cacao-cherry.jpg",
     "imageBg": "linear-gradient(160deg,#cda783 0%,#9a6a48 55%,#5a3a28 100%)"
   },
   {
@@ -157,7 +157,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "300 / 350 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Холодное какао с мятой.",
-    "image": "",
+    "image": "images/paloma/coffee/mint-cacao.jpg",
     "imageBg": "linear-gradient(160deg,#cda783 0%,#9a6a48 55%,#5a3a28 100%)"
   },
   {
@@ -433,7 +433,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "300 / 350 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Холодный латте со льдом.",
-    "image": "",
+    "image": "images/paloma/coffee/ice-latte.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -517,7 +517,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "500 / 700 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Айс латте с черникой.",
-    "image": "",
+    "image": "images/paloma/coffee/blueberry-latte.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -541,7 +541,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "350 / 450 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Матча с тропическим тоником.",
-    "image": "images/paloma/coffee/matcha-tonik.jpg",
+    "image": "images/paloma/coffee/tropical-matcha.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -553,7 +553,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "500 / 600 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Лимонад апельсин-маракуйя.",
-    "image": "",
+    "image": "images/paloma/coffee/orange-passion.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -589,7 +589,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "300 / 400 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Лимонад яблоко-тархун.",
-    "image": "",
+    "image": "images/paloma/coffee/apple-tarragon.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -601,7 +601,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "300 / 350 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Освежающий огурец-мята.",
-    "image": "",
+    "image": "images/paloma/coffee/lemonade-cucumber-mint.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -613,7 +613,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "350 / 450 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Вишнёвый лимонад.",
-    "image": "",
+    "image": "images/paloma/coffee/cherry-wave.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {
@@ -673,7 +673,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "priceLabel": "400 / 500 ₽",
     "volumes": "350 / 450 мл",
     "desc": "Зелёный лимонад с маракуйей.",
-    "image": "",
+    "image": "images/paloma/coffee/green-passion.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   },
   {

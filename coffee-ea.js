@@ -304,6 +304,8 @@
       "menu-cold-55": { c: "Каркаде · персик · лёд" },
       "menu-cold-56": { c: "Тархун · маракуйя · лёд" },
       "menu-cold-57": { c: "Матча · молоко · лёд", g: ["color", "milk", "syrup", "ice"] },
+      "menu-cacaoraf-10": { c: "Какао · сливки · вишня", g: ["milk", "syrup"] },
+      "menu-cacaoraf-13": { c: "Какао · молоко · мята · лёд", g: ["milk", "syrup", "ice"] },
       "menu-cacaoraf-14": { c: "Эспрессо · сливки · фисташка · малина", g: ["milk", "syrup"] },
       "menu-cacaoraf-15": { c: "Эспрессо · сливки · солёная карамель", g: ["milk", "syrup"] },
       "menu-cacaoraf-18": { c: "Эспрессо · сливки · цветочный сироп", g: ["milk", "syrup"] },
