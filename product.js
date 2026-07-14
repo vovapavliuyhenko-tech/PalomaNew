@@ -81,6 +81,8 @@
   const fulfillBtns = document.getElementById("pdpFulfillBtns");
   const deliveryDate = document.getElementById("pdpDeliveryDate");
   const photoBefore = document.getElementById("pdpPhotoBefore");
+  const importantEl = document.getElementById("pdpImportant");
+  const importantBody = document.getElementById("pdpImportantBody");
   const similarSection = document.getElementById("pdpSimilar");
   const similarGrid = document.getElementById("pdpSimilarGrid");
 
@@ -242,8 +244,47 @@
 
     renderSizes();
     renderGallery();
+    renderImportant();
     bindWishlistButton();
     injectSeoSchema();
+  }
+
+  /* «Что важно знать» — текст зависит от типа букета (моно / подписка / обычный).
+     Для не-букетов (вазы, десерты) плашку не показываем. */
+  function renderImportant() {
+    if (!importantEl || !importantBody) return;
+    const cats = rawProduct?.categories || [];
+    const BOUQUET = ["season", "bestsellers", "online", "compositions", "events", "wedding", "mono"];
+    let paras = null;
+
+    if (cats.includes("subscription")) {
+      paras = [
+        "Состав не согласовываем заранее: в этом и есть смысл подписки — вы получаете букет-сюрприз, а не тот, что уже видели. Каждый букет собирает флорист на своё усмотрение из самых свежих цветов недели.",
+        "Пожелания учитываем всегда: желаемые цвета, аллергия, нелюбимые цветы — расскажите один раз, и мы будем это помнить.",
+      ];
+    } else if (cats.includes("mono")) {
+      paras = [
+        "Моно-букет собираем из одного вида цветка — только из того, что прошло отбор по свежести.",
+        "Если цветка нет в поставке — предложим замену, близкую по фактуре и подходящую под повод. Решение всегда за Вами.",
+        "Перед отправкой пришлём фото готового букета. Не совпало — пересоберём бесплатно.",
+        "Аллергия или пожелания по составу — напишите в комментарии к заказу.",
+      ];
+    } else if (cats.some((c) => BOUQUET.includes(c))) {
+      paras = [
+        "Букет собираем максимально близко к фото. Свежесть важнее буквального совпадения: если цветок не прошёл отбор — заменим равноценным, не меняя настроение букета.",
+        "Перед отправкой пришлём фото готового букета. Не совпало с ожиданием — пересоберём бесплатно.",
+        "Аллергия или пожелания по составу — напишите в комментарии к заказу.",
+      ];
+    }
+
+    if (!paras) {
+      importantEl.hidden = true;
+      return;
+    }
+    importantBody.innerHTML = paras
+      .map((t) => '<p class="pdp-accordion__intro">' + esc(t) + "</p>")
+      .join("");
+    importantEl.hidden = false;
   }
 
   function renderSizes() {
