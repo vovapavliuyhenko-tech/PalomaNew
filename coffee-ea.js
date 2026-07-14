@@ -475,12 +475,23 @@
         meta.style.display = "none";
         renderBuilder(it);
       } else {
-        meta.style.display = "";
-        $("#cfModalBuild").innerHTML = "";
+        /* десерты: без конструктора; цена — только на кнопке; БЖУ — отдельным блоком */
+        meta.style.display = "none";
         bstate = { it: it, sizes: [], sizeIdx: 0, sel: {} };
-        $("#cfModalVol").textContent = it.volumes || "";
-        $("#cfModalPrice").textContent = it.priceLabel || it.price + " ₽";
-        $("#cfModalAdd").textContent = "В корзину";
+        var full = it.desc || "";
+        var m = full.match(/Б\s*([\d.,]+)\s*·\s*Ж\s*([\d.,]+)\s*·\s*У\s*([\d.,]+)\s*·\s*([\d.,]+)\s*ккал/i);
+        var descOnly = full, buildHtml = "";
+        if (m) {
+          descOnly = full.slice(0, m.index).trim();
+          var cells = [[m[1], "белки, г"], [m[2], "жиры, г"], [m[3], "углеводы, г"], [m[4], "ккал"]];
+          var weight = it.volumes ? '<div class="cf-nutri__weight">Вес · ' + esc(it.volumes) + "</div>" : "";
+          buildHtml = weight + '<div class="cf-nutri">' + cells.map(function (c) {
+            return '<div class="cf-nutri__cell"><span class="cf-nutri__v">' + esc(c[0]) + '</span><span class="cf-nutri__k">' + esc(c[1]) + "</span></div>";
+          }).join("") + "</div>";
+        }
+        $("#cfModalDesc").textContent = descOnly;
+        $("#cfModalBuild").innerHTML = buildHtml;
+        $("#cfModalAdd").textContent = "В корзину · " + (it.priceLabel || it.price + " ₽");
       }
       $("#cfModalAdded").classList.remove("is-on");
       modal._item = it;

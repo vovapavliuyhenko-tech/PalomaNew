@@ -303,3 +303,45 @@ body.cf-modal-open{overflow:hidden}
 #cfMenuFilters .catalog-filter-btn[data-cat="dessert"]:focus-visible{
   outline-color:#EE7B2D;
 }
+
+/* Десерты: отдельный блок БЖУ в попапе */
+.cf-nutri__weight{
+  font-family:var(--sans);
+  font-size:12px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:rgba(27,26,24,.55);
+  margin:4px 0 12px;
+}
+.cf-nutri{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin:4px 0 2px;
+}
+.cf-nutri__cell{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  padding:11px 6px;
+  border:1px solid rgba(27,26,24,.12);
+  border-radius:12px;
+  background:rgba(27,26,24,.03);
+}
+.cf-nutri__v{
+  font-family:var(--sans);
+  font-size:17px;
+  font-weight:700;
+  line-height:1;
+  color:var(--wine,#3B4B96);
+}
+.cf-nutri__k{
+  font-family:var(--sans);
+  font-size:10px;
+  line-height:1.15;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  color:rgba(27,26,24,.55);
+  text-align:center;
+}
