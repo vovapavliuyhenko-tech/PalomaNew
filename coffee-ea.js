@@ -352,7 +352,7 @@
       /* остальные позиции меню — группы подбираем по типу напитка */
       var t = it.title || "";
       var isMilk = it.category === "cacaoraf" || /латте|капучино|раф|как[аи]о|мокк|фл[эе]т|молоч|сливоч/i.test(t);
-      var isIce = it.category === "cold" || /айс|л[её]д|холод/i.test(t);
+      var isIce = it.category === "cold" || it.category === "tea" || /айс|л[её]д|холод/i.test(t);
       var gg = [];
       if (isMilk) gg.push("milk");
       gg.push("syrup");
