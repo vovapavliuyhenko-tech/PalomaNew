@@ -1,15 +1,18 @@
 /* ════════════════════════════════════════════════════════
    payment-config.js — конфигурация онлайн-оплаты PALOMA
 
-   ВАЖНО: только публичные значения. Секретный API-ключ Яндекс Пэй
-   живёт исключительно в переменных окружения Cloud Function.
+   Эквайринг: PayKeeper (АО «Альфа-Банк»), сервер paloma.server.paykeeper.ru
+
+   ВАЖНО: только публичные значения. Логин/пароль от ЛК PayKeeper и
+   секретное слово живут исключительно в переменных окружения
+   Cloud Function — в сайт они не попадают.
 
    Схема:
    checkout.js → POST <PAYMENT_ENDPOINT>?a=create → Cloud Function
-               → Яндекс Пэй (Api-Key) → { paymentUrl }
-   checkout.js → редирект на paymentUrl
-   Яндекс Пэй → thank-you.html?orderId=…&paid=1
-   Яндекс Пэй → POST <PAYMENT_ENDPOINT>?a=webhook (Callback URL в кабинете)
+               → PayKeeper (Basic-авторизация) → { paymentUrl }
+   checkout.js → редирект на paymentUrl (страница оплаты картой)
+   PayKeeper  → thank-you.html?paid=1            (URL успешной оплаты в ЛК)
+   PayKeeper  → POST <PAYMENT_ENDPOINT>?a=webhook (POST-оповещения в ЛК)
    ════════════════════════════════════════════════════════ */
 
 window.PALOMA_PAYMENT_CONFIG = {
@@ -17,8 +20,6 @@ window.PALOMA_PAYMENT_CONFIG = {
      чекаут молча работает как раньше (заявка менеджеру). */
   PAYMENT_ENDPOINT: "",
 
-  MERCHANT_ID: "71f5bcc2-e0e2-4b81-af9d-fce2791ac84d",
-
-  RETURN_URL_SUCCESS: "thank-you.html",
+  RETURN_URL_SUCCESS: "thank-you.html?paid=1",
   RETURN_URL_FAIL: "checkout.html?payment=failed",
 };

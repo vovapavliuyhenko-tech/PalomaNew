@@ -639,8 +639,8 @@
     });
   }
 
-  /* Онлайн-оплата: сервер сам пересчитывает цены по каталогу и выдаёт
-     ссылку Яндекс Пэй. Цены из localStorage сервер не принимает на веру. */
+  /* Онлайн-оплата: сервер сам пересчитывает цены по каталогу и выставляет
+     счёт в PayKeeper. Цены из localStorage сервер не принимает на веру. */
   async function initPayment(orderData) {
     const f = orderData.form || {};
     try {
@@ -656,7 +656,9 @@
             qty: i.qty || 1,
           })),
           delivery: orderData.delivery,
-          fiscalContact: f.email || f.phone || "",
+          clientName: f.name || "",
+          phone: f.phone || "",
+          email: f.email || "",
         }),
       });
 
@@ -667,7 +669,7 @@
 
       window.location.href = data.paymentUrl;
     } catch (err) {
-      console.error("[PALOMA] Яндекс Пэй:", err);
+      console.error("[PALOMA] PayKeeper:", err);
       releaseSubmit();
       alert(
         "Не получилось открыть оплату: " +

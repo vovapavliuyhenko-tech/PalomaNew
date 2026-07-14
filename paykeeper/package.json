@@ -1,0 +1,7 @@
+{
+  "name": "paloma-paykeeper",
+  "version": "1.0.0",
+  "description": "Cloud Function: выставление счёта в PayKeeper и приём POST-оповещений",
+  "main": "index.js",
+  "private": true
+}

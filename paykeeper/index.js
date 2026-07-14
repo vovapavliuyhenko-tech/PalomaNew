@@ -1,30 +1,32 @@
 /* ════════════════════════════════════════════════════════
-   PALOMA — Yandex Cloud Function для оплаты Яндекс Пэй.
+   PALOMA — Yandex Cloud Function для оплаты через PayKeeper
+   (интернет-эквайринг АО «Альфа-Банк»).
 
-   Единственное место, где живёт секретный API-ключ (переменная
-   окружения YPAY_API_KEY). В код и в репозиторий ключ не попадает.
+   Единственное место, где живут логин и пароль от ЛК PayKeeper
+   и секретное слово (переменные окружения). В сайт они не попадают:
+   сайт статический, всё его содержимое видно покупателю.
 
    Два маршрута (различаются query-параметром ?a=):
      POST /?a=create   — сайт просит ссылку на оплату
-     POST /?a=webhook  — Яндекс Пэй сообщает, что заказ оплачен
-                         (этот адрес вписывается в Callback URL кабинета)
+     POST /?a=webhook  — PayKeeper сообщает, что счёт оплачен
+                         (этот адрес вписывается в ЛК → Настройки →
+                          Получение информации о платежах → POST-оповещения)
 
-   Зависимостей нет — Node 18 умеет fetch и проверку ES256 сам.
+   Зависимостей нет — Node 18 умеет fetch и md5 сам.
    ════════════════════════════════════════════════════════ */
 "use strict";
 
 const crypto = require("crypto");
 
 /* ── настройки из переменных окружения функции ── */
-const IS_PROD = process.env.YPAY_ENV === "prod";
-const BASE = IS_PROD ? "https://pay.yandex.ru" : "https://sandbox.pay.yandex.ru";
-const API_KEY = process.env.YPAY_API_KEY || "";
-const MERCHANT_ID = process.env.YPAY_MERCHANT_ID || "";
-const SITE = (process.env.YPAY_SITE || "https://paloma.website").replace(/\/+$/, "");
-/* Код НДС по ФФД: 6 — «без НДС» (УСН). Подтвердить у бухгалтера до боевого запуска. */
-const TAX = Number(process.env.YPAY_TAX || 6);
+const PK_SERVER = (process.env.PK_SERVER || "https://paloma.server.paykeeper.ru").replace(/\/+$/, "");
+const PK_USER = process.env.PK_USER || "";
+const PK_PASSWORD = process.env.PK_PASSWORD || "";
+const PK_SECRET = process.env.PK_SECRET || ""; /* секретное слово из ЛК */
+const SITE = (process.env.PK_SITE || "https://paloma.website").replace(/\/+$/, "");
 
 const ORIGINS = [SITE, "https://www.paloma.website", "http://localhost:5500", "http://127.0.0.1:5500"];
+const AUTH = "Basic " + Buffer.from(`${PK_USER}:${PK_PASSWORD}`).toString("base64");
 
 /* ── прайс-лист: тот же, что на сайте (файлы копирует sync.js) ── */
 global.window = global.window || {};
@@ -53,6 +55,10 @@ Object.assign(FIXED, {
   "upsell-secateurs": 1000,
   "upsell-dessert": 190,
 });
+
+function md5(s) {
+  return crypto.createHash("md5").update(s, "utf8").digest("hex");
+}
 
 /* Разрешённый диапазон цены строки корзины.
    Букеты и кофе считаем по каталогу; свободные суммы — по границам. */
@@ -86,7 +92,8 @@ function allowedRange(id) {
   return { min: OPEN_MIN, max: OPEN_MAX };
 }
 
-/* Проверка всей корзины. Возвращает {items, total} или {error}. */
+/* Проверка всей корзины. Возвращает {names, total} или {error}.
+   Цены из браузера не принимаются на веру: их можно подменить в localStorage. */
 function verifyCart(body) {
   const raw = Array.isArray(body.items) ? body.items : [];
   if (!raw.length || raw.length > 50) return { error: "Корзина пуста или слишком большая" };
@@ -94,7 +101,7 @@ function verifyCart(body) {
   const delivery = Number(body.delivery) || 0;
   if (!DELIVERY_ALLOWED.includes(delivery)) return { error: "Недопустимая стоимость доставки" };
 
-  const items = [];
+  const names = [];
   let sum = 0;
 
   for (const it of raw) {
@@ -110,28 +117,16 @@ function verifyCart(body) {
     }
 
     sum += price * qty;
-    items.push({
-      productId: String(it.id).slice(0, 2048),
-      title: String(it.name || "Позиция заказа").slice(0, 2048),
-      quantity: { count: String(qty) },
-      total: (price * qty).toFixed(2),
-      receipt: { tax: TAX },
-    });
+    names.push(String(it.name || "Позиция") + (qty > 1 ? ` × ${qty}` : ""));
   }
 
   if (delivery > 0) {
     sum += delivery;
-    items.push({
-      productId: "delivery",
-      title: "Доставка",
-      quantity: { count: "1" },
-      total: delivery.toFixed(2),
-      receipt: { tax: TAX },
-    });
+    names.push("Доставка");
   }
 
   if (sum < 1) return { error: "Сумма заказа меньше 1 ₽" };
-  return { items, total: sum };
+  return { names, total: sum };
 }
 
 /* ── HTTP-обвязка ── */
@@ -153,20 +148,18 @@ function reply(status, data, origin) {
   };
 }
 
-function readBody(event) {
-  const raw = event.isBase64Encoded
+function rawBody(event) {
+  return event.isBase64Encoded
     ? Buffer.from(event.body || "", "base64").toString("utf8")
     : event.body || "";
-  try {
-    return JSON.parse(raw || "{}");
-  } catch {
-    return null;
-  }
 }
 
-/* ── создание заказа и получение ссылки на оплату ── */
-async function createOrder(body, origin) {
-  if (!API_KEY || !MERCHANT_ID) return reply(500, { error: "Функция не настроена" }, origin);
+/* ── создание счёта и получение ссылки на оплату ──
+   Шаг 1: GET /info/settings/token/      → токен безопасности
+   Шаг 2: POST /change/invoice/preview/  → invoice_id
+   Ссылка: <сервер>/bill/<invoice_id>/                                   */
+async function createInvoice(body, origin) {
+  if (!PK_USER || !PK_PASSWORD) return reply(500, { error: "Функция не настроена" }, origin);
 
   const orderId = String(body.orderId || "").trim();
   if (!/^[A-Za-z0-9-]{6,64}$/.test(orderId)) return reply(400, { error: "Некорректный номер заказа" }, origin);
@@ -174,99 +167,86 @@ async function createOrder(body, origin) {
   const cart = verifyCart(body);
   if (cart.error) return reply(400, { error: cart.error }, origin);
 
-  const payload = {
-    orderId,
-    merchantId: MERCHANT_ID,
-    currencyCode: "RUB",
-    availablePaymentMethods: ["CARD", "SPLIT"],
-    cart: {
-      items: cart.items,
-      total: { amount: cart.total.toFixed(2) },
-    },
-    redirectUrls: {
-      onSuccess: `${SITE}/thank-you.html?orderId=${encodeURIComponent(orderId)}&paid=1`,
-      onError: `${SITE}/checkout.html?payment=failed`,
-      onAbort: `${SITE}/checkout.html?payment=aborted`,
-    },
-    ttl: 1800,
-  };
+  const tokenRes = await fetch(`${PK_SERVER}/info/settings/token/`, {
+    headers: { Authorization: AUTH },
+  });
+  const tokenJson = await tokenRes.json().catch(() => ({}));
+  const token = tokenJson && tokenJson.token;
+  if (!tokenRes.ok || !token) {
+    console.error("[paykeeper] token failed", tokenRes.status, JSON.stringify(tokenJson));
+    return reply(502, { error: "PayKeeper не выдал токен" }, origin);
+  }
 
-  /* контакт для электронного чека облачной кассы */
-  const contact = String(body.fiscalContact || "").trim();
-  if (contact) payload.fiscalContact = contact.slice(0, 256);
+  const form = new URLSearchParams({
+    token,
+    pay_amount: cart.total.toFixed(2),
+    clientid: String(body.clientName || "Покупатель PALOMA").slice(0, 128),
+    orderid: orderId,
+    service_name: cart.names.join(", ").slice(0, 250),
+  });
+  if (body.email) form.set("client_email", String(body.email).slice(0, 128));
+  if (body.phone) form.set("client_phone", String(body.phone).replace(/\D/g, "").slice(0, 16));
 
-  const res = await fetch(`${BASE}/api/merchant/v1/orders`, {
+  const invRes = await fetch(`${PK_SERVER}/change/invoice/preview/`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Api-Key ${API_KEY}`,
+      Authorization: AUTH,
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: JSON.stringify(payload),
+    body: form.toString(),
   });
+  const invJson = await invRes.json().catch(() => ({}));
+  const invoiceId = invJson && invJson.invoice_id;
 
-  const json = await res.json().catch(() => ({}));
-  const paymentUrl = json && json.data && json.data.paymentUrl;
-
-  if (!res.ok || !paymentUrl) {
-    console.error("[yandex-pay] create failed", res.status, JSON.stringify(json));
-    return reply(502, { error: "Яндекс Пэй не принял заказ" }, origin);
+  if (!invRes.ok || !invoiceId) {
+    console.error("[paykeeper] invoice failed", invRes.status, JSON.stringify(invJson));
+    return reply(502, { error: invJson.msg || "PayKeeper не принял заказ" }, origin);
   }
 
-  console.log("[yandex-pay] created", orderId, cart.total);
-  return reply(200, { paymentUrl, orderId, total: cart.total }, origin);
+  console.log("[paykeeper] invoice", orderId, cart.total, invoiceId);
+  return reply(
+    200,
+    { paymentUrl: `${PK_SERVER}/bill/${invoiceId}/`, orderId, total: cart.total },
+    origin,
+  );
 }
 
-/* ── вебхук: Яндекс присылает JWT (ES256), подписанный своим ключом ──
-   Без проверки подписи вебхуку доверять нельзя: адрес функции публичный. */
-async function handleWebhook(event) {
-  const raw = event.isBase64Encoded
-    ? Buffer.from(event.body || "", "base64").toString("utf8")
-    : event.body || "";
-  const token = raw.trim().replace(/^"|"$/g, "");
+/* ── POST-оповещение об оплате ──
+   PayKeeper шлёт form-urlencoded: id, sum, clientid, orderid, key
+   key    = md5(id + sum(2 знака) + clientid + orderid + секретное слово)
+   ответ  = "OK " + md5(id + секретное слово)
+   Без верной подписи не отвечаем OK: адрес функции публичный. */
+function handleWebhook(event) {
+  const p = new URLSearchParams(rawBody(event));
+  const id = p.get("id") || "";
+  const sum = p.get("sum") || "";
+  const clientid = p.get("clientid") || "";
+  const orderid = p.get("orderid") || "";
+  const key = p.get("key") || "";
 
-  const parts = token.split(".");
-  if (parts.length !== 3) return { statusCode: 400, body: "bad token" };
-
-  const [h64, p64, s64] = parts;
-  let header;
-  try {
-    header = JSON.parse(Buffer.from(h64, "base64url").toString("utf8"));
-  } catch {
-    return { statusCode: 400, body: "bad header" };
-  }
-  if (header.alg !== "ES256") return { statusCode: 400, body: "bad alg" };
-
-  const jwks = await fetch(`${BASE}/api/jwks`).then((r) => r.json());
-  const jwk = (jwks.keys || []).find((k) => k.kid === header.kid);
-  if (!jwk) return { statusCode: 401, body: "unknown key" };
-
-  const key = crypto.createPublicKey({ key: jwk, format: "jwk" });
-  const ok = crypto.verify(
-    "sha256",
-    Buffer.from(`${h64}.${p64}`),
-    { key, dsaEncoding: "ieee-p1363" },
-    Buffer.from(s64, "base64url"),
+  const amount = Number(sum);
+  const expected = md5(
+    id + (Number.isFinite(amount) ? amount.toFixed(2) : sum) + clientid + orderid + PK_SECRET,
   );
-  if (!ok) return { statusCode: 401, body: "bad signature" };
 
-  const payload = JSON.parse(Buffer.from(p64, "base64url").toString("utf8"));
-  if (payload.merchantId && payload.merchantId !== MERCHANT_ID) {
-    return { statusCode: 401, body: "foreign merchant" };
+  if (!PK_SECRET || key !== expected) {
+    console.error("[paykeeper] bad signature", id, orderid);
+    return { statusCode: 401, headers: { "Content-Type": "text/plain" }, body: "Error! Bad signature" };
   }
 
-  /* Базы у сайта нет — пишем в лог функции. Он виден в консоли Яндекс Облака,
-     а сам факт оплаты менеджер видит в кабинете Яндекс Пэй. */
-  console.log("[yandex-pay] webhook", JSON.stringify(payload));
+  /* Базы у сайта нет — пишем в лог функции. Сам платёж менеджер видит в ЛК PayKeeper. */
+  console.log("[paykeeper] paid", JSON.stringify({ id, orderid, sum, clientid }));
 
   return {
     statusCode: 200,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ status: "success" }),
+    headers: { "Content-Type": "text/plain" },
+    body: "OK " + md5(id + PK_SECRET),
   };
 }
 
-/* для локальной проверки прайс-гарда: node yandex-pay/test.js */
+/* для локальной проверки: node paykeeper/test.js */
 module.exports._verifyCart = verifyCart;
+module.exports._handleWebhook = handleWebhook;
 
 module.exports.handler = async function handler(event) {
   const headers = event.headers || {};
@@ -278,13 +258,17 @@ module.exports.handler = async function handler(event) {
   if (method !== "POST") return reply(405, { error: "Только POST" }, origin);
 
   try {
-    if (action === "webhook") return await handleWebhook(event);
+    if (action === "webhook") return handleWebhook(event);
 
-    const body = readBody(event);
-    if (!body) return reply(400, { error: "Некорректный JSON" }, origin);
-    return await createOrder(body, origin);
+    let body;
+    try {
+      body = JSON.parse(rawBody(event) || "{}");
+    } catch {
+      return reply(400, { error: "Некорректный JSON" }, origin);
+    }
+    return await createInvoice(body, origin);
   } catch (e) {
-    console.error("[yandex-pay] error", e && e.stack);
+    console.error("[paykeeper] error", e && e.stack);
     return reply(500, { error: "Внутренняя ошибка" }, origin);
   }
 };
