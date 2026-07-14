@@ -305,6 +305,17 @@ body.cf-modal-open{overflow:hidden}
 #cfMenuFilters .catalog-filter-btn[data-cat="corpus"]:focus-visible{
   outline-color:#EE7B2D;
 }
+/* Десерты и корпусные — весь список оранжевый (названия, ховер строки, кнопка «+») */
+.cfm-cat[data-cat="dessert"] .cfm-name,
+.cfm-cat[data-cat="corpus"] .cfm-name{color:#EE7B2D}
+.coffee-page .cfm-cat[data-cat="dessert"] .cfm-row:hover,
+.coffee-page .cfm-cat[data-cat="corpus"] .cfm-row:hover{background:#FCEBDD}
+.cfm-cat[data-cat="dessert"] .cfm-row:hover .cfm-add,
+.cfm-cat[data-cat="corpus"] .cfm-row:hover .cfm-add{border-color:#EE7B2D;color:#EE7B2D}
+.cfm-cat[data-cat="dessert"] .cfm-add:hover,
+.cfm-cat[data-cat="corpus"] .cfm-add:hover{background:#EE7B2D;color:#FFFFFF}
+.cfm-cat[data-cat="dessert"] .cfm-add.is-done,
+.cfm-cat[data-cat="corpus"] .cfm-add.is-done{background:#EE7B2D;border-color:#EE7B2D;color:#FFFFFF}
 
 /* Десерты: отдельный блок БЖУ в попапе */
 .cf-nutri__weight{
