@@ -182,8 +182,7 @@
           return (
             '<div class="cfm-row" data-id="' + esc(it.id) + '"' +
               ' style="transition-delay:' + Math.min(i * 45, 320) + 'ms">' +
-              '<span class="cfm-name">' + esc(it.title) +
-                (cat === "cold" ? ' <span class="cfm-new">новинка</span>' : "") + "</span>" +
+              '<span class="cfm-name">' + esc(it.title) + "</span>" +
               '<span class="cfm-vol">' + esc(it.volumes || "") + "</span>" +
               '<span class="cfm-price">' + esc(priceRange(sizes, it)) + "</span>" +
               '<button type="button" class="cfm-add" data-cursor="hover"' +
