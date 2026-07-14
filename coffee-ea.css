@@ -347,3 +347,11 @@ body.cf-modal-open{overflow:hidden}
   color:rgba(27,26,24,.55);
   text-align:center;
 }
+
+/* Десерты и корпусные — оранжевый акцент в попапе (заголовок, категория, кнопка, БЖУ) */
+#cfModal.cf-modal--sweet .cf-modal__title{color:#EE7B2D}
+#cfModal.cf-modal--sweet .cf-modal__cat{color:#EE7B2D}
+#cfModal.cf-modal--sweet .cf-modal__add{background:#EE7B2D}
+#cfModal.cf-modal--sweet .cf-modal__add:hover{background:#d76d24}
+#cfModal.cf-modal--sweet .cf-modal__added{color:#EE7B2D}
+#cfModal.cf-modal--sweet .cf-nutri__v{color:#EE7B2D}

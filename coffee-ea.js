@@ -387,10 +387,11 @@
       [].forEach.call(row.querySelectorAll(".cf-bld__chip"), function (c) { c.classList.remove("is-on"); });
       chip.classList.add("is-on");
     }
-    function segGroup(label, grp, opts, sizeMode) {
+    function segGroup(label, grp, opts, sizeMode, defIdx) {
+      defIdx = defIdx || 0;
       var h = '<div class="cf-bld__g"><span class="cf-bld__l">' + esc(label) + '</span><div class="cf-seg" data-grp="' + grp + '">';
       opts.forEach(function (o, i) {
-        h += '<button type="button" class="cf-seg__b' + (i === 0 ? " is-on" : "") + '" data-' + (sizeMode ? "si" : "oi") + '="' + i + '">' +
+        h += '<button type="button" class="cf-seg__b' + (i === defIdx ? " is-on" : "") + '" data-' + (sizeMode ? "si" : "oi") + '="' + i + '">' +
           "<b>" + esc(o.n) + "</b>" + (o.sub ? "<span>" + esc(o.sub) + "</span>" : "") + "</button>";
       });
       return h + "</div></div>";
@@ -416,9 +417,14 @@
                 '<span class="cf-add__p">' + (o.p ? "+" + o.p + " ₽" : "") + "</span></button>";
             });
           } else {
+            var defIdx = 0;
+            if (gk === "ice" && it.category === "tea") {
+              G.opts.forEach(function (o, i) { if (/без\s*льда/i.test(o.n)) defIdx = i; });
+              bstate.sel[gk] = defIdx; /* чай — по умолчанию без льда */
+            }
             singles += segGroup(G.label, gk, G.opts.map(function (o) {
               return { n: o.n, sub: o.p ? "+" + o.p + " ₽" : "" };
-            }), false);
+            }), false, defIdx);
           }
         });
       }
@@ -462,6 +468,7 @@
         imgEl.style.display = "none";
         panel.classList.add("cf-modal__panel--noimg");
       }
+      modal.classList.toggle("cf-modal--sweet", it.category === "dessert" || it.category === "corpus");
       $("#cfModalCat").textContent = catLabels[it.category] || it.category || "Меню";
       $("#cfModalTitle").textContent = it.title;
       $("#cfModalDesc").textContent = it.desc || "";
