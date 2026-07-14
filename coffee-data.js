@@ -62,7 +62,7 @@
     {
       id: "coffee-raf",
       num: "003",
-      title: "Раф PALOMA",
+      title: "Раф",
       titleEn: "Raf Paloma",
       category: "coffee",
       categoryLabel: "Кофе",

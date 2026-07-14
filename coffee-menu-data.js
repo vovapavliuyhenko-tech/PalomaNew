@@ -103,7 +103,7 @@ if (!window.PALOMA_COFFEE_MENU) {
   {
     "id": "menu-classic-9",
     "num": "009",
-    "title": "Раф PALOMA",
+    "title": "Раф",
     "category": "classic",
     "price": 280,
     "priceLabel": "280 / 320 / 360 ₽",
@@ -674,18 +674,6 @@ if (!window.PALOMA_COFFEE_MENU) {
     "volumes": "350 / 450 мл",
     "desc": "Зелёный лимонад с маракуйей.",
     "image": "images/paloma/coffee/green-passion.jpg",
-    "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
-  },
-  {
-    "id": "menu-cold-57",
-    "num": "057",
-    "title": "Матча латте",
-    "category": "cold",
-    "price": 350,
-    "priceLabel": "350 / 450 ₽",
-    "volumes": "350 / 450 мл",
-    "desc": "Матча-латте на выбор цвета: зелёная, голубая или розовая.",
-    "image": "images/paloma/coffee/matcha-tricolor.jpg",
     "imageBg": "linear-gradient(160deg,#c4e6ea 0%,#7fbcc6 55%,#3f7e8c 100%)"
   }
 ];
