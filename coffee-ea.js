@@ -42,6 +42,7 @@
       milkshake: "Коктейли",
       tea: "Чай",
       cold: "Холодные",
+      dessert: "Десерты",
     };
     /* фото по разделам — доступные кадры кофейни */
     var imgByCat = {
@@ -69,6 +70,7 @@
       milkshake: "shakes & cocktails",
       tea: "tea ceremony",
       cold: "cold & fresh",
+      dessert: "sweet & art",
     };
     /* порядок категорий — как встречаются в данных */
     var catOrder = MENU.map(function (i) { return i.category; })

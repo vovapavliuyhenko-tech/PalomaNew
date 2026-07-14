@@ -293,3 +293,13 @@ body.cf-modal-open{overflow:hidden}
   #cf-steps .ea-proc__arrow{display:none!important}
   #cf-steps .ea-proc__progress{display:none}
 }
+
+/* Категория «Десерты» — оранжевая активная кнопка-фильтр */
+#cfMenuFilters .catalog-filter-btn[data-cat="dessert"].is-active{
+  background:#EE7B2D;
+  border-color:#EE7B2D;
+  color:#FFFFFF;
+}
+#cfMenuFilters .catalog-filter-btn[data-cat="dessert"]:focus-visible{
+  outline-color:#EE7B2D;
+}
