@@ -596,13 +596,23 @@
       /* ignore */
     }
 
+    /* Онлайн-оплата: корзину не трогаем — вдруг покупатель откажется
+       на странице Яндекс Пэй. Её очистит thank-you.html после оплаты. */
+    if (payment === "online" && payEndpoint()) {
+      initPayment(orderData);
+      return;
+    }
+
+    emptyCart();
+    showSuccess(orderId);
+  }
+
+  function emptyCart() {
     if (window.PalomaCart?.emptyCart) {
       window.PalomaCart.emptyCart();
     } else {
       localStorage.removeItem(CART_KEY);
     }
-
-    showSuccess(orderId);
   }
 
   function showSuccess(orderId) {
@@ -612,10 +622,59 @@
     window.location.href = "thank-you.html";
   }
 
-  function initPayment(orderData) {
-    /* TODO: ЮKassa — см. payment-config.js */
-    console.log("[PALOMA] Payment initiated for order:", orderData.id);
-    showSuccess(orderData.id);
+  function payEndpoint() {
+    return (window.PALOMA_PAYMENT_CONFIG?.PAYMENT_ENDPOINT || "").trim();
+  }
+
+  function releaseSubmit() {
+    submitting = false;
+    [
+      document.getElementById("coSubmitBtn"),
+      document.getElementById("coSubmitMobile"),
+    ].forEach((b) => {
+      if (b) {
+        b.disabled = false;
+        b.removeAttribute("aria-busy");
+      }
+    });
+  }
+
+  /* Онлайн-оплата: сервер сам пересчитывает цены по каталогу и выдаёт
+     ссылку Яндекс Пэй. Цены из localStorage сервер не принимает на веру. */
+  async function initPayment(orderData) {
+    const f = orderData.form || {};
+    try {
+      const res = await fetch(payEndpoint() + "?a=create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orderId: orderData.id,
+          items: orderData.items.map((i) => ({
+            id: i.id,
+            name: i.name,
+            price: i.price,
+            qty: i.qty || 1,
+          })),
+          delivery: orderData.delivery,
+          fiscalContact: f.email || f.phone || "",
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.paymentUrl) {
+        throw new Error(data.error || "Не удалось создать оплату");
+      }
+
+      window.location.href = data.paymentUrl;
+    } catch (err) {
+      console.error("[PALOMA] Яндекс Пэй:", err);
+      releaseSubmit();
+      alert(
+        "Не получилось открыть оплату: " +
+          (err?.message || "ошибка связи") +
+          ".\nПопробуйте ещё раз или выберите «Оплата при получении».",
+      );
+    }
   }
 
   window.__coNormContact = normContact; /* для проверки валидации из теста */

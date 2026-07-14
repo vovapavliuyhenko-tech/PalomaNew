@@ -24,6 +24,20 @@
   if (emptyEl) emptyEl.hidden = true;
   if (contentEl) contentEl.hidden = false;
 
+  /* Яндекс Пэй вернул покупателя после успешной оплаты (?paid=1):
+     только здесь корзина считается отработанной и очищается. */
+  if (new URLSearchParams(location.search).get("paid") === "1" && !order.paid) {
+    order.paid = true;
+    order.status = "paid_awaiting_manager";
+    try {
+      localStorage.setItem(STORAGE_ORDER, JSON.stringify(order));
+    } catch {
+      /* ignore */
+    }
+    if (window.PalomaCart?.emptyCart) window.PalomaCart.emptyCart();
+    else localStorage.removeItem("paloma_cart_v3");
+  }
+
   const f = order.form || {};
   renderSummary(order, f);
 
@@ -121,8 +135,9 @@
   }
 
   function paymentText(p) {
+    if (order.paid) return "Оплачено онлайн через Яндекс Пэй.";
     return p === "online"
-      ? "Онлайн-оплата — переводом по номеру карты, QR-коду или ссылке."
+      ? "Онлайн-оплата через Яндекс Пэй."
       : "Оплата при получении — наличными курьеру или любым удобным способом в студии.";
   }
 
@@ -146,9 +161,11 @@
     setText("tyMetaFulfil", fulfillment(f));
     setText(
       "tyMetaPayment",
-      o.payment === "qr_after_manager_confirmation"
-        ? "Перевод по QR после согласования"
-        : "Оплата при получении",
+      o.paid
+        ? "Оплачено · Яндекс Пэй"
+        : o.payment === "online"
+          ? "Онлайн-оплата · Яндекс Пэй"
+          : "Оплата при получении",
     );
   }
 

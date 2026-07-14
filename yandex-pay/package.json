@@ -1,0 +1,7 @@
+{
+  "name": "paloma-yandex-pay",
+  "version": "1.0.0",
+  "description": "Cloud Function: создание заказа в Яндекс Пэй и приём вебхука",
+  "main": "index.js",
+  "private": true
+}
