@@ -42,6 +42,7 @@
       milkshake: "Коктейли",
       tea: "Чай",
       cold: "Холодные",
+      corpus: "Корпусные",
       dessert: "Десерты",
     };
     /* фото по разделам — доступные кадры кофейни */
@@ -70,6 +71,7 @@
       milkshake: "shakes & cocktails",
       tea: "tea ceremony",
       cold: "cold & fresh",
+      corpus: "signature cakes",
       dessert: "sweet & art",
     };
     /* порядок категорий — как встречаются в данных */
@@ -335,7 +337,7 @@
       "menu-cold-56": "Жасминовый чай · маракуйя · мята · лимон · лёд",
     };
     function coldGroups(it) {
-      if (it.category === "dessert") return null; /* десерты — без добавок */
+      if (it.category === "dessert" || it.category === "corpus") return null; /* десерты и корпусные — без добавок */
       var x = COLD[it.id];
       if (x) {
         var g;
