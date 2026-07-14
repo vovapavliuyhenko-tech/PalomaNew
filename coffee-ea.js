@@ -335,6 +335,7 @@
       "menu-cold-56": "Жасминовый чай · маракуйя · мята · лимон · лёд",
     };
     function coldGroups(it) {
+      if (it.category === "dessert") return null; /* десерты — без добавок */
       var x = COLD[it.id];
       if (x) {
         var g;
