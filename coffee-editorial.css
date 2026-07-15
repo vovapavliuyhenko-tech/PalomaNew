@@ -865,7 +865,8 @@
    широкая (во всю колонку), Montserrat ЗАГЛАВНЫЕ белые */
 .cf-hero .ea-hero__right .ea-btn,
 .cf-philo .ea-hero__right .ea-btn,
-.cf-lemon .ea-hero__right .ea-btn {
+.cf-lemon .ea-hero__right .ea-btn,
+.cf-sweetblock .ea-hero__right .ea-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -894,7 +895,8 @@
 
 .cf-hero .ea-hero__right .ea-btn:hover,
 .cf-philo .ea-hero__right .ea-btn:hover,
-.cf-lemon .ea-hero__right .ea-btn:hover {
+.cf-lemon .ea-hero__right .ea-btn:hover,
+.cf-sweetblock .ea-hero__right .ea-btn:hover {
   background: transparent;
   color: var(--wine, #E7385A);
   border-color: var(--wine, #E7385A);
@@ -904,7 +906,8 @@
 
 .cf-hero .ea-hero__right .ea-btn svg,
 .cf-philo .ea-hero__right .ea-btn svg,
-.cf-lemon .ea-hero__right .ea-btn svg {
+.cf-lemon .ea-hero__right .ea-btn svg,
+.cf-sweetblock .ea-hero__right .ea-btn svg {
   width: 16px;
   height: 16px;
   transition: transform 0.35s ease;
@@ -912,7 +915,8 @@
 
 .cf-hero .ea-hero__right .ea-btn:hover svg,
 .cf-philo .ea-hero__right .ea-btn:hover svg,
-.cf-lemon .ea-hero__right .ea-btn:hover svg {
+.cf-lemon .ea-hero__right .ea-btn:hover svg,
+.cf-sweetblock .ea-hero__right .ea-btn:hover svg {
   transform: scale(1.22);
 }
 

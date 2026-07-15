@@ -306,6 +306,21 @@ body.cf-modal-open{overflow:hidden}
   outline-color:#EE7B2D;
 }
 
+/* Блок «Десерты от нашего кондитера» — оранжевый акцент, как у десертов в меню.
+   Геометрию кнопка берёт из общей группы в coffee-editorial.css, здесь только цвет. */
+.cf-sweetblock .ea-eyebrow{color:#EE7B2D}
+.coffee-page .cf-sweetblock .ea-hero__right .ea-btn{
+  background:#EE7B2D;
+  border-color:#EE7B2D;
+  box-shadow:0 14px 34px rgba(238,123,45,.26);
+}
+.coffee-page .cf-sweetblock .ea-hero__right .ea-btn:hover{
+  background:transparent;
+  color:#EE7B2D;
+  border-color:#EE7B2D;
+  box-shadow:0 18px 40px rgba(238,123,45,.18);
+}
+
 /* Десерты: отдельный блок БЖУ в попапе */
 .cf-nutri__weight{
   font-family:var(--sans);
