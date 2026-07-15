@@ -193,10 +193,6 @@ body.cf-modal-open{overflow:hidden}
 .cf-comp[open] .cf-comp__sum::after{transform:translateY(2px) rotate(-135deg)}
 .cf-comp__sum:hover,.cf-comp[open] .cf-comp__sum{background:#3B4B96;color:#FFFFFF}
 .cf-comp__body{padding:11px 2px 0;font-size:13px;line-height:1.5}
-/* десерты — оранжевый акцент */
-#cfModal.cf-modal--sweet .cf-comp__sum{color:#EE7B2D;border-color:#EE7B2D}
-#cfModal.cf-modal--sweet .cf-comp__sum:hover,
-#cfModal.cf-modal--sweet .cf-comp[open] .cf-comp__sum{background:#EE7B2D;color:#FFFFFF}
 @media (prefers-reduced-motion:reduce){.cf-comp__sum,.cf-comp__sum::after{transition:none}}
 
 .cf-modal__build{display:flex;flex-direction:column;gap:13px;margin-bottom:16px}
