@@ -177,6 +177,21 @@ body.cf-modal-open{overflow:hidden}
   margin:-2px 0 12px;padding-bottom:11px;border-bottom:1px solid rgba(27,26,24,.14)}
 .cf-modal__comp b{display:block;font-family:var(--fdisplay);font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:#8A8577;font-weight:400;margin-bottom:4px}
+/* Десерты: длинный состав — раскрывающийся блок */
+.cf-comp{margin:0}
+.cf-comp__sum{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  list-style:none;cursor:pointer;font-family:var(--fdisplay);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:#8A8577;font-weight:400;padding:2px 0}
+.cf-comp__sum::-webkit-details-marker{display:none}
+.cf-comp__sum::after{content:"";width:7px;height:7px;flex-shrink:0;margin-right:2px;
+  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:translateY(-2px) rotate(45deg);transition:transform .25s ease}
+.cf-comp[open] .cf-comp__sum::after{transform:translateY(1px) rotate(-135deg)}
+.cf-comp__sum:hover{color:#3B4B96}
+#cfModal.cf-modal--sweet .cf-comp__sum:hover{color:#EE7B2D}
+.cf-comp__body{padding-top:7px}
+@media (prefers-reduced-motion:reduce){.cf-comp__sum::after{transition:none}}
+
 .cf-modal__build{display:flex;flex-direction:column;gap:13px;margin-bottom:16px}
 .cf-bld__g{display:flex;flex-direction:column;gap:7px}
 .cf-bld__l{font-family:var(--fdisplay);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A8577}

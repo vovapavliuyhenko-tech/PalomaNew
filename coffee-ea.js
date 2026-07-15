@@ -276,7 +276,7 @@
        Молоко/Лёд — один выбор (single), Сироп/Кофе — можно несколько (multi). */
     var COLD_ADDONS = {
       milk:  { label: "Молоко", multi: false, opts: [
-        { n: "Обычное", p: 0 }, { n: "Овсяное", p: 80 }, { n: "Кокосовое", p: 80 }, { n: "Банановое", p: 100 } ] },
+        { n: "Обычное", p: 0 }, { n: "Альтернативное", p: 0 } ] },
       syrup: { label: "Сироп", multi: true, opts: [ { n: "Сироп", p: 60 } ] },
       extra: { label: "Топпинг", multi: true, opts: [ { n: "Сахар", p: 0 }, { n: "Корица", p: 0 } ] },
       ice:   { label: "Лёд", multi: false, opts: [ { n: "Обычный", p: 0 }, { n: "Больше льда", p: 0 }, { n: "Без льда", p: 0 } ] },
@@ -475,6 +475,7 @@
       modal.classList.toggle("cf-modal--sweet", !!SWEET_CATS[it.category]);
       $("#cfModalCat").textContent = catLabels[it.category] || it.category || "Меню";
       $("#cfModalTitle").textContent = it.title;
+      $("#cfModalDesc").hidden = false;
       $("#cfModalDesc").textContent = it.desc || "";
       var cg = coldGroups(it);
       var comp = $("#cfModalComp");
@@ -502,7 +503,18 @@
             return '<div class="cf-nutri__cell"><span class="cf-nutri__v">' + esc(c[0]) + '</span><span class="cf-nutri__k">' + esc(c[1]) + "</span></div>";
           }).join("") + "</div>";
         }
-        $("#cfModalDesc").textContent = descOnly;
+        /* длинный состав прячем в раскрывающийся блок «Состав» — чтобы попап
+           не превращался в простыню текста */
+        if (descOnly.length > 170) {
+          $("#cfModalDesc").hidden = true;
+          $("#cfModalDesc").textContent = "";
+          comp.innerHTML = '<details class="cf-comp"><summary class="cf-comp__sum">Состав</summary>' +
+            '<div class="cf-comp__body">' + esc(descOnly) + "</div></details>";
+          comp.hidden = false;
+        } else {
+          $("#cfModalDesc").textContent = descOnly;
+          comp.hidden = true;
+        }
         $("#cfModalBuild").innerHTML = buildHtml;
         $("#cfModalAdd").textContent = "В корзину · " + (it.priceLabel || it.price + " ₽");
       }
