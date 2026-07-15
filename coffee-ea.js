@@ -44,7 +44,10 @@
       cold: "Холодные",
       corpus: "Корпусные",
       dessert: "Десерты",
+      chokome: "ChokoMe",
     };
+    /* «сладкие» разделы: оранжевый акцент и попап без добавок к напитку */
+    var SWEET_CATS = { dessert: 1, corpus: 1, chokome: 1 };
     /* фото по разделам — доступные кадры кофейни */
     var imgByCat = {
       classic: "images/paloma/coffee/cup-classic.jpg",
@@ -73,6 +76,7 @@
       cold: "cold & fresh",
       corpus: "signature cakes",
       dessert: "sweet & art",
+      chokome: "chocolate bar",
     };
     /* порядок категорий — как встречаются в данных */
     var catOrder = MENU.map(function (i) { return i.category; })
@@ -337,7 +341,7 @@
       "menu-cold-56": "Жасминовый чай · маракуйя · мята · лимон · лёд",
     };
     function coldGroups(it) {
-      if (it.category === "dessert" || it.category === "corpus") return null; /* десерты и корпусные — без добавок */
+      if (SWEET_CATS[it.category]) return null; /* десерты, корпусные, ChokoMe — без добавок */
       var x = COLD[it.id];
       if (x) {
         var g;
@@ -468,7 +472,7 @@
         imgEl.style.display = "none";
         panel.classList.add("cf-modal__panel--noimg");
       }
-      modal.classList.toggle("cf-modal--sweet", it.category === "dessert" || it.category === "corpus");
+      modal.classList.toggle("cf-modal--sweet", !!SWEET_CATS[it.category]);
       $("#cfModalCat").textContent = catLabels[it.category] || it.category || "Меню";
       $("#cfModalTitle").textContent = it.title;
       $("#cfModalDesc").textContent = it.desc || "";

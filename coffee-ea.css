@@ -294,15 +294,17 @@ body.cf-modal-open{overflow:hidden}
   #cf-steps .ea-proc__progress{display:none}
 }
 
-/* Категория «Десерты» — оранжевая активная кнопка-фильтр */
+/* Сладкие разделы («Десерты», «Корпусные», «ChokoMe») — оранжевая активная кнопка-фильтр */
 #cfMenuFilters .catalog-filter-btn[data-cat="dessert"].is-active,
-#cfMenuFilters .catalog-filter-btn[data-cat="corpus"].is-active{
+#cfMenuFilters .catalog-filter-btn[data-cat="corpus"].is-active,
+#cfMenuFilters .catalog-filter-btn[data-cat="chokome"].is-active{
   background:#EE7B2D;
   border-color:#EE7B2D;
   color:#FFFFFF;
 }
 #cfMenuFilters .catalog-filter-btn[data-cat="dessert"]:focus-visible,
-#cfMenuFilters .catalog-filter-btn[data-cat="corpus"]:focus-visible{
+#cfMenuFilters .catalog-filter-btn[data-cat="corpus"]:focus-visible,
+#cfMenuFilters .catalog-filter-btn[data-cat="chokome"]:focus-visible{
   outline-color:#EE7B2D;
 }
 
