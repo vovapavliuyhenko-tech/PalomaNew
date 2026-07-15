@@ -480,6 +480,7 @@
       var cg = coldGroups(it);
       var comp = $("#cfModalComp");
       var compText = COMPOS[it.id] || (cg && cg.ex.c) || "";
+      comp.classList.remove("cf-modal__comp--fold");
       if (compText) {
         comp.innerHTML = "<b>Состав</b>" + esc(compText);
         comp.hidden = false;
@@ -511,9 +512,11 @@
           comp.innerHTML = '<details class="cf-comp"><summary class="cf-comp__sum">Состав</summary>' +
             '<div class="cf-comp__body">' + esc(descOnly) + "</div></details>";
           comp.hidden = false;
+          comp.classList.add("cf-modal__comp--fold");
         } else {
           $("#cfModalDesc").textContent = descOnly;
           comp.hidden = true;
+          comp.classList.remove("cf-modal__comp--fold");
         }
         $("#cfModalBuild").innerHTML = buildHtml;
         $("#cfModalAdd").textContent = "В корзину · " + (it.priceLabel || it.price + " ₽");
