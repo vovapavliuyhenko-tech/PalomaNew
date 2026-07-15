@@ -311,6 +311,7 @@ body.cf-modal-open{overflow:hidden}
 /* Блок «Десерты от нашего кондитера» — оранжевый акцент, как у десертов в меню.
    Геометрию кнопка берёт из общей группы в coffee-editorial.css, здесь только цвет. */
 .cf-sweetblock .ea-eyebrow{color:#EE7B2D}
+.coffee-page .coffee-ea .cf-sweetblock .ea-hero__h1{color:#EE7B2D}
 .coffee-page .cf-sweetblock .ea-hero__right .ea-btn{
   background:#EE7B2D;
   border-color:#EE7B2D;
