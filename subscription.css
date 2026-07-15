@@ -26,12 +26,50 @@ body.subscription-page {
   }
 }
 
-/* Фото букета заполняет колонку целиком, без полей (cover). Вшитой подписи
-   на фото нет — она обрезана; слова «Цветочная подписка» есть на странице
-   отдельным заголовком (.subscription-hero__title). */
+/* В кадр вшита подпись «Цветочная подписка», поэтому фото показываем целиком
+   (contain), а не обрезаем под колонку — иначе текст режется по краям. */
 .subscription-page .subscription-hero__img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+}
+
+/* Глобальный main{overflow-x:hidden} превращает <main> в скролл-контейнер
+   (overflow-y становится auto) и ломает position:sticky у фото. clip убирает
+   горизонтальную прокрутку, но скролл-контейнер НЕ создаёт — как на странице
+   оформления (.event-decoration-page main). */
+main.subscription-page {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+@media (min-width: 1025px) {
+  /* Фото «преследует» скролл: колонка прилипает под шапкой, пока справа
+     листается длинная форма. Для этого grid-элемент должен быть по высоте
+     меньше строки — отсюда align-items:start вместо stretch. */
+  .subscription-page .subscription-hero {
+    align-items: start;
+  }
+  .subscription-page .subscription-hero__media {
+    position: sticky;
+    top: calc(var(--paloma-header-offset, 120px) + 12px);
+    align-self: start;
+    margin-top: 0;
+    min-height: 0;
+    height: calc(100svh - var(--paloma-header-offset, 120px) - 28px);
+  }
+}
+
+@media (max-width: 1024px) {
+  /* На узкой колонке contain в низком блоке дал бы огромные белые поля —
+     поэтому блок принимает натуральную высоту кадра, фото видно целиком. */
+  .subscription-page .subscription-hero__media {
+    margin-top: 0;
+    min-height: 0;
+    height: auto;
+  }
+  .subscription-page .subscription-hero__img {
+    height: auto;
+  }
 }
 
 /* выноска про скидку 10% на первую неделю */
