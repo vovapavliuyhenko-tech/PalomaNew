@@ -18,7 +18,12 @@
 window.PALOMA_PAYMENT_CONFIG = {
   /* Адрес Cloud Function. Пустая строка = онлайн-оплата выключена,
      чекаут молча работает как раньше (заявка менеджеру). */
-  PAYMENT_ENDPOINT: "https://stellar-cendol-b6adf6.netlify.app/.netlify/functions/pay",
+  /* Netlify не подходит: его серверы за границей, и исходящие запросы к
+     paloma.server.paykeeper.ru зависают на 30 с (Sandbox.Timedout). Сначала
+     проходили, потом деградировали до отказа — похоже на фильтрацию
+     зарубежных адресов на стороне PayKeeper. Нужен российский хостинг
+     (Яндекс Облако и т.п.); до переноса онлайн-оплата выключена. */
+  PAYMENT_ENDPOINT: "",
 
   RETURN_URL_SUCCESS: "thank-you.html?paid=1",
   RETURN_URL_FAIL: "checkout.html?payment=failed",
