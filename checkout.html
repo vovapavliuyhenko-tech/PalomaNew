@@ -327,6 +327,10 @@
                 <input type="radio" name="messenger" value="whatsapp" data-messenger>
                 <span class="co-messenger-option__label">WhatsApp</span>
               </label>
+              <label class="co-messenger-option">
+                <input type="radio" name="messenger" value="max" data-messenger>
+                <span class="co-messenger-option__label">MAX</span>
+              </label>
             </div>
             <p class="co-error" id="co-messenger-error" hidden>Выберите мессенджер для связи.</p>
 
@@ -346,6 +350,15 @@
                      placeholder="+7 999 000-00-00"
                      aria-describedby="co-msg-whatsapp-error">
               <p class="co-error" id="co-msg-whatsapp-error" hidden>Укажите номер WhatsApp в международном формате.</p>
+            </div>
+
+            <div class="co-field co-messenger__field" data-messenger-field="max" hidden>
+              <label class="co-field__label" for="co-msg-max">Ваш контакт в MAX</label>
+              <input class="co-input" id="co-msg-max" name="messenger_max"
+                     type="text" inputmode="text" autocomplete="off"
+                     placeholder="Телефон или @username в MAX"
+                     aria-describedby="co-msg-max-error">
+              <p class="co-error" id="co-msg-max-error" hidden>Укажите телефон или username в MAX.</p>
             </div>
 
           </fieldset>
@@ -498,6 +511,6 @@
 
   <script src="cart-core.js?v=nosize2"></script>
   <script src="payment-config.js?v=pk3"></script>
-  <script src="checkout.js?v=co12"></script>
+  <script src="checkout.js?v=co13"></script>
 </body>
 </html>

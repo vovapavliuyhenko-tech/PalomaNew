@@ -428,6 +428,11 @@
       if (digits.length >= 10 && digits.length <= 15) return { ok: true, value: "+" + digits };
       return { ok: false };
     }
+    if (kind === "max") {
+      if (isPhone && digits.length >= 10) return { ok: true, value: "+" + digits };
+      if (v.replace(/^@/, "").length >= 3) return { ok: true, value: "@" + v.replace(/^@/, "") };
+      return { ok: false };
+    }
     return { ok: false };
   }
 
