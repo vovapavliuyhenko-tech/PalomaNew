@@ -67,20 +67,6 @@
     if (M.telegramUrl) openExternal(M.telegramUrl);
   });
 
-  /* MAX — публичной ссылки-по-номеру и prefill нет: копируем текст.
-     Если задан персональный max.ru/u/... — дополнительно откроем профиль */
-  on("tyBtnMax", () => {
-    copyMessage(message);
-    if (M.maxProfileUrl) {
-      toast("Сообщение скопировано — вставьте его в чат менеджера в MAX.");
-      openExternal(M.maxProfileUrl);
-    } else {
-      toast(
-        `Сообщение скопировано — откройте MAX, найдите менеджера по номеру ${M.maxPhone || ""} и вставьте (долгое нажатие → «Вставить»).`,
-      );
-    }
-  });
-
   /* Явная кнопка копирования */
   on("tyBtnCopy", async () => {
     const ok = await copyMessage(message);
@@ -142,7 +128,7 @@
   }
 
   function messengerLabel(m) {
-    return { telegram: "Telegram", whatsapp: "WhatsApp", max: "MAX" }[m] || m || "—";
+    return { telegram: "Telegram", whatsapp: "WhatsApp" }[m] || m || "—";
   }
 
   function renderSummary(o, f) {
@@ -218,7 +204,7 @@
   }
 
   function markRecommended(m) {
-    const map = { telegram: "tyBtnTg", whatsapp: "tyBtnWa", max: "tyBtnMax" };
+    const map = { telegram: "tyBtnTg", whatsapp: "tyBtnWa" };
     const id = map[m];
     if (!id) return;
     const btn = document.getElementById(id);
