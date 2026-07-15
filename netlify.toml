@@ -1,0 +1,12 @@
+# Netlify здесь хостит ТОЛЬКО функцию оплаты PayKeeper.
+# Сам сайт остаётся на GitHub Pages (paloma.website) — поэтому публикуем
+# пустую заглушку, а не копию сайта: иначе появился бы второй живой сайт
+# на домене netlify.app и поисковики считали бы его дублем.
+
+[build]
+  publish = "netlify/public"
+  functions = "netlify/functions"
+  command = ""
+
+[functions]
+  node_bundler = "esbuild"
