@@ -18,7 +18,7 @@
 window.PALOMA_PAYMENT_CONFIG = {
   /* Адрес Cloud Function. Пустая строка = онлайн-оплата выключена,
      чекаут молча работает как раньше (заявка менеджеру). */
-  PAYMENT_ENDPOINT: "",
+  PAYMENT_ENDPOINT: "https://stellar-cendol-b6adf6.netlify.app/.netlify/functions/pay",
 
   RETURN_URL_SUCCESS: "thank-you.html?paid=1",
   RETURN_URL_FAIL: "checkout.html?payment=failed",
