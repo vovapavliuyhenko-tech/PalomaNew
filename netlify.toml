@@ -2,11 +2,25 @@
 # Сам сайт остаётся на GitHub Pages (paloma.website) — поэтому публикуем
 # пустую заглушку, а не копию сайта: иначе появился бы второй живой сайт
 # на домене netlify.app и поисковики считали бы его дублем.
+#
+# base = "netlify" — важно. В корне репозитория лежат package.json и
+# next.config.ts от незавершённой сборки на Next.js (сайт на них не работает).
+# Из корня Netlify принимает проект за Next.js, ставит его плагин и валит
+# сборку. Внутри netlify/ никакого package.json нет — фреймворк не находится,
+# npm install не запускается, деплой занимает секунды.
+#
+# Функция тянет ../../paykeeper/index.js — репозиторий выкачивается целиком,
+# esbuild бандлит его вместе с прайсами.
 
 [build]
-  publish = "netlify/public"
-  functions = "netlify/functions"
+  base = "netlify"
+  publish = "public"
+  functions = "functions"
   command = ""
+
+[build.environment]
+  # страховка на случай, если Next.js всё же будет обнаружен
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 [functions]
   node_bundler = "esbuild"
