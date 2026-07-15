@@ -45,9 +45,18 @@ main.subscription-page {
 @media (min-width: 1025px) {
   /* Фото «преследует» скролл: колонка прилипает под шапкой, пока справа
      листается длинная форма. Для этого grid-элемент должен быть по высоте
-     меньше строки — отсюда align-items:start вместо stretch. */
+     меньше строки — отсюда align-items:start вместо stretch.
+     Ширину колонки задаём по пропорции кадра (3:4) — тогда фото заполняет её
+     целиком, без белых полей, и при этом ничего не обрезается. */
   .subscription-page .subscription-hero {
+    /* ширина фото: по высоте экрана, но не шире 52vw — иначе на узком и
+       высоком окне колонка вытеснила бы форму за край экрана */
+    --sub-photo-w: min(
+      calc((100svh - var(--paloma-header-offset, 120px) - 28px) * 0.75),
+      52vw
+    );
     align-items: start;
+    grid-template-columns: var(--sub-photo-w) minmax(420px, 1fr);
   }
   .subscription-page .subscription-hero__media {
     position: sticky;
@@ -55,7 +64,14 @@ main.subscription-page {
     align-self: start;
     margin-top: 0;
     min-height: 0;
-    height: calc(100svh - var(--paloma-header-offset, 120px) - 28px);
+    /* высота — от ширины колонки, пропорция кадра держится при любом окне */
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+  /* колонка уже ровно по кадру — cover не обрезает, но гарантирует, что
+     не останется светлой полоски от округления */
+  .subscription-page .subscription-hero__img {
+    object-fit: cover;
   }
 }
 
