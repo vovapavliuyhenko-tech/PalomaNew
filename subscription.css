@@ -26,9 +26,21 @@ body.subscription-page {
   }
 }
 
+/* ══════════════════════════════════════════════════════════════
+   ВНИМАНИЕ: этот файл подключают ещё gift-certificate.html и
+   wedding-piggy-bank.html, и у них <main class="subscription-page">.
+   Поэтому селектор `.subscription-page` ловит все три страницы.
+
+   Всё, что ниже, — только про фото подписки (вертикальный кадр 3:4 со
+   вшитой надписью). Селектор `body.subscription-page` есть ТОЛЬКО у
+   subscription.html: у сертификата body.gift-page, у копилки
+   body.wedding-page. Не менять на `.subscription-page` — разъедет
+   вёрстка соседних страниц с их собственными фото.
+   ══════════════════════════════════════════════════════════════ */
+
 /* В кадр вшита подпись «Цветочная подписка», поэтому фото показываем целиком
    (contain), а не обрезаем под колонку — иначе текст режется по краям. */
-.subscription-page .subscription-hero__img {
+body.subscription-page .subscription-hero__img {
   object-fit: contain;
   object-position: center;
 }
@@ -37,7 +49,7 @@ body.subscription-page {
    (overflow-y становится auto) и ломает position:sticky у фото. clip убирает
    горизонтальную прокрутку, но скролл-контейнер НЕ создаёт — как на странице
    оформления (.event-decoration-page main). */
-main.subscription-page {
+body.subscription-page main.subscription-page {
   overflow-x: clip;
   overflow-y: visible;
 }
@@ -48,7 +60,7 @@ main.subscription-page {
      меньше строки — отсюда align-items:start вместо stretch.
      Ширину колонки задаём по пропорции кадра (3:4) — тогда фото заполняет её
      целиком, без белых полей, и при этом ничего не обрезается. */
-  .subscription-page .subscription-hero {
+  body.subscription-page .subscription-hero {
     /* ширина фото: по высоте экрана, но не шире 52vw — иначе на узком и
        высоком окне колонка вытеснила бы форму за край экрана */
     --sub-photo-w: min(
@@ -58,7 +70,7 @@ main.subscription-page {
     align-items: start;
     grid-template-columns: var(--sub-photo-w) minmax(420px, 1fr);
   }
-  .subscription-page .subscription-hero__media {
+  body.subscription-page .subscription-hero__media {
     position: sticky;
     top: calc(var(--paloma-header-offset, 120px) + 12px);
     align-self: start;
@@ -70,7 +82,7 @@ main.subscription-page {
   }
   /* колонка уже ровно по кадру — cover не обрезает, но гарантирует, что
      не останется светлой полоски от округления */
-  .subscription-page .subscription-hero__img {
+  body.subscription-page .subscription-hero__img {
     object-fit: cover;
   }
 }
@@ -78,12 +90,12 @@ main.subscription-page {
 @media (max-width: 1024px) {
   /* На узкой колонке contain в низком блоке дал бы огромные белые поля —
      поэтому блок принимает натуральную высоту кадра, фото видно целиком. */
-  .subscription-page .subscription-hero__media {
+  body.subscription-page .subscription-hero__media {
     margin-top: 0;
     min-height: 0;
     height: auto;
   }
-  .subscription-page .subscription-hero__img {
+  body.subscription-page .subscription-hero__img {
     height: auto;
   }
 }
