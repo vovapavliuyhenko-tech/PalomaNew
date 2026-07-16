@@ -138,24 +138,22 @@
 
       const wish = (wishInput && wishInput.value.trim()) || "";
 
-      /* оплата — модель «ссылки на оплату»: заявка админу в WhatsApp,
-         админ присылает ссылку на оплату Яндекс Пей */
+      /* оплата онлайн → thank-you → WhatsApp с полным заказом (palomaPayOnline) */
       const fmt = (n) => Number(n || 0).toLocaleString("ru-RU") + " ₽";
       const lines = [
-        "Здравствуйте! Хочу пополнить свадебную копилку PALOMA.",
+        "Здравствуйте! Пополнил(а) свадебную копилку PALOMA.",
         "",
         "Кому: " + couple,
         "Сумма сертификата: " + fmt(state.amount),
       ];
       if (wish) lines.push("Пожелание для открытки: " + wish);
-      lines.push("", "Пришлите, пожалуйста, ссылку на оплату Яндекс Пей.");
 
-      window.open(
-        "https://wa.me/79897707000?text=" +
-          encodeURIComponent(lines.join("\n")),
-        "_blank",
-        "noopener",
-      );
+      window.palomaPayOnline({
+        id: "wedding-piggy",
+        name: "Свадебная копилка",
+        total: state.amount,
+        details: lines.join("\n"),
+      });
     });
 
     recalc();

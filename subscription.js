@@ -124,12 +124,11 @@ function initSubscriptionPage() {
 
     const lbl = last ? last.labels : {};
 
-    /* оплата — модель «ссылки на оплату»: заявка админу в WhatsApp,
-       админ присылает ссылку на оплату Яндекс Пей */
+    /* оплата онлайн → thank-you → WhatsApp с полным заказом (palomaPayOnline) */
     const money = last ? last.total : 0;
     const isTrial = !!(last && last.isTrial);
     const lines = [
-      "Здравствуйте! Хочу оформить " +
+      "Здравствуйте! Оформил(а) " +
         (isTrial ? "пробную неделю цветочной подписки" : "цветочную подписку") +
         " PALOMA.",
       "",
@@ -141,15 +140,14 @@ function initSubscriptionPage() {
       "Состав: " + (lbl.composition || "—"),
       "Получение: " + (lbl.fulfillment || "—"),
       "Сумма: " + fmt(money),
-      "",
-      "Пришлите, пожалуйста, ссылку на оплату Яндекс Пей.",
     );
 
-    window.open(
-      "https://wa.me/79897707000?text=" + encodeURIComponent(lines.join("\n")),
-      "_blank",
-      "noopener",
-    );
+    window.palomaPayOnline({
+      id: "subscription",
+      name: isTrial ? "Цветочная подписка (пробная неделя)" : "Цветочная подписка",
+      total: money,
+      details: lines.join("\n"),
+    });
   });
 }
 

@@ -211,7 +211,7 @@
             : "электронный (на email)";
 
       var lines = [
-        "Здравствуйте! Хочу оформить подарочный сертификат PALOMA.",
+        "Здравствуйте! Оформил(а) подарочный сертификат PALOMA.",
         "",
         "Сумма: " + fmt(state.amount),
         "Формат: " + formatText,
@@ -220,14 +220,13 @@
       if (state.format === "electronic") lines.push("Email для отправки: " + email);
       if (state.format === "delivery") lines.push("Адрес доставки: " + address);
       if (message) lines.push("Поздравление: " + message);
-      lines.push("", "Пришлите, пожалуйста, ссылку на оплату Яндекс Пей.");
 
-      var url =
-        "https://wa.me/" +
-        WA_NUMBER +
-        "?text=" +
-        encodeURIComponent(lines.join("\n"));
-      window.open(url, "_blank", "noopener");
+      window.palomaPayOnline({
+        id: "gift-certificate",
+        name: "Подарочный сертификат",
+        total: state.amount,
+        details: lines.join("\n"),
+      });
     });
 
     updateConditionalFields();

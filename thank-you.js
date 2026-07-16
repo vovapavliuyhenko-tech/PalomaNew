@@ -38,6 +38,29 @@
     else localStorage.removeItem("paloma_cart_v3");
   }
 
+  /* Спец-заказ со свободной суммой (подписка/сертификат/копилка): после
+     оплаты сразу перекидываем менеджеру в WhatsApp полный состав заказа. */
+  if (order.custom && new URLSearchParams(location.search).get("paid") === "1") {
+    const full = order.message + "\n\nЗаказ оплачен онлайн ✓. Прошу подтвердить и согласовать детали.";
+    const wa = "https://wa.me/79897707000?text=" + encodeURIComponent(full);
+    if (contentEl) {
+      contentEl.hidden = false;
+      contentEl.innerHTML =
+        '<div style="max-width:640px;margin:0 auto;padding:clamp(48px,8vw,96px) 20px;text-align:center">' +
+        '<h1 style="font-family:var(--fhead,Georgia,serif);color:#E7385A;font-size:clamp(30px,5vw,46px);margin:0 0 14px">Оплачено ✓</h1>' +
+        '<p style="margin:0 0 28px;color:#1B1A18;line-height:1.5">Открываем WhatsApp, чтобы отправить детали заказа менеджеру. Если не открылось — нажмите кнопку.</p>' +
+        '<a href="' + wa + '" style="display:inline-block;background:#E7385A;color:#fff;text-decoration:none;padding:15px 34px;border-radius:30px;font-weight:600">Написать в WhatsApp</a>' +
+        "</div>";
+    }
+    try {
+      localStorage.removeItem(STORAGE_ORDER);
+    } catch {
+      /* ignore */
+    }
+    window.location.href = wa;
+    return;
+  }
+
   const f = order.form || {};
   renderSummary(order, f);
 
