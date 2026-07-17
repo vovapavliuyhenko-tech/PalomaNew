@@ -31,7 +31,6 @@
     c2: "provans",
     c3: "ayvori",
     c4: "bordo",
-    c5: "utro",
     c6: "granat",
     c7: "vanil",
     c8: "shelk",
