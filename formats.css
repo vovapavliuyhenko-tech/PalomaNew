@@ -100,6 +100,7 @@
 
 /* ── Лицевая сторона: фото + название ─────────────────── */
 .fmt__front {
+  transform: translateZ(1px); /* пара к .fmt__back — см. комментарий там */
   background-size: cover;
   background-position: center;
   background-color: #2C0A12;
@@ -182,7 +183,11 @@
 
 /* ── Изнанка: розовая, с описанием ────────────────────── */
 .fmt__back {
-  transform: rotateY(180deg);
+  /* translateZ разводит грани по глубине: без него обе стороны лежат в одной
+     плоскости, и часть GPU-драйверов не может решить, какая сверху — текст
+     изнанки проступает сквозь лицевую во время переворота. Каждая грань
+     смещена на 1px «к себе», т.к. у изнанки локальная ось Z развёрнута. */
+  transform: rotateY(180deg) translateZ(1px);
   background: var(--burgundy, #E7385A);
   color: #FFFFFF;
   display: flex;
