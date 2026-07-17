@@ -101,6 +101,7 @@
         id: card.dataset.id,
         name: card.dataset.name,
         price: parseInt(card.dataset.price, 10) || 0,
+        priceFrom: card.dataset.priceFrom === "1",
         composition: card.dataset.composition || "—",
         desc: card.dataset.desc || "—",
         pairs: card.dataset.pairs || "—",
@@ -116,6 +117,7 @@
       if (modalTitle) modalTitle.textContent = currentProduct.name;
       if (modalPrice)
         modalPrice.textContent =
+          (currentProduct.priceFrom ? "от " : "") +
           currentProduct.price.toLocaleString("ru-RU") + " ₽";
       if (modalDesc) modalDesc.textContent = currentProduct.desc;
       if (modalComposition)

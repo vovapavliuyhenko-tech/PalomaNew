@@ -94,6 +94,7 @@
     article.dataset.productId = product.id;
     article.dataset.name = product.name;
     article.dataset.price = String(product.price);
+    if (product.priceFrom) article.dataset.priceFrom = "1";
     article.dataset.category = categories;
     article.dataset.composition = product.composition || "";
     article.dataset.desc = raw?.desc || product.desc || "";
@@ -129,7 +130,7 @@
             ? `<p class="product-card__desc">${esc(product.description)}</p>`
             : ""
         }
-        <p class="product-card__price">${product.price.toLocaleString("ru-RU")} ₽</p>
+        <p class="product-card__price">${product.priceFrom ? "от " : ""}${product.price.toLocaleString("ru-RU")} ₽</p>
         <div class="product-card__btns">
           <a href="product.html?slug=${encodeURIComponent(slug)}"
              class="product-card__btn product-card__btn--detail"

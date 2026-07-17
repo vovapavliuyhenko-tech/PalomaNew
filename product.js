@@ -203,7 +203,8 @@
 
   function updatePriceDisplay() {
     if (!priceEl || !product) return;
-    priceEl.textContent = formatPrice(product.price + sizePriceDelta);
+    priceEl.textContent =
+      (product.priceFrom ? "от " : "") + formatPrice(product.price + sizePriceDelta);
   }
 
   function showNotFound() {

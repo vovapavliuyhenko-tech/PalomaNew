@@ -32,7 +32,6 @@
     c3: "ayvori",
     c4: "bordo",
     c6: "granat",
-    c7: "vanil",
     c8: "shelk",
     c9: "dyuna",
     c10: "siciliya",
@@ -61,6 +60,8 @@
       category: cats[0] || "online",
       categoryLabel: CATEGORY_LABELS[cats[0]] || "",
       price: p.price,
+      /* Цена «от» — итог согласует менеджер (свадебные букеты идут диапазоном) */
+      priceFrom: !!p.priceFrom,
       description: p.composition || "",
       composition: p.composition || "",
       desc: p.desc || "",
