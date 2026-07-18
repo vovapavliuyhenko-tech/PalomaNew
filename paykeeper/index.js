@@ -37,20 +37,28 @@ const AUTH = "Basic " + Buffer.from(`${PK_USER}:${PK_PASSWORD}`).toString("base6
    любые сбои проглатываем и логируем — оплата важнее уведомления. */
 async function notifyManager(text) {
   if (!TG_BOT_TOKEN || !TG_CHAT_ID) return;
-  try {
-    const res = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: TG_CHAT_ID,
-        text: String(text).slice(0, 4000),
-        disable_web_page_preview: true,
-      }),
-    });
-    if (!res.ok) console.error("[telegram]", res.status, await res.text().catch(() => ""));
-  } catch (e) {
-    console.error("[telegram] error", e && e.message);
-  }
+  /* TG_CHAT_ID может содержать несколько чатов через запятую —
+     шлём в каждый (личка менеджера + рабочая группа и т.п.) */
+  const chatIds = TG_CHAT_ID.split(",").map((s) => s.trim()).filter(Boolean);
+  const payload = String(text).slice(0, 4000);
+  await Promise.all(
+    chatIds.map(async (chatId) => {
+      try {
+        const res = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: payload,
+            disable_web_page_preview: true,
+          }),
+        });
+        if (!res.ok) console.error("[telegram]", chatId, res.status, await res.text().catch(() => ""));
+      } catch (e) {
+        console.error("[telegram] error", chatId, e && e.message);
+      }
+    }),
+  );
 }
 
 /* ── прайс-лист: тот же, что на сайте (файлы копирует sync.js) ── */
