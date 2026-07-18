@@ -597,14 +597,51 @@
     }
 
     /* Онлайн-оплата: корзину не трогаем — вдруг покупатель откажется
-       на странице Яндекс Пэй. Её очистит thank-you.html после оплаты. */
+       на странице Яндекс Пэй. Её очистит thank-you.html после оплаты.
+       Онлайн-заказ уходит менеджеру внутри initPayment (createInvoice). */
     if (payment === "online" && payEndpoint()) {
       initPayment(orderData);
       return;
     }
 
+    /* Заказ «при получении» через функцию не проходит — уведомляем бот
+       отдельно, чтобы в него попадали АБСОЛЮТНО ВСЕ заказы. */
+    notifyManagerOfOrder(orderData);
+
     emptyCart();
     showSuccess(orderId);
+  }
+
+  /* Мгновенное уведомление менеджеру для заказов без онлайн-оплаты.
+     keepalive: true — запрос переживёт переход на thank-you.html. */
+  function notifyManagerOfOrder(orderData) {
+    const ep = payEndpoint();
+    if (!ep) return;
+    const f = orderData.form || {};
+    try {
+      fetch(ep + "?a=notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        keepalive: true,
+        body: JSON.stringify({
+          orderId: orderData.id,
+          payment: orderData.payment,
+          items: orderData.items.map((i) => ({
+            id: i.id,
+            name: i.name,
+            price: i.price,
+            qty: i.qty || 1,
+          })),
+          delivery: orderData.delivery,
+          clientName: f.name || "",
+          phone: f.phone || "",
+          email: f.email || "",
+          managerText: buildManagerText(orderData),
+        }),
+      }).catch(() => {});
+    } catch {
+      /* уведомление не должно мешать оформлению заказа */
+    }
   }
 
   function emptyCart() {

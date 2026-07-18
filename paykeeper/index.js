@@ -256,6 +256,33 @@ async function createInvoice(body, origin) {
   );
 }
 
+/* ── уведомление менеджеру без оплаты (заказ «при получении») ──
+   Цель — чтобы В БОТ ПОПАДАЛИ АБСОЛЮТНО ВСЕ заказы, а не только онлайн-оплаты.
+   PayKeeper тут не участвует: просто пересылаем менеджеру состав заказа.
+   Намеренно устойчиво: если прайс на функции рассинхронён и verifyCart
+   отклонил бы заказ — уведомление всё равно уходит (managerText уже собран
+   сайтом и содержит сумму), потеря заказа хуже неточной суммы в шапке. */
+async function handleNotify(body, origin) {
+  const orderId = String(body.orderId || "").trim();
+  if (!/^[A-Za-z0-9-]{6,64}$/.test(orderId)) {
+    return reply(400, { error: "Некорректный номер заказа" }, origin);
+  }
+  const details = String(body.managerText || "").slice(0, 3500);
+  if (!details) return reply(400, { error: "Пустой заказ" }, origin);
+
+  const cart = verifyCart(body); /* только ради суммы в шапке — не блокирует */
+  const totalStr = cart && !cart.error ? cart.total.toLocaleString("ru-RU") + " ₽" : "";
+  const header =
+    "🆕 НОВЫЙ ЗАКАЗ" +
+    (body.payment === "payment_on_receipt" ? " (оплата при получении)" : "");
+
+  await notifyManager(
+    header + "\n№ " + orderId + (totalStr ? "\nСумма: " + totalStr : "") + "\n\n" + details,
+  );
+  console.log("[paykeeper] notify", orderId, body.payment || "");
+  return reply(200, { ok: true, orderId }, origin);
+}
+
 /* ── POST-оповещение об оплате ──
    PayKeeper шлёт form-urlencoded: id, sum, clientid, orderid, key
    key    = md5(id + sum(2 знака) + clientid + orderid + секретное слово)
@@ -299,6 +326,7 @@ async function handleWebhook(event) {
 /* для локальной проверки: node paykeeper/test.js */
 module.exports._verifyCart = verifyCart;
 module.exports._handleWebhook = handleWebhook;
+module.exports._handleNotify = handleNotify;
 
 module.exports.handler = async function handler(event) {
   const headers = event.headers || {};
@@ -318,6 +346,7 @@ module.exports.handler = async function handler(event) {
     } catch {
       return reply(400, { error: "Некорректный JSON" }, origin);
     }
+    if (action === "notify") return await handleNotify(body, origin);
     return await createInvoice(body, origin);
   } catch (e) {
     console.error("[paykeeper] error", e && e.stack);

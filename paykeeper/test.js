@@ -4,7 +4,7 @@
 process.env.PK_SECRET = "test-secret-word";
 
 const crypto = require("crypto");
-const { _verifyCart: verify, _handleWebhook: webhook } = require("./index.js");
+const { _verifyCart: verify, _handleWebhook: webhook, _handleNotify: notify } = require("./index.js");
 
 const md5 = (s) => crypto.createHash("md5").update(s, "utf8").digest("hex");
 
@@ -59,6 +59,21 @@ const orderid = "ORD-ABC123";
 
   const noKey = await webhook(ev({ id, sum, clientid, orderid }));
   check(noKey.statusCode === 401, "оповещение без подписи отклонено");
+
+  /* ── notify: заказ «при получении» попадает в бот ── */
+  const jsonEv = (obj) => ({ body: JSON.stringify(obj), isBase64Encoded: false });
+  const okNotify = await notify(
+    { orderId: "ORD-RECEIPT1", payment: "payment_on_receipt", managerText: "Состав: 1. Камелия — 4 300 ₽" },
+    "https://paloma.website",
+  );
+  check(okNotify.statusCode === 200, "notify «при получении» принят");
+
+  const emptyNotify = await notify({ orderId: "ORD-RECEIPT1", managerText: "" }, "https://paloma.website");
+  check(emptyNotify.statusCode === 400, "notify без текста отклонён");
+
+  const badIdNotify = await notify({ orderId: "x", managerText: "текст" }, "https://paloma.website");
+  check(badIdNotify.statusCode === 400, "notify с кривым номером отклонён");
+  void jsonEv;
 
   console.log(bad === 0 ? "\nВсе проверки прошли." : `\nПРОВАЛЕНО: ${bad}`);
   process.exit(bad === 0 ? 0 : 1);
