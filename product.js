@@ -255,7 +255,7 @@
   function renderImportant() {
     if (!importantEl || !importantBody) return;
     const cats = rawProduct?.categories || [];
-    const BOUQUET = ["season", "bestsellers", "online", "compositions", "events", "wedding", "mono"];
+    const BOUQUET = ["season", "bestsellers", "online", "compositions", "events", "wedding", "mono", "duo", "authors"];
     let paras = null;
 
     if (cats.includes("subscription")) {
