@@ -217,10 +217,14 @@
     const cardCost = hasCard() ? CARD_COST : 0;
     const total = subtotal + delivery + cardCost;
 
-    /* строку «Доставка» прячем для заказов без физических товаров
+    /* строку «Доставка» прячем полностью при самовывозе (доставки нет вообще)
+       и для заказов без физических товаров.
        (inline display — атрибут hidden перебивается классом display:flex) */
     const deliveryRow = document.getElementById("coDeliveryRow");
-    if (deliveryRow) deliveryRow.style.display = hasPhysical ? "" : "none";
+    if (deliveryRow) {
+      const hideDelivery = !hasPhysical || deliveryType === "pickup";
+      deliveryRow.style.display = hideDelivery ? "none" : "";
+    }
 
     if ($subtotal) {
       $subtotal.textContent = subtotal.toLocaleString("ru-RU") + " ₽";
