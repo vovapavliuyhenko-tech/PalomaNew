@@ -11,6 +11,8 @@
   const STORAGE_ORDER = "paloma_last_order";
   const M = window.PALOMA_MANAGER || {};
   const PICKUP_ADDR = "ул. Энгельса, 74/82";
+  const PAID_NOTE =
+    "\n\nЗаказ оплачен онлайн картой ✓. Прошу подтвердить и согласовать детали (дату, время, доставку).";
 
   const order = loadOrder();
   const emptyEl = document.getElementById("tyEmpty");
@@ -38,33 +40,16 @@
     else localStorage.removeItem("paloma_cart_v3");
   }
 
-  /* Спец-заказ со свободной суммой (подписка/сертификат/копилка): после
-     оплаты сразу перекидываем менеджеру в WhatsApp полный состав заказа. */
-  if (order.custom && new URLSearchParams(location.search).get("paid") === "1") {
-    const full = order.message + "\n\nЗаказ оплачен онлайн ✓. Прошу подтвердить и согласовать детали.";
-    const wa = "https://wa.me/79897707000?text=" + encodeURIComponent(full);
-    if (contentEl) {
-      contentEl.hidden = false;
-      contentEl.innerHTML =
-        '<div style="max-width:640px;margin:0 auto;padding:clamp(48px,8vw,96px) 20px;text-align:center">' +
-        '<h1 style="font-family:var(--fhead,Georgia,serif);color:#E7385A;font-size:clamp(30px,5vw,46px);margin:0 0 14px">Оплачено ✓</h1>' +
-        '<p style="margin:0 0 28px;color:#1B1A18;line-height:1.5">Открываем WhatsApp, чтобы отправить детали заказа менеджеру. Если не открылось — нажмите кнопку.</p>' +
-        '<a href="' + wa + '" style="display:inline-block;background:#E7385A;color:#fff;text-decoration:none;padding:15px 34px;border-radius:30px;font-weight:600">Написать в WhatsApp</a>' +
-        "</div>";
-    }
-    try {
-      localStorage.removeItem(STORAGE_ORDER);
-    } catch {
-      /* ignore */
-    }
-    window.location.href = wa;
-    return;
-  }
-
   const f = order.form || {};
   renderSummary(order, f);
+  if (order.paid) applyPaidCopy();
 
-  const message = buildMessage(order, f);
+  /* Спец-заказ со свободной суммой (подписка/сертификат/копилка) приносит
+     готовый текст в order.message — показываем его как есть, дописав про
+     оплату. Обычный заказ из корзины собираем из полей формы. */
+  const message = order.custom
+    ? String(order.message || "").trim() + (order.paid ? PAID_NOTE : "")
+    : buildMessage(order, f);
   const messageBox = document.getElementById("tyMessage");
   if (messageBox) messageBox.value = message;
 
@@ -142,7 +127,8 @@
   function fulfillment(f) {
     if (f.delivery_type === "pickup") return `Самовывоз — ${PICKUP_ADDR}`;
     if (f.delivery_type === "ask_recipient") return "Доставка — адрес уточнить у получателя";
-    return "Доставка курьером";
+    if (f.delivery_type === "courier") return "Доставка курьером";
+    return "—";
   }
 
   function timeStr(f) {
@@ -192,14 +178,29 @@
     );
   }
 
+  /* Оплаченный заказ: заменяем «предварительные» надписи на «оплачено»,
+     чтобы страница не просила клиента ждать подтверждения суммы. */
+  function applyPaidCopy() {
+    setText(
+      "tyNotice",
+      "Заказ оплачен онлайн картой ✓ Остался один шаг — отправьте сообщение менеджеру, чтобы согласовать детали.",
+    );
+    setText("tyStep1Sub", "Состав заказа и оплаченная сумма");
+    setText("tyTotalLabel", "Оплачено");
+    setText("tyOrderHint", "Заказ оплачен онлайн картой.");
+  }
+
   /* Сообщение менеджеру — по шаблону ТЗ, без HTML */
   function buildMessage(o, f) {
     const items = o.items
       .map((i, idx) => `${idx + 1}. ${i.name}${itemOptions(i)} — ${i.qty || 1} шт. — ${money(i.price * (i.qty || 1))}`)
       .join("\n");
 
+    const paid = !!o.paid;
     const lines = [
-      "Здравствуйте! Я оформил(а) заказ на сайте.",
+      paid
+        ? "Здравствуйте! Я оформил(а) и оплатил(а) заказ на сайте картой."
+        : "Здравствуйте! Я оформил(а) заказ на сайте.",
       "",
       `Номер заказа: №${o.id || "—"}`,
       "",
@@ -207,7 +208,9 @@
       "",
       items || "—",
       "",
-      `Предварительная сумма: ${money(o.total)}`,
+      paid
+        ? `Сумма (оплачено онлайн картой): ${money(o.total)}`
+        : `Предварительная сумма: ${money(o.total)}`,
       "",
       `Способ получения: ${fulfillment(f)}`,
     ];
@@ -234,8 +237,13 @@
     if (f.email) lines.push(`Email: ${f.email}`);
 
     lines.push("", `Комментарий к заказу: ${f.comment ? f.comment : "—"}`);
-    lines.push("", `Выбранный способ оплаты: ${paymentText(o.payment)}`);
-    lines.push("", "Прошу подтвердить наличие товаров, возможность выполнения заказа и итоговую стоимость.");
+    lines.push("", `Способ оплаты: ${paymentText(o.payment)}`);
+    lines.push(
+      "",
+      paid
+        ? "Заказ оплачен онлайн картой ✓. Прошу подтвердить получение и согласовать детали (дату, время, доставку)."
+        : "Прошу подтвердить наличие товаров, возможность выполнения заказа и итоговую стоимость.",
+    );
 
     return lines.join("\n");
   }

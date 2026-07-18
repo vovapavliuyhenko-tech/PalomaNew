@@ -294,7 +294,7 @@
         <!-- заголовок JS всё ещё пишет сюда (скрыто), номер заказа есть в сообщении менеджеру -->
         <span id="tyOrderId" hidden></span>
 
-        <p class="ty-notice" role="note">
+        <p class="ty-notice" role="note" id="tyNotice">
           Оплата — только после того, как менеджер подтвердит состав заказа и итоговую сумму.
         </p>
 
@@ -304,7 +304,7 @@
             <span class="ty-step__num" aria-hidden="true">1</span>
             <div class="ty-step__heading">
               <h2 class="ty-step__title" id="tyStep1Title">Ваш заказ</h2>
-              <p class="ty-step__sub">Состав заявки и предварительная сумма</p>
+              <p class="ty-step__sub" id="tyStep1Sub">Состав заявки и предварительная сумма</p>
             </div>
           </div>
           <div id="tyOrderSummary" class="ty-order-summary">
@@ -315,10 +315,10 @@
               <div><span>Оплата</span><span id="tyMetaPayment">—</span></div>
             </div>
             <div class="ty-order-summary__total">
-              <span>Предварительно</span>
+              <span id="tyTotalLabel">Предварительно</span>
               <strong id="tyOrderTotal">0 ₽</strong>
             </div>
-            <p class="ty-order-summary__hint">Сумма предварительная — итог подтверждает менеджер.</p>
+            <p class="ty-order-summary__hint" id="tyOrderHint">Сумма предварительная — итог подтверждает менеджер.</p>
           </div>
         </section>
 
@@ -520,7 +520,7 @@
 
   <script src="wishlist.js?v=wl1"></script>
   <script src="manager-config.js?v=order2"></script>
-  <script src="thank-you.js?v=ty9"></script>
+  <script src="thank-you.js?v=ty10"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=press1"></script>
   <script src="cookie-consent.js?v=2"></script>
