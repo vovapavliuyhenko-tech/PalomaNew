@@ -278,6 +278,21 @@
     if ($addrFields) {
       $addrFields.hidden = type !== "courier";
     }
+
+    /* Самовывоз — оплата только в студии, онлайн-оплату убираем.
+       Если она была выбрана — возвращаем «Оплата при получении». */
+    const $onlinePay = document.getElementById("coOnlinePayOption");
+    if ($onlinePay) {
+      const isPickup = type === "pickup";
+      $onlinePay.style.display = isPickup ? "none" : "";
+      const onlineRadio = $onlinePay.querySelector('input[name="payment"]');
+      if (isPickup && onlineRadio && onlineRadio.checked) {
+        const receipt = document.querySelector(
+          'input[name="payment"][value="payment_on_receipt"]',
+        );
+        if (receipt) receipt.checked = true;
+      }
+    }
     if ($deliveryPrice) {
       const cart = getCart();
       const subtotal = cart.reduce(
