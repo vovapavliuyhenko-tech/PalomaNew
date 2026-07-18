@@ -22,14 +22,10 @@
   };
 
   const FILTER_ALIASES = {
-    /* старые ссылки на удалённые разделы ведём на реальные категории,
-       чтобы каталог не показывал пустую страницу */
-    online: "mono",
-    season: "duo",
-    best: "wedding",
-    bestsellers: "wedding",
-    comp: "authors",
-    compositions: "authors",
+    /* короткие псевдонимы; разделы online/season/bestsellers/compositions
+       пока без товаров — показываем свою (пустую) категорию, не подменяя */
+    best: "bestsellers",
+    comp: "compositions",
     sub: "subscription",
   };
 
