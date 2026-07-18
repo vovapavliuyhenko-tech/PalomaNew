@@ -22,8 +22,14 @@
   };
 
   const FILTER_ALIASES = {
-    best: "bestsellers",
-    comp: "compositions",
+    /* старые ссылки на удалённые разделы ведём на реальные категории,
+       чтобы каталог не показывал пустую страницу */
+    online: "mono",
+    season: "duo",
+    best: "wedding",
+    bestsellers: "wedding",
+    comp: "authors",
+    compositions: "authors",
     sub: "subscription",
   };
 
