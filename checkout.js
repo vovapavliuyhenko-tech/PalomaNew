@@ -639,6 +639,46 @@
     });
   }
 
+  /* Полный текст заказа для менеджера — уходит в функцию и оттуда в Telegram,
+     чтобы менеджер получил детали даже если клиент не отправит их сам. */
+  function money(n) {
+    return (Number(n) || 0).toLocaleString("ru-RU") + " ₽";
+  }
+  function buildManagerText(o) {
+    const f = o.form || {};
+    const items = o.items
+      .map((i, n) => {
+        const opt = [];
+        if (i.size && i.size !== "—" && i.category !== "coffee") opt.push(i.size);
+        if (Array.isArray(i.addons)) opt.push(...i.addons.filter(Boolean));
+        const suffix = opt.length ? " (" + opt.join(", ") + ")" : "";
+        return `${n + 1}. ${i.name}${suffix} — ${i.qty || 1} шт. — ${money(i.price * (i.qty || 1))}`;
+      })
+      .join("\n");
+
+    const fulfil =
+      f.delivery_type === "pickup"
+        ? "Самовывоз — ул. Энгельса, 74/82"
+        : f.delivery_type === "ask_recipient"
+          ? "Доставка — адрес уточнить у получателя"
+          : "Доставка курьером";
+
+    const lines = ["Состав:", items || "—", "", "Сумма: " + money(o.total), "", "Получение: " + fulfil];
+    if (f.delivery_type === "courier") {
+      const addr = [f.city, f.address, f.apt ? "кв. " + f.apt : ""].filter(Boolean).join(", ");
+      if (addr) lines.push("Адрес: " + addr);
+    }
+    if (f.delivery_date) lines.push("Дата: " + f.delivery_date);
+    if (f.recipient_type === "other") {
+      lines.push("", "Получатель: " + (f.recipient_name || "—") + ", " + (f.recipient_phone || "—"));
+    }
+    lines.push("", "Клиент: " + (f.name || "—") + ", " + (f.phone || "—"));
+    lines.push("Связь: " + (o.messenger || "—") + " " + (o.messengerContact || ""));
+    if (f.email) lines.push("Email: " + f.email);
+    if (f.comment) lines.push("", "Комментарий: " + f.comment);
+    return lines.join("\n");
+  }
+
   /* Онлайн-оплата: сервер сам пересчитывает цены по каталогу и выставляет
      счёт в PayKeeper. Цены из localStorage сервер не принимает на веру. */
   async function initPayment(orderData) {
@@ -659,6 +699,7 @@
           clientName: f.name || "",
           phone: f.phone || "",
           email: f.email || "",
+          managerText: buildManagerText(orderData),
         }),
       });
 

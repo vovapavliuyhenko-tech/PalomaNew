@@ -66,6 +66,7 @@
         orderId: orderId,
         items: [{ id: opts.id, name: opts.name, price: total, qty: 1 }],
         delivery: 0,
+        managerText: opts.details,
       }),
     })
       .then(function (r) {

@@ -25,8 +25,33 @@ const PK_PASSWORD = process.env.PK_PASSWORD || "";
 const PK_SECRET = process.env.PK_SECRET || ""; /* секретное слово из ЛК */
 const SITE = (process.env.PK_SITE || "https://paloma.website").replace(/\/+$/, "");
 
+/* Telegram-бот менеджера: заказ уходит менеджеру автоматически, не завися от
+   того, отправит ли клиент сообщение сам. Пусто → уведомления выключены. */
+const TG_BOT_TOKEN = process.env.TG_BOT_TOKEN || "";
+const TG_CHAT_ID = process.env.TG_CHAT_ID || "";
+
 const ORIGINS = [SITE, "https://www.paloma.website", "http://localhost:5500", "http://127.0.0.1:5500"];
 const AUTH = "Basic " + Buffer.from(`${PK_USER}:${PK_PASSWORD}`).toString("base64");
+
+/* Отправка сообщения менеджеру в Telegram. Не роняет заказ при ошибке:
+   любые сбои проглатываем и логируем — оплата важнее уведомления. */
+async function notifyManager(text) {
+  if (!TG_BOT_TOKEN || !TG_CHAT_ID) return;
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: TG_CHAT_ID,
+        text: String(text).slice(0, 4000),
+        disable_web_page_preview: true,
+      }),
+    });
+    if (!res.ok) console.error("[telegram]", res.status, await res.text().catch(() => ""));
+  } catch (e) {
+    console.error("[telegram] error", e && e.message);
+  }
+}
 
 /* ── прайс-лист: тот же, что на сайте (файлы копирует sync.js) ── */
 global.window = global.window || {};
@@ -215,6 +240,15 @@ async function createInvoice(body, origin) {
   }
 
   console.log("[paykeeper] invoice", orderId, cart.total, invoiceId);
+
+  /* Заказ уходит менеджеру сразу — со всеми деталями, что собрал сайт.
+     Оплату подтвердит отдельное сообщение из webhook. */
+  const details = String(body.managerText || cart.names.join(", ")).slice(0, 3500);
+  await notifyManager(
+    "🆕 НОВЫЙ ЗАКАЗ (ожидает оплаты)\n№ " + orderId + "\nСумма: " +
+      cart.total.toLocaleString("ru-RU") + " ₽\n\n" + details,
+  );
+
   return reply(
     200,
     { paymentUrl: `${PK_SERVER}/bill/${invoiceId}/`, orderId, total: cart.total },
@@ -227,7 +261,7 @@ async function createInvoice(body, origin) {
    key    = md5(id + sum(2 знака) + clientid + orderid + секретное слово)
    ответ  = "OK " + md5(id + секретное слово)
    Без верной подписи не отвечаем OK: адрес функции публичный. */
-function handleWebhook(event) {
+async function handleWebhook(event) {
   const p = new URLSearchParams(rawBody(event));
   const id = p.get("id") || "";
   const sum = p.get("sum") || "";
@@ -247,6 +281,13 @@ function handleWebhook(event) {
 
   /* Базы у сайта нет — пишем в лог функции. Сам платёж менеджер видит в ЛК PayKeeper. */
   console.log("[paykeeper] paid", JSON.stringify({ id, orderid, sum, clientid }));
+
+  /* Подтверждаем менеджеру оплату (детали заказа он уже получил при оформлении). */
+  await notifyManager(
+    "✅ ОПЛАЧЕН\n№ " + orderid + "\nСумма: " +
+      (Number.isFinite(amount) ? amount.toLocaleString("ru-RU") : sum) + " ₽\n" +
+      "Клиент: " + (clientid || "—"),
+  );
 
   return {
     statusCode: 200,
@@ -269,7 +310,7 @@ module.exports.handler = async function handler(event) {
   if (method !== "POST") return reply(405, { error: "Только POST" }, origin);
 
   try {
-    if (action === "webhook") return handleWebhook(event);
+    if (action === "webhook") return await handleWebhook(event);
 
     let body;
     try {

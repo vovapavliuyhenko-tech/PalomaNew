@@ -40,7 +40,7 @@ if (coffee) {
   check(!!cheat.error, `кофе «${coffee.title}» за 1 ₽ отклонён`, cheat.error);
 }
 
-/* ── подпись POST-оповещения ── */
+/* ── подпись POST-оповещения (webhook — async: шлёт уведомление менеджеру) ── */
 const S = process.env.PK_SECRET;
 const ev = (params) => ({ body: new URLSearchParams(params).toString(), isBase64Encoded: false });
 
@@ -49,15 +49,17 @@ const sum = "4650.00";
 const clientid = "Светлана";
 const orderid = "ORD-ABC123";
 
-const good = webhook(ev({ id, sum, clientid, orderid, key: md5(id + sum + clientid + orderid + S) }));
-check(good.statusCode === 200, "верная подпись оповещения принята");
-check(good.body === "OK " + md5(id + S), "ответ PayKeeper корректный", good.body);
+(async () => {
+  const good = await webhook(ev({ id, sum, clientid, orderid, key: md5(id + sum + clientid + orderid + S) }));
+  check(good.statusCode === 200, "верная подпись оповещения принята");
+  check(good.body === "OK " + md5(id + S), "ответ PayKeeper корректный", good.body);
 
-const forged = webhook(ev({ id, sum, clientid, orderid, key: "деадбиф" }));
-check(forged.statusCode === 401, "поддельное оповещение отклонено");
+  const forged = await webhook(ev({ id, sum, clientid, orderid, key: "деадбиф" }));
+  check(forged.statusCode === 401, "поддельное оповещение отклонено");
 
-const noKey = webhook(ev({ id, sum, clientid, orderid }));
-check(noKey.statusCode === 401, "оповещение без подписи отклонено");
+  const noKey = await webhook(ev({ id, sum, clientid, orderid }));
+  check(noKey.statusCode === 401, "оповещение без подписи отклонено");
 
-console.log(bad === 0 ? "\nВсе проверки прошли." : `\nПРОВАЛЕНО: ${bad}`);
-process.exit(bad === 0 ? 0 : 1);
+  console.log(bad === 0 ? "\nВсе проверки прошли." : `\nПРОВАЛЕНО: ${bad}`);
+  process.exit(bad === 0 ? 0 : 1);
+})();
