@@ -33,32 +33,58 @@ const TG_CHAT_ID = process.env.TG_CHAT_ID || "";
 const ORIGINS = [SITE, "https://www.paloma.website", "http://localhost:5500", "http://127.0.0.1:5500"];
 const AUTH = "Basic " + Buffer.from(`${PK_USER}:${PK_PASSWORD}`).toString("base64");
 
+/* TG_CHAT_ID может содержать несколько чатов через запятую —
+   шлём в каждый (личка менеджера + рабочая группа и т.п.) */
+function tgChatIds() {
+  return TG_CHAT_ID.split(",").map((s) => s.trim()).filter(Boolean);
+}
+
+/* Один вызов Telegram Bot API. Ошибки не роняют заказ — логируем. */
+async function tgCall(method, payload) {
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/${method}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) console.error("[telegram]", method, payload.chat_id, res.status, await res.text().catch(() => ""));
+    return res.ok;
+  } catch (e) {
+    console.error("[telegram] error", method, payload.chat_id, e && e.message);
+    return false;
+  }
+}
+
 /* Отправка сообщения менеджеру в Telegram. Не роняет заказ при ошибке:
    любые сбои проглатываем и логируем — оплата важнее уведомления. */
 async function notifyManager(text) {
   if (!TG_BOT_TOKEN || !TG_CHAT_ID) return;
-  /* TG_CHAT_ID может содержать несколько чатов через запятую —
-     шлём в каждый (личка менеджера + рабочая группа и т.п.) */
-  const chatIds = TG_CHAT_ID.split(",").map((s) => s.trim()).filter(Boolean);
   const payload = String(text).slice(0, 4000);
   await Promise.all(
-    chatIds.map(async (chatId) => {
-      try {
-        const res = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            chat_id: chatId,
-            text: payload,
-            disable_web_page_preview: true,
-          }),
-        });
-        if (!res.ok) console.error("[telegram]", chatId, res.status, await res.text().catch(() => ""));
-      } catch (e) {
-        console.error("[telegram] error", chatId, e && e.message);
-      }
-    }),
+    tgChatIds().map((chatId) =>
+      tgCall("sendMessage", { chat_id: chatId, text: payload, disable_web_page_preview: true }),
+    ),
   );
+}
+
+/* Фото букетов из заказа — альбомом (2–10) или одиночным фото.
+   Telegram сам скачивает картинки по ссылке, поэтому шлём публичные URL. */
+async function sendPhotosToChat(chatId, urls, caption) {
+  for (let i = 0; i < urls.length; i += 10) {
+    const chunk = urls.slice(i, i + 10);
+    const cap = i === 0 ? caption : undefined;
+    if (chunk.length === 1) {
+      await tgCall("sendPhoto", { chat_id: chatId, photo: chunk[0], caption: cap });
+    } else {
+      const media = chunk.map((u, idx) => ({ type: "photo", media: u, caption: idx === 0 ? cap : undefined }));
+      await tgCall("sendMediaGroup", { chat_id: chatId, media });
+    }
+  }
+}
+
+async function notifyPhotos(urls, caption) {
+  if (!TG_BOT_TOKEN || !TG_CHAT_ID || !urls || !urls.length) return;
+  await Promise.all(tgChatIds().map((chatId) => sendPhotosToChat(chatId, urls, caption)));
 }
 
 /* ── прайс-лист: тот же, что на сайте (файлы копирует sync.js) ── */
@@ -97,6 +123,33 @@ const CATALOG_ID_RE = new RegExp(
     [...new Set(PRODUCTS.map((p) => (String(p.id).match(/^([a-z]+)\d+$/i) || [])[1]).filter(Boolean))].join("|") +
     ")\\d+)(?:[-_]|$)",
 );
+
+/* Категории, которые считаем «букетом» — только их фото шлём менеджеру.
+   Вазы, десерты, подписка, оформление, кофе и допы в фото не попадают. */
+const BOUQUET_CATS = new Set([
+  "mono", "duo", "wedding", "authors", "online", "season", "bestsellers", "compositions",
+]);
+
+/* Публичные ссылки на фото букетов из заказа (без повторов, максимум 10). */
+function bouquetPhotos(body) {
+  const raw = Array.isArray(body.items) ? body.items : [];
+  const urls = [];
+  const seen = new Set();
+  for (const it of raw) {
+    const code = String(it.id || "").match(CATALOG_ID_RE);
+    if (!code) continue;
+    const p = PRODUCTS.find((x) => x.id === code[1]);
+    if (!p || !p.image) continue;
+    const cats = Array.isArray(p.categories) ? p.categories : p.category ? [p.category] : [];
+    if (!cats.some((c) => BOUQUET_CATS.has(c))) continue;
+    const url = /^https?:\/\//i.test(p.image) ? p.image : SITE + "/" + String(p.image).replace(/^\/+/, "");
+    if (seen.has(url)) continue;
+    seen.add(url);
+    urls.push(url);
+    if (urls.length >= 10) break;
+  }
+  return urls;
+}
 
 function md5(s) {
   return crypto.createHash("md5").update(s, "utf8").digest("hex");
@@ -256,6 +309,7 @@ async function createInvoice(body, origin) {
     "🆕 НОВЫЙ ЗАКАЗ (ожидает оплаты)\n№ " + orderId + "\nСумма: " +
       cart.total.toLocaleString("ru-RU") + " ₽\n\n" + details,
   );
+  await notifyPhotos(bouquetPhotos(body), "🖼 Букеты по заказу № " + orderId);
 
   return reply(
     200,
@@ -287,6 +341,7 @@ async function handleNotify(body, origin) {
   await notifyManager(
     header + "\n№ " + orderId + (totalStr ? "\nСумма: " + totalStr : "") + "\n\n" + details,
   );
+  await notifyPhotos(bouquetPhotos(body), "🖼 Букеты по заказу № " + orderId);
   console.log("[paykeeper] notify", orderId, body.payment || "");
   return reply(200, { ok: true, orderId }, origin);
 }
@@ -335,6 +390,7 @@ async function handleWebhook(event) {
 module.exports._verifyCart = verifyCart;
 module.exports._handleWebhook = handleWebhook;
 module.exports._handleNotify = handleNotify;
+module.exports._bouquetPhotos = bouquetPhotos;
 
 module.exports.handler = async function handler(event) {
   const headers = event.headers || {};
