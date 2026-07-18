@@ -124,7 +124,7 @@ function initSubscriptionPage() {
 
     const lbl = last ? last.labels : {};
 
-    /* оплата онлайн → thank-you → WhatsApp с полным заказом (palomaPayOnline) */
+    /* оплата только онлайн картой → thank-you, где клиент выберет мессенджер */
     const money = last ? last.total : 0;
     const isTrial = !!(last && last.isTrial);
     const lines = [
@@ -147,6 +147,7 @@ function initSubscriptionPage() {
       name: isTrial ? "Цветочная подписка (пробная неделя)" : "Цветочная подписка",
       total: money,
       details: lines.join("\n"),
+      button: submitBtn,
     });
   });
 }

@@ -138,7 +138,7 @@
 
       const wish = (wishInput && wishInput.value.trim()) || "";
 
-      /* оплата онлайн → thank-you → WhatsApp с полным заказом (palomaPayOnline) */
+      /* оплата только онлайн картой → thank-you, где клиент выберет мессенджер */
       const fmt = (n) => Number(n || 0).toLocaleString("ru-RU") + " ₽";
       const lines = [
         "Здравствуйте! Пополнил(а) свадебную копилку PALOMA.",
@@ -153,6 +153,7 @@
         name: "Свадебная копилка",
         total: state.amount,
         details: lines.join("\n"),
+        button: submitBtn,
       });
     });
 
