@@ -118,10 +118,13 @@
   .wpb-page .subscription-hero {
     min-height: 0;
     align-items: stretch;
-    padding-top: 0; /* убираем верхний отступ — фото прижато к верху */
+    /* фото начинается под фикс-шапкой, а не из-под неё (опущено ниже) */
+    padding-top: var(--paloma-header-offset, 120px);
   }
   .wpb-page .subscription-hero__media {
     min-height: 0;
+    /* отменяем подтяжку под шапку из subscription.css — фото остаётся ниже */
+    margin-top: 0;
   }
   /* фото не должно раздувать высоту строки своим портретным соотношением:
      вынимаем img из потока — высота строки задаётся правой колонкой (формой),
@@ -133,10 +136,11 @@
     height: 100%;
     object-fit: cover;
   }
-  /* прижимаем правую часть к верху (а не центрируем), смещение — только под фикс-шапку */
+  /* прижимаем правую часть к верху; смещение под шапку теперь даёт padding-top
+     самого героя, поэтому здесь — только небольшой воздух сверху */
   .wpb-page .subscription-hero__content {
     justify-content: flex-start;
-    padding-top: calc(var(--paloma-header-offset, 120px) + clamp(28px, 3vw, 56px));
+    padding-top: clamp(28px, 3vw, 56px);
   }
 }
 
