@@ -42,6 +42,8 @@
       milkshake: "Коктейли",
       tea: "Чай",
       cold: "Холодные",
+      lemonade: "Лимонады Лапочка",
+      juice: "Соки",
       corpus: "Корпусные",
       dessert: "Десерты",
       chokome: "ChokoMe",
@@ -74,6 +76,8 @@
       milkshake: "shakes & cocktails",
       tea: "tea ceremony",
       cold: "cold & fresh",
+      lemonade: "sweet lemonades",
+      juice: "fresh juices",
       corpus: "signature cakes",
       dessert: "sweet & art",
       chokome: "chocolate bar",
@@ -342,6 +346,7 @@
     };
     function coldGroups(it) {
       if (SWEET_CATS[it.category]) return null; /* десерты, корпусные, ChokoMe — без добавок */
+      if (it.category === "lemonade" || it.category === "juice") return null; /* готовые напитки — без добавок */
       var x = COLD[it.id];
       if (x) {
         var g;
@@ -499,7 +504,10 @@
         if (m) {
           descOnly = full.slice(0, m.index).trim();
           var cells = [[m[1], "белки, г"], [m[2], "жиры, г"], [m[3], "углеводы, г"], [m[4], "ккал"]];
-          var weight = it.volumes ? '<div class="cf-nutri__weight">Вес · ' + esc(it.volumes) + "</div>" : "";
+          var per100 = it.category === "lemonade" || it.category === "juice";
+          var weight = per100
+            ? '<div class="cf-nutri__weight">Пищевая ценность на 100 мл · объём ' + esc(it.volumes) + "</div>"
+            : (it.volumes ? '<div class="cf-nutri__weight">Вес · ' + esc(it.volumes) + "</div>" : "");
           buildHtml = weight + '<div class="cf-nutri">' + cells.map(function (c) {
             return '<div class="cf-nutri__cell"><span class="cf-nutri__v">' + esc(c[0]) + '</span><span class="cf-nutri__k">' + esc(c[1]) + "</span></div>";
           }).join("") + "</div>";

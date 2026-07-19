@@ -987,6 +987,126 @@ if (!window.PALOMA_COFFEE_MENU) {
     "desc": "",
     "image": "",
     "imageBg": "linear-gradient(160deg,#d9c2a6 0%,#a9825b 55%,#5f3f27 100%)"
+  },
+  {
+    "id": "menu-lemonade-86",
+    "num": "086",
+    "title": "Лапочка «Арбуз + Мелисса»",
+    "category": "lemonade",
+    "price": 250,
+    "priceLabel": "— ₽",
+    "volumes": "330 мл",
+    "desc": "Вода питьевая, сок арбуза, экстракт мелиссы. Б 0 · Ж 0 · У 8.3 · 34 ккал",
+    "image": "images/paloma/coffee/lemon-arbuz-melissa.jpg",
+    "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
+  },
+  {
+    "id": "menu-lemonade-87",
+    "num": "087",
+    "title": "Лапочка «Ананас + Личи»",
+    "category": "lemonade",
+    "price": 250,
+    "priceLabel": "— ₽",
+    "volumes": "330 мл",
+    "desc": "Вода питьевая, сок ананаса, сок личи. Б 0 · Ж 0 · У 7.9 · 31 ккал",
+    "image": "images/paloma/coffee/lemon-ananas-lichi.jpg",
+    "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
+  },
+  {
+    "id": "menu-lemonade-88",
+    "num": "088",
+    "title": "Лапочка «Крем-сода»",
+    "category": "lemonade",
+    "price": 250,
+    "priceLabel": "— ₽",
+    "volumes": "330 мл",
+    "desc": "Вода питьевая, сок груши, сок яблока, экстракт ванили, экстракт цедры апельсина, ароматизаторы. Б 0 · Ж 0 · У 8.7 · 35 ккал",
+    "image": "images/paloma/coffee/lemon-krem-soda.jpg",
+    "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
+  },
+  {
+    "id": "menu-lemonade-89",
+    "num": "089",
+    "title": "Лапочка «Лимонад»",
+    "category": "lemonade",
+    "price": 250,
+    "priceLabel": "— ₽",
+    "volumes": "330 мл",
+    "desc": "Без сахара. Вода, сок дыни, сок клубники, сок малины, сок лимона, экстракт лемонграсса, экстракт лайма. Б 0 · Ж 0 · У 8.6 · 34 ккал",
+    "image": "images/paloma/coffee/lemon-limonad.jpg",
+    "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
+  },
+  {
+    "id": "menu-lemonade-90",
+    "num": "090",
+    "title": "Лапочка «Дыня-мята»",
+    "category": "lemonade",
+    "price": 250,
+    "priceLabel": "— ₽",
+    "volumes": "330 мл",
+    "desc": "Без сахара. Вода, сок дыни, сок лимона, экстракт мяты перечной. Б 0 · Ж 0 · У 8.6 · 34 ккал",
+    "image": "images/paloma/coffee/lemon-dynya-myata.jpg",
+    "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
+  },
+  {
+    "id": "menu-lemonade-91",
+    "num": "091",
+    "title": "Лапочка «Физзи Розе»",
+    "category": "lemonade",
+    "price": 250,
+    "priceLabel": "— ₽",
+    "volumes": "330 мл",
+    "desc": "Без сахара. Вода, сок винограда, сок яблока, сок клубники, лимонная кислота, натуральный ароматизатор «просекко». Б 0 · Ж 0 · У 8.4 · 34 ккал",
+    "image": "images/paloma/coffee/lemon-fizzi-roze.jpg",
+    "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
+  },
+  {
+    "id": "menu-juice-92",
+    "num": "092",
+    "title": "Сок вишнёвый",
+    "category": "juice",
+    "price": 180,
+    "priceLabel": "— ₽",
+    "volumes": "200 мл",
+    "desc": "Вишнёвый сок, сахар, лимонная кислота, вода. Б 0 · Ж 0 · У 12 · 48 ккал",
+    "image": "images/paloma/coffee/juice-vishnya.jpg",
+    "imageBg": "linear-gradient(160deg,#ffe1c2 0%,#ffb060 55%,#e07a1e 100%)"
+  },
+  {
+    "id": "menu-juice-93",
+    "num": "093",
+    "title": "Сок апельсиновый",
+    "category": "juice",
+    "price": 180,
+    "priceLabel": "— ₽",
+    "volumes": "200 мл",
+    "desc": "Апельсиновый сок. Б 0 · Ж 0 · У 9.5 · 40 ккал",
+    "image": "images/paloma/coffee/juice-apelsin.jpg",
+    "imageBg": "linear-gradient(160deg,#ffe1c2 0%,#ffb060 55%,#e07a1e 100%)"
+  },
+  {
+    "id": "menu-juice-94",
+    "num": "094",
+    "title": "Сок мультифруктовый с мякотью",
+    "category": "juice",
+    "price": 180,
+    "priceLabel": "— ₽",
+    "volumes": "200 мл",
+    "desc": "Апельсиновый сок, ананасовый сок, яблочный сок, персиковое пюре, пюре из киви, сок маракуйи. Б 0 · Ж 0 · У 11.5 · 46 ккал",
+    "image": "images/paloma/coffee/juice-multifrukt.jpg",
+    "imageBg": "linear-gradient(160deg,#ffe1c2 0%,#ffb060 55%,#e07a1e 100%)"
+  },
+  {
+    "id": "menu-juice-95",
+    "num": "095",
+    "title": "Сок яблочный",
+    "category": "juice",
+    "price": 180,
+    "priceLabel": "— ₽",
+    "volumes": "200 мл",
+    "desc": "Яблочный сок. Б 0 · Ж 0 · У 11.5 · 46 ккал",
+    "image": "images/paloma/coffee/juice-yabloko.jpg",
+    "imageBg": "linear-gradient(160deg,#ffe1c2 0%,#ffb060 55%,#e07a1e 100%)"
   }
 ];
 }
