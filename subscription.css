@@ -61,14 +61,10 @@ body.subscription-page main.subscription-page {
      Ширину колонки задаём по пропорции кадра (3:4) — тогда фото заполняет её
      целиком, без белых полей, и при этом ничего не обрезается. */
   body.subscription-page .subscription-hero {
-    /* ширина фото: по высоте экрана, но не шире 52vw — иначе на узком и
-       высоком окне колонка вытеснила бы форму за край экрана */
-    --sub-photo-w: min(
-      calc((100svh - var(--paloma-header-offset, 120px) - 28px) * 0.75),
-      52vw
-    );
+    /* фото занимает ровно половину экрана; правая колонка — вторую половину */
+    --sub-photo-w: 50vw;
     align-items: start;
-    grid-template-columns: var(--sub-photo-w) minmax(420px, 1fr);
+    grid-template-columns: var(--sub-photo-w) minmax(0, 1fr);
   }
   body.subscription-page .subscription-hero__media {
     position: sticky;
