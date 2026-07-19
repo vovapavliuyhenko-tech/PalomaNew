@@ -63,6 +63,11 @@
   const descEl = document.getElementById("pdpDesc");
   const sizesEl = document.getElementById("pdpSizes");
   const sizeBtnsEl = document.getElementById("pdpSizeBtns");
+  const budgetEl = document.getElementById("pdpBudget");
+  const budgetRange = document.getElementById("pdpBudgetRange");
+  const budgetValueEl = document.getElementById("pdpBudgetValue");
+  const budgetMinEl = document.getElementById("pdpBudgetMin");
+  const budgetMaxEl = document.getElementById("pdpBudgetMax");
   const qtyVal = document.getElementById("pdpQtyVal");
   const qtyDec = document.getElementById("pdpQtyDec");
   const qtyInc = document.getElementById("pdpQtyInc");
@@ -93,6 +98,7 @@
   let qty = 1;
   let selectedSize = null;
   let sizePriceDelta = 0;
+  let budgetMode = false;
   let toastTimer = null;
 
   function esc(str) {
@@ -203,8 +209,10 @@
 
   function updatePriceDisplay() {
     if (!priceEl || !product) return;
+    const total = product.price + sizePriceDelta;
+    /* В режиме шкалы бюджета цена уже выбрана точно — без «от». */
     priceEl.textContent =
-      (product.priceFrom ? "от " : "") + formatPrice(product.price + sizePriceDelta);
+      (product.priceFrom && !budgetMode ? "от " : "") + formatPrice(total);
   }
 
   function showNotFound() {
@@ -243,7 +251,12 @@
       descEl.hidden = !descText;
     }
 
-    renderSizes();
+    /* Авторские букеты — шкала бюджета вместо размерного ряда. */
+    if ((rawProduct?.categories || []).includes("authors")) {
+      renderBudget();
+    } else {
+      renderSizes();
+    }
     renderGallery();
     renderImportant();
     bindWishlistButton();
@@ -321,6 +334,41 @@
 
     selectedSize = sizes[0].code || sizes[0].label;
     sizePriceDelta = sizes[0].priceDelta || 0;
+  }
+
+  /* Шкала бюджета для авторских: клиент выбирает сумму, флорист собирает под неё. */
+  function renderBudget() {
+    if (!budgetEl || !budgetRange) return;
+
+    const min = product.price;
+    const max = Math.max(Math.round((min * 3) / 1000) * 1000, min + 10000);
+
+    budgetRange.min = String(min);
+    budgetRange.max = String(max);
+    budgetRange.step = "500";
+    budgetRange.value = String(min);
+
+    budgetMode = true;
+    selectedSize = "budget";
+    sizePriceDelta = 0;
+
+    if (budgetMinEl) budgetMinEl.textContent = formatPrice(min);
+    if (budgetMaxEl) budgetMaxEl.textContent = formatPrice(max);
+
+    function syncBudget() {
+      const val = parseInt(budgetRange.value, 10) || min;
+      sizePriceDelta = val - product.price;
+      if (budgetValueEl) budgetValueEl.textContent = formatPrice(val);
+      const pct = max > min ? ((val - min) / (max - min)) * 100 : 0;
+      budgetRange.style.setProperty("--pct", pct + "%");
+      updatePriceDisplay();
+    }
+
+    budgetRange.addEventListener("input", syncBudget);
+    syncBudget();
+
+    if (sizesEl) sizesEl.hidden = true;
+    budgetEl.hidden = false;
   }
 
   function renderGallery() {
@@ -451,12 +499,15 @@
     addToCartBtn?.addEventListener("click", () => {
       if (!product || !rawProduct) return;
 
-      const sizeLabel =
-        sizeBtnsEl?.querySelector(".pdp-size-btn.is-active")?.textContent?.trim() ||
-        selectedSize ||
-        "M";
       const unitPrice = product.price + sizePriceDelta;
-      const lineId = `${product.id}-${selectedSize || "m"}`;
+      const sizeLabel = budgetMode
+        ? `Бюджет ${formatPrice(unitPrice)}`
+        : sizeBtnsEl?.querySelector(".pdp-size-btn.is-active")?.textContent?.trim() ||
+          selectedSize ||
+          "M";
+      const lineId = budgetMode
+        ? `${product.id}-b${unitPrice}`
+        : `${product.id}-${selectedSize || "m"}`;
 
       addToCart({
         id: lineId,

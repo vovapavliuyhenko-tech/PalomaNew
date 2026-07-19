@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="styles.css?v=ph13">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
 <link rel="stylesheet" href="cart.css?v=w1">
-  <link rel="stylesheet" href="product.css?v=round2">
+  <link rel="stylesheet" href="product.css?v=round3">
   <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
@@ -371,6 +371,20 @@
           <div class="pdp-sizes__btns" id="pdpSizeBtns" role="group" aria-label="Выбор размера"></div>
         </div>
 
+        <!-- Авторские: выбор бюджета шкалой вместо размерного ряда -->
+        <div class="pdp-budget" id="pdpBudget" hidden>
+          <div class="pdp-budget__head">
+            <span class="pdp-sizes__label">Ваш бюджет</span>
+            <span class="pdp-budget__value" id="pdpBudgetValue"></span>
+          </div>
+          <input type="range" class="pdp-budget__range" id="pdpBudgetRange" min="0" max="0" step="500" value="0" aria-label="Выберите бюджет букета">
+          <div class="pdp-budget__scale">
+            <span id="pdpBudgetMin"></span>
+            <span id="pdpBudgetMax"></span>
+          </div>
+          <p class="pdp-budget__hint">Флорист соберёт авторский букет на выбранную сумму. Итоговый состав и объём согласуем в переписке.</p>
+        </div>
+
         <p class="pdp-info__desc" id="pdpDesc"></p>
 
         <!-- Подарок, получатель, способ получения и дата заполняются в корзине/оформлении -->
@@ -683,8 +697,8 @@
     <div class="custom-cursor__ring"></div>
   </div>
 
-  <script src="paloma-products.js?v=p43"></script>
-  <script src="catalog-data.js?v=p43"></script>
+  <script src="paloma-products.js?v=p44"></script>
+  <script src="catalog-data.js?v=p44"></script>
   <script src="preloader.js?v=10"></script>
   <script src="cart-core.js?v=nosize2"></script>
   <script src="script.js?v=mask2"></script>
@@ -694,7 +708,7 @@
 
   <script src="wishlist.js?v=wl1"></script>
   <script src="paloma-carousel-autoscroll.js?v=2"></script>
-  <script src="product.js?v=important3"></script>
+  <script src="product.js?v=important4"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=press1"></script>
   <script src="cookie-consent.js?v=2"></script>
