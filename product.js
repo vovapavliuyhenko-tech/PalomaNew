@@ -356,7 +356,11 @@
     if (budgetMaxEl) budgetMaxEl.textContent = formatPrice(max);
 
     function syncBudget() {
-      const val = parseInt(budgetRange.value, 10) || min;
+      const raw = parseInt(budgetRange.value, 10) || min;
+      /* Привязываем к круглым 500 ₽, но не ниже минимальной цены «от». */
+      let val = Math.round(raw / 500) * 500;
+      if (val < min) val = min;
+      if (val > max) val = max;
       sizePriceDelta = val - product.price;
       if (budgetValueEl) budgetValueEl.textContent = formatPrice(val);
       const pct = max > min ? ((val - min) / (max - min)) * 100 : 0;
