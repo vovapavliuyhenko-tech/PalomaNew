@@ -21,7 +21,7 @@
       price: 250,
       priceLabel: "от 250 ₽",
       ph: "linear-gradient(135deg,#d8c0a8,#a07848)",
-      image: "",
+      image: "images/paloma/coffee/cup-raf.jpg",
     },
     {
       id: "upsell-vase",
@@ -29,7 +29,7 @@
       price: 1500,
       priceLabel: "от 1500 ₽",
       ph: "linear-gradient(135deg,#d8e8f0,#b8c8d8)",
-      image: "",
+      image: "images/paloma/catalog/upsell-vase.jpg",
     },
     {
       id: "upsell-secateurs",
@@ -45,7 +45,7 @@
       price: 190,
       priceLabel: "от 190 ₽",
       ph: "linear-gradient(135deg,#e8c8b8,#c09878)",
-      image: "",
+      image: "images/paloma/catalog/upsell-dessert.jpg",
     },
   ];
 
