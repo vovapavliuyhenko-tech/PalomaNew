@@ -85,9 +85,9 @@
 
     let isTransitioning = false;
     let initialDone = false;
-    const revealDelay = reduceMotion ? 80 : 120;
-    const leaveDelay = reduceMotion ? 260 : 1650;
-    const cleanupDelay = reduceMotion ? 320 : 2800;
+    const revealDelay = reduceMotion ? 60 : 80;
+    const leaveDelay = reduceMotion ? 200 : 550;
+    const cleanupDelay = reduceMotion ? 260 : 850;
 
     function lockScroll() {
       document.body.classList.add("is-paloma-loading");
@@ -146,7 +146,7 @@
 
       window.setTimeout(function () {
         window.location.href = url;
-      }, reduceMotion ? 120 : 720);
+      }, reduceMotion ? 100 : 280);
     }
 
     document.addEventListener(
