@@ -272,6 +272,75 @@
     }
   }
 
+  /* ── Ограничение времени доставки ─────────────────────────────
+     Нельзя выбрать интервал/время, которое уже прошло. Для доставки
+     СЕГОДНЯ конец интервала (или точное время) должен быть минимум
+     на час позже текущего момента: интервал 09:00–12:00 можно заказать
+     не позже 11:00. Для будущих дат ограничений нет. */
+  const LEAD_MIN = 60;
+  function todayStr() {
+    return new Date().toISOString().split("T")[0];
+  }
+  function nowMinutes() {
+    const d = new Date();
+    return d.getHours() * 60 + d.getMinutes();
+  }
+  function hmToMin(hm) {
+    const p = String(hm || "").split(":");
+    return (Number(p[0]) || 0) * 60 + (Number(p[1]) || 0);
+  }
+  function minToHM(min) {
+    const h = Math.floor(min / 60), m = min % 60;
+    return String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0");
+  }
+
+  function updateTimeConstraints() {
+    const dateInput = document.getElementById("co-date");
+    const fromSel = document.getElementById("co-time-from");
+    const toSel = document.getElementById("co-time-to");
+    const exact = document.getElementById("co-exact-time");
+    const isToday = !!dateInput && dateInput.value === todayStr();
+    const cutoff = nowMinutes() + LEAD_MIN; /* конец интервала должен быть ≥ cutoff */
+
+    if (toSel) {
+      [...toSel.options].forEach((o) => {
+        o.disabled = isToday && hmToMin(o.value) < cutoff;
+      });
+      if (toSel.selectedOptions[0] && toSel.selectedOptions[0].disabled) {
+        const ok = [...toSel.options].find((o) => !o.disabled);
+        if (ok) toSel.value = ok.value;
+      }
+    }
+    if (fromSel && toSel) {
+      const toMin = hmToMin(toSel.value);
+      [...fromSel.options].forEach((o) => {
+        o.disabled = hmToMin(o.value) >= toMin;
+      });
+      if (fromSel.selectedOptions[0] && fromSel.selectedOptions[0].disabled) {
+        const ok = [...fromSel.options].find((o) => !o.disabled);
+        if (ok) fromSel.value = ok.value;
+      }
+    }
+    if (exact) {
+      exact.min = isToday ? minToHM(Math.min(cutoff, 22 * 60)) : "09:00";
+    }
+  }
+
+  /* true, если выбранное время доставки ещё не прошло (или дата не сегодня) */
+  function isDeliveryTimeValid() {
+    if (getDeliveryType() === "pickup") return true; /* самовывоз — без даты */
+    const dateInput = document.getElementById("co-date");
+    if (!dateInput || dateInput.value !== todayStr()) return true;
+    const cutoff = nowMinutes() + LEAD_MIN;
+    const timeType = document.querySelector('[name="time_type"]:checked');
+    if (timeType && timeType.value === "exact") {
+      const ex = document.getElementById("co-exact-time");
+      return !!ex && ex.value !== "" && hmToMin(ex.value) >= cutoff;
+    }
+    const to = document.getElementById("co-time-to");
+    return !!to && to.value !== "" && hmToMin(to.value) >= cutoff;
+  }
+
   function handleDeliveryToggle() {
     const type = getDeliveryType();
     const $addrFields = document.getElementById("coAddressFields");
@@ -373,6 +442,17 @@
       const exact = document.getElementById("coTimeExact");
       if (interval) interval.hidden = e.target.value !== "interval";
       if (exact) exact.hidden = e.target.value !== "exact";
+      updateTimeConstraints();
+    }
+    if (
+      e.target.id === "co-date" ||
+      e.target.id === "co-time-from" ||
+      e.target.id === "co-time-to" ||
+      e.target.id === "co-exact-time"
+    ) {
+      updateTimeConstraints();
+      const te = document.getElementById("co-time-error");
+      if (te && isDeliveryTimeValid()) te.hidden = true;
     }
     if (e.target.id === "co-add-card") {
       const tf = document.getElementById("coCardTextField");
@@ -497,6 +577,12 @@
         addrInput.classList.remove("is-error");
       }
     }
+
+    /* время доставки не должно быть уже прошедшим (для сегодняшней даты) */
+    const timeErr = document.getElementById("co-time-error");
+    const timeOk = isDeliveryTimeValid();
+    if (timeErr) timeErr.hidden = timeOk;
+    if (!timeOk) valid = false;
 
     const recipientType = document.querySelector(
       '[name="recipient_type"]:checked',
@@ -787,6 +873,7 @@
     if (dateInput) {
       dateInput.min = new Date().toISOString().split("T")[0];
     }
+    updateTimeConstraints();
 
     $form?.querySelectorAll(".co-input").forEach((input) => {
       input.addEventListener("input", () => {

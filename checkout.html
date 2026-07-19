@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" href="assets/icons/favicon-giraffe.png?v=2">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="styles.css?v=ph13">
-  <link rel="stylesheet" href="checkout.css?v=w8">
+  <link rel="stylesheet" href="checkout.css?v=w9">
   <link rel="canonical" href="https://paloma.website/checkout.html">
   <meta name="robots" content="noindex, follow">
 </head>
@@ -277,6 +277,10 @@
                      min="09:00" max="22:00">
             </div>
 
+            <p class="co-error" id="co-time-error" role="alert" hidden>
+              Это время уже прошло. Для доставки сегодня выбирайте время не раньше чем через час.
+            </p>
+
             <div class="co-notice" id="coDeliveryNotice">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="1.5" aria-hidden="true">
@@ -511,7 +515,7 @@
 
   <script src="cart-core.js?v=nosize2"></script>
   <script src="payment-config.js?v=pk4"></script>
-  <script src="checkout.js?v=co16"></script>
+  <script src="checkout.js?v=co17"></script>
   <script src="maintenance-banner.js?v=1"></script>
 </body>
 </html>

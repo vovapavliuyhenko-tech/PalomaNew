@@ -463,6 +463,11 @@ body.checkout-page .co-main {
   flex-direction: column;
   gap: 12px;
 }
+/* при самовывозе/«узнать у получателя» блок адреса прячется через [hidden] —
+   без этого правила display:flex перебивал бы атрибут и поля оставались видны */
+.co-address-fields[hidden] {
+  display: none;
+}
 
 .co-time-options {
   display: flex;
