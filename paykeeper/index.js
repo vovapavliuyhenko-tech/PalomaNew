@@ -167,10 +167,11 @@ function allowedRange(id) {
     const base = Number(p.price) || 0;
     const addons = (p.addons || []).reduce((s, a) => s + (Number(a.price) || 0), 0);
     /* Авторские — свободный выбор бюджета шкалой на странице товара.
-       Верхняя граница считается как на фронте: max(base*3 округл., base+10000). */
+       Диапазон фиксированный, как на фронте: от 3000 ₽ до 30000 ₽
+       (для дорогих букетов от 18000 ₽ — до 40000 ₽). */
     if ((p.categories || []).includes("authors")) {
-      const budgetMax = Math.max(Math.round((base * 3) / 1000) * 1000, base + 10000);
-      return { min: base, max: budgetMax + addons };
+      const budgetMax = base >= 18000 ? 40000 : 30000;
+      return { min: 3000, max: budgetMax + addons };
     }
     const maxDelta = (p.sizes || []).reduce((m, s) => Math.max(m, Number(s.priceDelta) || 0), 0);
     return { min: base, max: base + maxDelta + addons };

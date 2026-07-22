@@ -65,7 +65,7 @@
   const sizeBtnsEl = document.getElementById("pdpSizeBtns");
   const budgetEl = document.getElementById("pdpBudget");
   const budgetRange = document.getElementById("pdpBudgetRange");
-  const budgetValueEl = document.getElementById("pdpBudgetValue");
+  const budgetInput = document.getElementById("pdpBudgetInput");
   const budgetMinEl = document.getElementById("pdpBudgetMin");
   const budgetMaxEl = document.getElementById("pdpBudgetMax");
   const qtyVal = document.getElementById("pdpQtyVal");
@@ -99,6 +99,7 @@
   let selectedSize = null;
   let sizePriceDelta = 0;
   let budgetMode = false;
+  let budgetTotal = 0;
   let toastTimer = null;
 
   function esc(str) {
@@ -209,10 +210,15 @@
 
   function updatePriceDisplay() {
     if (!priceEl || !product) return;
-    const total = product.price + sizePriceDelta;
-    /* В режиме шкалы бюджета цена уже выбрана точно — без «от». */
+    /* Для авторских цена под названием — стоимость букета как на фото (product.price),
+       она НЕ меняется при движении ползунка бюджета.
+       Для товаров с размерным рядом считаем от истинной базы (rawProduct.price = S),
+       прибавляя дельту выбранного размера. */
+    const base =
+      rawProduct && rawProduct.price != null ? rawProduct.price : product.price;
+    const total = budgetMode ? product.price : base + sizePriceDelta;
     priceEl.textContent =
-      (product.priceFrom && !budgetMode ? "от " : "") + formatPrice(total);
+      (product.priceFrom ? "от " : "") + formatPrice(total);
   }
 
   function showNotFound() {
@@ -308,14 +314,24 @@
     sizesEl.hidden = false;
     sizeBtnsEl.innerHTML = "";
 
+    /* По умолчанию выбираем размер «как на фото» (photoSize), иначе первый. */
+    const photoSize = rawProduct?.photoSize;
+    let defaultIdx = 0;
+    if (photoSize) {
+      const idx = sizes.findIndex(
+        (s) => (s.code || s.label) === photoSize,
+      );
+      if (idx >= 0) defaultIdx = idx;
+    }
+
     sizes.forEach((size, i) => {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "pdp-size-btn" + (i === 0 ? " is-active" : "");
+      btn.className = "pdp-size-btn" + (i === defaultIdx ? " is-active" : "");
       btn.textContent = size.label || size.code;
       btn.dataset.size = size.code || size.label;
       btn.dataset.delta = String(size.priceDelta || 0);
-      btn.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+      btn.setAttribute("aria-pressed", i === defaultIdx ? "true" : "false");
 
       btn.addEventListener("click", () => {
         sizeBtnsEl.querySelectorAll(".pdp-size-btn").forEach((b) => {
@@ -332,44 +348,88 @@
       sizeBtnsEl.appendChild(btn);
     });
 
-    selectedSize = sizes[0].code || sizes[0].label;
-    sizePriceDelta = sizes[0].priceDelta || 0;
+    selectedSize = sizes[defaultIdx].code || sizes[defaultIdx].label;
+    sizePriceDelta = sizes[defaultIdx].priceDelta || 0;
+    /* Цена под названием должна учитывать размер «как на фото» (photoSize),
+       поэтому пересчитываем после установки дельты по умолчанию. */
+    updatePriceDisplay();
   }
 
-  /* Шкала бюджета для авторских: клиент выбирает сумму, флорист собирает под неё. */
+  /* Шкала бюджета для авторских: клиент выбирает сумму, флорист собирает под неё.
+     Диапазон фиксированный: от 3000 ₽ до 30000 ₽ (для дорогих букетов — до 40000 ₽).
+     Цена под названием остаётся стоимостью «как на фото», ползунок влияет только
+     на итог в корзине. По умолчанию бюджет равен цене букета на фото. */
   function renderBudget() {
     if (!budgetEl || !budgetRange) return;
 
-    const min = product.price;
-    const max = Math.max(Math.round((min * 3) / 1000) * 1000, min + 10000);
+    const base = product.price;
+    const min = 3000;
+    const max = base >= 18000 ? 40000 : 30000;
+    let def = Math.round(base / 500) * 500;
+    if (def < min) def = min;
+    if (def > max) def = max;
 
     budgetRange.min = String(min);
     budgetRange.max = String(max);
     budgetRange.step = "500";
-    budgetRange.value = String(min);
+    budgetRange.value = String(def);
 
     budgetMode = true;
     selectedSize = "budget";
-    sizePriceDelta = 0;
+    /* budgetTotal — итоговая сумма бюджета (уходит в корзину), отдельно от base. */
+    budgetTotal = def;
 
+    if (budgetInput) {
+      budgetInput.min = String(min);
+      budgetInput.max = String(max);
+      budgetInput.step = "500";
+      budgetInput.value = String(def);
+    }
     if (budgetMinEl) budgetMinEl.textContent = formatPrice(min);
     if (budgetMaxEl) budgetMaxEl.textContent = formatPrice(max);
 
-    function syncBudget() {
-      const raw = parseInt(budgetRange.value, 10) || min;
-      /* Привязываем к круглым 500 ₽, но не ниже минимальной цены «от». */
-      let val = Math.round(raw / 500) * 500;
+    function clampSnap(raw) {
+      let val = Math.round((parseInt(raw, 10) || min) / 500) * 500;
       if (val < min) val = min;
       if (val > max) val = max;
-      sizePriceDelta = val - product.price;
-      if (budgetValueEl) budgetValueEl.textContent = formatPrice(val);
+      return val;
+    }
+
+    function paint(val) {
+      budgetTotal = val;
       const pct = max > min ? ((val - min) / (max - min)) * 100 : 0;
       budgetRange.style.setProperty("--pct", pct + "%");
       updatePriceDisplay();
     }
 
-    budgetRange.addEventListener("input", syncBudget);
-    syncBudget();
+    /* Ползунок → синхроним поле ввода на лету. */
+    budgetRange.addEventListener("input", () => {
+      const val = clampSnap(budgetRange.value);
+      if (budgetInput) budgetInput.value = String(val);
+      paint(val);
+    });
+
+    if (budgetInput) {
+      /* Поле ввода → двигаем ползунок. Привязку к 500 делаем по завершении
+         ввода (change/blur), чтобы не мешать печатать промежуточные цифры. */
+      budgetInput.addEventListener("input", () => {
+        const raw = parseInt(budgetInput.value, 10);
+        if (!Number.isFinite(raw)) return;
+        let val = raw;
+        if (val < min) val = min;
+        if (val > max) val = max;
+        budgetRange.value = String(Math.round(val / 500) * 500);
+        paint(Math.round(val / 500) * 500);
+      });
+      budgetInput.addEventListener("change", () => {
+        const val = clampSnap(budgetInput.value);
+        budgetInput.value = String(val);
+        budgetRange.value = String(val);
+        paint(val);
+      });
+    }
+
+    paint(def);
 
     if (sizesEl) sizesEl.hidden = true;
     budgetEl.hidden = false;
@@ -503,7 +563,9 @@
     addToCartBtn?.addEventListener("click", () => {
       if (!product || !rawProduct) return;
 
-      const unitPrice = product.price + sizePriceDelta;
+      const base =
+        rawProduct && rawProduct.price != null ? rawProduct.price : product.price;
+      const unitPrice = budgetMode ? budgetTotal : base + sizePriceDelta;
       const sizeLabel = budgetMode
         ? `Бюджет ${formatPrice(unitPrice)}`
         : sizeBtnsEl?.querySelector(".pdp-size-btn.is-active")?.textContent?.trim() ||

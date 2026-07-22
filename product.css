@@ -294,9 +294,44 @@ body.product-page {
   margin-bottom: 12px;
 }
 
-.pdp-budget__value {
+.pdp-budget__field {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(27, 26, 24, 0.22);
+  border-radius: 10px;
+  padding: 6px 10px;
+  background: #fff;
+  transition: border-color 0.15s ease;
+}
+
+.pdp-budget__field:focus-within {
+  border-color: var(--color-text, var(--ink, #1B1A18));
+}
+
+.pdp-budget__input {
+  width: 84px;
+  border: none;
+  outline: none;
+  background: transparent;
   font-family: var(--font-sans, var(--sans, "Manrope"), sans-serif);
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text, var(--ink, #1B1A18));
+  text-align: right;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.pdp-budget__input::-webkit-outer-spin-button,
+.pdp-budget__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pdp-budget__cur {
+  font-family: var(--font-sans, var(--sans, "Manrope"), sans-serif);
+  font-size: 18px;
   font-weight: 600;
   color: var(--color-text, var(--ink, #1B1A18));
 }

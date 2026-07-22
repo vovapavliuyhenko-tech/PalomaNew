@@ -57,15 +57,32 @@
         ? [p.category]
         : [];
     const pg = p.placeholderGradient || {};
+
+    /* photoSize — размер, показанный на фотографии. Цена под названием и на карточке
+       каталога должна соответствовать именно этому размеру (base + его priceDelta).
+       Такая цена точная, поэтому «от» убираем. */
+    let displayPrice = p.price;
+    let priceFrom = !!p.priceFrom;
+    if (p.photoSize && Array.isArray(p.sizes)) {
+      const s = p.sizes.find(
+        (x) => (x.code || x.label) === p.photoSize,
+      );
+      if (s) {
+        displayPrice = p.price + (s.priceDelta || 0);
+        priceFrom = false;
+      }
+    }
+
     return {
       id: p.id,
       name: p.name,
       categories: cats,
       category: cats[0] || "online",
       categoryLabel: CATEGORY_LABELS[cats[0]] || "",
-      price: p.price,
+      price: displayPrice,
+      photoSize: p.photoSize || null,
       /* Цена «от» — итог согласует менеджер (свадебные букеты идут диапазоном) */
-      priceFrom: !!p.priceFrom,
+      priceFrom: priceFrom,
       description: p.composition || "",
       composition: p.composition || "",
       desc: p.desc || "",

@@ -3,6 +3,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "m1",
     slug: "belaya-gortenziya",
+    photoSize: "XXL",
     image: "images/paloma/catalog/mono-hydrangea-white.jpg",
     name: "Белая гортензия",
     price: 2300,
@@ -31,6 +32,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "m2",
     slug: "roza-mandarin",
+    photoSize: "L",
     image: "images/paloma/catalog/mono-rose-mandarin.jpg",
     name: "Роза сорта Мандарин",
     price: 3320,
@@ -58,6 +60,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "m3",
     slug: "roza-melon",
+    photoSize: "XL",
     image: "images/paloma/catalog/mono-rose-melon.jpg",
     name: "Роза сорта Мелон",
     price: 4220,
@@ -85,6 +88,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "m4",
     slug: "francuzskaya-krasnaya-roza",
+    photoSize: "S",
     image: "images/paloma/catalog/mono-rose-french-red.jpg",
     name: "Французская красная роза",
     price: 3320,
@@ -112,6 +116,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "m5",
     slug: "belaya-klassicheskaya-roza",
+    photoSize: "XL",
     image: "images/paloma/catalog/mono-rose-white.jpg",
     name: "Белая классическая роза",
     price: 3680,
@@ -139,6 +144,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "m6",
     slug: "rozovaya-gortenziya",
+    photoSize: "M",
     image: "images/paloma/catalog/mono-hydrangea-pink.jpg",
     name: "Розовая гортензия",
     price: 2300,
@@ -167,6 +173,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "m7",
     slug: "golubaya-gortenziya",
+    photoSize: "M",
     image: "images/paloma/catalog/mono-hydrangea-blue.jpg",
     name: "Голубая гортензия",
     price: 2300,
@@ -195,6 +202,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "m8",
     slug: "francuzskaya-rozovaya-roza",
+    photoSize: "S",
     image: "images/paloma/catalog/mono-rose-french-pink.jpg",
     name: "Французская розовая роза",
     price: 3680,
@@ -222,6 +230,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "m9",
     slug: "liliya",
+    photoSize: "XL",
     image: "images/paloma/catalog/mono-lily.jpg",
     name: "Лилия",
     price: 9100,
@@ -249,6 +258,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "d1",
     slug: "duo-piches",
+    photoSize: "S",
     image: "images/paloma/catalog/duo-peaches.jpg",
     name: "Дуобукет «Пичес»",
     price: 5700,
@@ -277,6 +287,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "d2",
     slug: "duo-mondial",
+    photoSize: "XL",
     image: "images/paloma/catalog/duo-frrose.jpg",
     name: "Французская роза",
     price: 3930,
@@ -468,6 +479,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "n4",
     slug: "georgin-piches",
+    photoSize: "M",
     image: "images/paloma/catalog/n4.jpg",
     name: "Георгин Пичес",
     price: 8050,
@@ -782,6 +794,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "n23",
     slug: "roza-fatima",
+    photoSize: "M",
     image: "images/paloma/catalog/n23.jpg",
     name: "Роза Фатима",
     price: 5030,
@@ -867,6 +880,7 @@ window.PALOMA_PRODUCTS = [
   {
     id: "n28",
     slug: "roza-silva-pink",
+    photoSize: "XL",
     image: "images/paloma/catalog/n28.jpg",
     name: "Роза Сильва Пинк",
     price: 7280,
