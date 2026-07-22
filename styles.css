@@ -732,6 +732,15 @@ body.is-paloma-loading .custom-cursor {
     color 220ms var(--ease-soft);
 }
 
+/* Расширяем область клика за пределы видимого кружка (не меняя его размер),
+   чтобы в иконки избранного и корзины было проще попадать. */
+.site-header__icon::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+}
+
 a.site-header__icon {
   text-decoration: none;
   color: var(--graphite);
