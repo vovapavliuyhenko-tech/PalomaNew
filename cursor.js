@@ -90,6 +90,10 @@
   /* Тёмные секции — кружок «смотреть» становится розовым */
   const DARK_SELECTOR = ".site-footer, [data-cursor-dark]";
 
+  /* Элементы, где большой кружок «смотреть» НЕ нужен: он перекрывает
+     маленькие иконки в шапке (избранное, корзина). Чернильная капля остаётся. */
+  const NO_LOOK_SELECTOR = ".site-header__icon, .site-header__cart";
+
   /* ── Точка цепочки ── */
   class Dot {
     constructor(index) {
@@ -210,7 +214,7 @@
         setTextMode(true);
         return;
       }
-      if (el.closest(HOVER_SELECTOR)) setHover(true);
+      if (el.closest(HOVER_SELECTOR) && !el.closest(NO_LOOK_SELECTOR)) setHover(true);
     },
     { passive: true },
   );
@@ -224,7 +228,12 @@
         return;
       }
       const rel = e.relatedTarget;
-      if (!(rel instanceof Element) || !rel.closest(HOVER_SELECTOR)) setHover(false);
+      if (
+        !(rel instanceof Element) ||
+        !rel.closest(HOVER_SELECTOR) ||
+        rel.closest(NO_LOOK_SELECTOR)
+      )
+        setHover(false);
     },
     { passive: true },
   );
