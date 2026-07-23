@@ -24,23 +24,66 @@
   body.is-nav-open .paloma-maint { display: none !important; }
 }
 
-/* ─── КОФЕЙНЯ: блоки «Лимонады» и «Десерты» на телефоне/планшете ───
-   Текстовый блок с кнопкой наезжает на фото/видео (карточка наплывает
-   на фото со скруглённым верхом) — как просил владелец. */
+/* ─── КОФЕЙНЯ: блоки «Лимонады», «Десерты», «Кофе на дом» ───
+   Фото/видео «прилипает» сверху, а текстовая карточка со скруглённым
+   верхом НАПЛЫВАЕТ ПОВЕРХ него при скролле (как шторки на ПК). */
 @media (max-width: 900px) {
-  #cf-lemon .ea-hero__right,
-  #cf-sweet .ea-hero__right {
-    position: relative;
-    z-index: 4;
-    margin-top: -44px;
-    padding-top: 44px;
-    border-radius: 28px 28px 0 0;
-    background: #FFFFFF;
-  }
-  #cf-lemon .ea-hero__left,
-  #cf-sweet .ea-hero__left,
+  /* фото/видео прилипает к верху и остаётся, пока листаем секцию */
   #cf-lemon .cf-hero__left,
-  #cf-sweet .cf-hero__left { overflow: visible !important; }
+  #cf-sweet .cf-hero__left,
+  .cf-philo .ea-philo__media {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1 !important;
+    align-self: start !important;
+  }
+  /* в блоке «Кофе на дом» видео должно быть сверху (по умолчанию текст первый) */
+  .cf-philo .ea-philo__media { order: -1 !important; }
+
+  /* текстовая карточка — поверх фото, непрозрачная, со скруглённым верхом */
+  #cf-lemon .ea-hero__right,
+  #cf-sweet .ea-hero__right,
+  .cf-philo .ea-philo__text {
+    position: relative;
+    z-index: 3;
+    background: #FFFFFF;
+    border-radius: 28px 28px 0 0;
+    padding-top: 40px;
+    box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.12);
+  }
+  #cf-lemon.ea-panel,
+  #cf-sweet.ea-panel,
+  .cf-philo.ea-panel,
+  #cf-lemon .ea-hero__left,
+  #cf-sweet .ea-hero__left { overflow: visible !important; }
+
+  /* ─── ЭТАПЫ «01/02/03»: листаются вбок свайпом (как на ПК) ─── */
+  #cf-steps { height: auto !important; }
+  #cf-steps .ea-proc__sticky {
+    position: static !important;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+  #cf-steps .ea-proc__track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    height: auto !important;
+    transform: none !important;
+    gap: 14px !important;
+    padding: 0 20px 12px !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  #cf-steps .ea-proc__panel {
+    flex: 0 0 82% !important;
+    width: auto !important;
+    height: auto !important;
+    position: relative !important;
+    scroll-snap-align: start;
+  }
+  #cf-steps .ea-proc__track::-webkit-scrollbar { display: none; }
 }
 
 @media (max-width: 600px) {
