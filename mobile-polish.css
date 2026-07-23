@@ -1,0 +1,36 @@
+/* ============================================================
+   PALOMA — мобильная доводка (грузится ПОСЛЕДНИМ, только телефоны).
+   Все правила внутри @media (max-width:600px) — десктоп не затрагивается.
+   Цель: компактные заголовки как в iOS, плотный ритм, крупная зона нажатия.
+   ============================================================ */
+@media (max-width: 600px) {
+
+  /* ─── ГЛАВНАЯ ─────────────────────────────────────────── */
+
+  /* Заголовки секций — компактно (было 36–40px → 28px) */
+  .home-showcase__title,
+  .home-categories__title,
+  .home-subscription__title,
+  .home-blog__title {
+    font-size: 28px !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.01em;
+  }
+  .fmt__title { font-size: 26px !important; line-height: 1.15 !important; }
+  .home-article-card__title { font-size: 22px !important; line-height: 1.2 !important; }
+
+  /* CTA-ссылки — читаемее и с нормальной зоной нажатия (было 10–11px / 25px) */
+  .home-showcase__catalog-link,
+  .home-product-card__more {
+    font-size: 13px !important;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Плотнее вертикальный ритм секций (было 48–72px) */
+  .home-showcase   { padding-top: 34px !important; padding-bottom: 34px !important; }
+  .home-categories { padding-top: 40px !important; padding-bottom: 44px !important; }
+  .home-subscription { padding-top: 40px !important; padding-bottom: 40px !important; }
+  .home-blog       { padding-top: 34px !important; padding-bottom: 34px !important; }
+}
