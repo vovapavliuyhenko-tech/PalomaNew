@@ -24,6 +24,25 @@
   body.is-nav-open .paloma-maint { display: none !important; }
 }
 
+/* ─── КОФЕЙНЯ: блоки «Лимонады» и «Десерты» на телефоне/планшете ───
+   Текстовый блок с кнопкой наезжает на фото/видео (карточка наплывает
+   на фото со скруглённым верхом) — как просил владелец. */
+@media (max-width: 900px) {
+  #cf-lemon .ea-hero__right,
+  #cf-sweet .ea-hero__right {
+    position: relative;
+    z-index: 4;
+    margin-top: -44px;
+    padding-top: 44px;
+    border-radius: 28px 28px 0 0;
+    background: #FFFFFF;
+  }
+  #cf-lemon .ea-hero__left,
+  #cf-sweet .ea-hero__left,
+  #cf-lemon .cf-hero__left,
+  #cf-sweet .cf-hero__left { overflow: visible !important; }
+}
+
 @media (max-width: 600px) {
 
   /* ─── ГЛАВНАЯ ─────────────────────────────────────────── */
