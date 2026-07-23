@@ -3,6 +3,22 @@
    Все правила внутри @media (max-width:600px) — десктоп не затрагивается.
    Цель: компактные заголовки как в iOS, плотный ритм, крупная зона нажатия.
    ============================================================ */
+/* ─── БУРГЕР-МЕНЮ (телефоны И планшеты — бургер активен до 1024px) ───
+   Верхний отступ панели был 140px (пустое поле), из-за чего нижние пункты
+   уходили за экран и меню «не показывалось полностью». Подтягиваем контент
+   под крестик, уплотняем пункты и включаем плавный скролл. */
+@media (max-width: 1024px) {
+  .site-header__mobile-panel {
+    padding-top: calc(108px + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: 22px !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  .site-header__mobile-link { padding: 13px 0 !important; }
+  .site-header__mobile-phone { margin-top: 16px !important; }
+  .site-header__mobile-footer { margin-top: 16px !important; padding-top: 14px !important; gap: 10px !important; }
+}
+
 @media (max-width: 600px) {
 
   /* ─── ГЛАВНАЯ ─────────────────────────────────────────── */
@@ -25,19 +41,6 @@
      возвращаем анимацию даже при включённом «Уменьшении движения» на телефоне
      (иначе сторона меняется мгновенно). */
   .fmt__flip { transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) !important; }
-
-  /* ─── БУРГЕР-МЕНЮ: панель не помещалась ───────────────────
-     Верхний отступ был 140px (пустое поле), из-за чего низ меню уходил
-     за экран. Подтягиваем контент под крестик и уплотняем пункты. */
-  .site-header__mobile-panel {
-    padding-top: calc(108px + env(safe-area-inset-top, 0px)) !important;
-    padding-bottom: 22px !important;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-  }
-  .site-header__mobile-link { padding: 13px 0 !important; }
-  .site-header__mobile-phone { margin-top: 16px !important; }
-  .site-header__mobile-footer { margin-top: 16px !important; padding-top: 14px !important; gap: 10px !important; }
 
   /* Ссылка-«Все товары» под секцией категорий — была 19px, крупновато */
   .home-categories__all { font-size: 15px !important; }
