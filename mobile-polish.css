@@ -7,17 +7,21 @@
 
   /* ─── ГЛАВНАЯ ─────────────────────────────────────────── */
 
-  /* Заголовки секций — компактно (было 36–40px → 28px) */
+  /* Заголовки секций — компактно (было 36–40px) */
   .home-showcase__title,
   .home-categories__title,
-  .home-subscription__title,
   .home-blog__title {
-    font-size: 28px !important;
+    font-size: 25px !important;
     line-height: 1.15 !important;
     letter-spacing: -0.01em;
   }
-  .fmt__title { font-size: 26px !important; line-height: 1.15 !important; }
+  /* Декоративный шрифт читается крупнее — делаем чуть меньше */
+  .home-subscription__title { font-size: 24px !important; line-height: 1.15 !important; }
+  .fmt__title { font-size: 25px !important; line-height: 1.15 !important; }
   .home-article-card__title { font-size: 22px !important; line-height: 1.2 !important; }
+
+  /* Ссылка-«Все товары» под секцией категорий — была 19px, крупновато */
+  .home-categories__all { font-size: 15px !important; }
 
   /* CTA-ссылки — читаемее и с нормальной зоной нажатия (было 10–11px / 25px) */
   .home-showcase__catalog-link,
