@@ -134,6 +134,108 @@ async function releaseExpired() {
   });
 }
 
+// ── Оформление: создать заказ и забронировать коды под маркированные позиции ─
+// lines: [{ sku, name, qty, price, marked }]. Всё в ОДНОЙ транзакции:
+// если под какой-то товар не хватило свободных кодов — откатывается целиком
+// (заказ не создаётся, брони не остаются). Повторный вызов того же заказа
+// (двойной клик «Оплатить») не бронирует заново — отдаёт уже выданные коды.
+async function createOrderWithReservations(externalId, amount, lines) {
+  return withTx(async (client) => {
+    const existing = (await client.query(
+      `SELECT id FROM orders WHERE external_id = $1 FOR UPDATE`,
+      [externalId],
+    )).rows[0];
+
+    if (existing) {
+      // Заказ уже есть — переиспользуем ранее выданные коды (идемпотентность).
+      const codes = (await client.query(
+        `SELECT id, code, code_b64, item_type, sku, order_item_id
+           FROM marking_codes
+          WHERE order_id = $1 AND status IN ('reserved', 'sold')
+          ORDER BY id`,
+        [existing.id],
+      )).rows;
+      return { orderId: existing.id, reused: true, codes };
+    }
+
+    const ord = (await client.query(
+      `INSERT INTO orders (external_id, amount, status) VALUES ($1, $2, 'new') RETURNING id`,
+      [externalId, amount],
+    )).rows[0];
+
+    const codes = [];
+    for (const ln of lines) {
+      const oi = (await client.query(
+        `INSERT INTO order_items (order_id, sku, name, qty, price, marked)
+         VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+        [ord.id, ln.sku, ln.name, ln.qty, ln.price, !!ln.marked],
+      )).rows[0];
+
+      if (ln.marked) {
+        const got = await reserveMany(client, ln.sku, ln.qty, ord.id, oi.id);
+        got.forEach((g) => codes.push({ ...g, sku: ln.sku, order_item_id: oi.id }));
+      }
+    }
+    return { orderId: ord.id, reused: false, codes };
+  });
+}
+
+// Записать id счёта PayKeeper на заказ и пометить «ожидает оплаты».
+async function attachInvoice(externalId, pkInvoiceId) {
+  await query(
+    `UPDATE orders SET pk_invoice_id = $2, status = 'pending' WHERE external_id = $1`,
+    [externalId, pkInvoiceId],
+  );
+}
+
+// Оплата не состоялась / PayKeeper отказал — вернуть брони в «свободен».
+async function cancelOrderRelease(externalId, reason) {
+  return withTx(async (client) => {
+    const ord = (await client.query(
+      `SELECT id FROM orders WHERE external_id = $1 FOR UPDATE`,
+      [externalId],
+    )).rows[0];
+    if (!ord) return 0;
+
+    const rows = (await client.query(
+      `SELECT id FROM marking_codes WHERE order_id = $1 AND status = 'reserved' FOR UPDATE`,
+      [ord.id],
+    )).rows;
+    for (const r of rows) {
+      await client.query(
+        `UPDATE marking_codes
+            SET status = 'free', order_id = NULL, order_item_id = NULL,
+                reserved_until = NULL, updated_at = now()
+          WHERE id = $1`,
+        [r.id],
+      );
+      await logCode(client, r.id, "reserved", "free", "checkout", reason || "payment failed", ord.id);
+    }
+    await client.query(`UPDATE orders SET status = 'canceled' WHERE id = $1`, [ord.id]);
+    return rows.length;
+  });
+}
+
+// Оплата прошла (webhook) — найти заказ по номеру и перевести коды в «продан».
+async function markPaidByExternalId(externalId) {
+  return withTx(async (client) => {
+    const ord = (await client.query(
+      `SELECT id, status FROM orders WHERE external_id = $1 FOR UPDATE`,
+      [externalId],
+    )).rows[0];
+    if (!ord) return { found: false, sold: 0 };
+    // Идемпотентность: если уже оплачен — просто выходим, второй раз не продаём.
+    if (ord.status === "paid") return { found: true, alreadyPaid: true, sold: 0 };
+
+    const sold = await markOrderSold(client, ord.id, "webhook");
+    await client.query(
+      `UPDATE orders SET status = 'paid', paid_at = now() WHERE id = $1`,
+      [ord.id],
+    );
+    return { found: true, sold };
+  });
+}
+
 // ── Импорт кодов на склад (админка) ────────────────────────────────────────
 // sku — товар, codes — массив строк. Дубликаты тихо пропускаем (уникальный код).
 // Возвращает сколько добавлено / пропущено.
@@ -199,6 +301,10 @@ module.exports = {
   runMigrations,
   importCodes,
   codesStats,
+  createOrderWithReservations,
+  attachInvoice,
+  cancelOrderRelease,
+  markPaidByExternalId,
   logCode,
   RESERVE_TTL_MIN,
 };

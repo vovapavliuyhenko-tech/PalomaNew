@@ -233,6 +233,75 @@ function verifyCart(body) {
   return { names, total: sum };
 }
 
+/* ── МАРКИРОВКА: разбор позиций заказа ──────────────────────────────────────
+   Товар считается маркированным, если у него в каталоге стоит marked: true.
+   Тумблер выключен по умолчанию → обычные букеты идут прежним путём. */
+function catalogIdOf(lineId) {
+  const m = String(lineId || "").match(CATALOG_ID_RE);
+  return m ? m[1] : null;
+}
+function buildOrderLines(items) {
+  return (Array.isArray(items) ? items : []).map((it) => {
+    const cid = catalogIdOf(it.id);
+    const p = cid ? PRODUCTS.find((x) => x.id === cid) : null;
+    return {
+      sku: (p && p.id) || cid || String(it.id),
+      name: String(it.name || (p && p.name) || "Позиция").slice(0, 128),
+      qty: Number(it.qty) || 1,
+      price: Number(it.price) || 0,
+      marked: !!(p && p.marked),
+    };
+  });
+}
+function detectMarkedLines(items) {
+  return buildOrderLines(items).filter((l) => l.marked);
+}
+
+/* ⚠️⚠️ ФОРМАТ ДЛЯ PAYKEEPER — ПОДТВЕРДИТЬ У ПОДДЕРЖКИ ДО БОЕВОГО ЗАПУСКА ⚠️⚠️
+   Метод «выставление счёта» принимает структурную корзину внутри service_name
+   через метку ;PKC|<json-массив позиций>|; . Поля позиции — по справке PayKeeper.
+   tax берём из переменной PK_TAX (код налога вашей системы) — тоже уточнить.
+   Пока ни один товар не marked:true — эта функция в бою не вызывается. */
+function buildMarkedServiceName(orderLines, reservation, delivery) {
+  const PK_TAX = process.env.PK_TAX || "none";
+  const bySku = {};
+  (reservation.codes || []).forEach((c) => {
+    (bySku[c.sku] = bySku[c.sku] || []).push(c);
+  });
+
+  const positions = [];
+  for (const ln of orderLines) {
+    if (ln.marked) {
+      // Маркированный товар — по одной позиции на каждую единицу, у каждой свой код.
+      for (let i = 0; i < ln.qty; i++) {
+        const code = (bySku[ln.sku] || []).shift();
+        const pos = {
+          name: ln.name, price: ln.price, quantity: 1, sum: ln.price,
+          tax: PK_TAX, payment_type: "full",
+          item_type: (code && code.item_type) || "goods_coded",
+        };
+        if (code && code.code_b64) pos.item_code_b64 = code.code_b64;
+        else pos.item_code = code ? code.code : "";
+        positions.push(pos);
+      }
+    } else {
+      positions.push({
+        name: ln.name, price: ln.price, quantity: ln.qty, sum: ln.price * ln.qty,
+        tax: PK_TAX, payment_type: "full", item_type: "goods_uncoded",
+      });
+    }
+  }
+  if (delivery > 0) {
+    positions.push({
+      name: "Доставка", price: delivery, quantity: 1, sum: delivery,
+      tax: PK_TAX, payment_type: "full", item_type: "service",
+    });
+  }
+
+  const shortName = positions.map((p) => p.name).join(", ").slice(0, 120);
+  return shortName + ";PKC|" + JSON.stringify(positions) + "|;";
+}
+
 /* ── HTTP-обвязка ── */
 function cors(origin) {
   const allow = ORIGINS.includes(origin) ? origin : SITE;
@@ -271,6 +340,24 @@ async function createInvoice(body, origin) {
   const cart = verifyCart(body);
   if (cart.error) return reply(400, { error: cart.error }, origin);
 
+  // ── Маркировка: если в заказе есть marked-товар — бронируем коды ДО оплаты.
+  //    Обычный заказ (без marked-товаров) сюда не заходит и базу не трогает. */
+  const markedLines = detectMarkedLines(body.items);
+  let reservation = null;
+  if (markedLines.length) {
+    const marking = require("./marking");
+    try {
+      reservation = await marking.createOrderWithReservations(
+        orderId, cart.total, buildOrderLines(body.items),
+      );
+    } catch (e) {
+      if (e && e.code === "NO_FREE_CODE")
+        return reply(409, { error: "Нет свободных кодов маркировки для товара: " + e.sku }, origin);
+      console.error("[marking] reserve error", e && e.stack);
+      return reply(500, { error: "Ошибка резервирования кода маркировки" }, origin);
+    }
+  }
+
   const tokenRes = await fetch(`${PK_SERVER}/info/settings/token/`, {
     headers: { Authorization: AUTH },
   });
@@ -286,7 +373,10 @@ async function createInvoice(body, origin) {
     pay_amount: cart.total.toFixed(2),
     clientid: String(body.clientName || "Покупатель PALOMA").slice(0, 128),
     orderid: orderId,
-    service_name: cart.names.join(", ").slice(0, 250),
+    // Маркированный заказ уходит структурной корзиной (с кодами) через метку PKC.
+    service_name: reservation
+      ? buildMarkedServiceName(buildOrderLines(body.items), reservation, Number(body.delivery) || 0).slice(0, 4000)
+      : cart.names.join(", ").slice(0, 250),
   });
   if (body.email) form.set("client_email", String(body.email).slice(0, 128));
   if (body.phone) form.set("client_phone", String(body.phone).replace(/\D/g, "").slice(0, 16));
@@ -303,8 +393,19 @@ async function createInvoice(body, origin) {
   const invoiceId = invJson && invJson.invoice_id;
 
   if (!invRes.ok || !invoiceId) {
+    // Счёт не создан — возвращаем зарезервированные коды обратно на склад.
+    if (reservation) {
+      try { await require("./marking").cancelOrderRelease(orderId, "invoice failed"); }
+      catch (e) { console.error("[marking] release on fail", e && e.message); }
+    }
     console.error("[paykeeper] invoice failed", invRes.status, JSON.stringify(invJson));
     return reply(502, { error: invJson.msg || "PayKeeper не принял заказ" }, origin);
+  }
+
+  // Счёт создан — привязываем его к заказу (для сопоставления при оплате).
+  if (reservation) {
+    try { await require("./marking").attachInvoice(orderId, invoiceId); }
+    catch (e) { console.error("[marking] attachInvoice", e && e.message); }
   }
 
   console.log("[paykeeper] invoice", orderId, cart.total, invoiceId);
@@ -376,8 +477,19 @@ async function handleWebhook(event) {
     return { statusCode: 401, headers: { "Content-Type": "text/plain" }, body: "Error! Bad signature" };
   }
 
-  /* Базы у сайта нет — пишем в лог функции. Сам платёж менеджер видит в ЛК PayKeeper. */
   console.log("[paykeeper] paid", JSON.stringify({ id, orderid, sum, clientid }));
+
+  /* Маркировка: если заказ был с кодами — переводим их в «продан» (идемпотентно).
+     Обёрнуто в try/catch: сбой базы НЕ должен ломать ответ PayKeeper. Работает
+     только когда база подключена (иначе маркировки в проекте просто нет). */
+  if (process.env.DATABASE_URL) {
+    try {
+      const res = await require("./marking").markPaidByExternalId(orderid);
+      if (res && res.found && res.sold) console.log("[marking] sold", orderid, res.sold);
+    } catch (e) {
+      console.error("[marking] webhook mark error", e && e.message);
+    }
+  }
 
   /* Подтверждаем менеджеру оплату (детали заказа он уже получил при оформлении). */
   await notifyManager(
