@@ -599,15 +599,37 @@
     if (!toggle || !backdrop || !panel) return;
 
     let previouslyFocused = null;
+    let navScrollY = 0;
 
     function isMobileBp() {
       return window.matchMedia("(max-width: 1024px)").matches;
+    }
+
+    /* iOS Safari игнорирует overflow:hidden на body — фон продолжает
+       прокручиваться под открытым меню, и панель «сворачивается».
+       Надёжный замок: фиксируем body со смещением на текущую прокрутку. */
+    function lockScroll() {
+      navScrollY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${navScrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    }
+    function unlockScroll() {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, navScrollY);
     }
 
     function openNav() {
       if (!isMobileBp()) return;
       previouslyFocused = document.activeElement;
       document.body.classList.add("is-nav-open");
+      lockScroll();
       toggle.setAttribute("aria-expanded", "true");
       toggle.setAttribute("aria-label", "Закрыть меню");
       panel.setAttribute("aria-hidden", "false");
@@ -619,6 +641,7 @@
 
     function closeNav() {
       document.body.classList.remove("is-nav-open");
+      unlockScroll();
       toggle.setAttribute("aria-expanded", "false");
       toggle.setAttribute("aria-label", "Открыть меню");
       panel.setAttribute("aria-hidden", "true");
