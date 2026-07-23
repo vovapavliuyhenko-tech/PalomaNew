@@ -100,10 +100,23 @@
   select,
   textarea { font-size: 16px !important; }
 
-  /* ─── КОФЕЙНЯ ──────────────────────────────────────────
-     Заголовки покрупнее нужного для телефона — делаем компактнее. */
-  .coffee-page .ea-title { font-size: 26px !important; line-height: 1.15 !important; }
-  .coffee-page .ea-step__t { font-size: 26px !important; line-height: 1.15 !important; }
+  /* ─── КОФЕЙНЯ / ОФОРМЛЕНИЕ (общие ea-классы) ───────────
+     Заголовки и нумерованные шаги покрупнее нужного — компактнее.
+     Общий класс → покрывает и кофейню, и «Оформление мероприятий». */
+  .ea-title { font-size: 26px !important; line-height: 1.15 !important; }
+  .ea-step__t { font-size: 26px !important; line-height: 1.15 !important; }
+
+  /* ─── СВАДЬБЫ ─────────────────────────────────────────── */
+  .w-hero__title, .w-form__title { font-size: 28px !important; line-height: 1.12 !important; letter-spacing: -0.01em; }
+  .w-intro__title, .w-services__title, .w-process__title,
+  .w-portfolio__title, .w-packages__title, .w-faq__title { font-size: 25px !important; line-height: 1.15 !important; }
+
+  /* ─── ПОДПИСКА / ПОДАРОЧНЫЙ СЕРТИФИКАТ ─────────────────── */
+  .subscription-hero__title { font-size: 30px !important; line-height: 1.12 !important; letter-spacing: -0.01em; }
+
+  /* ─── КОНТАКТЫ / ДОСТАВКА ──────────────────────────────── */
+  .contacts-studio__brand { font-size: 26px !important; }
+  .contacts-channels__title { font-size: 24px !important; }
 
   /* ─── ПОДВАЛ: компактнее ──────────────────────────────────
      Колонки «Каталог» и «Информация» — рядом (2 столбца), блок с формой
