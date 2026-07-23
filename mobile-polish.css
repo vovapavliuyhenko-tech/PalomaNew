@@ -88,6 +88,43 @@
   #ea-home-hero.ea-panel,
   #ea-home-philo.ea-panel,
   #ea-home-hero .ea-hero__left { overflow: visible !important; }
+
+  /* ─── БЛОГ ПОЛЬЗЫ: карточки едут вбок сами при вертикальном скролле ───
+     #homeBlog делаем высоким (запас на прокрутку), .home-blog__pin прилипает
+     на весь экран, а JS (в index.html) двигает .home-blog__grid по горизонтали
+     пропорционально прокрутке — как этапы на кофейне. */
+  #homeBlog {
+    height: 210vh !important;
+    overflow: visible !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .home-blog__pin {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+  #homeBlog .home-blog__head {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-bottom: 20px !important;
+  }
+  #homeBlog .home-blog__grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    overflow: visible !important;
+    gap: 14px !important;
+    padding: 0 20px !important;
+    will-change: transform;
+  }
+  #homeBlog .home-blog__grid > .home-article-card { flex: 0 0 82% !important; }
+  /* карточки, уехавшие за экран, не должны остаться невидимыми из-за reveal-анимации */
+  #homeBlog .home-reveal { opacity: 1 !important; transform: none !important; }
 }
 
 @media (max-width: 600px) {
@@ -129,26 +166,6 @@
   .home-showcase   { padding-top: 34px !important; padding-bottom: 34px !important; }
   .home-categories { padding-top: 40px !important; padding-bottom: 44px !important; }
   .home-subscription { padding-top: 40px !important; padding-bottom: 40px !important; }
-  .home-blog       { padding-top: 34px !important; padding-bottom: 34px !important; overflow: visible !important; }
-
-  /* Блог: карточки листаются вбок (горизонтальная лента), а не вниз.
-     Следующая карточка «подсматривается» — понятно, что можно свайпнуть. */
-  .home-blog__grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    grid-template-columns: none !important;
-    overflow-x: auto !important;
-    gap: 14px !important;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 20px 10px !important;
-    scroll-padding-left: 20px;
-  }
-  .home-blog__grid > .home-article-card {
-    flex: 0 0 84% !important;
-    scroll-snap-align: start;
-  }
-  .home-blog__grid::-webkit-scrollbar { display: none; }
 
   /* ─── КАТАЛОГ ─────────────────────────────────────────── */
   .catalog-hero__title { font-size: 28px !important; line-height: 1.12 !important; letter-spacing: -0.01em; }
