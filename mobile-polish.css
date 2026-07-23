@@ -63,7 +63,26 @@
   .home-showcase   { padding-top: 34px !important; padding-bottom: 34px !important; }
   .home-categories { padding-top: 40px !important; padding-bottom: 44px !important; }
   .home-subscription { padding-top: 40px !important; padding-bottom: 40px !important; }
-  .home-blog       { padding-top: 34px !important; padding-bottom: 34px !important; }
+  .home-blog       { padding-top: 34px !important; padding-bottom: 34px !important; overflow: visible !important; }
+
+  /* Блог: карточки листаются вбок (горизонтальная лента), а не вниз.
+     Следующая карточка «подсматривается» — понятно, что можно свайпнуть. */
+  .home-blog__grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    gap: 14px !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 20px 10px !important;
+    scroll-padding-left: 20px;
+  }
+  .home-blog__grid > .home-article-card {
+    flex: 0 0 84% !important;
+    scroll-snap-align: start;
+  }
+  .home-blog__grid::-webkit-scrollbar { display: none; }
 
   /* ─── ПОДВАЛ: компактнее ──────────────────────────────────
      Колонки «Каталог» и «Информация» — рядом (2 столбца), блок с формой
