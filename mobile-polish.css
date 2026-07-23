@@ -17,6 +17,11 @@
   .site-header__mobile-link { padding: 13px 0 !important; }
   .site-header__mobile-phone { margin-top: 16px !important; }
   .site-header__mobile-footer { margin-top: 16px !important; padding-top: 14px !important; gap: 10px !important; }
+
+  /* Баннер «технические работы» из-за своего стекинг-контекста рендерился
+     ПОВЕРХ открытого меню и закрывал верхние пункты (Каталог и т.д.).
+     Пока меню открыто — прячем баннер. */
+  body.is-nav-open .paloma-maint { display: none !important; }
 }
 
 @media (max-width: 600px) {
