@@ -290,35 +290,35 @@ body.cf-modal-open{overflow:hidden}
   #cf-steps .ea-proc-step:last-child{
     flex:0 0 100vw!important;width:100vw!important;height:100%!important;
     display:flex;flex-flow:row wrap;align-content:center;justify-content:center;
-    gap:12px 4%;padding:0 22px;box-sizing:border-box}
+    gap:10px 3%;padding:0 20px;box-sizing:border-box}
   /* интро-панель — колонка слева */
   #cf-steps .ea-proc__intro{flex-flow:column nowrap;justify-content:center;text-align:left;gap:0}
   #cf-steps .ea-proc__intro .ea-title{font-size:clamp(30px,9vw,42px);line-height:1.1;margin:0 0 14px}
   #cf-steps .ea-proc__lead{max-width:none;font-size:clamp(15px,4vw,17px)}
-  /* заголовки/тексты этапов — из absolute в обычный поток, по центру */
+  /* порядок внутри шага: СНАЧАЛА текст (заголовок + описание), ПОТОМ фото */
   #cf-steps .ea-step__t,
   #cf-steps .ea-step__t--top,
   #cf-steps .ea-step__t--mid,
   #cf-steps .ea-proc-step:last-child .ea-step__t--top{position:static!important;left:auto!important;top:auto!important;
-    order:2;flex:0 0 100%;text-align:center;margin:14px 0 8px;font-size:clamp(26px,7.5vw,38px)}
+    order:1;flex:0 0 100%;text-align:center;margin:0 0 8px;font-size:clamp(26px,7.5vw,38px)}
   #cf-steps .ea-step__body,
   #cf-steps .ea-step__body--lo,
   #cf-steps .ea-step__body--mid,
   #cf-steps .ea-step__body--hi{position:static!important;left:auto!important;top:auto!important;
-    order:3;flex:0 0 100%;width:100%!important;max-width:none!important;text-align:center;margin:0}
+    order:2;flex:0 0 100%;width:100%!important;max-width:none!important;text-align:center;margin:0 0 18px}
   #cf-steps .ea-step__d{font-size:clamp(15px,4vw,17px);line-height:1.5}
   #cf-steps .ea-step__script{font-size:1.4em}
-  /* фото этапов — пара в один ряд сверху (парные шаги 01 и 03) */
+  /* фото этапов — крупная пара в один ряд ПОД текстом (шаги 01 и 03) */
   #cf-steps .ea-proc__ph,
   #cf-steps .ea-proc__ph--a,
   #cf-steps .ea-proc__ph--b,
   #cf-steps .ea-proc__ph--d,
   #cf-steps .ea-proc__ph--e{position:static!important;left:auto!important;top:auto!important;
-    order:1;flex:0 0 46%!important;width:46%!important;max-width:46%!important;
-    height:32vh;aspect-ratio:auto;margin:0;display:block}
-  /* одиночное видео (шаг 02) — крупнее и по центру */
+    order:3;flex:0 0 48.5%!important;width:48.5%!important;max-width:48.5%!important;
+    height:42vh;aspect-ratio:auto;margin:0;display:block}
+  /* одиночное видео (шаг 02) — крупное, на всю ширину */
   #cf-steps .ea-proc__ph--c{position:static!important;left:auto!important;top:auto!important;
-    order:1;flex:0 0 74%!important;width:74%!important;max-width:74%!important;height:38vh;aspect-ratio:auto}
+    order:3;flex:0 0 100%!important;width:100%!important;max-width:100%!important;height:46vh;aspect-ratio:auto}
   /* декоративные стрелки прячем; тонкий прогресс-бар снизу — виден горизонтальный ход */
   #cf-steps .ea-proc__arrow{display:none!important}
   #cf-steps .ea-proc__progress{display:block;position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(27,26,24,.1);z-index:5}
