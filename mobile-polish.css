@@ -84,6 +84,15 @@
   }
   .home-blog__grid::-webkit-scrollbar { display: none; }
 
+  /* ─── КАТАЛОГ ─────────────────────────────────────────── */
+  .catalog-hero__title { font-size: 28px !important; line-height: 1.12 !important; letter-spacing: -0.01em; }
+  .catalog-corporate__title { font-size: 24px !important; line-height: 1.18 !important; }
+  .catalog-grid { gap: 12px !important; }
+
+  /* ─── КАРТОЧКА ТОВАРА (PDP) ────────────────────────────── */
+  #pdpAddToCart { font-size: 13px !important; }
+  .pdp-size-btn { min-height: 42px; }
+
   /* ─── ПОДВАЛ: компактнее ──────────────────────────────────
      Колонки «Каталог» и «Информация» — рядом (2 столбца), блок с формой
      остаётся на всю ширину. Мессенджеры — в одну строку и чуть меньше. */
