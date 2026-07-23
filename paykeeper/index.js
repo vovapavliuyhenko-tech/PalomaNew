@@ -405,8 +405,60 @@ module.exports.handler = async function handler(event) {
   const method = (event.httpMethod || "").toUpperCase();
   const action = (event.queryStringParameters || {}).a || "create";
 
+  // Таймер Яндекса вызывает функцию БЕЗ http-метода — это сигнал «почисти брони».
+  if (!event.httpMethod) {
+    try {
+      const marking = require("./marking");
+      const n = await marking.releaseExpired();
+      return { statusCode: 200, body: "released " + n };
+    } catch (e) {
+      console.error("[marking] timer release error", e && e.stack);
+      return { statusCode: 500, body: "err" };
+    }
+  }
+
   if (method === "OPTIONS") return { statusCode: 204, headers: cors(origin), body: "" };
-  if (method !== "POST") return reply(405, { error: "Только POST" }, origin);
+  // Часть админ-маршрутов разрешаем и по GET — чтобы можно было «просто открыть ссылку».
+  const ADMIN_GET_OK =
+    action === "migrate" || action === "release-expired" || action === "codes-stats";
+  if (method !== "POST" && !ADMIN_GET_OK)
+    return reply(405, { error: "Только POST" }, origin);
+
+  // ── Админские маршруты маркировки (защищены токеном ADMIN_TOKEN) ──
+  if (
+    action === "migrate" || action === "release-expired" ||
+    action === "import-codes" || action === "codes-stats"
+  ) {
+    const qs = event.queryStringParameters || {};
+    // import-codes приходит с телом — разбираем его заранее (там же лежит token).
+    let bodyObj = {};
+    if (action === "import-codes") {
+      try { bodyObj = JSON.parse(rawBody(event) || "{}"); }
+      catch { return reply(400, { error: "Некорректный JSON" }, origin); }
+    }
+    const token = qs.token || bodyObj.token;
+    if (!process.env.ADMIN_TOKEN || token !== process.env.ADMIN_TOKEN)
+      return reply(403, { error: "Нет доступа" }, origin);
+    try {
+      const marking = require("./marking");
+      if (action === "migrate")
+        return reply(200, { ok: true, migrated: await marking.runMigrations() }, origin);
+      if (action === "release-expired")
+        return reply(200, { ok: true, released: await marking.releaseExpired() }, origin);
+      if (action === "codes-stats")
+        return reply(200, { ok: true, stats: await marking.codesStats(qs.sku || null) }, origin);
+
+      // import-codes: коды принимаем массивом codes[] или сплошным текстом codesText.
+      let codes = bodyObj.codes;
+      if (!Array.isArray(codes) && typeof bodyObj.codesText === "string")
+        codes = bodyObj.codesText.split(/[\r\n,;]+/);
+      const res = await marking.importCodes(bodyObj.sku, codes || [], bodyObj.itemType || "goods_coded");
+      return reply(200, { ok: true, ...res }, origin);
+    } catch (e) {
+      console.error("[marking] admin action error", e && e.stack);
+      return reply(500, { error: "Ошибка: " + (e && e.message) }, origin);
+    }
+  }
 
   try {
     if (action === "webhook") return await handleWebhook(event);

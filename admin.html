@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>PALOMA — коды маркировки (админка)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      max-width: 720px; margin: 0 auto; padding: 24px 18px 80px; color: #1b1a18;
+      background: #faf8f5; line-height: 1.5; }
+    h1 { font-size: 22px; }
+    .card { background: #fff; border: 1px solid #e6e0d8; border-radius: 12px;
+      padding: 20px; margin-bottom: 20px; }
+    label { display: block; font-weight: 600; font-size: 14px; margin: 14px 0 6px; }
+    input, select, textarea { width: 100%; padding: 11px 12px; border: 1px solid #cfc7bb;
+      border-radius: 9px; font-size: 15px; font-family: inherit; background: #fff; }
+    textarea { min-height: 180px; resize: vertical; font-family: ui-monospace, "Consolas", monospace; font-size: 13px; }
+    button { margin-top: 16px; padding: 12px 22px; border: none; border-radius: 10px;
+      background: #1b1a18; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; }
+    button.secondary { background: #fff; color: #1b1a18; border: 1px solid #1b1a18; }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .row > * { flex: 1; min-width: 160px; }
+    .hint { font-size: 13px; color: #8a857c; margin-top: 4px; }
+    #out { white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 13px;
+      background: #1b1a18; color: #e8e2d8; padding: 14px; border-radius: 10px; min-height: 44px; }
+    .ok { color: #4caf7d; } .err { color: #ff7a7a; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+    th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <h1>Коды маркировки «Честный ЗНАК»</h1>
+  <p class="hint">Внутренняя страница. Открывать на боевом сайте
+    (<b>paloma.website/admin.html</b>) — иначе браузер не пустит запрос к серверу.</p>
+
+  <div class="card">
+    <label for="token">Админ-пароль (ADMIN_TOKEN)</label>
+    <input id="token" type="password" placeholder="вставьте секретный токен" autocomplete="off">
+    <p class="hint">Тот самый, что вписан в переменные окружения функции. Здесь не сохраняется.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:17px;margin-top:0">Загрузить коды на склад</h2>
+
+    <div class="row">
+      <div>
+        <label for="sku">Товар (SKU / id из каталога)</label>
+        <input id="sku" type="text" placeholder="например: n30">
+      </div>
+      <div>
+        <label for="itemType">Тип для чека</label>
+        <select id="itemType">
+          <option value="goods_coded">goods_coded — маркированный товар</option>
+          <option value="exc_coded">exc_coded — маркированный подакцизный</option>
+        </select>
+      </div>
+    </div>
+
+    <label for="codes">Коды маркировки (по одному в строке)</label>
+    <textarea id="codes" placeholder="0104630...&#10;0104630...&#10;0104630..."></textarea>
+    <p class="hint">Можно вставить списком, или загрузить файл .txt / .csv:
+      <input id="file" type="file" accept=".txt,.csv" style="width:auto;display:inline-block;padding:4px;border:none">
+    </p>
+
+    <button id="btnImport">Загрузить коды</button>
+    <button id="btnStats" class="secondary">Показать остатки на складе</button>
+  </div>
+
+  <div class="card">
+    <label>Результат</label>
+    <div id="out">—</div>
+    <div id="statsBox"></div>
+  </div>
+
+  <script>
+    // Адрес облачной функции (тот же, что использует оплата сайта).
+    var FN = "https://functions.yandexcloud.net/d4ek26aklvok10biu54h";
+    var out = document.getElementById("out");
+    var statsBox = document.getElementById("statsBox");
+
+    function show(msg, cls) {
+      out.textContent = typeof msg === "string" ? msg : JSON.stringify(msg, null, 2);
+      out.className = cls || "";
+    }
+    function token() { return document.getElementById("token").value.trim(); }
+
+    // Загрузка файла в текстовое поле
+    document.getElementById("file").addEventListener("change", function (e) {
+      var f = e.target.files[0]; if (!f) return;
+      var r = new FileReader();
+      r.onload = function () { document.getElementById("codes").value = r.result; };
+      r.readAsText(f);
+    });
+
+    // Кнопка «Загрузить коды»
+    document.getElementById("btnImport").addEventListener("click", async function () {
+      var btn = this;
+      if (!token()) return show("Введите админ-пароль сверху.", "err");
+      var sku = document.getElementById("sku").value.trim();
+      if (!sku) return show("Укажите товар (SKU).", "err");
+      var codesText = document.getElementById("codes").value;
+      if (!codesText.trim()) return show("Вставьте хотя бы один код.", "err");
+
+      btn.disabled = true; show("Загружаю…");
+      try {
+        var res = await fetch(FN + "?a=import-codes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            token: token(), sku: sku, codesText: codesText,
+            itemType: document.getElementById("itemType").value
+          })
+        });
+        var data = await res.json();
+        if (!res.ok || data.error) return show(data.error || "Ошибка", "err");
+        show("Готово ✓\nВсего в списке: " + data.total +
+             "\nДобавлено новых: " + data.added +
+             "\nПропущено (уже были): " + data.skipped, "ok");
+      } catch (e) {
+        show("Сеть/сервер недоступны: " + e.message, "err");
+      } finally { btn.disabled = false; }
+    });
+
+    // Кнопка «Показать остатки»
+    document.getElementById("btnStats").addEventListener("click", async function () {
+      if (!token()) return show("Введите админ-пароль сверху.", "err");
+      var sku = document.getElementById("sku").value.trim();
+      show("Считаю…"); statsBox.innerHTML = "";
+      try {
+        var url = FN + "?a=codes-stats&token=" + encodeURIComponent(token());
+        if (sku) url += "&sku=" + encodeURIComponent(sku);
+        var res = await fetch(url);
+        var data = await res.json();
+        if (!res.ok || data.error) return show(data.error || "Ошибка", "err");
+        show("Остатки склада:", "ok");
+        var names = { free: "свободен", reserved: "забронирован", sold: "продан", void: "аннулирован" };
+        var rows = (data.stats || []).map(function (r) {
+          return "<tr><td>" + r.sku + "</td><td>" + (names[r.status] || r.status) +
+                 "</td><td>" + r.n + "</td></tr>";
+        }).join("");
+        statsBox.innerHTML = rows
+          ? "<table><tr><th>Товар</th><th>Статус</th><th>Кол-во</th></tr>" + rows + "</table>"
+          : "<p class='hint'>Пока пусто.</p>";
+      } catch (e) {
+        show("Сеть/сервер недоступны: " + e.message, "err");
+      }
+    });
+  </script>
+</body>
+</html>
