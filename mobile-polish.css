@@ -57,33 +57,8 @@
   #cf-lemon .ea-hero__left,
   #cf-sweet .ea-hero__left { overflow: visible !important; }
 
-  /* ─── ЭТАПЫ «01/02/03»: листаются вбок свайпом (как на ПК) ─── */
-  #cf-steps { height: auto !important; }
-  #cf-steps .ea-proc__sticky {
-    position: static !important;
-    height: auto !important;
-    display: block !important;
-    overflow: visible !important;
-  }
-  #cf-steps .ea-proc__track {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    height: auto !important;
-    transform: none !important;
-    gap: 14px !important;
-    padding: 0 20px 12px !important;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  #cf-steps .ea-proc__panel {
-    flex: 0 0 82% !important;
-    width: auto !important;
-    height: auto !important;
-    position: relative !important;
-    scroll-snap-align: start;
-  }
-  #cf-steps .ea-proc__track::-webkit-scrollbar { display: none; }
+  /* Этапы «01/02/03» — горизонтальный скролл-джек как на ПК: раскладка живёт
+     в coffee-ea.css (@media ≤900px), драйвер — coffee-ea.js. Здесь ничего. */
 }
 
 @media (max-width: 600px) {

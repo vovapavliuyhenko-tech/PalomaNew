@@ -584,9 +584,9 @@
       var track = document.getElementById("cfStepsTrack");
       var bar = document.getElementById("cfStepsBar");
       if (!sec || !track) return;
-      /* На телефоне блок этапов — вертикальный стек (CSS ≤900px), горизонтальную
-         прокрутку не запускаем, иначе трек уезжает и ломает раскладку. */
-      if (window.matchMedia("(max-width: 900px)").matches) return;
+      /* Горизонтальный скролл-джек работает и на телефоне: CSS ≤900px делает
+         панели на весь экран, а этот код двигает трек по горизонтали по мере
+         вертикального скролла (как на ПК). */
       function update() {
         var rect = sec.getBoundingClientRect();
         var dist = sec.offsetHeight - window.innerHeight;
