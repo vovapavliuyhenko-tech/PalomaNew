@@ -279,6 +279,61 @@ async function codesStats(sku) {
   return rows;
 }
 
+// ── Аннулировать код по его строке (возврат/брак) из админки ────────────────
+async function voidByCode(codeString, reason) {
+  const code = String(codeString || "").trim();
+  if (!code) throw new Error("Не указан код");
+  return withTx(async (client) => {
+    const row = (await client.query(
+      `SELECT id, status FROM marking_codes WHERE code = $1 FOR UPDATE`,
+      [code],
+    )).rows[0];
+    if (!row) return { found: false };
+    if (row.status === "void") return { found: true, already: true };
+    await client.query(
+      `UPDATE marking_codes SET status = 'void', reserved_until = NULL, updated_at = now() WHERE id = $1`,
+      [row.id],
+    );
+    await logCode(client, row.id, row.status, "void", "annul", reason || null, null);
+    return { found: true, from: row.status };
+  });
+}
+
+// ── САМОПРОВЕРКА: доказать, что один код не продаётся дважды ─────────────────
+// Заливаем N тестовых кодов и запускаем M одновременных броней (M > N).
+// Ждём: выдано ровно N, все разные, лишние M−N честно отклонены. Потом чистим.
+async function selfTest() {
+  const sku = "selftest-" + Date.now();
+  const N = 10; // кодов на складе
+  const M = 25; // одновременных попыток захвата (больше, чем кодов)
+
+  const codes = [];
+  for (let i = 0; i < N; i++) codes.push(sku + "-code-" + i);
+  await importCodes(sku, codes);
+
+  const results = await Promise.allSettled(
+    Array.from({ length: M }, (_, i) =>
+      withTx((c) => reserveOne(c, sku, 900000 + i, null, "selftest")),
+    ),
+  );
+
+  const got = results.filter((r) => r.status === "fulfilled").map((r) => r.value.code);
+  const rejected = results.filter((r) => r.status === "rejected").length;
+  const distinct = new Set(got).size;
+
+  const checks = {
+    "выдано ровно N кодов": got.length === N,
+    "все выданные коды разные": distinct === got.length,
+    "лишние попытки отклонены": rejected === M - N,
+  };
+  const pass = Object.values(checks).every(Boolean);
+
+  // чистим тестовые данные (журнал удалится каскадом по внешнему ключу)
+  await query(`DELETE FROM marking_codes WHERE sku = $1`, [sku]);
+
+  return { codesOnShelf: N, concurrentTries: M, reserved: got.length, distinct, rejected, pass, checks };
+}
+
 // ── «Построить склад»: прогнать миграции (файлы *_up.sql). Безопасно повторять ─
 async function runMigrations() {
   const dir = path.join(__dirname, "migrations");
@@ -305,6 +360,8 @@ module.exports = {
   attachInvoice,
   cancelOrderRelease,
   markPaidByExternalId,
+  voidByCode,
+  selfTest,
   logCode,
   RESERVE_TTL_MIN,
 };

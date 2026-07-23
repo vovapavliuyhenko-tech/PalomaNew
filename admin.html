@@ -70,6 +70,23 @@
   </div>
 
   <div class="card">
+    <h2 style="font-size:17px;margin-top:0">Аннулировать код (возврат / брак)</h2>
+    <label for="voidCode">Код маркировки</label>
+    <input id="voidCode" type="text" placeholder="вставьте код, который нужно аннулировать">
+    <label for="voidReason">Причина (необязательно)</label>
+    <input id="voidReason" type="text" placeholder="например: возврат по заказу №123">
+    <button id="btnVoid" class="secondary">Аннулировать код</button>
+    <p class="hint">Аннулированный код — конечный статус, назад вернуть нельзя.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:17px;margin-top:0">Самопроверка защиты от двойной продажи</h2>
+    <p class="hint">Зальёт 10 тестовых кодов, запустит 25 одновременных заказов и проверит,
+      что каждый получил свой код. Тестовые данные удаляются автоматически.</p>
+    <button id="btnSelftest" class="secondary">Запустить самопроверку</button>
+  </div>
+
+  <div class="card">
     <label>Результат</label>
     <div id="out">—</div>
     <div id="statsBox"></div>
@@ -147,6 +164,57 @@
       } catch (e) {
         show("Сеть/сервер недоступны: " + e.message, "err");
       }
+    });
+
+    // Кнопка «Аннулировать код»
+    document.getElementById("btnVoid").addEventListener("click", async function () {
+      var btn = this;
+      if (!token()) return show("Введите админ-пароль сверху.", "err");
+      var code = document.getElementById("voidCode").value.trim();
+      if (!code) return show("Вставьте код для аннулирования.", "err");
+      if (!confirm("Аннулировать код безвозвратно?\n" + code)) return;
+
+      btn.disabled = true; show("Аннулирую…");
+      try {
+        var res = await fetch(FN + "?a=void-code", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: token(), code: code,
+            reason: document.getElementById("voidReason").value.trim() })
+        });
+        var data = await res.json();
+        if (!res.ok || data.error) return show(data.error || "Ошибка", "err");
+        if (!data.found) return show("Код не найден на складе: " + code, "err");
+        if (data.already) return show("Код уже был аннулирован ранее.", "ok");
+        show("Готово ✓ Код аннулирован (был: " + data.from + ").", "ok");
+      } catch (e) {
+        show("Сеть/сервер недоступны: " + e.message, "err");
+      } finally { btn.disabled = false; }
+    });
+
+    // Кнопка «Самопроверка»
+    document.getElementById("btnSelftest").addEventListener("click", async function () {
+      var btn = this;
+      if (!token()) return show("Введите админ-пароль сверху.", "err");
+      btn.disabled = true; show("Проверяю (это займёт пару секунд)…"); statsBox.innerHTML = "";
+      try {
+        var res = await fetch(FN + "?a=selftest&token=" + encodeURIComponent(token()));
+        var data = await res.json();
+        if (!res.ok || data.error) return show(data.error || "Ошибка", "err");
+        var t = data.test;
+        var lines = Object.keys(t.checks).map(function (k) {
+          return (t.checks[k] ? "✓ " : "✗ ") + k;
+        });
+        show((t.pass ? "ПРОЙДЕНО ✓ — один код дважды продать нельзя.\n\n"
+                     : "НЕ ПРОЙДЕНО ✗ — напишите разработчику!\n\n") +
+             "Кодов на складе: " + t.codesOnShelf +
+             "\nОдновременных заказов: " + t.concurrentTries +
+             "\nВыдано кодов: " + t.reserved + " (разных: " + t.distinct + ")" +
+             "\nОтклонено лишних: " + t.rejected + "\n\n" + lines.join("\n"),
+             t.pass ? "ok" : "err");
+      } catch (e) {
+        show("Сеть/сервер недоступны: " + e.message, "err");
+      } finally { btn.disabled = false; }
     });
   </script>
 </body>

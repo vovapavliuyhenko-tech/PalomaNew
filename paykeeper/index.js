@@ -531,20 +531,23 @@ module.exports.handler = async function handler(event) {
 
   if (method === "OPTIONS") return { statusCode: 204, headers: cors(origin), body: "" };
   // Часть админ-маршрутов разрешаем и по GET — чтобы можно было «просто открыть ссылку».
+  const ADMIN_ACTIONS = [
+    "migrate", "release-expired", "codes-stats",
+    "import-codes", "void-code", "selftest",
+  ];
   const ADMIN_GET_OK =
-    action === "migrate" || action === "release-expired" || action === "codes-stats";
+    action === "migrate" || action === "release-expired" ||
+    action === "codes-stats" || action === "selftest";
   if (method !== "POST" && !ADMIN_GET_OK)
     return reply(405, { error: "Только POST" }, origin);
 
   // ── Админские маршруты маркировки (защищены токеном ADMIN_TOKEN) ──
-  if (
-    action === "migrate" || action === "release-expired" ||
-    action === "import-codes" || action === "codes-stats"
-  ) {
+  if (ADMIN_ACTIONS.includes(action)) {
     const qs = event.queryStringParameters || {};
-    // import-codes приходит с телом — разбираем его заранее (там же лежит token).
+    // import-codes и void-code приходят с телом — разбираем заранее (там же token).
+    const needsBody = action === "import-codes" || action === "void-code";
     let bodyObj = {};
-    if (action === "import-codes") {
+    if (needsBody) {
       try { bodyObj = JSON.parse(rawBody(event) || "{}"); }
       catch { return reply(400, { error: "Некорректный JSON" }, origin); }
     }
@@ -559,6 +562,10 @@ module.exports.handler = async function handler(event) {
         return reply(200, { ok: true, released: await marking.releaseExpired() }, origin);
       if (action === "codes-stats")
         return reply(200, { ok: true, stats: await marking.codesStats(qs.sku || null) }, origin);
+      if (action === "selftest")
+        return reply(200, { ok: true, test: await marking.selfTest() }, origin);
+      if (action === "void-code")
+        return reply(200, { ok: true, ...(await marking.voidByCode(bodyObj.code, bodyObj.reason)) }, origin);
 
       // import-codes: коды принимаем массивом codes[] или сплошным текстом codesText.
       let codes = bodyObj.codes;
