@@ -26,6 +26,19 @@
      (иначе сторона меняется мгновенно). */
   .fmt__flip { transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) !important; }
 
+  /* ─── БУРГЕР-МЕНЮ: панель не помещалась ───────────────────
+     Верхний отступ был 140px (пустое поле), из-за чего низ меню уходил
+     за экран. Подтягиваем контент под крестик и уплотняем пункты. */
+  .site-header__mobile-panel {
+    padding-top: calc(108px + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: 22px !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  .site-header__mobile-link { padding: 13px 0 !important; }
+  .site-header__mobile-phone { margin-top: 16px !important; }
+  .site-header__mobile-footer { margin-top: 16px !important; padding-top: 14px !important; gap: 10px !important; }
+
   /* Ссылка-«Все товары» под секцией категорий — была 19px, крупновато */
   .home-categories__all { font-size: 15px !important; }
 
@@ -43,4 +56,13 @@
   .home-categories { padding-top: 40px !important; padding-bottom: 44px !important; }
   .home-subscription { padding-top: 40px !important; padding-bottom: 40px !important; }
   .home-blog       { padding-top: 34px !important; padding-bottom: 34px !important; }
+
+  /* ─── ПОДВАЛ: компактнее ──────────────────────────────────
+     Колонки «Каталог» и «Информация» — рядом (2 столбца), блок с формой
+     остаётся на всю ширину. Мессенджеры — в одну строку и чуть меньше. */
+  .sf2 { grid-template-columns: 1fr 1fr !important; gap: 26px 18px !important; }
+  .sf2-col--lead { grid-column: 1 / -1 !important; }
+  .sf2-col--nav { font-size: 14px !important; }
+  .sf2-socials { gap: 12px !important; flex-wrap: nowrap !important; }
+  .sf2-soc { font-size: 13px !important; white-space: nowrap; }
 }
