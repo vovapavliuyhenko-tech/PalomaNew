@@ -315,10 +315,10 @@ body.cf-modal-open{overflow:hidden}
   #cf-steps .ea-proc__ph--d,
   #cf-steps .ea-proc__ph--e{position:static!important;left:auto!important;top:auto!important;
     order:3;flex:0 0 48.5%!important;width:48.5%!important;max-width:48.5%!important;
-    height:42vh;aspect-ratio:auto;margin:0;display:block}
+    height:48vh;aspect-ratio:auto;margin:0;display:block}
   /* одиночное видео (шаг 02) — крупное, на всю ширину */
   #cf-steps .ea-proc__ph--c{position:static!important;left:auto!important;top:auto!important;
-    order:3;flex:0 0 100%!important;width:100%!important;max-width:100%!important;height:46vh;aspect-ratio:auto}
+    order:3;flex:0 0 100%!important;width:100%!important;max-width:100%!important;height:52vh;aspect-ratio:auto}
   /* декоративные стрелки прячем; тонкий прогресс-бар снизу — виден горизонтальный ход */
   #cf-steps .ea-proc__arrow{display:none!important}
   #cf-steps .ea-proc__progress{display:block;position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(27,26,24,.1);z-index:5}
