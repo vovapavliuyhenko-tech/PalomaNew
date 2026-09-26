@@ -24,8 +24,8 @@ window.PALOMA_BUILDER_DATA = {
   ],
 
   styles: [
-    { code: "dome", name: "Классический купол", hint: "плотный, круглый" },
-    { code: "airy", name: "Воздушный, полевой", hint: "свободный, с разной высотой" },
+    { code: "dome", name: "Купол", hint: "плотный, круглый" },
+    { code: "airy", name: "Воздушный", hint: "свободный, с разной высотой" },
   ],
 
   palettes: [

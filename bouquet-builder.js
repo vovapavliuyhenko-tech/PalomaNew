@@ -640,9 +640,11 @@
 
     /* Стебли */
     let stems = "";
-    const showStems = model.wrap.kind === "ribbon" || model.airy;
+    /* В коробке и корзине стебли спрятаны целиком */
+    const boxed = model.wrap.kind === "hatbox" || model.wrap.kind === "basket";
+    const showStems = !boxed && (model.wrap.kind === "ribbon" || model.airy);
     heads.forEach((h) => {
-      if (!showStems && !h.raised) return;
+      if (boxed || (!showStems && !h.raised)) return;
       const bx = CX + (h.x - CX) * 0.08;
       stems += '<path d="M' + f1(h.x) + " " + f1(h.y) + "Q" + f1((h.x + bx) / 2) + " " + f1((h.y + bind) / 2 + 20) + " " + f1(bx) + " " + bind + "L" + f1(CX + (h.x - CX) * 0.05) + " " + (WRAP_TIP + 26) + '" pathLength="1"/>';
     });
@@ -800,59 +802,59 @@
   }
 
   function buildControls() {
-    /* Размер */
+    /* Размер: название, количество, цена */
     $("#bbSizes").innerHTML = D.sizes.map((s) =>
-      '<button type="button" class="bb-size" data-size="' + s.code + '" aria-pressed="false">' +
-      '<span class="bb-size__dot" style="--k:' + ({ S: 0.45, M: 0.62, L: 0.8, XL: 1 }[s.code]) + '"></span>' +
-      '<span class="bb-size__code">' + s.code + "</span>" +
-      '<span class="bb-size__name">' + s.name + "</span>" +
-      '<span class="bb-size__meta">≈ ' + s.stems + " цветков · от " + fmt(s.price) + "</span>" +
-      '<span class="bb-size__hint">' + s.hint + "</span></button>").join("");
+      '<button type="button" class="bb-opt bb-size" data-size="' + s.code + '" aria-pressed="false">' +
+      '<span class="bb-opt__name">' + s.name + "</span>" +
+      '<span class="bb-opt__meta">' + s.stems + " цветов</span>" +
+      '<span class="bb-opt__price">от ' + fmt(s.price) + "</span></button>").join("");
     $("#bbStyles").innerHTML = D.styles.map((s) =>
-      '<button type="button" class="bb-seg" data-style="' + s.code + '" aria-pressed="false"><b>' + s.name + "</b><small>" + s.hint + "</small></button>").join("");
+      '<button type="button" class="bb-pill" data-style="' + s.code + '" aria-pressed="false">' + s.name + "</button>").join("");
 
-    /* Палитры */
+    /* Палитры: кружок из пяти оттенков */
+    const ring = (cols) => "conic-gradient(" + cols.map((c, i) => c + " " + (i * 100) / cols.length + "% " + ((i + 1) * 100) / cols.length + "%").join(",") + ")";
     $("#bbPalettes").innerHTML = D.palettes.map((p) =>
-      '<button type="button" class="bb-pal" data-palette="' + p.code + '" aria-pressed="false">' +
-      '<span class="bb-pal__strip">' + p.colors.map((c) => '<i style="background:' + c + '"></i>').join("") + "</span>" +
-      '<span class="bb-pal__name">' + p.name + "</span></button>").join("") +
-      '<button type="button" class="bb-pal bb-pal--custom" data-palette="custom" aria-pressed="false">' +
-      '<span class="bb-pal__strip bb-pal__strip--custom" id="bbCustomStrip"></span><span class="bb-pal__name">Своя палитра</span></button>';
+      '<button type="button" class="bb-opt bb-pal" data-palette="' + p.code + '" aria-pressed="false">' +
+      '<span class="bb-pal__dot" style="background:' + ring(p.colors) + '"></span>' +
+      '<span class="bb-opt__name">' + p.name + "</span></button>").join("") +
+      '<button type="button" class="bb-opt bb-pal" data-palette="custom" aria-pressed="false">' +
+      '<span class="bb-pal__dot bb-pal__dot--custom" id="bbCustomDot"></span><span class="bb-opt__name">Своя</span></button>';
+    buildControls.ring = ring;
     $("#bbSwatches").innerHTML = D.swatches.map((c) =>
       '<button type="button" class="bb-swatch" data-swatch="' + c + '" style="--c:' + c + '" aria-label="Цвет ' + c + '" aria-pressed="false"></button>').join("");
 
-    /* Цветы */
+    /* Цветы: только в наличии */
     $("#bbStockDate").textContent = D.stockUpdated;
-    $("#bbFlowers").innerHTML = D.flowers.map((f) =>
-      '<button type="button" class="bb-flower' + (f.inStock ? "" : " is-out") + '" data-flower="' + f.id + '" aria-pressed="false"' + (f.inStock ? "" : " disabled") + ">" +
-      miniIcon(f.kind) +
-      '<span class="bb-flower__name">' + f.name + "</span>" +
-      '<span class="bb-flower__note">' + (f.inStock ? f.note : "нет в наличии · " + f.note) + "</span>" +
-      (f.premium >= 1.3 ? '<span class="bb-flower__tag">премиум</span>' : "") +
-      '<span class="bb-flower__hero" aria-hidden="true">акцент</span></button>').join("");
+    $("#bbFlowers").innerHTML = D.flowers.filter((f) => f.inStock).map((f) =>
+      '<button type="button" class="bb-opt bb-tile" data-flower="' + f.id + '" aria-pressed="false" title="' + esc(f.note) + '">' +
+      miniIcon(f.kind) + '<span class="bb-opt__name">' + f.name + "</span>" +
+      '<span class="bb-tile__hero" aria-hidden="true">акцент</span></button>').join("");
 
     /* Зелень */
     $("#bbGreens").innerHTML = D.greens.map((g) =>
-      '<button type="button" class="bb-flower bb-flower--green" data-green="' + g.id + '" aria-pressed="false">' +
-      (g.kind === "none" ? '<svg class="bb-mini" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="14" fill="none"/><path d="M14 34L34 14" fill="none"/></svg>' : miniIcon(g.kind, true)) +
-      '<span class="bb-flower__name">' + g.name + "</span></button>").join("");
+      '<button type="button" class="bb-opt bb-tile" data-green="' + g.id + '" aria-pressed="false">' +
+      (g.kind === "none" ? '<svg class="bb-mini" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="12" fill="none"/><path d="M16 32L32 16" fill="none"/></svg>' : miniIcon(g.kind, true)) +
+      '<span class="bb-opt__name">' + g.name + "</span></button>").join("");
     $("#bbAmounts").innerHTML = D.greenAmounts.map((a) =>
-      '<button type="button" class="bb-seg" data-amount="' + a.code + '" aria-pressed="false"><b>' + a.name + "</b></button>").join("");
+      '<button type="button" class="bb-pill" data-amount="' + a.code + '" aria-pressed="false">' + a.name + "</button>").join("");
 
     /* Упаковка */
     $("#bbWraps").innerHTML = D.wraps.map((w) =>
-      '<button type="button" class="bb-wrapc" data-wrap="' + w.id + '" aria-pressed="false">' +
-      '<span class="bb-wrapc__name">' + w.name + "</span>" +
-      '<span class="bb-wrapc__meta">' + (w.extra ? "+ от " + fmt(w.extra) : "включено") + "</span></button>").join("");
+      '<button type="button" class="bb-opt bb-wrapc" data-wrap="' + w.id + '" aria-pressed="false">' +
+      '<span class="bb-opt__name">' + w.name + "</span>" +
+      '<span class="bb-opt__meta">' + (w.extra ? "+ " + fmt(w.extra) : "включено") + "</span></button>").join("");
     $("#bbRibbons").innerHTML = D.ribbons.map((r) =>
-      '<button type="button" class="bb-swatch bb-swatch--ribbon' + (r[1] === "auto" ? " is-auto" : "") + '" data-ribbon="' + r[1] + '" style="--c:' + (r[1] === "auto" ? "transparent" : r[1]) + '" aria-pressed="false" title="' + r[0] + '"><span>' + r[0] + "</span></button>").join("");
+      '<button type="button" class="bb-swatch' + (r[1] === "auto" ? " is-auto" : "") + '" data-ribbon="' + r[1] + '" style="--c:' + (r[1] === "auto" ? "transparent" : r[1]) + '" aria-pressed="false" title="' + r[0] + '" aria-label="' + r[0] + '"></button>').join("");
   }
 
   function renderWrapColors() {
     const w = WRAPS[state.wrap || "kraft"];
-    const box = $("#bbWrapColors");
-    box.innerHTML = w.colors.map((c, i) =>
-      '<button type="button" class="bb-swatch" data-wrapcolor="' + i + '" style="--c:' + c[1] + '" aria-pressed="' + (i === state.wrapColor) + '" title="' + c[0] + '"><span>' + c[0] + "</span></button>").join("");
+    $("#bbWrapColors").innerHTML = w.colors.map((c, i) =>
+      '<button type="button" class="bb-swatch" data-wrapcolor="' + i + '" style="--c:' + c[1] + '" aria-pressed="' + (i === state.wrapColor) + '" title="' + c[0] + '" aria-label="' + c[0] + '"></button>').join("");
+    const wc = w.colors[state.wrapColor] || w.colors[0];
+    $("#bbWrapColorName").textContent = wc ? wc[0].toLowerCase() : "";
+    const rib = D.ribbons.find((r) => r[1] === state.ribbon);
+    $("#bbRibbonName").textContent = rib ? rib[0].toLowerCase() : "";
     $("#bbWrapColorsRow").hidden = !w.colors.length || state.wrap === null;
     $("#bbRibbonRow").hidden = state.wrap === null;
   }
@@ -873,7 +875,7 @@
     });
     $("#bbFlorist").setAttribute("aria-pressed", String(state.florist));
     $$("[data-swatch]").forEach((b) => b.setAttribute("aria-pressed", String(state.custom.includes(b.dataset.swatch))));
-    $("#bbCustomStrip").innerHTML = state.custom.map((c) => '<i style="background:' + c + '"></i>').join("");
+    $("#bbCustomDot").style.background = state.custom.length ? buildControls.ring(state.custom) : "";
     $("#bbCustom").hidden = state.palette !== "custom";
     $("#bbAmountRow").hidden = !state.green || state.green === "none";
     renderWrapColors();
@@ -885,7 +887,6 @@
     $("#bbComment").value = state.comment;
     press("[data-receive]", "receive", state.receive);
 
-    /* Прогресс шагов */
     const done = {
       1: true,
       2: !!paletteColors(),
@@ -895,21 +896,9 @@
       6: false,
     };
     $$(".bb-step-tab").forEach((t) => t.classList.toggle("is-done", !!done[t.dataset.step]));
-    const count = Object.values(done).filter(Boolean).length;
-    $("#bbProgress").style.setProperty("--p", String(Math.min(1, count / 5)));
 
     updateSummary();
     saveDraft();
-  }
-
-  function summaryParts() {
-    const pal = state.palette === "custom" ? "своя палитра" : state.palette ? "«" + PALETTES[state.palette].name + "»" : null;
-    const fl = state.florist || !state.flowers.length ? null : state.flowers.length + " " + plural(state.flowers.length, "цветок", "цветка", "цветков");
-    return [SIZES[state.size].code + " · " + SIZES[state.size].name, pal, fl, state.wrap ? WRAPS[state.wrap].name : null].filter(Boolean);
-  }
-  function plural(n, a, b, c) {
-    const m10 = n % 10, m100 = n % 100;
-    return m10 === 1 && m100 !== 11 ? a : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? b : c;
   }
 
   function updateSummary() {
@@ -918,8 +907,6 @@
     const from = parseInt(el.dataset.v || "0", 10);
     el.dataset.v = p;
     countUp(el, from, p);
-    $("#bbSummary").textContent = summaryParts().join(" · ");
-    $("#bbCompose").innerHTML = compositionLines().map((l) => "<li><span>" + esc(l[0]) + "</span><b>" + esc(l[1]) + "</b></li>").join("");
   }
   function countUp(el, from, to) {
     if (reduceMotion || !from || from === to) { el.textContent = fmt(to); return; }
@@ -1029,12 +1016,13 @@
     } else if (b.id === "bbReset") {
       state = Object.assign({}, DEFAULT_STATE, { seed: state.seed, custom: [], flowers: [] });
       rerender();
-    } else if (ds.goto) {
-      goStep(+ds.goto); return;
+    } else if (b.id === "bbNext") {
+      if (step < 6) goStep(step + 1); else openSend();
+      return;
+    } else if (b.id === "bbBack") {
+      goStep(step - 1); return;
     } else if (b.classList.contains("bb-step-tab")) {
       goStep(+b.dataset.step); return;
-    } else if (b.id === "bbSend" || b.id === "bbSendBar") {
-      openSend(); return;
     } else return;
 
     pulseStage();
@@ -1099,10 +1087,12 @@
     $$(".bb-step").forEach((s) => { s.hidden = +s.dataset.step !== step; });
     $$(".bb-step-tab").forEach((t) => t.setAttribute("aria-selected", String(+t.dataset.step === step)));
     const active = $('.bb-step-tab[data-step="' + step + '"]');
-    if (active && active.scrollIntoView) active.scrollIntoView({ block: "nearest", inline: "center", behavior: reduceMotion ? "auto" : "smooth" });
-    const panel = $(".bb-panel");
-    const top = panel.getBoundingClientRect().top;
-    if (window.innerWidth < 900 && top < 0) window.scrollTo({ top: window.scrollY + top - 8, behavior: "smooth" });
+    const tabs = $(".bb-tabs");
+    if (active) tabs.scrollTo({ left: active.offsetLeft - (tabs.clientWidth - active.offsetWidth) / 2, behavior: reduceMotion ? "auto" : "smooth" });
+    $("#bbBody").scrollTop = 0;
+    $("#bbBack").hidden = step === 1;
+    $("#bbNext").innerHTML = step < 6 ? 'Далее <span class="btn-arrow" aria-hidden="true">→</span>' : "Отправить флористу";
+    $("#bbNext").classList.toggle("is-send", step === 6);
   }
 
   /* ── эскиз: удерживать, чтобы увидеть чистый контур ───── */
@@ -1233,7 +1223,7 @@
   const dlg = document.getElementById("bbDialog");
   function openSend() {
     updateSummary();
-    $("#bbDialogCompose").innerHTML = $("#bbCompose").innerHTML;
+    $("#bbDialogCompose").innerHTML = compositionLines().map((l) => "<li><span>" + esc(l[0]) + "</span><b>" + esc(l[1]) + "</b></li>").join("");
     $("#bbDialogPrice").textContent = fmt(price());
     $("#bbForm").hidden = false;
     $("#bbDone").hidden = true;
@@ -1354,8 +1344,10 @@
     const main = document.getElementById("main");
     if (!top || !main) return;
     const pos = getComputedStyle(top).position;
-    const h = pos === "sticky" || pos === "fixed" ? Math.round(top.getBoundingClientRect().bottom) : 0;
-    main.style.setProperty("--bb-head", Math.max(0, h) + "px");
+    const h = pos === "sticky" || pos === "fixed" ? Math.max(0, Math.round(top.getBoundingClientRect().bottom)) : 0;
+    main.style.setProperty("--bb-head", h + "px");
+    /* Фиксированная шапка не занимает места в потоке — отступаем сами */
+    main.style.setProperty("--bb-pad", (pos === "fixed" ? h : 0) + "px");
   }
   measureHead();
   window.addEventListener("resize", measureHead);
