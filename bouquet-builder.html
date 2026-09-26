@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FFFFFF">
+  <!-- Страница в разработке: закрыта от поиска и от посетителей.
+       Вход только по ссылке с ключом (?lab=…), дальше браузер запоминает доступ.
+       Перед публичным запуском: убрать noindex и блок «доступ». -->
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.bb-locked body{visibility:hidden}</style>
+  <script>
+  (function () {
+    var H = "aa83f520670b46a9a083d521c2dd08b6ca146a13fb395c8efed5d16a158caa1a";
+    var d = document.documentElement;
+    d.classList.add("bb-locked");
+    function ok() { d.classList.remove("bb-locked"); }
+    function no() { location.replace("index.html"); }
+    try { if (localStorage.getItem("paloma_lab") === H) { ok(); return; } } catch (e) {}
+    var q = new URLSearchParams(location.search), k = q.get("lab");
+    if (!k || !window.crypto || !crypto.subtle) { no(); return; }
+    crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)).then(function (b) {
+      var h = Array.from(new Uint8Array(b)).map(function (x) { return x.toString(16).padStart(2, "0"); }).join("");
+      if (h !== H) { no(); return; }
+      try { localStorage.setItem("paloma_lab", H); localStorage.setItem("paloma_lab_key", k); } catch (e) {}
+      q.delete("lab");
+      history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q : "") + location.hash);
+      ok();
+    }, no);
+  })();
+  </script>
+  <title>Конструктор авторского букета — PALOMA</title>
+  <meta name="description" content="Соберите авторский букет: размер, палитра, сезонные цветы и упаковка. Флорист PALOMA соберёт его и пришлёт фото на одобрение.">
+  <link rel="icon" type="image/png" href="assets/icons/favicon-giraffe.png?v=2">
+  <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
+  <link rel="stylesheet" href="preloader.css?v=giraffe2">
+  <link rel="stylesheet" href="styles.css?v=ph17">
+  <link rel="stylesheet" href="paloma-animations.css?v=w1">
+  <link rel="stylesheet" href="cart.css?v=w3">
+  <link rel="stylesheet" href="clients.css?v=nav1">
+  <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
+  <link rel="stylesheet" href="cursor.css?v=press1">
+  <link rel="stylesheet" href="mobile-polish.css?v=42">
+  <link rel="stylesheet" href="bouquet-builder.css?v=1">
+</head>
+<body class="bouquet-builder-page">
+  <a href="#main" class="skip-link">К содержимому</a>
+  <!-- PALOMA PAGE LOADER — premium curtain transition -->
+  <div class="paloma-page-loader" id="palomaPageLoader" aria-hidden="true">
+    <div class="paloma-page-loader__logo" aria-label="PALOMA">
+      <span class="paloma-page-loader__logo-base">PALOMA</span>
+      <span class="paloma-page-loader__logo-fill" aria-hidden="true"></span>
+    </div>
+    <p class="paloma-page-loader__tagline">flowers · coffee · you</p>
+    <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
+  </div>
+
+<div class="site-top" id="siteTop">
+    <div class="top-marquee" aria-hidden="false">
+      <div class="top-marquee__track">
+                <div class="top-marquee__content">
+        <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+      </div>
+              <div class="top-marquee__content" aria-hidden="true">
+        <span>Цветы</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Кофе</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Подарки</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Самовывоз</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Новороссийск</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>PALOMA</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Фото перед отправкой</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+        <span>Доставка день в день</span><span class="top-marquee__dot dot" aria-hidden="true">·</span>
+      </div>
+      </div>
+    </div>
+
+    <header class="site-header" id="siteHeader">
+      <div class="site-header__inner">
+        <button type="button" class="site-header__menu-toggle" id="menuToggle" data-cursor="hover" aria-expanded="false" aria-controls="mobileNav" aria-label="Открыть меню">
+          <span class="site-header__menu-lines" aria-hidden="true"></span>
+        </button>
+
+        <a href="index.html" class="site-header__logo">
+          <span class="site-header__logo-word">PALOMA</span>
+          <span class="site-header__logo-tag">flowers · coffee · you</span>
+        </a>
+
+        <nav class="site-header__nav" aria-label="Основная навигация">
+          <div class="site-header__dropdown-wrap site-header__dropdown-wrap--catalog" data-dropdown="catalog">
+            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerContacts" data-cursor="hover">
+              Каталог
+              <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+            </button>
+            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerContacts">
+              <div class="catalog-dropdown__inner">
+                <div class="catalog-dropdown__grid">
+
+                  <a href="catalog.html?cat=autumn"
+                     class="catalog-nav-item" data-cursor="hover" data-season-tab="autumn" hidden>
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"/>
+                        <path d="M5 19c3-4 6-7 10-10"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Осень</span>
+                      <span class="catalog-nav-item__sub">Сезонные букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=online"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="2" y="3" width="20" height="14" rx="1"/>
+                        <path d="M8 21h8M12 17v4"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Онлайн-витрина</span>
+                      <span class="catalog-nav-item__sub">Готовые букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=season"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/>
+                        <path d="M12 14v7"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Самый сезон</span>
+                      <span class="catalog-nav-item__sub">Сезонные цветы</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=bestsellers"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M8 21h8M12 17v4M6 4h12v3a6 6 0 0 1-12 0z"/>
+                        <path d="M6 5H3v1.5A3.5 3.5 0 0 0 6.5 10M18 5h3v1.5A3.5 3.5 0 0 1 17.5 10"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Бестселлеры</span>
+                      <span class="catalog-nav-item__sub">Чаще всего выбирают</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=compositions"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="12" cy="12" r="9"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Композиции и корзины</span>
+                      <span class="catalog-nav-item__sub">Цветочные формы</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=mono"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2a5 5 0 015 5c0 4-5 9-5 9S7 11 7 7a5 5 0 015-5z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Моно</span>
+                      <span class="catalog-nav-item__sub">Один вид цветов</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=duo"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <circle cx="9" cy="10" r="4"/>
+                        <circle cx="15" cy="14" r="4"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Дуо</span>
+                      <span class="catalog-nav-item__sub">Два вида цветов</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=authors"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2l3 6.5H21l-5.5 4 2 6.5L12 15l-5.5 4 2-6.5L3 8.5h6z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Авторские</span>
+                      <span class="catalog-nav-item__sub">Дизайнерские букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=wedding"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Свадебные</span>
+                      <span class="catalog-nav-item__sub">Для торжества</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html?cat=vases"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M7 22h10M8 22V8l4-6 4 6v14"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Вазы и подарки</span>
+                      <span class="catalog-nav-item__sub">Дополнения к букету</span>
+                    </div>
+                  </a>
+
+                  <a href="subscription.html"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M4 4v5h5M20 20v-5h-5"/>
+                        <path d="M20 9A8 8 0 005.3 5.3M4 15a8 8 0 0014.7 3.7"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Цветочная подписка</span>
+                      <span class="catalog-nav-item__sub">Регулярные букеты</span>
+                    </div>
+                  </a>
+
+                  <a href="gift-certificate.html"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="3" y="9" width="18" height="11" rx="1.5"/>
+                        <path d="M3 13h18M12 9v11M12 9S9.6 4 7.6 5.1 8 9 12 9zM12 9s2.4-5 4.4-3.9S16 9 12 9z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Подарочные сертификаты</span>
+                      <span class="catalog-nav-item__sub">Электронный или бумажный</span>
+                    </div>
+                  </a>
+
+                  <a href="wedding-piggy-bank.html"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="3" y="8" width="18" height="4" rx="1"/>
+                        <path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/>
+                        <path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8M16.5 8a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Свадебная копилка</span>
+                      <span class="catalog-nav-item__sub">Цветочный депозит на свадьбу</span>
+                    </div>
+                  </a>
+
+                  <a href="catalog.html#corporate"
+                     class="catalog-nav-item" data-cursor="hover">
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Корпоративные букеты</span>
+                      <span class="catalog-nav-item__sub">Для бизнеса, по договору</span>
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="coffee.html" class="site-header__link">Кофейня</a>
+          <a href="event-decoration.html" class="site-header__link">Оформление</a>
+
+          <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
+          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerContacts" data-cursor="hover">
+            Клиентам
+            <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+
+          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerContacts">
+            <div class="clients-dropdown__inner">
+              <div class="clients-dropdown__grid">
+                <a href="delivery.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h13v10H3zM16 10h4l2 3v4h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Доставка</div><div class="client-nav-card__desc">Зоны, сроки и стоимость</div></div></a>
+                <a href="payment.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 11h20"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Оплата</div><div class="client-nav-card__desc">Онлайн через ЮKassa</div></div></a>
+                <a href="care.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-3 5-3 8 0 11 3-3 3-6 0-11z"/><path d="M12 14v7"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Уход за букетом</div><div class="client-nav-card__desc">7 дней свежести и больше</div></div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="contacts.html" class="site-header__link">Контакты</a>
+        <a href="blog.html" class="site-header__link">Блог</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <a href="tel:+79897707000" class="site-header__phone">+7 (989) 770-70-00</a>
+          <a href="wishlist.html" id="wishlistOpenBtn" data-wishlist-open class="site-header__icon site-header__icon--wishlist" aria-label="Избранное, открыть панель" aria-expanded="false" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+            <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
+          </a>
+          <button type="button" class="site-header__icon site-header__icon--cart site-header__cart"
+        id="cartOpenBtn" data-cart-open
+        aria-label="Корзина" aria-expanded="false" aria-controls="cartDrawer" data-cursor="hover">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
+            <span class="site-header__cart-count site-header__badge cart-count" id="cartCount" data-cart-count style="display:none" aria-hidden="true">0</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="site-header__backdrop" id="menuBackdrop" aria-hidden="true"></div>
+      <nav class="site-header__mobile-panel" id="mobileNav" aria-label="Мобильное меню" aria-hidden="true">
+        <div class="site-header__mobile-inner">
+          <a href="catalog.html" class="site-header__mobile-link">Каталог</a>
+          <a href="coffee.html" class="site-header__mobile-link">Кофейня</a>
+          <a href="event-decoration.html" class="site-header__mobile-link">Оформление</a>
+          <span class="site-header__mobile-section-title">Клиентам</span>
+          <a href="delivery.html" class="site-header__mobile-link">Доставка</a>
+          <a href="payment.html" class="site-header__mobile-link">Оплата</a>
+          <a href="care.html" class="site-header__mobile-link">Уход за букетом</a>
+          <a href="contacts.html" class="site-header__mobile-link">Контакты</a>
+          <a href="blog.html" class="site-header__mobile-link">Блог</a>
+          <a href="wishlist.html" class="site-header__mobile-link">Избранное</a>
+          <a href="tel:+79897707000" class="site-header__mobile-phone">+7 (989) 770-70-00</a>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <main class="bb" id="main">
+    <section class="bb-intro">
+      <nav class="bb-crumbs" aria-label="Навигация">
+        <a href="index.html">Главная</a><span aria-hidden="true">/</span><a href="catalog.html?filter=authors">Авторские</a><span aria-hidden="true">/</span><span>Конструктор</span>
+      </nav>
+      <p class="bb-eyebrow">Авторский букет · конструктор</p>
+      <h1 class="bb-title">Раскрасьте свой букет</h1>
+      <p class="bb-lead">Выбирайте размер, палитру и сезонные цветы — эскиз оживает с каждым касанием. Флорист соберёт его вживую из сегодняшних поставок и пришлёт фото на одобрение до отправки.</p>
+    </section>
+
+    <section class="bb-studio" aria-label="Конструктор букета">
+      <div class="bb-stage">
+        <div class="bb-canvas" id="bbCanvas">
+          <svg id="bbSvg" viewBox="0 40 600 720" role="img" aria-label="Эскиз вашего букета">
+            <defs>
+              <radialGradient id="bbGlow" cx="38%" cy="32%" r="70%">
+                <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+                <stop offset=".45" stop-color="#fff" stop-opacity=".12"/>
+                <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <g id="bbArt"></g>
+          </svg>
+          <span class="bb-canvas__tag">эскиз · финальный букет соберёт флорист</span>
+          <div class="bb-toast" id="bbToast" role="status" aria-live="polite"></div>
+        </div>
+        <div class="bb-tools">
+          <button type="button" class="bb-tool" id="bbSketch" aria-pressed="false" title="Удерживайте, чтобы увидеть контур">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4z"/><path d="M14 6l3 3"/></svg><span>Контур</span>
+          </button>
+          <button type="button" class="bb-tool" id="bbShuffle" title="Переставить цветы">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3c5 0 5 10 10 10h3M4 17h3c1.6 0 2.7-1 3.6-2.4M13.4 9.4C14.3 8 15.4 7 17 7h3M18 4l3 3-3 3M18 14l3 3-3 3"/></svg><span>Перемешать</span>
+          </button>
+          <button type="button" class="bb-tool bb-tool--accent" id="bbSurprise" title="Случайный букет">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9l-4 3.2L16.2 17 12 14.3 7.8 17 9 12.2 5 9l5.2-1.1z"/></svg><span>Удиви меня</span>
+          </button>
+          <button type="button" class="bb-tool" id="bbSave" title="Сохранить картинку">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>Сохранить</span>
+          </button>
+          <button type="button" class="bb-tool" id="bbShare" title="Поделиться эскизом">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg><span>Поделиться</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="bb-panel">
+        <div class="bb-progress" id="bbProgress" aria-hidden="true"><i></i></div>
+        <div class="bb-tabs" role="tablist" aria-label="Шаги">
+          <button type="button" class="bb-step-tab" role="tab" data-step="1"><span>1</span>Размер</button>
+          <button type="button" class="bb-step-tab" role="tab" data-step="2"><span>2</span>Палитра</button>
+          <button type="button" class="bb-step-tab" role="tab" data-step="3"><span>3</span>Цветы</button>
+          <button type="button" class="bb-step-tab" role="tab" data-step="4"><span>4</span>Зелень</button>
+          <button type="button" class="bb-step-tab" role="tab" data-step="5"><span>5</span>Упаковка</button>
+          <button type="button" class="bb-step-tab" role="tab" data-step="6"><span>6</span>Детали</button>
+        </div>
+
+        <div class="bb-step" data-step="1" role="tabpanel">
+          <h2 class="bb-h">Какой букет дарим?</h2>
+          <p class="bb-sub">Размер определяет количество цветов. Эскиз меняется сразу.</p>
+          <div class="bb-sizes" id="bbSizes"></div>
+          <h3 class="bb-h3">Форма</h3>
+          <div class="bb-segs" id="bbStyles"></div>
+          <div class="bb-nav"><span></span><button type="button" class="bb-next" data-goto="2">Палитра →</button></div>
+        </div>
+
+        <div class="bb-step" data-step="2" role="tabpanel" hidden>
+          <h2 class="bb-h">Настроение в цвете</h2>
+          <p class="bb-sub">Нажмите на палитру — и смотрите, как краска разливается по эскизу.</p>
+          <div class="bb-pals" id="bbPalettes"></div>
+          <div class="bb-custom" id="bbCustom" hidden>
+            <p class="bb-sub">Соберите до пяти оттенков — первый станет главным.</p>
+            <div class="bb-swatches" id="bbSwatches"></div>
+          </div>
+          <div class="bb-nav"><button type="button" class="bb-back" data-goto="1">← Назад</button><button type="button" class="bb-next" data-goto="3">Цветы →</button></div>
+        </div>
+
+        <div class="bb-step" data-step="3" role="tabpanel" hidden>
+          <h2 class="bb-h">Цветы из сегодняшней витрины</h2>
+          <p class="bb-sub">Только то, что есть в студии сейчас · обновлено <b id="bbStockDate"></b>. До пяти видов; первый выбранный — акцент. Удерживайте цветок, чтобы сделать его акцентом.</p>
+          <button type="button" class="bb-florist" id="bbFlorist" aria-pressed="false">
+            <span class="bb-florist__ico" aria-hidden="true">✦</span>
+            <span><b>Доверяю флористу</b><small>подберёт самые красивые цветы дня в вашей палитре</small></span>
+          </button>
+          <div class="bb-flowers" id="bbFlowers"></div>
+          <div class="bb-nav"><button type="button" class="bb-back" data-goto="2">← Назад</button><button type="button" class="bb-next" data-goto="4">Зелень →</button></div>
+        </div>
+
+        <div class="bb-step" data-step="4" role="tabpanel" hidden>
+          <h2 class="bb-h">Зелень и воздух</h2>
+          <p class="bb-sub">Зелень задаёт характер: эвкалипт — лёгкость, фисташка — сочность, пампас — осенний уют.</p>
+          <div class="bb-flowers bb-flowers--greens" id="bbGreens"></div>
+          <div id="bbAmountRow" hidden>
+            <h3 class="bb-h3">Сколько зелени</h3>
+            <div class="bb-segs bb-segs--3" id="bbAmounts"></div>
+          </div>
+          <div class="bb-nav"><button type="button" class="bb-back" data-goto="3">← Назад</button><button type="button" class="bb-next" data-goto="5">Упаковка →</button></div>
+        </div>
+
+        <div class="bb-step" data-step="5" role="tabpanel" hidden>
+          <h2 class="bb-h">Упаковка</h2>
+          <p class="bb-sub">Финальный штрих. Цвет ленты «в тон» подстроится под палитру.</p>
+          <div class="bb-wraps" id="bbWraps"></div>
+          <div id="bbWrapColorsRow" hidden>
+            <h3 class="bb-h3">Цвет упаковки</h3>
+            <div class="bb-swatches bb-swatches--named" id="bbWrapColors"></div>
+          </div>
+          <div id="bbRibbonRow" hidden>
+            <h3 class="bb-h3">Лента</h3>
+            <div class="bb-swatches bb-swatches--named" id="bbRibbons"></div>
+          </div>
+          <div class="bb-nav"><button type="button" class="bb-back" data-goto="4">← Назад</button><button type="button" class="bb-next" data-goto="6">Детали →</button></div>
+        </div>
+
+        <div class="bb-step" data-step="6" role="tabpanel" hidden>
+          <h2 class="bb-h">Почти готово</h2>
+          <label class="bb-check"><input type="checkbox" id="bbCard"> <span>Открытка с вашим текстом <em>+350 ₽</em></span></label>
+          <textarea class="bb-input" id="bbCardText" rows="3" maxlength="200" placeholder="Текст открытки — напишем от руки" hidden></textarea>
+          <div class="bb-row2">
+            <label class="bb-field"><span>Когда нужен букет</span><input class="bb-input" type="date" id="bbDate"></label>
+            <div class="bb-field"><span>Получение</span>
+              <div class="bb-segs bb-segs--mini">
+                <button type="button" class="bb-seg" data-receive="delivery" aria-pressed="true"><b>Доставка</b></button>
+                <button type="button" class="bb-seg" data-receive="pickup" aria-pressed="false"><b>Самовывоз</b></button>
+              </div>
+            </div>
+          </div>
+          <label class="bb-field"><span>Пожелания флористу</span><textarea class="bb-input" id="bbComment" rows="3" maxlength="300" placeholder="Например: без лилий, она любит пионы, для мамы на юбилей"></textarea></label>
+          <div class="bb-recap">
+            <h3 class="bb-h3">Ваш букет</h3>
+            <ul class="bb-compose" id="bbCompose"></ul>
+          </div>
+          <div class="bb-nav"><button type="button" class="bb-back" data-goto="5">← Назад</button><button type="button" class="bb-next bb-next--send" id="bbSend">Отправить флористу</button></div>
+          <button type="button" class="bb-reset" id="bbReset">Начать заново</button>
+        </div>
+      </div>
+
+      <div class="bb-bar" role="region" aria-label="Итог">
+        <div class="bb-bar__info">
+          <span class="bb-bar__label">Ориентир</span>
+          <b class="bb-bar__price" id="bbPrice">—</b>
+          <span class="bb-bar__summary" id="bbSummary"></span>
+        </div>
+        <button type="button" class="bb-bar__cta" id="bbSendBar">Отправить флористу</button>
+      </div>
+    </section>
+
+    <section class="bb-how" aria-label="Как это работает">
+      <h2 class="bb-how__title">Как это работает</h2>
+      <ol class="bb-how__list">
+        <li><b>01</b><h3>Вы раскрашиваете</h3><p>Собираете эскиз из цветов, которые сегодня есть в студии.</p></li>
+        <li><b>02</b><h3>Флорист собирает</h3><p>Живые цветы подбираются по вашей палитре и составу.</p></li>
+        <li><b>03</b><h3>Фото на одобрение</h3><p>Присылаем фото готового букета — вы подтверждаете или просите поправить.</p></li>
+        <li><b>04</b><h3>Доставка</h3><p>Привозим день в день по Новороссийску или ждём вас на Энгельса, 74/82.</p></li>
+      </ol>
+    </section>
+  </main>
+
+  <dialog class="bb-dialog" id="bbDialog" aria-labelledby="bbDialogTitle">
+    <button type="button" class="bb-dialog__close" data-close aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <form class="bb-form" id="bbForm" novalidate>
+      <p class="bb-eyebrow">Последний шаг</p>
+      <h2 class="bb-h" id="bbDialogTitle">Отправляем эскиз флористу</h2>
+      <ul class="bb-compose bb-compose--mini" id="bbDialogCompose"></ul>
+      <p class="bb-form__price">Ориентир: <b id="bbDialogPrice"></b> <small>точную сумму флорист подтвердит вместе с фото</small></p>
+      <label class="bb-field"><span>Как к вам обращаться</span><input class="bb-input" id="bbName" autocomplete="name" maxlength="60" placeholder="Имя"></label>
+      <label class="bb-field"><span>Телефон *</span><input class="bb-input" id="bbPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required></label>
+      <div class="bb-field"><span>Куда прислать фото на одобрение</span>
+        <div class="bb-msgr">
+          <label><input type="radio" name="messenger" value="Telegram" checked><span>Telegram</span></label>
+          <label><input type="radio" name="messenger" value="WhatsApp"><span>WhatsApp</span></label>
+          <label><input type="radio" name="messenger" value="MAX"><span>MAX</span></label>
+          <label><input type="radio" name="messenger" value="Звонок"><span>Позвонить</span></label>
+        </div>
+      </div>
+      <label class="bb-check bb-check--small"><input type="checkbox" id="bbAgree" checked> <span>Согласен(на) с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки данных</a></span></label>
+      <p class="bb-form__error" id="bbFormError" role="alert"></p>
+      <button type="submit" class="bb-next bb-next--send bb-form__submit" id="bbSubmit">Отправить эскиз</button>
+    </form>
+    <div class="bb-done" id="bbDone" hidden>
+      <div class="bb-petals" id="bbPetals" aria-hidden="true"></div>
+      <div class="bb-done__bouquet" id="bbDoneBouquet"></div>
+      <p class="bb-eyebrow">Эскиз у флориста <span id="bbDoneId"></span></p>
+      <h2 class="bb-h">Ваш букет уже в работе</h2>
+      <p class="bb-sub">Флорист соберёт его из живых цветов и пришлёт фото на одобрение в <b id="bbDoneWhere"></b>. Отправим только после вашего «да».</p>
+      <button type="button" class="bb-next" data-close>Отлично</button>
+    </div>
+  </dialog>
+
+
+
+
+  <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
+    <div class="sf2">
+
+      <!-- ЛЕВО: подписка + соцсети -->
+      <div class="sf2-col sf2-col--lead">
+        <p class="sf2-lead">Остались вопросы? Оставьте телефон —<br>перезвоним и всё расскажем</p>
+
+        <div class="sf2-sub">
+          <label class="sf2-sub__label" for="footerPhone">Телефон</label>
+          <form class="sf2-form" onsubmit="return false" aria-label="Заказать обратный звонок">
+            <input class="sf2-input" type="tel" inputmode="tel" id="footerPhone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+            <button class="sf2-send" type="submit" aria-label="Отправить">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </form>
+          <label class="sf2-consent">
+            <input type="checkbox" aria-label="Согласие на обработку персональных данных">
+            <span>Даю <a href="privacy.html">согласие</a> на обработку персональных данных и соглашаюсь с <a href="privacy.html">Политикой&nbsp;конфиденциальности</a></span>
+          </label>
+        </div>
+
+        <div class="sf2-socials">
+          <a class="sf2-soc" href="https://www.instagram.com/paloma.nvrsk" target="_blank" rel="noopener noreferrer">
+            <span class="sf2-soc__ph" style="background-image:url('images/paloma/social/instagram.jpg?v=soc1')"></span>
+            <span class="sf2-soc__name">Instagram*</span>
+          </a>
+          <a class="sf2-soc" href="https://t.me/+79897707000" target="_blank" rel="noopener noreferrer">
+            <span class="sf2-soc__ph" style="background-image:url('images/paloma/social/telegram.jpg?v=soc1')"></span>
+            <span class="sf2-soc__name">Telegram</span>
+          </a>
+          <a class="sf2-soc" href="https://wa.me/79897707000" target="_blank" rel="noopener noreferrer">
+            <span class="sf2-soc__ph" style="background-image:url('images/paloma/social/whatsapp.jpg?v=soc1')"></span>
+            <span class="sf2-soc__name">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ЦЕНТР: Каталог -->
+      <nav class="sf2-col sf2-col--nav" aria-label="Каталог">
+        <p class="sf2-head">Каталог</p>
+        <ul class="sf2-links">
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="catalog.html?cat=mono">Моно</a></li>
+          <li><a href="catalog.html?cat=duo">Дуо</a></li>
+          <li><a href="catalog.html?cat=wedding">Свадебные</a></li>
+          <li><a href="coffee.html">Кофейня</a></li>
+          <li><a href="event-decoration.html">Оформление</a></li>
+          <li><a href="subscription.html">Цветочная подписка<sup class="sf2-badge">NEW</sup></a></li>
+        </ul>
+        <a class="sf2-phone" href="tel:+79897707000">+7 (989) 770-70-00</a>
+        <p class="sf2-undertext">Принимаем заказы с 7:30 до 22:00</p>
+        <div class="sf2-round">
+          <a class="sf2-round__btn" href="https://t.me/+79897707000" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.05-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          </a>
+          <a class="sf2-round__btn" href="https://wa.me/79897707000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.69-6.16a11.87 11.87 0 01-1.6-5.95C.15 5.34 5.5 0 12.06 0a11.82 11.82 0 018.4 3.49 11.82 11.82 0 013.48 8.42c0 6.56-5.35 11.9-11.91 11.9a11.94 11.94 0 01-5.7-1.45L.06 24zM6.6 20.2l.36.22a9.9 9.9 0 005.04 1.38 9.9 9.9 0 009.89-9.88 9.82 9.82 0 00-2.9-6.99 9.82 9.82 0 00-6.98-2.9 9.9 9.9 0 00-9.89 9.88c0 1.86.52 3.68 1.51 5.25l.24.38-1 3.65 3.73-.98zM17.5 14.38c-.07-.12-.26-.19-.55-.33-.29-.15-1.7-.84-1.96-.94-.26-.1-.46-.14-.65.14-.19.29-.74.94-.91 1.13-.17.19-.34.22-.62.07-.29-.14-1.22-.45-2.32-1.43-.86-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.44.12-.59.13-.13.29-.34.43-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.14-.65-1.57-.89-2.15-.24-.56-.47-.48-.65-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.41 1.02 2.77 1.17 2.96.14.19 2.01 3.08 4.88 4.32.68.29 1.21.47 1.63.6.68.22 1.31.19 1.8.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36z"/></svg>
+          </a>
+          <a class="sf2-round__btn" href="https://max.ru/u/f9LHodD0cOKI100A2hcnIgLAO34MA5sfEQhN75rGm_G6Wr0cqZ0zR2DQKsI" target="_blank" rel="noopener noreferrer" aria-label="Макс">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.35 16.91A9.2 9.2 0 1 1 15.24 19.75L4.2 21.5ZM12.4 7.3a3.7 3.7 0 1 0 0 7.4 3.7 3.7 0 1 0 0-7.4Z"/></svg>
+          </a>
+        </div>
+      </nav>
+
+      <!-- ПРАВО: Информация -->
+      <nav class="sf2-col sf2-col--nav" aria-label="Информация">
+        <p class="sf2-head">Информация</p>
+        <ul class="sf2-links">
+          <li><a href="delivery.html">Доставка и оплата</a></li>
+          <li><a href="care.html">Уход за букетом</a></li>
+          <li><a href="blog.html">Полезные статьи</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+        <p class="sf2-addr">Новороссийск,<br>ул. Энгельса, 74/82</p>
+        <p class="sf2-undertext">Студия цветов и кофе PALOMA</p>
+      </nav>
+
+    </div>
+
+    <div class="footer-bottom">
+      <img decoding="async" height="784" width="550" class="footer-giraffe" src="assets/images/paloma-giraffe-cut.png" alt="" aria-hidden="true" loading="lazy">
+      <p class="footer-copy">© 2026 PALOMA — flowers, coffee, you</p>
+      <div class="footer-legal">
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <span class="footer-legal__sep" aria-hidden="true">·</span>
+        <a href="offer.html">Публичная оферта</a>
+        <span class="footer-legal__sep" aria-hidden="true">·</span>
+        <a href="cookies.html">Cookie</a>
+        <span class="footer-legal__sep" aria-hidden="true">·</span>
+        <a class="sf2-dev" href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer">Разработчик</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <div class="product-modal__backdrop" data-close></div>
+    <div class="product-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="product-modal__close" aria-label="Закрыть" data-close data-cursor="hover">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="product-modal__grid">
+        <div class="product-modal__gallery">
+          <div class="product-modal__main-img" id="modalMainImg"></div>
+          <div class="product-modal__thumbs" id="modalThumbs">
+            <button type="button" class="product-modal__thumb is-active" aria-label="Вид 1"></button>
+            <button type="button" class="product-modal__thumb" aria-label="Вид 2"></button>
+            <button type="button" class="product-modal__thumb" aria-label="Вид 3"></button>
+          </div>
+        </div>
+        <div class="product-modal__info">
+          <div class="product-modal__category">Букеты</div>
+          <h2 class="product-modal__title" id="modalTitle">—</h2>
+          <div class="product-modal__price" id="modalPrice">—</div>
+          <p class="product-modal__desc" id="modalDesc">—</p>
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Состав</div>
+            <div class="product-modal__composition" id="modalComposition">—</div>
+          </div>
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Размер</div>
+            <div class="product-modal__sizes">
+              <button type="button" class="size-pill is-active" data-size="S" data-mod="0">S</button>
+              <button type="button" class="size-pill" data-size="M" data-mod="800">M</button>
+              <button type="button" class="size-pill" data-size="L" data-mod="1600">L</button>
+              <button type="button" class="size-pill" data-size="XL" data-mod="2800">XL</button>
+            </div>
+          </div>
+          <div class="product-modal__section">
+            <div class="product-modal__section-title">Дополнения</div>
+            <div class="product-modal__addons">
+              <label class="addon"><input type="checkbox" data-addon-price="350"> Открытка <span>+350 ₽</span></label>
+              <label class="addon"><input type="checkbox" data-addon-price="1200"> Ваза <span>+1 200 ₽</span></label>
+              <label class="addon"><input type="checkbox" data-addon-price="320"> Кофе с собой <span>+320 ₽</span></label>
+            </div>
+          </div>
+          <div class="product-modal__pairs" id="modalPairs">—</div>
+          <button type="button" class="btn btn--dark product-modal__add" id="modalAddToCart" data-cursor="hover">В корзину — <span id="modalTotal">3 500 ₽</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="paloma-page-loader__tagline">flowers · coffee · you</p>
+    <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
+  </div>
+
+  <!-- ── CART DRAWER ── -->
+  <div class="cart-drawer" id="cartDrawer"
+       aria-label="Корзина" aria-hidden="true"
+       role="dialog" hidden>
+    <div class="cart-drawer__backdrop"
+         id="cartDrawerBackdrop"
+         aria-hidden="true"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Корзина</h2>
+        <button type="button" class="cart-drawer__close"
+                id="cartDrawerClose"
+                data-cart-close
+                aria-label="Закрыть корзину" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="cart-drawer__empty" id="cartDrawerEmpty">
+        <div class="cart-drawer__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/>
+          </svg>
+        </div>
+        <p class="cart-drawer__empty-title">Корзина пуста</p>
+        <p class="cart-drawer__empty-text">Добавьте букет, кофе или подарок</p>
+        <a href="catalog.html"
+           class="btn btn--dark cart-drawer__empty-cta"
+           data-cart-close>Перейти в каталог</a>
+      </div>
+      <div class="cart-drawer__body" id="cartDrawerBody" hidden>
+        <div class="cart-drawer__list" id="cartDrawerList"
+             aria-label="Товары в корзине"></div>
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__total-row">
+            <span class="cart-drawer__total-label">Итого</span>
+            <span class="cart-drawer__total-val" id="cartDrawerTotal">0 ₽</span>
+          </div>
+          <a href="cart.html"
+             class="btn btn--dark cart-drawer__checkout"
+             aria-label="Перейти к оформлению заказа">Оформить заказ</a>
+          <button type="button" class="cart-drawer__continue"
+                  data-cart-close
+                  aria-label="Продолжить покупки">Продолжить покупки</button>
+        </div>
+      </div>
+    </div>
+    <p class="paloma-page-loader__tagline">flowers · coffee · you</p>
+    <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
+  </div>
+
+  <div class="custom-cursor" id="customCursor" aria-hidden="true">
+    <div class="custom-cursor__dot"></div>
+    <div class="custom-cursor__ring"></div>
+  </div>
+
+  <script src="preloader.js?v=giraffe1"></script>
+  <script src="cart-core.js?v=ecom2"></script>
+  <script src="payment-config.js?v=1"></script>
+  <script src="lead-send.js?v=3"></script>
+  <script src="script.js?v=perf8"></script>
+  <script src="paloma-animations.js"></script>
+  <script src="paloma-media-paths.js"></script>
+  <script src="paloma-media.js"></script>
+
+  <script src="wishlist.js?v=goal1"></script>
+  <script src="clients.js"></script>
+  <script src="builder-data.js?v=1"></script>
+  <script src="bouquet-builder.js?v=1"></script>
+  <script src="cursor.js?v=press3"></script>
+  <script src="cookie-consent.js?v=2"></script>
+  <!-- Выезжающая панель «Избранное» -->
+  <div class="cart-drawer wishlist-drawer" id="wishlistDrawer"
+       aria-label="Избранное" aria-hidden="true" role="dialog" hidden>
+    <div class="cart-drawer__backdrop" id="wishlistDrawerBackdrop"
+         data-wishlist-close aria-hidden="true"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Избранное</h2>
+        <button type="button" class="cart-drawer__close" id="wishlistDrawerClose"
+                data-wishlist-close aria-label="Закрыть избранное" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="cart-drawer__empty" id="wishlistDrawerEmpty">
+        <div class="cart-drawer__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/>
+          </svg>
+        </div>
+        <p class="cart-drawer__empty-title">В избранном пусто</p>
+        <p class="cart-drawer__empty-text">Нажмите на сердечко у понравившегося букета</p>
+        <a href="catalog.html" class="btn btn--dark cart-drawer__empty-cta"
+           data-wishlist-close>Перейти в каталог</a>
+      </div>
+      <div class="cart-drawer__body" id="wishlistDrawerBody" hidden>
+        <div class="cart-drawer__list" id="wishlistDrawerList"
+             aria-label="Товары в избранном"></div>
+        <div class="cart-drawer__footer">
+          <a href="wishlist.html" class="btn btn--dark cart-drawer__checkout"
+             aria-label="Открыть страницу избранного">Открыть избранное</a>
+          <button type="button" class="cart-drawer__continue"
+                  data-wishlist-close aria-label="Продолжить покупки">Продолжить покупки</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="maintenance-banner.js?v=2"></script>
+</body>
+</html>

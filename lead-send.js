@@ -28,6 +28,7 @@
     "event-decoration": "🎉 ЗАЯВКА — оформление мероприятия",
     "wedding-piggy": "💍 ЗАЯВКА — свадебная копилка",
     "footer-call": "📞 ЗАЯВКА — обратный звонок",
+    "bouquet-builder": "🎨 ЗАЯВКА — букет из конструктора",
   };
 
   const EVENT_TYPE = {
@@ -47,7 +48,9 @@
     if (p.source) lines.push("Со страницы: " + p.source);
     if (p.messenger) lines.push("Связь: " + p.messenger);
     if (p.eventType) lines.push("Повод: " + (EVENT_TYPE[p.eventType] || p.eventType));
-    if (p.date) lines.push("Дата события: " + p.date);
+    if (p.date) lines.push((p.page === "bouquet-builder" ? "Когда нужен букет: " : "Дата события: ") + p.date);
+    /* Конструктор букета присылает готовый состав отдельным блоком */
+    if (p.details) lines.push("\n" + p.details);
     if (p.comment) lines.push("\nКомментарий:\n" + p.comment);
     return lines.join("\n");
   }
