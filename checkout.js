@@ -1014,8 +1014,6 @@
     const contactWay = CONTACT_LABELS[o.messenger] || o.messenger || "—";
     lines.push("Связь: " + contactWay + " " + (o.messengerContact || ""));
     if (f.comment) lines.push("", "Комментарий: " + f.comment);
-    /* Откуда пришёл покупатель (attribution.js): реклама / нет, первый заход */
-    try { if (window.palomaAttribution) lines.push(window.palomaAttribution.text()); } catch (e) { /* не мешаем заказу */ }
     return lines.join("\n");
   }
 

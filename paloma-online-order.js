@@ -55,8 +55,6 @@
     var endpoint = ((window.PALOMA_PAYMENT_CONFIG || {}).PAYMENT_ENDPOINT || "").trim();
     var orderId = makeOrderId();
     var btn = opts.button || null;
-    /* Откуда пришёл покупатель (attribution.js) — в конец текста заказа */
-    try { if (window.palomaAttribution) opts.details = String(opts.details || "") + "\n" + window.palomaAttribution.text(); } catch (e) { /* не мешаем заказу */ }
 
     /* заказ для thank-you: message — готовый текст, custom — метка спец-заказа */
     var order = {

@@ -52,8 +52,6 @@
     /* Конструктор букета присылает готовый состав отдельным блоком */
     if (p.details) lines.push("\n" + p.details);
     if (p.comment) lines.push("\nКомментарий:\n" + p.comment);
-    /* Откуда пришёл клиент (attribution.js): реклама / нет, первый заход */
-    try { if (window.palomaAttribution) lines.push(window.palomaAttribution.text()); } catch (e) { /* не мешаем заявке */ }
     return lines.join("\n");
   }
 
