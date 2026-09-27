@@ -23,9 +23,9 @@ main.bb { overflow: visible; overflow-x: clip; padding-top: var(--bb-pad, 0px); 
   box-sizing: border-box;
   height: calc(100dvh - var(--bb-head, 88px));
   min-height: 560px;
-  max-width: var(--container, 1440px);
+  max-width: 1440px;
   margin: 0 auto;
-  padding: var(--gap) var(--gutter, 20px);
+  padding: var(--gap) clamp(16px, 3vw, 48px);
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(360px, 480px);
   gap: var(--gap);
@@ -290,7 +290,7 @@ main.bb { overflow: visible; overflow-x: clip; padding-top: var(--bb-pad, 0px); 
     grid-template-rows: minmax(0, 40fr) minmax(0, 60fr);
     height: calc(100dvh - var(--bb-head, 64px));
     min-height: 520px;
-    padding: 10px var(--gutter, 20px) 12px; gap: 8px;
+    padding: 8px 12px 12px; gap: 8px;
   }
   .bb-visual { border-radius: 18px; }
   .bb-canvas { padding: 2% 14% 1% 4%; }
