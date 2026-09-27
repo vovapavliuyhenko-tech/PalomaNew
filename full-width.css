@@ -1,0 +1,101 @@
+/* ════════════════════════════════════════════════════════
+   full-width.css — блоки сайта во всю ширину экрана
+
+   Раньше контент ограничивался шириной 1440px и на широких экранах
+   по бокам оставались пустые поля. Здесь эти ограничения сняты —
+   боковые отступы каждого блока (padding) остаются как были.
+
+   Узкие по смыслу блоки (FAQ, формы, оформление заказа, выпадающие
+   меню, текст статьи) не трогаем: длинные строки читать неудобно.
+
+   Подключать ПОСЛЕДНИМ стилем на странице.
+   ════════════════════════════════════════════════════════ */
+:root { --container: 100%; }
+/* Блоки в стиле «авторского оформления» (главная, кофейня, уход, оформление) */
+.ea-page { --ea-maxw: 100% !important; }
+
+.blog-filters__inner,
+.blog-featured,
+.blog-grid-section,
+.blog-inside__inner,
+.article-breadcrumbs__inner,
+.article-hero__inner,
+.article-related__inner,
+.cart-content__inner,
+.cart-page-inner,
+.catalog-breadcrumbs__inner,
+.catalog-hero__inner,
+.catalog-filters,
+.catalog-tools,
+.catalog-count,
+.client-methods__inner,
+.client-intervals__inner,
+.client-event-intro__inner,
+.breadcrumbs__inner,
+.info-cards-section__inner,
+.cf-hero__inner,
+.ct-taste__inner,
+.cf-moods__inner,
+.cf-union__inner,
+.cfgr__inner,
+.cf-plus__inner,
+.cfm__inner,
+.cf-location__inner,
+.coffee-product-showcase__wrap,
+.coffee-format-track__inner,
+.coffee-intro__inner,
+.coffee-page .coffee-intro__inner,
+.coffee-page .coffee-gift-split__inner,
+.coffee-page .coffee-bean-mood__inner,
+.coffee-page .coffee-menu__inner,
+.coffee-page .coffee-bouquet-add__inner,
+.coffee-page .coffee-location__inner,
+.coffee-intro__grid,
+.coffee-menu-section__inner,
+.coffee-combo__inner,
+.coffee-contacts__inner,
+.contacts-studio__inner,
+.contacts-map-section__inner,
+.contacts-channels__inner,
+.e-hero__content,
+.e-services__inner,
+.e-process__header,
+.e-gallery__inner,
+.e-form__inner,
+.pdp-breadcrumbs__inner,
+.pdp-layout,
+.pdp-addons__inner,
+.container,
+.site-header__inner,
+.showcase__header,
+.showcase__grid,
+.catalog-filters-bar__inner,
+.catalog-filters__inner,
+.catalog-products__inner,
+.about-story__content,
+.faq__container,
+.contacts-split__inner,
+.paloma-location__inner,
+.process__intro,
+.reviews__inner,
+.reviews-section__inner,
+.page-hero__inner,
+.home-showcase__progress,
+.home-categories__head,
+.home-categories__grid,
+.home-sub__card-wrap,
+.footer-inner,
+.footer-bottom,
+.ev-process__intro-inner,
+.sf2,
+.wpb-how__inner,
+.w-hero__content,
+.w-intro__inner,
+.w-services__inner,
+.w-gallery__inner,
+.w-process__header,
+.w-portfolio__inner,
+.w-packages__inner,
+.wishlist-hero__inner {
+  max-width: none !important;
+}
