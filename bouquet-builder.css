@@ -21,11 +21,11 @@ main.bb { overflow: visible; overflow-x: clip; padding-top: var(--bb-pad, 0px); 
 .bb-app {
   --gap: clamp(12px, 1.6vw, 24px);
   box-sizing: border-box;
-  height: min(calc(100dvh - var(--bb-head, 88px)), 820px);
+  height: calc(100dvh - var(--bb-head, 88px));
   min-height: 560px;
-  max-width: 1320px;
+  max-width: var(--container, 1440px);
   margin: 0 auto;
-  padding: clamp(10px, 1.6vw, 24px) clamp(24px, 5vw, 80px) clamp(20px, 3vw, 40px);
+  padding: var(--gap) var(--gutter, 20px);
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(360px, 480px);
   gap: var(--gap);
@@ -290,7 +290,7 @@ main.bb { overflow: visible; overflow-x: clip; padding-top: var(--bb-pad, 0px); 
     grid-template-rows: minmax(0, 40fr) minmax(0, 60fr);
     height: calc(100dvh - var(--bb-head, 64px));
     min-height: 520px;
-    padding: 10px 24px 12px; gap: 8px;
+    padding: 10px var(--gutter, 20px) 12px; gap: 8px;
   }
   .bb-visual { border-radius: 18px; }
   .bb-canvas { padding: 2% 14% 1% 4%; }
