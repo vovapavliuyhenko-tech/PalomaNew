@@ -5196,7 +5196,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   gap: 24px;
   margin-bottom: clamp(18px, 2.2vw, 32px);
   padding: 0 clamp(4px, 1vw, 12px);
-  max-width: var(--container);
+  /* Витрины — во всю ширину экрана, заголовок по краю карточек */
+  max-width: none;
   margin-left: auto;
   margin-right: auto;
 }
@@ -5242,7 +5243,7 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
 
 .home-showcase__carousel {
   position: relative;
-  max-width: var(--container);
+  max-width: none;
   margin: 0 auto;
 }
 
