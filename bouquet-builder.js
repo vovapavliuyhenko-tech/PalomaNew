@@ -802,47 +802,37 @@
   }
 
   function buildControls() {
-    /* Размер: название, количество, цена */
-    $("#bbSizes").innerHTML = D.sizes.map((s) =>
-      '<button type="button" class="bb-opt bb-size" data-size="' + s.code + '" aria-pressed="false">' +
-      '<span class="bb-opt__name">' + s.name + "</span>" +
-      '<span class="bb-opt__meta">' + s.stems + " цветов</span>" +
-      '<span class="bb-opt__price">от ' + fmt(s.price) + "</span></button>").join("");
-    $("#bbStyles").innerHTML = D.styles.map((s) =>
-      '<button type="button" class="bb-pill" data-style="' + s.code + '" aria-pressed="false">' + s.name + "</button>").join("");
+    const pill = (attr, val, html, extra) =>
+      '<button type="button" class="pdp-size-btn' + (extra ? " " + extra : "") + '" data-' + attr + '="' + val + '" aria-pressed="false" data-cursor="hover">' + html + "</button>";
+    /* Размер — как размерный ряд в карточке товара */
+    $("#bbSizes").innerHTML = D.sizes.map((s) => pill("size", s.code, s.name + " · " + s.stems + " шт")).join("");
+    $("#bbStyles").innerHTML = D.styles.map((s) => pill("style", s.code, s.name)).join("");
 
-    /* Палитры: кружок из пяти оттенков */
+    /* Палитры: пилюля с кружком из пяти оттенков */
     const ring = (cols) => "conic-gradient(" + cols.map((c, i) => c + " " + (i * 100) / cols.length + "% " + ((i + 1) * 100) / cols.length + "%").join(",") + ")";
-    $("#bbPalettes").innerHTML = D.palettes.map((p) =>
-      '<button type="button" class="bb-opt bb-pal" data-palette="' + p.code + '" aria-pressed="false">' +
-      '<span class="bb-pal__dot" style="background:' + ring(p.colors) + '"></span>' +
-      '<span class="bb-opt__name">' + p.name + "</span></button>").join("") +
-      '<button type="button" class="bb-opt bb-pal" data-palette="custom" aria-pressed="false">' +
-      '<span class="bb-pal__dot bb-pal__dot--custom" id="bbCustomDot"></span><span class="bb-opt__name">Своя</span></button>';
     buildControls.ring = ring;
+    $("#bbPalettes").innerHTML = D.palettes.map((p) =>
+      pill("palette", p.code, '<i class="bb-dot" style="background:' + ring(p.colors) + '"></i>' + p.name, "bb-pal")).join("") +
+      pill("palette", "custom", '<i class="bb-dot bb-dot--custom" id="bbCustomDot"></i>Своя палитра', "bb-pal");
     $("#bbSwatches").innerHTML = D.swatches.map((c) =>
       '<button type="button" class="bb-swatch" data-swatch="' + c + '" style="--c:' + c + '" aria-label="Цвет ' + c + '" aria-pressed="false"></button>').join("");
 
-    /* Цветы: только в наличии */
+    /* Цветы и зелень — плитки с рисунком, как карточки допов */
     $("#bbStockDate").textContent = D.stockUpdated;
     $("#bbFlowers").innerHTML = D.flowers.filter((f) => f.inStock).map((f) =>
-      '<button type="button" class="bb-opt bb-tile" data-flower="' + f.id + '" aria-pressed="false" title="' + esc(f.note) + '">' +
-      miniIcon(f.kind) + '<span class="bb-opt__name">' + f.name + "</span>" +
-      '<span class="bb-tile__hero" aria-hidden="true">акцент</span></button>').join("");
-
-    /* Зелень */
+      '<button type="button" class="bb-tile" data-flower="' + f.id + '" aria-pressed="false" title="' + esc(f.note) + '" data-cursor="hover">' +
+      miniIcon(f.kind) + '<span class="bb-tile__name">' + f.name + "</span>" +
+      '<span class="bb-tile__note">' + esc(f.note) + "</span>" +
+      '<span class="bb-tile__hero">акцент</span></button>').join("");
     $("#bbGreens").innerHTML = D.greens.map((g) =>
-      '<button type="button" class="bb-opt bb-tile" data-green="' + g.id + '" aria-pressed="false">' +
+      '<button type="button" class="bb-tile" data-green="' + g.id + '" aria-pressed="false" data-cursor="hover">' +
       (g.kind === "none" ? '<svg class="bb-mini" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="12" fill="none"/><path d="M16 32L32 16" fill="none"/></svg>' : miniIcon(g.kind, true)) +
-      '<span class="bb-opt__name">' + g.name + "</span></button>").join("");
-    $("#bbAmounts").innerHTML = D.greenAmounts.map((a) =>
-      '<button type="button" class="bb-pill" data-amount="' + a.code + '" aria-pressed="false">' + a.name + "</button>").join("");
+      '<span class="bb-tile__name">' + g.name + "</span></button>").join("");
+    $("#bbAmounts").innerHTML = D.greenAmounts.map((a) => pill("amount", a.code, a.name)).join("");
 
     /* Упаковка */
     $("#bbWraps").innerHTML = D.wraps.map((w) =>
-      '<button type="button" class="bb-opt bb-wrapc" data-wrap="' + w.id + '" aria-pressed="false">' +
-      '<span class="bb-opt__name">' + w.name + "</span>" +
-      '<span class="bb-opt__meta">' + (w.extra ? "+ " + fmt(w.extra) : "включено") + "</span></button>").join("");
+      pill("wrap", w.id, w.name + (w.extra ? '<span class="bb-pill-extra">+ ' + fmt(w.extra) + "</span>" : ""))).join("");
     $("#bbRibbons").innerHTML = D.ribbons.map((r) =>
       '<button type="button" class="bb-swatch' + (r[1] === "auto" ? " is-auto" : "") + '" data-ribbon="' + r[1] + '" style="--c:' + (r[1] === "auto" ? "transparent" : r[1]) + '" aria-pressed="false" title="' + r[0] + '" aria-label="' + r[0] + '"></button>').join("");
   }
@@ -857,6 +847,21 @@
     $("#bbRibbonName").textContent = rib ? rib[0].toLowerCase() : "";
     $("#bbWrapColorsRow").hidden = !w.colors.length || state.wrap === null;
     $("#bbRibbonRow").hidden = state.wrap === null;
+  }
+
+  /* Короткие итоги шага — справа в заголовке аккордеона */
+  function stepSummaries() {
+    const s = SIZES[state.size];
+    const pal = state.palette === "custom" ? "своя палитра" : state.palette ? PALETTES[state.palette].name : "";
+    const fl = state.florist ? "на выбор флориста" : state.flowers.map((id) => FLOWERS[id].name).join(", ");
+    const g = state.green === null ? "" : state.green === "none" ? "без зелени" : GREENS[state.green].name + ", " + AMOUNTS[state.amount].name.toLowerCase();
+    let w = "";
+    if (state.wrap !== null) {
+      const wr = WRAPS[state.wrap], c = wr.colors[state.wrapColor];
+      w = wr.name + (c ? ", " + c[0].toLowerCase() : "");
+    }
+    const det = [state.date ? state.date.split("-").reverse().slice(0, 2).join(".") : "", state.receive === "pickup" ? "самовывоз" : "", state.card ? "открытка" : ""].filter(Boolean).join(" · ");
+    return { 1: s.name + " · " + STYLES[state.style].name.toLowerCase(), 2: pal, 3: fl, 4: g, 5: w, 6: det };
   }
 
   function syncControls() {
@@ -887,15 +892,12 @@
     $("#bbComment").value = state.comment;
     press("[data-receive]", "receive", state.receive);
 
-    const done = {
-      1: true,
-      2: !!paletteColors(),
-      3: state.flowers.length > 0 || state.florist,
-      4: state.green !== null,
-      5: state.wrap !== null,
-      6: false,
-    };
-    $$(".bb-step-tab").forEach((t) => t.classList.toggle("is-done", !!done[t.dataset.step]));
+    const sum = stepSummaries();
+    Object.keys(sum).forEach((k) => {
+      const el = $("#bbSum" + k);
+      el.textContent = sum[k];
+      el.closest(".bb-step").classList.toggle("is-done", !!sum[k]);
+    });
 
     updateSummary();
     saveDraft();
@@ -1016,13 +1018,10 @@
     } else if (b.id === "bbReset") {
       state = Object.assign({}, DEFAULT_STATE, { seed: state.seed, custom: [], flowers: [] });
       rerender();
-    } else if (b.id === "bbNext") {
-      if (step < 6) goStep(step + 1); else openSend();
-      return;
-    } else if (b.id === "bbBack") {
-      goStep(step - 1); return;
-    } else if (b.classList.contains("bb-step-tab")) {
-      goStep(+b.dataset.step); return;
+    } else if (b.id === "bbSend") {
+      openSend(); return;
+    } else if (ds.next) {
+      openStep(+ds.next); return;
     } else return;
 
     pulseStage();
@@ -1080,19 +1079,31 @@
     syncControls();
   }
 
-  /* ── шаги ─────────────────────────────────────────────── */
-  let step = 1;
-  function goStep(n) {
-    step = Math.max(1, Math.min(6, n));
-    $$(".bb-step").forEach((s) => { s.hidden = +s.dataset.step !== step; });
-    $$(".bb-step-tab").forEach((t) => t.setAttribute("aria-selected", String(+t.dataset.step === step)));
-    const active = $('.bb-step-tab[data-step="' + step + '"]');
-    const tabs = $(".bb-tabs");
-    if (active) tabs.scrollTo({ left: active.offsetLeft - (tabs.clientWidth - active.offsetWidth) / 2, behavior: reduceMotion ? "auto" : "smooth" });
-    $("#bbBody").scrollTop = 0;
-    $("#bbBack").hidden = step === 1;
-    $("#bbNext").innerHTML = step < 6 ? 'Далее <span class="btn-arrow" aria-hidden="true">→</span>' : "Отправить флористу";
-    $("#bbNext").classList.toggle("is-send", step === 6);
+  /* ── шаги-аккордеоны: открыт один шаг за раз ─────────── */
+  function openStep(n) {
+    const target = $('.bb-step[data-step="' + n + '"]');
+    if (!target) return;
+    /* Сначала закрываем остальные, иначе высота над шагом меняется
+       уже после расчёта прокрутки и шаг уезжает под эскиз */
+    $$(".bb-step").forEach((o) => { if (o !== target) o.open = false; });
+    target.open = true;
+    requestAnimationFrame(() => {
+      const top = target.getBoundingClientRect().top;
+      /* Верхняя граница видимой области: шапка сайта, а на телефоне —
+         ещё и прилипший эскиз */
+      let edge = parseFloat(getComputedStyle(document.getElementById("main")).getPropertyValue("--bb-head")) || 0;
+      const gal = $(".bb .pdp-gallery");
+      if (gal && getComputedStyle(gal).position === "sticky" && window.innerWidth <= 900) edge += gal.offsetHeight;
+      if (top < edge + 8 || top > window.innerHeight * 0.7) {
+        window.scrollTo({ top: window.scrollY + top - edge - 12, behavior: reduceMotion ? "auto" : "smooth" });
+      }
+    });
+  }
+  function bindSteps() {
+    $$(".bb-step").forEach((d) => d.addEventListener("toggle", () => {
+      if (!d.open) return;
+      $$(".bb-step").forEach((o) => { if (o !== d) o.open = false; });
+    }));
   }
 
   /* ── эскиз: удерживать, чтобы увидеть чистый контур ───── */
@@ -1223,7 +1234,8 @@
   const dlg = document.getElementById("bbDialog");
   function openSend() {
     updateSummary();
-    $("#bbDialogCompose").innerHTML = compositionLines().map((l) => "<li><span>" + esc(l[0]) + "</span><b>" + esc(l[1]) + "</b></li>").join("");
+    $("#bbDialogCompose").innerHTML = compositionLines().map((l) =>
+      '<div class="pdp-info__row"><span class="pdp-info__row-label">' + esc(l[0]) + '</span><span class="pdp-info__row-val">' + esc(l[1]) + "</span></div>").join("");
     $("#bbDialogPrice").textContent = fmt(price());
     $("#bbForm").hidden = false;
     $("#bbDone").hidden = true;
@@ -1346,8 +1358,6 @@
     const pos = getComputedStyle(top).position;
     const h = pos === "sticky" || pos === "fixed" ? Math.max(0, Math.round(top.getBoundingClientRect().bottom)) : 0;
     main.style.setProperty("--bb-head", h + "px");
-    /* Фиксированная шапка не занимает места в потоке — отступаем сами */
-    main.style.setProperty("--bb-pad", (pos === "fixed" ? h : 0) + "px");
   }
   measureHead();
   window.addEventListener("resize", measureHead);
@@ -1357,7 +1367,7 @@
   const fromLink = loadInitial();
   syncControls();
   render();
-  goStep(1);
+  bindSteps();
   bindSketchHold();
   onFlowerHold();
   bindForm();

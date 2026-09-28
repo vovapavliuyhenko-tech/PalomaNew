@@ -41,7 +41,8 @@
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
   <link rel="stylesheet" href="mobile-polish.css?v=42">
-  <link rel="stylesheet" href="bouquet-builder.css?v=2">
+  <link rel="stylesheet" href="product.css?v=bb1">
+  <link rel="stylesheet" href="bouquet-builder.css?v=5">
   <link rel="stylesheet" href="full-width.css?v=1">
 </head>
 <body class="bouquet-builder-page">
@@ -356,11 +357,28 @@
     </header>
   </div>
 
-  <main class="bb" id="main">
-    <section class="bb-app bb-studio" aria-label="Конструктор авторского букета">
-      <div class="bb-visual">
-        <div class="bb-canvas" id="bbCanvas">
-          <svg id="bbSvg" viewBox="0 40 600 720" role="img" aria-label="Эскиз вашего букета">
+  <main class="bb pdp" id="main" aria-label="Конструктор авторского букета">
+
+    <nav class="pdp-breadcrumbs" aria-label="Хлебные крошки">
+      <div class="pdp-breadcrumbs__inner">
+        <ol class="pdp-breadcrumbs__list">
+          <li><a href="index.html">Главная</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="catalog.html?filter=authors">Авторские</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">Конструктор букета</li>
+        </ol>
+      </div>
+    </nav>
+
+    <div class="pdp-layout bb-studio">
+
+      <!-- ЛЕВО: эскиз, прилипает при прокрутке, как фото товара -->
+      <div class="pdp-gallery bb-visual">
+        <div class="pdp-gallery__main bb-canvas" id="bbCanvas">
+          <svg id="bbSvg" viewBox="10 70 580 700" role="img" aria-label="Эскиз вашего букета">
             <defs>
               <radialGradient id="bbGlow" cx="38%" cy="32%" r="70%">
                 <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
@@ -370,117 +388,149 @@
             </defs>
             <g id="bbArt"></g>
           </svg>
+          <span class="bb-canvas__tag">Эскиз · букет соберёт флорист</span>
+          <div class="bb-toast" id="bbToast" role="status" aria-live="polite"></div>
         </div>
         <div class="bb-tools" role="toolbar" aria-label="Эскиз">
-          <button type="button" class="bb-tool" id="bbSurprise" title="Удиви меня — случайный букет" aria-label="Удиви меня">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9l-4 3.2L16.2 17 12 14.3 7.8 17 9 12.2 5 9l5.2-1.1z"/></svg>
+          <button type="button" class="pdp-size-btn bb-tool bb-tool--accent" id="bbSurprise" data-cursor="hover">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9l-4 3.2L16.2 17 12 14.3 7.8 17 9 12.2 5 9l5.2-1.1z"/></svg>Удиви меня
           </button>
-          <button type="button" class="bb-tool" id="bbShuffle" title="Переставить цветы" aria-label="Переставить цветы">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3c5 0 5 10 10 10h3M4 17h3c1.6 0 2.7-1 3.6-2.4M13.4 9.4C14.3 8 15.4 7 17 7h3M18 4l3 3-3 3M18 14l3 3-3 3"/></svg>
+          <button type="button" class="pdp-size-btn bb-tool" id="bbShuffle" data-cursor="hover">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3c5 0 5 10 10 10h3M4 17h3c1.6 0 2.7-1 3.6-2.4M13.4 9.4C14.3 8 15.4 7 17 7h3M18 4l3 3-3 3M18 14l3 3-3 3"/></svg>Перемешать
           </button>
-          <button type="button" class="bb-tool" id="bbSketch" aria-pressed="false" title="Удерживайте — контур без цвета" aria-label="Показать контур">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4z"/><path d="M14 6l3 3"/></svg>
+          <button type="button" class="pdp-size-btn bb-tool" id="bbSketch" aria-pressed="false" title="Удерживайте, чтобы увидеть чистый контур" data-cursor="hover">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4z"/><path d="M14 6l3 3"/></svg>Контур
           </button>
-          <button type="button" class="bb-tool" id="bbSave" title="Сохранить картинку" aria-label="Сохранить картинку">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
-          </button>
-          <button type="button" class="bb-tool" id="bbShare" title="Поделиться эскизом" aria-label="Поделиться эскизом">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg>
+          <button type="button" class="pdp-size-btn bb-tool" id="bbSave" data-cursor="hover">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Сохранить
           </button>
         </div>
-        <div class="bb-toast" id="bbToast" role="status" aria-live="polite"></div>
       </div>
 
-      <div class="bb-panel">
-        <header class="bb-panel__head">
-          <p class="bb-label">Авторский букет</p>
-          <h1 class="bb-title">Конструктор букета</h1>
-        </header>
+      <!-- ПРАВО: всё как в карточке товара -->
+      <div class="pdp-info bb-info">
+        <p class="pdp-info__cat">Авторский букет · конструктор</p>
+        <h1 class="pdp-info__name">Соберите свой букет</h1>
+        <p class="pdp-info__price"><span class="bb-approx">≈</span> <span id="bbPrice">—</span></p>
+        <p class="pdp-info__desc">Выберите размер, палитру и сезонные цветы — эскиз раскрасится у вас на глазах. Флорист соберёт букет вживую и пришлёт фото на одобрение до отправки.</p>
 
-        <div class="bb-tabs" role="tablist" aria-label="Шаги">
-          <button type="button" class="bb-step-tab" role="tab" data-step="1">Размер</button>
-          <button type="button" class="bb-step-tab" role="tab" data-step="2">Палитра</button>
-          <button type="button" class="bb-step-tab" role="tab" data-step="3">Цветы</button>
-          <button type="button" class="bb-step-tab" role="tab" data-step="4">Зелень</button>
-          <button type="button" class="bb-step-tab" role="tab" data-step="5">Упаковка</button>
-          <button type="button" class="bb-step-tab" role="tab" data-step="6">Детали</button>
-        </div>
-
-        <div class="bb-body" id="bbBody">
-          <div class="bb-step" data-step="1" role="tabpanel">
-            <p class="bb-hint">Размер определяет количество цветов.</p>
-            <div class="bb-sizes" id="bbSizes"></div>
-            <p class="bb-label bb-label--row">Форма</p>
-            <div class="bb-pills bb-pills--fill" id="bbStyles"></div>
-          </div>
-
-          <div class="bb-step" data-step="2" role="tabpanel" hidden>
-            <p class="bb-hint">Выберите настроение — эскиз раскрасится.</p>
-            <div class="bb-pals" id="bbPalettes"></div>
-            <div class="bb-custom" id="bbCustom" hidden>
-              <p class="bb-label bb-label--row">Своя палитра · до 5 оттенков</p>
-              <div class="bb-swatches" id="bbSwatches"></div>
+        <div class="bb-steps">
+          <details class="pdp-accordion bb-step" data-step="1" open>
+            <summary class="pdp-accordion__trigger" data-cursor="hover">
+              <span class="bb-step__t"><i>01</i>Размер и форма</span>
+              <span class="bb-step__v" id="bbSum1"></span>
+              <svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg>
+            </summary>
+            <div class="pdp-accordion__body">
+              <span class="pdp-sizes__label">Размер</span>
+              <div class="pdp-sizes__btns" id="bbSizes" role="group" aria-label="Размер"></div>
+              <span class="pdp-sizes__label bb-gap">Форма</span>
+              <div class="pdp-sizes__btns" id="bbStyles" role="group" aria-label="Форма"></div>
+              <button type="button" class="bb-next" data-next="2">Далее — палитра <span aria-hidden="true">→</span></button>
             </div>
-          </div>
+          </details>
 
-          <div class="bb-step" data-step="3" role="tabpanel" hidden>
-            <p class="bb-hint">В наличии на <b id="bbStockDate"></b>. До 5 видов, первый — акцент.</p>
-            <div class="bb-tiles bb-tiles--flowers" id="bbFlowers"></div>
-            <button type="button" class="bb-pill bb-pill--wide" id="bbFlorist" aria-pressed="false">Доверяю выбор флористу</button>
-          </div>
-
-          <div class="bb-step" data-step="4" role="tabpanel" hidden>
-            <p class="bb-hint">Зелень задаёт характер букета.</p>
-            <div class="bb-tiles bb-tiles--greens" id="bbGreens"></div>
-            <div id="bbAmountRow" hidden>
-              <p class="bb-label bb-label--row">Сколько зелени</p>
-              <div class="bb-pills bb-pills--fill" id="bbAmounts"></div>
+          <details class="pdp-accordion bb-step" data-step="2">
+            <summary class="pdp-accordion__trigger" data-cursor="hover">
+              <span class="bb-step__t"><i>02</i>Палитра</span>
+              <span class="bb-step__v" id="bbSum2"></span>
+              <svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg>
+            </summary>
+            <div class="pdp-accordion__body">
+              <p class="pdp-accordion__intro">Выберите настроение — краска разольётся по эскизу.</p>
+              <div class="pdp-sizes__btns" id="bbPalettes" role="group" aria-label="Палитра"></div>
+              <div class="bb-custom" id="bbCustom" hidden>
+                <span class="pdp-sizes__label bb-gap">Своя палитра · до 5 оттенков</span>
+                <div class="bb-swatches" id="bbSwatches"></div>
+              </div>
+              <button type="button" class="bb-next" data-next="3">Далее — цветы <span aria-hidden="true">→</span></button>
             </div>
-          </div>
+          </details>
 
-          <div class="bb-step" data-step="5" role="tabpanel" hidden>
-            <div class="bb-pills bb-pills--wraps" id="bbWraps"></div>
-            <div id="bbWrapColorsRow" hidden>
-              <p class="bb-label bb-label--row">Цвет · <span id="bbWrapColorName"></span></p>
-              <div class="bb-swatches" id="bbWrapColors"></div>
+          <details class="pdp-accordion bb-step" data-step="3">
+            <summary class="pdp-accordion__trigger" data-cursor="hover">
+              <span class="bb-step__t"><i>03</i>Цветы</span>
+              <span class="bb-step__v" id="bbSum3"></span>
+              <svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg>
+            </summary>
+            <div class="pdp-accordion__body">
+              <p class="pdp-accordion__intro">В наличии в студии на <b id="bbStockDate"></b>. До пяти видов — первый станет акцентом букета.</p>
+              <div class="bb-tiles" id="bbFlowers"></div>
+              <button type="button" class="pdp-size-btn bb-florist" id="bbFlorist" aria-pressed="false">Доверяю выбор флористу</button>
+              <button type="button" class="bb-next" data-next="4">Далее — зелень <span aria-hidden="true">→</span></button>
             </div>
-            <div id="bbRibbonRow" hidden>
-              <p class="bb-label bb-label--row">Лента · <span id="bbRibbonName"></span></p>
-              <div class="bb-swatches" id="bbRibbons"></div>
-            </div>
-          </div>
+          </details>
 
-          <div class="bb-step" data-step="6" role="tabpanel" hidden>
-            <div class="bb-row2">
-              <label class="bb-field"><span class="bb-label">Дата</span><input class="bb-input" type="date" id="bbDate"></label>
-              <div class="bb-field"><span class="bb-label">Получение</span>
-                <div class="bb-pills bb-pills--fill">
-                  <button type="button" class="bb-pill" data-receive="delivery" aria-pressed="true">Доставка</button>
-                  <button type="button" class="bb-pill" data-receive="pickup" aria-pressed="false">Самовывоз</button>
+          <details class="pdp-accordion bb-step" data-step="4">
+            <summary class="pdp-accordion__trigger" data-cursor="hover">
+              <span class="bb-step__t"><i>04</i>Зелень</span>
+              <span class="bb-step__v" id="bbSum4"></span>
+              <svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg>
+            </summary>
+            <div class="pdp-accordion__body">
+              <div class="bb-tiles bb-tiles--greens" id="bbGreens"></div>
+              <div id="bbAmountRow" hidden>
+                <span class="pdp-sizes__label bb-gap">Сколько зелени</span>
+                <div class="pdp-sizes__btns" id="bbAmounts" role="group" aria-label="Количество зелени"></div>
+              </div>
+              <button type="button" class="bb-next" data-next="5">Далее — упаковка <span aria-hidden="true">→</span></button>
+            </div>
+          </details>
+
+          <details class="pdp-accordion bb-step" data-step="5">
+            <summary class="pdp-accordion__trigger" data-cursor="hover">
+              <span class="bb-step__t"><i>05</i>Упаковка</span>
+              <span class="bb-step__v" id="bbSum5"></span>
+              <svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg>
+            </summary>
+            <div class="pdp-accordion__body">
+              <div class="pdp-sizes__btns" id="bbWraps" role="group" aria-label="Упаковка"></div>
+              <div id="bbWrapColorsRow" hidden>
+                <span class="pdp-sizes__label bb-gap">Цвет · <em id="bbWrapColorName"></em></span>
+                <div class="bb-swatches" id="bbWrapColors"></div>
+              </div>
+              <div id="bbRibbonRow" hidden>
+                <span class="pdp-sizes__label bb-gap">Лента · <em id="bbRibbonName"></em></span>
+                <div class="bb-swatches" id="bbRibbons"></div>
+              </div>
+              <button type="button" class="bb-next" data-next="6">Далее — детали <span aria-hidden="true">→</span></button>
+            </div>
+          </details>
+
+          <details class="pdp-accordion bb-step" data-step="6">
+            <summary class="pdp-accordion__trigger" data-cursor="hover">
+              <span class="bb-step__t"><i>06</i>Детали</span>
+              <span class="bb-step__v" id="bbSum6"></span>
+              <svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg>
+            </summary>
+            <div class="pdp-accordion__body">
+              <div class="bb-row2">
+                <label class="bb-field"><span class="pdp-sizes__label">Когда нужен букет</span><input class="bb-input" type="date" id="bbDate"></label>
+                <div class="bb-field"><span class="pdp-sizes__label">Получение</span>
+                  <div class="pdp-sizes__btns">
+                    <button type="button" class="pdp-size-btn" data-receive="delivery" aria-pressed="true">Доставка</button>
+                    <button type="button" class="pdp-size-btn" data-receive="pickup" aria-pressed="false">Самовывоз</button>
+                  </div>
                 </div>
               </div>
+              <label class="bb-field"><span class="pdp-sizes__label">Пожелания флористу</span><textarea class="bb-input" id="bbComment" rows="2" maxlength="300" placeholder="Например: без лилий, для мамы на юбилей"></textarea></label>
+              <label class="bb-check"><input type="checkbox" id="bbCard"> <span>Открытка с вашим текстом · 350 ₽</span></label>
+              <textarea class="bb-input" id="bbCardText" rows="2" maxlength="200" placeholder="Текст открытки — напишем от руки" hidden></textarea>
             </div>
-            <label class="bb-field"><span class="bb-label">Пожелания флористу</span><textarea class="bb-input" id="bbComment" rows="2" maxlength="300" placeholder="Например: без лилий, для мамы на юбилей"></textarea></label>
-            <label class="bb-check"><input type="checkbox" id="bbCard"> <span>Открытка с текстом · 350 ₽</span></label>
-            <textarea class="bb-input" id="bbCardText" rows="2" maxlength="200" placeholder="Текст открытки — напишем от руки" hidden></textarea>
-            <button type="button" class="bb-reset" id="bbReset">Начать заново</button>
-          </div>
+          </details>
         </div>
 
-        <footer class="bb-foot">
-          <div class="bb-price">
-            <span class="bb-label">Ориентир</span>
-            <b id="bbPrice">—</b>
-          </div>
-          <div class="bb-foot__btns">
-            <button type="button" class="bb-back" id="bbBack" aria-label="Назад">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
-            </button>
-            <button type="button" class="btn btn--dark bb-next" id="bbNext">Далее <span class="btn-arrow" aria-hidden="true">→</span></button>
-          </div>
-        </footer>
+        <div class="pdp-actions bb-actions">
+          <button type="button" class="btn btn--dark pdp-actions__cart" id="bbSend" data-cursor="hover">Отправить флористу</button>
+          <button type="button" class="pdp-actions__wish" id="bbShare" aria-label="Поделиться эскизом" title="Поделиться эскизом" data-cursor="hover">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg>
+          </button>
+        </div>
+        <p class="pdp-budget__hint bb-hint">Цена — ориентир. Точную сумму флорист подтвердит вместе с фото готового букета, а отправим его только после вашего «да».</p>
+        <button type="button" class="bb-reset" id="bbReset">Начать заново</button>
       </div>
-    </section>
+
+    </div>
   </main>
 
   <dialog class="bb-dialog" id="bbDialog" aria-labelledby="bbDialogTitle">
@@ -488,32 +538,32 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <form class="bb-form" id="bbForm" novalidate>
-      <p class="bb-label">Отправка флористу</p>
-      <h2 class="bb-title" id="bbDialogTitle">Ваш букет</h2>
-      <ul class="bb-compose" id="bbDialogCompose"></ul>
-      <p class="bb-form__price">Ориентир <b id="bbDialogPrice"></b><small>Точную сумму флорист подтвердит вместе с фото букета.</small></p>
+      <p class="pdp-info__cat">Отправка флористу</p>
+      <h2 class="bb-dialog__title" id="bbDialogTitle">Ваш букет</h2>
+      <div class="bb-compose" id="bbDialogCompose"></div>
+      <p class="bb-dialog__price">Ориентир <b id="bbDialogPrice"></b></p>
       <div class="bb-row2">
-        <label class="bb-field"><span class="bb-label">Имя</span><input class="bb-input" id="bbName" autocomplete="name" maxlength="60"></label>
-        <label class="bb-field"><span class="bb-label">Телефон</span><input class="bb-input" id="bbPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required></label>
+        <label class="bb-field"><span class="pdp-sizes__label">Имя</span><input class="bb-input" id="bbName" autocomplete="name" maxlength="60"></label>
+        <label class="bb-field"><span class="pdp-sizes__label">Телефон</span><input class="bb-input" id="bbPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required></label>
       </div>
-      <div class="bb-field"><span class="bb-label">Фото на одобрение прислать в</span>
-        <div class="bb-pills bb-msgr">
-          <label><input type="radio" name="messenger" value="Telegram" checked><span class="bb-pill">Telegram</span></label>
-          <label><input type="radio" name="messenger" value="WhatsApp"><span class="bb-pill">WhatsApp</span></label>
-          <label><input type="radio" name="messenger" value="MAX"><span class="bb-pill">MAX</span></label>
-          <label><input type="radio" name="messenger" value="Звонок"><span class="bb-pill">Звонок</span></label>
+      <div class="bb-field"><span class="pdp-sizes__label">Фото на одобрение прислать в</span>
+        <div class="pdp-sizes__btns bb-msgr">
+          <label><input type="radio" name="messenger" value="Telegram" checked><span class="pdp-size-btn">Telegram</span></label>
+          <label><input type="radio" name="messenger" value="WhatsApp"><span class="pdp-size-btn">WhatsApp</span></label>
+          <label><input type="radio" name="messenger" value="MAX"><span class="pdp-size-btn">MAX</span></label>
+          <label><input type="radio" name="messenger" value="Звонок"><span class="pdp-size-btn">Звонок</span></label>
         </div>
       </div>
-      <label class="bb-check bb-check--small"><input type="checkbox" id="bbAgree" checked> <span>Согласен(на) с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки данных</a></span></label>
+      <label class="bb-check bb-check--small"><input type="checkbox" id="bbAgree" checked> <span>Даю <a href="privacy.html" target="_blank" rel="noopener">согласие</a> на обработку персональных данных</span></label>
       <p class="bb-form__error" id="bbFormError" role="alert"></p>
-      <button type="submit" class="btn btn--dark bb-form__submit" id="bbSubmit">Отправить флористу</button>
+      <button type="submit" class="btn btn--dark bb-form__submit" id="bbSubmit">Отправить эскиз</button>
     </form>
     <div class="bb-done" id="bbDone" hidden>
       <div class="bb-petals" id="bbPetals" aria-hidden="true"></div>
       <div class="bb-done__bouquet" id="bbDoneBouquet"></div>
-      <p class="bb-label">Заявка <span id="bbDoneId"></span></p>
-      <h2 class="bb-title">Букет в работе</h2>
-      <p class="bb-hint">Флорист соберёт его из живых цветов и пришлёт фото на одобрение в <b id="bbDoneWhere"></b>. Отправим только после вашего «да».</p>
+      <p class="pdp-info__cat">Заявка <span id="bbDoneId"></span></p>
+      <h2 class="bb-dialog__title">Букет в работе</h2>
+      <p class="pdp-info__desc">Флорист соберёт его из живых цветов и пришлёт фото на одобрение в <b id="bbDoneWhere"></b>. Отправим только после вашего «да».</p>
       <button type="button" class="btn btn--dark" data-close>Хорошо</button>
     </div>
   </dialog>
@@ -737,7 +787,7 @@
   <script src="wishlist.js?v=goal1"></script>
   <script src="clients.js"></script>
   <script src="builder-data.js?v=1"></script>
-  <script src="bouquet-builder.js?v=2"></script>
+  <script src="bouquet-builder.js?v=5"></script>
   <script src="cursor.js?v=press3"></script>
   <script src="cookie-consent.js?v=2"></script>
   <!-- Выезжающая панель «Избранное» -->
