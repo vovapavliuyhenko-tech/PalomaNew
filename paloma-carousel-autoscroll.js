@@ -26,6 +26,13 @@
       /* ── Пропускаем пустые (ещё не отрисованные) и уже инициализированные ── */
       if (!track.children.length) return;
       if (section.dataset.autoscrollInit === '1') return;
+      /* Карточки помещаются целиком — листать нечего. Без этой проверки
+         бесконечная лента копировала их, и один-два товара в «С этим часто
+         покупают» показывались дважды. Защёлку не ставим: если карточек
+         станет больше, повторный вызов запустит ленту как обычно. */
+      var first = track.firstElementChild, last = track.lastElementChild;
+      var contentWidth = last.offsetLeft + last.offsetWidth - first.offsetLeft;
+      if (contentWidth <= viewport.clientWidth + 2) return;
       section.dataset.autoscrollInit = '1';
 
       /* ── Clone cards for seamless infinite loop ── */

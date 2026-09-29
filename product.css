@@ -941,3 +941,11 @@ body.product-page {
 .pdp-similar .home-product-card__more {
   border-radius: 12px;
 }
+
+/* «С этим часто покупают» — боковые поля как у витрин на главной.
+   Старое правило .pdp-similar в styles.css обнуляло их, и блок
+   прилипал к краю экрана (первая буква заголовка обрезалась). */
+.home-showcase.pdp-similar {
+  padding-left: clamp(12px, 2vw, 28px);
+  padding-right: clamp(12px, 2vw, 28px);
+}
