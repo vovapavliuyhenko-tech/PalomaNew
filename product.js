@@ -399,6 +399,7 @@
         selectedSize = btn.dataset.size;
         sizePriceDelta = parseInt(btn.dataset.delta, 10) || 0;
         updatePriceDisplay();
+        showSizePhoto(btn.dataset.size, btn.textContent);
       });
 
       sizeBtnsEl.appendChild(btn);
@@ -513,6 +514,7 @@
 
     if (mainImg) mainImg.style.display = "";
     setMainPhoto(photos[0], 0);
+    preloadSizePhotos();
 
     if (!thumbsEl) return;
     thumbsEl.innerHTML = "";
@@ -543,6 +545,39 @@
       btn.addEventListener("click", () => setMainPhoto(photo, i));
       thumbsEl.appendChild(btn);
     });
+  }
+
+  /* ── Фото под размер ──────────────────────────────────────
+     Для букетов, снятых в каждом размере, по клику на размер показываем
+     его фото — покупатель видит, как выглядит S, M или L. В базе у размера
+     нет своего фото (сервер хранит только код, подпись и доплату), поэтому
+     снимки лежат в папке каталога и перечислены здесь по id товара. */
+  const SIZE_PHOTOS = {
+    /* «Корзины с хризантемой бигуди и эвкалиптом» */
+    p1790702821378: {
+      S: "images/paloma/catalog/chrysanthemum-baskets-s.webp",
+      M: "images/paloma/catalog/chrysanthemum-baskets-m.webp",
+      L: "images/paloma/catalog/chrysanthemum-baskets-l.webp",
+    },
+  };
+
+  function sizePhotosFor() {
+    const id = (rawProduct && rawProduct.id) || (product && product.id);
+    return (id && SIZE_PHOTOS[id]) || null;
+  }
+
+  function showSizePhoto(code, label) {
+    const map = sizePhotosFor();
+    const src = map && map[String(code || "").toUpperCase()];
+    if (!src) return;
+    setMainPhoto({ src: src, alt: product.name + " — размер " + String(label || code).trim() }, -1);
+  }
+
+  /* Заранее подгружаем снимки размеров, чтобы переключение было мгновенным */
+  function preloadSizePhotos() {
+    const map = sizePhotosFor();
+    if (!map) return;
+    Object.keys(map).forEach((k) => { const im = new Image(); im.src = map[k]; });
   }
 
   function setMainPhoto(photo, index) {
