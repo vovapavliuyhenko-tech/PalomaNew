@@ -36,18 +36,43 @@
      «Авторских» и 17.09.2026 добавлена в «Осень». Снять — убрать строку;
      галочку «Осень» в панели это не отменяет. */
   var PINNED_CATEGORIES = {
-    p1789461486044: ["autumn"] // «Авторская Осень»
+    p1789461486044: ["autumn"],            // «Авторская Осень»
+    /* 30.09.2026, по просьбе владельца: базовые букеты — на онлайн-витрину,
+       георгины — ещё и в «Осень», корзины с хризантемой — в «Самый сезон». */
+    m1: ["online"],                        // «Белая гортензия»
+    m6: ["online"],                        // «Розовая гортензия»
+    m7: ["online"],                        // «Голубая гортензия»
+    n4: ["autumn", "online"],              // «Георгин Пичес»
+    p1790702821378: ["season"]             // «Корзины с хризантемой бигуди и эвкалиптом»
+  };
+
+  /* ── Поля, исправленные в коде ───────────────────────────────────────────
+     Та же идея для текста и фото: правка видна сразу, без панели. Значение
+     отсюда перекрывает то, что лежит в базе, поэтому когда то же самое
+     поправят в панели — строку лучше убрать, чтобы не путаться. */
+  var PRODUCT_OVERRIDES = {
+    /* «Корзины с хризантемой бигуди и эвкалиптом»: сорт — Бигуди Перпл
+       (не «бордовые»), главное фото — девушка с большой корзиной (размер L) */
+    p1790702821378: {
+      composition: "Хризантема Бигуди Перпл, эвкалипт, плетёная корзина",
+      desc: "Пышная осенняя композиция: хризантемы сорта Бигуди Перпл с веточками эвкалипта в плетёной корзине. Три размера — от компактной до большой.",
+      image: "images/paloma/catalog/chrysanthemum-baskets-l.webp"
+    }
   };
 
   function pinCategories(list) {
     return list.map(function (p) {
       var extra = p && PINNED_CATEGORIES[p.id];
-      if (!extra) return p;
-      var cats = Array.isArray(p.categories) ? p.categories.slice() : p.category ? [p.category] : [];
-      extra.forEach(function (c) { if (cats.indexOf(c) < 0) cats.push(c); });
+      var over = p && PRODUCT_OVERRIDES[p.id];
+      if (!extra && !over) return p;
       var copy = {};
       for (var k in p) copy[k] = p[k];
-      copy.categories = cats;
+      if (extra) {
+        var cats = Array.isArray(p.categories) ? p.categories.slice() : p.category ? [p.category] : [];
+        extra.forEach(function (c) { if (cats.indexOf(c) < 0) cats.push(c); });
+        copy.categories = cats;
+      }
+      if (over) for (var f in over) copy[f] = over[f];
       return copy;
     });
   }
