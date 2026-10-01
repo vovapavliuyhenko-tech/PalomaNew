@@ -1,192 +1,136 @@
 /* ════════════════════════════════════════════════════════
    bouquet-builder.css — конструктор авторского букета
 
-   Страница собрана на классах карточки товара (product.css):
-   крошки, раскладка 50/50, прилипающий «фото»-блок слева,
-   подпись категории, заголовок, цена, размерные пилюли,
-   аккордеоны и кнопка действия — всё то же, что на товаре.
-   Здесь — только то, чего у карточки товара нет.
+   Раскладка — как карточка товара (product.css): крошки, 50/50,
+   прилипающий эскиз слева. Слева — раскраска, справа — четыре шага.
    ════════════════════════════════════════════════════════ */
 body.bouquet-builder-page {
   padding-top: var(--paloma-header-offset, calc(34px + 88px));
 }
 .bb {
-  --bb-ink: #2a2522;
+  --bb-ink: #2b2522;
   --bb-line: rgba(27, 26, 24, 0.1);
-  --bb-line-strong: rgba(27, 26, 24, 0.22);
-  --bb-muted: rgba(27, 26, 24, 0.65);
+  --bb-line-strong: rgba(27, 26, 24, 0.2);
+  --bb-muted: rgba(27, 26, 24, 0.58);
   --bb-accent: #E7385A;
   --bb-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* Глобальный overflow-x: hidden у <main> ломает sticky — clip режет так же */
 main.bb { overflow: visible; overflow-x: clip; }
 
-/* ── эскиз слева (как фото товара) ────────────────────── */
+/* ── раскраска ───────────────────────────────────────── */
 .bb .pdp-gallery { top: calc(var(--bb-head, 88px) + 24px); }
-.bb-canvas {
-  background:
-    radial-gradient(80% 60% at 50% 40%, #FFFFFF 0%, rgba(255, 255, 255, 0) 70%),
-    #F6F2EE;
+.bb-canvas { background: #FBF9F6; }
+.bb-canvas svg { position: absolute; inset: 0; width: 100%; height: 100%; padding: 3% 4%; box-sizing: border-box; }
+#bbArt path.f {
+  fill: #FFFFFF; stroke: var(--bb-ink); stroke-width: 1.15px;
+  stroke-linejoin: round; stroke-linecap: round;
+  transition: fill .9s var(--bb-ease) var(--d, 0ms);
 }
-.bb-canvas svg { position: absolute; inset: 0; width: 100%; height: 100%; padding: 4% 5% 7%; box-sizing: border-box; overflow: visible; z-index: 1; }
-.bb-canvas.is-pulse svg { animation: bbPulse .5s var(--bb-ease); }
-.bb-canvas.is-magic svg { animation: bbMagic .9s var(--bb-ease); }
-@keyframes bbPulse { 40% { transform: scale(1.01); } }
-@keyframes bbMagic { 35% { transform: rotate(-2deg) scale(.96); filter: blur(2px); } }
+#bbArt path.l { fill: none; stroke: var(--bb-ink); stroke-width: .8px; stroke-linecap: round; stroke-linejoin: round; opacity: .75; }
+#bbArt path.film { fill-opacity: .66; }
+#bbArt path.thin { stroke-width: .75px; }
+#bbArt .bb-shadow { fill: rgba(27, 26, 24, 0.06); stroke: none; }
+#bbArt text { font-family: var(--logo, var(--font-display, "Italiana")), serif; fill: var(--bb-ink); }
+#bbArt .bb-g { animation: bbIn .45s ease both; }
+@keyframes bbIn { from { opacity: 0; } }
 
-.bb-canvas__tag {
-  position: absolute; left: 16px; bottom: 16px; z-index: 2;
-  padding: 8px 14px; border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bb-muted);
+.bb-hint {
+  position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 2;
+  margin: 0; padding: 9px 16px; border-radius: 999px; white-space: nowrap;
+  background: rgba(255, 255, 255, 0.94); box-shadow: 0 6px 20px -10px rgba(27, 26, 24, 0.3);
+  font-size: 12px; color: var(--bb-ink);
+  animation: bbHint 2.4s ease-in-out infinite;
 }
+.bb-hint[hidden] { display: none; }
+@keyframes bbHint { 50% { transform: translate(-50%, -3px); } }
+.bb-shuffle {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid var(--bb-line-strong); background: rgba(255, 255, 255, 0.92); color: var(--bb-ink); cursor: pointer;
+  transition: border-color .22s, transform .4s var(--bb-ease);
+}
+.bb-shuffle:hover { border-color: var(--bb-ink); transform: rotate(-20deg); }
+.bb-shuffle svg { position: absolute; inset: 0; margin: auto; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .bb-toast {
   position: absolute; left: 50%; top: 16px; z-index: 3; transform: translate(-50%, -8px);
-  padding: 12px 16px; border-radius: 4px; background: var(--color-text, #1B1A18); color: #FFFFFF;
-  font-size: 13px; font-weight: 500; white-space: nowrap; opacity: 0; pointer-events: none;
+  padding: 11px 16px; border-radius: 6px; background: var(--color-text, #1B1A18); color: #FFFFFF;
+  font-size: 13px; white-space: nowrap; opacity: 0; pointer-events: none;
   transition: opacity .3s ease, transform .35s ease;
 }
 .bb-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+.bb-caption { margin: 2px 0 0; font-size: 12px; line-height: 1.5; color: var(--bb-muted); text-align: center; }
 
-/* Кнопки под эскизом — те же пилюли, что размеры у товара */
-.bb-tools { display: flex; flex-wrap: wrap; gap: 8px; }
-.bb-tool { display: inline-flex; align-items: center; gap: 8px; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
-.bb-tool svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.bb-tool--accent { border-color: var(--bb-accent); color: var(--bb-accent); }
-.bb-tool--accent svg { fill: currentColor; stroke: none; }
-.bb-tool--accent:hover { background: var(--bb-accent); border-color: var(--bb-accent); color: #FFFFFF; }
-.bb-tool[aria-pressed="true"] { background: var(--color-text, #1B1A18); border-color: var(--color-text, #1B1A18); color: #FFFFFF; }
+/* ── четыре шага ─────────────────────────────────────── */
+.bb-panel .pdp-info__name { margin-bottom: 12px; }
+.bb-lead { margin: 0 0 26px; font-size: 15px; line-height: 1.6; color: var(--bb-muted); }
+.bb-step { padding: 22px 0 24px; border-top: 1px solid var(--bb-line); }
+.bb-step__head { display: flex; align-items: baseline; gap: 12px; margin: 0 0 16px; }
+.bb-step__n { font-family: var(--font-mono, var(--mono, "JetBrains Mono"), monospace); font-size: 11px; letter-spacing: .14em; color: var(--bb-accent); }
+.bb-step__t { margin: 0; font-family: var(--font-sans, var(--sans, "Manrope"), sans-serif); font-size: 16px; font-weight: 500; letter-spacing: .01em; color: var(--color-text, #1B1A18); }
+.bb-step__v { margin-left: auto; font-size: 13px; color: var(--bb-muted); text-align: right; }
+.bb-sub { margin: -6px 0 12px; font-size: 13px; color: var(--bb-muted); }
+.bb-sub--gap { margin: 20px 0 10px; }
 
-/* ── слои эскиза ──────────────────────────────────────── */
-.bb-ink path { fill: none; stroke: var(--bb-ink); stroke-width: 1.4px; stroke-linecap: round; stroke-linejoin: round; }
-.bb-ink .bb-sheen { stroke: #fff; opacity: .7; }
-.bb-stems path { fill: none; stroke: var(--bb-ink); stroke-width: 1.4px; stroke-linecap: round; transition: stroke .8s; }
-#bbSvg.is-heads .bb-stems path { stroke: #6d8a58; }
-.bb-ground { fill: rgba(27, 26, 24, 0.05); }
-.bb-paint { transition: opacity .35s; }
-#bbSvg.is-sketch .bb-paint, #bbSvg.is-sketch .bb-old { opacity: 0; }
-#bbSvg.bb-draw .bb-ink path, #bbSvg.bb-draw .bb-stems path {
-  stroke-dasharray: 1 1;
-  animation: bbDraw .85s cubic-bezier(.45, 0, .2, 1) both;
-  animation-delay: calc(var(--d, 0ms) * .6);
+.bb-sizes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.bb-size {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 12px 4px 11px; border: 1px solid var(--bb-line-strong); border-radius: 14px;
+  background: #FFFFFF; color: var(--color-text, #1B1A18); cursor: pointer; font: inherit;
+  transition: border-color .22s, box-shadow .22s, background .22s;
 }
-#bbSvg.bb-draw .bb-item { animation: bbFade .5s ease both; animation-delay: calc(var(--d, 0ms) * .6); }
+.bb-size b { font-family: var(--font-sans, var(--sans, "Manrope")), sans-serif; font-size: 18px; font-weight: 500; line-height: 1.2; letter-spacing: .04em; }
+.bb-size span { font-size: 11px; color: var(--bb-muted); }
+.bb-size em { font-style: normal; font-size: 12px; font-weight: 500; margin-top: 4px; }
+.bb-size:hover { border-color: var(--bb-ink); }
+.bb-size.is-active { border-color: var(--bb-ink); box-shadow: inset 0 0 0 1px var(--bb-ink); }
 
-/* Окрашенная деталь (is-on): карандаш перетекает в мягкий цветной край
-   лепестка, цветок отбрасывает тень на соседей — эскиз становится
-   похож на живой букет, а не на раскраску */
-/* Свой мягкий край у каждого лепестка: верхний лепесток закрывает
-   край нижнего, как в живом цветке. Карандаш при окраске гаснет —
-   иначе контуры всех лепестков просвечивают «проволокой». */
-.bb-paint path[data-tone] { stroke: var(--tint, #2a2522); stroke-opacity: .28; stroke-width: .7px; stroke-linejoin: round; }
-.bb-wrap .bb-paint path[data-tone] { stroke-opacity: .14; }
-.bb-item .bb-ink { transition: opacity .9s ease; }
-.bb-item.is-on .bb-ink { opacity: 0; }
-.bb-item.is-on .bb-ink .bb-sheen { stroke: #fff; stroke-opacity: .75; stroke-width: 1.6px; }
-.bb-item.is-on.bb-wrap .bb-ink { opacity: 1; }
-.bb-item.is-on.bb-wrap .bb-ink path:not(.bb-sheen) { stroke-opacity: 0; }
-.bb-head.is-on:not(.is-photo) > .bb-base,
-.bb-green.is-on > .bb-base { filter: url(#bbShade); }
-/* Настоящий цветок: белая подложка эскиза уходит, остаётся снимок
-   со своей вырезанной формой и тенью */
-.bb-head.is-photo > .bb-base { transition: opacity .7s ease; }
-.bb-head.is-photo.is-on > .bb-base { opacity: 0; }
-.bb-label {
-  font-family: var(--logo, "Italiana", serif); letter-spacing: .2em;
-  fill: #1b1a18; fill-opacity: .72; text-anchor: middle; dominant-baseline: middle;
+.bb-pals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.bb-pal {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 12px 4px 10px; border: 1px solid transparent; border-radius: 14px;
+  background: none; cursor: pointer; font: inherit; color: var(--color-text, #1B1A18);
+  transition: border-color .22s, background .22s;
 }
-@keyframes bbDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes bbFade { from { opacity: 0; } }
+.bb-pal { min-width: 0; }
+.bb-pal:hover { background: #FAF7F3; }
+.bb-pal.is-active { border-color: var(--bb-ink); background: #FFFFFF; }
+.bb-pal__dots { display: flex; }
+.bb-pal__dots i { width: 22px; height: 22px; border-radius: 50%; margin-left: -7px; box-shadow: 0 0 0 2px #FFFFFF, inset 0 0 0 1px rgba(27, 26, 24, .1); }
+.bb-pal__dots i:first-child { margin-left: 0; }
+.bb-pal__name { font-size: 11px; line-height: 1.25; text-align: center; color: var(--bb-muted); }
+.bb-pal.is-active .bb-pal__name { color: var(--color-text, #1B1A18); }
 
-/* ── правая колонка ───────────────────────────────────── */
-.bb-approx { font-weight: 300; color: var(--bb-muted); }
+.bb-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.bb-chips .pdp-size-btn.is-muted { opacity: .4; }
 
-/* Выбранная пилюля — как активный размер у товара */
-.bb .pdp-size-btn[aria-pressed="true"],
+.bb-wraps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.bb-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 14px 6px 12px; border: 1px solid var(--bb-line-strong); border-radius: 14px;
+  background: #FFFFFF; color: var(--color-text, #1B1A18); cursor: pointer; font: inherit;
+  transition: border-color .22s, box-shadow .22s;
+}
+.bb-wrap svg { width: 30px; height: 30px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.bb-wrap b { font-size: 13px; font-weight: 500; }
+.bb-wrap em { font-style: normal; font-size: 11px; color: var(--bb-muted); }
+.bb-wrap:hover { border-color: var(--bb-ink); }
+.bb-wrap.is-active { border-color: var(--bb-ink); box-shadow: inset 0 0 0 1px var(--bb-ink); }
+
+.bb-buy {
+  position: sticky; bottom: 0; z-index: 5;
+  display: flex; align-items: center; gap: 18px;
+  padding: 18px 0; border-top: 1px solid var(--bb-line); background: #FFFFFF;
+}
+.bb-buy__sum span { display: block; font-family: var(--font-mono, var(--mono, "JetBrains Mono"), monospace); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--bb-muted); }
+.bb-buy__sum b { display: block; margin-top: 4px; font-family: var(--font-mono, var(--mono, "JetBrains Mono"), monospace); font-size: 20px; font-weight: 500; white-space: nowrap; }
+.bb-buy__btn { flex: 1; padding: 17px 20px; font-size: 12px; letter-spacing: .18em; }
+.bb-note { margin: 4px 0 0; font-size: 12px; line-height: 1.55; color: var(--bb-muted); }
+
+.bb-dialog .pdp-size-btn[aria-pressed="true"],
 .bb-dialog .bb-msgr input:checked + .pdp-size-btn {
-  background: var(--color-text, #1B1A18);
-  color: #FFFFFF;
-  border-color: var(--color-text, #1B1A18);
+  background: var(--color-text, #1B1A18); color: #FFFFFF; border-color: var(--color-text, #1B1A18);
 }
-.bb .pdp-size-btn { display: inline-flex; align-items: center; }
-.bb-dot {
-  display: inline-block; width: 14px; height: 14px; margin-right: 8px; border-radius: 50%;
-  box-shadow: inset 0 0 0 1px rgba(27, 26, 24, 0.12); flex-shrink: 0;
-}
-.bb-dot--custom { background: conic-gradient(#f2cfcb, #e7385a, #edb54f, #c9d8b6, #a9c6df, #bba5d3, #f2cfcb); }
-.bb-pill-extra { margin-left: 8px; font-weight: 400; opacity: 0.6; }
-
-/* Шаги: аккордеоны карточки товара + номер и итог выбора справа */
-.bb-steps { margin: 4px 0 24px; border-bottom: 1px solid var(--color-border, var(--bb-line)); }
-.bb-steps .pdp-accordion[open] { border-bottom: 0; margin-bottom: 0; }
-.bb-step .pdp-accordion__trigger { gap: 12px; }
-.bb-step__t { display: inline-flex; align-items: baseline; gap: 14px; flex-shrink: 0; }
-.bb-step__t i {
-  font-style: normal; font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
-  color: rgba(27, 26, 24, 0.35); transition: color .3s;
-}
-.bb-step.is-done .bb-step__t i { color: var(--bb-accent); }
-.bb-step__v {
-  flex: 1; min-width: 0; text-align: right;
-  font-size: 13px; font-weight: 275; font-style: italic; color: var(--bb-muted);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.bb-step[open] .bb-step__v { opacity: 0; }
-.bb-step .pdp-accordion__body { padding-bottom: 24px; animation: bbStepIn .45s var(--bb-ease); }
-@keyframes bbStepIn { from { opacity: 0; transform: translateY(6px); } }
-.bb-gap { margin-top: 22px; }
-.bb-step .pdp-accordion__intro b { font-weight: 500; font-style: normal; color: var(--color-text, #1B1A18); }
-
-.bb-next {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 0 0 6px;
-  background: none; border: 0; border-bottom: 1px solid currentColor; cursor: pointer;
-  font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-text, #1B1A18);
-  transition: color .3s ease, transform .3s ease;
-}
-.bb-next:hover { color: var(--bb-accent); transform: translateY(-2px); }
-
-/* Плитки цветов и зелени — рамка и скругление как у карточек сайта */
-.bb-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
-.bb-tiles--greens { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.bb-tile {
-  position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px;
-  padding: 16px 8px 14px; border: 1px solid var(--bb-line-strong); border-radius: 12px;
-  background: #FFFFFF; color: var(--color-text, #1B1A18); cursor: pointer; text-align: center;
-  transition: border-color .22s, background .22s, transform .35s var(--bb-ease);
-  -webkit-tap-highlight-color: transparent;
-}
-.bb-tile:hover { border-color: var(--color-text, #1B1A18); transform: translateY(-2px); }
-.bb-tile:active { transform: scale(.97); }
-.bb-tile[aria-pressed="true"] { border-color: var(--color-text, #1B1A18); background: #FDF5F6; }
-.bb-tile:focus-visible { outline: 2px solid var(--bb-accent); outline-offset: 2px; }
-.bb-tile__name { font-size: 12px; font-weight: 500; line-height: 1.2; }
-.bb-tile__note { font-size: 10.5px; font-weight: 275; font-style: italic; line-height: 1.25; color: var(--bb-muted); }
-.bb-tile__hero {
-  position: absolute; top: -9px; left: 50%; transform: translate(-50%, 4px); opacity: 0;
-  padding: 4px 9px; border-radius: 999px; background: var(--bb-accent); color: #FFFFFF;
-  font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-  transition: opacity .3s, transform .3s var(--bb-ease);
-}
-.bb-tile.is-hero .bb-tile__hero { opacity: 1; transform: translate(-50%, 0); }
-.bb-mini { width: 44px; height: 44px; overflow: visible; transition: transform .45s var(--bb-ease); }
-.bb-mini path, .bb-mini circle { stroke: var(--bb-ink); stroke-width: 1px; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
-.bb-tile:hover .bb-mini { transform: rotate(-8deg) scale(1.05); }
-.bb-tile[aria-pressed="true"] .bb-mini path[fill="#fff"] { fill: #F9D9DF; }
-.bb-tiles--greens .bb-tile[aria-pressed="true"] .bb-mini path[fill="#fff"] { fill: #DDE8D6; }
-.bb-florist { margin-top: 12px; }
-
-/* Цвета: кружки */
-.bb-swatches { display: flex; flex-wrap: wrap; gap: 10px; }
-.bb-swatch {
-  width: 30px; height: 30px; padding: 0; border-radius: 50%; cursor: pointer;
-  background: var(--c); border: 1px solid rgba(27, 26, 24, 0.16);
-  transition: transform .22s var(--bb-ease), box-shadow .22s;
-}
-.bb-swatch:hover { transform: scale(1.1); }
-.bb-swatch[aria-pressed="true"] { box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 4px var(--color-text, #1B1A18); }
-.bb-swatch.is-auto { background: conic-gradient(#f2cfcb, #e7385a, #edb54f, #a9c6df, #f2cfcb); }
-.bb-swatch:focus-visible { outline: 2px solid var(--bb-accent); outline-offset: 3px; }
-.pdp-sizes__label em { font-style: normal; letter-spacing: 0.08em; color: var(--color-text, #1B1A18); }
+.bb-cardtext { margin-bottom: 14px; }
 
 /* Поля — рамка и радиус как у пилюль сайта */
 .bb-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -204,15 +148,6 @@ main.bb { overflow: visible; overflow-x: clip; }
 .bb-check--small { font-size: 12px; color: var(--bb-muted, rgba(27, 26, 24, 0.65)); }
 .bb-check--small a { color: inherit; }
 
-/* Действие и подсказка — как у товара */
-.bb-actions { margin-bottom: 12px; }
-.bb-hint { margin: 0 0 18px; }
-.bb-reset {
-  align-self: flex-start; padding: 0; background: none; border: 0; cursor: pointer;
-  font-size: 12px; color: var(--bb-muted); text-decoration: underline; text-underline-offset: 3px;
-  transition: color .22s;
-}
-.bb-reset:hover { color: var(--bb-accent); }
 
 /* ── окно отправки ────────────────────────────────────── */
 .bb-dialog {
@@ -262,43 +197,20 @@ main.bb { overflow: visible; overflow-x: clip; }
 @keyframes bbPetal { to { transform: translate(30px, 440px) rotate(calc(var(--r) + 540deg)); opacity: 0; } }
 
 /* ── адаптив ──────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .bb-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .bb-tiles--greens { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-/* Планшет: одна колонка, эскиз прилипает под шапкой */
 @media (max-width: 900px) {
-  .bb .pdp-gallery { position: sticky; top: var(--bb-head, 64px); z-index: 4; background: #FFFFFF; }
-  .bb .pdp-gallery__main { aspect-ratio: auto; height: min(46vh, 480px); }
+  .bb .pdp-layout { gap: 20px; }
+  .bb-canvas { aspect-ratio: 1 / 1; }
+  .bb-caption { display: none; }
   .bb-row2 { grid-template-columns: 1fr; gap: 0; }
+  .bb-buy { padding: 14px 0 calc(14px + env(safe-area-inset-bottom)); }
 }
-/* Телефон: как карточка товара — эскиз во всю ширину, панель-«лист»
-   со скруглением. Но эскиз не уезжает под лист: его видно, пока
-   выбираете, поэтому он прилипает под шапкой и лежит поверх листа. */
-@media (max-width: 600px) {
-  .bb .pdp-gallery { top: var(--bb-head, 64px) !important; z-index: 4 !important; box-shadow: 0 10px 24px -18px rgba(27, 26, 24, 0.35); }
-  .bb .pdp-gallery__main { aspect-ratio: auto !important; height: 42vh; min-height: 260px; }
-  .bb .pdp-info { margin-top: 0; box-shadow: none; padding-top: 24px; }
-  .bb-canvas svg { padding: 3% 4% 16%; }
-  .bb-canvas__tag { display: none; }
-  .bb-tools {
-    position: absolute; left: 0; right: 0; bottom: 10px; z-index: 5;
-    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding: 0 12px;
-  }
-  .bb-tools::-webkit-scrollbar { display: none; }
-  .bb-tool { flex: 0 0 auto; min-height: 36px; padding: 6px 12px; font-size: 12px; background: rgba(255, 255, 255, 0.92); }
-  .bb-tool--accent { background: rgba(255, 255, 255, 0.92); }
-  .bb-step__v { display: none; }
-  /* Кнопка отправки прилипает к низу экрана, «поделиться» — рядом */
-  .bb .bb-actions { flex-direction: row; align-items: center; }
-  .bb .bb-actions .pdp-actions__cart { flex: 1; width: auto; }
-  .bb .bb-actions .pdp-actions__wish { width: 52px; height: 52px; }
-}
-@media (max-width: 420px) {
-  .bb-tiles, .bb-tiles--greens { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
-  .bb-tile { padding: 12px 4px 10px; }
-  .bb-tile__note { display: none; }
-  .bb-mini { width: 36px; height: 36px; }
+@media (max-width: 480px) {
+  .bb-sizes, .bb-pals { gap: 6px; }
+  .bb-size b { font-size: 16px; }
+  .bb-pal__dots i { width: 18px; height: 18px; margin-left: -6px; }
+  .bb-buy { gap: 12px; }
+  .bb-buy__sum b { font-size: 17px; }
+  .bb-buy__btn { padding: 16px 12px; letter-spacing: .12em; }
   .bb-dialog { padding: 30px 20px 22px; }
 }
 @media (prefers-reduced-motion: reduce) {

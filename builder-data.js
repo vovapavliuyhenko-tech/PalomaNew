@@ -77,8 +77,6 @@ window.PALOMA_BUILDER_DATA = {
   greens: [
     { id: "eucalyptus", name: "Эвкалипт",        kind: "eucalyptus", color: "#8FA89C" },
     { id: "raspleaf",   name: "Листья малины",   kind: "raspleaf",   color: "#6E8B4E", color2: "#B7C2A2" },
-    { id: "panicum",    name: "Паникум",         kind: "panicum",    color: "#C8B57F" },
-    { id: "tropic",     name: "Лист стрелиции",  kind: "tropic",     color: "#3F5E36" },
     { id: "pampas",     name: "Пампасная трава", kind: "pampas",     color: "#E6D5B5" },
     { id: "none",       name: "Без зелени",      kind: "none" },
   ],
