@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="cursor.css?v=press1">
   <link rel="stylesheet" href="mobile-polish.css?v=42">
   <link rel="stylesheet" href="product.css?v=bb2">
-  <link rel="stylesheet" href="bouquet-builder.css?v=10">
+  <link rel="stylesheet" href="bouquet-builder.css?v=11">
   <link rel="stylesheet" href="full-width.css?v=1">
 </head>
 <body class="bouquet-builder-page">
@@ -379,7 +379,13 @@
       <div class="pdp-gallery bb-visual">
         <div class="pdp-gallery__main bb-canvas" id="bbCanvas">
           <svg id="bbSvg" viewBox="0 0 600 750" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Эскиз вашего букета">
-            <g id="bbArt"></g>
+            <defs>
+              <filter id="bbHand" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7"/>
+                <feDisplacementMap in="SourceGraphic" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+            <g id="bbArt" filter="url(#bbHand)"></g>
           </svg>
           <p class="bb-hint" id="bbHint">Выберите палитру — букет раскрасится</p>
           <button type="button" class="bb-shuffle" id="bbShuffle" aria-label="Другая компоновка" title="Другая компоновка" data-cursor="hover">
@@ -408,8 +414,10 @@
 
         <section class="bb-step">
           <header class="bb-step__head"><span class="bb-step__n">03</span><h2 class="bb-step__t">Цветы</h2><span class="bb-step__v" id="bbV3"></span></header>
-          <p class="bb-sub">До трёх видов · в наличии на <span id="bbStockDate"></span></p>
+          <p class="bb-sub">До трёх видов · сейчас в студии на <span id="bbStockDate"></span></p>
           <div class="bb-chips" id="bbFlowers" role="group" aria-label="Цветы"></div>
+          <button type="button" class="bb-more" id="bbMore" aria-expanded="false" data-cursor="hover"></button>
+          <div class="bb-chips bb-chips--more" id="bbFlowersMore" role="group" aria-label="Все цветы" hidden></div>
           <p class="bb-sub bb-sub--gap">Зелень</p>
           <div class="bb-chips" id="bbGreens" role="group" aria-label="Зелень"></div>
         </section>
@@ -694,8 +702,8 @@
 
   <script src="wishlist.js?v=goal1"></script>
   <script src="clients.js"></script>
-  <script src="builder-data.js?v=7"></script>
-  <script src="bouquet-builder.js?v=13"></script>
+  <script src="builder-data.js?v=8"></script>
+  <script src="bouquet-builder.js?v=14"></script>
   <script src="cursor.js?v=press3"></script>
   <script src="cookie-consent.js?v=2"></script>
   <!-- Выезжающая панель «Избранное» -->

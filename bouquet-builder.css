@@ -218,3 +218,12 @@ main.bb { overflow: visible; overflow-x: clip; }
   .bb *, .bb-dialog * { animation: none !important; transition: none !important; }
 }
 #bbArt text.bb-rib { font-family: var(--font-sans, "Manrope"), sans-serif; font-weight: 500; fill: #8C7B6A; }
+
+#bbArt text.bb-print { font-family: var(--logo, var(--font-display, "Italiana")), serif; fill: #8C857D; opacity: .45; }
+.bb-more {
+  display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0; padding: 0;
+  background: none; border: 0; cursor: pointer; font: inherit; font-size: 13px; color: var(--color-text, #1B1A18);
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(27, 26, 24, .3);
+}
+.bb-more:hover { color: var(--bb-accent); }
+.bb-chips--more { margin-top: 12px; }
