@@ -410,9 +410,10 @@
   };
   /* Старые коды из прежних данных — на ближайший похожий рисунок */
   SHAPES.chrys = SHAPES.chrysball;
+  SHAPES.pion = SHAPES.peony;
 
   /* Базовый радиус головки на эскизе */
-  const HEAD_R = { rose: 33, peony: 42, spray: 38, hydrangea: 52, dahlia: 41, pompon: 30, chrysball: 36, chrys: 36, carnation: 29, eustoma: 32, delph: 34, matthiola: 32, anthurium: 32, ranunculus: 30, berries: 25, cotton: 27 };
+  const HEAD_R = { rose: 33, peony: 42, pion: 45, spray: 38, hydrangea: 52, dahlia: 41, pompon: 30, chrysball: 36, chrys: 36, carnation: 29, eustoma: 32, delph: 34, matthiola: 32, anthurium: 32, ranunculus: 30, berries: 25, cotton: 27 };
   const SPIKES = { matthiola: 1, delph: 1 };
 
   /* ── Зелень: веточка «вверх» из 0,0, длина len ──────── */

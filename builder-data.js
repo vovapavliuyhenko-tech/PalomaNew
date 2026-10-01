@@ -70,6 +70,7 @@ window.PALOMA_BUILDER_DATA = {
     { id: "bigudi",    name: "Хризантема бигуди", kind: "chrysball", premium: 1.0,  inStock: true, note: "стоит неделями" },
     { id: "spray",     name: "Кустовая роза",     kind: "spray",     premium: 1.1,  inStock: true, note: "много бутонов" },
     { id: "rose",      name: "Роза",              kind: "rose",      premium: 1.0,  inStock: true, note: "классика" },
+    { id: "pion",      name: "Пион",              kind: "pion",      premium: 1.5,  inStock: false, note: "сезон — май и июнь" },
     { id: "ranunculus",name: "Ранункулюс",        kind: "ranunculus",premium: 1.3,  inStock: false, note: "вернётся весной" },
   ],
 
@@ -109,16 +110,36 @@ window.PALOMA_BUILDER_DATA = {
   photos: {
     peony: [
       { src: "images/paloma/builder/rose-coral.webp", w: 300, h: 182, hsl: [6, 0.839, 0.659] },
+      { src: "images/paloma/builder/rose-coral2.webp", w: 300, h: 278, hsl: [1, 0.415, 0.439], free: true },
     ],
     rose: [
       { src: "images/paloma/builder/spray-peach.webp", w: 287, h: 300, hsl: [31, 0.679, 0.792] },
       { src: "images/paloma/builder/rose-white.webp", w: 257, h: 300, hsl: [40, 0.467, 0.824] },
+    ],
+    pion: [
+      { src: "images/paloma/builder/peony-pink.webp", w: 300, h: 268, hsl: [338, 0.597, 0.699], free: true },
+      { src: "images/paloma/builder/peony-pink2.webp", w: 278, h: 300, hsl: [340, 0.587, 0.797], free: true },
+      { src: "images/paloma/builder/peony-pink3.webp", w: 300, h: 286, hsl: [341, 0.492, 0.641], free: true },
+      { src: "images/paloma/builder/peony-white.webp", w: 300, h: 300, hsl: [50, 0.186, 0.657], free: true },
+      { src: "images/paloma/builder/peony-blush.webp", w: 300, h: 288, hsl: [13, 0.207, 0.687], free: true },
+    ],
+    spray: [
+      { src: "images/paloma/builder/spray-pink-a.webp", w: 300, h: 293, hsl: [352, 0.42, 0.534], free: true },
+      { src: "images/paloma/builder/spray-pink-b.webp", w: 278, h: 300, hsl: [353, 0.443, 0.534], free: true },
+    ],
+    ranunculus: [
+      { src: "images/paloma/builder/ranunc-pink.webp", w: 300, h: 271, hsl: [359, 0.36, 0.736], free: true },
+      { src: "images/paloma/builder/ranunc-white.webp", w: 300, h: 250, hsl: [86, 0.039, 0.567], free: true },
+    ],
+    anthurium: [
+      { src: "images/paloma/builder/anth-salmon.webp", w: 218, h: 300, hsl: [10, 0.329, 0.414] },
     ],
     carnation: [
       { src: "images/paloma/builder/carnation-pink.webp", w: 300, h: 259, hsl: [355, 0.828, 0.704], free: true },
     ],
     hydrangea: [
       { src: "images/paloma/builder/hydr-blush.webp", w: 300, h: 259, hsl: [19, 0.156, 0.465], free: true },
+      { src: "images/paloma/builder/hydr-pink.webp", w: 300, h: 291, hsl: [349, 0.211, 0.663], free: true },
     ],
     pompon: [
       { src: "images/paloma/builder/pompon-orange.webp", w: 300, h: 286, hsl: [9, 0.576, 0.5], free: true },
@@ -130,6 +151,8 @@ window.PALOMA_BUILDER_DATA = {
     ],
     dahlia: [
       { src: "images/paloma/builder/dahlia-peaches.webp", w: 300, h: 288, hsl: [358, 0.228, 0.335], free: true },
+      { src: "images/paloma/builder/dahlia-peach-a.webp", w: 300, h: 283, hsl: [350, 0.222, 0.507], free: true },
+      { src: "images/paloma/builder/dahlia-peach-b.webp", w: 300, h: 296, hsl: [358, 0.311, 0.46], free: true },
     ],
   },
 
