@@ -88,12 +88,13 @@ window.PALOMA_BUILDER_DATA = {
     { code: "lush",  name: "Пышно",    count: 15 },
   ],
 
-  /* Упаковка — как в студии. extra — доплата, уточнить у владельца */
+  /* Упаковка — как в студии: матовая полупрозрачная плёнка «блюр»
+     (как у авторских букетов), джутовая корзина, коробка PALOMA.
+     extra — доплата, уточнить у владельца */
   wraps: [
-    { id: "film",   name: "Матовая плёнка",         kind: "film",   extra: 0,    colors: [["Белая", "#FAF8F5"], ["Молочная", "#F1EBE2"], ["Серая", "#D8D5D1"], ["Пудровая", "#EED6D3"]] },
+    { id: "film",   name: "Матовая плёнка «блюр»", kind: "film",   extra: 0,    colors: [["Белая", "#FAF8F5"], ["Молочная", "#F1EBE2"], ["Серая", "#D8D5D1"], ["Пудровая", "#EED6D3"]] },
     { id: "basket", name: "Джутовая корзина",       kind: "basket", extra: 2200, colors: [["Натуральная", "#B89466"]] },
     { id: "box",    name: "Коробка PALOMA",         kind: "box",    extra: 900,  colors: [["Белая", "#F8F6F2"]] },
-    { id: "ribbon", name: "Без упаковки, на ленте", kind: "ribbon", extra: 0,    colors: [] },
   ],
 
   ribbons: [

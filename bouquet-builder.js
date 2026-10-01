@@ -517,7 +517,7 @@
     else if (type === "cup") el = '<radialGradient id="' + id + '" cx="50%" cy="30%" r="70%">' + stops([[0, lite], [0.55, base], [1, deep]]) + "</radialGradient>";
     else if (type === "ball") el = '<radialGradient id="' + id + '" cx="36%" cy="32%" r="74%">' + stops([[0, lite], [0.5, base], [1, deep]]) + "</radialGradient>";
     else if (type === "leaf") el = '<linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="0">' + stops([[0, deep], [0.48, mix(base, "#ffffff", 0.18)], [0.52, base], [1, deep]]) + "</linearGradient>";
-    else if (type === "film") el = '<linearGradient id="' + id + '" x1="0" y1="0" x2="0.4" y2="1">' + stops([[0, mix(base, "#ffffff", 0.5), 0.92], [0.55, base, 0.86], [1, mix(base, "#6d6560", 0.22), 0.9]]) + "</linearGradient>";
+    else if (type === "film") el = '<linearGradient id="' + id + '" x1="0" y1="0" x2="0.4" y2="1">' + stops([[0, mix(base, "#ffffff", 0.55), 0.8], [0.55, base, 0.62], [1, mix(base, "#6d6560", 0.18), 0.74]]) + "</linearGradient>";
     else if (type === "satin") el = '<linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1">' + stops([[0, deep], [0.42, base], [0.5, mix(base, "#ffffff", 0.55)], [0.58, base], [1, deep]]) + "</linearGradient>";
     else if (type === "rope") el = '<linearGradient id="' + id + '" x1="0" y1="0" x2="0" y2="1">' + stops([[0, lite], [0.45, base], [1, deep]]) + "</linearGradient>";
     else return base;
