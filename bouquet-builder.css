@@ -71,6 +71,30 @@ main.bb { overflow: visible; overflow-x: clip; }
   animation-delay: calc(var(--d, 0ms) * .6);
 }
 #bbSvg.bb-draw .bb-item { animation: bbFade .5s ease both; animation-delay: calc(var(--d, 0ms) * .6); }
+
+/* Окрашенная деталь (is-on): карандаш перетекает в мягкий цветной край
+   лепестка, цветок отбрасывает тень на соседей — эскиз становится
+   похож на живой букет, а не на раскраску */
+/* Свой мягкий край у каждого лепестка: верхний лепесток закрывает
+   край нижнего, как в живом цветке. Карандаш при окраске гаснет —
+   иначе контуры всех лепестков просвечивают «проволокой». */
+.bb-paint path[data-tone] { stroke: var(--tint, #2a2522); stroke-opacity: .28; stroke-width: .7px; stroke-linejoin: round; }
+.bb-wrap .bb-paint path[data-tone] { stroke-opacity: .14; }
+.bb-item .bb-ink { transition: opacity .9s ease; }
+.bb-item.is-on .bb-ink { opacity: 0; }
+.bb-item.is-on .bb-ink .bb-sheen { stroke: #fff; stroke-opacity: .75; stroke-width: 1.6px; }
+.bb-item.is-on.bb-wrap .bb-ink { opacity: 1; }
+.bb-item.is-on.bb-wrap .bb-ink path:not(.bb-sheen) { stroke-opacity: 0; }
+.bb-head.is-on:not(.is-photo) > .bb-base,
+.bb-green.is-on > .bb-base { filter: url(#bbShade); }
+/* Настоящий цветок: белая подложка эскиза уходит, остаётся снимок
+   со своей вырезанной формой и тенью */
+.bb-head.is-photo > .bb-base { transition: opacity .7s ease; }
+.bb-head.is-photo.is-on > .bb-base { opacity: 0; }
+.bb-label {
+  font-family: var(--logo, "Italiana", serif); letter-spacing: .2em;
+  fill: #1b1a18; fill-opacity: .72; text-anchor: middle; dominant-baseline: middle;
+}
 @keyframes bbDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes bbFade { from { opacity: 0; } }
 

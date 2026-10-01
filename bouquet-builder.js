@@ -36,7 +36,7 @@
   const GREENS = byId(D.greens, "id");
   const AMOUNTS = byId(D.greenAmounts, "code");
   const WRAPS = byId(D.wraps, "id");
-  const FLORIST_MIX = ["pion-rose", "eustoma", "spray", "rose"];
+  const FLORIST_MIX = ["pion-rose", "hydrangea", "eustoma", "spray"];
 
   /* ── состояние ───────────────────────────────────────── */
   const DEFAULT_STATE = {
@@ -95,8 +95,14 @@
 
   /* ════════════════════════════════════════════════════════
      Геометрия: примитивы
-     Каждая фигура — { fills: [{d, tone, t, fix, alt}], inks: [{d, t}] }
-     fills по умолчанию тоже обводятся контуром.
+     Каждая фигура — { fills: [{d, tone, g, t, fix, alt, glow}], inks: [{d, t}] }
+     g — как ложится свет на деталь (см. grad()):
+       ring  — слой цветка сверху: глубина в центре, светлый край;
+       petal — отдельный лепесток: тёмное основание, светлый кончик;
+       cup   — чашечка (помпонный георгин): блик сверху, тень внутри;
+       ball  — объём (бутон, ягода, кисть гортензии): блик слева сверху;
+       leaf  — лист: тень у края, светлая середина;
+       film  — плёнка упаковки; satin — атласная лента; flat — без градиента.
      ════════════════════════════════════════════════════════ */
   function bumpy(r, n, bulge, rot, jit, R) {
     const pts = [];
@@ -108,7 +114,7 @@
     let d = "M" + f1(pts[0][0]) + " " + f1(pts[0][1]);
     for (let k = 0; k < n; k++) {
       const p = pts[k], q = pts[(k + 1) % n];
-      let am = (p[2] + (k === n - 1 ? q[2] + TAU : q[2])) / 2;
+      const am = (p[2] + (k === n - 1 ? q[2] + TAU : q[2])) / 2;
       const rc = r * (1 + bulge);
       d += "Q" + f1(Math.cos(am) * rc) + " " + f1(Math.sin(am) * rc) + " " + f1(q[0]) + " " + f1(q[1]);
     }
@@ -133,6 +139,18 @@
     return "M0 0C" + f1(w) + " " + f1(-len * 0.3) + " " + f1(w * (pointed ? 0.55 : 0.95)) + " " + f1(-len * tip) +
       " 0 " + f1(-len) + "C" + f1(-w * (pointed ? 0.55 : 0.95)) + " " + f1(-len * tip) + " " + f1(-w) + " " + f1(-len * 0.3) + " 0 0Z";
   }
+  /* Лист с зубчатым краем (листья малины) */
+  function serratedLeaf(len, w, R) {
+    const n = 9;
+    let right = "", left = "";
+    for (let i = 1; i <= n; i++) {
+      const t = i / (n + 1), y = -len * t;
+      const ww = w * Math.sin(Math.PI * Math.pow(t, 0.8)) * (i % 2 ? 1 : 0.86);
+      right += "L" + f1(ww + (R() - 0.5) * 1.5) + " " + f1(y);
+      left = "L" + f1(-ww + (R() - 0.5) * 1.5) + " " + f1(y) + left;
+    }
+    return "M0 0" + right + "L0 " + f1(-len) + left + "Z";
+  }
   /* Дужка-складка между точками на окружности — «рисунок» лепестка */
   function fold(r1, a1, r2, a2, bend) {
     const x1 = Math.cos(a1) * r1, y1 = Math.sin(a1) * r1;
@@ -140,131 +158,65 @@
     const am = (a1 + a2) / 2, rm = ((r1 + r2) / 2) * bend;
     return "M" + f1(x1) + " " + f1(y1) + "Q" + f1(Math.cos(am) * rm) + " " + f1(Math.sin(am) * rm) + " " + f1(x2) + " " + f1(y2);
   }
+  const rot = (deg, x, y) => (x != null ? "translate(" + f1(x) + " " + f1(y) + ") " : "") + "rotate(" + f1(deg) + ")";
 
   /* ════════════════════════════════════════════════════════
      Цветы. r — радиус головки, R — генератор случайностей.
+     Формы списаны с того, что реально стоит в букетах PALOMA.
      ════════════════════════════════════════════════════════ */
+
+  /* Кольцо из отдельных лепестков вокруг центра — как у живого цветка:
+     лепестки перекрываются, у каждого тёмное основание и светлый край */
+  function petalRing(fills, n, len, w, tone, offDeg, R, opts) {
+    const o = opts || {};
+    for (let k = 0; k < n; k++) {
+      const a = offDeg + (360 * k) / n + (R() - 0.5) * (o.jit || 14);
+      const l = len * (0.9 + R() * 0.16), ww = w * (0.88 + R() * 0.2);
+      fills.push({ d: petal(l, ww, !!o.pointed), tone: tone + R() * 0.05, g: o.g || "petal", t: rot(a), glow: o.glow && k === 0 });
+    }
+  }
+
   const SHAPES = {
+    /* Классическая роза сверху: спираль плотных лепестков */
+    /* Классическая роза сверху: спираль из плотно сомкнутых лепестков */
     rose(r, R) {
-      const rot = R() * TAU;
-      const fills = [
-        { d: bumpy(r, 6, 0.16, rot, 0.1, R), tone: 0, glow: true },
-        { d: bumpy(r * 0.74, 5, 0.2, rot + 0.5, 0.1, R), tone: 0.22 },
-        { d: bumpy(r * 0.5, 4, 0.24, rot + 1.1, 0.1, R), tone: 0.4 },
-        { d: bumpy(r * 0.27, 3, 0.32, rot + 1.7, 0.1, R), tone: 0.6 },
-      ];
-      const inks = [];
-      for (let k = 0; k < 5; k++) {
-        const a = rot + (TAU * k) / 5 + 0.3;
-        inks.push({ d: fold(r * 0.95, a, r * 0.62, a + 0.9, 0.78) });
-      }
-      inks.push({ d: "M" + f1(r * 0.12) + " 0A" + f1(r * 0.12) + " " + f1(r * 0.12) + " 0 1 0 0 " + f1(r * 0.13) });
+      const a0 = R() * 360;
+      const fills = [];
+      petalRing(fills, 6, r, r * 0.62, 0.02, a0, R, { glow: true });
+      petalRing(fills, 5, r * 0.76, r * 0.56, 0.1, a0 + 30, R);
+      petalRing(fills, 5, r * 0.54, r * 0.5, 0.18, a0 + 66, R);
+      fills.push({ d: bumpy(r * 0.3, 4, 0.3, (a0 * Math.PI) / 180, 0.12, R), tone: 0.3, g: "ring" });
+      fills.push({ d: bumpy(r * 0.15, 3, 0.36, (a0 * Math.PI) / 180 + 1, 0.12, R), tone: 0.42, g: "ball" });
+      const inks = [{ d: "M" + f1(r * 0.1) + " 0A" + f1(r * 0.1) + " " + f1(r * 0.1) + " 0 1 0 0 " + f1(r * 0.11) }];
       return { fills, inks };
     },
 
+    /* Пионовидная (садовая) роза: много рюшевых слоёв, открытый центр */
+    /* Пионовидная (садовая) роза: широкие перекрывающиеся лепестки
+       в четыре яруса и плотная рюшевая серединка */
     peony(r, R) {
-      const rot = R() * TAU;
+      const a0 = R() * 360;
       const fills = [];
-      const L = [[1, 9, 0.12], [0.84, 8, 0.14], [0.68, 8, 0.16], [0.52, 7, 0.18], [0.36, 6, 0.22], [0.2, 5, 0.26]];
-      L.forEach((l, i) => fills.push({ d: bumpy(r * l[0], l[1], l[2], rot + i * 0.7, 0.14, R), tone: i * 0.11, glow: i === 0 }));
-      const inks = [];
-      for (let k = 0; k < 7; k++) {
-        const a = rot + (TAU * k) / 7;
-        inks.push({ d: fold(r * 0.9, a, r * 0.45, a + 0.5, 0.85) });
-      }
-      return { fills, inks };
-    },
-
-    ranunculus(r, R) {
-      const rot = R() * TAU;
-      const fills = [];
-      for (let i = 0; i < 7; i++) {
-        const k = 1 - i * 0.13;
-        fills.push({ d: bumpy(r * k, 12 - i, 0.07, rot + i * 0.4, 0.06, R), tone: i * 0.09, glow: i === 0 });
-      }
-      fills.push({ d: circle(r * 0.1), tone: 0, fix: "#6f7d4a" });
+      petalRing(fills, 8, r, r * 0.52, 0.02, a0, R, { glow: true, jit: 18 });
+      petalRing(fills, 8, r * 0.8, r * 0.46, 0.08, a0 + 22, R, { jit: 18 });
+      petalRing(fills, 7, r * 0.6, r * 0.4, 0.15, a0 + 9, R, { jit: 20 });
+      petalRing(fills, 6, r * 0.42, r * 0.34, 0.22, a0 + 40, R, { jit: 22 });
+      fills.push({ d: bumpy(r * 0.24, 7, 0.22, (a0 * Math.PI) / 180, 0.2, R), tone: 0.28, g: "ring" });
+      fills.push({ d: bumpy(r * 0.12, 5, 0.3, 0.5, 0.2, R), tone: 0.38, g: "ball" });
       return { fills, inks: [] };
     },
 
-    carnation(r, R) {
-      const rot = R() * TAU;
-      return {
-        fills: [
-          { d: jagged(r, 26, 0.12, rot, R), tone: 0, glow: true },
-          { d: jagged(r * 0.72, 20, 0.14, rot + 0.2, R), tone: 0.2 },
-          { d: jagged(r * 0.45, 14, 0.18, rot + 0.4, R), tone: 0.4 },
-        ],
-        inks: [],
-      };
-    },
-
-    chrys(r, R) {
-      const rot = R() * TAU;
-      const fills = [{ d: circle(r * 0.98), tone: 0.35, glow: true }];
-      const rings = [[22, 1, 0.14, 0], [16, 0.74, 0.15, 0.2], [11, 0.5, 0.16, 0.38]];
-      rings.forEach((g, gi) => {
-        for (let k = 0; k < g[0]; k++) {
-          const a = rot + (360 * k) / g[0] + gi * 7;
-          fills.push({ d: petal(r * g[1], r * g[2], false), tone: g[3], t: "rotate(" + f1(a) + ")" });
-        }
-      });
-      fills.push({ d: circle(r * 0.17), tone: 0.6 });
-      return { fills, inks: [] };
-    },
-
-    dahlia(r, R) {
-      const rot = R() * 360;
-      const fills = [];
-      const rings = [[16, 1, 0.2, 0], [12, 0.74, 0.19, 0.18], [9, 0.5, 0.17, 0.34], [6, 0.3, 0.14, 0.5]];
-      rings.forEach((g, gi) => {
-        for (let k = 0; k < g[0]; k++) {
-          const a = rot + (360 * k) / g[0] + gi * 11;
-          fills.push({ d: petal(r * g[1], r * g[2], true), tone: g[3], t: "rotate(" + f1(a) + ")", glow: gi === 0 && k === 0 });
-        }
-      });
-      fills.push({ d: circle(r * 0.1), tone: 0.65 });
-      return { fills, inks: [] };
-    },
-
-    eustoma(r, R) {
-      const rot = R() * TAU;
-      const inks = [];
-      for (let k = 0; k < 5; k++) {
-        const a = rot + (TAU * k) / 5;
-        inks.push({ d: fold(r * 0.3, a, r * 0.95, a + 0.35, 1.05) });
-      }
-      return {
-        fills: [
-          { d: bumpy(r, 5, 0.3, rot, 0.08, R), tone: 0, glow: true },
-          { d: bumpy(r * 0.55, 4, 0.34, rot + 0.4, 0.1, R), tone: 0.25 },
-          { d: bumpy(r * 0.26, 3, 0.4, rot + 0.9, 0.1, R), tone: 0.45 },
-        ],
-        inks,
-      };
-    },
-
-    hydrangea(r, R) {
-      const fills = [{ d: bumpy(r * 0.96, 11, 0.1, R() * TAU, 0.1, R), tone: 0.45, glow: true }];
-      const inks = [];
-      const n = 17;
-      for (let i = 0; i < n; i++) {
-        const rr = r * 0.74 * Math.sqrt((i + 0.5) / n);
-        const a = i * 2.39996;
-        const x = Math.cos(a) * rr, y = Math.sin(a) * rr;
-        const fr = r * (0.2 + R() * 0.04);
-        fills.push({ d: bumpy(fr, 4, 0.62, R() * TAU, 0.1, R), tone: R() * 0.22, alt: i % 3 === 0, t: "translate(" + f1(x) + " " + f1(y) + ")" });
-        inks.push({ d: circle(r * 0.025, x, y) });
-      }
-      return { fills, inks };
-    },
-
+    /* Кустовая роза: несколько маленьких роз и бутоны с чашелистиками */
     spray(r, R) {
       const fills = [], inks = [];
-      const spots = [[-0.42, -0.2, 0.46], [0.4, -0.3, 0.42], [0.02, 0.36, 0.44], [0.55, 0.42, 0.22], [-0.6, 0.45, 0.2]];
+      const spots = [[-0.42, -0.2, 0.46], [0.4, -0.3, 0.42], [0.02, 0.36, 0.44], [0.6, 0.42, 0.2], [-0.62, 0.46, 0.19]];
       spots.forEach((s, i) => {
         const t = "translate(" + f1(s[0] * r) + " " + f1(s[1] * r) + ")";
         if (s[2] < 0.3) {
-          fills.push({ d: ellipse(r * s[2] * 0.7, r * s[2], 0, 0), tone: 0.3, t: t + " rotate(" + f1(R() * 60 - 30) + ")" });
+          const tt = t + " rotate(" + f1(R() * 60 - 30) + ")";
+          fills.push({ d: petal(r * s[2] * 1.5, r * s[2] * 0.36, true), fix: "#7c9a5e", tone: 0.1, g: "leaf", t: tt + " rotate(150)" });
+          fills.push({ d: petal(r * s[2] * 1.5, r * s[2] * 0.36, true), fix: "#7c9a5e", tone: 0.1, g: "leaf", t: tt + " rotate(210)" });
+          fills.push({ d: ellipse(r * s[2] * 0.62, r * s[2] * 0.9, 0, 0), tone: 0.18, g: "ball", t: tt });
         } else {
           const m = SHAPES.rose(r * s[2], R);
           m.fills.forEach((f) => fills.push(Object.assign({}, f, { t, glow: f.glow && i === 0 })));
@@ -274,91 +226,259 @@
       return { fills, inks };
     },
 
-    matthiola(r, R) {
+    /* Гортензия: шапка из десятков маленьких четырёхлепестковых цветочков */
+    /* Гортензия: плотная шапка из десятков четырёхлепестковых цветочков */
+    hydrangea(r, R) {
+      const fills = [{ d: bumpy(r * 0.95, 12, 0.08, R() * TAU, 0.1, R), tone: 0.16, g: "ball" }];
+      const n = 40;
+      for (let i = 0; i < n; i++) {
+        const t = Math.sqrt((i + 0.5) / n);
+        const rr = r * 0.82 * t;
+        const a = i * 2.39996 + R() * 0.3;
+        const x = Math.cos(a) * rr, y = Math.sin(a) * rr;
+        const fr = r * (0.21 - t * 0.04 + R() * 0.03);
+        fills.push({ d: bumpy(fr, 4, 0.62, R() * TAU, 0.14, R), tone: t * 0.12 + R() * 0.08, g: "ring", alt: i % 4 === 0, t: "translate(" + f1(x) + " " + f1(y) + ")" });
+        fills.push({ d: circle(fr * 0.14, x, y), tone: 0.28, g: "flat" });
+      }
+      return { fills, inks: [] };
+    },
+
+    /* Георгин декоративный (Пичес): кольца заострённых лепестков */
+    dahlia(r, R) {
+      const a0 = R() * 360;
+      const fills = [{ d: circle(r * 0.94), tone: 0.4, g: "ball" }];
+      const rings = [[16, 1, 0.21, 0], [13, 0.78, 0.2, 0.08], [10, 0.56, 0.18, 0.16], [7, 0.36, 0.15, 0.26]];
+      rings.forEach((g, gi) => {
+        for (let k = 0; k < g[0]; k++) {
+          const a = a0 + (360 * k) / g[0] + gi * 11 + (R() - 0.5) * 6;
+          fills.push({ d: petal(r * g[1] * (0.95 + R() * 0.08), r * g[2], true), tone: g[3], g: "petal", t: rot(a), glow: gi === 0 && k === 0 });
+        }
+      });
+      fills.push({ d: circle(r * 0.12), tone: 0.5, g: "ball" });
+      return { fills, inks: [] };
+    },
+
+    /* Помпонный георгин: шар из свёрнутых трубочкой лепестков-чашечек */
+    pompon(r, R) {
+      const fills = [{ d: circle(r), tone: 0.38, g: "ball", glow: true }];
+      const inks = [];
+      for (let k = 0; k < 6; k++) {
+        const rk = r * (0.86 - k * 0.15);
+        if (rk <= 0) break;
+        const s = r * (0.17 - k * 0.014);
+        const n = Math.max(5, Math.round((TAU * rk) / (s * 1.75)));
+        const off = R() * TAU;
+        for (let i = 0; i < n; i++) {
+          const a = off + (TAU * i) / n;
+          const x = Math.cos(a) * rk, y = Math.sin(a) * rk;
+          const deg = (a * 180) / Math.PI + 90;
+          fills.push({ d: ellipse(s, s * 0.8, 0, 0), tone: k * 0.04 + R() * 0.06, g: "cup", t: rot(deg, x, y) });
+          inks.push({ d: "M" + f1(-s * 0.5) + " " + f1(-s * 0.1) + "Q0 " + f1(s * 0.5) + " " + f1(s * 0.5) + " " + f1(-s * 0.1), t: rot(deg, x, y) });
+        }
+      }
+      fills.push({ d: circle(r * 0.08), tone: 0.42, g: "ball" });
+      return { fills, inks };
+    },
+
+    /* Хризантема бигуди: плотный шар, лепестки загнуты к центру */
+    chrysball(r, R) {
+      const fills = [{ d: circle(r), tone: 0.42, g: "ball", glow: true }];
+      for (let k = 0; k < 6; k++) {
+        const rk = r * (0.9 - k * 0.15);
+        if (rk <= 0.05 * r) break;
+        const len = r * (0.3 - k * 0.025), w = len * 0.32;
+        const n = Math.max(6, Math.round((TAU * rk) / (w * 1.9)));
+        const off = R() * TAU;
+        for (let i = 0; i < n; i++) {
+          const a = off + (TAU * i) / n;
+          const deg = (a * 180) / Math.PI - 90 + (R() - 0.5) * 14;
+          fills.push({ d: petal(len, w, false), tone: k * 0.035 + R() * 0.05, g: "petal", t: rot(deg, Math.cos(a) * rk, Math.sin(a) * rk) });
+        }
+      }
+      fills.push({ d: circle(r * 0.1), tone: 0.36, g: "ball" });
+      return { fills, inks: [] };
+    },
+
+    /* Диантус (гвоздика): рваный «кружевной» край */
+    carnation(r, R) {
+      const a0 = R() * TAU;
+      return {
+        fills: [
+          { d: jagged(r, 28, 0.12, a0, R), tone: 0, g: "ring", glow: true },
+          { d: jagged(r * 0.76, 22, 0.14, a0 + 0.2, R), tone: 0.12, g: "ring" },
+          { d: jagged(r * 0.52, 16, 0.16, a0 + 0.4, R), tone: 0.24, g: "ring" },
+          { d: jagged(r * 0.28, 10, 0.2, a0 + 0.6, R), tone: 0.36, g: "ring" },
+        ],
+        inks: [],
+      };
+    },
+
+    /* Эустома: широкие шёлковые лепестки, закрученные чашей */
+    /* Эустома: пять широких шёлковых лепестков чашей, тёмное сердечко */
+    eustoma(r, R) {
+      const a0 = R() * 360;
       const fills = [];
-      const steps = 7;
+      petalRing(fills, 5, r, r * 0.66, 0.02, a0, R, { glow: true, jit: 10 });
+      petalRing(fills, 4, r * 0.62, r * 0.5, 0.12, a0 + 36, R, { jit: 10 });
+      fills.push({ d: bumpy(r * 0.24, 4, 0.4, (a0 * Math.PI) / 180, 0.1, R), tone: 0.3, g: "ring" });
+      fills.push({ d: circle(r * 0.09), fix: "#c9b24a", tone: 0.1, g: "ball" });
+      return { fills, inks: [] };
+    },
+
+    /* Дельфиниум: колос из звёздочек с белым «глазком» */
+    /* Дельфиниум: колос из крупных звёздочек с маленьким светлым «глазком» */
+    delph(r, R) {
+      const fills = [], inks = [{ d: "M0 " + f1(r * 0.5) + "L0 " + f1(-r * 1.4) }];
+      const steps = 9;
+      for (let i = 0; i < steps; i++) {
+        const y = r * 0.42 - (i * r * 1.7) / steps;
+        const w = r * (0.46 - i * 0.032);
+        const x = (i % 2 ? 1 : -1) * w * 0.4;
+        if (i < steps - 2) {
+          fills.push({ d: bumpy(w, 5, 0.52, R() * TAU, 0.14, R), tone: i * 0.025, g: "ring", t: "translate(" + f1(x) + " " + f1(y) + ")", glow: i === 0 });
+          fills.push({ d: circle(w * 0.16, x, y), fix: "#f4f1ec", tone: 0, g: "ball" });
+        } else {
+          fills.push({ d: ellipse(w * 0.55, w * 0.8, x, y), tone: 0.22, g: "ball" });
+        }
+      }
+      return { fills, inks };
+    },
+
+    /* Львиный зев / маттиола: колос из «губастых» цветков */
+    matthiola(r, R) {
+      const fills = [], inks = [{ d: "M0 " + f1(r * 0.4) + "L0 " + f1(-r * 1.2) }];
+      const steps = 8;
       for (let i = 0; i < steps; i++) {
         const y = r * 0.3 - (i * r * 1.45) / steps;
         const w = r * (0.42 - i * 0.04);
         const side = i % 2 ? 1 : -1;
-        fills.push({ d: bumpy(w, 5, 0.34, R() * TAU, 0.12, R), tone: i * 0.06, t: "translate(" + f1(side * w * 0.35) + " " + f1(y) + ")", glow: i === 0 });
+        fills.push({ d: bumpy(w, 5, 0.34, R() * TAU, 0.12, R), tone: i * 0.05, g: "ball", t: "translate(" + f1(side * w * 0.35) + " " + f1(y) + ")", glow: i === 0 });
       }
-      return { fills, inks: [{ d: "M0 " + f1(r * 0.4) + "L0 " + f1(-r * 1.2) }] };
+      return { fills, inks };
+    },
+
+    /* Антуриум: глянцевое «сердце» и початок */
+    anthurium(r, R) {
+      const w = r * 1.05, h = r * 1.15;
+      const heart = "M0 " + f1(h * 0.55) + "C" + f1(w * 0.55) + " " + f1(h * 0.25) + " " + f1(w) + " " + f1(-h * 0.1) + " " + f1(w * 0.7) + " " + f1(-h * 0.48) +
+        "C" + f1(w * 0.45) + " " + f1(-h * 0.72) + " " + f1(w * 0.1) + " " + f1(-h * 0.62) + " 0 " + f1(-h * 0.4) +
+        "C" + f1(-w * 0.1) + " " + f1(-h * 0.62) + " " + f1(-w * 0.45) + " " + f1(-h * 0.72) + " " + f1(-w * 0.7) + " " + f1(-h * 0.48) +
+        "C" + f1(-w) + " " + f1(-h * 0.1) + " " + f1(-w * 0.55) + " " + f1(h * 0.25) + " 0 " + f1(h * 0.55) + "Z";
+      return {
+        fills: [
+          { d: heart, tone: 0, g: "ball", glow: true },
+          { d: petal(r * 0.75, r * 0.1, false), fix: "#efe0b8", tone: 0.15, g: "petal", t: "translate(0 " + f1(-h * 0.25) + ") rotate(" + f1(25 + R() * 15) + ")" },
+        ],
+        inks: [{ d: "M0 " + f1(h * 0.5) + "Q" + f1(w * 0.05) + " 0 0 " + f1(-h * 0.38) }],
+      };
+    },
+
+    ranunculus(r, R) {
+      const a0 = R() * TAU;
+      const fills = [];
+      for (let i = 0; i < 7; i++) {
+        fills.push({ d: bumpy(r * (1 - i * 0.13), 12 - i, 0.07, a0 + i * 0.4, 0.06, R), tone: i * 0.07, g: "ring", glow: i === 0 });
+      }
+      fills.push({ d: circle(r * 0.1), fix: "#6f7d4a", tone: 0, g: "ball" });
+      return { fills, inks: [] };
     },
 
     berries(r, R) {
       const fills = [], inks = [];
-      const n = 8;
+      const n = 9;
       for (let i = 0; i < n; i++) {
         const rr = r * 0.62 * Math.sqrt((i + 0.5) / n);
         const a = i * 2.39996 + R();
         const x = Math.cos(a) * rr, y = Math.sin(a) * rr;
         const br = r * (0.26 + R() * 0.06);
-        fills.push({ d: ellipse(br * 0.9, br, x, y), tone: R() * 0.25, glow: i === 0, alt: i % 4 === 1 });
+        fills.push({ d: ellipse(br * 0.9, br, x, y), tone: R() * 0.2, g: "ball", glow: i === 0, alt: i % 4 === 1 });
         inks.push({ d: "M" + f1(x - br * 0.18) + " " + f1(y - br * 0.72) + "l" + f1(br * 0.36) + " " + f1(-br * 0.2) });
       }
       return { fills, inks };
     },
 
     cotton(r, R) {
-      const rot = R() * 360;
+      const a0 = R() * 360;
       const fills = [];
-      for (let k = 0; k < 5; k++) {
-        fills.push({ d: petal(r * 1.05, r * 0.2, true), fix: "#6b4a33", tone: 0, t: "rotate(" + f1(rot + k * 72 + 36) + ")" });
-      }
+      for (let k = 0; k < 5; k++) fills.push({ d: petal(r * 1.05, r * 0.2, true), fix: "#6b4a33", tone: 0, g: "petal", t: rot(a0 + k * 72 + 36) });
       for (let k = 0; k < 4; k++) {
-        const a = (rot * Math.PI) / 180 + (TAU * k) / 4;
-        fills.push({ d: bumpy(r * 0.45, 7, 0.12, R() * TAU, 0.1, R), fix: "#fbf8f2", tone: 0, t: "translate(" + f1(Math.cos(a) * r * 0.36) + " " + f1(Math.sin(a) * r * 0.36) + ")", glow: k === 0 });
+        const a = (a0 * Math.PI) / 180 + (TAU * k) / 4;
+        fills.push({ d: bumpy(r * 0.45, 7, 0.12, R() * TAU, 0.1, R), fix: "#fbf8f2", tone: 0, g: "ball", t: "translate(" + f1(Math.cos(a) * r * 0.36) + " " + f1(Math.sin(a) * r * 0.36) + ")", glow: k === 0 });
       }
       return { fills, inks: [] };
     },
   };
+  /* Старые коды из прежних данных — на ближайший похожий рисунок */
+  SHAPES.chrys = SHAPES.chrysball;
 
   /* Базовый радиус головки на эскизе */
-  const HEAD_R = { rose: 33, peony: 42, ranunculus: 30, carnation: 29, chrys: 37, dahlia: 40, eustoma: 32, hydrangea: 50, spray: 38, matthiola: 30, berries: 25, cotton: 27 };
+  const HEAD_R = { rose: 33, peony: 42, spray: 38, hydrangea: 52, dahlia: 41, pompon: 30, chrysball: 36, chrys: 36, carnation: 29, eustoma: 32, delph: 34, matthiola: 32, anthurium: 32, ranunculus: 30, berries: 25, cotton: 27 };
+  const SPIKES = { matthiola: 1, delph: 1 };
 
   /* ── Зелень: веточка «вверх» из 0,0, длина len ──────── */
   const SPRIGS = {
     eucalyptus(len, R) {
       const fills = [], inks = [{ d: "M0 0Q" + f1(len * 0.08) + " " + f1(-len * 0.5) + " 0 " + f1(-len) }];
-      const n = 7;
+      const n = 8;
       for (let i = 1; i <= n; i++) {
         const y = -(len * i) / (n + 0.6);
         const side = i % 2 ? 1 : -1;
         const r = len * (0.11 - i * 0.006);
-        fills.push({ d: circle(r, side * r * 0.95, y), tone: R() * 0.25 });
+        fills.push({ d: circle(r, side * r * 0.95, y), tone: R() * 0.22, g: "ring" });
       }
       return { fills, inks };
     },
+    raspleaf(len, R) {
+      const fills = [], inks = [{ d: "M0 0L0 " + f1(-len * 0.35) }];
+      [[-38, 0.62], [0, 0.78], [36, 0.6]].forEach((l, i) => {
+        const t = "translate(0 " + f1(-len * 0.3) + ") rotate(" + f1(l[0] + (R() - 0.5) * 12) + ")";
+        fills.push({ d: serratedLeaf(len * l[1], len * 0.2, R), tone: R() * 0.15, g: "leaf", t, alt: i === 1 });
+        inks.push({ d: "M0 0L0 " + f1(-len * l[1] * 0.92), t });
+      });
+      return { fills, inks };
+    },
+    panicum(len, R) {
+      const fills = [], inks = [{ d: "M0 0Q" + f1(len * 0.06) + " " + f1(-len * 0.5) + " 0 " + f1(-len) }];
+      for (let i = 0; i < 7; i++) {
+        const y = -len * (0.35 + i * 0.09);
+        const s = i % 2 ? 1 : -1;
+        const bx = s * len * (0.16 + R() * 0.1), by = y - len * 0.1;
+        inks.push({ d: "M0 " + f1(y) + "Q" + f1(bx * 0.5) + " " + f1(y - len * 0.02) + " " + f1(bx) + " " + f1(by) });
+        for (let k = 0; k < 4; k++) fills.push({ d: circle(len * 0.012, bx * (0.4 + k * 0.2), y + (by - y) * (0.4 + k * 0.2)), tone: 0.1, g: "flat" });
+      }
+      return { fills, inks };
+    },
+    tropic(len, R) {
+      const w = len * 0.24;
+      return {
+        fills: [{ d: petal(len * 1.15, w, true), tone: R() * 0.1, g: "leaf", glow: true, t: "rotate(" + f1((R() - 0.5) * 16) + ")" }],
+        inks: [{ d: "M0 0L0 " + f1(-len * 1.1) }],
+      };
+    },
     pistacia(len, R) {
       const fills = [], inks = [{ d: "M0 0Q" + f1(-len * 0.06) + " " + f1(-len * 0.5) + " 0 " + f1(-len) }];
-      const n = 5;
-      for (let i = 1; i <= n; i++) {
-        const y = -(len * i) / (n + 0.5);
-        [-1, 1].forEach((s) => fills.push({ d: petal(len * 0.2, len * 0.055, false), tone: R() * 0.3, t: "translate(0 " + f1(y) + ") rotate(" + s * 58 + ")" }));
+      for (let i = 1; i <= 5; i++) {
+        const y = -(len * i) / 5.5;
+        [-1, 1].forEach((s) => fills.push({ d: petal(len * 0.2, len * 0.055, false), tone: R() * 0.3, g: "leaf", t: "translate(0 " + f1(y) + ") rotate(" + s * 58 + ")" }));
       }
-      fills.push({ d: petal(len * 0.2, len * 0.055, false), tone: 0.1, t: "translate(0 " + f1(-len * 0.97) + ")" });
       return { fills, inks };
     },
     ruscus(len, R) {
       const fills = [], inks = [{ d: "M0 0L0 " + f1(-len) }];
-      const n = 6;
-      for (let i = 1; i <= n; i++) {
-        const y = -(len * i) / (n + 0.4);
+      for (let i = 1; i <= 6; i++) {
         const s = i % 2 ? 1 : -1;
-        fills.push({ d: petal(len * 0.26, len * 0.07, true), tone: R() * 0.25, t: "translate(0 " + f1(y) + ") rotate(" + s * 40 + ")" });
+        fills.push({ d: petal(len * 0.26, len * 0.07, true), tone: R() * 0.25, g: "leaf", t: "translate(0 " + f1(-(len * i) / 6.4) + ") rotate(" + s * 40 + ")" });
       }
       return { fills, inks };
     },
     pampas(len, R) {
-      /* Пушистая метёлка: несколько перекрывающихся «перьев» */
       const fills = [];
       const inks = [{ d: "M0 0L0 " + f1(-len * 0.3) }];
       for (let i = 0; i < 5; i++) {
         const y = -len * (0.32 + i * 0.13);
         const w = len * (0.15 - i * 0.018);
         const tilt = (i % 2 ? 1 : -1) * (8 + R() * 8);
-        fills.push({ d: petal(len * 0.34, w, false), tone: i * 0.05 + R() * 0.08, t: "translate(0 " + f1(y + len * 0.1) + ") rotate(" + f1(tilt) + ")", glow: i === 0 });
+        fills.push({ d: petal(len * 0.34, w, false), tone: i * 0.05 + R() * 0.08, g: "petal", t: "translate(0 " + f1(y + len * 0.1) + ") rotate(" + f1(tilt) + ")", glow: i === 0 });
       }
       for (let i = 0; i < 7; i++) {
         const y = -len * (0.36 + i * 0.09);
@@ -368,6 +488,108 @@
       return { fills, inks };
     },
   };
+
+  /* ════════════════════════════════════════════════════════
+     Свет: градиенты под цвет детали
+     Одинаковые сочетания «тип + цвет + глубина» переиспользуются.
+     ════════════════════════════════════════════════════════ */
+  const GRADS = new Map();
+  function gradHost() { return svg.querySelector("#bbGrads"); }
+  function resetGrads() { GRADS.clear(); if (typeof PFILT !== "undefined") PFILT.clear(); const h = gradHost(); if (h) h.innerHTML = ""; }
+  function lum(hex) { const c = hexToRgb(hex); return (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]) / 255; }
+  function stops(list) {
+    return list.map((s) => '<stop offset="' + s[0] + '" stop-color="' + s[1] + '"' + (s[2] != null ? ' stop-opacity="' + s[2] + '"' : "") + "/>").join("");
+  }
+  function paintFill(type, color, tone) {
+    const base = shade(color, tone || 0);
+    if (!type || type === "flat") return base;
+    const t = Math.round((tone || 0) * 20) / 20;
+    const key = type + color + t;
+    if (GRADS.has(key)) return GRADS.get(key);
+    const id = "bbg" + gen + "_" + GRADS.size;
+    /* Светлые цвета темнеют в серо-тёплое, а не в бордовое */
+    const shadowInk = lum(base) > 0.82 ? "#8a7d72" : "#2b1018";
+    const deep = mix(base, shadowInk, lum(base) > 0.82 ? 0.28 : 0.34);
+    const lite = mix(base, "#ffffff", 0.42);
+    let el;
+    if (type === "ring") el = '<radialGradient id="' + id + '" cx="50%" cy="50%" r="52%">' + stops([[0, deep], [0.62, base], [1, lite]]) + "</radialGradient>";
+    else if (type === "petal") el = '<linearGradient id="' + id + '" x1="0" y1="1" x2="0" y2="0">' + stops([[0, deep], [0.5, base], [1, lite]]) + "</linearGradient>";
+    else if (type === "cup") el = '<radialGradient id="' + id + '" cx="50%" cy="30%" r="70%">' + stops([[0, lite], [0.55, base], [1, deep]]) + "</radialGradient>";
+    else if (type === "ball") el = '<radialGradient id="' + id + '" cx="36%" cy="32%" r="74%">' + stops([[0, lite], [0.5, base], [1, deep]]) + "</radialGradient>";
+    else if (type === "leaf") el = '<linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="0">' + stops([[0, deep], [0.48, mix(base, "#ffffff", 0.18)], [0.52, base], [1, deep]]) + "</linearGradient>";
+    else if (type === "film") el = '<linearGradient id="' + id + '" x1="0" y1="0" x2="0.4" y2="1">' + stops([[0, mix(base, "#ffffff", 0.5), 0.92], [0.55, base, 0.86], [1, mix(base, "#6d6560", 0.22), 0.9]]) + "</linearGradient>";
+    else if (type === "satin") el = '<linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1">' + stops([[0, deep], [0.42, base], [0.5, mix(base, "#ffffff", 0.55)], [0.58, base], [1, deep]]) + "</linearGradient>";
+    else if (type === "rope") el = '<linearGradient id="' + id + '" x1="0" y1="0" x2="0" y2="1">' + stops([[0, lite], [0.45, base], [1, deep]]) + "</linearGradient>";
+    else return base;
+    const host = gradHost();
+    if (host) host.insertAdjacentHTML("beforeend", el);
+    const url = "url(#" + id + ")";
+    GRADS.set(key, url);
+    return url;
+  }
+  /* ════════════════════════════════════════════════════════
+     Настоящие цветы: снимки головок из каталога (D.photos)
+     Снимок подбирается к цвету палитры по яркости и тону, затем
+     перекрашивается фильтром: насыщенность → поворот тона → яркость,
+     и сразу получает мягкую тень на соседние цветы.
+     ════════════════════════════════════════════════════════ */
+  const PHOTOS = D.photos || {};
+  const PFILT = new Map();
+  function hexToHsl(hex) {
+    const c = hexToRgb(hex).map((v) => v / 255);
+    const mx = Math.max(c[0], c[1], c[2]), mn = Math.min(c[0], c[1], c[2]);
+    let h = 0, s2 = 0;
+    const l = (mx + mn) / 2;
+    if (mx !== mn) {
+      const d = mx - mn;
+      s2 = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
+      h = mx === c[0] ? (c[1] - c[2]) / d + (c[1] < c[2] ? 6 : 0) : mx === c[1] ? (c[2] - c[0]) / d + 2 : (c[0] - c[1]) / d + 4;
+      h *= 60;
+    }
+    return [h, s2, l];
+  }
+  function photoFor(kind, color) {
+    const list = PHOTOS[kind];
+    if (!list || !list.length) return null;
+    const t = hexToHsl(color);
+    let best = list[0], bd = Infinity;
+    list.forEach((p) => {
+      const dh = Math.min(Math.abs(p.hsl[0] - t[0]), 360 - Math.abs(p.hsl[0] - t[0])) / 360;
+      const d = Math.abs(p.hsl[2] - t[2]) + dh * 0.35;
+      if (d < bd) { bd = d; best = p; }
+    });
+    return best;
+  }
+  function photoFilter(p, color) {
+    const key = p.src + color;
+    if (PFILT.has(key)) return PFILT.get(key);
+    const id = "bbp" + gen + "_" + PFILT.size;
+    const [sh, ss, sl] = p.hsl, [th, ts, tl] = hexToHsl(color);
+    const white = ts < 0.16 && tl > 0.82;
+    const sat = white ? 0.1 : Math.max(0.15, Math.min(2.4, ts / Math.max(0.05, ss)));
+    const hue = Math.round(th - sh);
+    const k = Math.max(0.45, Math.min(2.4, tl / Math.max(0.08, sl)));
+    const b = white ? 0.1 : 0;
+    const fn = (c) => '<feFunc' + c + ' type="linear" slope="' + k.toFixed(3) + '" intercept="' + b + '"/>';
+    const el = '<filter id="' + id + '" x="-25%" y="-25%" width="150%" height="160%" color-interpolation-filters="sRGB">' +
+      '<feColorMatrix type="saturate" values="' + sat.toFixed(3) + '"/>' +
+      '<feColorMatrix type="hueRotate" values="' + hue + '"/>' +
+      "<feComponentTransfer>" + fn("R") + fn("G") + fn("B") + "</feComponentTransfer>" +
+      '<feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#3a2418" flood-opacity=".32"/></filter>';
+    const host = gradHost();
+    if (host) host.insertAdjacentHTML("beforeend", el);
+    const url = "url(#" + id + ")";
+    PFILT.set(key, url);
+    return url;
+  }
+  function photoImage(p, r, color, deg) {
+    const big = r * 2.25, w = p.w >= p.h ? big : big * (p.w / p.h), h = p.w >= p.h ? big * (p.h / p.w) : big;
+    return '<image data-photo="1" href="' + p.src + '" x="' + f1(-w / 2) + '" y="' + f1(-h / 2) + '" width="' + f1(w) + '" height="' + f1(h) +
+      '" preserveAspectRatio="xMidYMid meet" filter="' + photoFilter(p, color) + '"' + (deg ? ' transform="rotate(' + f1(deg) + ')"' : "") + "/>";
+  }
+
+  /* Цвет контура, в который «перетекает» карандаш, когда деталь окрашена */
+  const tintOf = (color) => mix(shade(color, 0.3), "#1b1a18", 0.35);
 
   /* ════════════════════════════════════════════════════════
      Раскладка букета
@@ -383,6 +605,7 @@
   function domeR() {
     return { S: 108, M: 132, L: 160, XL: 188 }[state.size];
   }
+  const isBoxed = (w) => w === "box" || w === "basket";
 
   function layout() {
     const R = mulberry32(state.seed);
@@ -392,7 +615,7 @@
     const n = size.stems;
     const kinds = activeFlowers();
     /* В коробке и корзине цветы сидят ниже и плотнее — прямо у бортика */
-    const boxed = state.wrap === "hatbox" || state.wrap === "basket";
+    const boxed = isBoxed(state.wrap);
     const cy = boxed ? CY + Rd * 0.3 : CY;
     const sy = boxed ? 0.62 : 0.8;
 
@@ -415,9 +638,12 @@
 
     /* Цвета: каждому виду цветов — 1–2 оттенка палитры */
     const pal = paletteColors() || ["#ffffff"];
+    const greenish = (hex) => { const c = hexToRgb(hex); return c[1] > c[0] + 8 && c[1] > c[2] + 8; };
+    const bloom = pal.filter((c) => !greenish(c));
     const kindColors = {};
     kinds.forEach((id, i) => {
-      kindColors[id] = [pal[i % pal.length], pal[(i + 2) % pal.length]];
+      const src = FLOWERS[id].kind === "hydrangea" || !bloom.length ? pal : bloom;
+      kindColors[id] = [src[i % src.length], src[(i + 2) % src.length]];
     });
 
     const heads = [];
@@ -431,144 +657,141 @@
       let x = CX + Math.cos(th) * rr * 1.14 + (R() - 0.5) * (airy ? 34 : 10);
       let y = cy + Math.sin(th) * rr * sy + (R() - 0.5) * (airy ? 30 : 8);
       let raised = false;
-      if (airy && y < cy && R() < 0.45) { y -= 30 + R() * 55; raised = true; }
-      const r = HEAD_R[kind] * scaleBySize * (airy ? 0.85 + R() * 0.4 : 0.9 + R() * 0.2);
+      if ((airy || SPIKES[kind]) && y < cy && R() < (SPIKES[kind] ? 0.7 : 0.45)) { y -= 30 + R() * 55; raised = true; }
+      const r = (HEAD_R[kind] || 32) * scaleBySize * (airy ? 0.85 + R() * 0.4 : 0.9 + R() * 0.2);
       const cols = kindColors[id];
       const color = cols[R() < 0.72 ? 0 : 1];
       const color2 = cols[1] === color ? cols[0] : cols[1];
-      let rot = R() * 360;
-      if (kind === "matthiola") rot = (Math.atan2(y - cy - 40, x - CX) * 180) / Math.PI + 90 + (R() - 0.5) * 20;
-      heads.push({ id, kind, x, y, r, rot, color, color2, raised });
+      let rotDeg = R() * 360;
+      if (SPIKES[kind] || kind === "anthurium") rotDeg = (Math.atan2(y - cy - 40, x - CX) * 180) / Math.PI + 90 + (R() - 0.5) * 20;
+      heads.push({ id, kind, x, y, r, rot: rotDeg, color, color2, raised });
     }
-    /* Плотность: мелкие цветы (ягоды, хлопок) оставляли дыры —
-       подгоняем головки так, чтобы они закрывали купол с нахлёстом. */
+    /* Плотность: мелкие цветы оставляли дыры — подгоняем головки так,
+       чтобы они закрывали купол с нахлёстом, как в живом букете. */
     const dome = Math.PI * Rd * 1.03 * Rd * (boxed ? 0.6 : 0.72);
     const cover = heads.reduce((acc, h) => acc + Math.PI * h.r * h.r, 0);
-    const k = Math.max(0.9, Math.min(1.7, Math.sqrt((dome * 1.25) / cover)));
-    heads.forEach((h) => { h.r *= k; h.shape = SHAPES[h.kind](h.r, R); });
+    const k = Math.max(0.9, Math.min(2, Math.sqrt((dome * 1.55) / cover)));
+    heads.forEach((h) => { h.r *= k; h.shape = (SHAPES[h.kind] || SHAPES.rose)(h.r, R); });
     heads.sort((a, b) => a.y - b.y);
 
     /* Зелень по краю купола (верх и бока — низ закрыт упаковкой) */
     const greens = [];
-    const g = state.green === null ? GREENS.eucalyptus : GREENS[state.green];
-    if (g && g.kind !== "none") {
+    const g = state.green === null ? GREENS[D.greens[0].id] : GREENS[state.green];
+    if (g && g.kind !== "none" && SPRIGS[g.kind]) {
       const count = Math.round(AMOUNTS[state.amount].count * (0.8 + Rd / 660));
       for (let i = 0; i < count; i++) {
         const a = Math.PI * (1.02 + (i / Math.max(1, count - 1)) * 0.96) + (R() - 0.5) * 0.18;
         const rr = Rd * (0.78 + R() * 0.2);
         const x = CX + Math.cos(a) * rr * 1.14;
         const y = cy + Math.sin(a) * rr * (boxed ? 0.7 : 0.82) + 12;
-        const len = (g.kind === "pampas" ? 105 : 92) * (0.8 + R() * 0.45) * (airy ? 1.18 : 1) * (0.85 + Rd / 800);
-        const rot = (a * 180) / Math.PI + 90 + (R() - 0.5) * 16;
-        greens.push({ kind: g.kind, x, y, rot, len, color: g.color, shape: SPRIGS[g.kind](len, R) });
+        const big = g.kind === "pampas" ? 105 : g.kind === "tropic" ? 98 : 92;
+        const len = big * (0.8 + R() * 0.45) * (airy ? 1.18 : 1) * (0.85 + Rd / 800);
+        const r2 = (a * 180) / Math.PI + 90 + (R() - 0.5) * 16;
+        greens.push({ kind: g.kind, x, y, rot: r2, len, color: g.color, color2: g.color2 || g.color, shape: SPRIGS[g.kind](len, R) });
       }
     }
     return { heads, greens, Rd, airy, cy };
   }
 
   /* ════════════════════════════════════════════════════════
-     Упаковка
+     Упаковка — как в студии: матовая плёнка «лепестками»,
+     джутовая корзина с биркой PALOMA, белая коробка PALOMA, лента.
      ════════════════════════════════════════════════════════ */
   function ribbonColor() {
     if (state.ribbon !== "auto") return state.ribbon;
     const pal = paletteColors();
-    return pal ? pal[0] === "#FFFFFF" ? pal[1] : pal[0] : "#ffffff";
+    return pal ? (lum(pal[0]) > 0.9 ? pal[1] : pal[0]) : "#ffffff";
   }
   function wrapColor() {
-    const w = WRAPS[state.wrap || "kraft"];
+    const w = WRAPS[state.wrap || "film"] || WRAPS.film;
     const c = w.colors[state.wrapColor] || w.colors[0];
     return c ? c[1] : "#ffffff";
   }
 
   function bow(x, y, s) {
     const lp = (sx) => "M" + x + " " + y + "C" + f1(x + sx * 34 * s) + " " + f1(y - 30 * s) + " " + f1(x + sx * 58 * s) + " " + f1(y - 6 * s) + " " + f1(x + sx * 40 * s) + " " + f1(y + 10 * s) + "C" + f1(x + sx * 26 * s) + " " + f1(y + 20 * s) + " " + f1(x + sx * 10 * s) + " " + f1(y + 6 * s) + " " + x + " " + y + "Z";
-    const tail = (sx) => "M" + f1(x - sx * 3) + " " + f1(y + 4) + "C" + f1(x + sx * 10 * s) + " " + f1(y + 40 * s) + " " + f1(x + sx * 6 * s) + " " + f1(y + 70 * s) + " " + f1(x + sx * 22 * s) + " " + f1(y + 96 * s) + "L" + f1(x + sx * 34 * s) + " " + f1(y + 88 * s) + "C" + f1(x + sx * 20 * s) + " " + f1(y + 62 * s) + " " + f1(x + sx * 24 * s) + " " + f1(y + 34 * s) + " " + f1(x + sx * 8) + " " + f1(y + 2) + "Z";
+    const tail = (sx) => "M" + f1(x - sx * 3) + " " + f1(y + 4) + "C" + f1(x + sx * 10 * s) + " " + f1(y + 40 * s) + " " + f1(x + sx * 6 * s) + " " + f1(y + 70 * s) + " " + f1(x + sx * 22 * s) + " " + f1(y + 120 * s) + "L" + f1(x + sx * 34 * s) + " " + f1(y + 112 * s) + "C" + f1(x + sx * 20 * s) + " " + f1(y + 62 * s) + " " + f1(x + sx * 24 * s) + " " + f1(y + 34 * s) + " " + f1(x + sx * 8) + " " + f1(y + 2) + "Z";
     return [
-      { d: tail(-1), tone: 0.2, rib: true }, { d: tail(1), tone: 0.12, rib: true },
-      { d: lp(-1), tone: 0.05, rib: true, glow: true }, { d: lp(1), tone: 0, rib: true },
-      { d: ellipse(9 * s, 8 * s, x, y), tone: 0.25, rib: true },
+      { d: tail(-1), tone: 0.12, g: "satin", rib: true }, { d: tail(1), tone: 0.06, g: "satin", rib: true },
+      { d: lp(-1), tone: 0.04, g: "satin", rib: true, glow: true }, { d: lp(1), tone: 0, g: "satin", rib: true },
+      { d: ellipse(9 * s, 8 * s, x, y), tone: 0.16, g: "ball", rib: true },
     ];
   }
 
-  function coneEdge(Rd, amp, R) {
-    /* Верхний край бумаги — волна по дуге над куполом */
-    const rx = Rd * 1.34, ry = Rd * 0.98;
-    const pts = [];
-    const n = 11;
-    for (let k = 0; k <= n; k++) {
-      const a = Math.PI * (1.08 + (0.84 * k) / n);
-      const w = k % 2 ? 1 + amp : 1 - amp * 0.4;
-      pts.push([CX + Math.cos(a) * rx * w, CY + 10 + Math.sin(a) * ry * w + (R() - 0.5) * amp * 30]);
-    }
-    return pts;
+  /* Лист плёнки: снизу у стеблей, раскрывается к верхнему краю */
+  function sheet(x0, y0, x1, y1, x2, y2, curl) {
+    return "M" + f1(x0) + " " + f1(y0) + "L" + f1(x1) + " " + f1(y1) +
+      "Q" + f1((x1 + x2) / 2 + curl[0]) + " " + f1((y1 + y2) / 2 + curl[1]) + " " + f1(x2) + " " + f1(y2) + "Z";
   }
 
   function buildWrap(Rd) {
     const R = mulberry32(state.seed + 7);
-    const kind = WRAPS[state.wrap || "kraft"].kind;
+    const kind = (WRAPS[state.wrap || "film"] || WRAPS.film).kind;
     /* Каждая деталь — отдельный слой, чтобы линии задних деталей
-       не просвечивали сквозь передние (клапаны, бант). */
+       не просвечивали сквозь передние (листы плёнки, бант). */
     const back = { fills: [], inks: [] };
     const parts = [];
     let front = { fills: [], inks: [] };
     const cut = () => { if (front.fills.length) parts.push(front); front = { fills: [], inks: [] }; };
     const rib = (list) => { cut(); list.forEach((f) => front.fills.push(f)); cut(); };
 
-    if (kind === "kraft" || kind === "film") {
-      const amp = kind === "kraft" ? 0.07 : 0.03;
-      const pts = coneEdge(Rd, amp, R);
-      let d = "M" + CX + " " + WRAP_TIP + "L" + f1(pts[0][0]) + " " + f1(pts[0][1]);
-      for (let k = 1; k < pts.length; k++) {
-        const p = pts[k - 1], q = pts[k];
-        d += "Q" + f1((p[0] + q[0]) / 2 + (R() - 0.5) * 8) + " " + f1((p[1] + q[1]) / 2 - 10) + " " + f1(q[0]) + " " + f1(q[1]);
+    if (kind === "film") {
+      /* Сзади — веер из больших матовых «лепестков» над букетом */
+      const tipY = WRAP_TIP - 40;
+      const n = 6;
+      for (let i = 0; i < n; i++) {
+        const a = Math.PI * (1.1 + (0.8 * i) / (n - 1)) + (R() - 0.5) * 0.08;
+        const rr = Rd * (1.32 + R() * 0.12);
+        const ex = CX + Math.cos(a) * rr * 1.08, ey = CY + 10 + Math.sin(a) * rr * 0.92;
+        const spread = Rd * 0.42;
+        const nx = -Math.sin(a), ny = Math.cos(a);
+        back.fills.push({
+          d: sheet(CX + (R() - 0.5) * 20, tipY, ex - nx * spread, ey - ny * spread, ex + nx * spread, ey + ny * spread,
+            [Math.cos(a) * Rd * 0.18, Math.sin(a) * Rd * 0.18]),
+          tone: 0.1 + (i % 2) * 0.08, g: "film", glow: i === 2,
+        });
+        back.inks.push({ d: "M" + f1(CX) + " " + f1(tipY) + "L" + f1(ex) + " " + f1(ey) });
       }
-      back.fills.push({ d: d + "Z", tone: 0.28, glow: true });
-      for (let k = 1; k < pts.length - 1; k += 2) {
-        back.inks.push({ d: "M" + CX + " " + WRAP_TIP + "L" + f1(pts[k][0]) + " " + f1(pts[k][1] + 14) });
-      }
-      const yl = CY + Rd * 0.38, yr = CY + Rd * 0.32;
+      /* Спереди — два листа крест-накрест закрывают стебли */
+      const yl = CY + Rd * 0.42, yr = CY + Rd * 0.36;
       cut();
-      front.fills.push({ d: "M" + CX + " " + WRAP_TIP + "L" + f1(CX + Rd * 1.2) + " " + f1(yr) + "Q" + f1(CX + Rd * 0.45) + " " + f1(CY + Rd * 0.6) + " " + f1(CX - Rd * 0.2) + " " + f1(CY + Rd * 0.8) + "Z", tone: 0.14 });
+      front.fills.push({ d: "M" + CX + " " + WRAP_TIP + "L" + f1(CX + Rd * 1.25) + " " + f1(yr) + "Q" + f1(CX + Rd * 0.5) + " " + f1(CY + Rd * 0.66) + " " + f1(CX - Rd * 0.22) + " " + f1(CY + Rd * 0.86) + "Z", tone: 0.12, g: "film" });
+      front.inks.push({ d: "M" + f1(CX + 18) + " " + (WRAP_TIP - 60) + "L" + f1(CX + Rd * 0.55) + " " + f1(CY + Rd * 0.7), sheen: true });
       cut();
-      front.fills.push({ d: "M" + CX + " " + WRAP_TIP + "L" + f1(CX - Rd * 1.2) + " " + f1(yl) + "Q" + f1(CX - Rd * 0.4) + " " + f1(CY + Rd * 0.64) + " " + f1(CX + Rd * 0.3) + " " + f1(CY + Rd * 0.74) + "Z", tone: 0, glow: true });
-      if (kind === "kraft") {
-        front.inks.push({ d: "M" + f1(CX - 14) + " " + (WRAP_TIP - 30) + "L" + f1(CX - Rd * 0.8) + " " + f1(yl + 30) });
-        front.inks.push({ d: "M" + f1(CX + 20) + " " + (WRAP_TIP - 70) + "L" + f1(CX + Rd * 0.5) + " " + f1(CY + Rd * 0.66) });
-      } else {
-        front.inks.push({ d: "M" + f1(CX - Rd * 0.9) + " " + f1(yl + 40) + "Q" + f1(CX - Rd * 0.5) + " " + f1(yl + 60) + " " + f1(CX - Rd * 0.3) + " " + f1(yl + 110), sheen: true });
-      }
-      rib(bow(CX, 585, 1));
-    } else if (kind === "hatbox" || kind === "basket") {
-      const rx = Rd * (kind === "basket" ? 1.12 : 1.02), ry = Rd * 0.2;
+      front.fills.push({ d: "M" + CX + " " + WRAP_TIP + "L" + f1(CX - Rd * 1.25) + " " + f1(yl) + "Q" + f1(CX - Rd * 0.42) + " " + f1(CY + Rd * 0.7) + " " + f1(CX + Rd * 0.32) + " " + f1(CY + Rd * 0.8) + "Z", tone: 0, g: "film", glow: true });
+      front.inks.push({ d: "M" + f1(CX - Rd * 0.9) + " " + f1(yl + 40) + "Q" + f1(CX - Rd * 0.5) + " " + f1(yl + 60) + " " + f1(CX - Rd * 0.28) + " " + f1(yl + 120), sheen: true });
+      rib(bow(CX, 588, 1));
+    } else if (kind === "box" || kind === "basket") {
+      const basket = kind === "basket";
+      const rx = Rd * (basket ? 1.1 : 0.98), ry = Rd * (basket ? 0.2 : 0.17);
       const yTop = CY + Rd * 0.68;
-      const H = Math.min(WRAP_TIP - 10 - yTop, Rd * 0.95);
-      if (kind === "basket") {
-        const hy = CY - Rd * 1.55;
-        back.fills.push({ d: "M" + f1(CX - rx * 0.92) + " " + f1(yTop) + "C" + f1(CX - rx * 0.92) + " " + f1(hy) + " " + f1(CX + rx * 0.92) + " " + f1(hy) + " " + f1(CX + rx * 0.92) + " " + f1(yTop) +
-          "L" + f1(CX + rx * 0.8) + " " + f1(yTop) + "C" + f1(CX + rx * 0.8) + " " + f1(hy + 26) + " " + f1(CX - rx * 0.8) + " " + f1(hy + 26) + " " + f1(CX - rx * 0.8) + " " + f1(yTop) + "Z", tone: 0.15, glow: true });
-      }
-      back.fills.push({ d: ellipse(rx, ry, CX, yTop), tone: 0.55 });
+      const H = Math.min(WRAP_TIP - 10 - yTop, Rd * (basket ? 0.95 : 1.15));
+      back.fills.push({ d: ellipse(rx, ry, CX, yTop), tone: 0.55, g: "flat" });
       const bot = yTop + H;
-      const bx = kind === "basket" ? rx * 0.8 : rx;
-      front.fills.push({ d: "M" + f1(CX - rx) + " " + f1(yTop) + "L" + f1(CX - bx) + " " + f1(bot) + "A" + f1(bx) + " " + f1(ry) + " 0 0 0 " + f1(CX + bx) + " " + f1(bot) + "L" + f1(CX + rx) + " " + f1(yTop) + "A" + f1(rx) + " " + f1(ry) + " 0 0 1 " + f1(CX - rx) + " " + f1(yTop) + "Z", tone: 0, glow: true });
-      if (kind === "basket") {
-        for (let k = 1; k < 6; k++) {
-          const y = yTop + (H * k) / 6, w = rx - (rx - bx) * (k / 6);
-          front.inks.push({ d: "M" + f1(CX - w) + " " + f1(y) + "A" + f1(w) + " " + f1(ry) + " 0 0 0 " + f1(CX + w) + " " + f1(y) });
+      const bx = basket ? rx * 0.82 : rx * 0.9;
+      const body = "M" + f1(CX - rx) + " " + f1(yTop) + "L" + f1(CX - bx) + " " + f1(bot) + "A" + f1(bx) + " " + f1(ry) + " 0 0 0 " + f1(CX + bx) + " " + f1(bot) + "L" + f1(CX + rx) + " " + f1(yTop) + "A" + f1(rx) + " " + f1(ry) + " 0 0 1 " + f1(CX - rx) + " " + f1(yTop) + "Z";
+      if (basket) {
+        /* Джутовый шнур: ряды витков сверху вниз */
+        front.fills.push({ d: body, tone: 0.2, g: "flat" });
+        const rows = 9;
+        for (let k = 0; k < rows; k++) {
+          const y = yTop + (H * k) / rows, w = rx - (rx - bx) * (k / rows), w2 = rx - (rx - bx) * ((k + 1) / rows);
+          const y2 = yTop + (H * (k + 1)) / rows;
+          front.fills.push({ d: "M" + f1(CX - w) + " " + f1(y) + "A" + f1(w) + " " + f1(ry) + " 0 0 0 " + f1(CX + w) + " " + f1(y) + "L" + f1(CX + w2) + " " + f1(y2) + "A" + f1(w2) + " " + f1(ry) + " 0 0 1 " + f1(CX - w2) + " " + f1(y2) + "Z", tone: (k % 2) * 0.08, g: "rope" });
         }
-        for (let k = -4; k <= 4; k++) {
-          front.inks.push({ d: "M" + f1(CX + k * rx * 0.21) + " " + f1(yTop + ry * 0.95) + "L" + f1(CX + k * bx * 0.21) + " " + f1(bot + ry * 0.9) });
-        }
-        front.fills.push({ d: "M" + f1(CX - rx) + " " + f1(yTop) + "A" + f1(rx) + " " + f1(ry) + " 0 0 0 " + f1(CX + rx) + " " + f1(yTop) + "l0 12A" + f1(rx) + " " + f1(ry) + " 0 0 1 " + f1(CX - rx) + " " + f1(yTop + 12) + "Z", tone: 0.22 });
-        rib(bow(CX - rx * 0.7, yTop + 16, 0.8));
+        cut();
+        /* Бирка PALOMA, как на корзинах студии */
+        const tx = CX + rx * 0.18, ty = yTop + H * 0.12;
+        front.fills.push({ d: "M" + f1(tx) + " " + f1(ty) + "l40 -6l14 96l-40 6Z", fix: "#fbf8f4", tone: 0, g: "flat", label: { x: tx + 26, y: ty + 48, rot: 82, size: 15 } });
+        cut();
       } else {
-        const by = bot - H * 0.28;
-        front.fills.push({ d: "M" + f1(CX - rx) + " " + f1(by) + "A" + f1(rx) + " " + f1(ry) + " 0 0 0 " + f1(CX + rx) + " " + f1(by) + "l0 18A" + f1(rx) + " " + f1(ry) + " 0 0 1 " + f1(CX - rx) + " " + f1(by + 18) + "Z", tone: 0.05, rib: true });
-        rib(bow(CX + rx * 0.35, by + ry + 8, 0.8));
+        front.fills.push({ d: body, tone: 0.04, g: "ball", glow: true, label: { x: CX, y: yTop + H * 0.58, rot: 0, size: Math.round(Rd * 0.2) } });
+        cut();
+        rib(bow(CX + rx * 0.42, yTop + H * 0.2, 0.75));
       }
     } else {
       /* На ленте: стебли видны, лента обвивает букет */
-      front.fills.push({ d: "M" + (CX - 22) + " 552Q" + CX + " 562 " + (CX + 22) + " 552L" + (CX + 22) + " 582Q" + CX + " 592 " + (CX - 22) + " 582Z", tone: 0.1, rib: true });
+      front.fills.push({ d: "M" + (CX - 22) + " 552Q" + CX + " 562 " + (CX + 22) + " 552L" + (CX + 22) + " 582Q" + CX + " 592 " + (CX - 22) + " 582Z", tone: 0.1, g: "satin", rib: true });
       rib(bow(CX, 568, 0.9));
     }
     cut();
@@ -586,62 +809,88 @@
     return 'd="' + x.d + '"' + (x.t ? ' transform="' + x.t + '"' : "");
   }
 
-  /* item: { fills, inks, colorOf(f) } → строка группы с тремя слоями */
+  /* item: { fills, inks } → группа из трёх слоёв: белая подложка,
+     краска (под маской, которая растекается) и карандашный контур */
   function itemSVG(key, shape, colorOf, opts) {
     const id = "bbc" + gen + "_" + key;
     const o = opts || {};
-    let base = "", paint = "", ink = "";
+    let base = "", paint = "", ink = "", labels = "";
     shape.fills.forEach((f) => {
       base += "<path " + pathAttrs(f) + ' fill="#fff"/>';
-      paint += "<path " + pathAttrs(f) + ' fill="' + colorOf(f) + '" data-tone="' + (f.tone || 0) + '"' +
+      paint += "<path " + pathAttrs(f) + ' fill="' + colorOf(f) + '" data-tone="' + (f.tone || 0) + '" data-g="' + (f.g || "flat") + '"' +
         (f.fix ? ' data-fix="' + f.fix + '"' : "") + (f.alt ? ' data-alt="1"' : "") + (f.rib ? ' data-rib="1"' : "") + "/>";
       if (f.glow) paint += "<path " + pathAttrs(f) + ' fill="url(#bbGlow)"/>';
       ink += "<path " + pathAttrs(f) + ' pathLength="1"/>';
+      if (f.label) {
+        labels += '<text class="bb-label" x="' + f1(f.label.x) + '" y="' + f1(f.label.y) + '" font-size="' + f.label.size + '"' +
+          (f.label.rot ? ' transform="rotate(' + f.label.rot + " " + f1(f.label.x) + " " + f1(f.label.y) + ')"' : "") + ">PALOMA</text>";
+      }
     });
     shape.inks.forEach((k) => {
       ink += "<path " + pathAttrs(k) + ' pathLength="1"' + (k.sheen ? ' class="bb-sheen"' : "") + "/>";
     });
+    /* Настоящий цветок: снимок заменяет нарисованные лепестки в слое краски,
+       а карандашный эскиз (подложка и контур) остаётся до окраски */
+    if (o.photo) paint = o.photo;
     const clipT = o.origin ? "translate(" + o.origin[0] + " " + o.origin[1] + ") scale(0)" : "scale(0)";
-    return '<g class="bb-item ' + (o.cls || "") + '" data-key="' + key + '"' + (o.t ? ' transform="' + o.t + '"' : "") + (o.delay != null ? ' style="--d:' + o.delay + 'ms"' : "") + ">" +
+    const style = [];
+    if (o.delay != null) style.push("--d:" + o.delay + "ms");
+    if (o.tint) style.push("--tint:" + o.tint);
+    return '<g class="bb-item ' + (o.cls || "") + (o.photo ? " is-photo" : "") + '" data-key="' + key + '"' + (o.t ? ' transform="' + o.t + '"' : "") + (style.length ? ' style="' + style.join(";") + '"' : "") + ">" +
       '<clipPath id="' + id + '"><path class="bb-clip" d="' + BLOB + '" transform="' + clipT + '"/></clipPath>' +
       '<g class="bb-base">' + base + "</g>" +
-      '<g class="bb-paint" clip-path="url(#' + id + ')"><g transform="translate(1.6 1.1)">' + paint + "</g></g>" +
+      '<g class="bb-paint" clip-path="url(#' + id + ')">' + paint + labels + "</g>" +
       '<g class="bb-ink">' + ink + "</g></g>";
   }
 
   function headColor(h) {
-    return (f) => (f.fix ? f.fix : shade(f.alt ? h.color2 : h.color, f.tone));
+    return (f) => paintFill(f.g, f.fix || (f.alt ? h.color2 : h.color), f.fix ? 0 : f.tone);
+  }
+  const greenColor = (g) => (f) => paintFill(f.g, f.fix || (f.alt ? g.color2 : g.color), f.tone);
+
+  /* Купол: цветы у края букета чуть развёрнуты в сторону и видны овалом,
+     в центре смотрят прямо на нас — как у живого букета на фото */
+  function headTransform(h) {
+    const pos = "translate(" + f1(h.x) + " " + f1(h.y) + ")";
+    if (SPIKES[h.kind]) return pos + " rotate(" + f1(h.rot) + ")";
+    const ph = photoFor(h.kind, h.color);
+    if (ph) return pos + " rotate(" + f1(ph.free ? h.rot : (h.rot % 36) - 18) + ")";
+    const dx = h.x - CX, dy = h.y - (model.cy || CY);
+    const t = Math.min(1, Math.hypot(dx / 1.14, dy / 0.8) / (model.Rd || 130));
+    const out = (Math.atan2(dy, dx) * 180) / Math.PI;
+    const squash = 1 - 0.34 * t * t;
+    return pos + " rotate(" + f1(out) + ") scale(" + f1(squash * 100) / 100 + " 1) rotate(" + f1(h.rot - out) + ")";
   }
 
   function render() {
     gen++;
+    resetGrads();
     model = layout();
     model.wrap = buildWrap(model.Rd);
     const { heads, greens } = model;
-    const bind = model.wrap.kind === "ribbon" ? 568 : 585;
+    const bind = model.wrap.kind === "ribbon" ? 568 : 588;
     const dist = (x, y) => Math.hypot(x - CX, y - CY);
 
     let html = "";
-    /* Тень-подложка */
-    html += '<ellipse class="bb-ground" cx="' + CX + '" cy="728" rx="' + f1(model.Rd * 0.9) + '" ry="14"/>';
+    /* Мягкая тень на «столе» */
+    html += '<ellipse class="bb-ground" cx="' + CX + '" cy="732" rx="' + f1(model.Rd * 0.95) + '" ry="16"/>';
 
     const wc = wrapColor(), rc = ribbonColor();
-    const wrapFill = (f) => (f.rib ? shade(rc, f.tone) : shade(wc, f.tone));
+    const wrapFill = (f) => (f.fix ? paintFill(f.g, f.fix, 0) : paintFill(f.g, f.rib ? rc : wc, f.tone));
     if (model.wrap.back.fills.length) {
-      html += itemSVG("wb", model.wrap.back, wrapFill, { cls: "bb-wrap", origin: [CX, WRAP_TIP], delay: 0 });
+      html += itemSVG("wb", model.wrap.back, wrapFill, { cls: "bb-wrap", origin: [CX, WRAP_TIP], delay: 0, tint: tintOf(wc) });
     }
 
     greens.forEach((g, i) => {
-      html += itemSVG("g" + i, g.shape, (f) => shade(g.color, f.tone), {
+      html += itemSVG("g" + i, g.shape, greenColor(g), {
         cls: "bb-green", t: "translate(" + f1(g.x) + " " + f1(g.y) + ") rotate(" + f1(g.rot) + ")",
-        delay: 80 + Math.round(dist(g.x, g.y) * 1.4),
+        delay: 80 + Math.round(dist(g.x, g.y) * 1.4), tint: tintOf(g.color),
       });
     });
 
     /* Стебли */
     let stems = "";
-    /* В коробке и корзине стебли спрятаны целиком */
-    const boxed = model.wrap.kind === "hatbox" || model.wrap.kind === "basket";
+    const boxed = isBoxed(model.wrap.kind);
     const showStems = !boxed && (model.wrap.kind === "ribbon" || model.airy);
     heads.forEach((h) => {
       if (boxed || (!showStems && !h.raised)) return;
@@ -657,14 +906,16 @@
     if (stems) html += '<g class="bb-stems">' + stems + "</g>";
 
     heads.forEach((h, i) => {
+      h.photo = photoFor(h.kind, h.color);
       html += itemSVG("h" + i, h.shape, headColor(h), {
-        cls: "bb-head", t: "translate(" + f1(h.x) + " " + f1(h.y) + ") rotate(" + f1(h.rot) + ")",
-        delay: 200 + Math.round(dist(h.x, h.y) * 2),
+        photo: h.photo ? photoImage(h.photo, h.r, h.color, 0) : null,
+        cls: "bb-head", t: headTransform(h),
+        delay: 200 + Math.round(dist(h.x, h.y) * 2), tint: tintOf(h.color),
       });
     });
 
     model.wrap.parts.forEach((p, i) => {
-      html += itemSVG("w" + i, p, wrapFill, { cls: "bb-wrap", origin: [CX, WRAP_TIP], delay: 120 + i * 60 });
+      html += itemSVG("w" + i, p, wrapFill, { cls: "bb-wrap", origin: [CX, WRAP_TIP], delay: 120 + i * 60, tint: tintOf(p.fills[0] && p.fills[0].rib ? rc : wc) });
     });
 
     const layer = svg.querySelector("#bbArt");
@@ -710,21 +961,31 @@
   function maxScale(g) {
     if (g.classList.contains("bb-wrap")) return 900;
     const key = g.dataset.key;
-    if (key[0] === "h") { const h = model.heads[+key.slice(1)]; return h.r * (h.kind === "matthiola" ? 2.6 : 2); }
-    return model.greens[+key.slice(1)].len * 1.3;
+    if (key[0] === "h") { const h = model.heads[+key.slice(1)]; return h.r * (SPIKES[h.kind] ? 2.8 : 2.1); }
+    return model.greens[+key.slice(1)].len * 1.4;
   }
+  /* Окрашенная деталь: контур из карандаша становится цветным краем,
+     появляется тень — класс is-on (см. bouquet-builder.css) */
   function paintGroup(sel, on, baseDelay, stepMul) {
     svg.querySelectorAll(".bb-item" + sel).forEach((g) => {
       const clip = g.querySelector(".bb-clip");
       const d = parseFloat(g.style.getPropertyValue("--d")) || 0;
-      if (on) spread(clip, maxScale(g), baseDelay + d * stepMul, 950);
-      else spread(clip, 0, 0, 1);
+      if (on) {
+        const delay = baseDelay + d * stepMul;
+        spread(clip, maxScale(g), delay, 950);
+        clearTimeout(g._on);
+        g._on = setTimeout(() => g.classList.add("is-on"), Math.max(0, delay) + 200);
+      } else {
+        spread(clip, 0, 0, 1);
+        clearTimeout(g._on);
+        g.classList.remove("is-on");
+      }
     });
   }
 
   /* Перекраска без перерисовки: старый цвет остаётся снизу,
      новый растекается поверх. */
-  function repaint(sel, colorOf) {
+  function repaint(sel, colorOf, tintFor, photoOf) {
     svg.querySelectorAll(".bb-item" + sel).forEach((g) => {
       const paint = g.querySelector(".bb-paint");
       const clip = g.querySelector(".bb-clip");
@@ -739,10 +1000,14 @@
       paint.querySelectorAll("path[data-tone]").forEach((p) => {
         p.setAttribute("fill", colorOf(g, p));
       });
+      if (photoOf) paint.querySelectorAll("image[data-photo]").forEach((im) => photoOf(g, im));
+      if (tintFor) g.style.setProperty("--tint", tintFor(g));
       const m = /translate\([^)]*\)\s*/.exec(clip.getAttribute("transform") || "");
       clip.setAttribute("transform", (m ? m[0] : "") + "scale(0)");
       const d = parseFloat(g.style.getPropertyValue("--d")) || 0;
       spread(clip, maxScale(g), d * 0.8, 900, () => { if (old) old.remove(); });
+      clearTimeout(g._on);
+      g._on = setTimeout(() => g.classList.add("is-on"), d * 0.8 + 200);
     });
   }
 
@@ -753,17 +1018,24 @@
     /* Цвета пересчитываются той же раскладкой (seed тот же) */
     const fresh = layout();
     model.heads.forEach((h, i) => { h.color = fresh.heads[i].color; h.color2 = fresh.heads[i].color2; });
+    const headOf = (g) => model.heads[+g.dataset.key.slice(1)];
     repaint(".bb-head", (g, p) => {
-      const h = model.heads[+g.dataset.key.slice(1)];
-      if (p.dataset.fix) return p.dataset.fix;
-      return shade(p.dataset.alt ? h.color2 : h.color, +p.dataset.tone);
+      const h = headOf(g);
+      if (p.dataset.fix) return paintFill(p.dataset.g, p.dataset.fix, 0);
+      return paintFill(p.dataset.g, p.dataset.alt ? h.color2 : h.color, +p.dataset.tone);
+    }, (g) => tintOf(headOf(g).color), (g, im) => {
+      const h = headOf(g);
+      const p = photoFor(h.kind, h.color);
+      if (!p) return;
+      im.setAttribute("href", p.src);
+      im.setAttribute("filter", photoFilter(p, h.color));
     });
     /* Лента «в тон» следует за палитрой */
     if (state.ribbon === "auto" && state.wrap !== null) repaintWrap();
   }
   function repaintWrap() {
     const wc = wrapColor(), rc = ribbonColor();
-    repaint(".bb-wrap", (g, p) => shade(p.dataset.rib ? rc : wc, +p.dataset.tone));
+    repaint(".bb-wrap", (g, p) => (p.dataset.fix ? paintFill(p.dataset.g, p.dataset.fix, 0) : paintFill(p.dataset.g, p.dataset.rib ? rc : wc, +p.dataset.tone)), () => tintOf(wc));
   }
 
   /* ════════════════════════════════════════════════════════
@@ -777,7 +1049,7 @@
     let p = size.price * (state.florist || !state.flowers.length ? 1 : prem);
     if (state.green && state.green !== "none") p *= { light: 1, mid: 1.04, lush: 1.09 }[state.amount];
     if (state.style === "airy") p *= 1.03;
-    const w = WRAPS[state.wrap || "kraft"];
+    const w = WRAPS[state.wrap || "film"];
     p += w.extra * (state.size === "XL" ? 1.3 : state.size === "L" ? 1.15 : 1);
     if (state.card) p += D.cardPrice;
     return Math.round(p / 100) * 100;
@@ -838,7 +1110,7 @@
   }
 
   function renderWrapColors() {
-    const w = WRAPS[state.wrap || "kraft"];
+    const w = WRAPS[state.wrap || "film"];
     $("#bbWrapColors").innerHTML = w.colors.map((c, i) =>
       '<button type="button" class="bb-swatch" data-wrapcolor="' + i + '" style="--c:' + c[1] + '" aria-pressed="' + (i === state.wrapColor) + '" title="' + c[0] + '" aria-label="' + c[0] + '"></button>').join("");
     const wc = w.colors[state.wrapColor] || w.colors[0];
@@ -1000,7 +1272,7 @@
       if (state.wrap !== ds.wrap) state.wrapColor = 0;
       state.wrap = ds.wrap;
       /* Смена типа упаковки меняет геометрию — перерисовываем */
-      if (was === null && ds.wrap === "kraft") repaintWrap(); else rerender();
+      if (was === null && ds.wrap === "film") repaintWrap(); else rerender();
     } else if (ds.wrapcolor) {
       state.wrapColor = +ds.wrapcolor; repaintWrap();
     } else if (ds.ribbon) {
@@ -1194,15 +1466,32 @@
   }
 
   /* ── сохранить эскиз картинкой ────────────────────────── */
-  function saveImage() {
+  async function inlinePhotos(clone) {
+    const imgs = Array.from(clone.querySelectorAll("image[data-photo]"));
+    const cache = {};
+    await Promise.all(imgs.map(async (im) => {
+      const src = im.getAttribute("href");
+      if (!cache[src]) {
+        cache[src] = fetch(src).then((r) => r.blob()).then((b) => new Promise((res) => {
+          const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(b);
+        })).catch(() => src);
+      }
+      im.setAttribute("href", await cache[src]);
+    }));
+  }
+  async function saveImage() {
     const clone = svg.cloneNode(true);
+    await inlinePhotos(clone);
     clone.classList.remove("is-sketch", "bb-draw");
     clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     clone.setAttribute("width", "1200");
     clone.setAttribute("height", "1440");
     /* Стили контура — прямо в файл, иначе картинка выйдет без линий */
     const st = document.createElementNS("http://www.w3.org/2000/svg", "style");
-    st.textContent = ".bb-ink path{fill:none;stroke:" + INK + ";stroke-width:1.4px;stroke-linecap:round;stroke-linejoin:round}.bb-sheen{stroke:#fff!important;opacity:.7}.bb-stems path{fill:none;stroke:" + (svg.classList.contains("is-heads") ? "#6d8a58" : INK) + ";stroke-width:1.4px}.bb-ground{fill:rgba(27,26,24,.06)}";
+    st.textContent = ".bb-ink path{fill:none;stroke:" + INK + ";stroke-width:1.4px;stroke-linecap:round;stroke-linejoin:round}.bb-sheen{stroke:#fff!important;opacity:.7}.bb-stems path{fill:none;stroke:" + (svg.classList.contains("is-heads") ? "#6d8a58" : INK) + ";stroke-width:1.4px}.bb-ground{fill:rgba(27,26,24,.06)}" +
+      /* те же правила окраски, что на странице: цветной край, тень, надпись */
+      ".bb-paint path[data-tone]{stroke:var(--tint,#2a2522);stroke-opacity:.28;stroke-width:.7px;stroke-linejoin:round}.bb-wrap .bb-paint path[data-tone]{stroke-opacity:.14}.bb-item.is-on .bb-ink{opacity:0}.bb-item.is-on.bb-wrap .bb-ink{opacity:1}.bb-item.is-on.bb-wrap .bb-ink path:not(.bb-sheen){stroke-opacity:0}" +
+      ".bb-head.is-on:not(.is-photo)>.bb-base,.bb-green.is-on>.bb-base{filter:url(#bbShade)}.bb-head.is-photo.is-on>.bb-base{opacity:0}.bb-label{font-family:Italiana,Georgia,serif;letter-spacing:.2em;fill:#1b1a18;fill-opacity:.72;text-anchor:middle;dominant-baseline:middle}";
     clone.insertBefore(st, clone.firstChild);
     const blob = new Blob([new XMLSerializer().serializeToString(clone)], { type: "image/svg+xml;charset=utf-8" });
     const url = URL.createObjectURL(blob);
