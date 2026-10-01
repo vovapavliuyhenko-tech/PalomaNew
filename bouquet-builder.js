@@ -35,7 +35,7 @@
   const FLORIST_MIX = ["pion-rose", "hydrangea", "eustoma", "spray"];
   const SPIKES = { delph: 1, matthiola: 1 };
   const HEADS = { S: 7, M: 11, L: 15, XL: 19 };
-  const HEAD_R = { S: 50, M: 47, L: 45, XL: 43 };
+  const HEAD_R = { S: 60, M: 57, L: 54, XL: 51 };
   const KIND_K = { hydrangea: 1.3, peony: 1.05, pion: 1.15, spray: 1.05, rose: 0.9, eustoma: 0.92, carnation: 0.85, dahlia: 1.08, pompon: 0.8, chrysball: 0.95, anthurium: 1.0, ranunculus: 0.85 };
   const VIEW_W = 600, VIEW_H = 750, CX = 300;
   const GREENS_SHOWN = ["eucalyptus", "raspleaf", "pampas", "none"];
@@ -283,7 +283,7 @@
     const n = kind === "delph" ? 11 : 9;
     for (let i = n - 1; i >= 0; i--) {
       const u = 0.2 + (0.8 * i) / (n - 1), [x, y] = pt(u), side = i % 2 ? 1 : -1;
-      const fr = len * (kind === "delph" ? 0.115 : 0.105) * (1.15 - 0.7 * u);
+      const fr = len * (kind === "delph" ? 0.14 : 0.125) * (1.15 - 0.7 * u);
       const ox = x + side * fr * 0.45, oy = y;
       if (i >= n - 3) { o.push({ d: ellipseD(ox, oy, fr * 0.45, fr * 0.7, (R() - 0.5) * 0.6), t: 0.05 }); continue; }
       if (kind === "delph") {
@@ -349,17 +349,18 @@
     const spikeTypes = chosen.filter((f) => SPIKES[f.kind]);
     const nSpikes = spikeTypes.length ? (headTypes.length ? Math.max(2, Math.round(N / 4)) : N) : 0;
     const nHeads = headTypes.length ? N - Math.floor(nSpikes / 2) : 0;
-    const s = HR * 1.62;
-    const rx = nHeads ? Math.sqrt((nHeads * s * s * 0.866) / (Math.PI * 0.66)) : 70;
-    const ry = rx * 0.66;
+    const s = HR * 1.36, rowH = s * 0.866 * 0.9;
+    const rx = nHeads ? Math.sqrt((nHeads * s * rowH) / (Math.PI * 0.78)) : 70;
+    const ry = rx * 0.78;
     const cy = state.wrap === "film" ? 300 : 330;
     const typeIndex = (f) => chosen.indexOf(f);
 
     /* Головки: соты внутри эллипса, ближние к центру — первыми */
     const pts = [];
     for (let j = -8; j <= 8; j++) for (let i = -8; i <= 8; i++) {
-      const x = (i + (j & 1 ? 0.5 : 0)) * s, y = j * s * 0.866 * 0.82;
-      pts.push({ x, y, e: (x / rx) ** 2 + (y / ry) ** 2 + R() * 0.08 });
+      const x = (i + (j & 1 ? 0.5 : 0)) * s, y = j * rowH;
+      const e0 = (x / rx) ** 2 + (y / ry) ** 2;
+      pts.push({ x, y, e0, e: e0 + R() * 0.08 });
     }
     pts.sort((a, b) => a.e - b.e);
     const sel = pts.slice(0, nHeads);
@@ -381,7 +382,22 @@
       const rot = f.kind === "anthurium" ? (R() - 0.5) * 50 + (x < 0 ? -15 : 15) : R() * 360;
       return { f, x: CX + x, y: cy + y, r, rot, k, ti: typeIndex(f), alt: R() < 0.3, items: (SH[f.kind] || SH.rose)(r, rng(state.seed * 131 + k * 17)) };
     });
-    const domeTop = cy - ry * 0.82 - HR;
+    /* Второй ряд — в просветах между головками, чуть глубже по тону:
+       купол получается плотным, без пустот, как у живого букета */
+    const maxE = sel.reduce((m, p) => Math.max(m, p.e0), 0);
+    const back = [];
+    if (pattern.length) sel.forEach((p) => {
+      [[s * 0.5, rowH / 3], [s * 0.5, -rowH / 3], [-s * 0.5, rowH / 3], [-s * 0.5, -rowH / 3]].forEach(([dx, dy]) => {
+        const x = p.x + dx, y = p.y - dy;
+        if ((x / rx) ** 2 + (y / ry) ** 2 > maxE * 1.02) return;
+        if (back.some((b) => Math.abs(b.x0 - x) < 2 && Math.abs(b.y0 - y) < 2)) return;
+        const f = pattern[(back.length * 7 + 3) % pattern.length], kk = 100 + back.length;
+        const r = HR * 0.74 * (KIND_K[f.kind] || 1) * (0.94 + R() * 0.12);
+        const items = (SH[f.kind] || SH.rose)(r, rng(state.seed * 53 + kk * 13)).map((it) => it.t != null ? Object.assign({}, it, { t: it.t + 0.12 }) : it);
+        back.push({ f, x0: x, y0: y, x: CX + x, y: cy + y, r, rot: f.kind === "anthurium" ? (R() - 0.5) * 50 : R() * 360, k: kk, ti: typeIndex(f), alt: R() < 0.3, items });
+      });
+    });
+    const domeTop = cy - ry - HR * 0.9;
 
     /* Колосья встают из-за купола */
     const spikes = [];
@@ -392,7 +408,7 @@
       if (nHeads) {
         bx = CX + u * rx * 1.3; by = cy - ry * 0.3 + Math.abs(u) * ry * 0.5;
         ang = u * 50 + (R() - 0.5) * 8;
-        len = Math.min(HR * 3.4, by - 40) * (0.85 + R() * 0.2);
+        len = HR * 3.6 * (0.85 + R() * 0.2);
       } else {
         bx = CX + u * 30; by = cy + 60;
         ang = u * 70 + (R() - 0.5) * 6;
@@ -412,7 +428,7 @@
         const a = (-80 + (160 * (i + 0.5)) / n + (R() - 0.5) * 10) * (Math.PI / 180);
         const sx = Math.sin(a), sy = -Math.cos(a);
         const edge = 1 / Math.sqrt((sx / rxE) ** 2 + (sy / ryE) ** 2);
-        const len = edge + (g.kind === "pampas" ? 80 : 45) + R() * 30;
+        const len = edge + (g.kind === "pampas" ? 70 : 28) + R() * 22;
         greens.push({ x: CX, y: cy + ry * 0.25, ang: (a * 180) / Math.PI, items: sprigItems(g.kind, len, rng(state.seed * 37 + i * 11)) });
       }
     }
@@ -426,7 +442,7 @@
     greens.forEach((gr) => { const it = gr.items, len = parseFloat(it[0].d.split(" ").pop()); top = Math.min(top, gr.y + len * Math.cos((gr.ang * Math.PI) / 180) - 16); });
     top = Math.min(top, wrap.top);
     const halfW = Math.max(state.wrap === "film" ? rx + HR + 40 : rx + HR * 0.6 + 4, greens.length ? rx + HR + 60 : 0);
-    L0 = { halfW, heads: heads.sort((a, b) => a.y - b.y), spikes, greens, wrap, top, bottom: wrap.bottom, g };
+    L0 = { halfW, mass: { rx: rx + HR * 0.05, ry: ry + HR * 0.02, cy }, heads: back.concat(heads).sort((a, b) => (a.k >= 100) - (b.k >= 100) || a.y - b.y).sort((a, b) => (b.k >= 100) - (a.k >= 100)), spikes, greens, wrap, top, bottom: wrap.bottom, g };
   }
 
   /* ── упаковка: back — за цветами, front — поверх ─────── */
@@ -465,20 +481,27 @@
       top = Math.min(top, apex - 10);
       bottom = Yb + e2 + 16; shadowW = rb2 + 14;
     } else {
-      /* Матовая плёнка «блюр»: листы веером за цветами и два листа спереди */
-      const W = rx + HR + 26, Ty = cy + ry + HR * 0.6 + 95;
-      [-1, 1].forEach((sd) => {
-        const X = (dx) => CX + sd * dx;
-        back.push({ d: "M" + pt(X(-12), Ty) + "C" + pt(X(W * 0.6), Ty - 60) + " " + pt(X(W + 12), cy + ry * 0.5) + " " + pt(X(W + 8), cy - ry * 0.1) +
-          "Q" + pt(X(W + 4), cy - ry * 0.8) + " " + pt(X(W * 0.55), cy - ry - HR * 0.45) + "Q" + pt(X(W * 0.2), cy - ry - HR * 0.3) + " " + pt(X(-W * 0.05), cy - ry * 0.7) + "Z", t: -0.02, k: "w" });
-        back.push({ d: "M" + pt(X(0), Ty - 10) + "Q" + pt(X(W * 0.55), cy + ry * 0.4) + " " + pt(X(W * 0.7), cy - ry * 0.75), ln: 1 });
-      });
+      /* Матовая плёнка «блюр», как у авторских букетов PALOMA:
+         сзади — веер мягких листов, выглядывающих из-за купола,
+         спереди — два листа конусом с косыми краями */
+      const W = rx + HR * 0.9, Ty = cy + ry + HR + 64, oy = cy + ry * 0.25;
+      const fan = 7;
+      for (let i = 0; i < fan; i++) {
+        const deg = -78 + (156 * i) / (fan - 1), a = (deg - 90) * (Math.PI / 180);
+        const sx = Math.cos(a), sy = Math.sin(a);
+        const edge = 1 / Math.sqrt((sx / (rx + HR)) ** 2 + (sy / (ry + HR)) ** 2);
+        const len = edge + 30 + (i % 2) * 12;
+        back.push({ d: petal(a, 0, len, len * 0.34, "ruffle", CX, oy), t: i % 2 ? -0.02 : 0.03, k: "w" });
+        back.push({ d: vein(a, len * 0.45, len * 1.02, CX, oy), ln: 1 });
+      }
       for (let i = 0; i < 6; i++) back.push({ d: "M" + pt(CX + (i - 2.5) * 4, Ty) + "L" + pt(CX + (i - 2.5) * 9, Ty + 74), ln: 1 });
       [-1, 1].forEach((sd) => {
         const X = (dx) => CX + sd * dx;
-        front.push({ d: "M" + pt(X(-6), Ty) + "C" + pt(X(W * 0.35), Ty - 50) + " " + pt(X(W + 2), cy + ry * 0.9) + " " + pt(X(W - 4), cy + ry * 0.4) +
-          "Q" + pt(X(W * 0.5), cy + ry * 0.95) + " " + pt(X(-W * 0.12), cy + ry * 0.85) + "Q" + pt(X(-W * 0.06), Ty - 70) + " " + pt(X(-4), Ty) + "Z", t: -0.01, k: "w", film: 1 });
-        front.push({ d: "M" + pt(X(3), Ty - 8) + "Q" + pt(X(W * 0.2), Ty - 70) + " " + pt(X(W * 0.34), cy + ry * 1.25), ln: 1 });
+        const top = cy + ry * 0.45, low = cy + ry + HR * 0.55;
+        front.push({ d: "M" + pt(X(-4), Ty) + "C" + pt(X(W * 0.45), Ty - 40) + " " + pt(X(W + 10), top + 70) + " " + pt(X(W + 6), top) +
+          "C" + pt(X(W * 0.55), top + 30) + " " + pt(X(W * 0.05), low - 30) + " " + pt(X(-W * 0.3), low) +
+          "Q" + pt(X(-W * 0.12), Ty - 60) + " " + pt(X(-4), Ty) + "Z", t: -0.01, k: "w", film: 1 });
+        front.push({ d: "M" + pt(X(2), Ty - 8) + "Q" + pt(X(W * 0.35), Ty - 60) + " " + pt(X(W * 0.62), top + 40), ln: 1 });
       });
       /* Бант */
       const b = [];
@@ -505,10 +528,17 @@
     }).join("");
   }
 
+  /* Головки у края купола смотрят вбок — сжаты по радиусу, как на живом куполе */
+  function tilt(hd) {
+    const m = L0.mass, dx = (hd.x - CX) / m.rx, dy = (hd.y - m.cy) / m.ry, d = Math.min(1, Math.sqrt(dx * dx + dy * dy));
+    const phi = (Math.atan2(dy * m.ry, dx * m.rx) * 180) / Math.PI;
+    return "rotate(" + f1(phi) + ") scale(" + f1((1 - 0.3 * d * d) * 100) / 100 + " .94) rotate(" + f1(-phi) + ")";
+  }
+
   function render() {
     layout();
     const Lr = L0;
-    const h = Lr.bottom - Lr.top, k = Math.min(1.2, (VIEW_H - 30) / h, (VIEW_W - 20) / (2 * Lr.halfW));
+    const h = Lr.bottom - Lr.top, k = Math.min(1.3, (VIEW_H - 30) / h, (VIEW_W - 20) / (2 * Lr.halfW));
     let html = '<g transform="translate(' + CX + " " + VIEW_H / 2 + ") scale(" + f1(k * 1000) / 1000 + ") translate(" + -CX + " " + f1(-(Lr.top + Lr.bottom) / 2) + ')">';
     html += '<path class="bb-shadow" d="' + ellipseD(CX, Lr.bottom - 8, Lr.wrap.shadowW, 11, 0) + '"/>';
     html += '<g class="bb-g" style="--d:0ms">' + itemsSVG(Lr.wrap.back, "w") + "</g>";
@@ -518,8 +548,9 @@
     Lr.spikes.forEach((sp, i) => {
       html += '<g class="bb-g" style="--d:' + (120 + i * 60) + 'ms" transform="translate(' + f1(sp.x) + " " + f1(sp.y) + ") rotate(" + f1(sp.ang) + ')">' + itemsSVG(sp.items, "s" + i) + "</g>";
     });
+    html += '<g class="bb-g" style="--d:150ms"><path class="f mass" d="' + ellipseD(CX, Lr.mass.cy, Lr.mass.rx, Lr.mass.ry, 0) + '" data-k="m" data-t="0.5"/></g>';
     Lr.heads.forEach((hd, i) => {
-      html += '<g class="bb-g" style="--d:' + (200 + hd.k * 55) + 'ms" transform="translate(' + f1(hd.x) + " " + f1(hd.y) + ") scale(1 .92) rotate(" + f1(hd.rot) + ')">' + itemsSVG(hd.items, "h" + i) + "</g>";
+      html += '<g class="bb-g" style="--d:' + (200 + (hd.k >= 100 ? (hd.k - 100) * 25 : 300 + hd.k * 55)) + 'ms" transform="translate(' + f1(hd.x) + " " + f1(hd.y) + ") " + tilt(hd) + " rotate(" + f1(hd.rot) + ')">' + itemsSVG(hd.items, "h" + i) + "</g>";
     });
     html += '<g class="bb-g bb-front" style="--d:0ms">' + itemsSVG(Lr.wrap.front, "w") + "</g>";
     html += "</g>";
@@ -552,7 +583,7 @@
     if (k === "y") return "#EBCB6B";
     if (k === "w") return WRAP_COLOR[state.wrap] || "#FFFFFF";
     if (k === "bx") return "#D9CFC4";
-    if (k === "rb") return fc[0];
+    if (k === "rb" || k === "m") return fc[0];
     return fc[0];
   }
 

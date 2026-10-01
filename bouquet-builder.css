@@ -28,6 +28,7 @@ main.bb { overflow: visible; overflow-x: clip; }
 }
 #bbArt path.l { fill: none; stroke: var(--bb-ink); stroke-width: .8px; stroke-linecap: round; stroke-linejoin: round; opacity: .75; }
 #bbArt path.film { fill-opacity: .66; }
+#bbArt path.mass { stroke: none; }
 #bbArt path.thin { stroke-width: .75px; }
 #bbArt .bb-shadow { fill: rgba(27, 26, 24, 0.06); stroke: none; }
 #bbArt text { font-family: var(--logo, var(--font-display, "Italiana")), serif; fill: var(--bb-ink); }
