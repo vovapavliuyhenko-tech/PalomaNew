@@ -338,7 +338,8 @@
   let L0 = null;
 
   function chosenFlowers() {
-    return (state.flowers.length ? state.flowers : FLORIST_MIX).map((id) => byId(D.flowers, id)).filter(Boolean);
+    const p = paletteObj();
+    return (state.flowers.length ? state.flowers : (p && p.mix) || FLORIST_MIX).map((id) => byId(D.flowers, id)).filter(Boolean);
   }
 
   function layout() {
@@ -442,7 +443,32 @@
     greens.forEach((gr) => { const it = gr.items, len = parseFloat(it[0].d.split(" ").pop()); top = Math.min(top, gr.y + len * Math.cos((gr.ang * Math.PI) / 180) - 16); });
     top = Math.min(top, wrap.top);
     const halfW = Math.max(state.wrap === "film" ? rx + HR + 40 : rx + HR * 0.6 + 4, greens.length ? rx + HR + 60 : 0);
-    L0 = { halfW, mass: { rx: rx + HR * 0.05, ry: ry + HR * 0.02, cy }, heads: back.concat(heads).sort((a, b) => (a.k >= 100) - (b.k >= 100) || a.y - b.y).sort((a, b) => (b.k >= 100) - (a.k >= 100)), spikes, greens, wrap, top, bottom: wrap.bottom, g };
+    L0 = { halfW, mass: { rx: rx * 0.9, ry: ry * 0.85, cy }, heads: back.concat(heads).sort((a, b) => (a.k >= 100) - (b.k >= 100) || a.y - b.y).sort((a, b) => (b.k >= 100) - (a.k >= 100)), spikes, greens, wrap, top, bottom: wrap.bottom, g };
+  }
+
+  /* Лист матовой плёнки: квадрат, повёрнутый углом наружу, — как
+     сложенная плёнка «блюр» на букетах PALOMA. a — куда смотрит угол */
+  function sheetD(cx, cy, a, len, spread, skew) {
+    const p = P(a, cx, cy), w = len * spread;
+    return "M" + p(0, 0) + "L" + p(len * 0.56, -w) + "L" + p(len, w * (skew || 0)) + "L" + p(len * 0.56, w) + "Z";
+  }
+  /* Веер листов за цветами */
+  function sheetFan(out, cx, oy, rx, ry, HR, extra, n) {
+    for (let i = 0; i < n; i++) {
+      const deg = -82 + (164 * i) / (n - 1), a = (deg - 90) * (Math.PI / 180);
+      const sx = Math.cos(a), sy = Math.sin(a);
+      const edge = 1 / Math.sqrt((sx / (rx + HR * 0.9)) ** 2 + (sy / (ry + HR * 0.9)) ** 2);
+      const len = edge + extra + (i % 2) * 20;
+      out.push({ d: sheetD(cx, oy, a, len, 0.44, i % 2 ? 0.2 : -0.2), t: i % 2 ? -0.04 : 0.04, k: "fl", film: 1 });
+      out.push({ d: "M" + P(a, cx, oy)(len * 0.5, 0) + "L" + P(a, cx, oy)(len * 0.97, 0), ln: 1 });
+    }
+  }
+  /* Атласная лента PALOMA через букет */
+  function sash(out, rx, ry, cy, id) {
+    const A = [CX - rx * 0.98, cy - ry * 0.18], C = [CX - rx * 0.1, cy + ry * 0.62], B = [CX + rx * 0.98, cy + ry * 0.05], th = 15;
+    const q = (dy) => f1(A[0]) + " " + f1(A[1] + dy) + "Q" + f1(C[0]) + " " + f1(C[1] + dy) + " " + f1(B[0]) + " " + f1(B[1] + dy);
+    out.push({ d: "M" + q(0) + "L" + f1(B[0]) + " " + f1(B[1] + th) + "Q" + f1(C[0]) + " " + f1(C[1] + th) + " " + f1(A[0]) + " " + f1(A[1] + th) + "Z", t: 0, k: "rib" });
+    out.push({ textPath: "M" + q(th * 0.5 + 3), id, text: ["PALOMA", "PALOMA", "PALOMA"].join(" ".repeat(12)) });
   }
 
   /* ── упаковка: back — за цветами, front — поверх ─────── */
@@ -452,13 +478,19 @@
     let bottom, top = domeTop, shadowW;
     const pt = (x, y) => f1(x) + " " + f1(y);
     if (kind === "box") {
-      const rb = rx + HR * 0.55, Yt = cy + ry * 0.42, H = Math.max(130, rb * 0.62), Yb = Yt + H, e = rb * 0.2;
-      back.push({ d: ellipseD(CX, Yt, rb, e, 0), t: 0.18, k: "bx" });
-      front.push({ d: "M" + pt(CX - rb, Yt) + "L" + pt(CX - rb, Yb) + "A" + f1(rb) + " " + f1(e) + " 0 0 0 " + pt(CX + rb, Yb) + "L" + pt(CX + rb, Yt) + "A" + f1(rb) + " " + f1(e) + " 0 0 1 " + pt(CX - rb, Yt) + "Z", t: -0.02, k: "w" });
-      front.push({ d: "M" + pt(CX - rb, Yt + 20) + "A" + f1(rb) + " " + f1(e) + " 0 0 0 " + pt(CX + rb, Yt + 20), ln: 1 });
-      front.push({ text: "PALOMA", x: CX, y: Yt + e + H * 0.5 + 6, size: 28, ls: 9 });
-      front.push({ text: "FLOWERS · COFFEE · YOU", x: CX, y: Yt + e + H * 0.5 + 26, size: 8, ls: 3 });
-      bottom = Yb + e + 16; shadowW = rb + 10;
+      /* Высокая белая коробка PALOMA: шире кверху, жёлтая наклейка,
+         внутри — серая плёнка, как на фото каталога */
+      const tw = rx + HR * 0.4, bw = tw * 0.8, Yt = cy + ry * 0.55, H = tw * 1.45, Yb = Yt + H;
+      sheetFan(back, CX, cy + ry * 0.3, rx, ry, HR, 26, 8);
+      back.push({ d: "M" + pt(CX - tw, Yt) + "L" + pt(CX - tw * 0.92, Yt - 18) + "L" + pt(CX + tw * 0.92, Yt - 18) + "L" + pt(CX + tw, Yt) + "Z", t: 0.16, k: "bx" });
+      sash(front, rx, ry, cy, "bbRib");
+      front.push({ d: "M" + pt(CX + tw, Yt) + "L" + pt(CX + tw + 16, Yt - 12) + "L" + pt(CX + bw + 14, Yb - 9) + "L" + pt(CX + bw, Yb) + "Z", t: 0.14, k: "w" });
+      front.push({ d: "M" + pt(CX - tw, Yt) + "L" + pt(CX - bw, Yb) + "L" + pt(CX + bw, Yb) + "L" + pt(CX + tw, Yt) + "Z", t: -0.02, k: "w" });
+      const hw = (y) => tw + ((bw - tw) * (y - Yt)) / H, y1 = Yt + H * 0.4, y2 = Yt + H * 0.62;
+      front.push({ d: "M" + pt(CX - hw(y1), y1) + "L" + pt(CX + hw(y1), y1) + "L" + pt(CX + hw(y2), y2) + "L" + pt(CX - hw(y2), y2) + "Z", t: 0, k: "yl" });
+      front.push({ text: "PALOMA", x: CX, y: (y1 + y2) / 2 + 8, size: 30, ls: 7 });
+      front.push({ text: "flowers · coffee · you", x: CX, y: y2 + 16, size: 9, ls: 3 });
+      bottom = Yb + 16; shadowW = bw + 18;
     } else if (kind === "basket") {
       const rb = rx + HR * 0.5, rb2 = rb * 0.8, Yt = cy + ry * 0.42, H = Math.max(120, rb * 0.55), Yb = Yt + H, e = rb * 0.2, e2 = rb2 * 0.2;
       const apex = domeTop - 34, A = (apex - 0.25 * Yt) / 0.75;
@@ -481,37 +513,27 @@
       top = Math.min(top, apex - 10);
       bottom = Yb + e2 + 16; shadowW = rb2 + 14;
     } else {
-      /* Матовая плёнка «блюр», как у авторских букетов PALOMA:
-         сзади — веер мягких листов, выглядывающих из-за купола,
-         спереди — два листа конусом с косыми краями */
-      const W = rx + HR * 0.9, Ty = cy + ry + HR + 64, oy = cy + ry * 0.25;
-      const fan = 7;
-      for (let i = 0; i < fan; i++) {
-        const deg = -78 + (156 * i) / (fan - 1), a = (deg - 90) * (Math.PI / 180);
-        const sx = Math.cos(a), sy = Math.sin(a);
-        const edge = 1 / Math.sqrt((sx / (rx + HR)) ** 2 + (sy / (ry + HR)) ** 2);
-        const len = edge + 30 + (i % 2) * 12;
-        back.push({ d: petal(a, 0, len, len * 0.34, "ruffle", CX, oy), t: i % 2 ? -0.02 : 0.03, k: "w" });
-        back.push({ d: vein(a, len * 0.45, len * 1.02, CX, oy), ln: 1 });
-      }
-      for (let i = 0; i < 6; i++) back.push({ d: "M" + pt(CX + (i - 2.5) * 4, Ty) + "L" + pt(CX + (i - 2.5) * 9, Ty + 74), ln: 1 });
+      /* Матовая плёнка «блюр», как на букетах PALOMA: сзади — веер
+         угловатых серых листов, спереди — два листа конусом, через
+         цветы — атласная лента PALOMA, внизу — длинные хвосты ленты */
+      const W = rx + HR * 0.9, Ty = cy + ry + HR + 70;
+      sheetFan(back, CX, cy + ry * 0.3, rx, ry, HR, 46, 9);
+      for (let i = 0; i < 6; i++) back.push({ d: "M" + pt(CX + (i - 2.5) * 4, Ty) + "L" + pt(CX + (i - 2.5) * 9, Ty + 70), ln: 1 });
+      sash(front, rx, ry, cy, "bbRib");
       [-1, 1].forEach((sd) => {
         const X = (dx) => CX + sd * dx;
-        const top = cy + ry * 0.45, low = cy + ry + HR * 0.55;
-        front.push({ d: "M" + pt(X(-4), Ty) + "C" + pt(X(W * 0.45), Ty - 40) + " " + pt(X(W + 10), top + 70) + " " + pt(X(W + 6), top) +
-          "C" + pt(X(W * 0.55), top + 30) + " " + pt(X(W * 0.05), low - 30) + " " + pt(X(-W * 0.3), low) +
-          "Q" + pt(X(-W * 0.12), Ty - 60) + " " + pt(X(-4), Ty) + "Z", t: -0.01, k: "w", film: 1 });
-        front.push({ d: "M" + pt(X(2), Ty - 8) + "Q" + pt(X(W * 0.35), Ty - 60) + " " + pt(X(W * 0.62), top + 40), ln: 1 });
+        const corner = [X(W + 22), cy + ry * 0.02], inner = [X(-W * 0.2), cy + ry + HR * 0.5];
+        front.push({ d: "M" + pt(X(-4), Ty) + "L" + pt(corner[0], corner[1]) + "Q" + pt(X(W * 0.45), cy + ry * 0.62) + " " + pt(inner[0], inner[1]) + "Z", t: -0.02, k: "fl", film: 1 });
+        front.push({ d: "M" + pt(X(0), Ty - 8) + "L" + pt(X(W * 0.62), cy + ry * 0.55), ln: 1 });
       });
-      /* Бант */
-      const b = [];
-      b.push({ d: petal(Math.PI + 0.35, 4, 40, 15, "round", CX, Ty), t: -0.05, k: "rb" });
-      b.push({ d: petal(-0.35, 4, 40, 15, "round", CX, Ty), t: -0.05, k: "rb" });
-      b.push({ d: petal(Math.PI / 2 + 0.35, 4, 62, 7, "point", CX, Ty), t: 0.08, k: "rb" });
-      b.push({ d: petal(Math.PI / 2 - 0.25, 4, 58, 7, "point", CX, Ty), t: 0.08, k: "rb" });
-      b.push({ d: ellipseD(CX, Ty, 8, 7, 0), t: 0.15, k: "rb" });
-      front.push.apply(front, b);
-      bottom = Ty + 80; shadowW = 90;
+      /* Узел и длинные хвосты атласной ленты */
+      front.push({ d: petal(Math.PI / 2 + 0.16, 2, 128, 6.5, "point", CX, Ty), t: 0.04, k: "rib" });
+      front.push({ d: petal(Math.PI / 2 - 0.1, 2, 112, 6.5, "point", CX, Ty), t: -0.02, k: "rib" });
+      front.push({ d: petal(Math.PI + 0.5, 2, 30, 10, "round", CX, Ty), t: 0, k: "rib" });
+      front.push({ d: petal(-0.5, 2, 30, 10, "round", CX, Ty), t: 0, k: "rib" });
+      front.push({ d: ellipseD(CX, Ty, 9, 7, 0), t: 0.1, k: "rib" });
+      bottom = Ty + 132; shadowW = 70;
+      top = Math.min(top, cy - ry - HR - 60);
     }
     return { kind, back, front, top, bottom, shadowW };
   }
@@ -521,6 +543,7 @@
      ════════════════════════════════════════════════════════ */
   function itemsSVG(items, key) {
     return items.map((it) => {
+      if (it.textPath) return '<path id="' + it.id + '" d="' + it.textPath + '" fill="none" stroke="none"/><text class="bb-rib" font-size="8.5" letter-spacing="4"><textPath href="#' + it.id + '" startOffset="50%" text-anchor="middle">' + esc(it.text) + "</textPath></text>";
       if (it.text) return '<text x="' + f1(it.x) + '" y="' + f1(it.y) + '" font-size="' + it.size + '" letter-spacing="' + it.ls + '" text-anchor="middle">' + esc(it.text) + "</text>";
       const tf = it.tf ? ' transform="' + it.tf + '"' : "";
       if (it.ln) return '<path class="l" d="' + it.d + '"' + tf + "/>";
@@ -568,7 +591,7 @@
     const fc = p.colors.filter((c) => !isGreen(c));
     return fc.length ? fc : p.colors;
   }
-  const WRAP_COLOR = { film: "#FFFFFF", box: "#F7F3EE", basket: "#CFAE84" };
+  const WRAP_COLOR = { film: "#E4E2DF", box: "#FDFCFA", basket: "#CFAE84" };
 
   function keyColor(k) {
     const fc = flowerColors();
@@ -582,7 +605,10 @@
     if (k === "gr") return "#93A97E";
     if (k === "y") return "#EBCB6B";
     if (k === "w") return WRAP_COLOR[state.wrap] || "#FFFFFF";
-    if (k === "bx") return "#D9CFC4";
+    if (k === "bx") return "#D9D4CE";
+    if (k === "fl") return "#E4E2DF";
+    if (k === "rib") return "#F4ECE2";
+    if (k === "yl") return "#F3DC3C";
     if (k === "rb" || k === "m") return fc[0];
     return fc[0];
   }

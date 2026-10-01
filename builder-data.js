@@ -38,16 +38,17 @@ window.PALOMA_BUILDER_DATA = {
     { code: "airy", name: "Воздушный", hint: "свободный, с разной высотой" },
   ],
 
-  /* Палитры — по реальным букетам каталога */
+  /* Палитры — по реальным букетам каталога. mix — какие цветы берёт
+     флорист в этой палитре, если клиент не выбрал свои (как в каталоге) */
   palettes: [
-    { code: "peach-garden", name: "Персиковый сад",  colors: ["#F2B4B4", "#F4C6A8", "#F6DADD", "#E68C9A", "#C9D98C"] },
-    { code: "coral",        name: "Коралловое утро", colors: ["#F28A6F", "#F6C3A6", "#CFDD9E", "#F8F3EC", "#EE9DB0"] },
-    { code: "powder",       name: "Пудра",           colors: ["#F2CFCB", "#E6ADAB", "#FBEAE4", "#D38C93", "#FFFFFF"] },
-    { code: "cloud",        name: "Белое облако",    colors: ["#FBF8F2", "#F1EDE3", "#E3EADB", "#FFFFFF", "#D9E3CE"] },
-    { code: "haze",         name: "Голубая дымка",   colors: ["#9DB7DE", "#C9D6EE", "#7C95CF", "#F4F2EE", "#B4C6E6"] },
-    { code: "tuscany",      name: "Тоскана",         colors: ["#EF7C64", "#6D86D6", "#E05C84", "#C9DB8F", "#F4E6D4"] },
-    { code: "bigudi",       name: "Бигуди Перпл",    colors: ["#7B2340", "#9C3456", "#B9506F", "#5A1730", "#E9CBD0"] },
-    { code: "autumn-fire",  name: "Осенний огонь",   colors: ["#E8733E", "#F39A5C", "#C2452D", "#9E2B2B", "#F6C08A"] },
+    { code: "peach-garden", name: "Персиковый сад",  colors: ["#F2B4B4", "#F4C6A8", "#F6DADD", "#E68C9A", "#C9D98C"], mix: ["pion-rose", "hydrangea", "eustoma"] },
+    { code: "coral",        name: "Коралловое утро", colors: ["#F28A6F", "#F6C3A6", "#CFDD9E", "#F8F3EC", "#EE9DB0"], mix: ["pion-rose", "hydrangea", "spray"] },
+    { code: "powder",       name: "Пудра",           colors: ["#F2CFCB", "#E6ADAB", "#FBEAE4", "#D38C93", "#FFFFFF"], mix: ["pion-rose", "hydrangea", "dahlia"] },
+    { code: "cloud",        name: "Белое облако",    colors: ["#FBF8F2", "#F1EDE3", "#E3EADB", "#FFFFFF", "#D9E3CE"], mix: ["hydrangea", "eustoma", "spray"] },
+    { code: "haze",         name: "Голубая дымка",   colors: ["#9DB7DE", "#C9D6EE", "#7C95CF", "#F4F2EE", "#B4C6E6"], mix: ["hydrangea", "bigudi", "delph"] },
+    { code: "tuscany",      name: "Тоскана",         colors: ["#EF7C64", "#6D86D6", "#E05C84", "#C9DB8F", "#F4E6D4"], mix: ["dahlia", "delph", "pion-rose"] },
+    { code: "bigudi",       name: "Бигуди Перпл",    colors: ["#7B2340", "#9C3456", "#B9506F", "#5A1730", "#E9CBD0"], mix: ["bigudi", "spray"] },
+    { code: "autumn-fire",  name: "Осенний огонь",   colors: ["#E8733E", "#F39A5C", "#C2452D", "#9E2B2B", "#F6C08A"], mix: ["dahlia", "pompon"] },
   ],
 
   /* Цвета для «своей палитры» */
