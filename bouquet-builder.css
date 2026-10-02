@@ -227,3 +227,6 @@ main.bb { overflow: visible; overflow-x: clip; }
 }
 .bb-more:hover { color: var(--bb-accent); }
 .bb-chips--more { margin-top: 12px; }
+.bb-picked { display: contents; }
+.bb-search { margin-top: 12px; }
+.bb-found:not(:empty) { margin-top: 12px; }

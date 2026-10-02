@@ -38,7 +38,7 @@
   const HEAD_R = { S: 60, M: 57, L: 54, XL: 51 };
   const KIND_K = { hydrangea: 1.3, peony: 1.05, pion: 1.15, spray: 1.05, rose: 0.9, eustoma: 0.92, carnation: 0.85, dahlia: 1.08, pompon: 0.8, chrysball: 0.95, anthurium: 1.0, ranunculus: 0.85, frrose: 1.0, lily: 1.1, lily2: 1.1, allium: 0.9, nerine: 0.9, calla: 0.95, amaryllis: 1.15, oleander: 0.9, orchid: 1.0, vanda: 0.85, sunflower: 1.05, zinnia: 0.85, celosia: 0.95, ornitho: 0.8, tulip: 0.8, lotus: 0.9, ammi: 1.0, gypso: 1.0, scabiosa: 0.75, alstro: 0.85, freesia: 0.85, narcissus: 0.75, lilac: 1.1, viburnum: 0.85, berries: 0.85, physalis: 0.95, craspedia: 0.9, matricaria: 1.0, aster: 0.85, cotton: 0.9, strelitzia: 1.1, santini: 0.8 };
   const VIEW_W = 600, VIEW_H = 750, CX = 300;
-  const GREENS_SHOWN = ["eucalyptus", "raspleaf", "ruscus", "beech", "pampas", "panicum", "setaria", "wheat", "reed", "none"];
+  const GREENS_SHOWN = ["eucalyptus", "raspleaf", "ruscus", "pampas", "wheat", "none"];
 
   const state = { size: "M", palette: null, flowers: [], green: "eucalyptus", wrap: "film", seed: 7, date: "", comment: "", card: false, cardText: "", receive: "delivery" };
 
@@ -1036,6 +1036,9 @@
     basket: '<path d="M6 10c0-6 12-6 12 0"/><path d="M3 10h18l-2 10H5z"/><path d="M4 13.5h16M4.6 17h14.8"/>',
   };
 
+  const TOP_FLOWERS = ["hydrangea", "pion-rose", "eustoma", "delph", "dianthus", "dahlia", "bigudi", "spray"];
+  const chip = (f) => '<button type="button" class="pdp-size-btn" data-flower="' + f.id + '" data-cursor="hover">' + esc(f.name) + "</button>";
+
   function buildControls() {
     $("#bbSizes").innerHTML = D.sizes.map((s) =>
       '<button type="button" class="bb-size" data-size="' + s.code + '" data-cursor="hover"><b>' + s.code + "</b><span>" + s.stems + " цветов</span><em>" + fmt(s.price) + "</em></button>").join("");
@@ -1044,11 +1047,19 @@
       '<button type="button" class="bb-pal" data-pal="' + p.code + '" title="' + esc(p.name) + '" data-cursor="hover"><span class="bb-pal__dots">' +
       p.colors.slice(0, 4).map((c) => '<i style="background:' + c + '"></i>').join("") + '</span><span class="bb-pal__name">' + esc(p.name) + "</span></button>").join("");
 
+    /* На виду — только самые частые цветы каталога, остальные — через поиск */
     $("#bbFlowers").innerHTML = '<button type="button" class="pdp-size-btn" data-florist data-cursor="hover">На выбор флориста</button>' +
-      D.flowers.filter((f) => f.inStock && f.group !== "more").map((f) => '<button type="button" class="pdp-size-btn" data-flower="' + f.id + '" data-cursor="hover">' + esc(f.name) + "</button>").join("");
-    const more = D.flowers.filter((f) => f.inStock && f.group === "more");
-    $("#bbFlowersMore").innerHTML = more.map((f) => '<button type="button" class="pdp-size-btn" data-flower="' + f.id + '" data-cursor="hover">' + esc(f.name) + "</button>").join("");
-    $("#bbMore").textContent = "Все цветы PALOMA · ещё " + more.length;
+      TOP_FLOWERS.map((id) => byId(D.flowers, id)).filter(Boolean).map(chip).join("") + '<span class="bb-picked" id="bbPicked"></span>';
+    const rest = D.flowers.filter((f) => f.inStock && TOP_FLOWERS.indexOf(f.id) < 0);
+    $("#bbFlowersMore").innerHTML = '<input class="bb-input bb-search" id="bbSearch" type="search" autocomplete="off" placeholder="Найти цветок: лилия, тюльпан, подсолнух…" aria-label="Найти цветок">' +
+      '<div class="bb-chips bb-found" id="bbFound"></div>';
+    $("#bbMore").textContent = "Другие цветы · " + rest.length;
+    $("#bbSearch").addEventListener("input", (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      const hits = q ? rest.filter((f) => f.name.toLowerCase().indexOf(q) >= 0).slice(0, 10) : [];
+      $("#bbFound").innerHTML = hits.length ? hits.map(chip).join("") : q ? '<span class="bb-sub">Такого цветка не было в наших букетах — напишите его в пожеланиях</span>' : "";
+      syncControls();
+    });
 
     $("#bbGreens").innerHTML = D.greens.filter((g) => GREENS_SHOWN.indexOf(g.id) >= 0).map((g) =>
       '<button type="button" class="pdp-size-btn" data-green="' + g.id + '" data-cursor="hover">' + esc(g.name) + "</button>").join("");
@@ -1062,6 +1073,8 @@
   }
 
   function syncControls() {
+    const picked = $("#bbPicked");
+    if (picked) picked.innerHTML = state.flowers.filter((id) => TOP_FLOWERS.indexOf(id) < 0).map((id) => byId(D.flowers, id)).filter(Boolean).map(chip).join("");
     $$("[data-size]").forEach((b) => b.classList.toggle("is-active", b.dataset.size === state.size));
     $$("[data-pal]").forEach((b) => b.classList.toggle("is-active", b.dataset.pal === state.palette));
     const full = state.flowers.length >= MAX_FLOWERS;
@@ -1119,8 +1132,9 @@
     else if (b.id === "bbMore") {
       const box = $("#bbFlowersMore"), open = box.hidden;
       box.hidden = !open;
-      b.textContent = open ? "Свернуть" : "Все цветы PALOMA · ещё " + box.children.length;
+      b.textContent = open ? "Скрыть поиск" : "Другие цветы · " + D.flowers.filter((f) => f.inStock && TOP_FLOWERS.indexOf(f.id) < 0).length;
       b.setAttribute("aria-expanded", String(open));
+      if (open) setTimeout(() => $("#bbSearch").focus(), 30);
       return;
     }
     else if (b.id === "bbShuffle") { state.seed = (state.seed * 17 + 11) % 9973; geom = true; }
