@@ -1021,11 +1021,30 @@
      счёт в PayKeeper. Цены из localStorage сервер не принимает на веру. */
   async function initPayment(orderData) {
     const f = orderData.form || {};
+    /* Обрыв связи на телефоне (Safari пишет «Load failed», Chrome — «Failed
+       to fetch») — повторяем запрос до двух раз с паузой, прежде чем считать,
+       что оплата не создалась. Ответ сервера с ошибкой не повторяем. */
+    const sendCreate = async (payload) => {
+      for (let attempt = 0; ; attempt++) {
+        const ctrl = typeof AbortController === "function" ? new AbortController() : null;
+        const timer = ctrl ? setTimeout(() => ctrl.abort(), 25000) : 0;
+        try {
+          return await fetch(payEndpoint() + "?a=create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: payload,
+            signal: ctrl ? ctrl.signal : undefined,
+          });
+        } catch (e) {
+          if (attempt >= 2) throw new Error("нет связи с сервером оплаты (" + (e && e.message ? e.message : "сеть") + ")");
+          await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+        } finally {
+          clearTimeout(timer);
+        }
+      }
+    };
     try {
-      const res = await fetch(payEndpoint() + "?a=create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const res = await sendCreate(JSON.stringify({
           orderId: orderData.id,
           items: orderData.items.map((i) => ({
             id: i.id,
@@ -1039,8 +1058,7 @@
           phone: f.phone || "",
             messengerContact: orderData.messengerContact || "",
           managerText: buildManagerText(orderData),
-        }),
-      });
+        }));
 
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.paymentUrl) {
