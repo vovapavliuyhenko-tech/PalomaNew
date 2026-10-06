@@ -502,6 +502,10 @@
     if (product.image) photos.push({ src: product.image, alt: product.name });
     if (product.imageHover)
       photos.push({ src: product.imageHover, alt: `${product.name} — вид 2` });
+    /* Дополнительные фото: в базе у товара одно фото, остальные — здесь,
+       по адресу главного фото (не зависит от id, который выдаёт база) */
+    (EXTRA_PHOTOS[product.image] || []).forEach((src, i) =>
+      photos.push({ src, alt: `${product.name} — фото ${i + 2}` }));
 
     if (!photos.length) {
       if (mainImg) {
@@ -552,6 +556,16 @@
      его фото — покупатель видит, как выглядит S, M или L. В базе у размера
      нет своего фото (сервер хранит только код, подпись и доплату), поэтому
      снимки лежат в папке каталога и перечислены здесь по id товара. */
+  /* Галерея: главное фото товара (как в базе) → ещё снимки */
+  const CANOPIE_GROUP = "images/paloma/catalog/canopie-group.webp";
+  const EXTRA_PHOTOS = {
+    "images/paloma/catalog/canopie-amina-1.webp": ["images/paloma/catalog/canopie-amina-2.webp", CANOPIE_GROUP],
+    "images/paloma/catalog/canopie-zita-1.webp": ["images/paloma/catalog/canopie-zita-2.webp", CANOPIE_GROUP],
+    "images/paloma/catalog/canopie-luna-1.webp": ["images/paloma/catalog/canopie-luna-2.webp", CANOPIE_GROUP],
+    "images/paloma/catalog/canopie-pietra-1.webp": ["images/paloma/catalog/canopie-pietra-2.webp", CANOPIE_GROUP],
+    "images/paloma/catalog/canopie-kiki-1.webp": ["images/paloma/catalog/canopie-kiki-2.webp", CANOPIE_GROUP],
+  };
+
   const SIZE_PHOTOS = {
     /* «Корзины с хризантемой бигуди и эвкалиптом» */
     p1790702821378: {
