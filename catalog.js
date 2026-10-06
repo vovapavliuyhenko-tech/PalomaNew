@@ -29,7 +29,7 @@
   let catFromUrl = false;
 
   /* Бюджет и порядок показа — поверх выбранной категории.
-     "all" | "0-3000" | "3000-6000" | "6000-" и default | price-asc | price-desc */
+     "all" | "0-3000" | "3000-6000" | "6000-" и default (сначала новые) | price-asc | price-desc */
   let currentBudget = "all";
   let currentSort = "default";
 
@@ -47,7 +47,17 @@
     const out = list.filter((p) => budgetMatch(p.price));
     if (currentSort === "price-asc") return out.sort((a, b) => a.price - b.price);
     if (currentSort === "price-desc") return out.sort((a, b) => b.price - a.price);
-    return out;
+    /* «Сначала новые»: добавленные через админку товары (id = p + время
+       создания) — сверху, самые свежие первыми; остальные — в прежнем порядке */
+    return out
+      .map((p, i) => ({ p, i, t: addedAt(p) }))
+      .sort((a, b) => b.t - a.t || a.i - b.i)
+      .map((x) => x.p);
+  }
+
+  function addedAt(p) {
+    const m = /^p(\d{13})$/.exec(String(p && p.id));
+    return m ? Number(m[1]) : 0;
   }
 
   function resetBudget() {
