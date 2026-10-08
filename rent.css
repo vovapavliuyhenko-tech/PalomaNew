@@ -7,7 +7,7 @@ body.rent-page { padding-top: var(--paloma-header-offset, calc(34px + 88px)); }
 .rn {
   --rn-ink: #1B1A18; --rn-muted: rgba(27, 26, 24, .6); --rn-line: rgba(27, 26, 24, .1);
   --rn-accent: #E7385A; --rn-cream: #F7F3EE; --rn-ease: cubic-bezier(.22, 1, .36, 1);
-  max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px) 120px;
+  padding-bottom: 110px;
 }
 
 /* ── первый экран: текст и даты ── */
@@ -162,3 +162,23 @@ body.rent-page { padding-top: var(--paloma-header-offset, calc(34px + 88px)); }
   .rn-bar { width: calc(100% - 24px); justify-content: space-between; }
 }
 @media (prefers-reduced-motion: reduce) { .rn *, .rn-dlg { animation: none !important; transition: none !important; } }
+
+/* ── карточки в разметке каталога ── */
+.rn .product-card__media-link { border: 0; padding: 0; background: none; cursor: pointer; }
+.rn .product-card__name-link { display: block; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.rn button.product-card__btn { font: inherit; cursor: pointer; }
+.rn-card-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: #F7F3EE; color: rgba(27, 26, 24, .38); }
+.rn-card-ph svg { width: 34%; max-width: 110px; fill: none; stroke: currentColor; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; transition: transform .6s cubic-bezier(.22, 1, .36, 1); }
+.product-card:hover .rn-card-ph svg { transform: translateY(-4px) scale(1.03); }
+.rn-card-ph em { font-style: normal; font-family: var(--font-mono, "JetBrains Mono"), monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; }
+.product-card__btns .rn-step { display: flex; align-items: center; justify-content: space-between; padding: 0; border: 1px solid #1B1A18; border-radius: 999px; background: #fff; }
+.product-card__btns .rn-step button { flex: 0 0 40px; height: 100%; min-height: 40px; border: 0; background: none; font-size: 17px; cursor: pointer; color: #1B1A18; }
+.product-card__btns .rn-step button:disabled { opacity: .25; cursor: default; }
+.product-card__btns .rn-step span { font-size: 12.5px; font-weight: 500; white-space: nowrap; }
+.product-card.rn-in .product-card__media { box-shadow: inset 0 0 0 2px #1B1A18; }
+.rn-count { margin-left: 4px; font-size: 9px; opacity: .55; }
+.rn-search-group { flex: 1 1 240px; }
+.rn .rn-search { max-width: 340px; height: 38px; background: #fff; }
+.rn .rn-search input { height: 36px; }
+.rn-dlg .rn-dates__row { margin: 0 0 8px; }
+.rn-dlg .rn-cart__days { margin: 0 0 16px; }

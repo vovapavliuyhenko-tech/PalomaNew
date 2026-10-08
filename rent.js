@@ -59,7 +59,7 @@
   }
   function priceLabel(it) {
     if (!it.price) return "по запросу";
-    return days() > 1 ? fmt(it.price * factor()) + " за " + plural(days(), "сутки", "суток", "суток") : fmt(it.price) + " / сутки";
+    return state.from && state.to && days() > 1 ? fmt(it.price * factor()) + " за " + plural(days(), "сутки", "суток", "суток") : fmt(it.price) + " / сутки";
   }
   function stepper(it) {
     const n = state.cart[it.id] || 0;
@@ -69,23 +69,43 @@
   }
   function renderCats() {
     const count = (c) => D.items.filter((i) => c === "all" || i.cat === c).length;
-    $("#rnCats").innerHTML = [{ id: "all", name: "Всё" }].concat(D.categories).map((c) =>
-      '<button type="button" class="pdp-size-btn' + (state.cat === c.id ? " is-active" : "") + '" data-cat="' + c.id + '">' + esc(c.name) + "<sup>" + count(c.id) + "</sup></button>").join("");
+    $("#rnCats").innerHTML = [{ id: "all", name: "Все" }].concat(D.categories).map((c) =>
+      '<button type="button" class="catalog-filter-btn' + (state.cat === c.id ? " is-active" : "") + '" data-cat="' + c.id + '" aria-pressed="' + (state.cat === c.id) + '">' +
+      esc(c.name) + '<sup class="rn-count">' + count(c.id) + "</sup></button>").join("");
+  }
+  function cardMedia(it) {
+    if (it.photos && it.photos.length) {
+      return '<img class="product-card__img product-card__img--main" src="' + esc(it.photos[0]) + '" alt="' + esc(it.name) + '" loading="lazy">' +
+        (it.photos[1] ? '<img class="product-card__img product-card__img--hover" src="' + esc(it.photos[1]) + '" alt="" loading="lazy" aria-hidden="true">' : "");
+    }
+    return '<div class="product-card__ph rn-card-ph" aria-hidden="true"><svg viewBox="0 0 64 64">' + (ICON[it.cat] || ICON.vases) + "</svg><em>фото скоро</em></div>";
   }
   function renderGrid() {
     const list = visible();
     $("#rnGrid").innerHTML = list.length ? list.map((it) =>
-      '<article class="rn-card' + (state.cart[it.id] ? " is-in" : "") + '">' +
-        '<button type="button" class="rn-card__media" data-open="' + it.id + '" aria-label="Подробнее: ' + esc(it.name) + '">' + media(it) +
-          (it.hit ? '<span class="rn-badge">часто берут</span>' : "") + "</button>" +
-        '<div class="rn-card__body">' +
-          '<h3 class="rn-card__name"><button type="button" data-open="' + it.id + '">' + esc(it.name) + "</button></h3>" +
-          '<p class="rn-card__meta">' + esc(it.size || "") + (it.size ? " · " : "") + "есть " + it.qty + " шт</p>" +
-          '<p class="rn-card__price">' + priceLabel(it) + "</p>" +
-          stepper(it) +
+      '<article class="product-card is-visible is-revealed' + (state.cart[it.id] ? " rn-in" : "") + '" data-id="' + it.id + '">' +
+        '<div class="product-card__media">' + cardMedia(it) +
+          '<button type="button" class="product-card__media-link rn-open" data-open="' + it.id + '" aria-label="Подробнее: ' + esc(it.name) + '"></button>' +
+          (it.hit ? '<span class="product-card__badge">Часто берут</span>' : "") +
+        "</div>" +
+        '<div class="product-card__body">' +
+          '<button type="button" class="product-card__name-link rn-open" data-open="' + it.id + '"><h3 class="product-card__name">' + esc(it.name) + "</h3></button>" +
+          '<p class="product-card__desc">' + esc(it.size || "") + (it.size ? " · " : "") + "в наличии " + it.qty + " шт</p>" +
+          '<p class="product-card__price">' + priceLabel(it) + "</p>" +
+          '<div class="product-card__btns">' +
+            '<button type="button" class="product-card__btn product-card__btn--detail" data-open="' + it.id + '">Подробнее</button>' +
+            cardAction(it) +
+          "</div>" +
         "</div></article>").join("")
       : '<p class="rn-empty">Ничего не нашлось. Напишите нам — подберём похожее.</p>';
     $("#rnFound").textContent = plural(list.length, "позиция", "позиции", "позиций");
+  }
+  /* «В смету» → счётчик «− 2 шт +» на месте кнопки */
+  function cardAction(it) {
+    const n = state.cart[it.id] || 0;
+    if (!n) return '<button type="button" class="product-card__btn product-card__btn--cart" data-add="' + it.id + '">В смету</button>';
+    return '<div class="product-card__btn rn-step" role="group" aria-label="Количество"><button type="button" data-dec="' + it.id + '" aria-label="Меньше">−</button>' +
+      "<span>" + n + " шт</span>" + '<button type="button" data-inc="' + it.id + '" aria-label="Больше"' + (n >= it.qty ? " disabled" : "") + ">+</button></div>";
   }
 
   /* ── смета ── */
@@ -107,7 +127,7 @@
   }
   function renderCart() {
     const t = totals();
-    $("#rnDays").textContent = state.from && state.to ? ruDate(state.from) + " — " + ruDate(state.to) + " · " + plural(days(), "сутки", "суток", "суток") : "даты не выбраны · считаем за 1 сутки";
+    $("#rnDays").textContent = state.from && state.to ? plural(days(), "сутки", "суток", "суток") + "." : "Выберите даты — пока считаем за 1 сутки.";
     $("#rnLines").innerHTML = t.lines.length ? t.lines.map((l) =>
       '<li class="rn-line"><div class="rn-line__media">' + media(l.it) + '</div><div class="rn-line__info"><b>' + esc(l.it.name) + "</b><span>" +
       (l.it.price ? fmt(l.it.price) + " / сутки" : "цена по запросу") + "</span>" + stepper(l.it) + '</div><div class="rn-line__sum">' + (l.it.price ? fmt(linePrice(l.it, l.qty)) : "—") +
@@ -230,7 +250,19 @@
     if (e.target.name === "rnDel") { state.delivery = e.target.value; renderCart(); renderBar(); save(); }
   });
   $("#rnSearch").addEventListener("input", (e) => { state.q = e.target.value; renderGrid(); });
-  $("#rnSort").addEventListener("change", (e) => { state.sort = e.target.value; renderGrid(); });
+  const sortList = $("#rnSortList"), sortTrig = $("#rnSortTrigger");
+  const openSort = (open) => { sortList.hidden = !open; sortTrig.setAttribute("aria-expanded", String(open)); sortTrig.classList.toggle("is-open", open); };
+  sortTrig.addEventListener("click", () => openSort(sortList.hidden));
+  sortList.addEventListener("click", (e) => {
+    const o = e.target.closest("[data-sort]");
+    if (!o) return;
+    state.sort = o.dataset.sort;
+    $$("[data-sort]", sortList).forEach((x) => { const on = x === o; x.classList.toggle("is-selected", on); x.setAttribute("aria-selected", String(on)); });
+    $("#rnSortValue").textContent = o.textContent;
+    openSort(false);
+    renderGrid();
+  });
+  document.addEventListener("click", (e) => { if (!sortList.hidden && !e.target.closest("#rnSortBox")) openSort(false); });
   const from = $("#rnFrom"), to = $("#rnTo");
   from.min = today; to.min = today;
   if (state.from < today) state.from = "";
@@ -240,13 +272,11 @@
     state.from = from.value;
     to.min = from.value || today;
     if (state.to && state.to <= state.from) { const d = new Date(state.from); d.setDate(d.getDate() + 1); state.to = iso(d); to.value = state.to; }
-    refresh(); updateDaysNote();
+    refresh(); updateDaysNote(); renderCart();
   });
-  to.addEventListener("change", () => { state.to = to.value; refresh(); updateDaysNote(); });
+  to.addEventListener("change", () => { state.to = to.value; refresh(); updateDaysNote(); renderCart(); });
   function updateDaysNote() {
-    $("#rnDaysNote").textContent = state.from && state.to
-      ? plural(days(), "сутки", "суток", "суток") + (days() > 1 ? " · со вторых суток — " + Math.round((D.extraDayFactor || 1) * 100) + "% цены" : "")
-      : "цены — за сутки";
+    $("#rnDaysNote").textContent = "Со вторых суток — " + Math.round((D.extraDayFactor || 1) * 100) + "% цены.";
   }
 
   updateDaysNote();

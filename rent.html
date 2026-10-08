@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){
+       m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+   })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110912456', 'ym');
+   ym(110912456, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img decoding="async" src="https://mc.yandex.ru/watch/110912456" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FFFFFF">
   <!-- Страница в разработке: закрыта от поиска и от посетителей.
        Вход только по ссылке с ключом (?lab=…), дальше браузер запоминает доступ.
@@ -37,17 +49,21 @@
   <link rel="stylesheet" href="styles.css?v=ph18">
   <link rel="stylesheet" href="footer-mobile.css?v=2">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
-  <link rel="stylesheet" href="cart.css?v=w3">
+<link rel="stylesheet" href="cart.css?v=w3">
+  <link rel="stylesheet" href="catalog.css?v=44">
+  <link rel="stylesheet" href="product.css?v=bb2">
+  <link rel="stylesheet" href="bouquet-builder.css?v=12">
+  <link rel="stylesheet" href="rent.css?v=4">
+  <link rel="stylesheet" href="paloma-wave.css?v=w1">
   <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
+  <link rel="stylesheet" href="legal.css?v=2">
+
   <link rel="stylesheet" href="mobile-polish.css?v=42">
-  <link rel="stylesheet" href="product.css?v=bb2">
-  <link rel="stylesheet" href="bouquet-builder.css?v=12">
-  <link rel="stylesheet" href="rent.css?v=1">
   <link rel="stylesheet" href="full-width.css?v=1">
 </head>
-<body class="rent-page">
+<body>
   <a href="#main" class="skip-link">К содержимому</a>
   <!-- PALOMA PAGE LOADER — premium curtain transition -->
   <div class="paloma-page-loader" id="palomaPageLoader" aria-hidden="true">
@@ -98,11 +114,11 @@
 
         <nav class="site-header__nav" aria-label="Основная навигация">
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--catalog" data-dropdown="catalog">
-            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerContacts" data-cursor="hover">
+            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerCatalog" data-cursor="hover">
               Каталог
               <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
             </button>
-            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerContacts">
+            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerCatalog">
               <div class="catalog-dropdown__inner">
                 <div class="catalog-dropdown__grid">
 
@@ -306,12 +322,12 @@
           <a href="event-decoration.html" class="site-header__link">Оформление</a>
 
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
-          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerContacts" data-cursor="hover">
+          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerCatalog" data-cursor="hover">
             Клиентам
             <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
           </button>
 
-          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerContacts">
+          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerCatalog">
             <div class="clients-dropdown__inner">
               <div class="clients-dropdown__grid">
                 <a href="delivery.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h13v10H3zM16 10h4l2 3v4h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Доставка</div><div class="client-nav-card__desc">Зоны, сроки и стоимость</div></div></a>
@@ -326,7 +342,7 @@
         </nav>
 
         <div class="site-header__actions">
-          <a href="tel:+79897707000" class="site-header__phone">+7 (989) 770-70-00</a>
+          <a href="tel:+79897707000" class="site-header__phone">+7 989 770 70 00</a>
           <a href="wishlist.html" id="wishlistOpenBtn" data-wishlist-open class="site-header__icon site-header__icon--wishlist" aria-label="Избранное, открыть панель" aria-expanded="false" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
             <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
@@ -353,79 +369,76 @@
           <a href="contacts.html" class="site-header__mobile-link">Контакты</a>
           <a href="blog.html" class="site-header__mobile-link">Блог</a>
           <a href="wishlist.html" class="site-header__mobile-link">Избранное</a>
-          <a href="tel:+79897707000" class="site-header__mobile-phone">+7 (989) 770-70-00</a>
+          <a href="tel:+79897707000" class="site-header__mobile-phone">+7 989 770 70 00</a>
         </div>
       </nav>
     </header>
   </div>
 
-  <main class="rn pdp" id="main" aria-label="Аренда декора">
+  <main id="main" class="catalog-page rn">
 
-    <nav class="pdp-breadcrumbs" aria-label="Хлебные крошки">
-      <div class="pdp-breadcrumbs__inner">
-        <ol class="pdp-breadcrumbs__list">
-          <li><a href="index.html">Главная</a></li>
-          <li aria-hidden="true">/</li>
-          <li><a href="event-decoration.html">Оформление</a></li>
-          <li aria-hidden="true">/</li>
-          <li aria-current="page">Аренда декора</li>
-        </ol>
-      </div>
-    </nav>
-
-    <section class="rn-hero">
-      <div class="rn-hero__text">
-        <p class="pdp-info__cat">Аренда декора</p>
-        <h1 class="pdp-info__name rn-hero__title">Декор с наших свадеб — для вашего праздника</h1>
-        <p class="rn-hero__lead">Пуфы, свет, вазы, арки и текстиль, которые работали на мероприятиях PALOMA. Выберите вещи и даты — посчитаем смету сразу, привезём и расставим.</p>
-        <ol class="rn-steps">
-          <li><b>01</b>Выберите вещи и даты</li>
-          <li><b>02</b>Отправьте смету — подтвердим наличие</li>
-          <li><b>03</b>Привезём, расставим и заберём</li>
-        </ol>
-      </div>
-      <div class="rn-dates" aria-label="Даты аренды">
-        <p class="rn-dates__title">Даты аренды</p>
-        <div class="rn-dates__row">
-          <label class="rn-field"><span>Забираете</span><input class="bb-input" type="date" id="rnFrom"></label>
-          <label class="rn-field"><span>Возвращаете</span><input class="bb-input" type="date" id="rnTo"></label>
-        </div>
-        <p class="rn-dates__note" id="rnDaysNote">цены — за сутки</p>
-        <button type="button" class="btn btn--dark rn-dates__btn" id="rnOpenCart">Открыть смету</button>
-      </div>
-    </section>
-
-    <section class="rn-catalog" aria-label="Каталог аренды">
-      <div class="rn-tools">
-        <div class="rn-cats" id="rnCats" role="group" aria-label="Категории"></div>
-        <div class="rn-tools__row">
-          <label class="rn-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" id="rnSearch" placeholder="Найти: пуф, арка, свечи…" aria-label="Поиск"></label>
-          <span class="rn-found" id="rnFound"></span>
-          <label class="rn-sort"><span>Порядок</span>
-            <select id="rnSort">
-              <option value="popular">Сначала популярные</option>
-              <option value="cheap">Сначала дешевле</option>
-              <option value="expensive">Сначала дороже</option>
-            </select>
-          </label>
-        </div>
-      </div>
-      <div class="rn-grid" id="rnGrid"></div>
-    </section>
-
-    <section class="rn-faq" aria-label="Как устроена аренда">
-      <details class="pdp-accordion" open><summary class="pdp-accordion__trigger">Как считается цена<svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg></summary>
-        <div class="pdp-accordion__body"><p>Цена указана за сутки. Каждые следующие сутки — дешевле, итог сразу виден в смете. Доставку и монтаж выбираете в смете.</p></div></details>
-      <details class="pdp-accordion"><summary class="pdp-accordion__trigger">Залог<svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg></summary>
-        <div class="pdp-accordion__body"><p>За вещи берём возвратный залог — сумма видна в смете. Возвращаем его, когда принимаем декор обратно.</p></div></details>
-      <details class="pdp-accordion"><summary class="pdp-accordion__trigger">Можно с цветами?<svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg></summary>
-        <div class="pdp-accordion__body"><p>Да. Арки, стойки и вазы украсим живыми цветами — напишите пожелания в смете, флорист предложит варианты.</p></div></details>
-    </section>
-
-    <div class="rn-bar" id="rnBar" hidden>
-      <span id="rnBarText"></span>
-      <button type="button" class="btn btn--dark" id="rnBarBtn">Смета</button>
+  <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки">
+    <div class="catalog-breadcrumbs__inner">
+      <ol class="catalog-breadcrumbs__list">
+        <li><a href="index.html">Главная</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="event-decoration.html">Оформление</a></li>
+        <li aria-hidden="true">/</li>
+        <li><span aria-current="page">Аренда декора</span></li>
+      </ol>
     </div>
+  </nav>
+
+  <div class="catalog-hero">
+    <div class="catalog-hero__inner">
+      <h1 class="catalog-hero__title">Аренда декора</h1>
+    </div>
+  </div>
+
+  <div class="paloma-wave paloma-wave-band" aria-hidden="true">
+    <svg class="paloma-wave__svg" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <path id="palomaWaveRent" fill="none" d="M0,75 Q200,16 400,75 T800,75 T1200,75"/>
+      </defs>
+      <text class="paloma-wave__text">
+        <textPath href="#palomaWaveRent" xlink:href="#palomaWaveRent" startOffset="0">×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×&#160;YOU PALOMA&#160;×</textPath>
+      </text>
+    </svg>
+  </div>
+
+  <div class="catalog-filters-wrap">
+    <div class="catalog-filters" id="rnCats" role="group" aria-label="Категории аренды"></div>
+  </div>
+
+  <div class="catalog-tools">
+    <div class="catalog-tools__group rn-search-group">
+      <span class="catalog-tools__label">Поиск</span>
+      <label class="rn-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" id="rnSearch" placeholder="Пуф, арка, свечи…" aria-label="Поиск по аренде"></label>
+    </div>
+    <div class="catalog-tools__group">
+      <span class="catalog-tools__label" id="rnSortLabel">Сортировка</span>
+      <div class="catalog-select" id="rnSortBox">
+        <button type="button" class="catalog-select__trigger" id="rnSortTrigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="rnSortLabel rnSortTrigger" data-cursor="hover">
+          <span id="rnSortValue">Сначала популярные</span>
+          <svg class="catalog-select__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <ul class="catalog-select__list" id="rnSortList" role="listbox" aria-labelledby="rnSortLabel" hidden>
+          <li class="catalog-select__option is-selected" role="option" tabindex="-1" data-sort="popular" aria-selected="true">Сначала популярные</li>
+          <li class="catalog-select__option" role="option" tabindex="-1" data-sort="cheap" aria-selected="false">Сначала дешевле</li>
+          <li class="catalog-select__option" role="option" tabindex="-1" data-sort="expensive" aria-selected="false">Сначала дороже</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="catalog-count" id="rnFound" aria-live="polite"></div>
+
+  <div class="catalog-grid" id="rnGrid" aria-label="Вещи для аренды"></div>
+
+  <div class="rn-bar" id="rnBar" hidden>
+    <span id="rnBarText"></span>
+    <button type="button" class="btn btn--dark" id="rnBarBtn">Смета</button>
+  </div>
   </main>
 
   <dialog class="rn-dlg rn-dlg--item" id="rnItem" aria-label="Вещь">
@@ -438,7 +451,11 @@
     <form class="rn-cart" id="rnForm" novalidate>
       <p class="pdp-info__cat">Смета аренды</p>
       <h2 class="bb-dialog__title" id="rnCartTitle">Ваш декор</h2>
-      <p class="rn-cart__days" id="rnDays"></p>
+      <div class="rn-dates__row">
+        <label class="rn-field"><span>Забираете</span><input class="bb-input" type="date" id="rnFrom"></label>
+        <label class="rn-field"><span>Возвращаете</span><input class="bb-input" type="date" id="rnTo"></label>
+      </div>
+      <p class="rn-cart__days"><span id="rnDays"></span> <span id="rnDaysNote"></span></p>
       <ul class="rn-lines" id="rnLines"></ul>
       <p class="pdp-sizes__label">Получение</p>
       <div class="rn-delivery" id="rnDelivery"></div>
@@ -467,9 +484,6 @@
       <button type="button" class="btn btn--dark" data-close>Хорошо</button>
     </div>
   </dialog>
-
-
-
 
   <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
     <div class="sf2">
@@ -686,9 +700,9 @@
   <script src="paloma-media.js"></script>
 
   <script src="wishlist.js?v=goal1"></script>
-  <script src="clients.js"></script>
   <script src="rent-data.js?v=1"></script>
-  <script src="rent.js?v=1"></script>
+  <script src="rent.js?v=3"></script>
+  <script src="clients.js"></script>
   <script src="cursor.js?v=press3"></script>
   <script src="cookie-consent.js?v=2"></script>
   <!-- Выезжающая панель «Избранное» -->
