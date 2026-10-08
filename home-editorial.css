@@ -769,3 +769,16 @@ body.is-home .home-article-card__placeholder {
     align-items: flex-start;
   }
 }
+
+/* ── «Статичный фон», усиленный: фото стоит на месте относительно экрана,
+   секция — как окно, карточка проезжает поверх. Работает и на телефоне:
+   position: fixed внутри clip-path обрезается по секции и двигается
+   компоновщиком без JS (background-attachment: fixed на iOS не работает). */
+.home-subscription { clip-path: inset(0); }
+.home-subscription__bg {
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; right: 0 !important; bottom: auto !important;
+  height: 100vh; height: 100lvh;
+  transform: none !important;
+  will-change: auto;
+}
