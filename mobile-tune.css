@@ -146,9 +146,18 @@
 .btn:disabled, .co-btn:disabled, .product-card__btn:disabled, .rn-locked-btn { animation: none; }
 /* Соседние кнопки дышат не в такт — спокойнее для глаза */
 .product-card__btn--cart, .home-product-card__actions > :nth-child(2) { animation-delay: .35s; }
+/* Тень падает только ВНИЗ (отрицательный разброс не даёт ей
+   расползаться в стороны) и помещается под кнопкой даже в карточке */
 @keyframes palomaBreathe {
-  0%, 100% { transform: scale(1); box-shadow: 0 2px 10px rgba(var(--breathe-shadow), .12); }
-  50% { transform: scale(1.04); box-shadow: 0 10px 26px rgba(var(--breathe-shadow), .26); }
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 10px -6px rgba(var(--breathe-shadow), .28); }
+  50% { transform: scale(1.04); box-shadow: 0 12px 18px -10px rgba(var(--breathe-shadow), .5); }
+}
+/* В карточках товаров: увеличение мягче, тень короче — карточка обрезает
+   всё, что выходит за её края (под кнопкой ~20px) */
+.product-card__btn, .home-product-card__more { animation-name: palomaBreatheCard; }
+@keyframes palomaBreatheCard {
+  0%, 100% { transform: scale(1); box-shadow: 0 3px 8px -5px rgba(var(--breathe-shadow), .3); }
+  50% { transform: scale(1.025); box-shadow: 0 9px 12px -8px rgba(var(--breathe-shadow), .55); }
 }
 @media (prefers-reduced-motion: reduce) {
   .btn, .ea-btn, .product-card__btn, .home-product-card__more, .co-btn, .sf2-round__btn, .sfm-icon, .bb-form__submit { animation: none !important; }
@@ -163,3 +172,13 @@
     min-height: calc(520px + var(--paloma-header-offset, 88px)) !important;
   }
 }
+
+/* «Выбрать букет» на первом экране — тоже дышит: сначала появляется,
+   затем (с 2.7s) мягко дышит, как остальные кнопки */
+.paloma-cover__cta {
+  --breathe-shadow: 27, 26, 24;
+  animation: coverFadeUp 1s cubic-bezier(.22, 1, .36, 1) 1.7s forwards,
+             palomaBreathe 2.2s cubic-bezier(.22, 1, .36, 1) 2.7s infinite !important;
+}
+.paloma-cover__cta:hover { animation: coverFadeUp 0s forwards !important; }
+@media (prefers-reduced-motion: reduce) { .paloma-cover__cta { animation: none !important; opacity: 1 !important; } }
