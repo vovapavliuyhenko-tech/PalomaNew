@@ -201,7 +201,8 @@ html.rn-locked .rn-lockzone > :not(.rn-lockover) {
 }
 html.rn-locked .rn-lockover { display: block; position: absolute; inset: 0; z-index: 5; background: rgba(255, 255, 255, .35); }
 .rn-lockover__inner {
-  position: absolute; left: 0; right: 0; top: 38%; transform: translateY(-50%);
+  /* Не выше 40px от края зоны — иначе замок обрезается в низком окне */
+  position: absolute; left: 0; right: 0; top: max(40px, calc(38% - 46px));
   display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 16px; text-align: center;
 }
 .rn-lockover__icon {
