@@ -57,8 +57,8 @@
   .home-subscription__note { font-size: 10px !important; }
 
   /* ── «Наши преимущества»: карточки-перевёртыши мельче ── */
-  .fmt__front-title { font-size: 16px !important; line-height: 1.15 !important; }
-  .fmt__back-title { font-size: 14px !important; line-height: 1.2 !important; margin-bottom: 6px !important; }
+  .fmt__front-title { font-size: 19px !important; line-height: 1.15 !important; }
+  .fmt__back-title { font-size: 16px !important; line-height: 1.2 !important; margin-bottom: 6px !important; }
   .fmt__back-text { font-size: 11px !important; line-height: 1.45 !important; }
   .fmt__offer { font-size: 10px !important; line-height: 1.4 !important; }
 
