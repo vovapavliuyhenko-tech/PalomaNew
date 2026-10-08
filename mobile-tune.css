@@ -1,0 +1,81 @@
+/* ════════════════════════════════════════════════════════
+   mobile-tune.css — аккуратная мобильная версия (октябрь 2026).
+   Подключается ПОСЛЕДНИМ на всех страницах. Только телефон (≤600px):
+   компактнее бегущая строка, заголовки в одну строку, мельче тексты
+   и кнопки, карусели — почти во всю ширину с краем следующей карточки.
+   ════════════════════════════════════════════════════════ */
+.t-short { display: none; }
+
+@media (max-width: 600px) {
+  /* Короткие тексты для телефона: длинный прячем, короткий показываем */
+  .t-long { display: none !important; }
+  .t-short { display: inline !important; }
+
+  /* ── Бегущая строка на главной: ниже и мельче ── */
+  .home-marquee { height: auto !important; padding-top: 7px !important; padding-bottom: 7px !important; min-height: 0 !important; }
+  .home-marquee__item, .home-marquee__separator { font-size: 10.5px !important; line-height: 1 !important; letter-spacing: .06em !important; }
+  .home-marquee__viewport, .home-marquee__track, .home-marquee__group { height: auto !important; }
+
+  /* ── Заголовки блоков — меньше, в одну строку ── */
+  .home-showcase__title, .home-categories__title, .home-blog__title, .fmt__title,
+  .catalog-corporate__title, .contacts-channels__title, .co-section-title,
+  .w-services__title, .w-process__title, .w-portfolio__title, .w-packages__title, .w-intro__title, .w-form__title, .w-faq__title,
+  .decor-types__title, .decor-statement__title, .decor-scale__title, .decor-request__title, .decor-process-intro__title, .decor-portfolio__title {
+    font-size: clamp(17px, 5.3vw, 21px) !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+  }
+  .home-showcase__title br, .home-categories__title br, .ea-title br, .ea-hero__h1 br { display: none; }
+  .home-showcase__head, .home-blog__head { align-items: center !important; gap: 10px !important; }
+  .home-showcase__all, .home-showcase__head a, .home-blog__all-link { font-size: 10px !important; letter-spacing: .14em !important; white-space: nowrap; }
+
+  /* ── Карточки товаров: мельче название, цена и кнопки ── */
+  .home-product-card__title, .product-card__name { font-size: 14px !important; line-height: 1.25 !important; }
+  .home-product-card__price, .product-card__price { font-size: 12px !important; }
+  .product-card__desc { font-size: 11.5px !important; }
+  .home-product-card__more, .home-product-card__actions a, .home-product-card__actions button,
+  .product-card__btn {
+    font-size: 9px !important; letter-spacing: .12em !important;
+    min-height: 34px !important; height: auto !important; padding: 9px 8px !important;
+  }
+
+  /* ── Карусели товаров: карточка почти во всю ширину, видно край следующей ── */
+  .home-showcase__track { grid-auto-columns: 74vw !important; gap: 10px !important; }
+  @supports (width: 1cqi) { .home-showcase__track { grid-auto-columns: calc(100cqi * .74) !important; } }
+
+  /* ── Категории «по поводу и настроению»: шире, подпись намного мельче ── */
+  #categories .home-categories__item { flex: 0 0 74% !important; }
+  .home-categories__item span { font-size: 14px !important; line-height: 1.25 !important; }
+  .home-categories__all { font-size: 10px !important; }
+
+  /* ── Цветочная подписка на главной: компактно ── */
+  .home-subscription { padding-top: 24px !important; padding-bottom: 24px !important; }
+  .home-subscription__card { min-height: 0 !important; padding: 30px 20px 26px !important; }
+  .home-subscription__mark { font-size: 20px !important; margin-bottom: 6px !important; }
+  .home-subscription__title { font-size: 23px !important; line-height: 1.1 !important; margin-bottom: 10px !important; white-space: nowrap; }
+  .home-subscription__text { font-size: 11px !important; line-height: 1.55 !important; margin-bottom: 14px !important; }
+  .home-subscription__link { font-size: 12.5px !important; line-height: 1.3 !important; }
+  .home-subscription__note { font-size: 9.5px !important; margin-top: 10px !important; padding-right: 58px; }
+  .home-subscription__giraffe { width: 56px !important; height: auto !important; right: 6px !important; }
+  .home-subscription__card { padding-bottom: 34px !important; }
+
+  /* ── «Наши преимущества»: карточки-перевёртыши мельче ── */
+  .fmt__front-title { font-size: 16px !important; line-height: 1.15 !important; }
+  .fmt__back-title { font-size: 14px !important; line-height: 1.2 !important; margin-bottom: 6px !important; }
+  .fmt__back-text { font-size: 11px !important; line-height: 1.45 !important; }
+  .fmt__offer { font-size: 10px !important; line-height: 1.4 !important; }
+
+  /* ── Оформление (после преимуществ) и частые вопросы ── */
+  .ea-hero__h1 { font-size: 20px !important; line-height: 1.15 !important; }
+  .ea-hero__h1 .t-short, .ea-title .t-short { white-space: nowrap; }
+  .ea-hero__lead { font-size: 12px !important; line-height: 1.55 !important; }
+  .ea-eyebrow { font-size: 12px !important; line-height: 1.2 !important; }
+  .ea-title { font-size: 19px !important; line-height: 1.15 !important; }
+  .ea-philo__p { font-size: 12px !important; line-height: 1.6 !important; }
+  .ea-faq__q { font-size: 14px !important; line-height: 1.3 !important; }
+  .ea-faq p, .ea-faq__a, .ea-faq__a p { font-size: 12.5px !important; line-height: 1.55 !important; }
+
+  /* ── Блог пользы: заголовки в одну строку, текст мельче ── */
+  .home-article-card__title { font-size: 15px !important; line-height: 1.25 !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .home-article-card__text { font-size: 12px !important; line-height: 1.5 !important; }
+}
