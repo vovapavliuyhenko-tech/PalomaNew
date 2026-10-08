@@ -16,29 +16,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FFFFFF">
-  <!-- Страница в разработке: закрыта от поиска и от посетителей.
-       Вход только по ссылке с ключом (?lab=…), дальше браузер запоминает доступ.
-       Перед публичным запуском: убрать noindex и блок «доступ». -->
+  <!-- Аренда ещё не запущена: посетители видят страницу «под замком»
+       (силуэты вещей, бегущая строка «скоро откроется»), кнопки не работают.
+       Владелец по ссылке с ключом (?lab=…) видит всё как есть — браузер
+       запоминает доступ. Запуск: убрать noindex и класс rn-locked. -->
   <meta name="robots" content="noindex, nofollow">
-  <style>html.bb-locked body{visibility:hidden}</style>
   <script>
   (function () {
     var H = "aa83f520670b46a9a083d521c2dd08b6ca146a13fb395c8efed5d16a158caa1a";
-    var d = document.documentElement;
-    d.classList.add("bb-locked");
-    function ok() { d.classList.remove("bb-locked"); }
-    function no() { location.replace("index.html"); }
-    try { if (localStorage.getItem("paloma_lab") === H) { ok(); return; } } catch (e) {}
+    var d = document.documentElement, open = false;
+    try { open = localStorage.getItem("paloma_lab") === H; } catch (e) {}
+    if (open) return;
+    d.classList.add("rn-locked");
     var q = new URLSearchParams(location.search), k = q.get("lab");
-    if (!k || !window.crypto || !crypto.subtle) { no(); return; }
+    if (!k || !window.crypto || !crypto.subtle) return;
     crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)).then(function (b) {
       var h = Array.from(new Uint8Array(b)).map(function (x) { return x.toString(16).padStart(2, "0"); }).join("");
-      if (h !== H) { no(); return; }
-      try { localStorage.setItem("paloma_lab", H); localStorage.setItem("paloma_lab_key", k); } catch (e) {}
+      if (h !== H) return;
+      try { localStorage.setItem("paloma_lab", H); localStorage.setItem("paloma_lab_key", k); } catch (e) { return; }
       q.delete("lab");
-      history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q : "") + location.hash);
-      ok();
-    }, no);
+      location.replace(location.pathname + (q.toString() ? "?" + q : "") + location.hash);
+    });
   })();
   </script>
   <title>Аренда декора для свадеб и мероприятий — PALOMA</title>
@@ -53,7 +51,7 @@
   <link rel="stylesheet" href="catalog.css?v=44">
   <link rel="stylesheet" href="product.css?v=bb2">
   <link rel="stylesheet" href="bouquet-builder.css?v=12">
-  <link rel="stylesheet" href="rent.css?v=6">
+  <link rel="stylesheet" href="rent.css?v=8">
   <link rel="stylesheet" href="paloma-wave.css?v=w1">
   <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
@@ -376,6 +374,9 @@
   </div>
 
   <main id="main" class="catalog-page rn">
+  <div class="rn-ticker" role="status" aria-label="Аренда декора скоро откроется — страница на доработке">
+    <div class="rn-ticker__track" aria-hidden="true"><span>Аренда декора скоро откроется&#160;&#160;✦&#160;&#160;Страница на доработке&#160;&#160;✦&#160;&#160;Пуфы, свет, арки и вазы с наших свадеб&#160;&#160;✦&#160;&#160;Аренда декора скоро откроется&#160;&#160;✦&#160;&#160;Страница на доработке&#160;&#160;✦&#160;&#160;Пуфы, свет, арки и вазы с наших свадеб&#160;&#160;✦&#160;&#160;Аренда декора скоро откроется&#160;&#160;✦&#160;&#160;Страница на доработке&#160;&#160;✦&#160;&#160;Пуфы, свет, арки и вазы с наших свадеб&#160;&#160;✦&#160;&#160;</span><span>Аренда декора скоро откроется&#160;&#160;✦&#160;&#160;Страница на доработке&#160;&#160;✦&#160;&#160;Пуфы, свет, арки и вазы с наших свадеб&#160;&#160;✦&#160;&#160;Аренда декора скоро откроется&#160;&#160;✦&#160;&#160;Страница на доработке&#160;&#160;✦&#160;&#160;Пуфы, свет, арки и вазы с наших свадеб&#160;&#160;✦&#160;&#160;Аренда декора скоро откроется&#160;&#160;✦&#160;&#160;Страница на доработке&#160;&#160;✦&#160;&#160;Пуфы, свет, арки и вазы с наших свадеб&#160;&#160;✦&#160;&#160;</span></div>
+  </div>
 
   <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки">
     <div class="catalog-breadcrumbs__inner">
@@ -729,7 +730,7 @@
 
   <script src="wishlist.js?v=goal1"></script>
   <script src="rent-data.js?v=1"></script>
-  <script src="rent.js?v=5"></script>
+  <script src="rent.js?v=6"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=press3"></script>
   <script src="cookie-consent.js?v=2"></script>

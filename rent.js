@@ -15,6 +15,10 @@
   const fmt = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " ₽";
   const byId = (id) => D.items.find((i) => i.id === id);
   const KEY = "paloma_rent_v1";
+  /* Аренда ещё не открыта: посетитель видит вещи «под замком» — силуэты,
+     как неоткрытые персонажи в игре. Владелец с ключом видит всё. */
+  const LOCKED = document.documentElement.classList.contains("rn-locked");
+  const LOCK_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.3"/></svg>';
 
   const state = { cat: "all", q: "", budget: "all", sort: "popular", from: "", to: "", delivery: "pickup", cart: {} };
   try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { /* пусто */ }
@@ -82,8 +86,31 @@
     }
     return '<div class="product-card__ph rn-card-ph" aria-hidden="true"><svg viewBox="0 0 64 64">' + (ICON[it.cat] || ICON.vases) + "</svg><em>фото скоро</em></div>";
   }
+  function lockedCard(it, n) {
+    const cat = (D.categories.find((c) => c.id === it.cat) || {}).name || "Декор";
+    return '<article class="product-card is-visible is-revealed rn-lock-card" style="--i:' + n + '">' +
+      '<div class="product-card__media">' +
+        '<div class="product-card__ph rn-card-ph rn-silhouette" aria-hidden="true"><svg viewBox="0 0 64 64">' + (ICON[it.cat] || ICON.vases) + "</svg></div>" +
+        '<span class="rn-lock">' + LOCK_SVG + "</span>" +
+        '<span class="product-card__badge rn-soon">Скоро</span>' +
+        '<span class="rn-num">№ ' + String(n + 1).padStart(2, "0") + "</span>" +
+      "</div>" +
+      '<div class="product-card__body">' +
+        '<h3 class="product-card__name rn-hide" aria-hidden="true">' + esc(it.name) + "</h3>" +
+        '<p class="product-card__desc">' + esc(cat) + " · откроется скоро</p>" +
+        '<p class="product-card__price rn-hide" aria-hidden="true">' + (it.price ? fmt(it.price) : "000 ₽") + " / сутки</p>" +
+        '<div class="product-card__btns"><button type="button" class="product-card__btn product-card__btn--cart rn-locked-btn" disabled>' + LOCK_SVG + "Скоро</button></div>" +
+      "</div></article>";
+  }
   function renderGrid() {
     const list = visible();
+    if (LOCKED) {
+      $("#rnGrid").innerHTML = list.map(lockedCard).join("");
+      $("#rnFound").textContent = plural(list.length, "позиция", "позиции", "позиций") + " · скоро в аренде";
+      $("#rnEmpty").hidden = list.length > 0;
+      $("#rnGrid").hidden = !list.length;
+      return;
+    }
     $("#rnGrid").innerHTML = list.length ? list.map((it) =>
       '<article class="product-card is-visible is-revealed" data-id="' + it.id + '">' +
         '<div class="product-card__media">' + cardMedia(it) +
@@ -123,7 +150,7 @@
   function renderBar() {
     const t = totals(), n = t.lines.reduce((s, l) => s + l.qty, 0);
     const bar = $("#rnBar");
-    bar.hidden = !n;
+    bar.hidden = !n || LOCKED;
     if (n) $("#rnBarText").innerHTML = "<b>" + plural(n, "вещь", "вещи", "вещей") + "</b> · " + fmt(t.total);
   }
   function renderCart() {
@@ -236,6 +263,7 @@
   document.addEventListener("click", (e) => {
     const b = e.target.closest("button, [data-close]");
     if (!b) return;
+    if (LOCKED && (b.dataset.add || b.dataset.open || b.id === "rnBarBtn" || b.id === "rnOpenCart")) return;
     if (b.dataset.cat) { state.cat = b.dataset.cat; refresh(); }
     else if (b.dataset.add && b.classList.contains("product-card__btn--cart")) {
       const it = byId(b.dataset.add), n = state.cart[b.dataset.add] || 0;
