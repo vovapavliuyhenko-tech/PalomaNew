@@ -79,5 +79,11 @@
 
   /* ── Блог пользы: заголовки в одну строку, текст мельче ── */
   .home-article-card__title { font-size: 15px !important; line-height: 1.25 !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .home-article-card__text { font-size: 12px !important; line-height: 1.5 !important; }
+  .home-article-card__text { font-size: 10.5px !important; line-height: 1.5 !important; }
+  /* Заголовок слева, «Больше новостей» справа — в одну строку */
+  .home-blog__head { display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; flex-wrap: nowrap !important; }
+  .home-blog__head .home-blog__title { margin: 0 !important; text-align: left !important; }
+  .home-blog__all-link { margin: 0 !important; flex: 0 0 auto; }
+  /* Над «Частыми вопросами» — без мелкой надписи */
+  .ea-faq .ea-eyebrow { display: none !important; }
 }
