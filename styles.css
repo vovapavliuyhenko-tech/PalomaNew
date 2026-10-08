@@ -9084,3 +9084,23 @@ body.has-footer-curtain .site-footer {
   width: 100%;
   pointer-events: none;
 }
+
+/* жираф бесконечно идёт по линии подвала слева направо: шаг чуть
+   покачивает его вверх-вниз, у краёв он плавно появляется и исчезает */
+@media (prefers-reduced-motion: no-preference) {
+  .footer-giraffe {
+    left: 0; right: auto !important;
+    animation: palomaGiraffeWalk 38s linear infinite, palomaGiraffeStep .7s ease-in-out infinite alternate;
+  }
+  @media (max-width: 700px) { .footer-giraffe { animation-duration: 20s, .7s; } }
+}
+@keyframes palomaGiraffeWalk {
+  0%   { left: 0;    transform: translateX(-100%); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { left: 100%; transform: translateX(0);     opacity: 0; }
+}
+@keyframes palomaGiraffeStep {
+  from { translate: 0 0;    rotate: -1deg; }
+  to   { translate: 0 -3px; rotate: 1deg; }
+}
