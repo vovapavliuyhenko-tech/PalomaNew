@@ -73,14 +73,15 @@
   /* Блоки «Оформляем…» и «Философия» — прежней высоты, текст по центру */
   #ea-home-hero .ea-hero__right { min-height: 500px; display: flex; flex-direction: column; justify-content: space-between; }
   #ea-home-hero .ea-hero__mid { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
-  #ea-home-philo .ea-philo__text { min-height: 500px; display: flex; flex-direction: column; justify-content: flex-start; }
+  #ea-home-philo .ea-philo__text { min-height: 500px; display: flex; flex-direction: column; justify-content: flex-start; padding: 34px 36px 48.72px !important; }
+  #ea-home-philo .ea-philo__p { text-align: center !important; }
   /* Как в блоке выше: надпись сверху, заголовок с текстом посередине, логотип внизу */
   #ea-home-philo .ea-eyebrow { margin: 40px 0 0 !important; }
   #ea-home-philo .ea-title { margin: auto 0 0 !important; }
   #ea-home-philo .ea-philo__p { margin: 22px 0 auto !important; }
   #ea-home-philo .ea-philo__text > div:last-child { margin: 0 0 14px !important; line-height: 0; }
   .ea-faq__q { font-size: 14px !important; line-height: 1.3 !important; }
-  .ea-faq p, .ea-faq__a, .ea-faq__a p { font-size: 12.5px !important; line-height: 1.55 !important; }
+  .ea-faq p, .ea-faq__a, .ea-faq__a p, .ea-faq [class*="answer"], .ea-faq dd { font-size: 11px !important; line-height: 1.55 !important; }
 
   /* ── Блог пользы: заголовки в одну строку, текст мельче ── */
   .home-article-card__title { font-size: 15px !important; line-height: 1.25 !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -91,4 +92,20 @@
   .home-blog__all-link { margin: 0 !important; flex: 0 0 auto; }
   /* Над «Частыми вопросами» — без мелкой надписи */
   .ea-faq .ea-eyebrow { display: none !important; }
+}
+
+/* ── Меню-бургер: уже и выезжает слева (со стороны кнопки) ── */
+@media (max-width: 1024px) {
+  .site-header__mobile-panel {
+    left: 0 !important; right: auto !important;
+    width: min(320px, 78vw) !important;
+    transform: translateX(-100%) !important;
+    box-shadow: 12px 0 48px rgba(27, 26, 24, .12) !important;
+    padding-left: 24px !important; padding-right: 22px !important;
+  }
+  body.is-nav-open .site-header__mobile-panel { transform: translateX(0) !important; }
+  /* Шапка с крестиком — поверх открытого меню, чтобы его можно было закрыть */
+  body.is-nav-open #siteTop { z-index: 152 !important; }
+  body.is-nav-open .site-header__menu-toggle { color: #1B1A18 !important; }
+  body.is-nav-open .site-header__menu-lines::before, body.is-nav-open .site-header__menu-lines::after { background: #1B1A18 !important; }
 }
