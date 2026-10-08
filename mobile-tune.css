@@ -84,6 +84,9 @@
   #ea-home-philo .ea-philo__text > div:last-child { margin: 0 0 14px !important; line-height: 0; }
   .ea-faq__q { font-size: 14px !important; line-height: 1.3 !important; }
   .ea-faq p, .ea-faq__a, .ea-faq__a p, .ea-faq [class*="answer"], .ea-faq dd { font-size: 11px !important; line-height: 1.55 !important; }
+  /* Ответы — во всю ширину (максимум 3 строки): у ответа нет значка «+», отступ справа не нужен */
+  .ea-faq { padding-left: 16px !important; padding-right: 16px !important; }
+  .ea-faq__a p { padding-right: 0 !important; letter-spacing: 0 !important; }
 
   /* ── Блог пользы: заголовки в одну строку, текст мельче ── */
   .home-article-card__title { font-size: 15px !important; line-height: 1.25 !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
