@@ -68,9 +68,9 @@
   .ea-hero__lead { font-size: 12px !important; line-height: 1.55 !important; }
   .ea-eyebrow { font-size: 12px !important; line-height: 1.2 !important; }
   .ea-title { font-size: 22px !important; line-height: 1.15 !important; }
-  /* Заголовок «Философии» — крупнее, в две ровные строки */
-  .ea-philo .ea-title { font-size: 25px !important; line-height: 1.15 !important; }
-  .ea-philo .ea-title .t-short { white-space: normal !important; text-wrap: balance; }
+  .ea-philo .ea-title { font-size: min(22px, 4.6vw) !important; }
+  /* Слово «философия» над заголовком — крупнее */
+  .ea-philo .ea-eyebrow { font-size: 18px !important; }
   .ea-philo__p { font-size: 12px !important; line-height: 1.6 !important; }
   /* Блоки «Оформляем…» и «Философия» — прежней высоты, текст по центру */
   #ea-home-hero .ea-hero__right { min-height: 500px; display: flex; flex-direction: column; justify-content: space-between; }
