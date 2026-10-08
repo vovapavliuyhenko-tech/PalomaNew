@@ -166,7 +166,7 @@ body.rent-page { padding-top: var(--paloma-header-offset, calc(34px + 88px)); }
 /* ── карточки в разметке каталога ── */
 .rn .product-card__media-link { border: 0; padding: 0; background: none; cursor: pointer; }
 .rn .product-card__name-link { display: block; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; }
-.rn button.product-card__btn { font: inherit; cursor: pointer; }
+.rn button.product-card__btn { cursor: pointer; }
 .rn-card-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: #F7F3EE; color: rgba(27, 26, 24, .38); }
 .rn-card-ph svg { width: 34%; max-width: 110px; fill: none; stroke: currentColor; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; transition: transform .6s cubic-bezier(.22, 1, .36, 1); }
 .product-card:hover .rn-card-ph svg { transform: translateY(-4px) scale(1.03); }
