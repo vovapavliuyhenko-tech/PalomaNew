@@ -16,24 +16,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FFFFFF">
-  <!-- Аренда ещё не запущена: посетители видят страницу «под замком»
-       (силуэты вещей, бегущая строка «скоро откроется»), кнопки не работают.
-       Владелец по ссылке с ключом (?lab=…) видит всё как есть — браузер
-       запоминает доступ. Запуск: убрать noindex и класс rn-locked. -->
+  <!-- Аренда ещё не запущена: страница «под замком» для ВСЕХ, в том числе
+       для владельца. Посмотреть полную версию — только по ссылке с ключом
+       (?lab=…): доступ живёт до закрытия вкладки и не запоминается браузером.
+       Запуск: убрать noindex и этот скрипт. -->
   <meta name="robots" content="noindex, nofollow">
   <script>
   (function () {
     var H = "aa83f520670b46a9a083d521c2dd08b6ca146a13fb395c8efed5d16a158caa1a";
-    var d = document.documentElement, open = false;
-    try { open = localStorage.getItem("paloma_lab") === H; } catch (e) {}
+    var open = false;
+    try { open = sessionStorage.getItem("paloma_rent_open") === H; } catch (e) {}
     if (open) return;
-    d.classList.add("rn-locked");
+    document.documentElement.classList.add("rn-locked");
     var q = new URLSearchParams(location.search), k = q.get("lab");
     if (!k || !window.crypto || !crypto.subtle) return;
     crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)).then(function (b) {
       var h = Array.from(new Uint8Array(b)).map(function (x) { return x.toString(16).padStart(2, "0"); }).join("");
       if (h !== H) return;
-      try { localStorage.setItem("paloma_lab", H); localStorage.setItem("paloma_lab_key", k); } catch (e) { return; }
+      try { sessionStorage.setItem("paloma_rent_open", H); } catch (e) { return; }
       q.delete("lab");
       location.replace(location.pathname + (q.toString() ? "?" + q : "") + location.hash);
     });
