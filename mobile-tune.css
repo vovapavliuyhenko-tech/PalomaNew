@@ -153,3 +153,13 @@
 @media (prefers-reduced-motion: reduce) {
   .btn, .ea-btn, .product-card__btn, .home-product-card__more, .co-btn, .sf2-round__btn, .sfm-icon, .bb-form__submit { animation: none !important; }
 }
+
+/* ── Первый экран главной на телефоне: по ВИДИМОЙ высоте (без панелей
+   браузера) и чуть меньше неё — кнопка «Выбрать букет» видна сразу ── */
+@media (max-width: 768px) {
+  .paloma-cover {
+    height: calc(100vh + var(--paloma-header-offset, 88px) - 120px) !important;
+    height: calc(100svh + var(--paloma-header-offset, 88px) - 48px) !important;
+    min-height: calc(520px + var(--paloma-header-offset, 88px)) !important;
+  }
+}
