@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-   (function(m,e,t,r,i,k,a){
-       m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-       m[i].l=1*new Date();
-       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-   })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110912456', 'ym');
-   ym(110912456, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img decoding="async" src="https://mc.yandex.ru/watch/110912456" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#FFFFFF">
-  <title>Оформление заказа — PALOMA Flowers Coffee You</title>
-  <meta name="description" content="Оформление заказа букетов, кофе и подарков PALOMA.">
+  <!-- Страница в разработке: закрыта от поиска и от посетителей.
+       Вход только по ссылке с ключом (?lab=…), дальше браузер запоминает доступ.
+       Перед публичным запуском: убрать noindex и блок «доступ». -->
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.bb-locked body{visibility:hidden}</style>
+  <script>
+  (function () {
+    var H = "aa83f520670b46a9a083d521c2dd08b6ca146a13fb395c8efed5d16a158caa1a";
+    var d = document.documentElement;
+    d.classList.add("bb-locked");
+    function ok() { d.classList.remove("bb-locked"); }
+    function no() { location.replace("index.html"); }
+    try { if (localStorage.getItem("paloma_lab") === H) { ok(); return; } } catch (e) {}
+    var q = new URLSearchParams(location.search), k = q.get("lab");
+    if (!k || !window.crypto || !crypto.subtle) { no(); return; }
+    crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)).then(function (b) {
+      var h = Array.from(new Uint8Array(b)).map(function (x) { return x.toString(16).padStart(2, "0"); }).join("");
+      if (h !== H) { no(); return; }
+      try { localStorage.setItem("paloma_lab", H); localStorage.setItem("paloma_lab_key", k); } catch (e) {}
+      q.delete("lab");
+      history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q : "") + location.hash);
+      ok();
+    }, no);
+  })();
+  </script>
+  <title>Аренда декора для свадеб и мероприятий — PALOMA</title>
+  <meta name="description" content="Аренда декора в Новороссийске: пуфы, свет, вазы, арки и текстиль с мероприятий PALOMA. Смета онлайн, доставка и монтаж.">
   <link rel="icon" type="image/png" href="assets/icons/favicon-giraffe.png?v=2">
   <link rel="stylesheet" href="fonts/paloma-fonts.css?v=w1">
   <link rel="stylesheet" href="preloader.css?v=giraffe2">
   <link rel="stylesheet" href="styles.css?v=ph18">
   <link rel="stylesheet" href="footer-mobile.css?v=2">
   <link rel="stylesheet" href="paloma-animations.css?v=w1">
-<link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="cart.css?v=w3">
+  <link rel="stylesheet" href="clients.css?v=nav1">
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
-  <link rel="stylesheet" href="legal.css?v=2">
-  <link rel="canonical" href="https://paloma.website/order.html">
-  <meta name="robots" content="noindex, follow">
   <link rel="stylesheet" href="mobile-polish.css?v=42">
+  <link rel="stylesheet" href="product.css?v=bb2">
+  <link rel="stylesheet" href="bouquet-builder.css?v=12">
+  <link rel="stylesheet" href="rent.css?v=1">
   <link rel="stylesheet" href="full-width.css?v=1">
 </head>
-<body class="page-order">
+<body class="rent-page">
   <a href="#main" class="skip-link">К содержимому</a>
   <!-- PALOMA PAGE LOADER — premium curtain transition -->
   <div class="paloma-page-loader" id="palomaPageLoader" aria-hidden="true">
@@ -85,11 +98,11 @@
 
         <nav class="site-header__nav" aria-label="Основная навигация">
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--catalog" data-dropdown="catalog">
-            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerCart" data-cursor="hover">
+            <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="catalogDropdown" id="catalogNavTriggerContacts" data-cursor="hover">
               Каталог
               <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
             </button>
-            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerCart">
+            <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerContacts">
               <div class="catalog-dropdown__inner">
                 <div class="catalog-dropdown__grid">
 
@@ -293,12 +306,12 @@
           <a href="event-decoration.html" class="site-header__link">Оформление</a>
 
           <div class="site-header__dropdown-wrap site-header__dropdown-wrap--clients" data-dropdown="clients">
-          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerCart" data-cursor="hover">
+          <button type="button" class="site-header__link site-header__link--has-dropdown" aria-expanded="false" aria-controls="clientsDropdown" id="clientsNavTriggerContacts" data-cursor="hover">
             Клиентам
             <svg class="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
           </button>
 
-          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerCart">
+          <div class="clients-dropdown" id="clientsDropdown" role="region" aria-labelledby="clientsNavTriggerContacts">
             <div class="clients-dropdown__inner">
               <div class="clients-dropdown__grid">
                 <a href="delivery.html" class="client-nav-card" data-cursor="hover"><div class="client-nav-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h13v10H3zM16 10h4l2 3v4h-6z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><div class="client-nav-card__body"><div class="client-nav-card__title">Доставка</div><div class="client-nav-card__desc">Зоны, сроки и стоимость</div></div></a>
@@ -313,15 +326,17 @@
         </nav>
 
         <div class="site-header__actions">
-          <a href="tel:+79897707000" class="site-header__phone">+7 989 770 70 00</a>
+          <a href="tel:+79897707000" class="site-header__phone">+7 (989) 770-70-00</a>
           <a href="wishlist.html" id="wishlistOpenBtn" data-wishlist-open class="site-header__icon site-header__icon--wishlist" aria-label="Избранное, открыть панель" aria-expanded="false" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
             <span class="header-wishlist-count wishlist-count site-header__badge" id="wishlistCount" data-wishlist-count hidden aria-hidden="true">0</span>
           </a>
-          <a href="cart.html" class="site-header__icon site-header__icon--cart site-header__cart" aria-label="Корзина" data-cursor="hover">
+          <button type="button" class="site-header__icon site-header__icon--cart site-header__cart"
+        id="cartOpenBtn" data-cart-open
+        aria-label="Корзина" aria-expanded="false" aria-controls="cartDrawer" data-cursor="hover">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/></svg>
-            <span class="site-header__cart-count is-empty">0</span>
-          </a>
+            <span class="site-header__cart-count site-header__badge cart-count" id="cartCount" data-cart-count style="display:none" aria-hidden="true">0</span>
+          </button>
         </div>
       </div>
 
@@ -338,329 +353,123 @@
           <a href="contacts.html" class="site-header__mobile-link">Контакты</a>
           <a href="blog.html" class="site-header__mobile-link">Блог</a>
           <a href="wishlist.html" class="site-header__mobile-link">Избранное</a>
-          <a href="tel:+79897707000" class="site-header__mobile-phone">+7 989 770 70 00</a>
+          <a href="tel:+79897707000" class="site-header__mobile-phone">+7 (989) 770-70-00</a>
         </div>
       </nav>
     </header>
   </div>
 
-  <main class="cart-page" id="main">
+  <main class="rn pdp" id="main" aria-label="Аренда декора">
 
-    <div class="cart-empty" id="cartEmpty" hidden>
-      <div class="cart-empty__inner">
-        <div class="cart-empty__icon" aria-hidden="true">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.2">
-            <path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/>
-          </svg>
-        </div>
-        <h1 class="cart-empty__title">В корзине пока пусто</h1>
-        <p class="cart-empty__text">
-          Выберите букет, кофе или подарок из каталога.
-        </p>
-        <a href="catalog.html" class="btn btn--dark">
-          Перейти в каталог
-        </a>
+    <nav class="pdp-breadcrumbs" aria-label="Хлебные крошки">
+      <div class="pdp-breadcrumbs__inner">
+        <ol class="pdp-breadcrumbs__list">
+          <li><a href="index.html">Главная</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="event-decoration.html">Оформление</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">Аренда декора</li>
+        </ol>
       </div>
-    </div>
+    </nav>
 
-    <div class="cart-content" id="cartContent" hidden>
-
-      <div class="cart-content__inner">
-        <h1 class="cart-page__title">Ваш заказ</h1>
-
-        <div class="cart-layout">
-
-          <div class="cart-layout__form">
-
-            <section class="cart-addons">
-              <h2 class="cart-addons__title">
-                Идеально дополнят ваш букет
-              </h2>
-              <div class="cart-addons__list" id="cartAddonsList">
-              </div>
-            </section>
-
-            <section class="cart-section">
-              <h2 class="cart-section__title">Данные заказчика</h2>
-              <div class="cart-form-grid">
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-name">
-                    Ваше имя
-                  </label>
-                  <input class="cart-field__input" type="text"
-                         id="cf-name" name="name"
-                         placeholder="Имя" autocomplete="name">
-                </div>
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-phone">
-                    Ваш телефон
-                  </label>
-                  <input class="cart-field__input" type="tel"
-                         id="cf-phone" name="phone"
-                         placeholder="+7 ___ ___ __ __"
-                         autocomplete="tel">
-                </div>
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-telegram">
-                    Никнейм в Telegram
-                  </label>
-                  <input class="cart-field__input" type="text"
-                         id="cf-telegram" name="telegram"
-                         placeholder="@username">
-                </div>
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-email">
-                    Email
-                  </label>
-                  <input class="cart-field__input" type="email"
-                         id="cf-email" name="email"
-                         placeholder="email@example.com"
-                         autocomplete="email">
-                </div>
-              </div>
-            </section>
-
-            <section class="cart-section">
-              <h2 class="cart-section__title">Способ связи</h2>
-              <div class="cart-radios">
-                <label class="cart-radio">
-                  <input type="radio" name="contact_method"
-                         value="telegram" checked>
-                  <span class="cart-radio__label">Telegram</span>
-                </label>
-                <label class="cart-radio">
-                  <input type="radio" name="contact_method"
-                         value="whatsapp">
-                  <span class="cart-radio__label">WhatsApp</span>
-                </label>
-                <label class="cart-radio">
-                  <input type="radio" name="contact_method"
-                         value="call">
-                  <span class="cart-radio__label">Звонок</span>
-                </label>
-                <label class="cart-radio">
-                  <input type="radio" name="contact_method"
-                         value="nocontact">
-                  <span class="cart-radio__label">
-                    Связываться не нужно — только при необходимости
-                  </span>
-                </label>
-              </div>
-            </section>
-
-            <section class="cart-section">
-              <h2 class="cart-section__title">Данные получателя</h2>
-              <div class="cart-form-grid">
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-rec-name">
-                    Имя получателя
-                  </label>
-                  <input class="cart-field__input" type="text"
-                         id="cf-rec-name" name="recipient_name"
-                         placeholder="Имя">
-                </div>
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-rec-phone">
-                    Телефон получателя
-                  </label>
-                  <input class="cart-field__input" type="tel"
-                         id="cf-rec-phone" name="recipient_phone"
-                         placeholder="+7 ___ ___ __ __">
-                </div>
-              </div>
-            </section>
-
-            <section class="cart-section">
-              <h2 class="cart-section__title">Получение</h2>
-              <div class="cart-radios">
-                <label class="cart-radio">
-                  <input type="radio" name="delivery" value="pickup"
-                         checked>
-                  <span class="cart-radio__label">
-                    Самовывоз — Новороссийск, ул. Энгельса, 74/82
-                  </span>
-                </label>
-                <label class="cart-radio">
-                  <input type="radio" name="delivery" value="ask">
-                  <span class="cart-radio__label">
-                    Узнать адрес у получателя
-                  </span>
-                </label>
-                <label class="cart-radio">
-                  <input type="radio" name="delivery" value="courier">
-                  <span class="cart-radio__label">Курьером</span>
-                </label>
-              </div>
-
-              <div class="cart-delivery-fields" id="deliveryFields" hidden>
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-address">
-                    Адрес доставки
-                  </label>
-                  <input class="cart-field__input" type="text"
-                         id="cf-address" name="address"
-                         placeholder="Улица, дом, квартира">
-                </div>
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-courier-note">
-                    Комментарий курьеру
-                  </label>
-                  <input class="cart-field__input" type="text"
-                         id="cf-courier-note" name="courier_note"
-                         placeholder="Домофон, этаж, ориентир">
-                </div>
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-date">
-                    Дата доставки
-                  </label>
-                  <input class="cart-field__input" type="date"
-                         id="cf-date" name="delivery_date">
-                </div>
-                <div class="cart-field">
-                  <label class="cart-field__label" for="cf-interval">
-                    Интервал доставки
-                  </label>
-                  <select class="cart-field__input cart-field__select"
-                          id="cf-interval" name="delivery_interval">
-                    <option value="">Выберите интервал</option>
-                    <option value="10-13">10:00–13:00</option>
-                    <option value="13-16">13:00–16:00</option>
-                    <option value="16-19">16:00–19:00</option>
-                    <option value="19-22">19:00–22:00</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="cart-delivery-info">
-                <p>Доставка по Новороссийску и ближайшим районам.</p>
-                <p>Стоимость доставки уточним при подтверждении заказа.</p>
-                <p>Фото перед отправкой — по запросу.</p>
-              </div>
-
-              <div class="cart-online-notice" id="onlineNotice" hidden>
-                <p>
-                  Для товаров из онлайн-витрины доставка возможна
-                  сегодня или завтра.
-                </p>
-              </div>
-            </section>
-
-            <section class="cart-section">
-              <h2 class="cart-section__title">Дополнительно</h2>
-              <div class="cart-field">
-                <label class="cart-field__label" for="cf-card-text">
-                  Текст открытки
-                </label>
-                <textarea class="cart-field__input cart-field__textarea"
-                          id="cf-card-text" name="card_text" rows="3"
-                          placeholder="Текст для открытки"></textarea>
-              </div>
-              <div class="cart-field">
-                <label class="cart-field__label" for="cf-comment">
-                  Комментарий к заказу
-                </label>
-                <textarea class="cart-field__input cart-field__textarea"
-                          id="cf-comment" name="comment" rows="3"
-                          placeholder="Пожелания, нюансы, особые запросы"></textarea>
-              </div>
-            </section>
-
-            <section class="cart-section">
-              <h2 class="cart-section__title">Способ оплаты</h2>
-              <div class="cart-radios">
-                <label class="cart-radio">
-                  <input type="radio" name="payment" value="card"
-                         checked>
-                  <span class="cart-radio__label">
-                    Банковской картой или СБП — через ЮKassa
-                  </span>
-                </label>
-                <label class="cart-radio">
-                  <input type="radio" name="payment" value="transfer">
-                  <span class="cart-radio__label">
-                    Переводом — после подтверждения менеджером
-                  </span>
-                </label>
-                <label class="cart-radio">
-                  <input type="radio" name="payment" value="cash">
-                  <span class="cart-radio__label">
-                    Наличными или картой при самовывозе
-                  </span>
-                </label>
-                <label class="cart-radio">
-                  <input type="radio" name="payment" value="prepay">
-                  <span class="cart-radio__label">
-                    Предоплата — для свадебной флористики и
-                    цветочного оформления событий
-                  </span>
-                </label>
-              </div>
-            </section>
-
-            <button class="btn btn--dark cart-submit"
-                    id="cartSubmitBtn" type="button"
-                    data-cursor="hover">
-              Оформить заказ
-            </button>
-
-          </div>
-
-          <div class="cart-layout__summary">
-            <div class="cart-summary" id="cartSummary">
-              <h2 class="cart-summary__title">Состав заказа</h2>
-              <div class="cart-summary__items" id="cartSummaryItems">
-              </div>
-              <div class="cart-summary__footer">
-                <div class="cart-summary__row">
-                  <span>Итого</span>
-                  <span class="cart-summary__total" id="cartSummaryTotal">
-                    0 ₽
-                  </span>
-                </div>
-                <p class="cart-summary__note">
-                  Стоимость доставки уточним при подтверждении.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
+    <section class="rn-hero">
+      <div class="rn-hero__text">
+        <p class="pdp-info__cat">Аренда декора</p>
+        <h1 class="pdp-info__name rn-hero__title">Декор с наших свадеб — для вашего праздника</h1>
+        <p class="rn-hero__lead">Пуфы, свет, вазы, арки и текстиль, которые работали на мероприятиях PALOMA. Выберите вещи и даты — посчитаем смету сразу, привезём и расставим.</p>
+        <ol class="rn-steps">
+          <li><b>01</b>Выберите вещи и даты</li>
+          <li><b>02</b>Отправьте смету — подтвердим наличие</li>
+          <li><b>03</b>Привезём, расставим и заберём</li>
+        </ol>
       </div>
-    </div>
+      <div class="rn-dates" aria-label="Даты аренды">
+        <p class="rn-dates__title">Даты аренды</p>
+        <div class="rn-dates__row">
+          <label class="rn-field"><span>Забираете</span><input class="bb-input" type="date" id="rnFrom"></label>
+          <label class="rn-field"><span>Возвращаете</span><input class="bb-input" type="date" id="rnTo"></label>
+        </div>
+        <p class="rn-dates__note" id="rnDaysNote">цены — за сутки</p>
+        <button type="button" class="btn btn--dark rn-dates__btn" id="rnOpenCart">Открыть смету</button>
+      </div>
+    </section>
 
+    <section class="rn-catalog" aria-label="Каталог аренды">
+      <div class="rn-tools">
+        <div class="rn-cats" id="rnCats" role="group" aria-label="Категории"></div>
+        <div class="rn-tools__row">
+          <label class="rn-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" id="rnSearch" placeholder="Найти: пуф, арка, свечи…" aria-label="Поиск"></label>
+          <span class="rn-found" id="rnFound"></span>
+          <label class="rn-sort"><span>Порядок</span>
+            <select id="rnSort">
+              <option value="popular">Сначала популярные</option>
+              <option value="cheap">Сначала дешевле</option>
+              <option value="expensive">Сначала дороже</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="rn-grid" id="rnGrid"></div>
+    </section>
+
+    <section class="rn-faq" aria-label="Как устроена аренда">
+      <details class="pdp-accordion" open><summary class="pdp-accordion__trigger">Как считается цена<svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg></summary>
+        <div class="pdp-accordion__body"><p>Цена указана за сутки. Каждые следующие сутки — дешевле, итог сразу виден в смете. Доставку и монтаж выбираете в смете.</p></div></details>
+      <details class="pdp-accordion"><summary class="pdp-accordion__trigger">Залог<svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg></summary>
+        <div class="pdp-accordion__body"><p>За вещи берём возвратный залог — сумма видна в смете. Возвращаем его, когда принимаем декор обратно.</p></div></details>
+      <details class="pdp-accordion"><summary class="pdp-accordion__trigger">Можно с цветами?<svg class="pdp-accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5l6 6 6-6"/></svg></summary>
+        <div class="pdp-accordion__body"><p>Да. Арки, стойки и вазы украсим живыми цветами — напишите пожелания в смете, флорист предложит варианты.</p></div></details>
+    </section>
+
+    <div class="rn-bar" id="rnBar" hidden>
+      <span id="rnBarText"></span>
+      <button type="button" class="btn btn--dark" id="rnBarBtn">Смета</button>
+    </div>
   </main>
 
-  <div class="cart-modal" id="cartSuccessModal" aria-hidden="true" hidden>
-    <div class="cart-modal__backdrop" data-cart-modal-close></div>
-    <div class="cart-modal__panel">
-      <h2 class="cart-modal__title">Заказ сформирован</h2>
-      <p class="cart-modal__text">
-        Мы получили данные заказа. Отправьте его менеджеру в удобный
-        мессенджер — мы подтвердим состав, время и детали доставки.
-      </p>
-      <div class="cart-modal__actions">
-        <button class="btn btn--dark cart-modal__btn"
-                id="sendToWhatsapp" data-cursor="hover">
-          <svg width="18" height="18" viewBox="0 0 24 24"
-               fill="currentColor" aria-hidden="true">
-            <path d="M17 14.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.9 4.3 2.9 1.2 2.9.8 3.4.8.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
-          </svg>
-          Отправить в WhatsApp
-        </button>
-        <button class="btn btn--outline cart-modal__btn"
-                id="sendToTelegram" data-cursor="hover">
-          Отправить в Telegram
-        </button>
-        <a href="catalog.html" class="btn btn--ghost cart-modal__btn">
-          Вернуться в каталог
-        </a>
+  <dialog class="rn-dlg rn-dlg--item" id="rnItem" aria-label="Вещь">
+    <button type="button" class="bb-dialog__close" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="rn-item" id="rnItemBody"></div>
+  </dialog>
+
+  <dialog class="rn-dlg rn-dlg--cart" id="rnCart" aria-labelledby="rnCartTitle">
+    <button type="button" class="bb-dialog__close" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <form class="rn-cart" id="rnForm" novalidate>
+      <p class="pdp-info__cat">Смета аренды</p>
+      <h2 class="bb-dialog__title" id="rnCartTitle">Ваш декор</h2>
+      <p class="rn-cart__days" id="rnDays"></p>
+      <ul class="rn-lines" id="rnLines"></ul>
+      <p class="pdp-sizes__label">Получение</p>
+      <div class="rn-delivery" id="rnDelivery"></div>
+      <dl class="rn-sum">
+        <div><dt>Аренда</dt><dd id="rnSumRent"></dd></div>
+        <div><dt>Доставка</dt><dd id="rnSumDel"></dd></div>
+        <div class="rn-sum__total"><dt>Итого</dt><dd id="rnSumTotal"></dd></div>
+        <div class="rn-sum__dep"><dt>Залог, возвращаем</dt><dd id="rnSumDeposit"></dd></div>
+      </dl>
+      <p class="rn-min" id="rnMin" hidden></p>
+      <div class="bb-row2">
+        <label class="bb-field"><span class="pdp-sizes__label">Имя</span><input class="bb-input" id="rnName" autocomplete="name" maxlength="60"></label>
+        <label class="bb-field"><span class="pdp-sizes__label">Телефон</span><input class="bb-input" id="rnPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label>
       </div>
+      <label class="bb-field"><span class="pdp-sizes__label">Площадка или адрес</span><input class="bb-input" id="rnVenue" maxlength="160" placeholder="Например: ресторан «…», Новороссийск"></label>
+      <label class="bb-field"><span class="pdp-sizes__label">Пожелания</span><textarea class="bb-input" id="rnComment" rows="2" maxlength="400" placeholder="Например: украсить арку цветами, нужен монтаж к 14:00"></textarea></label>
+      <label class="bb-check bb-check--small"><input type="checkbox" id="rnAgree" checked> <span>Даю <a href="privacy.html" target="_blank" rel="noopener">согласие</a> на обработку персональных данных</span></label>
+      <p class="bb-form__error" id="rnErr" role="alert"></p>
+      <button type="submit" class="btn btn--dark bb-form__submit" id="rnSend">Отправить смету</button>
+      <p class="rn-cart__note">Это заявка, а не оплата: менеджер подтвердит наличие на ваши даты и пришлёт договор.</p>
+    </form>
+    <div class="bb-done" id="rnDone" hidden>
+      <p class="pdp-info__cat">Заявка <span id="rnDoneId"></span></p>
+      <h2 class="bb-dialog__title">Смета у нас</h2>
+      <p class="pdp-info__desc">Проверим наличие на ваши даты и свяжемся в течение рабочего дня.</p>
+      <button type="button" class="btn btn--dark" data-close>Хорошо</button>
     </div>
-    <p class="paloma-page-loader__tagline">flowers · coffee · you</p>
-    <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
-  </div>
+  </dialog>
+
+
+
 
   <footer class="site-footer" id="contacts" aria-label="Подвал сайта PALOMA">
     <div class="sf2">
@@ -806,27 +615,58 @@
     <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
   </div>
 
-  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
-    <div class="cart-drawer__backdrop" data-cart-close></div>
-    <aside class="cart-drawer__panel">
-      <header class="cart-drawer__header">
-        <h3 class="cart-drawer__title">Корзина</h3>
-        <button type="button" class="cart-drawer__close" data-cart-close aria-label="Закрыть" data-cursor="hover">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  <!-- ── CART DRAWER ── -->
+  <div class="cart-drawer" id="cartDrawer"
+       aria-label="Корзина" aria-hidden="true"
+       role="dialog" hidden>
+    <div class="cart-drawer__backdrop"
+         id="cartDrawerBackdrop"
+         aria-hidden="true"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Корзина</h2>
+        <button type="button" class="cart-drawer__close"
+                id="cartDrawerClose"
+                data-cart-close
+                aria-label="Закрыть корзину" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
         </button>
-      </header>
-      <div class="cart-drawer__body" id="cartBody"></div>
-      <div class="cart-drawer__empty" id="cartEmpty">
-        <p>В корзине пока пусто.</p>
-        <button type="button" class="btn btn--light" data-cart-close>Продолжить покупки</button>
       </div>
-      <footer class="cart-drawer__footer" id="cartFooter">
-        <div class="cart-drawer__row"><span>Подытог</span><span id="cartSubtotal">0 ₽</span></div>
-        <div class="cart-drawer__row cart-drawer__row--muted"><span>Доставка</span><span>рассчитаем при оформлении</span></div>
-        <div class="cart-drawer__row cart-drawer__row--total"><span>Итого</span><span id="cartTotal">0 ₽</span></div>
-        <button type="button" class="btn btn--dark cart-drawer__checkout" id="cartCheckout" data-cursor="hover">Оформить заказ</button>
-      </footer>
-    </aside>
+      <div class="cart-drawer__empty" id="cartDrawerEmpty">
+        <div class="cart-drawer__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8zM9 8V5a3 3 0 016 0v3"/>
+          </svg>
+        </div>
+        <p class="cart-drawer__empty-title">Корзина пуста</p>
+        <p class="cart-drawer__empty-text">Добавьте букет, кофе или подарок</p>
+        <a href="catalog.html"
+           class="btn btn--dark cart-drawer__empty-cta"
+           data-cart-close>Перейти в каталог</a>
+      </div>
+      <div class="cart-drawer__body" id="cartDrawerBody" hidden>
+        <div class="cart-drawer__list" id="cartDrawerList"
+             aria-label="Товары в корзине"></div>
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__total-row">
+            <span class="cart-drawer__total-label">Итого</span>
+            <span class="cart-drawer__total-val" id="cartDrawerTotal">0 ₽</span>
+          </div>
+          <a href="cart.html"
+             class="btn btn--dark cart-drawer__checkout"
+             aria-label="Перейти к оформлению заказа">Оформить заказ</a>
+          <button type="button" class="cart-drawer__continue"
+                  data-cart-close
+                  aria-label="Продолжить покупки">Продолжить покупки</button>
+        </div>
+      </div>
+    </div>
+    <p class="paloma-page-loader__tagline">flowers · coffee · you</p>
+    <div class="paloma-page-loader__shutter" aria-hidden="true"></div>
   </div>
 
   <div class="custom-cursor" id="customCursor" aria-hidden="true">
@@ -847,7 +687,8 @@
 
   <script src="wishlist.js?v=goal1"></script>
   <script src="clients.js"></script>
-  <script src="cart.js?v=nosize3"></script>
+  <script src="rent-data.js?v=1"></script>
+  <script src="rent.js?v=1"></script>
   <script src="cursor.js?v=press3"></script>
   <script src="cookie-consent.js?v=2"></script>
   <!-- Выезжающая панель «Избранное» -->
