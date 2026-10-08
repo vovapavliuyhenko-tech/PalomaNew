@@ -185,3 +185,10 @@
 }
 .paloma-cover__cta:hover { animation: coverFadeUp 0s forwards !important; }
 @media (prefers-reduced-motion: reduce) { .paloma-cover__cta { animation: none !important; opacity: 1 !important; } }
+
+/* ── Пункты меню-бургера — мельче и плотнее ── */
+@media (max-width: 1024px) {
+  .site-header__mobile-link { font-size: 11px !important; letter-spacing: .14em !important; padding: 10px 0 !important; line-height: 1.3 !important; }
+  .site-header__mobile-section-title { font-size: 9px !important; margin-top: 10px !important; }
+  .site-header__mobile-phone { font-size: 13px !important; }
+}
