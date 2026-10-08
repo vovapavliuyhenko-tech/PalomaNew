@@ -192,3 +192,8 @@
   .site-header__mobile-section-title { font-size: 9px !important; margin-top: 10px !important; }
   .site-header__mobile-phone { font-size: 13px !important; }
 }
+
+/* корзина и избранное на телефоне — узкая панель, как бургер (только справа) */
+@media (max-width: 1024px) {
+  .cart-drawer__panel { width: min(320px, 78vw) !important; }
+}
