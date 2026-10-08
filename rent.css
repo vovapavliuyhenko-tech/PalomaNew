@@ -188,15 +188,21 @@ body.rent-page { padding-top: var(--paloma-header-offset, calc(34px + 88px)); }
    чёрный замок (дужка приподнимается, замок покачивается) и подпись. */
 html.rn-locked #rnOpenCart, html.rn-locked .rn-bar { display: none !important; }
 .rn-lockover { display: none; }
-html.rn-locked .rn-lockzone { position: relative; }
+/* Видна только верхушка: зона замка занимает остаток экрана, страница не листается */
+html.rn-locked, html.rn-locked body { overflow: hidden !important; height: 100%; overscroll-behavior: none; }
+html.rn-locked .rn-lockzone {
+  position: relative; height: var(--rn-zone-h, 60vh); min-height: 260px; overflow: hidden;
+  -webkit-mask-image: linear-gradient(#000 75%, transparent); mask-image: linear-gradient(#000 75%, transparent);
+}
+html.rn-locked .catalog-corporate, html.rn-locked .site-footer, html.rn-locked .cookie-banner { display: none !important; }
 html.rn-locked .rn-lockzone > :not(.rn-lockover) {
   filter: blur(3px); pointer-events: none; user-select: none; -webkit-user-select: none;
   animation: rnFloat 3.6s ease-in-out infinite;
 }
 html.rn-locked .rn-lockover { display: block; position: absolute; inset: 0; z-index: 5; background: rgba(255, 255, 255, .35); }
 .rn-lockover__inner {
-  position: sticky; top: 42vh; display: flex; flex-direction: column; align-items: center; gap: 12px;
-  padding: 0 16px; margin-top: 18vh; text-align: center;
+  position: absolute; left: 0; right: 0; top: 38%; transform: translateY(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 16px; text-align: center;
 }
 .rn-lockover__icon {
   display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%;

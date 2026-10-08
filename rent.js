@@ -312,6 +312,18 @@
     $("#rnDaysNote").textContent = "Со вторых суток — " + Math.round((D.extraDayFactor || 1) * 100) + "% цены.";
   }
 
+  /* Закрытая страница: зона замка — ровно до низа экрана */
+  function fitLockZone() {
+    const z = $(".rn-lockzone");
+    if (!LOCKED || !z) return;
+    window.scrollTo(0, 0);
+    const h = Math.max(260, window.innerHeight - z.getBoundingClientRect().top);
+    z.style.setProperty("--rn-zone-h", h + "px");
+  }
+  fitLockZone();
+  window.addEventListener("resize", fitLockZone);
+  window.addEventListener("load", fitLockZone);
+
   updateDaysNote();
   bindForm();
   refresh();
