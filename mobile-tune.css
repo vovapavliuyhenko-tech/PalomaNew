@@ -129,3 +129,25 @@
   .home-article-card__media { aspect-ratio: 3 / 3.4 !important; }
   .fmt__card { aspect-ratio: 4 / 4.5 !important; }
 }
+
+/* ════════ «Дыхание» кнопок — как у «Оформить заказ» в корзине ════════
+   Кнопка мягко увеличивается и отбрасывает пульсирующую тень. При
+   наведении замирает. Фильтры и переключатели не дышат — только действия. */
+.btn, .ea-btn, .product-card__btn, .home-product-card__more, .co-btn, .sf2-round__btn, .sfm-icon,
+.rn-bar .btn, .bb-form__submit {
+  --breathe-shadow: 27, 26, 24;
+  animation: palomaBreathe 2.2s cubic-bezier(.22, 1, .36, 1) infinite;
+}
+.ea-btn, .sf2-round__btn, .co-btn--primary { --breathe-shadow: 231, 56, 90; }
+.btn:hover, .ea-btn:hover, .product-card__btn:hover, .home-product-card__more:hover, .co-btn:hover,
+.sf2-round__btn:hover, .sfm-icon:hover, .bb-form__submit:hover,
+.btn:disabled, .co-btn:disabled, .product-card__btn:disabled, .rn-locked-btn { animation: none; }
+/* Соседние кнопки дышат не в такт — спокойнее для глаза */
+.product-card__btn--cart, .home-product-card__actions > :nth-child(2) { animation-delay: .35s; }
+@keyframes palomaBreathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 2px 10px rgba(var(--breathe-shadow), .12); }
+  50% { transform: scale(1.04); box-shadow: 0 10px 26px rgba(var(--breathe-shadow), .26); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn, .ea-btn, .product-card__btn, .home-product-card__more, .co-btn, .sf2-round__btn, .sfm-icon, .bb-form__submit { animation: none !important; }
+}
