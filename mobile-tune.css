@@ -71,9 +71,9 @@
   .ea-philo .ea-title { font-size: min(22px, 4.6vw) !important; }
   .ea-philo__p { font-size: 12px !important; line-height: 1.6 !important; }
   /* Блоки «Оформляем…» и «Философия» — прежней высоты, текст по центру */
-  #ea-home-hero .ea-hero__right { min-height: 692px; display: flex; flex-direction: column; justify-content: space-between; }
+  #ea-home-hero .ea-hero__right { min-height: 560px; display: flex; flex-direction: column; justify-content: space-between; }
   #ea-home-hero .ea-hero__mid { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
-  #ea-home-philo .ea-philo__text { min-height: 708px; display: flex; flex-direction: column; justify-content: center; }
+  #ea-home-philo .ea-philo__text { min-height: 570px; display: flex; flex-direction: column; justify-content: center; }
   .ea-faq__q { font-size: 14px !important; line-height: 1.3 !important; }
   .ea-faq p, .ea-faq__a, .ea-faq__a p { font-size: 12.5px !important; line-height: 1.55 !important; }
 
