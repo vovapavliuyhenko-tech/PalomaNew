@@ -20,7 +20,7 @@ const crypto = require("crypto");
 
 /* Дата сборки архива. Видна в ?a=ping — по ней проверяют, что в облако
    загрузился именно свежий paloma-pay.zip, а не старый. */
-const BUILD = "2026-08-29-6";
+const BUILD = "2026-10-08-1";
 
 /* ── настройки из переменных окружения функции ── */
 const PK_SERVER = (process.env.PK_SERVER || "https://paloma.server.paykeeper.ru").replace(/\/+$/, "");
@@ -821,9 +821,9 @@ async function createInvoice(body, origin) {
     }
   }
 
-  const tokenRes = await fetch(`${PK_SERVER}/info/settings/token/`, {
+  const tokenRes = await pkFetch("/info/settings/token/", {
     headers: { Authorization: AUTH },
-  });
+  }, 10000);
   const tokenJson = await tokenRes.json().catch(() => ({}));
   const token = tokenJson && tokenJson.token;
   if (!tokenRes.ok || !token) {
@@ -844,14 +844,14 @@ async function createInvoice(body, origin) {
   if (body.email) form.set("client_email", String(body.email).slice(0, 128));
   if (body.phone) form.set("client_phone", String(body.phone).replace(/\D/g, "").slice(0, 16));
 
-  const invRes = await fetch(`${PK_SERVER}/change/invoice/preview/`, {
+  const invRes = await pkFetch("/change/invoice/preview/", {
     method: "POST",
     headers: {
       Authorization: AUTH,
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: form.toString(),
-  });
+  }, 12000);
   const invJson = await invRes.json().catch(() => ({}));
   const invoiceId = invJson && invJson.invoice_id;
 
@@ -982,33 +982,25 @@ async function handleNotify(body, origin) {
      атомарно: если строку уже забрал webhook — здесь ничего не шлём (без дублей).
      Если БД недоступна — отправляем из того, что прислала страница. */
   if (body.payment === "online_paid") {
+    /* Страница «спасибо» — запасной путь к оповещению PayKeeper. Раньше
+       сервер верил ей на слово: любой, кто знает номер заказа, мог отметить
+       его оплаченным. Теперь сначала спрашиваем сам PayKeeper. */
+    const info = await pkPaymentInfo(orderId);
+    if (!info) {
+      /* PayKeeper не ответил — сейчас не решаем, заказ проведёт сверка. */
+      console.log("[paykeeper] notify online_paid: PayKeeper не ответил, ждём сверку", orderId);
+      return reply(200, { ok: true, orderId, pending: true }, origin);
+    }
+    if (!info.paid) {
+      console.log("[paykeeper] notify online_paid: оплаты нет", orderId);
+      return reply(200, { ok: true, orderId, notPaid: true }, origin);
+    }
     try {
-      const row = await pendingTake(orderId);
-      if (!row) {
-        console.log("[paykeeper] notify online_paid dup-skip", orderId);
-        return reply(200, { ok: true, orderId, skipped: true }, origin);
-      }
-      const msg = "✅ ОПЛАЧЕН (онлайн картой)\n№ " + orderId + "\nСумма: " +
-        (row.total ? row.total.toLocaleString("ru-RU") + " ₽" : totalStr) + "\n\n" + row.manager_text;
-      /* Данные клиента положили в pending при создании счёта — берём их
-         оттуда: в этот момент страница присылает только номер заказа. */
-      const logId = await logOrder(orderId, "online_paid", msg,
-        crmMeta(row.meta || body, { payment: "online_paid", total: row.total }));
-      const ok = await notifyManager(msg);
-      if (ok) await markDelivered(logId, orderId);
-      const ph = normPhotos(row.photos);
-      if (ph.length) await notifyPhotos(ph, "🖼 Букеты по заказу № " + orderId);
-      console.log("[paykeeper] notify online_paid", orderId, ok);
-      return reply(200, { ok: true, orderId, delivered: ok }, origin);
+      const r = await processPaid(orderId, info.sum, info.clientid || body.clientName || "", "thank-you", details);
+      return reply(200, Object.assign({ orderId }, r), origin);
     } catch (e) {
-      console.error("[pending] notify take error", orderId, e && e.message);
-      const msg = "✅ ОПЛАЧЕН (онлайн картой)\n№ " + orderId + (totalStr ? "\nСумма: " + totalStr : "") + "\n\n" + details;
-      const logId = await logOrder(orderId, "online_paid", msg,
-        crmMeta(body, { payment: "online_paid", total: cart && !cart.error ? cart.total : 0 }));
-      const ok = await notifyManager(msg);
-      if (ok) await markDelivered(logId, orderId);
-      await notifyPhotos(bouquetPhotos(body), "🖼 Букеты по заказу № " + orderId);
-      console.log("[paykeeper] notify online_paid fallback", orderId, ok);
+      console.error("[paid] thank-you error", orderId, e && e.message);
+      const ok = await notifyManager("✅ ОПЛАЧЕН (онлайн картой)\n№ " + orderId + (totalStr ? "\nСумма: " + totalStr : "") + "\n\n" + details);
       return reply(200, { ok: true, orderId, delivered: ok }, origin);
     }
   }
@@ -1033,6 +1025,150 @@ async function handleNotify(body, origin) {
   await notifyPhotos(bouquetPhotos(body), "🖼 Букеты по заказу № " + orderId);
   console.log("[paykeeper] notify", orderId, body.payment || "", ok);
   return reply(200, { ok: true, orderId, delivered: ok }, origin);
+}
+
+/* ════════════════════════════════════════════════════════
+   ОПЛАТА НЕ ДОЛЖНА ТЕРЯТЬСЯ (8 октября 2026: заказ ORD-MUZ7O214 оплачен,
+   а в бот и в CRM не пришёл — POST-оповещение PayKeeper не дошло).
+
+   1. pkPaymentInfo — спрашиваем у самого PayKeeper, оплачен ли заказ.
+   2. processPaid — единый путь «деньги пришли»: и для оповещения, и для
+      страницы «спасибо», и для сверки. Если деталей заказа на сервере нет,
+      всё равно шлём в бот короткое «ОПЛАЧЕН» — молча не пропускаем никогда.
+   3. reconcilePending — сверка: все «ждут оплаты» за 3 суток проверяются
+      в PayKeeper, оплаченные проводятся. Запускается таймером функции,
+      при открытии CRM и со страницы «спасибо».
+   ════════════════════════════════════════════════════════ */
+
+/* Запрос к API PayKeeper с жёстким таймаутом: зависший PayKeeper не должен
+   съедать таймаут функции (тогда сайт получал обрыв вместо ответа). */
+async function pkFetch(path, opts, ms) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms || 10000);
+  try {
+    return await fetch(PK_SERVER + path, Object.assign({}, opts || {}, { signal: ctrl.signal }));
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/* Оплачен ли заказ — по данным PayKeeper.
+   Ответ: { paid: true/false, sum, paymentId, clientid } или null, если
+   PayKeeper не ответил (тогда ничего не решаем — проверим позже). */
+async function pkPaymentInfo(orderId) {
+  if (!PK_USER || !PK_PASSWORD || !orderId) return null;
+  try {
+    const res = await pkFetch("/info/payments/byorderid/?id=" + encodeURIComponent(orderId), {
+      headers: { Authorization: AUTH },
+    }, 8000);
+    if (!res.ok) {
+      console.error("[paykeeper] byorderid", orderId, res.status);
+      return null;
+    }
+    const data = await res.json().catch(() => null);
+    const list = Array.isArray(data) ? data : data && Array.isArray(data.payments) ? data.payments : null;
+    if (!list) return null;
+    const ok = list.find((p) => p && /^success$/i.test(String(p.status || "")));
+    if (!ok) return { paid: false };
+    return {
+      paid: true,
+      sum: Number(ok.pay_amount != null ? ok.pay_amount : ok.sum) || 0,
+      paymentId: String(ok.id || ""),
+      clientid: String(ok.clientid || ""),
+    };
+  } catch (e) {
+    console.error("[paykeeper] byorderid error", orderId, e && e.message);
+    return null;
+  }
+}
+
+/* Уже ли проведён как оплаченный (есть запись online_paid в журнале). */
+async function alreadyPaidLogged(orderId) {
+  if (!process.env.DATABASE_URL) return false;
+  try {
+    const db = require("./db");
+    await ordersLogEnsure(db);
+    const r = await db.query(
+      "SELECT 1 FROM orders_log WHERE order_id=$1 AND kind='online_paid' LIMIT 1", [orderId],
+    );
+    return !!(r.rows && r.rows.length);
+  } catch (e) {
+    console.error("[orders_log] paid check", orderId, e && e.message);
+    return false;
+  }
+}
+
+/* Деньги пришли — сообщаем менеджеру и переводим заказ в CRM в «оплачен».
+   source — кто узнал об оплате (для журнала). */
+async function processPaid(orderId, amount, clientid, source, fallbackText) {
+  const amountStr = Number.isFinite(amount) && amount > 0 ? amount.toLocaleString("ru-RU") + " ₽" : "";
+  let row = null;
+  try {
+    row = await pendingTake(orderId);
+  } catch (e) {
+    console.error("[pending] take error", orderId, e && e.message);
+  }
+  if (row) {
+    const sumStr = amountStr || (row.total ? row.total.toLocaleString("ru-RU") + " ₽" : "");
+    const msg = "✅ ОПЛАЧЕН (онлайн картой)\n№ " + orderId + (sumStr ? "\nСумма: " + sumStr : "") + "\n\n" + row.manager_text +
+      (source === "reconcile" ? "\n\nℹ️ Оповещение об оплате от PayKeeper не пришло — оплата найдена сверкой." : "");
+    const logId = await logOrder(orderId, "online_paid", msg,
+      crmMeta(row.meta, { payment: "online_paid", total: Number.isFinite(amount) && amount > 0 ? Math.round(amount) : row.total }));
+    const ok = await notifyManager(msg);
+    if (ok) await markDelivered(logId, orderId);
+    const ph = normPhotos(row.photos);
+    if (ph.length) await notifyPhotos(ph, "🖼 Букеты по заказу № " + orderId);
+    console.log("[paid]", source, orderId, "full", ok);
+    return { ok: true, delivered: ok, full: true };
+  }
+  /* Деталей нет: их уже отправил другой путь — или их не было вовсе
+     (оплата по ссылке из кабинета, сбой базы). Если оплату ещё никто не
+     проводил — шлём хотя бы короткое сообщение: факт оплаты важнее всего. */
+  if (await alreadyPaidLogged(orderId)) return { ok: true, skipped: true };
+  const msg = "✅ ОПЛАЧЕН (онлайн картой)\n№ " + orderId + (amountStr ? "\nСумма: " + amountStr : "") +
+    (fallbackText ? "\n\n" + String(fallbackText).slice(0, 3500)
+      : "\nКлиент: " + (clientid || "—") +
+        "\n\n⚠️ Состав заказа на сервере не найден — посмотрите платёж в кабинете PayKeeper и свяжитесь с клиентом.");
+  const logId = await logOrder(orderId, "online_paid", msg, crmMeta({ clientName: clientid }, {
+    payment: "online_paid", total: Number.isFinite(amount) && amount > 0 ? Math.round(amount) : 0,
+  }));
+  const ok = await notifyManager(msg);
+  if (ok) await markDelivered(logId, orderId);
+  console.log("[paid]", source, orderId, "short", ok);
+  return { ok: true, delivered: ok, full: false };
+}
+
+/* Сверка «ждущих оплаты» с PayKeeper. Не чаще раза в минуту на экземпляр
+   функции и не больше 15 заказов за раз — адрес публичный. */
+let lastReconcile = 0;
+async function reconcilePending(force) {
+  const now = Date.now();
+  if (!force && now - lastReconcile < 60000) return { ok: true, throttled: true };
+  lastReconcile = now;
+  if (!process.env.DATABASE_URL) return { ok: true, checked: 0 };
+  let rows = [];
+  try {
+    const db = require("./db");
+    await pendingEnsure(db);
+    const r = await db.query(
+      "SELECT order_id FROM pending_orders WHERE created_at > now() - interval '3 days'" +
+        " ORDER BY created_at DESC LIMIT 15",
+    );
+    rows = r.rows || [];
+  } catch (e) {
+    console.error("[reconcile] list error", e && e.message);
+    return { ok: false };
+  }
+  const paid = [];
+  for (const { order_id: id } of rows) {
+    const info = await pkPaymentInfo(id);
+    if (info && info.paid) {
+      await processPaid(id, info.sum, info.clientid, "reconcile");
+      paid.push(id);
+    }
+  }
+  if (paid.length) console.log("[reconcile] проведены", paid.join(", "));
+  return { ok: true, checked: rows.length, paid };
 }
 
 /* ── POST-оповещение об оплате ──
@@ -1076,28 +1212,14 @@ async function handleWebhook(event) {
      pending_orders (положили при создании счёта). pendingTake удаляет строку и
      возвращает её атомарно: кто первый (webhook или страница thank-you), тот и
      шлёт — дублей не будет. Клиенту НЕ нужно жать «Продолжить». */
-  const amountStr = Number.isFinite(amount) ? amount.toLocaleString("ru-RU") : sum;
   try {
-    const row = await pendingTake(orderid);
-    if (row) {
-      const msg = "✅ ОПЛАЧЕН (онлайн картой)\n№ " + orderid + "\nСумма: " + amountStr + " ₽\n\n" + row.manager_text;
-      const logId = await logOrder(orderid, "online_paid", msg,
-        crmMeta(row.meta, {
-          payment: "online_paid",
-          total: Number.isFinite(amount) ? Math.round(amount) : row.total,
-        }));
-      const ok = await notifyManager(msg);
-      if (ok) await markDelivered(logId, orderid);
-      const ph = normPhotos(row.photos);
-      if (ph.length) await notifyPhotos(ph, "🖼 Букеты по заказу № " + orderid);
-    }
-    /* row === null → детали уже отправил другой путь (thank-you) либо их не
-       сохраняли (заказ ушёл при создании как «не оплачен») — не дублируем. */
+    await processPaid(orderid, amount, clientid, "webhook");
   } catch (e) {
-    /* БД недоступна — шлём хотя бы короткое подтверждение, чтобы факт оплаты не потерялся. */
-    console.error("[pending] webhook take error", orderid, e && e.message);
+    /* Что-то сломалось — шлём хотя бы короткое подтверждение, факт оплаты не теряем. */
+    console.error("[paid] webhook error", orderid, e && e.message);
     await notifyManager(
-      "✅ ОПЛАЧЕН\n№ " + orderid + "\nСумма: " + amountStr + " ₽\nКлиент: " + (clientid || "—"),
+      "✅ ОПЛАЧЕН\n№ " + orderid + "\nСумма: " + (Number.isFinite(amount) ? amount.toLocaleString("ru-RU") : sum) +
+        " ₽\nКлиент: " + (clientid || "—"),
     );
   }
 
@@ -1124,9 +1246,12 @@ module.exports.handler = async function handler(event) {
   // Таймер Яндекса вызывает функцию БЕЗ http-метода — это сигнал «почисти брони».
   if (!event.httpMethod) {
     try {
-      const marking = require("./marking");
-      const n = await marking.releaseExpired();
-      return { statusCode: 200, body: "released " + n };
+      /* Заодно — сверка оплат: если оповещение PayKeeper не дошло,
+         оплаченный заказ всё равно уйдёт в бот и CRM. */
+      const rec = await reconcilePending(true).catch((e) => ({ error: e && e.message }));
+      let n = 0;
+      try { n = await require("./marking").releaseExpired(); } catch (e) { console.error("[marking] timer", e && e.message); }
+      return { statusCode: 200, body: "released " + n + "; reconcile " + JSON.stringify(rec) };
     } catch (e) {
       console.error("[marking] timer release error", e && e.stack);
       return { statusCode: 500, body: "err" };
@@ -1155,6 +1280,13 @@ module.exports.handler = async function handler(event) {
       out.база = "недоступна: " + (e && e.message);
     }
     return reply(200, out, origin);
+  }
+
+  /* ── Сверка оплат с PayKeeper. Без токена: ничего не отдаёт, только
+     проводит уже оплаченные заказы. Дёргают CRM и страница «спасибо». ── */
+  if (action === "reconcile") {
+    const rec = await reconcilePending(false).catch((e) => ({ ok: false, error: e && e.message }));
+    return reply(200, { ok: !!rec.ok, checked: rec.checked || 0, paid: (rec.paid || []).length, throttled: !!rec.throttled }, origin);
   }
 
   // ── Публичный каталог из базы (для сайта). GET и POST, без токена. ──
@@ -1303,6 +1435,7 @@ module.exports.handler = async function handler(event) {
       try {
         const crm = require("./crm");
         if (action === "crm-list") {
+          await withDeadline(reconcilePending(false), 9000, "сверка оплат");
           return reply(200, {
             ok: true,
             ...(await crm.list({

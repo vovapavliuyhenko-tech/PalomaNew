@@ -153,7 +153,9 @@
     const managerText = order.custom
       ? String(order.message || "").trim()
       : order.managerText || buildMessage(order, f);
-    fetch(ep + "?a=notify", {
+    /* Сервер сверяет оплату с PayKeeper. Если банк ещё не успел провести
+       платёж (ответ pending/notPaid) — повторяем через 15 и 45 секунд. */
+    const send = (attempt) => fetch(ep + "?a=notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       keepalive: true,
@@ -171,7 +173,13 @@
         phone: f.phone || "",
         managerText: managerText,
       }),
-    }).catch(() => {});
+    })
+      .then((r) => r.json().catch(() => ({})))
+      .then((d) => {
+        if ((d.pending || d.notPaid) && attempt < 2) setTimeout(() => send(attempt + 1), attempt ? 30000 : 15000);
+      })
+      .catch(() => { if (attempt < 2) setTimeout(() => send(attempt + 1), 15000); });
+    send(0);
   }
 
   function loadOrder() {
