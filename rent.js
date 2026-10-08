@@ -104,13 +104,6 @@
   }
   function renderGrid() {
     const list = visible();
-    if (LOCKED) {
-      $("#rnGrid").innerHTML = list.map(lockedCard).join("");
-      $("#rnFound").textContent = plural(list.length, "позиция", "позиции", "позиций") + " · скоро в аренде";
-      $("#rnEmpty").hidden = list.length > 0;
-      $("#rnGrid").hidden = !list.length;
-      return;
-    }
     $("#rnGrid").innerHTML = list.length ? list.map((it) =>
       '<article class="product-card is-visible is-revealed" data-id="' + it.id + '">' +
         '<div class="product-card__media">' + cardMedia(it) +
