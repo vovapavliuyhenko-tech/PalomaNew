@@ -16,7 +16,7 @@
   const byId = (id) => D.items.find((i) => i.id === id);
   const KEY = "paloma_rent_v1";
 
-  const state = { cat: "all", q: "", sort: "popular", from: "", to: "", delivery: "pickup", cart: {} };
+  const state = { cat: "all", q: "", budget: "all", sort: "popular", from: "", to: "", delivery: "pickup", cart: {} };
   try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { /* пусто */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify({ from: state.from, to: state.to, delivery: state.delivery, cart: state.cart })); } catch (e) { /* приватный режим */ } };
 
@@ -50,7 +50,9 @@
   /* ── каталог ── */
   function visible() {
     const q = state.q.trim().toLowerCase();
+    const [bMin, bMax] = state.budget === "all" ? [0, 0] : state.budget.split("-").map(Number);
     let list = D.items.filter((i) => (state.cat === "all" || i.cat === state.cat) &&
+      (state.budget === "all" || ((!bMin || i.price >= bMin) && (!bMax || i.price < bMax))) &&
       (!q || (i.name + " " + i.color + " " + i.material).toLowerCase().indexOf(q) >= 0));
     if (state.sort === "cheap") list = list.slice().sort((a, b) => a.price - b.price);
     else if (state.sort === "expensive") list = list.slice().sort((a, b) => b.price - a.price);
@@ -83,7 +85,7 @@
   function renderGrid() {
     const list = visible();
     $("#rnGrid").innerHTML = list.length ? list.map((it) =>
-      '<article class="product-card is-visible is-revealed' + (state.cart[it.id] ? " rn-in" : "") + '" data-id="' + it.id + '">' +
+      '<article class="product-card is-visible is-revealed" data-id="' + it.id + '">' +
         '<div class="product-card__media">' + cardMedia(it) +
           '<button type="button" class="product-card__media-link rn-open" data-open="' + it.id + '" aria-label="Подробнее: ' + esc(it.name) + '"></button>' +
           (it.hit ? '<span class="product-card__badge">Часто берут</span>' : "") +
@@ -97,15 +99,14 @@
             cardAction(it) +
           "</div>" +
         "</div></article>").join("")
-      : '<p class="rn-empty">Ничего не нашлось. Напишите нам — подберём похожее.</p>';
+      : "";
     $("#rnFound").textContent = plural(list.length, "позиция", "позиции", "позиций");
+    $("#rnEmpty").hidden = list.length > 0;
+    $("#rnGrid").hidden = !list.length;
   }
   /* «В смету» → счётчик «− 2 шт +» на месте кнопки */
   function cardAction(it) {
-    const n = state.cart[it.id] || 0;
-    if (!n) return '<button type="button" class="product-card__btn product-card__btn--cart" data-add="' + it.id + '">В смету</button>';
-    return '<div class="product-card__btn rn-step" role="group" aria-label="Количество"><button type="button" data-dec="' + it.id + '" aria-label="Меньше">−</button>' +
-      "<span>" + n + " шт</span>" + '<button type="button" data-inc="' + it.id + '" aria-label="Больше"' + (n >= it.qty ? " disabled" : "") + ">+</button></div>";
+    return '<button type="button" class="product-card__btn product-card__btn--cart" data-add="' + it.id + '">В смету</button>';
   }
 
   /* ── смета ── */
@@ -236,7 +237,19 @@
     const b = e.target.closest("button, [data-close]");
     if (!b) return;
     if (b.dataset.cat) { state.cat = b.dataset.cat; refresh(); }
+    else if (b.dataset.add && b.classList.contains("product-card__btn--cart")) {
+      const it = byId(b.dataset.add), n = state.cart[b.dataset.add] || 0;
+      if (it && n >= it.qty) { b.textContent = "Больше нет"; setTimeout(() => { b.textContent = "В смету"; }, 1400); return; }
+      setQty(b.dataset.add, n + 1);
+      const nb = document.querySelector('.product-card__btn--cart[data-add="' + b.dataset.add + '"]');
+      if (nb) { nb.textContent = "✓"; nb.classList.add("is-added"); nb.disabled = true; setTimeout(() => { nb.textContent = "В смету"; nb.classList.remove("is-added"); nb.disabled = false; }, 1400); }
+    }
     else if (b.dataset.add) setQty(b.dataset.add, 1);
+    else if (b.dataset.budget) {
+      state.budget = b.dataset.budget;
+      $$("[data-budget]").forEach((x) => { const on = x === b; x.classList.toggle("is-active", on); x.setAttribute("aria-pressed", String(on)); });
+      renderGrid();
+    }
     else if (b.dataset.inc) setQty(b.dataset.inc, (state.cart[b.dataset.inc] || 0) + 1);
     else if (b.dataset.dec) setQty(b.dataset.dec, (state.cart[b.dataset.dec] || 0) - 1);
     else if (b.dataset.del) setQty(b.dataset.del, 0);
@@ -249,7 +262,6 @@
   document.addEventListener("change", (e) => {
     if (e.target.name === "rnDel") { state.delivery = e.target.value; renderCart(); renderBar(); save(); }
   });
-  $("#rnSearch").addEventListener("input", (e) => { state.q = e.target.value; renderGrid(); });
   const sortList = $("#rnSortList"), sortTrig = $("#rnSortTrigger");
   const openSort = (open) => { sortList.hidden = !open; sortTrig.setAttribute("aria-expanded", String(open)); sortTrig.classList.toggle("is-open", open); };
   sortTrig.addEventListener("click", () => openSort(sortList.hidden));
