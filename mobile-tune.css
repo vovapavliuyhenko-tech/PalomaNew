@@ -119,3 +119,13 @@
   .site-header__actions .site-header__icon { width: 36px !important; height: 36px !important; min-width: 36px !important; min-height: 36px !important; }
   .site-header__actions .site-header__icon svg { width: 16px !important; height: 16px !important; }
 }
+
+/* ── Фото в карточках на телефоне — примерно на 10% ниже ── */
+@media (max-width: 600px) {
+  .home-product-card__media { aspect-ratio: 3 / 3.7 !important; }
+  .product-card__media { aspect-ratio: 2 / 2.7 !important; }
+  .home-categories__photo { height: 268px !important; }
+  #categories .home-categories__item { height: auto !important; }
+  .home-article-card__media { aspect-ratio: 3 / 3.4 !important; }
+  .fmt__card { aspect-ratio: 4 / 4.5 !important; }
+}
