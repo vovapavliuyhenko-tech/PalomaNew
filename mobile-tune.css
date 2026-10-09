@@ -537,3 +537,8 @@
   .pdp-included__t { font-size: 11.5px !important; }
   .pdp-included__d { font-size: 10.5px !important; line-height: 1.45 !important; }
 }
+/* карточка товара: кнопки размера (S · 3 шт …) компактнее */
+@media (max-width: 768px) {
+  .pdp-size-btn { font-size: 11px !important; padding: 7px 11px !important; min-height: 0 !important; height: auto !important; border-radius: 9px !important; line-height: 1.2 !important; }
+  .pdp-sizes__btns { gap: 6px !important; }
+}
