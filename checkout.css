@@ -1519,3 +1519,45 @@ body.checkout-page .co-main {
   accent-color: #e7385a;
   cursor: pointer;
 }
+
+/* ════════ «Ваш заказ» на телефоне — всё на ступень меньше и аккуратнее.
+   Текст в полях оставлен 16px: при меньшем iPhone увеличивает страницу. ════════ */
+@media (max-width: 768px) {
+  .co-header__back { font-size: 12px !important; }
+  .co-header__title { font-size: 14px !important; }
+  .co-fieldset__legend { font-size: 14px !important; margin-bottom: 10px !important; }
+  .co-label, .co-required { font-size: 11.5px !important; }
+  .co-input { padding: 10px 14px !important; border-radius: 12px !important; }
+  textarea.co-input { min-height: 68px !important; }
+  .co-input::placeholder { font-size: 13px; }
+  .co-consent, .co-consent a { font-size: 11px !important; line-height: 1.45 !important; }
+  .co-toggle__label { font-size: 12px !important; padding: 7px 14px !important; }
+  .co-delivery-card__icon { font-size: 16px !important; }
+  .co-delivery-card__title { font-size: 12px !important; }
+  .co-delivery-card__sub { font-size: 10px !important; }
+  .co-delivery-card__price { font-size: 11.5px !important; }
+  .co-delivery-card__inner { padding: 10px 8px !important; gap: 3px !important; }
+  .co-time-option__label { font-size: 11.5px !important; padding: 7px 12px !important; }
+  .co-pick__btn { padding: 10px 14px !important; font-size: 13px !important; }
+  .co-pick__value { font-size: 13px !important; }
+  .co-notice, .co-notice p { font-size: 11.5px !important; line-height: 1.5 !important; }
+  .co-checkbox__label { font-size: 12.5px !important; }
+  .co-field__hint { font-size: 11px !important; }
+  .co-messenger-option__label { font-size: 12px !important; padding: 9px 8px !important; }
+  .co-section-title { font-size: 17px !important; }
+  .co-upsell-card__name, .co-upsell-card__price { font-size: 11.5px !important; }
+  .co-upsell-card__btn { font-size: 10.5px !important; padding: 6px !important; min-height: 0 !important; }
+  .co-btn { font-size: 11.5px !important; padding: 12px 20px !important; letter-spacing: .12em !important; min-height: 0 !important; }
+  .co-summary__title { font-size: 14px !important; }
+  .co-item__name { font-size: 12px !important; }
+  .co-item__meta, .co-item__remove { font-size: 10px !important; }
+  .co-item__price, .co-item__qty-num { font-size: 12.5px !important; }
+  .co-totals__label, .co-totals__value { font-size: 12.5px !important; }
+  .co-payment__title { font-size: 13px !important; }
+  .co-payment-option__label { font-size: 12.5px !important; }
+  .co-payment-option__sub { font-size: 10.5px !important; line-height: 1.45 !important; }
+  .co-scroll-hint, .co-scroll-hint span { font-size: 11px !important; }
+  .co-manager-notice, .co-manager-notice b { font-size: 11.5px !important; line-height: 1.5 !important; }
+  .co-mobile-bar__amount { font-size: 16px !important; }
+  .co-mobile-bar__label { font-size: 10px !important; }
+}
