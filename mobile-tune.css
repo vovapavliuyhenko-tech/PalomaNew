@@ -496,3 +496,31 @@
   .catalog-tools__label { font-size: 9px !important; }
   .catalog-tools, .catalog-tools__group { gap: 6px !important; row-gap: 8px !important; }
 }
+/* доставка / оплата / уход / контакты на телефоне: тексты и плашки компактнее,
+   в одном масштабе с остальным сайтом */
+@media (max-width: 768px) {
+  .contacts-studio__visual { height: auto !important; max-height: 260px !important; }
+  .contacts-studio__panel { padding: 22px 20px !important; border-radius: 18px !important; }
+  .contacts-studio__brand { font-size: 21px !important; line-height: 1.15 !important; margin-bottom: 8px !important; }
+  .contacts-studio__subtitle { font-size: 11.5px !important; line-height: 1.55 !important; }
+  .contacts-studio__row { padding: 10px 0 !important; font-size: 12px !important; line-height: 1.5 !important; }
+  .contacts-studio__row > span:not(.contacts-studio__label), .contacts-studio__row > a { font-size: 12px !important; line-height: 1.5 !important; }
+  .contacts-studio__label { font-size: 9px !important; margin-bottom: 2px !important; }
+  .contacts-channels__title { font-size: 20px !important; line-height: 1.2 !important; }
+  .ch-card { padding: 13px 14px !important; gap: 12px !important; border-radius: 14px !important; min-height: 0 !important; }
+  .ch-card__icon { width: 40px !important; height: 40px !important; flex: 0 0 40px !important; }
+  .ch-card__icon svg { width: 19px !important; height: 19px !important; }
+  .ch-card__name { font-size: 13.5px !important; line-height: 1.25 !important; }
+  .ch-card__sub { font-size: 11px !important; line-height: 1.45 !important; }
+  .ch-card__body { font-size: 12px !important; }
+  .ch-card__arrow { font-size: 14px !important; }
+}
+@media (max-width: 768px) {
+  .contacts-studio__panel .btn { padding: 11px 20px !important; font-size: 10.5px !important; letter-spacing: .16em !important; min-height: 0 !important; }
+}
+@media (max-width: 768px) {
+  .care-step { padding-top: 10px !important; padding-bottom: 10px !important; gap: 12px !important; }
+  .care-step__num { font-size: 20px !important; }
+  .care-step__title { font-size: 12.5px !important; margin-bottom: 2px !important; }
+  .care-step__text { font-size: 11.5px !important; line-height: 1.5 !important; }
+}
