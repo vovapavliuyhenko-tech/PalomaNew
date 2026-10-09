@@ -91,9 +91,6 @@
   if (sub) acc.appendChild(section("Обратный звонок", call));
   box.appendChild(acc);
 
-  if (/\*/.test(socs.textContent)) {
-    box.appendChild(el("p", "sfm-foot", "* Instagram — продукт компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена в России."));
-  }
 
   sf2.parentNode.insertBefore(box, sf2.nextSibling);
 
