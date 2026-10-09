@@ -9085,16 +9085,21 @@ body.has-footer-curtain .site-footer {
   pointer-events: none;
 }
 
-/* ── Жираф в подвале: один цельный рисунок (без слоёв ног), идёт от края
-   до края и разворачивается. Движение только через transform — плавно и
-   без лагов на любом телефоне; ширина задана явно (старый Safari). ── */
-.footer-giraffe { display: block; width: clamp(91px, 11.22vw, 154px); aspect-ratio: 550 / 784; left: 0 !important; right: auto !important; will-change: transform; }
-@media (max-width: 700px) { .footer-giraffe { width: 84px; height: 120px; } }
+/* ── Жираф в подвале: пять слоёв одной картинки — туловище и четыре ноги,
+   каждая качается от бедра (иноходь: дальние ноги вместе, потом ближние).
+   Идёт бесконечно от края до края и разворачивается — всегда в кадре.
+   Всё движение — через transform (а не left): плавно на любом телефоне,
+   без «ходьбы на месте». Ширина задана явно — для старого Safari. ── */
+.footer-giraffe { display: block; width: clamp(91px, 11.22vw, 154px); aspect-ratio: 550 / 784; left: 0 !important; right: auto !important; will-change: transform; animation: palomaGiraffeWalk 24s linear infinite; }
+@media (max-width: 700px) { .footer-giraffe { width: 84px; height: 120px; animation-duration: 16s; } }
 .footer-giraffe img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; }
-.footer-giraffe .fg-rf, .footer-giraffe .fg-ff, .footer-giraffe .fg-rn, .footer-giraffe .fg-fn { display: none !important; }
-.footer-giraffe .fg-body { -webkit-clip-path: none !important; clip-path: none !important; animation: palomaGiraffeBob .55s ease-in-out infinite alternate; }
-.footer-giraffe { animation: palomaGiraffeWalk 24s linear infinite; }
-@media (max-width: 700px) { .footer-giraffe { animation-duration: 16s; } }
+.footer-giraffe .fg-body { z-index: 3; -webkit-clip-path: polygon(0.00% 0.00%, 100.00% 0.00%, 100.00% 66.96%, 20.36% 66.96%, 20.36% 74.23%, 13.09% 74.23%, 13.09% 66.96%, 0.00% 66.96%); clip-path: polygon(0.00% 0.00%, 100.00% 0.00%, 100.00% 66.96%, 20.36% 66.96%, 20.36% 74.23%, 13.09% 74.23%, 13.09% 66.96%, 0.00% 66.96%); }
+.footer-giraffe .fg-rf { z-index: 1; -webkit-clip-path: polygon(20.36% 63.14%, 28.73% 63.14%, 28.73% 72.07%, 22.18% 78.06%, 20.00% 89.29%, 23.64% 95.03%, 13.45% 95.92%, 13.45% 86.73%, 17.45% 73.34%); clip-path: polygon(20.36% 63.14%, 28.73% 63.14%, 28.73% 72.07%, 22.18% 78.06%, 20.00% 89.29%, 23.64% 95.03%, 13.45% 95.92%, 13.45% 86.73%, 17.45% 73.34%); transform-origin: 24.73% 66.33%; }
+.footer-giraffe .fg-rn { z-index: 2; -webkit-clip-path: polygon(26.91% 63.14%, 41.45% 63.14%, 41.45% 66.96%, 36.36% 71.43%, 33.82% 77.81%, 38.55% 89.29%, 45.82% 94.90%, 45.82% 96.68%, 36.91% 96.68%, 34.18% 89.54%, 28.73% 79.34%, 26.55% 77.30%, 26.00% 70.15%); clip-path: polygon(26.91% 63.14%, 41.45% 63.14%, 41.45% 66.96%, 36.36% 71.43%, 33.82% 77.81%, 38.55% 89.29%, 45.82% 94.90%, 45.82% 96.68%, 36.91% 96.68%, 34.18% 89.54%, 28.73% 79.34%, 26.55% 77.30%, 26.00% 70.15%); transform-origin: 34.55% 66.33%; }
+.footer-giraffe .fg-ff { z-index: 1; -webkit-clip-path: polygon(53.82% 63.14%, 62.91% 63.14%, 62.91% 72.07%, 61.09% 79.72%, 60.18% 91.84%, 64.00% 95.41%, 64.00% 96.68%, 54.18% 96.68%, 54.36% 89.29%); clip-path: polygon(53.82% 63.14%, 62.91% 63.14%, 62.91% 72.07%, 61.09% 79.72%, 60.18% 91.84%, 64.00% 95.41%, 64.00% 96.68%, 54.18% 96.68%, 54.36% 89.29%); transform-origin: 58.55% 66.33%; }
+.footer-giraffe .fg-fn { z-index: 2; -webkit-clip-path: polygon(62.91% 63.14%, 73.09% 63.14%, 82.18% 71.68%, 82.18% 76.79%, 80.36% 91.84%, 80.36% 95.15%, 72.36% 95.15%, 74.18% 89.29%, 76.00% 77.81%, 63.64% 68.49%); clip-path: polygon(62.91% 63.14%, 73.09% 63.14%, 82.18% 71.68%, 82.18% 76.79%, 80.36% 91.84%, 80.36% 95.15%, 72.36% 95.15%, 74.18% 89.29%, 76.00% 77.81%, 63.64% 68.49%); transform-origin: 68.36% 66.33%; }
+.footer-giraffe .fg-rf, .footer-giraffe .fg-ff { animation: palomaGiraffeLeg 1s ease-in-out infinite; }
+.footer-giraffe .fg-rn, .footer-giraffe .fg-fn { animation: palomaGiraffeLeg 1s ease-in-out -.5s infinite; }
 @keyframes palomaGiraffeWalk {
   0%    { transform: translate3d(12px, 0, 0) scaleX(1); }
   49.9% { transform: translate3d(calc(100vw - 100% - 12px), 0, 0) scaleX(1); }
@@ -9102,7 +9107,10 @@ body.has-footer-curtain .site-footer {
   99.9% { transform: translate3d(12px, 0, 0) scaleX(-1); }
   100%  { transform: translate3d(12px, 0, 0) scaleX(1); }
 }
-@keyframes palomaGiraffeBob {
-  from { transform: translate3d(0, 0, 0) rotate(-1.2deg); }
-  to   { transform: translate3d(0, -3px, 0) rotate(1.2deg); }
+/* шаг: нога (сзади, +угол) отрывается и выносится вперёд, затем стоит и уходит назад */
+@keyframes palomaGiraffeLeg {
+  0%   { transform: translate3d(0, 0, 0) rotate(13deg);  animation-timing-function: ease-out; }
+  20%  { transform: translate3d(0, -3%, 0) rotate(0deg); animation-timing-function: ease-in; }
+  40%  { transform: translate3d(0, 0, 0) rotate(-13deg); animation-timing-function: linear; }
+  100% { transform: translate3d(0, 0, 0) rotate(13deg); }
 }
