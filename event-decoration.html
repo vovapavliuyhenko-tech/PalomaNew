@@ -1001,15 +1001,19 @@
         var src=list[idx];
         if(isVid(src)){
           lbImg.style.display='none'; lbImg.removeAttribute('src');
-          lbVid.style.display=''; lbVid.src=src; lbVid.currentTime=0;
-          var p=lbVid.play(); if(p&&p.catch)p.catch(function(){});
+          lbVid.style.display=''; lbVid.muted=false; lbVid.src=src;
+          /* в старом Safari перемотка до загрузки бросала ошибку — и попап не открывался */
+          try{ lbVid.currentTime=0; }catch(e){}
+          var p=lbVid.play();
+          /* если браузер не дал включить со звуком — включаем без звука (звук можно включить в плеере) */
+          if(p&&p.catch)p.catch(function(){ lbVid.muted=true; var p2=lbVid.play(); if(p2&&p2.catch)p2.catch(function(){}); });
         }else{
           lbVid.pause(); lbVid.removeAttribute('src'); lbVid.style.display='none';
           lbImg.style.display=''; lbImg.src=src;
         }
         lbCount.textContent=(idx+1)+' / '+list.length;
       }
-      function open(g,start){ list=g; idx=start||0; show(); lb.classList.add('is-open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('ea-lb-open'); }
+      function open(g,start){ list=g; idx=start||0; lb.classList.add('is-open'); try{ show(); }catch(e){} lb.setAttribute('aria-hidden','false'); document.body.classList.add('ea-lb-open'); }
       function close(){ lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('ea-lb-open'); lbVid.pause(); }
       function step(d){ if(!list.length)return; idx=(idx+d+list.length)%list.length; show(); }
 
