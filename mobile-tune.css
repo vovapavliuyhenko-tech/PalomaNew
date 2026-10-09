@@ -255,3 +255,11 @@
   .cf-modal__add { font-size: 11px !important; letter-spacing: .18em !important; padding: 13px 22px !important; }
   .cf-modal__added { font-size: 11.5px !important; }
 }
+/* кофейня, первый блок на телефоне: выше и с ровными отступами между частями */
+@media (max-width: 768px) {
+  .cf-philo .ea-philo__text { min-height: 470px !important; padding: 52px 28px 44px !important; justify-content: center !important; }
+  .cf-philo .ea-philo__text > .ea-eyebrow { margin: 0 0 34px !important; }
+  .cf-philo .ea-philo__text > .ea-title { margin: 0 0 26px !important; }
+  .cf-philo .ea-philo__text > .ea-philo__p { margin: 0 !important; }
+  .cf-philo .ea-philo__text > :last-child { margin-top: -10px !important; }
+}
