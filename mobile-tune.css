@@ -376,3 +376,16 @@
   .ea-serv__card--flip.is-flipped .ea-serv__face--front { transform: perspective(1400px) rotateY(-180deg) !important; opacity: 0; visibility: hidden; }
   .ea-serv__card--flip.is-flipped .ea-serv__face--back  { transform: perspective(1400px) rotateY(0deg) !important; opacity: 1; visibility: visible; }
 }
+/* оформление, «Наш процесс», шаги 01 и 03 на телефоне: фото выше, отступы
+   от текста сверху и снизу одинаковые (~36px при высоте шага ~700px) */
+@media (max-width: 900px) {
+  #process .ea-proc-step .ea-proc__ph--a,
+  #process .ea-proc-step:nth-child(2) .ea-proc__ph--a,
+  #process .ea-proc-step:last-child .ea-proc__ph--d { top: 16% !important; height: 30.5% !important; }
+  #process .ea-proc-step .ea-proc__ph--b,
+  #process .ea-proc-step:last-child .ea-proc__ph--e { top: 68.2% !important; height: 30.5% !important; }
+  #process .ea-proc-step:nth-child(2) .ea-step__t--top,
+  #process .ea-proc-step:last-child .ea-step__t--top { top: 51.7% !important; }
+  #process .ea-proc-step:nth-child(2) .ea-step__body--lo,
+  #process .ea-proc-step:last-child .ea-step__body--hi { top: 57.7% !important; }
+}
