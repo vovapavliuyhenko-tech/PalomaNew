@@ -470,3 +470,14 @@
   .ea-serv__card--flip.ea-serv__card--flip .ea-serv__flip { box-shadow: none !important; }
   .ea-serv__card--flip.ea-serv__card--flip .ea-serv__face { box-shadow: 0 18px 40px rgba(20, 12, 8, .32) !important; }
 }
+/* «Наш процесс» / этапы кофейни, шаги 01 и 03: фото → заголовок и текст → фото */
+@media (max-width: 900px) {
+  #process .ea-proc__track > .ea-proc-step:has(.ea-proc__ph--b), #process .ea-proc__track > .ea-proc-step:has(.ea-proc__ph--e),
+  #cf-steps .ea-proc__track > .ea-proc-step:has(.ea-proc__ph--b), #cf-steps .ea-proc__track > .ea-proc-step:has(.ea-proc__ph--e) {
+    grid-template-rows: minmax(0, 1fr) auto auto minmax(0, 1fr) !important;
+  }
+  #process .ea-proc__track .ea-proc-step .ea-proc__ph--a.ea-proc__ph--a, #process .ea-proc__track .ea-proc-step .ea-proc__ph--d.ea-proc__ph--d,
+  #cf-steps .ea-proc__track .ea-proc-step .ea-proc__ph--a.ea-proc__ph--a, #cf-steps .ea-proc__track .ea-proc-step .ea-proc__ph--d.ea-proc__ph--d { order: 0 !important; }
+  #process .ea-proc__track .ea-proc-step:has(.ea-proc__ph--b) .ea-step__t, #process .ea-proc__track .ea-proc-step:has(.ea-proc__ph--e) .ea-step__t,
+  #cf-steps .ea-proc__track .ea-proc-step:has(.ea-proc__ph--b) .ea-step__t, #cf-steps .ea-proc__track .ea-proc-step:has(.ea-proc__ph--e) .ea-step__t { margin-top: 4px !important; }
+}
