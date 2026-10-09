@@ -84,9 +84,13 @@
   .site-footer .footer-copy, .site-footer .footer-legal > :not(.sf2-dev) { display: none !important; }
   .site-footer .footer-legal { display: block !important; width: 100% !important; padding: 0 !important; margin: 0 !important; }
   .site-footer .footer-legal .sf2-dev {
-    display: flex !important; align-items: center; justify-content: center; gap: 8px;
-    width: 100% !important; box-sizing: border-box; margin: 0 !important; padding: 13px 16px !important;
-    border-radius: 12px !important; font-size: 12px !important; letter-spacing: .08em !important;
+    display: flex !important; align-items: center; justify-content: center; gap: 7px;
+    width: 100% !important; box-sizing: border-box; margin: 0 !important; padding: 8px 14px !important;
+    border-radius: 999px !important; font-size: 10.5px !important; letter-spacing: .12em !important;
+    color: rgba(255, 255, 255, .72) !important;
+    background: rgba(255, 255, 255, .04) !important;
+    border: 1px solid rgba(231, 56, 90, .38) !important;
   }
+  .site-footer .footer-legal .sf2-dev:active { background: rgba(231, 56, 90, .14) !important; color: #fff !important; }
   .site-footer .footer-bottom { padding-top: 16px !important; padding-bottom: 18px !important; }
 }
