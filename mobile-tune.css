@@ -453,3 +453,20 @@
   .ea-serv__card--flip .ea-serv__face--back .ea-serv__slash { margin: 14px 0 0 !important; }
   .ea-serv__card--flip .ea-serv__face--back .ea-serv__price { margin-top: auto !important; }
 }
+/* карточки услуг на телефоне — ПРОСТОЙ переворот без 3D: сторона сжимается
+   к центру по ширине, затем другая разжимается. Только scaleX — гладко
+   на любом телефоне. (Заменяет 3D-переворот выше.) */
+@media (max-width: 1024px) {
+  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__face {
+    -webkit-backface-visibility: visible !important; backface-visibility: visible !important;
+    opacity: 1 !important; visibility: visible !important; will-change: transform;
+  }
+  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__face--front { transform: scaleX(1) !important; transition: transform .24s cubic-bezier(.2, .7, .3, 1) .24s !important; }
+  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__face--back  { transform: scaleX(0) !important; transition: transform .24s cubic-bezier(.7, 0, .8, .3) 0s !important; }
+  .ea-serv__card--flip.ea-serv__card--flip.is-flipped .ea-serv__face--front { transform: scaleX(0) !important; transition: transform .24s cubic-bezier(.7, 0, .8, .3) 0s !important; }
+  .ea-serv__card--flip.ea-serv__card--flip.is-flipped .ea-serv__face--back  { transform: scaleX(1) !important; transition: transform .24s cubic-bezier(.2, .7, .3, 1) .24s !important; }
+}
+@media (max-width: 1024px) {
+  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__flip { box-shadow: none !important; }
+  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__face { box-shadow: 0 18px 40px rgba(20, 12, 8, .32) !important; }
+}
