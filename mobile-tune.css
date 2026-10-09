@@ -485,3 +485,6 @@
 @media (max-width: 900px) {
   #process .ea-proc__track .ea-proc-step .ea-proc__ph.ea-proc__ph, #cf-steps .ea-proc__track .ea-proc-step .ea-proc__ph.ea-proc__ph { border-width: 1.2px !important; }
 }
+@media (max-width: 900px) {
+  #process .ea-proc__track .ea-proc-step .ea-proc__ph--d.ea-proc__ph--d { object-position: 50% 35% !important; }
+}
