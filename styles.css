@@ -9114,3 +9114,12 @@ body.has-footer-curtain .site-footer {
   40%  { transform: translate3d(0, 0, 0) rotate(-13deg); animation-timing-function: linear; }
   100% { transform: translate3d(0, 0, 0) rotate(13deg); }
 }
+/* телефон: жираф идёт только слева направо — выходит из-за левого края,
+   уходит за правый и сразу снова появляется слева */
+@media (max-width: 700px) {
+  .footer-giraffe { animation: palomaGiraffeWalkLR 10s linear infinite !important; }
+}
+@keyframes palomaGiraffeWalkLR {
+  from { transform: translate3d(-100%, 0, 0); }
+  to   { transform: translate3d(100vw, 0, 0); }
+}
