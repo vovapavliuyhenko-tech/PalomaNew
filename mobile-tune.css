@@ -298,3 +298,21 @@
   #process .ea-proc__intro .ea-proc__lead { font-size: 11px !important; line-height: 1.6 !important; }
   #process .ea-step__d { font-size: 11px !important; line-height: 1.6 !important; }
 }
+/* оформление, телефон: первые два блока — в формате первого блока кофейни:
+   фото 80% экрана, карточка 500px, надпись сверху, текст посередине, низ — кнопка/логотип */
+@media (max-width: 768px) {
+  .ea-hero#top .ea-hero__left, .ea-philo#philosophy .ea-philo__media { height: 80svh !important; min-height: 80svh !important; }
+  .ea-hero#top .ea-hero__left > img, .ea-philo#philosophy .ea-philo__media img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+
+  .ea-hero#top .ea-hero__right { min-height: 500px !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; gap: 0 !important; padding: 34px 36px 48.72px !important; }
+  .ea-hero#top .ea-hero__logo { margin: 40.6px auto 0 !important; }
+  .ea-hero#top .ea-hero__mid { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; margin: 0 !important; }
+  .ea-hero#top .ea-hero__h1 { margin: 0 !important; }
+  .ea-hero#top .ea-hero__lead { font-size: 11px !important; line-height: 1.6 !important; margin: 22px 0 38px !important; }
+
+  .ea-philo#philosophy .ea-philo__text { min-height: 500px !important; display: flex !important; flex-direction: column !important; justify-content: flex-start !important; padding: 34px 36px 48.72px !important; }
+  .ea-philo#philosophy .ea-eyebrow { margin: 40px 0 0 !important; }
+  .ea-philo#philosophy .ea-title { margin: auto 0 0 !important; }
+  .ea-philo#philosophy .ea-philo__p { font-size: 11px !important; text-align: center !important; margin: 22px 0 auto !important; }
+  .ea-philo#philosophy .ea-philo__text > div:last-child { margin: 0 0 14px !important; line-height: 0; }
+}
