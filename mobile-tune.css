@@ -325,3 +325,19 @@
   .ea-serv__hint { font-size: 9px !important; padding: 5px 9px !important; gap: 4px !important; }
   .ea-serv__hint svg { width: 10px !important; height: 10px !important; }
 }
+/* оформление, телефон: форма заявки — компактнее. Текст в полях оставляем 16px,
+   иначе iPhone увеличивает страницу при нажатии на поле; подсказки — мельче */
+@media (max-width: 768px) {
+  #contact .ea-form { gap: 9px !important; row-gap: 9px !important; }
+  #contact .ea-form input:not([type="checkbox"]):not([type="range"]), #contact .evd-sel__btn {
+    height: 46px !important; min-height: 0 !important; padding: 0 16px !important; border-radius: 12px !important; font-size: 16px !important;
+  }
+  #contact .ea-form input::placeholder { font-size: 13px !important; }
+  #contact .evd-sel__val, #contact .evd-sel__val.is-placeholder { font-size: 13px !important; font-style: normal !important; }
+  #contact .evd-sel__opt { font-size: 13px !important; padding: 10px 14px !important; }
+  #contact .ea-range__bubble { font-size: 12px !important; padding: 2px 9px !important; }
+  #contact .ea-form__field span, #contact .ea-range__scale span { font-size: 11px !important; }
+  #contact .ea-form label:has(input[type="checkbox"]), #contact .ea-form label:has(input[type="checkbox"]) a { font-size: 11px !important; line-height: 1.45 !important; }
+  #contact .ea-form .ea-btn { margin-top: 6px !important; }
+  #contact .ea-title { margin-bottom: 18px !important; }
+}
