@@ -488,3 +488,11 @@
 @media (max-width: 900px) {
   #process .ea-proc__track .ea-proc-step .ea-proc__ph--d.ea-proc__ph--d { object-position: 50% 35% !important; }
 }
+/* каталог (и аренда) на телефоне: верхние кнопки компактнее */
+@media (max-width: 768px) {
+  .catalog-filter-btn { font-size: 10.5px !important; padding: 8px 13px !important; min-height: 0 !important; height: auto !important; border-radius: 9px !important; line-height: 1.2 !important; }
+  .catalog-filters { gap: 6px !important; padding-top: 10px !important; padding-bottom: 10px !important; }
+  .catalog-budget-btn, .catalog-select__trigger { font-size: 10.5px !important; padding: 6px 11px !important; min-height: 0 !important; height: auto !important; line-height: 1.2 !important; }
+  .catalog-tools__label { font-size: 9px !important; }
+  .catalog-tools, .catalog-tools__group { gap: 6px !important; row-gap: 8px !important; }
+}
