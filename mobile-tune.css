@@ -316,3 +316,12 @@
   .ea-philo#philosophy .ea-philo__p { font-size: 11px !important; text-align: center !important; margin: 22px 0 auto !important; }
   .ea-philo#philosophy .ea-philo__text > div:last-child { margin: 0 0 14px !important; line-height: 0; }
 }
+/* оформление, телефон: карточки «Свадебное оформление» / «Частное событие» — мельче и аккуратнее */
+@media (max-width: 768px) {
+  .ea-serv__num { font-size: 10px !important; }
+  .ea-serv__ctitle { font-size: 22px !important; line-height: 1.2 !important; }
+  .ea-serv__slash { font-size: 11px !important; line-height: 1.55 !important; }
+  .ea-serv__price { font-size: 10px !important; letter-spacing: .14em !important; padding-top: 10px !important; }
+  .ea-serv__hint { font-size: 9px !important; padding: 5px 9px !important; gap: 4px !important; }
+  .ea-serv__hint svg { width: 10px !important; height: 10px !important; }
+}
