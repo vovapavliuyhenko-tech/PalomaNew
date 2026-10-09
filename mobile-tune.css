@@ -529,3 +529,11 @@
   .product-card .product-card__btns { margin-left: -18px !important; margin-right: -18px !important; width: auto !important; }
   .product-card .product-card__btns > * { width: 100% !important; }
 }
+/* карточка товара на телефоне: описание и текст в раскрывающихся блоках мельче */
+@media (max-width: 768px) {
+  .pdp-info__desc { font-size: 12.5px !important; line-height: 1.6 !important; }
+  .pdp-accordion__trigger, .pdp-accordion__trigger span { font-size: 13px !important; }
+  .pdp-accordion__body, .pdp-accordion__body p, .pdp-accordion__body li, .pdp-accordion__intro { font-size: 11.5px !important; line-height: 1.55 !important; }
+  .pdp-included__t { font-size: 11.5px !important; }
+  .pdp-included__d { font-size: 10.5px !important; line-height: 1.45 !important; }
+}
