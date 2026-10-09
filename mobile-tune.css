@@ -292,3 +292,9 @@
   #cf-steps .ea-proc__intro .ea-title { font-size: 22px !important; line-height: 1.15 !important; }
 }
 @media (max-width: 768px) { #cf-steps .ea-step__d { font-size: 11px !important; line-height: 1.6 !important; } }
+/* оформление, телефон: «Наш процесс» — как «Кофе на дом» в кофейне */
+@media (max-width: 768px) {
+  #process .ea-proc__intro .ea-title { font-size: 22px !important; line-height: 1.15 !important; }
+  #process .ea-proc__intro .ea-proc__lead { font-size: 11px !important; line-height: 1.6 !important; }
+  #process .ea-step__d { font-size: 11px !important; line-height: 1.6 !important; }
+}
