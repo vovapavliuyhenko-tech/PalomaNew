@@ -119,7 +119,7 @@
 
 /* Жираф на телефоне: движение слева направо ведёт скрипт (а не CSS-анимация) —
    на части iPhone расчёт пути в CSS не срабатывал, и жираф шагал на месте.
-   Плавно появляется у левого края, идёт и растворяется у правого. Ноги
+   Целиком выходит из-за левого края, проходит экран и уходит за правый. Ноги
    шагают по-прежнему через CSS. Кадры считаются, только пока подвал виден. */
 (function () {
   "use strict";
@@ -127,23 +127,23 @@
   if (!g || !window.matchMedia || !window.requestAnimationFrame) return;
   var mq = window.matchMedia("(max-width: 700px)");
   var SPEED = 34;          /* px в секунду */
-  var x = 4, last = 0, raf = 0, visible = true;
+  var x = null, last = 0, raf = 0, visible = true;
 
-  function bounds() {
+  function hostWidth() {
     var host = g.parentElement;
-    var max = (host ? host.clientWidth : window.innerWidth) - g.offsetWidth - 4;
-    return max > 8 ? max : 8;
+    return host ? host.clientWidth : window.innerWidth;
   }
+  /* целиком выходит из-за левого края и целиком уходит за правый — без затемнения */
   function frame(t) {
     raf = 0;
     if (!mq.matches) return;
-    if (last) x += SPEED * Math.min(0.05, (t - last) / 1000);
+    var w = g.offsetWidth || 84;
+    if (x === null) x = -w;
+    if (last) x += SPEED * Math.min(0.3, (t - last) / 1000);
     last = t;
-    var max = bounds();
-    if (x >= max) x = 4;
-    var fade = 26, op = Math.min(1, (x - 4) / fade, (max - x) / fade);
+    if (x > hostWidth()) x = -w;
     g.style.transform = "translate3d(" + x.toFixed(1) + "px,0,0)";
-    g.style.opacity = op < 0 ? 0 : op.toFixed(2);
+    g.style.opacity = "1";
     if (visible) raf = requestAnimationFrame(frame);
   }
   function start() {
