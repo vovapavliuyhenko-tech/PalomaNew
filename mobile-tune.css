@@ -197,3 +197,29 @@
 @media (max-width: 1024px) {
   .cart-drawer__panel { width: min(320px, 78vw) !important; }
 }
+
+/* панели корзины и избранного на телефоне — те же размеры, что в бургере */
+@media (max-width: 1024px) {
+  .cart-drawer__header { padding: 18px 18px 14px !important; }
+  .cart-drawer__title { font-size: 13px !important; letter-spacing: .16em !important; text-transform: uppercase !important; font-style: normal !important; line-height: 1.3 !important; }
+  .cart-drawer__close { width: 30px !important; height: 30px !important; }
+  .cart-drawer__close svg { width: 12px !important; height: 12px !important; }
+  .cart-drawer__body, .cart-drawer__list { padding-left: 18px !important; padding-right: 18px !important; }
+  .cart-drawer__item { gap: 10px !important; padding: 12px 0 !important; }
+  .cart-drawer__item-media { width: 56px !important; height: 70px !important; flex: 0 0 56px !important; }
+  .cart-drawer__item-name { font-size: 11px !important; letter-spacing: .06em !important; line-height: 1.35 !important; }
+  .cart-drawer__item-size { font-size: 9.5px !important; }
+  .cart-drawer__item-price { font-size: 11.5px !important; }
+  .cart-drawer__item-remove { width: 24px !important; height: 24px !important; }
+  .cart-drawer .cart-qty-btn { width: 22px !important; height: 22px !important; font-size: 12px !important; }
+  .cart-drawer .cart-qty-val { font-size: 11px !important; }
+  .cart-drawer__empty-icon { transform: scale(.7); }
+  .cart-drawer__empty-title { font-size: 13px !important; letter-spacing: .14em !important; text-transform: uppercase !important; font-style: normal !important; }
+  .cart-drawer__empty-text { font-size: 11px !important; line-height: 1.5 !important; }
+  .cart-drawer__footer { padding: 14px 18px 18px !important; gap: 10px !important; }
+  .cart-drawer__total-label { font-size: 9px !important; letter-spacing: .14em !important; text-transform: uppercase !important; }
+  .cart-drawer__total-val { font-size: 15px !important; }
+  .cart-drawer__checkout, .cart-drawer__empty-cta { font-size: 11px !important; letter-spacing: .22em !important; padding: 14px 26px !important; min-height: 0 !important; }
+  .cart-drawer__continue { font-size: 10.5px !important; }
+  .wishlist-drawer__incart, .wishlist-drawer .cart-drawer__item button:not(.cart-drawer__item-remove) { font-size: 9.5px !important; letter-spacing: .1em !important; }
+}
