@@ -564,3 +564,8 @@
   .blog-card__author, .blog-card time, .blog-card__meta, .blog-card__meta span { font-size: 10px !important; }
   .blog-card__link { font-size: 10px !important; }
 }
+/* корзина (панель справа): «Оформить заказ» компактнее */
+@media (max-width: 1024px) {
+  .cart-drawer__checkout { padding: 11px 18px !important; font-size: 10px !important; letter-spacing: .14em !important; min-height: 0 !important; height: auto !important; line-height: 1.2 !important; }
+  .cart-drawer__empty-cta { padding: 11px 18px !important; font-size: 10px !important; letter-spacing: .14em !important; }
+}
