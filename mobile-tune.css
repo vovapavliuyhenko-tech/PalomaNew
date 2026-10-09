@@ -238,3 +238,20 @@
   .cf-philo .ea-philo__media { min-height: 72svh !important; }
   .cf-philo .ea-philo__media video { height: 100% !important; min-height: 72svh; object-fit: cover; }
 }
+
+/* кофейня: окно позиции меню на телефоне — всё компактнее */
+@media (max-width: 768px) {
+  .cf-modal__close { width: 32px !important; height: 32px !important; font-size: 18px !important; }
+  .cf-modal__cat { font-size: 10px !important; }
+  .cf-modal__title { font-size: 19px !important; }
+  .cf-modal__desc { font-size: 11.5px !important; line-height: 1.45 !important; }
+  .cf-bld__l { font-size: 9.5px !important; }
+  .cf-seg__b { padding: 7px 6px !important; border-radius: 10px !important; font-size: 12px !important; }
+  .cf-seg__b b { font-size: 12px !important; }
+  .cf-seg__b span { font-size: 10px !important; }
+  .cf-add { padding: 7px 11px !important; gap: 6px !important; }
+  .cf-add__n { font-size: 12px !important; }
+  .cf-add__p { font-size: 10.5px !important; }
+  .cf-modal__add { font-size: 11px !important; letter-spacing: .18em !important; padding: 13px 22px !important; }
+  .cf-modal__added { font-size: 11.5px !important; }
+}
