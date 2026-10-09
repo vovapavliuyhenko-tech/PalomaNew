@@ -9098,7 +9098,8 @@ body.has-footer-curtain .site-footer {
 .footer-giraffe .fg-ff { z-index: 1; clip-path: polygon(53.82% 63.14%, 62.91% 63.14%, 62.91% 72.07%, 61.09% 79.72%, 60.18% 91.84%, 64.00% 95.41%, 64.00% 96.68%, 54.18% 96.68%, 54.36% 89.29%); transform-origin: 58.55% 66.33%; }
 .footer-giraffe .fg-fn { z-index: 2; clip-path: polygon(62.91% 63.14%, 73.09% 63.14%, 82.18% 71.68%, 82.18% 76.79%, 80.36% 91.84%, 80.36% 95.15%, 72.36% 95.15%, 74.18% 89.29%, 76.00% 77.81%, 63.64% 68.49%); transform-origin: 68.36% 66.33%; }
 
-@media (prefers-reduced-motion: no-preference) {
+/* жираф идёт всегда — даже при «Уменьшении движения» на iPhone: движение спокойное и декоративное */
+@media all {
   .footer-giraffe {
     left: 0; right: auto !important;
     animation: palomaGiraffeWalk 22s linear infinite, palomaGiraffeStep .5s ease-in-out infinite alternate;

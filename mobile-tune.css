@@ -389,3 +389,13 @@
   #process .ea-proc-step:nth-child(2) .ea-step__body--lo,
   #process .ea-proc-step:last-child .ea-step__body--hi { top: 57.7% !important; }
 }
+/* шаги 01/03: текст привязан к верхнему фото пикселями, нижнее фото занимает
+   остаток до низа — на низких/узких экранах текст (до 4 строк) не налезает */
+@media (max-width: 900px) {
+  #process .ea-proc-step:nth-child(2) .ea-step__t--top,
+  #process .ea-proc-step:last-child .ea-step__t--top { top: calc(46.5% + 28px) !important; }
+  #process .ea-proc-step:nth-child(2) .ea-step__body--lo,
+  #process .ea-proc-step:last-child .ea-step__body--hi { top: calc(46.5% + 66px) !important; }
+  #process .ea-proc-step .ea-proc__ph--b,
+  #process .ea-proc-step:last-child .ea-proc__ph--e { top: auto !important; bottom: 1.3% !important; height: calc(52.2% - 160px) !important; }
+}

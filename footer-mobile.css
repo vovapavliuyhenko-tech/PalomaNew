@@ -106,3 +106,27 @@
   .sfm-form .sf2-send { width: 44px !important; height: 44px !important; flex: 0 0 44px !important; }
   .sfm-form .sf2-consent span, .sfm-form .sf2-consent a { font-size: 10.5px !important; }
 }
+
+/* все разделы подвала — одинаковые аккуратные кнопки (как «Документы», компактнее) */
+@media (max-width: 640px) {
+  .sfm-sec__body { padding-bottom: 14px; }
+  .sfm-links, .sfm-links--one { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+  .sfm-docs { gap: 6px !important; padding: 0 0 14px !important; }
+  .sfm-links a, .sfm-doc, .sfm-route, .sfm-addr {
+    display: flex !important; align-items: center; justify-content: space-between; gap: 6px;
+    min-height: 36px; box-sizing: border-box; padding: 8px 11px !important;
+    border: 1px solid rgba(255, 255, 255, .16) !important; border-radius: 10px !important;
+    background: rgba(255, 255, 255, .04) !important;
+    color: rgba(255, 255, 255, .86) !important; text-decoration: none !important;
+    font-size: 11.5px !important; line-height: 1.25 !important; letter-spacing: .02em !important;
+    -webkit-tap-highlight-color: transparent; transition: background .2s ease, border-color .2s ease;
+  }
+  .sfm-links a::after, .sfm-doc::after, .sfm-route::after, .sfm-addr::after { content: "→"; flex: 0 0 auto; opacity: .45; font-size: 11px !important; }
+  .sfm-links a:active, .sfm-doc:active, .sfm-route:active, .sfm-addr:active { background: rgba(255, 255, 255, .11) !important; border-color: rgba(255, 255, 255, .32) !important; }
+  .sfm-links .sf2-badge { margin-left: auto; margin-right: 4px; }
+  /* адрес и часы: адрес и маршрут — кнопки, подписи — мелким текстом между ними */
+  .sfm-sec .sfm-text { display: flex; flex-direction: column; gap: 6px; }
+  .sfm-sec .sfm-text .sfm-note { margin: 2px 2px; font-size: 11px !important; line-height: 1.45 !important; }
+  .sfm-route { color: #fff !important; border-color: rgba(231, 56, 90, .45) !important; justify-content: center !important; }
+  .sfm-route::after { content: none; }
+}
