@@ -569,3 +569,32 @@
   .cart-drawer__checkout { padding: 11px 18px !important; font-size: 10px !important; letter-spacing: .14em !important; min-height: 0 !important; height: auto !important; line-height: 1.2 !important; }
   .cart-drawer__empty-cta { padding: 11px 18px !important; font-size: 10px !important; letter-spacing: .14em !important; }
 }
+/* подписка / сертификат / свадебная копилка на телефоне — компактнее и аккуратнее.
+   Текст в полях оставлен 16px (иначе iPhone увеличивает страницу). */
+@media (max-width: 768px) {
+  .subscription-hero__title { font-size: 25px !important; line-height: 1.15 !important; }
+  .subscription-notice, .subscription-notice p, .sub-trial-note { font-size: 11.5px !important; line-height: 1.5 !important; }
+  .subscription-option { font-size: 10px !important; min-height: 0 !important; height: auto !important; padding: 11px 14px !important; }
+  .subscription-sizes { gap: 6px !important; }
+  .subscription-size { min-height: 0 !important; height: auto !important; padding: 10px 6px !important; border-radius: 12px !important; }
+  .subscription-size__name { font-size: 12.5px !important; }
+  .subscription-size__text { font-size: 10px !important; }
+  .gc-format { min-height: 0 !important; height: auto !important; padding: 10px 12px !important; }
+  .gc-format__title { font-size: 12.5px !important; }
+  .gc-format__sub, .gc-format span:not(.gc-format__title) { font-size: 10.5px !important; }
+  .subscription-summary__row span { font-size: 12px !important; }
+  .subscription-summary__total span { font-size: 13px !important; }
+  .pcm-option__label { font-size: 12px !important; padding-top: 9px !important; padding-bottom: 9px !important; }
+  .wpb-input { padding: 10px 14px !important; border-radius: 12px !important; }
+  textarea.wpb-input { min-height: 76px !important; height: auto !important; }
+  .wpb-input::placeholder { font-size: 13px; }
+  .subscription-form__submit { min-height: 0 !important; height: auto !important; padding: 13px 20px !important; font-size: 11px !important; letter-spacing: .14em !important; }
+  .sub-accordion__trigger span { font-size: 12.5px !important; }
+  .sub-accordion__body p { font-size: 11.5px !important; line-height: 1.55 !important; }
+  .wpb-how__step-title { font-size: 16px !important; line-height: 1.25 !important; }
+  .wpb-how__step-desc { font-size: 11.5px !important; line-height: 1.55 !important; }
+  .wpb-cta__title { font-size: 20px !important; line-height: 1.2 !important; }
+  .wpb-cta__desc { font-size: 11.5px !important; line-height: 1.6 !important; }
+  .wpb-cta__btn { padding: 13px 20px !important; font-size: 11px !important; min-height: 0 !important; height: auto !important; }
+  .wpb-qr__counter, .wpb-qr__alt, .wpb-qr__alt a { font-size: 11px !important; }
+}
