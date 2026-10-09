@@ -483,5 +483,6 @@
 }
 /* шаг 03, верхнее фото: показываем верх кадра — видно поцелуй */
 @media (max-width: 900px) {
-  #process .ea-proc__track .ea-proc-step .ea-proc__ph--d.ea-proc__ph--d { object-position: 50% 8% !important; }
+  #process .ea-proc__track .ea-proc-step .ea-proc__ph--d.ea-proc__ph--d { object-position: 50% 0% !important; }
+  #process .ea-proc__track .ea-proc-step .ea-proc__ph.ea-proc__ph, #cf-steps .ea-proc__track .ea-proc-step .ea-proc__ph.ea-proc__ph { border-width: 1.2px !important; }
 }
