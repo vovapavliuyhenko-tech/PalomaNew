@@ -9126,3 +9126,5 @@ body.has-footer-curtain .site-footer {
   93%  { opacity: 1; }
   100% { transform: translate3d(calc(100vw - 100% - 4px), 0, 0); opacity: 0; }
 }
+/* жираф на паузе, пока подвал не на экране (класс ставит footer-mobile.js) */
+.footer-giraffe.is-paused, .footer-giraffe.is-paused img { animation-play-state: paused !important; }

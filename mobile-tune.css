@@ -358,24 +358,6 @@
   }
   #process .ea-proc__panel, #cf-steps .ea-proc__panel { scroll-snap-align: none !important; }
 }
-/* карточки услуг 01/02 на телефоне: настоящий переворот. Каждая сторона
-   поворачивается сама (perspective в transform), без preserve-3d — его Safari
-   на iPhone часто рисует без анимации, и карточка «переключалась» мгновенно.
-   Видимость сторон меняется ровно в середине поворота. */
-@media (max-width: 1024px) {
-  .ea-serv__card--flip .ea-serv__flip, .ea-serv__card--flip.is-flipped .ea-serv__flip, .ea-serv__card--flip:focus-within .ea-serv__flip { transform: none !important; transform-style: flat !important; transition: none !important; will-change: auto !important; }
-  .ea-serv__card--flip .ea-serv__face {
-    /* стороны меняются ровно на ребре (90°): кривая симметричная, поэтому середина по времени = середина по углу;
-       скрытие обратной стороны не используем — на iPhone оно прятало обе стороны на мгновение */
-    -webkit-backface-visibility: visible !important; backface-visibility: visible !important;
-    transition: transform .8s cubic-bezier(.65, 0, .35, 1), opacity 0s linear .4s, visibility 0s linear .4s !important;
-    will-change: transform;
-  }
-  .ea-serv__card--flip .ea-serv__face--front { transform: perspective(1400px) rotateY(0deg) !important; opacity: 1; visibility: visible; }
-  .ea-serv__card--flip .ea-serv__face--back  { transform: perspective(1400px) rotateY(180deg) !important; opacity: 0; visibility: hidden; }
-  .ea-serv__card--flip.is-flipped .ea-serv__face--front { transform: perspective(1400px) rotateY(-180deg) !important; opacity: 0; visibility: hidden; }
-  .ea-serv__card--flip.is-flipped .ea-serv__face--back  { transform: perspective(1400px) rotateY(0deg) !important; opacity: 1; visibility: visible; }
-}
 /* оформление, «Наш процесс», шаги 01 и 03 на телефоне: фото выше, отступы
    от текста сверху и снизу одинаковые (~36px при высоте шага ~700px) */
 @media (max-width: 900px) {
@@ -440,35 +422,10 @@
   #cf-steps .ea-proc__track .ea-proc-step .ea-proc__ph--b.ea-proc__ph--b, #cf-steps .ea-proc__track .ea-proc-step .ea-proc__ph--e.ea-proc__ph--e { order: 4; }
   #process .ea-proc__arrow, #cf-steps .ea-proc__arrow { display: none !important; }
 }
-/* карточки услуг на телефоне: плавный переворот без лагов — тяжёлая тень
-   (100px размытия) больше не крутится вместе со сторонами: она на неподвижной
-   подложке, а стороны — лёгкие слои на видеокарте */
-@media (max-width: 1024px) {
-  .ea-serv__card--flip .ea-serv__flip { border-radius: 22px; box-shadow: 0 22px 50px rgba(20, 12, 8, .35) !important; }
-  .ea-serv__card--flip .ea-serv__face { box-shadow: none !important; transform-origin: 50% 50%; -webkit-transform-style: flat; contain: layout paint; }
-  .ea-serv__card--flip .ea-serv__face img { -webkit-user-drag: none; }
-}
 @media (max-width: 1024px) {
   .ea-serv__card--flip .ea-serv__face--back { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; }
   .ea-serv__card--flip .ea-serv__face--back .ea-serv__slash { margin: 14px 0 0 !important; }
   .ea-serv__card--flip .ea-serv__face--back .ea-serv__price { margin-top: auto !important; }
-}
-/* карточки услуг на телефоне — ПРОСТОЙ переворот без 3D: сторона сжимается
-   к центру по ширине, затем другая разжимается. Только scaleX — гладко
-   на любом телефоне. (Заменяет 3D-переворот выше.) */
-@media (max-width: 1024px) {
-  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__face {
-    -webkit-backface-visibility: visible !important; backface-visibility: visible !important;
-    opacity: 1 !important; visibility: visible !important; will-change: transform;
-  }
-  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__face--front { transform: scaleX(1) !important; transition: transform .24s cubic-bezier(.2, .7, .3, 1) .24s !important; }
-  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__face--back  { transform: scaleX(0) !important; transition: transform .24s cubic-bezier(.7, 0, .8, .3) 0s !important; }
-  .ea-serv__card--flip.ea-serv__card--flip.is-flipped .ea-serv__face--front { transform: scaleX(0) !important; transition: transform .24s cubic-bezier(.7, 0, .8, .3) 0s !important; }
-  .ea-serv__card--flip.ea-serv__card--flip.is-flipped .ea-serv__face--back  { transform: scaleX(1) !important; transition: transform .24s cubic-bezier(.2, .7, .3, 1) .24s !important; }
-}
-@media (max-width: 1024px) {
-  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__flip { box-shadow: none !important; }
-  .ea-serv__card--flip.ea-serv__card--flip .ea-serv__face { box-shadow: 0 18px 40px rgba(20, 12, 8, .32) !important; }
 }
 /* «Наш процесс» / этапы кофейни, шаги 01 и 03: фото → заголовок и текст → фото */
 @media (max-width: 900px) {

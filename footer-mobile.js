@@ -154,6 +154,8 @@
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (en) {
       visible = en[0].isIntersecting;
+      /* подвал не на экране — ноги не шевелятся, телефон не тратит силы */
+      g.classList.toggle("is-paused", !visible);
       if (visible) start(); else if (raf) { cancelAnimationFrame(raf); raf = 0; }
     }).observe(g.closest(".site-footer") || g);
   }
