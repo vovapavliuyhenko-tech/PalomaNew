@@ -82,7 +82,7 @@
   #ea-home-philo .ea-title { margin: auto 0 0 !important; }
   #ea-home-philo .ea-philo__p { margin: 22px 0 auto !important; }
   #ea-home-philo .ea-philo__text > div:last-child { margin: 0 0 14px !important; line-height: 0; }
-  .ea-faq__q { font-size: 14px !important; line-height: 1.3 !important; }
+  .ea-faq__q { font-size: 12.5px !important; line-height: 1.3 !important; }
   .ea-faq p, .ea-faq__a, .ea-faq__a p, .ea-faq [class*="answer"], .ea-faq dd { font-size: 11px !important; line-height: 1.55 !important; }
   /* Ответы — во всю ширину (максимум 3 строки): у ответа нет значка «+», отступ справа не нужен */
   .ea-faq { padding-left: 16px !important; padding-right: 16px !important; }
