@@ -341,3 +341,35 @@
   #contact .ea-form .ea-btn { margin-top: 6px !important; }
   #contact .ea-title { margin-bottom: 18px !important; }
 }
+/* блок «Процесс» на телефоне: снова закреплён и листается вертикальной прокруткой
+   (ведёт paloma-hscroll.js). Высоты в lvh — не меняются при скрытии адресной строки */
+@media (max-width: 900px) {
+  #process, #cf-steps { height: 340vh !important; height: 340lvh !important; }
+  #process .ea-proc__sticky, #cf-steps .ea-proc__sticky {
+    position: sticky !important; top: 0 !important;
+    height: 100vh !important; height: 100lvh !important;
+    overflow: hidden !important; display: flex !important; flex-direction: column !important; justify-content: center !important;
+  }
+  #process .ea-proc__track, #cf-steps .ea-proc__track {
+    overflow: visible !important; scroll-snap-type: none !important;
+    will-change: transform !important; height: 86vh !important; height: 86svh !important; flex: 0 0 auto !important;
+    align-self: flex-start !important;
+  }
+  #process .ea-proc__panel, #cf-steps .ea-proc__panel { scroll-snap-align: none !important; }
+}
+/* карточки услуг 01/02 на телефоне: настоящий переворот. Каждая сторона
+   поворачивается сама (perspective в transform), без preserve-3d — его Safari
+   на iPhone часто рисует без анимации, и карточка «переключалась» мгновенно.
+   Видимость сторон меняется ровно в середине поворота. */
+@media (max-width: 1024px) {
+  .ea-serv__card--flip .ea-serv__flip, .ea-serv__card--flip.is-flipped .ea-serv__flip, .ea-serv__card--flip:focus-within .ea-serv__flip { transform: none !important; transform-style: flat !important; transition: none !important; will-change: auto !important; }
+  .ea-serv__card--flip .ea-serv__face {
+    -webkit-backface-visibility: hidden; backface-visibility: hidden;
+    transition: transform .9s cubic-bezier(.65, 0, .25, 1), opacity 0s linear .45s, visibility 0s linear .45s !important;
+    will-change: transform;
+  }
+  .ea-serv__card--flip .ea-serv__face--front { transform: perspective(1400px) rotateY(0deg) !important; opacity: 1; visibility: visible; }
+  .ea-serv__card--flip .ea-serv__face--back  { transform: perspective(1400px) rotateY(180deg) !important; opacity: 0; visibility: hidden; }
+  .ea-serv__card--flip.is-flipped .ea-serv__face--front { transform: perspective(1400px) rotateY(-180deg) !important; opacity: 0; visibility: hidden; }
+  .ea-serv__card--flip.is-flipped .ea-serv__face--back  { transform: perspective(1400px) rotateY(0deg) !important; opacity: 1; visibility: visible; }
+}

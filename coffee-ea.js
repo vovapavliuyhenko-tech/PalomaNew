@@ -591,6 +591,7 @@
       var track = document.getElementById("cfStepsTrack");
       var bar = document.getElementById("cfStepsBar");
       if (!sec || !track) return;
+      return; /* теперь ленту ведёт paloma-hscroll.js (плавно, на всех экранах) */
       /* Телефон/планшет: нативный горизонтальный свайп (вёрстка — в CSS). JS-скролл-
          джек выключен — на мобильном он давал тряску из-за динамической адресной
          строки. Прогресс-бар обновляем по горизонтальному скроллу самой ленты. */

@@ -74,7 +74,7 @@
   .evd-sel__opt.is-sel{background:rgba(231,56,90,.12);color:#E7385A;font-weight:500}
   </style>
   <link rel="stylesheet" href="full-width.css?v=1">
-  <link rel="stylesheet" href="mobile-tune.css?v=48">
+  <link rel="stylesheet" href="mobile-tune.css?v=51">
 </head>
 <body class="event-decoration-page">
   <a href="#main" class="skip-link">К содержимому</a>
@@ -954,6 +954,7 @@
       var track=document.getElementById('eaProcTrack');
       var bar=document.getElementById('eaProcBar');
       if(!sec||!track)return;
+      return; /* теперь ленту ведёт paloma-hscroll.js (плавно, на всех экранах) */
       /* Телефон/планшет: нативный горизонтальный свайп (вёрстка — в CSS), JS-скролл-
          джек выключен (давал тряску). Прогресс-бар — по горизонтальному скроллу ленты. */
       if(window.matchMedia && window.matchMedia('(max-width: 900px)').matches){
@@ -1210,6 +1211,7 @@
     vids.forEach(function(v){near.observe(v);vis.observe(v);});
   })();
   </script>
+  <script src="paloma-hscroll.js?v=2" defer></script>
   <script src="maintenance-banner.js?v=2"></script>
 </body>
 </html>
