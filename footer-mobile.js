@@ -116,3 +116,47 @@
     if (mq.addEventListener) mq.addEventListener("change", place); else if (mq.addListener) mq.addListener(place);
   }
 })();
+
+/* Жираф на телефоне: движение слева направо ведёт скрипт (а не CSS-анимация) —
+   на части iPhone расчёт пути в CSS не срабатывал, и жираф шагал на месте.
+   Плавно появляется у левого края, идёт и растворяется у правого. Ноги
+   шагают по-прежнему через CSS. Кадры считаются, только пока подвал виден. */
+(function () {
+  "use strict";
+  var g = document.querySelector(".footer-giraffe");
+  if (!g || !window.matchMedia || !window.requestAnimationFrame) return;
+  var mq = window.matchMedia("(max-width: 700px)");
+  var SPEED = 34;          /* px в секунду */
+  var x = 4, last = 0, raf = 0, visible = true;
+
+  function bounds() {
+    var host = g.parentElement;
+    var max = (host ? host.clientWidth : window.innerWidth) - g.offsetWidth - 4;
+    return max > 8 ? max : 8;
+  }
+  function frame(t) {
+    raf = 0;
+    if (!mq.matches) return;
+    if (last) x += SPEED * Math.min(0.05, (t - last) / 1000);
+    last = t;
+    var max = bounds();
+    if (x >= max) x = 4;
+    var fade = 26, op = Math.min(1, (x - 4) / fade, (max - x) / fade);
+    g.style.transform = "translate3d(" + x.toFixed(1) + "px,0,0)";
+    g.style.opacity = op < 0 ? 0 : op.toFixed(2);
+    if (visible) raf = requestAnimationFrame(frame);
+  }
+  function start() {
+    if (!mq.matches) { g.style.removeProperty("animation"); g.style.transform = ""; g.style.opacity = ""; return; }
+    g.style.setProperty("animation", "none", "important");
+    if (!raf && visible) { last = 0; raf = requestAnimationFrame(frame); }
+  }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (en) {
+      visible = en[0].isIntersecting;
+      if (visible) start(); else if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    }).observe(g.closest(".site-footer") || g);
+  }
+  if (mq.addEventListener) mq.addEventListener("change", start); else if (mq.addListener) mq.addListener(start);
+  start();
+})();
