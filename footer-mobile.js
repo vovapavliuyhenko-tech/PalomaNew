@@ -126,7 +126,7 @@
   var g = document.querySelector(".footer-giraffe");
   if (!g || !window.matchMedia || !window.requestAnimationFrame) return;
   var mq = window.matchMedia("(max-width: 700px)");
-  var SPEED = 34;          /* px в секунду */
+  var SPEED = 60;          /* px в секунду */
   var x = null, last = 0, raf = 0, visible = true;
 
   function hostWidth() {
