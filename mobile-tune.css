@@ -612,3 +612,11 @@
   }
   .site-header__mobile-tile:active { background: rgba(231, 56, 90, .12); border-color: rgba(231, 56, 90, .6); }
 }
+/* плашка cookie на телефоне — компактная */
+@media (max-width: 768px) {
+  .cookie-bar { padding: 10px 14px !important; }
+  .cookie-bar__inner { gap: 8px !important; }
+  .cookie-bar__text { font-size: 10.5px !important; line-height: 1.45 !important; margin: 0 !important; }
+  .cookie-bar__actions { gap: 6px !important; }
+  .cookie-bar__btn { padding: 8px 12px !important; font-size: 10.5px !important; min-height: 0 !important; height: auto !important; border-radius: 10px !important; }
+}
