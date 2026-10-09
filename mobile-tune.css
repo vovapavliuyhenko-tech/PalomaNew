@@ -223,3 +223,18 @@
   .cart-drawer__continue { font-size: 10.5px !important; }
   .wishlist-drawer__incart, .wishlist-drawer .cart-drawer__item button:not(.cart-drawer__item-remove) { font-size: 9.5px !important; letter-spacing: .1em !important; }
 }
+
+/* кофейня на телефоне: меню мельче, кнопки блоков «лимонады» и «десерты» — обычного размера */
+@media (max-width: 768px) {
+  .cfm-name { font-size: 13px !important; line-height: 1.3 !important; }
+  .cfm-price { font-size: 12px !important; }
+  .cf-lemon .ea-btn, .cf-sweetblock .ea-btn {
+    font-size: 11px !important; letter-spacing: .18em !important; padding: 14px 26px !important;
+    width: auto !important; align-self: flex-start; gap: 10px !important;
+  }
+  .cf-lemon .ea-btn svg, .cf-sweetblock .ea-btn svg { width: 14px !important; height: 14px !important; }
+}
+@media (max-width: 768px) {
+  .cf-philo .ea-philo__media { min-height: 72svh !important; }
+  .cf-philo .ea-philo__media video { height: 100% !important; min-height: 72svh; object-fit: cover; }
+}
