@@ -301,7 +301,8 @@
 /* оформление, телефон: первые два блока — в формате первого блока кофейни:
    фото 80% экрана, карточка 500px, надпись сверху, текст посередине, низ — кнопка/логотип */
 @media (max-width: 768px) {
-  .ea-hero#top .ea-hero__left, .ea-philo#philosophy .ea-philo__media { height: 80svh !important; min-height: 80svh !important; }
+  .ea-hero#top .ea-hero__left { height: 88svh !important; min-height: 88svh !important; }
+  .ea-philo#philosophy .ea-philo__media { height: 80svh !important; min-height: 80svh !important; }
   .ea-hero#top .ea-hero__left > img, .ea-philo#philosophy .ea-philo__media img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
 
   .ea-hero#top .ea-hero__right { min-height: 500px !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; gap: 0 !important; padding: 34px 36px 48.72px !important; }

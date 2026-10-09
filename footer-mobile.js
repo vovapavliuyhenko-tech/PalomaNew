@@ -89,6 +89,17 @@
   var slot = el("div", "sfm-form");
   call.appendChild(slot);
   if (sub) acc.appendChild(section("Обратный звонок", call));
+
+  /* Документы: политика, оферта, cookie и копирайт — раздел-кнопками, как всё
+     остальное; внизу подвала на телефоне остаётся только «Разработчик». */
+  var legal = foot.querySelector(".footer-legal");
+  if (legal) {
+    var docs = el("div", "sfm-docs");
+    legal.querySelectorAll("a:not(.sf2-dev)").forEach(function (a) { var c = a.cloneNode(true); c.className = "sfm-doc"; docs.appendChild(c); });
+    var copy = foot.querySelector(".footer-copy");
+    if (copy) docs.appendChild(el("p", "sfm-docs__copy", copy.innerHTML));
+    if (docs.children.length) acc.appendChild(section("Документы", docs));
+  }
   box.appendChild(acc);
 
 

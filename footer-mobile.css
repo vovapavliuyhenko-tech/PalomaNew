@@ -13,15 +13,15 @@
     font-family: var(--font-sans, "Manrope", sans-serif);
   }
 
-  .sfm-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .sfm-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   .sfm-phone {
     font-family: var(--font-sans, "Manrope", sans-serif); font-weight: 500;
-    font-size: 21px; letter-spacing: .01em; line-height: 1; white-space: nowrap;
+    font-size: clamp(15px, 5vw, 20px); letter-spacing: .01em; line-height: 1; white-space: nowrap;
     color: #fff; text-decoration: none;
   }
-  .sfm-icons { display: flex; gap: 8px; }
+  .sfm-icons { display: flex; gap: 6px; flex: 0 0 auto; }
   .sfm-icon {
-    width: 38px; height: 38px; border-radius: 50%; flex: 0 0 auto;
+    width: 34px; height: 34px; border-radius: 50%; flex: 0 0 auto;
     display: flex; align-items: center; justify-content: center;
     border: 1px solid rgba(255, 255, 255, .28); color: #fff; text-decoration: none;
     transition: background .25s, border-color .25s;
@@ -66,3 +66,27 @@
   .sfm-foot { margin: 16px 0 0; font-size: 10px; line-height: 1.5; color: rgba(255, 255, 255, .38); }
 }
 @media (max-width: 640px) { .site-footer .footer-giraffe { pointer-events: none; } }
+
+/* Документы — заметные кнопки; внизу только «Разработчик» во всю ширину */
+@media (max-width: 640px) {
+  .sfm-docs { display: flex; flex-direction: column; gap: 8px; padding: 2px 0 16px; }
+  .sfm-doc {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 12px 14px; border: 1px solid rgba(255, 255, 255, .2); border-radius: 12px;
+    background: rgba(255, 255, 255, .05); color: #fff !important; text-decoration: none !important;
+    font-size: 12px; letter-spacing: .03em; -webkit-tap-highlight-color: transparent;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .sfm-doc::after { content: "→"; opacity: .55; font-size: 13px; }
+  .sfm-doc:active { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .35); }
+  .sfm-docs__copy { margin: 6px 0 0; font-size: 10.5px; color: rgba(255, 255, 255, .4); }
+
+  .site-footer .footer-copy, .site-footer .footer-legal > :not(.sf2-dev) { display: none !important; }
+  .site-footer .footer-legal { display: block !important; width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  .site-footer .footer-legal .sf2-dev {
+    display: flex !important; align-items: center; justify-content: center; gap: 8px;
+    width: 100% !important; box-sizing: border-box; margin: 0 !important; padding: 13px 16px !important;
+    border-radius: 12px !important; font-size: 12px !important; letter-spacing: .08em !important;
+  }
+  .site-footer .footer-bottom { padding-top: 16px !important; padding-bottom: 18px !important; }
+}
