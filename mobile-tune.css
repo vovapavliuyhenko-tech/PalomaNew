@@ -542,3 +542,15 @@
   .pdp-size-btn { font-size: 11px !important; padding: 7px 11px !important; min-height: 0 !important; height: auto !important; border-radius: 9px !important; line-height: 1.2 !important; }
   .pdp-sizes__btns { gap: 6px !important; }
 }
+/* карточка товара на телефоне: количество, «В корзину» и избранное — одной
+   аккуратной строкой высотой 42px */
+@media (max-width: 768px) {
+  .pdp-actions { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; justify-content: flex-start !important; gap: 8px !important; }
+  .pdp-qty { flex: 0 0 auto !important; height: 42px !important; min-height: 0 !important; width: auto !important; margin: 0 !important; }
+  .pdp-qty__btn { width: 32px !important; height: 40px !important; }
+  .pdp-qty__btn svg { width: 11px !important; height: 11px !important; }
+  .pdp-qty__val { width: 24px !important; min-width: 0 !important; font-size: 13px !important; }
+  .pdp-actions > .btn { flex: 1 1 auto !important; width: auto !important; height: 42px !important; min-height: 0 !important; padding: 0 14px !important; font-size: 11px !important; letter-spacing: .16em !important; margin: 0 !important; }
+  .pdp-actions__wish { flex: 0 0 42px !important; width: 42px !important; height: 42px !important; margin: 0 !important; }
+  .pdp-actions__wish svg { width: 17px !important; height: 17px !important; }
+}
