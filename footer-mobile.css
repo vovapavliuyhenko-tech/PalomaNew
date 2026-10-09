@@ -94,3 +94,15 @@
   .site-footer .footer-legal .sf2-dev:active { background: rgba(231, 56, 90, .14) !important; color: #fff !important; }
   .site-footer .footer-bottom { padding-top: 16px !important; padding-bottom: 18px !important; }
 }
+
+/* жираф в конце пути выходит за правый край — обрезаем по подвалу, чтобы
+   на iPhone страницу нельзя было сдвинуть вбок; форма звонка чуть компактнее */
+.site-footer { overflow-x: clip; }
+@supports not (overflow: clip) { .site-footer { overflow-x: hidden; } }
+@media (max-width: 640px) {
+  .sfm-note { font-size: 11.5px !important; line-height: 1.5 !important; }
+  .sfm-form .sf2-form { gap: 8px !important; min-width: 0 !important; }
+  .sfm-form .sf2-input { height: 44px !important; min-width: 0 !important; flex: 1 1 auto !important; width: auto !important; padding: 0 14px !important; }
+  .sfm-form .sf2-send { width: 44px !important; height: 44px !important; flex: 0 0 44px !important; }
+  .sfm-form .sf2-consent span, .sfm-form .sf2-consent a { font-size: 10.5px !important; }
+}
