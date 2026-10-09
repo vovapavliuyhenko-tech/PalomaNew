@@ -620,3 +620,7 @@
   .cookie-bar__actions { gap: 6px !important; }
   .cookie-bar__btn { padding: 8px 12px !important; font-size: 10.5px !important; min-height: 0 !important; height: auto !important; border-radius: 10px !important; }
 }
+/* ленты товаров: место под тень кнопок «Подробнее» — лента прокручивается вбок
+   и обрезала всё ниже кнопок. Внутренний отступ компенсируем отрицательным
+   внешним, чтобы блоки не сдвинулись */
+.home-showcase__viewport, .home-categories__grid, .home-blog__grid { padding-bottom: 18px !important; margin-bottom: -18px !important; }
