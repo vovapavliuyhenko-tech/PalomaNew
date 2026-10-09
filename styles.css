@@ -9104,17 +9104,19 @@ body.has-footer-curtain .site-footer {
 @media all {
   .footer-giraffe {
     left: 0; right: auto !important;
-    animation: palomaGiraffeWalk 22s linear infinite, palomaGiraffeStep .5s ease-in-out infinite alternate;
+    animation: palomaGiraffeWalk 44s linear infinite, palomaGiraffeStep .5s ease-in-out infinite alternate;
   }
   .footer-giraffe .fg-rf, .footer-giraffe .fg-ff { animation: palomaGiraffeLeg 1s ease-in-out infinite; }
   .footer-giraffe .fg-rn, .footer-giraffe .fg-fn { animation: palomaGiraffeLeg 1s ease-in-out -.5s infinite; }
-  @media (max-width: 700px) { .footer-giraffe { animation-duration: 11s, .5s; } }
+  @media (max-width: 700px) { .footer-giraffe { animation-duration: 22s, .5s; } }
 }
+/* туда и обратно в пределах полосы: жираф всегда в кадре, у края разворачивается */
 @keyframes palomaGiraffeWalk {
-  0%   { left: 0;    transform: translateX(-100%); opacity: 0; }
-  4%   { opacity: 1; }
-  96%  { opacity: 1; }
-  100% { left: 100%; transform: translateX(0);     opacity: 0; }
+  0%     { left: 0;    transform: translateX(0)     scaleX(1); }
+  49.9%  { left: 100%; transform: translateX(-100%) scaleX(1); }
+  50%    { left: 100%; transform: translateX(-100%) scaleX(-1); }
+  99.9%  { left: 0;    transform: translateX(0)     scaleX(-1); }
+  100%   { left: 0;    transform: translateX(0)     scaleX(1); }
 }
 /* шаг: нога (сзади, rotate +) отрывается, выносится вперёд, приподнимаясь,
    затем стоит на земле и уходит назад, пока тело едет вперёд */
