@@ -277,3 +277,8 @@
   .cf-philo .ea-philo__p { margin: 22px 0 auto !important; }
   .cf-philo .ea-philo__text > div:last-child { margin: 0 0 14px !important; line-height: 0; }
 }
+/* кофейня, телефон: категории меню — компактные чипсы */
+@media (max-width: 768px) {
+  #cf-menu .catalog-filter-btn { font-size: 10.5px !important; padding: 8px 13px !important; min-height: 0 !important; height: auto !important; border-radius: 9px !important; letter-spacing: .02em !important; line-height: 1.2 !important; }
+  #cf-menu .catalog-filters, #cf-menu [class*="filters"] { gap: 6px !important; }
+}
