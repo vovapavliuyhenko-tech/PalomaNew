@@ -230,8 +230,8 @@
   .cfm-price { font-size: 12px !important; }
 }
 @media (max-width: 768px) {
-  .cf-philo .ea-philo__media { min-height: 72svh !important; }
-  .cf-philo .ea-philo__media video { height: 100% !important; min-height: 72svh; object-fit: cover; }
+  .cf-philo .ea-philo__media { min-height: 80svh !important; }
+  .cf-philo .ea-philo__media video { height: 100% !important; min-height: 80svh; object-fit: cover; }
 }
 
 /* кофейня: окно позиции меню на телефоне — всё компактнее */
