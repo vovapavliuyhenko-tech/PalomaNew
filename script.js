@@ -1784,7 +1784,7 @@ if (document.body.classList.contains("event-decoration-page")) {
 
    Включаем только когда подвал помещается в экран целиком. Иначе его верх
    (форма обратного звонка) ушёл бы за границу экрана и стал недосягаем —
-   на телефонах подвал у нас выше экрана, там остаётся обычная прокрутка. */
+   на телефонах и планшетах (до 1024px) шторку не включаем — обычная прокрутка. */
 (function () {
   "use strict";
 
@@ -1798,7 +1798,7 @@ if (document.body.classList.contains("event-decoration-page")) {
 
     /* Меряем в обычном потоке: у прибитого подвала высота та же, но так
        надёжнее — не зависим от того, в каком состоянии он сейчас. */
-    var fits = footer.offsetHeight > 0 && footer.offsetHeight <= window.innerHeight;
+    var fits = window.innerWidth > 1024 && footer.offsetHeight > 0 && footer.offsetHeight <= window.innerHeight;
 
     document.body.classList.toggle("has-footer-curtain", fits);
     spacer.style.height = fits ? footer.offsetHeight + "px" : "";
