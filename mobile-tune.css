@@ -486,3 +486,7 @@
   #process .ea-proc__track .ea-proc-step .ea-proc__ph--d.ea-proc__ph--d { object-position: 50% 0% !important; }
   #process .ea-proc__track .ea-proc-step .ea-proc__ph.ea-proc__ph, #cf-steps .ea-proc__track .ea-proc-step .ea-proc__ph.ea-proc__ph { border-width: 1.2px !important; }
 }
+/* шаг 03: верхнее фото (поцелуй) выше, нижнее — меньше */
+@media (max-width: 900px) {
+  #process .ea-proc__track > .ea-proc-step:has(.ea-proc__ph--e) { grid-template-rows: minmax(0, 1.3fr) auto auto minmax(0, .7fr) !important; }
+}
