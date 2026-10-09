@@ -554,3 +554,5 @@
   .pdp-actions__wish { flex: 0 0 42px !important; width: 42px !important; height: 42px !important; margin: 0 !important; }
   .pdp-actions__wish svg { width: 17px !important; height: 17px !important; }
 }
+/* каталог: кнопки карточек без эффекта дыхания */
+.catalog-grid .product-card__btn, .catalog-grid .btn { animation: none !important; }
