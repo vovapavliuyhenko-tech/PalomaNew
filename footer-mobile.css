@@ -130,3 +130,10 @@
   .sfm-route { color: #fff !important; border-color: rgba(231, 56, 90, .45) !important; justify-content: center !important; }
   .sfm-route::after { content: none; }
 }
+
+/* телефон: жираф уходит за правый край — обрезаем по подвалу жёстко
+   (overflow: hidden работает во всех версиях Safari), чтобы страницу
+   нельзя было сдвинуть вбок */
+@media (max-width: 700px) {
+  .site-footer { overflow: hidden !important; }
+}
