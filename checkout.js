@@ -812,7 +812,7 @@
     const managerText = [x.header, x.note, buildManagerText(orderData)]
       .filter(Boolean)
       .join("\n\n");
-    const send = fetch(ep + "?a=notify", {
+    const send = window.palomaFetch("?a=notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       keepalive: true,
@@ -839,7 +839,7 @@
        (например, сбой облака). Тогда заказ отдаём клиенту в мессенджер. */
     return Promise.race([
       send,
-      new Promise((resolve) => setTimeout(() => resolve(false), 8000)),
+      new Promise((resolve) => setTimeout(() => resolve(false), 24000)),
     ]);
   }
 
@@ -1067,14 +1067,14 @@
         const ctrl = typeof AbortController === "function" ? new AbortController() : null;
         const timer = ctrl ? setTimeout(() => ctrl.abort(), 25000) : 0;
         try {
-          return await fetch(payEndpoint() + "?a=create", {
+          return await window.palomaFetch("?a=create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: payload,
             signal: ctrl ? ctrl.signal : undefined,
           });
         } catch (e) {
-          if (attempt >= 2) throw new Error("нет связи с сервером оплаты (" + (e && e.message ? e.message : "сеть") + ")");
+          if (attempt >= 1) throw new Error("нет связи с сервером оплаты (" + (e && e.message ? e.message : "сеть") + ")");
           await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
         } finally {
           clearTimeout(timer);

@@ -64,7 +64,7 @@
     if (!endpoint) return Promise.resolve({ ok: false, reason: "no-endpoint" });
 
     const orderId = makeLeadId();
-    const send = fetch(endpoint + "?a=notify", {
+    const send = window.palomaFetch("?a=notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       keepalive: true,
@@ -92,7 +92,7 @@
     return Promise.race([
       send,
       new Promise(function (resolve) {
-        window.setTimeout(function () { resolve({ ok: false, orderId: orderId, slow: true }); }, 8000);
+        window.setTimeout(function () { resolve({ ok: false, orderId: orderId, slow: true }); }, 24000);
       }),
     ]).then(function (res) {
       /* Сервер заявку не подтвердил (сбой облака) — не теряем её:

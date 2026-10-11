@@ -155,7 +155,7 @@
       : order.managerText || buildMessage(order, f);
     /* Сервер сверяет оплату с PayKeeper. Если банк ещё не успел провести
        платёж (ответ pending/notPaid) — повторяем через 15 и 45 секунд. */
-    const send = (attempt) => fetch(ep + "?a=notify", {
+    const send = (attempt) => window.palomaFetch("?a=notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       keepalive: true,
