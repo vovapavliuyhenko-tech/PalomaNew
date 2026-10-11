@@ -1,2848 +1,5449 @@
-/* PALOMA — единый каталог товаров (источник правды для product.html и Фазы 2) */
+/* PALOMA — запасная копия каталога: снимок базы на 2026-10-11.
+   Сайт берёт каталог из базы (products-live.js); эта копия видна, только если
+   облако недоступно. Обновлять снимком из базы после крупных правок каталога. */
 window.PALOMA_PRODUCTS = [
   {
-    id: "m1",
-    slug: "belaya-gortenziya",
-    photoSize: "XXL",
-    image: "images/paloma/catalog/mono-hydrangea-white.jpg",
-    name: "Белая гортензия",
-    price: 2300,
-    categories: ["mono"],
-    badge: null,
-    composition: "Гортензия",
-    desc: "Крупные белые шапки гортензии — объёмный и спокойный моно-букет.",
-    pairs: "К фильтру или лунго.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #817667, #5d554a)",
-      hover: "linear-gradient(135deg, #72685b, #4b443c)",
-    },
-    sizes: [
-      { code: "S", label: "S · 3 шт", priceDelta: 0 },
-      { code: "M", label: "M · 5 шт", priceDelta: 1300 },
-      { code: "L", label: "L · 7 шт", priceDelta: 2600 },
-      { code: "XL", label: "XL · 9 шт", priceDelta: 3900 },
-      { code: "XXL", label: "XXL · 11 шт", priceDelta: 5200 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "m2",
-    slug: "roza-mandarin",
-    photoSize: "L",
-    image: "images/paloma/catalog/mono-rose-mandarin.jpg",
-    name: "Роза сорта Мандарин",
-    price: 3320,
-    categories: ["mono"],
-    badge: null,
-    composition: "Пионовидная роза",
-    desc: "Пионовидная роза кораллового оттенка — плотные бутоны с ярусами лепестков.",
-    pairs: "К капучино.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #ad636c, #7d474e)",
-      hover: "linear-gradient(135deg, #98575f, #64393f)",
-    },
-    sizes: [
-      { code: "S", label: "S · 9 шт", priceDelta: 0 },
-      { code: "M", label: "M · 15 шт", priceDelta: 1980 },
-      { code: "L", label: "L · 21 шт", priceDelta: 3960 },
-      { code: "XL", label: "XL · 31 шт", priceDelta: 7260 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "m3",
-    slug: "roza-melon",
-    photoSize: "XL",
-    image: "images/paloma/catalog/mono-rose-melon.jpg",
-    name: "Роза сорта Мелон",
-    price: 4220,
-    categories: ["mono"],
-    badge: null,
-    composition: "Пионовидная роза",
-    desc: "Пионовидная роза персиково-медового тона — тёплый и мягкий моно-букет.",
-    pairs: "К рафу.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #b18e5d, #7f6643)",
-      hover: "linear-gradient(135deg, #9c7d52, #675236)",
-    },
-    sizes: [
-      { code: "S", label: "S · 9 шт", priceDelta: 0 },
-      { code: "M", label: "M · 15 шт", priceDelta: 2580 },
-      { code: "L", label: "L · 21 шт", priceDelta: 5160 },
-      { code: "XL", label: "XL · 25 шт", priceDelta: 6880 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "m4",
-    slug: "francuzskaya-krasnaya-roza",
-    photoSize: "S",
-    image: "images/paloma/catalog/mono-rose-french-red.jpg",
-    name: "Французская красная роза",
-    price: 3320,
-    categories: ["mono"],
-    badge: null,
-    composition: "Вывернутая роза сорта Нина",
-    desc: "Вывернутая роза сорта Нина — глубокий красный и бархатная фактура.",
-    pairs: "К фильтру с шоколадной нотой.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #8e2b3c, #661f2b)",
-      hover: "linear-gradient(135deg, #7d2635, #521923)",
-    },
-    sizes: [
-      { code: "S", label: "S · 9 шт", priceDelta: 0 },
-      { code: "M", label: "M · 15 шт", priceDelta: 1980 },
-      { code: "L", label: "L · 21 шт", priceDelta: 3960 },
-      { code: "XL", label: "XL · 31 шт", priceDelta: 7260 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "m5",
-    slug: "belaya-klassicheskaya-roza",
-    photoSize: "XL",
-    image: "images/paloma/catalog/mono-rose-white.jpg",
-    name: "Белая классическая роза",
-    price: 3680,
-    categories: ["mono"],
-    badge: null,
-    composition: "Роза сорта Плая Бланка",
-    desc: "Роза сорта Плая Бланка — чистый белый и строгий классический силуэт.",
-    pairs: "К латте.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #847f5d, #5f5b43)",
-      hover: "linear-gradient(135deg, #747052, #4d4a36)",
-    },
-    sizes: [
-      { code: "S", label: "S · 9 шт", priceDelta: 0 },
-      { code: "M", label: "M · 15 шт", priceDelta: 2220 },
-      { code: "L", label: "L · 21 шт", priceDelta: 4440 },
-      { code: "XL", label: "XL · 25 шт", priceDelta: 5920 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "m6",
-    slug: "rozovaya-gortenziya",
-    photoSize: "M",
-    image: "images/paloma/catalog/mono-hydrangea-pink.jpg",
-    name: "Розовая гортензия",
-    price: 2300,
-    categories: ["mono"],
-    badge: null,
-    composition: "Гортензия",
-    desc: "Пудрово-розовые шапки гортензии — нежный объём без лишних деталей.",
-    pairs: "К капучино с корицей.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #af878c, #7e6165)",
-      hover: "linear-gradient(135deg, #9a777b, #664e51)",
-    },
-    sizes: [
-      { code: "S", label: "S · 3 шт", priceDelta: 0 },
-      { code: "M", label: "M · 5 шт", priceDelta: 1300 },
-      { code: "L", label: "L · 7 шт", priceDelta: 2600 },
-      { code: "XL", label: "XL · 9 шт", priceDelta: 3900 },
-      { code: "XXL", label: "XXL · 11 шт", priceDelta: 5200 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "m7",
-    slug: "golubaya-gortenziya",
-    photoSize: "M",
-    image: "images/paloma/catalog/mono-hydrangea-blue.jpg",
-    name: "Голубая гортензия",
-    price: 2300,
-    categories: ["mono"],
-    badge: null,
-    composition: "Гортензия",
-    desc: "Голубая гортензия — прохладный оттенок и крупная фактура соцветий.",
-    pairs: "К айс-латте.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #566775, #3e4a54)",
-      hover: "linear-gradient(135deg, #4c5b67, #323c44)",
-    },
-    sizes: [
-      { code: "S", label: "S · 3 шт", priceDelta: 0 },
-      { code: "M", label: "M · 5 шт", priceDelta: 1300 },
-      { code: "L", label: "L · 7 шт", priceDelta: 2600 },
-      { code: "XL", label: "XL · 9 шт", priceDelta: 3900 },
-      { code: "XXL", label: "XXL · 11 шт", priceDelta: 5200 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "m8",
-    slug: "francuzskaya-rozovaya-roza",
-    photoSize: "S",
-    image: "images/paloma/catalog/mono-rose-french-pink.jpg",
-    name: "Французская розовая роза",
-    price: 3680,
-    categories: ["mono"],
-    badge: null,
-    composition: "Вывернутая роза сорта Пинк Мондиаль",
-    desc: "Вывернутая роза сорта Пинк Мондиаль — раскрытые пионовидные бутоны.",
-    pairs: "К латте с миндальным молоком.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #d09c99, #96706e)",
-      hover: "linear-gradient(135deg, #b78987, #795a59)",
-    },
-    sizes: [
-      { code: "S", label: "S · 9 шт", priceDelta: 0 },
-      { code: "M", label: "M · 15 шт", priceDelta: 2220 },
-      { code: "L", label: "L · 21 шт", priceDelta: 4440 },
-      { code: "XL", label: "XL · 31 шт", priceDelta: 8140 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "m9",
-    slug: "liliya",
-    photoSize: "XL",
-    image: "images/paloma/catalog/mono-lily.jpg",
-    name: "Лилия",
-    price: 9100,
-    categories: ["mono"],
-    badge: null,
-    composition: "Пионовидная лилия",
-    desc: "Пионовидная лилия — крупные соцветия и выразительный аромат.",
-    pairs: "К эспрессо.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #7d7654, #5a553c)",
-      hover: "linear-gradient(135deg, #6e684a, #494431)",
-    },
-    sizes: [
-      { code: "S", label: "S · 5 веток", priceDelta: 0 },
-      { code: "M", label: "M · 7 веток", priceDelta: 3500 },
-      { code: "L", label: "L · 11 веток", priceDelta: 10500 },
-      { code: "XL", label: "XL · 15 веток", priceDelta: 17500 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "m10",
-    slug: "zheltye-gladiolusy",
-    photoSize: "L",
-    image: "images/paloma/catalog/mono-gladiolus-yellow.jpg",
-    name: "Жёлтые гладиолусы",
-    price: 2700,
-    categories: ["mono"],
-    badge: null,
-    composition: "Гладиолусы",
-    desc: "Высокие свечи гладиолусов, жёлтые со сливочным. Соцветия раскрываются снизу вверх, поэтому букет живёт долго.",
-    pairs: "К капучино.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #cfc978, #8e8f57)",
-      hover: "linear-gradient(135deg, #b8b268, #767748)",
-    },
-    sizes: [
-      { code: "S", label: "S · 5 шт", priceDelta: 0 },
-      { code: "M", label: "M · 7 шт", priceDelta: 940 },
-      { code: "L", label: "L · 9 шт", priceDelta: 1880 },
-      { code: "XL", label: "XL · 11 шт", priceDelta: 2820 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "d1",
-    slug: "duo-piches",
-    photoSize: "S",
-    image: "images/paloma/catalog/duo-peaches.jpg",
-    name: "Дуобукет «Пичес»",
-    price: 5700,
-    priceFrom: true,
-    categories: ["duo"],
-    badge: null,
-    composition: "Георгин Пичес, листья малины",
-    desc: "Персиковые георгины Пичес с зеленью малины — тёплый дуобукет в фирменной упаковке PALOMA.",
-    pairs: "К капучино на кокосовом.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #e8a986, #7f8f5a)",
-      hover: "linear-gradient(135deg, #dd9873, #6b7a4a)",
-    },
-    sizes: [
-      { code: "S", label: "S · 7 шт", priceDelta: 0 },
-      { code: "M", label: "M · 11 шт", priceDelta: 3100 },
-      { code: "L", label: "L · 17 шт", priceDelta: 7750 },
-      { code: "XL", label: "XL · 25 шт", priceDelta: 13950 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "d2",
-    slug: "duo-mondial",
-    photoSize: "XL",
-    image: "images/paloma/catalog/duo-frrose.jpg",
-    name: "Французская роза",
-    price: 3930,
-    priceFrom: true,
-    categories: ["duo"],
-    badge: null,
-    composition: "Роза Мондиаль, роза Пинк Мондиаль, эвкалипт",
-    desc: "Пудровые и кремовые французские розы Мондиаль с эвкалиптом — пышный дуобукет из двух сортов.",
-    pairs: "К капучино.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #ecc9d0, #cdb7a0)",
-      hover: "linear-gradient(135deg, #e3b8c1, #bda588)",
-    },
-    sizes: [
-      { code: "S", label: "S · 9 шт", priceDelta: 0 },
-      { code: "M", label: "M · 15 шт", priceDelta: 2720 },
-      { code: "L", label: "L · 19 шт", priceDelta: 4200 },
-      { code: "XL", label: "XL · 25 шт", priceDelta: 6670 },
-    ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "w1",
-    slug: "neo-serebro",
-    image: "images/paloma/catalog/wed-neo-silver.jpg",
-    name: "Нео-серебро",
-    price: 8000,
-    priceFrom: true,
-    categories: ["wedding"],
-    badge: null,
-    composition: "Георгин, краспедия, калла, антуриум, амарант",
-    desc: "Серебристая калла и антуриум с георгином и амарантом — графичный букет с металлическим блеском.",
-    pairs: "К фильтру.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #7f7b6c, #5b594e)",
-      hover: "linear-gradient(135deg, #706c5f, #4a473f)",
-    },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "w2",
-    slug: "klassicheskiy-gladiolus",
-    image: "images/paloma/catalog/wed-gladiolus.jpg",
-    name: "Классический Гладиолус",
-    price: 3000,
-    priceFrom: true,
-    categories: ["wedding"],
-    badge: null,
-    composition: "Гладиолус",
-    desc: "Белый гладиолус в чистом моно-исполнении — строгая классика для церемонии.",
-    pairs: "К капучино.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #818680, #5d605c)",
-      hover: "linear-gradient(135deg, #727671, #4b4e4a)",
-    },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "w3",
-    slug: "sumochka-s-orhideey",
-    image: "images/paloma/catalog/wed-orchid-bag.jpg",
-    name: "Сумочка с орхидеей",
-    price: 15000,
-    priceFrom: true,
-    categories: ["wedding"],
-    badge: null,
-    composition: "Орхидея фаленопсис, стабилизированная гортензия, эвкалипт",
-    desc: "Орхидея фаленопсис каскадом на сумочке-основе со стабилизированной гортензией — букет, который носят на руке.",
-    pairs: "К эспрессо.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #3e3e37, #2d2d28)",
-      hover: "linear-gradient(135deg, #373730, #242420)",
-    },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "w4",
-    slug: "dofaminoviy",
-    image: "images/paloma/catalog/wed-dopamine.jpg",
-    name: "Дофаминовый",
-    price: 7000,
-    priceFrom: true,
-    categories: ["wedding"],
-    badge: null,
-    composition: "Оксипеталум, дельфиниум, пионовидная роза Харпер, эустома, диантус, львиный зев",
-    desc: "Пастельная россыпь из пионовидной розы Харпер, дельфиниума и львиного зева — яркий и живой букет.",
-    pairs: "К рафу.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #86756a, #60544c)",
-      hover: "linear-gradient(135deg, #76675d, #4e443d)",
-    },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "a1",
-    slug: "avtorskiy-alium",
-    image: "images/paloma/catalog/author-alium.jpg",
-    name: "Авторская композиция",
-    price: 18000,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Аллиум, лилия классическая, лилия пионовидная, дельфиниум, молюцелла, львиный зев, паникум",
-    desc: "Крупная авторская работа флориста PALOMA: пурпурный аллиум, лилии, дельфиниум и злаки — статусный высокий букет.",
-    pairs: "К эспрессо.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #8f7fae, #5e7f4f)",
-      hover: "linear-gradient(135deg, #7d6d9c, #4a6a3d)",
-    },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
-    ],
-  },
-  {
-    id: "n1",
-    slug: "obruchenie",
-    image: "images/paloma/catalog/n1.jpg",
-    name: "Обручение",
-    price: 8500,
-    priceFrom: true,
-    categories: ["wedding"],
-    badge: null,
-    composition: "Пионовидная роза Харпер, антуриум, диантус, диантус Грин Тик, львиный зев, нерине, эустома, молюцелла, амарант",
-    desc: "Пастельный свадебный букет с пионовидной розой Харпер, нерине и амарантом.",
-    pairs: "К капучино.",
-    placeholderGradient: { main: "linear-gradient(135deg, #ece6da, #b6a98c)", hover: "linear-gradient(135deg, #e0d8c8, #a3957a)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n2",
-    slug: "persikoviy-sad",
-    image: "images/paloma/catalog/n2.jpg",
-    name: "Персиковый сад",
-    price: 20000,
-    priceFrom: true,
-    categories: ["compositions", "season"],
-    badge: null,
-    composition: "Георгин Пичес, гортензия, кустовая пионовидная роза, молюцелла, листья малины",
-    desc: "Крупная корзина с георгином Пичес, гортензией и кустовой розой.",
-    pairs: "К рафу.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e6a482, #8a6b4a)", hover: "linear-gradient(135deg, #d9926f, #75593c)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n3",
-    slug: "lavandoviy-vecher",
-    image: "images/paloma/catalog/n3.jpg",
-    name: "Лавандовый вечер",
-    price: 9800,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Дельфиниум, голландская гортензия, французская роза Пинк Мондиаль, каллы, эустома, диантус, нерине",
-    desc: "Сине-розовая композиция с дельфиниумом, гортензией и французской розой.",
-    pairs: "К айс-латте.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8f9fc0, #56607f)", hover: "linear-gradient(135deg, #7c8cae, #454f68)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n4",
-    slug: "georgin-piches",
-    photoSize: "M",
-    image: "images/paloma/catalog/n4.jpg",
-    name: "Георгин Пичес",
-    price: 8050,
-    priceFrom: true,
-    categories: ["mono", "season"],
-    badge: null,
-    composition: "Георгин Пичес",
-    desc: "Моно-букет из персиковых георгинов Пичес.",
-    pairs: "К капучино.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e6a482, #8a6b4a)", hover: "linear-gradient(135deg, #d9926f, #75593c)" },
-    sizes: [
-      { code: "S", label: "S · 11 шт", priceDelta: 0 },
-      { code: "M", label: "M · 21 шт", priceDelta: 7000 },
-      { code: "L", label: "L · 31 шт", priceDelta: 14000 },
-      { code: "XL", label: "XL · 41 шт", priceDelta: 21000 },
-    ],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n5",
-    slug: "toskana",
-    image: "images/paloma/catalog/n5.jpg",
-    name: "Тоскана",
-    price: 28000,
-    priceFrom: true,
-    categories: ["authors", "season"],
-    badge: null,
-    composition: "Георгин Пичес, львиный зев, эремурус, орнитогалум, оксипеталум, листья малины, гортензия, колоски, дельфиниум",
-    desc: "Высокая авторская работа с георгином Пичес, эремурусом и злаками.",
-    pairs: "К эспрессо.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e6a482, #8a6b4a)", hover: "linear-gradient(135deg, #d9926f, #75593c)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n6",
-    slug: "sara-bernar",
-    image: "images/paloma/catalog/n6.jpg",
-    name: "Сара Бернар",
-    price: 19000,
-    priceFrom: true,
-    categories: ["authors", "season"],
-    badge: null,
-    composition: "Пион Сара Бернар, георгин Пичес, дельфиниум, гортензия, орнитогалум",
-    desc: "Пудровый пион Сара Бернар с георгином Пичес и гортензией.",
-    pairs: "К рафу.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n7",
-    slug: "persikovoe-oblako",
-    image: "images/paloma/catalog/n7.jpg",
-    name: "Персиковое облако",
-    price: 10150,
-    priceFrom: true,
-    categories: ["duo", "season"],
-    badge: null,
-    composition: "Гортензия, георгин Пичес",
-    desc: "Дуобукет из гортензии и персикового георгина Пичес.",
-    pairs: "К капучино на кокосовом.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e6a482, #8a6b4a)", hover: "linear-gradient(135deg, #d9926f, #75593c)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n8",
-    slug: "lazurit",
-    image: "images/paloma/catalog/n8.jpg",
-    name: "Лазурит",
-    price: 10215,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Гортензия, дельфиниум, антуриум, эустома, пионовидная роза",
-    desc: "Сине-белая композиция с гортензией, дельфиниумом и антуриумом.",
-    pairs: "К айс-латте.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8f9fc0, #56607f)", hover: "linear-gradient(135deg, #7c8cae, #454f68)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n9",
-    slug: "golubaya-dymka",
-    image: "images/paloma/catalog/n9.jpg",
-    name: "Голубая дымка",
-    price: 6900,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Хризантема, дельфиниум, гортензия",
-    desc: "Воздушный букет из хризантемы, дельфиниума и гортензии.",
-    pairs: "К фильтру.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8f9fc0, #56607f)", hover: "linear-gradient(135deg, #7c8cae, #454f68)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n10",
-    slug: "rozoviy-shelk",
-    image: "images/paloma/catalog/n10.jpg",
-    name: "Розовый шёлк",
-    price: 11365,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Пионовидная лилия, хризантема, эустома, нерине",
-    desc: "Розовая композиция с пионовидной лилией, хризантемой и нерине.",
-    pairs: "К латте.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n11",
-    slug: "pionoviy-vals",
-    image: "images/paloma/catalog/n11.jpg",
-    name: "Пионовый вальс",
-    price: 19410,
-    priceFrom: true,
-    categories: ["duo"],
-    badge: null,
-    composition: "Гортензия, пионовидная роза",
-    desc: "Пышный дуобукет из гортензии и пионовидной розы.",
-    pairs: "К капучино.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n12",
-    slug: "pervaya-nezhnost",
-    image: "images/paloma/catalog/n12.jpg",
-    name: "Первая нежность",
-    price: 8640,
-    priceFrom: true,
-    categories: ["duo"],
-    badge: null,
-    composition: "Гортензия, пионовидная роза, фрезия",
-    desc: "Нежный дуобукет из гортензии, пионовидной розы и фрезии.",
-    pairs: "К рафу.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n13",
-    slug: "pudra",
-    image: "images/paloma/catalog/n13.jpg",
-    name: "Пудра",
-    price: 18110,
-    priceFrom: true,
-    categories: ["duo"],
-    badge: null,
-    composition: "Гортензия, пионовидная роза",
-    desc: "Пудровый дуобукет из гортензии и пионовидной розы.",
-    pairs: "К латте.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n14",
-    slug: "lilian",
-    image: "images/paloma/catalog/n14.jpg",
-    name: "Лилиан",
-    price: 8650,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Пионовидная лилия, гортензия, стабилизированный бук",
-    desc: "Авторский букет с пионовидной лилией, гортензией и стабилизированным буком.",
-    pairs: "К эспрессо.",
-    placeholderGradient: { main: "linear-gradient(135deg, #ece6da, #b6a98c)", hover: "linear-gradient(135deg, #e0d8c8, #a3957a)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n15",
-    slug: "beliy-tanec",
-    image: "images/paloma/catalog/n15.jpg",
-    name: "Белый танец",
-    price: 9600,
-    priceFrom: true,
-    categories: ["duo"],
-    badge: null,
-    composition: "Французская белая роза, классическая роза сорта Плая Бланка",
-    desc: "Белый дуобукет из французской и классической розы Плая Бланка.",
-    pairs: "К капучино.",
-    placeholderGradient: { main: "linear-gradient(135deg, #ece6da, #b6a98c)", hover: "linear-gradient(135deg, #e0d8c8, #a3957a)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n16",
-    slug: "rivyera",
-    image: "images/paloma/catalog/n16.jpg",
-    name: "Ривьера",
-    price: 20190,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Гортензия, олеандр, пионовидная роза, диантус, эустома, каллы, амариллис, берграсс",
-    desc: "Роскошная композиция с гортензией, каллами, амариллисом и олеандром.",
-    pairs: "К эспрессо.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n17",
-    slug: "florenciya",
-    image: "images/paloma/catalog/n17.jpg",
-    name: "Флоренция",
-    price: 20500,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Гортензия, диантус, кустовая пионовидная роза, дельфиниум, берграсс",
-    desc: "Объёмная авторская работа с гортензией, кустовой розой и дельфиниумом.",
-    pairs: "К рафу.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n18",
-    slug: "lazurnaya-korzina",
-    image: "images/paloma/catalog/n18.jpg",
-    name: "Лазурная корзина",
-    price: 70000,
-    priceFrom: true,
-    categories: ["compositions"],
-    badge: null,
-    composition: "Гортензия (81 шт)",
-    desc: "Большая корзина из 81 голубой гортензии.",
-    pairs: "К фильтру.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8f9fc0, #56607f)", hover: "linear-gradient(135deg, #7c8cae, #454f68)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n21",
-    slug: "utrenniy-svet",
-    image: "images/paloma/catalog/n21.jpg",
-    name: "Утренний свет",
-    price: 13860,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Гортензия, пионовидная роза, нерине",
-    desc: "Утренний букет из гортензии, пионовидной розы и нерине.",
-    pairs: "К латте.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n22",
-    slug: "bebi-blyu",
-    image: "images/paloma/catalog/n22.jpg",
-    name: "Беби Блю",
-    price: 5480,
-    priceFrom: true,
-    categories: ["duo"],
-    badge: null,
-    composition: "Гортензия, эвкалипт Беби Блю",
-    desc: "Дуобукет из гортензии и эвкалипта Беби Блю.",
-    pairs: "К айс-латте.",
-    placeholderGradient: { main: "linear-gradient(135deg, #9fb08a, #5e6f4a)", hover: "linear-gradient(135deg, #8ba076, #4d5e3c)" },
-    sizes: [
-      { code: "S", label: "S", priceDelta: 0 },
-      { code: "M", label: "M", priceDelta: 2890 },
-      { code: "L", label: "L", priceDelta: 5780 },
-      { code: "XL", label: "XL", priceDelta: 9970 },
-    ],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n23",
-    slug: "roza-fatima",
-    photoSize: "M",
-    image: "images/paloma/catalog/n23.jpg",
-    name: "Роза Фатима",
-    price: 5030,
-    priceFrom: true,
-    categories: ["mono"],
-    badge: null,
-    composition: "Пионовидная роза сорта Фатима",
-    desc: "Моно-букет из пионовидной розы сорта Фатима.",
-    pairs: "К капучино.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [
-      { code: "S", label: "S · 9 шт", priceDelta: 0 },
-      { code: "M", label: "M · 15 шт", priceDelta: 3120 },
-      { code: "L", label: "L · 21 шт", priceDelta: 6240 },
-      { code: "XL", label: "XL · 29 шт", priceDelta: 10400 },
-    ],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n24",
-    slug: "korolevskaya-korzina",
-    image: "images/paloma/catalog/n24.jpg",
-    name: "Королевская корзина",
-    price: 39500,
-    priceFrom: true,
-    categories: ["compositions"],
-    badge: null,
-    composition: "Гортензия, классическая белая роза, антуриум, орхидея, физостегия, фрезия, ранункулюс, пионовидный тюльпан",
-    desc: "Королевская корзина с гортензией, белой розой, орхидеей и антуриумом.",
-    pairs: "К эспрессо.",
-    placeholderGradient: { main: "linear-gradient(135deg, #ece6da, #b6a98c)", hover: "linear-gradient(135deg, #e0d8c8, #a3957a)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n25",
-    slug: "baunti",
-    image: "images/paloma/catalog/n25.jpg",
-    name: "Баунти",
-    price: 5140,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Дельфиниум, голландская гортензия, листья малины, кокос",
-    desc: "Свежая композиция с дельфиниумом, гортензией и кокосом.",
-    pairs: "К кокосовому латте.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8f9fc0, #56607f)", hover: "linear-gradient(135deg, #7c8cae, #454f68)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n26",
-    slug: "persikoviy-rassvet",
-    image: "images/paloma/catalog/n26.jpg",
-    name: "Персиковый рассвет",
-    price: 12305,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Пионовидная роза, гортензия, эустома, листья малины",
-    desc: "Персиковый букет из пионовидной розы, гортензии и эустомы.",
-    pairs: "К рафу.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e6a482, #8a6b4a)", hover: "linear-gradient(135deg, #d9926f, #75593c)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n27",
-    slug: "pudrovoe-oblako",
-    image: "images/paloma/catalog/n27.jpg",
-    name: "Пудровое облако",
-    price: 19540,
-    priceFrom: true,
-    categories: ["duo"],
-    badge: null,
-    composition: "Кустовая роза, гортензия",
-    desc: "Пудровый дуобукет из кустовой розы и гортензии.",
-    pairs: "К капучино.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n28",
-    slug: "roza-silva-pink",
-    photoSize: "XL",
-    image: "images/paloma/catalog/n28.jpg",
-    name: "Роза Сильва Пинк",
-    price: 7280,
-    priceFrom: true,
-    categories: ["mono"],
-    badge: null,
-    composition: "Кустовая роза сорта Сильва Пинк",
-    desc: "Моно-букет из кустовой розы сорта Сильва Пинк.",
-    pairs: "К латте.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a0a2, #8f6668)", hover: "linear-gradient(135deg, #c48c8e, #785154)" },
-    sizes: [
-      { code: "S", label: "S · 9 веток", priceDelta: 0 },
-      { code: "M", label: "M · 15 веток", priceDelta: 4620 },
-      { code: "L", label: "L · 21 ветка", priceDelta: 9240 },
-      { code: "XL", label: "XL · 29 веток", priceDelta: 15400 },
-    ],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n29",
-    slug: "karnaval",
-    image: "images/paloma/catalog/n29.jpg",
-    name: "Карнавал",
-    price: 21000,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Подсолнух, лилия, пион, львиный зев, матрикария, пионовидная роза, целозия, дельфиниум, кустовая роза, гладиолус, хризантема, книфофия, сетария, гортензия, маттиола, листья малины",
-    desc: "Пышный летний букет из подсолнуха, лилии, пиона и полевых цветов.",
-    pairs: "К эспрессо.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e6a482, #8a6b4a)", hover: "linear-gradient(135deg, #d9926f, #75593c)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n30",
-    slug: "myatniy-briz",
-    image: "images/paloma/catalog/n30.jpg",
-    name: "Мятный бриз",
-    price: 3320,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Эустома, молюцелла, пионовидная роза, маттиола",
-    desc: "Свежая композиция из эустомы, молюцеллы, розы и маттиолы.",
-    pairs: "К айс-латте.",
-    placeholderGradient: { main: "linear-gradient(135deg, #9fb08a, #5e6f4a)", hover: "linear-gradient(135deg, #8ba076, #4d5e3c)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n31",
-    slug: "letniy-lug",
-    image: "images/paloma/catalog/n31.jpg",
-    name: "Летний луг",
-    price: 9840,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Листья малины, циния, целозия, дельфиниум, орнитогалум, паникум, скабиоза",
-    desc: "Полевая авторская композиция с цинией, целозией, дельфиниумом и злаками — живой летний характер.",
-    pairs: "К фильтр-кофе.",
-    placeholderGradient: { main: "linear-gradient(135deg, #c98a6a, #6e7a4a)", hover: "linear-gradient(135deg, #b8785a, #5c6a3c)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "n32",
-    slug: "gortenziya-korzina",
-    image: "images/paloma/catalog/n32.jpg",
-    name: "Гортензия в корзине",
-    price: 11150,
-    priceFrom: true,
-    categories: ["compositions"],
-    badge: null,
-    composition: "Гортензия (13 шт)",
-    desc: "Композиция из 13 гортензий в корзине — объёмная и воздушная.",
-    pairs: "К фильтру.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8f9fc0, #56607f)", hover: "linear-gradient(135deg, #7c8cae, #454f68)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [{ id: "card", label: "Открытка", price: 350 }, { id: "vase", label: "Ваза", price: 1200 }, { id: "coffee", label: "Кофе с собой", price: 320 }],
-  },
-  {
-    id: "m11",
-    slug: "kremovyy-diantus",
-    photoSize: "M",
-    image: "images/paloma/catalog/m11.jpg",
-    name: "Кремовый диантус",
-    price: 2535,
-    categories: ["mono"],
-    badge: null,
-    composition: "Диантус",
-    desc: "Плотный букет кремового диантуса в фирменной упаковке PALOMA — спокойный и нарядный подарок.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #efe3b6, #b9a86f)",
-      hover: "linear-gradient(135deg, #b9a86f, #efe3b6)"
-    },
-    sizes: [
+    "id": "m1",
+    "desc": "Крупные белые шапки гортензии — объёмный и спокойный моно-букет.",
+    "name": "Белая гортензия",
+    "slug": "belaya-gortenziya",
+    "badge": "Хит",
+    "image": "images/paloma/catalog/mono-hydrangea-white.jpg",
+    "pairs": "К фильтру или лунго.",
+    "price": 2330,
+    "sizes": [
       {
-        code: "S",
-        label: "S · 13 шт",
-        priceDelta: 0
+        "code": "S",
+        "label": "S · 3 шт",
+        "priceDelta": 0
       },
       {
-        code: "M",
-        label: "M · 17 шт",
-        priceDelta: 1130
+        "code": "M",
+        "label": "M · 5 шт",
+        "priceDelta": 1300
       },
       {
-        code: "L",
-        label: "L · 19 шт",
-        priceDelta: 1520
+        "code": "L",
+        "label": "L · 7 шт",
+        "priceDelta": 2600
       },
       {
-        code: "XL",
-        label: "XL · 21 шт",
-        priceDelta: 1910
+        "code": "XL",
+        "label": "XL · 9 шт",
+        "priceDelta": 3900
+      },
+      {
+        "code": "XXL",
+        "label": "XXL · 11 шт",
+        "priceDelta": 5200
       }
     ],
-    addons: [
+    "addons": [
       {
-        id: "card",
-        label: "Открытка",
-        price: 350
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
       },
       {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
       },
       {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
       }
-    ]
+    ],
+    "photoSize": "XXL",
+    "priceFrom": false,
+    "categories": [
+      "online",
+      "mono"
+    ],
+    "composition": "Гортензия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #817667, #5d554a)",
+      "hover": "linear-gradient(135deg, #72685b, #4b443c)"
+    }
   },
   {
-    id: "m12",
-    slug: "rozovye-astry",
-    photoSize: "L",
-    image: "images/paloma/catalog/m12.jpg",
-    name: "Розовые астры",
-    price: 2000,
-    categories: ["mono"],
-    badge: null,
-    composition: "Астры",
-    desc: "Нежные розовые астры — классический букет, который держится долго и не выглядит дежурным.",
-    pairs: "К раф-кофе на фисташке.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #f0c3cd, #b3808d)",
-      hover: "linear-gradient(135deg, #b3808d, #f0c3cd)"
-    },
-    sizes: [
+    "id": "m2",
+    "desc": "Пионовидная роза кораллового оттенка — плотные бутоны с ярусами лепестков.",
+    "name": "Роза сорта Мандарин",
+    "slug": "roza-mandarin",
+    "badge": "Хит",
+    "image": "images/paloma/catalog/mono-rose-mandarin.jpg",
+    "pairs": "К капучино.",
+    "price": 3890,
+    "sizes": [
       {
-        code: "S",
-        label: "S · 3 ветки",
-        priceDelta: 0
+        "code": "S",
+        "label": "S · 9 шт",
+        "priceDelta": 0
       },
       {
-        code: "M",
-        label: "M · 5 веток",
-        priceDelta: 1100
+        "code": "M",
+        "label": "M · 15 шт",
+        "priceDelta": 2340
       },
       {
-        code: "L",
-        label: "L · 7 веток",
-        priceDelta: 2200
+        "code": "L",
+        "label": "L · 21 шт",
+        "priceDelta": 4680
       },
       {
-        code: "XL",
-        label: "XL · 9 веток",
-        priceDelta: 3300
+        "code": "XL",
+        "label": "XL · 31 шт",
+        "priceDelta": 8580
       }
     ],
-    addons: [
+    "addons": [
       {
-        id: "card",
-        label: "Открытка",
-        price: 350
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
       },
       {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
       },
       {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
       }
-    ]
+    ],
+    "photoSize": "L",
+    "priceFrom": false,
+    "categories": [
+      "online",
+      "mono"
+    ],
+    "composition": "Пионовидная роза",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ad636c, #7d474e)",
+      "hover": "linear-gradient(135deg, #98575f, #64393f)"
+    }
   },
   {
-    id: "m13",
-    slug: "podsolnuhi",
-    photoSize: "S",
-    image: "images/paloma/catalog/m13.jpg",
-    name: "Подсолнухи",
-    price: 2500,
-    categories: ["mono"],
-    badge: null,
-    composition: "Подсолнух",
-    desc: "Крупные подсолнухи в фирменной упаковке PALOMA — самый заметный букет, его видно издалека.",
-    pairs: "К фильтр-кофе.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #e8b830, #a07d16)",
-      hover: "linear-gradient(135deg, #a07d16, #e8b830)"
-    },
-    sizes: [
+    "id": "m3",
+    "desc": "Пионовидная роза персиково-медового тона — тёплый и мягкий моно-букет.",
+    "name": "Роза сорта Мелон",
+    "slug": "roza-melon",
+    "badge": "Хит",
+    "image": "images/paloma/catalog/mono-rose-melon.jpg",
+    "pairs": "К рафу.",
+    "price": 3890,
+    "sizes": [
       {
-        code: "S",
-        label: "S · 5 шт",
-        priceDelta: 0
+        "code": "S",
+        "label": "S · 9 шт",
+        "priceDelta": 0
       },
       {
-        code: "M",
-        label: "M · 7 шт",
-        priceDelta: 860
+        "code": "M",
+        "label": "M · 15 шт",
+        "priceDelta": 2340
       },
       {
-        code: "L",
-        label: "L · 9 шт",
-        priceDelta: 1720
+        "code": "L",
+        "label": "L · 21 шт",
+        "priceDelta": 4650
       },
       {
-        code: "XL",
-        label: "XL · 11 шт",
-        priceDelta: 2580
+        "code": "XL",
+        "label": "XL · 25 шт",
+        "priceDelta": 6240
       }
     ],
-    addons: [
+    "addons": [
       {
-        id: "card",
-        label: "Открытка",
-        price: 350
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
       },
       {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
       },
       {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
       }
-    ]
+    ],
+    "photoSize": "XL",
+    "priceFrom": false,
+    "categories": [
+      "mono"
+    ],
+    "composition": "Пионовидная роза",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #b18e5d, #7f6643)",
+      "hover": "linear-gradient(135deg, #9c7d52, #675236)"
+    }
   },
   {
-    id: "m14",
-    slug: "rozovaya-hrizantema",
-    photoSize: "M",
-    image: "images/paloma/catalog/m14.jpg",
-    name: "Розовая хризантема",
-    price: 1450,
-    categories: ["mono"],
-    badge: null,
-    composition: "Хризантема",
-    desc: "Кустовая хризантема сантини нежно-розового оттенка — лёгкий букет, который стоит в вазе больше двух недель.",
-    pairs: "К латте на миндальном.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #f2ccd4, #b98e98)",
-      hover: "linear-gradient(135deg, #b98e98, #f2ccd4)"
-    },
-    sizes: [
+    "id": "m4",
+    "desc": "Вывернутая роза сорта Нина — глубокий красный и бархатная фактура.",
+    "name": "Французская красная роза",
+    "slug": "francuzskaya-krasnaya-roza",
+    "badge": null,
+    "image": "images/paloma/catalog/mono-rose-french-red.jpg",
+    "pairs": "К фильтру с шоколадной нотой.",
+    "price": 3890,
+    "sizes": [
       {
-        code: "S",
-        label: "S · 5 веток",
-        priceDelta: 0
+        "code": "S",
+        "label": "S · 9 шт",
+        "priceDelta": 0
       },
       {
-        code: "M",
-        label: "M · 7 веток",
-        priceDelta: 440
+        "code": "M",
+        "label": "M · 15 шт",
+        "priceDelta": 2340
       },
       {
-        code: "L",
-        label: "L · 9 веток",
-        priceDelta: 880
+        "code": "L",
+        "label": "L · 21 шт",
+        "priceDelta": 4680
       },
       {
-        code: "XL",
-        label: "XL · 11 веток",
-        priceDelta: 1320
+        "code": "XL",
+        "label": "XL · 31 шт",
+        "priceDelta": 8580
       }
     ],
-    addons: [
+    "addons": [
       {
-        id: "card",
-        label: "Открытка",
-        price: 350
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
       },
       {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
       },
       {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
       }
-    ]
+    ],
+    "photoSize": "S",
+    "priceFrom": false,
+    "categories": [
+      "mono"
+    ],
+    "composition": "Вывернутая роза сорта Нина",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8e2b3c, #661f2b)",
+      "hover": "linear-gradient(135deg, #7d2635, #521923)"
+    }
   },
   {
-    id: "n44",
-    slug: "solnechnyy-polden",
-    image: "images/paloma/catalog/n44.jpg",
-    name: "Солнечный полдень",
-    price: 4105,
-    priceFrom: true,
-    categories: [
-      "authors"
-    ],
-    badge: null,
-    composition: "Орнитогалум, хризантема, гладиолус, диантус Грин Трик, паникум",
-    desc: "Авторский букет в жёлто-зелёной гамме: хризантема, гладиолус, орнитогалум и зелёный диантус Грин Трик.",
-    pairs: "К капучино на кокосовом.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #e3c53f, #7f9146)",
-      hover: "linear-gradient(135deg, #7f9146, #e3c53f)"
-    },
-    sizes: [
+    "id": "m6",
+    "desc": "Пудрово-розовые шапки гортензии — нежный объём без лишних деталей.",
+    "name": "Розовая гортензия",
+    "slug": "rozovaya-gortenziya",
+    "badge": "Хит",
+    "image": "images/paloma/catalog/mono-hydrangea-pink.jpg",
+    "pairs": "К капучино с корицей.",
+    "price": 2330,
+    "sizes": [
       {
-        code: "base",
-        label: "Базовый",
-        priceDelta: 0
-      }
-    ],
-    addons: [
-      {
-        id: "card",
-        label: "Открытка",
-        price: 350
+        "code": "S",
+        "label": "S · 3 шт",
+        "priceDelta": 0
       },
       {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
+        "code": "M",
+        "label": "M · 5 шт",
+        "priceDelta": 1300
       },
       {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
+        "code": "L",
+        "label": "L · 7 шт",
+        "priceDelta": 2600
+      },
+      {
+        "code": "XL",
+        "label": "XL · 9 шт",
+        "priceDelta": 3900
+      },
+      {
+        "code": "XXL",
+        "label": "XXL · 11 шт",
+        "priceDelta": 5200
       }
-    ]
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "M",
+    "priceFrom": false,
+    "categories": [
+      "online",
+      "mono"
+    ],
+    "composition": "Гортензия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #af878c, #7e6165)",
+      "hover": "linear-gradient(135deg, #9a777b, #664e51)"
+    }
   },
   {
-    id: "n45",
-    slug: "korallovoe-utro",
-    image: "images/paloma/catalog/n45.jpg",
-    name: "Коралловое утро",
-    price: 4040,
-    priceFrom: true,
-    categories: [
-      "authors"
-    ],
-    badge: null,
-    composition: "Гортензия, паникум, эустома, эвкалипт, пионовидная роза, кустовая роза, диантус",
-    desc: "Коралловые пионовидные розы с зелёной гортензией и эвкалиптом — тёплый авторский букет с мягким переходом оттенков.",
-    pairs: "К флэт уайту.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #ef8f80, #94a86a)",
-      hover: "linear-gradient(135deg, #94a86a, #ef8f80)"
-    },
-    sizes: [
+    "id": "m7",
+    "desc": "Голубая гортензия — прохладный оттенок и крупная фактура соцветий.",
+    "name": "Голубая гортензия",
+    "slug": "golubaya-gortenziya",
+    "badge": "Хит",
+    "image": "images/paloma/catalog/mono-hydrangea-blue.jpg",
+    "pairs": "К айс-латте.",
+    "price": 2330,
+    "sizes": [
       {
-        code: "base",
-        label: "Базовый",
-        priceDelta: 0
-      }
-    ],
-    addons: [
-      {
-        id: "card",
-        label: "Открытка",
-        price: 350
+        "code": "S",
+        "label": "S · 3 шт",
+        "priceDelta": 0
       },
       {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
+        "code": "M",
+        "label": "M · 5 шт",
+        "priceDelta": 1300
       },
       {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
+        "code": "L",
+        "label": "L · 7 шт",
+        "priceDelta": 2600
+      },
+      {
+        "code": "XL",
+        "label": "XL · 9 шт",
+        "priceDelta": 3900
+      },
+      {
+        "code": "XXL",
+        "label": "XXL · 11 шт",
+        "priceDelta": 5200
       }
-    ]
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "M",
+    "priceFrom": false,
+    "categories": [
+      "online",
+      "mono"
+    ],
+    "composition": "Гортензия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #566775, #3e4a54)",
+      "hover": "linear-gradient(135deg, #4c5b67, #323c44)"
+    }
   },
   {
-    id: "n46",
-    slug: "feyerverk",
-    image: "images/paloma/catalog/n46.jpg",
-    name: "Фейерверк",
-    price: 14975,
-    priceFrom: true,
-    categories: [
-      "authors"
-    ],
-    badge: null,
-    composition: "Дельфиниум, пионовидная кустовая роза, гладиолус, георгин, эустома, львиный зев, пионовидная роза, гортензия, паникум, целозия, лилия",
-    desc: "Большой авторский букет из одиннадцати культур: георгины, пионовидные розы, дельфиниум и лилия в фирменной коробке PALOMA.",
-    pairs: "К эспрессо-тонику.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #e79ab0, #6f86c4)",
-      hover: "linear-gradient(135deg, #6f86c4, #e79ab0)"
-    },
-    sizes: [
+    "id": "m8",
+    "desc": "Вывернутая роза сорта Пинк Мондиаль — раскрытые пионовидные бутоны.",
+    "name": "Французская розовая роза",
+    "slug": "francuzskaya-rozovaya-roza",
+    "badge": "Хит",
+    "image": "images/paloma/catalog/mono-rose-french-pink.jpg",
+    "pairs": "К латте с миндальным молоком.",
+    "price": 3890,
+    "sizes": [
       {
-        code: "base",
-        label: "Базовый",
-        priceDelta: 0
-      }
-    ],
-    addons: [
-      {
-        id: "card",
-        label: "Открытка",
-        price: 350
+        "code": "S",
+        "label": "S · 9 шт",
+        "priceDelta": 0
       },
       {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
+        "code": "M",
+        "label": "M · 15 шт",
+        "priceDelta": 2340
       },
       {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
+        "code": "L",
+        "label": "L · 21 шт",
+        "priceDelta": 4680
+      },
+      {
+        "code": "XL",
+        "label": "XL · 31 шт",
+        "priceDelta": 8580
       }
-    ]
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "S",
+    "priceFrom": false,
+    "categories": [
+      "online",
+      "mono"
+    ],
+    "composition": "Вывернутая роза сорта Пинк Мондиаль",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d09c99, #96706e)",
+      "hover": "linear-gradient(135deg, #b78987, #795a59)"
+    }
   },
   {
-    id: "w7",
-    slug: "perlamutr",
-    image: "images/paloma/catalog/w7.jpg",
-    name: "Перламутр",
-    price: 9380,
-    priceFrom: true,
-    categories: [
+    "id": "m9",
+    "desc": "Пионовидная лилия — крупные соцветия и выразительный аромат.",
+    "name": "Лилия",
+    "slug": "liliya",
+    "badge": null,
+    "image": "images/paloma/catalog/mono-lily.jpg",
+    "pairs": "К эспрессо.",
+    "price": 9100,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 5 веток",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 7 веток",
+        "priceDelta": 3500
+      },
+      {
+        "code": "L",
+        "label": "L · 11 веток",
+        "priceDelta": 10500
+      },
+      {
+        "code": "XL",
+        "label": "XL · 15 веток",
+        "priceDelta": 17500
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "XL",
+    "categories": [
+      "mono"
+    ],
+    "composition": "Пионовидная лилия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #7d7654, #5a553c)",
+      "hover": "linear-gradient(135deg, #6e684a, #494431)"
+    }
+  },
+  {
+    "id": "d1",
+    "desc": "Персиковые георгины Пичес с зеленью малины — тёплый дуобукет в фирменной упаковке PALOMA.",
+    "name": "Дуобукет «Пичес»",
+    "slug": "duo-piches",
+    "badge": null,
+    "image": "images/paloma/catalog/duo-peaches.jpg",
+    "pairs": "К капучино на кокосовом.",
+    "price": 5700,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 7 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 11 шт",
+        "priceDelta": 3100
+      },
+      {
+        "code": "L",
+        "label": "L · 17 шт",
+        "priceDelta": 7750
+      },
+      {
+        "code": "XL",
+        "label": "XL · 25 шт",
+        "priceDelta": 13950
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "S",
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Георгин Пичес, листья малины",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e8a986, #7f8f5a)",
+      "hover": "linear-gradient(135deg, #dd9873, #6b7a4a)"
+    }
+  },
+  {
+    "id": "m10",
+    "desc": "Высокие свечи гладиолусов, жёлтые со сливочным. Соцветия раскрываются снизу вверх, поэтому букет живёт долго.",
+    "name": "Жёлтые гладиолусы",
+    "slug": "zheltye-gladiolusy",
+    "badge": null,
+    "image": "images/paloma/catalog/mono-gladiolus-yellow.jpg",
+    "pairs": "К капучино.",
+    "price": 2700,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 5 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 7 шт",
+        "priceDelta": 940
+      },
+      {
+        "code": "L",
+        "label": "L · 9 шт",
+        "priceDelta": 1880
+      },
+      {
+        "code": "XL",
+        "label": "XL · 11 шт",
+        "priceDelta": 2820
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "L",
+    "categories": [
+      "mono"
+    ],
+    "composition": "Гладиолусы",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #cfc978, #8e8f57)",
+      "hover": "linear-gradient(135deg, #b8b268, #767748)"
+    }
+  },
+  {
+    "id": "d2",
+    "desc": "Пудровые и кремовые французские розы Мондиаль с эвкалиптом — пышный дуобукет из двух сортов.",
+    "name": "Французская роза",
+    "slug": "duo-mondial",
+    "badge": null,
+    "image": "images/paloma/catalog/duo-frrose.jpg",
+    "pairs": "К капучино.",
+    "price": 4740,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 9 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 15 шт",
+        "priceDelta": 2590
+      },
+      {
+        "code": "L",
+        "label": "L · 19 шт",
+        "priceDelta": 4420
+      },
+      {
+        "code": "XL",
+        "label": "XL · 25 шт",
+        "priceDelta": 7010
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "XL",
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Роза Мондиаль, роза Пинк Мондиаль, эвкалипт",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ecc9d0, #cdb7a0)",
+      "hover": "linear-gradient(135deg, #e3b8c1, #bda588)"
+    }
+  },
+  {
+    "id": "w1",
+    "desc": "Серебристая калла и антуриум с георгином и амарантом — графичный букет с металлическим блеском.",
+    "name": "Нео-серебро",
+    "slug": "neo-serebro",
+    "badge": null,
+    "image": "images/paloma/catalog/wed-neo-silver.jpg",
+    "pairs": "К фильтру.",
+    "price": 8000,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
       "wedding"
     ],
-    badge: null,
-    composition: "Астра, диантус, эустома, каллы, львиный зев",
-    desc: "Букет невесты с каллами и персиковой астрой на жемчужных нитях — компактный, лёгкий, держит форму весь день.",
-    pairs: "К свадебному оформлению PALOMA.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #f4dcd0, #c8a58f)",
-      hover: "linear-gradient(135deg, #c8a58f, #f4dcd0)"
-    },
-    sizes: [
-      {
-        code: "base",
-        label: "Базовый",
-        priceDelta: 0
-      }
-    ],
-    addons: [
-      {
-        id: "card",
-        label: "Открытка",
-        price: 350
-      },
-      {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
-      },
-      {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
-      }
-    ]
+    "composition": "Георгин, краспедия, калла, антуриум, амарант",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #7f7b6c, #5b594e)",
+      "hover": "linear-gradient(135deg, #706c5f, #4a473f)"
+    }
   },
   {
-    id: "w8",
-    slug: "monblan",
-    image: "images/paloma/catalog/w8.jpg",
-    name: "Монблан",
-    price: 7180,
-    priceFrom: true,
-    categories: [
+    "id": "w2",
+    "desc": "Белый гладиолус в чистом моно-исполнении — строгая классика для церемонии.",
+    "name": "Классический Гладиолус",
+    "slug": "klassicheskiy-gladiolus",
+    "badge": null,
+    "image": "images/paloma/catalog/wed-gladiolus.jpg",
+    "pairs": "К капучино.",
+    "price": 3000,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
       "wedding"
     ],
-    badge: null,
-    composition: "Антуриум, георгин, орнитогалум",
-    desc: "Лаконичный букет невесты: крупные белые георгины, зелень антуриума и жемчужные нити.",
-    pairs: "К свадебному оформлению PALOMA.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #f2efe6, #9aa88a)",
-      hover: "linear-gradient(135deg, #9aa88a, #f2efe6)"
-    },
-    sizes: [
-      {
-        code: "base",
-        label: "Базовый",
-        priceDelta: 0
-      }
-    ],
-    addons: [
-      {
-        id: "card",
-        label: "Открытка",
-        price: 350
-      },
-      {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
-      },
-      {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
-      }
-    ]
+    "composition": "Гладиолус",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #818680, #5d605c)",
+      "hover": "linear-gradient(135deg, #727671, #4b4e4a)"
+    }
   },
   {
-    id: "w9",
-    slug: "sorbet",
-    image: "images/paloma/catalog/w9.jpg",
-    name: "Сорбет",
-    price: 3355,
-    priceFrom: true,
-    categories: [
+    "id": "w3",
+    "desc": "Орхидея фаленопсис каскадом на сумочке-основе со стабилизированной гортензией — букет, который носят на руке.",
+    "name": "Сумочка с орхидеей",
+    "slug": "sumochka-s-orhideey",
+    "badge": null,
+    "image": "images/paloma/catalog/wed-orchid-bag.jpg",
+    "pairs": "К эспрессо.",
+    "price": 15000,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
       "wedding"
     ],
-    badge: null,
-    composition: "Диантус, гладиолус, берграс, эустома",
-    desc: "Розово-белый букет невесты с эустомой и берграсом — воздушный силуэт с тонкими травами.",
-    pairs: "К свадебному оформлению PALOMA.",
-    placeholderGradient: {
-      main: "linear-gradient(135deg, #f3c6cf, #a9c47e)",
-      hover: "linear-gradient(135deg, #a9c47e, #f3c6cf)"
-    },
-    sizes: [
+    "composition": "Орхидея фаленопсис, стабилизированная гортензия, эвкалипт",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #3e3e37, #2d2d28)",
+      "hover": "linear-gradient(135deg, #373730, #242420)"
+    }
+  },
+  {
+    "id": "w4",
+    "desc": "Пастельная россыпь из пионовидной розы Харпер, дельфиниума и львиного зева — яркий и живой букет.",
+    "name": "Дофаминовый",
+    "slug": "dofaminoviy",
+    "badge": null,
+    "image": "images/paloma/catalog/wed-dopamine.jpg",
+    "pairs": "К рафу.",
+    "price": 7000,
+    "sizes": [
       {
-        code: "base",
-        label: "Базовый",
-        priceDelta: 0
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
       }
     ],
-    addons: [
+    "addons": [
       {
-        id: "card",
-        label: "Открытка",
-        price: 350
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
       },
       {
-        id: "vase",
-        label: "Ваза",
-        price: 1200
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
       },
       {
-        id: "coffee",
-        label: "Кофе с собой",
-        price: 320
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
       }
-    ]
-  },
-  {
-    id: "acc1",
-    slug: "seletti-kintsugi-tray",
-    image: "images/paloma/catalog/acc1.jpg",
-    name: "Блюдо SELETTI Kintsugi",
-    price: 41700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Декоративное блюдо SELETTI Kintsugi. Размеры 42.5 × 29.5 × 3.5 см.",
-    pairs: "Эффектный подарок и акцент в интерьере.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e4cf9a, #a8863f)", hover: "linear-gradient(135deg, #d8bf85, #927231)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc2",
-    slug: "seletti-love-in-a-box",
-    image: "images/paloma/catalog/acc2.jpg",
-    name: "Шкатулка SELETTI «Love in a Box»",
-    price: 14700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор, красный вельвет",
-    desc: "Шкатулка SELETTI «Love in a Box». Размеры 13.6 × 18.9 × 7.4 см.",
-    pairs: "Готовый подарок для украшений или мелочей.",
-    placeholderGradient: { main: "linear-gradient(135deg, #b8404a, #7a2028)", hover: "linear-gradient(135deg, #a5353f, #64181f)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc4",
-    slug: "seletti-nabor-2-chashki-podnos",
-    image: "images/paloma/catalog/acc4.jpg",
-    name: "Набор из 2 кофейных чашек с подносом SELETTI",
-    price: 6200,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Набор SELETTI: поднос, две кофейные чашки и две ложки. Размеры 13 × 20 см.",
-    pairs: "Для кофе на двоих.",
-    placeholderGradient: { main: "linear-gradient(135deg, #ece6da, #b6a98c)", hover: "linear-gradient(135deg, #e0d8c8, #a3957a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc5",
-    slug: "seletti-para-1",
-    image: "images/paloma/catalog/acc5.jpg",
-    name: "Кофейная пара SELETTI",
-    price: 7300,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Кофейная пара SELETTI: блюдце, чашка и ложка.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #ece6da, #b6a98c)", hover: "linear-gradient(135deg, #e0d8c8, #a3957a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc6",
-    slug: "seletti-para-2",
-    image: "images/paloma/catalog/acc6.jpg",
-    name: "Кофейная пара SELETTI",
-    price: 7300,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Кофейная пара SELETTI: блюдце, чашка и ложка.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #ece6da, #b6a98c)", hover: "linear-gradient(135deg, #e0d8c8, #a3957a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc7",
-    slug: "seletti-hybrid-supovaya",
-    image: "images/paloma/catalog/acc7.jpg",
-    name: "Суповая тарелка SELETTI Hybrid",
-    price: 15700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Суповая тарелка SELETTI Hybrid. Размеры 25.4 × 4.2 см.",
-    pairs: "Дополнит сервировку стола.",
-    placeholderGradient: { main: "linear-gradient(135deg, #ece6da, #b6a98c)", hover: "linear-gradient(135deg, #e0d8c8, #a3957a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc8",
-    slug: "seletti-kintsugi-tarelka",
-    image: "images/paloma/catalog/acc8.jpg",
-    name: "Тарелка SELETTI Kintsugi",
-    price: 14700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор, покрытие золотом 24 карата",
-    desc: "Тарелка SELETTI Kintsugi. Размеры 27.5 × 3 см.",
-    pairs: "Эффектный акцент в сервировке.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e4cf9a, #a8863f)", hover: "linear-gradient(135deg, #d8bf85, #927231)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "n33",
-    slug: "harper",
-    image: "images/paloma/catalog/n33.jpg",
-    name: "Харпер",
-    price: 9435,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Пионовидная роза Харпер, орнитогалум, коробочка лотоса, циния, каллы, эустома, амми, гортензия, диантус, паникум, львиный зев",
-    desc: "Насыщенный авторский букет с пионовидной розой Харпер, цинниями, коробочками лотоса и каллами.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d84f77, #9c2f52)", hover: "linear-gradient(135deg, #c43f66, #86223f)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
     ],
-  },
-  {
-    id: "w5",
-    slug: "nerine",
-    image: "images/paloma/catalog/w5.jpg",
-    name: "Нерине",
-    price: 12080,
-    priceFrom: true,
-    categories: ["wedding"],
-    badge: null,
-    composition: "Антуриум, каллы, пионовидная роза, стабилизированный амарант, нерине",
-    desc: "Нежный персиковый свадебный букет с антуриумом, каллами и струящимся амарантом.",
-    pairs: "К свадебному дню невесты.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e0a48c, #b06f57)", hover: "linear-gradient(135deg, #d4917a, #9c5f49)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "priceFrom": true,
+    "categories": [
+      "wedding"
     ],
+    "composition": "Оксипеталум, дельфиниум, пионовидная роза Харпер, эустома, диантус, львиный зев",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #86756a, #60544c)",
+      "hover": "linear-gradient(135deg, #76675d, #4e443d)"
+    }
   },
   {
-    id: "acc11",
-    slug: "seletti-kintsugi-piala",
-    image: "images/paloma/catalog/acc11.jpg",
-    name: "Пиала SELETTI Kintsugi",
-    price: 7000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Пиала SELETTI Kintsugi. Размеры 11.5 × 6 см.",
-    pairs: "Дополнит сервировку стола.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e4cf9a, #a8863f)", hover: "linear-gradient(135deg, #d8bf85, #927231)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc12",
-    slug: "seletti-kintsugi-salatnik",
-    image: "images/paloma/catalog/acc12.jpg",
-    name: "Салатник SELETTI Kintsugi",
-    price: 17300,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Салатник SELETTI Kintsugi. Размеры 19 × 7.2 см.",
-    pairs: "Эффектный акцент в сервировке.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e4cf9a, #a8863f)", hover: "linear-gradient(135deg, #d8bf85, #927231)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc13",
-    slug: "seletti-chaynaya-para",
-    image: "images/paloma/catalog/acc13.jpg",
-    name: "Чайная пара SELETTI",
-    price: 9200,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Чайная пара SELETTI: чашка, блюдце и ложка.",
-    pairs: "К чаю или кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #ece6da, #b6a98c)", hover: "linear-gradient(135deg, #e0d8c8, #a3957a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc14",
-    slug: "seletti-hybrid-kruzhka",
-    image: "images/paloma/catalog/acc14.jpg",
-    name: "Кружка SELETTI Hybrid",
-    price: 7600,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Кружка SELETTI Hybrid. Размеры 8.5 × 10.2 см.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #4a5c93, #26356a)", hover: "linear-gradient(135deg, #3d4f85, #1c2a5a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc15",
-    slug: "seletti-toiletpaper-salatnik-eye",
-    image: "images/paloma/catalog/acc15.jpg",
-    name: "Салатник SELETTI Toiletpaper «Eye»",
-    price: 3000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Алюминий",
-    desc: "Салатник SELETTI Toiletpaper «Eye». Размеры 17 × 8 см.",
-    pairs: "Смелый акцент на столе.",
-    placeholderGradient: { main: "linear-gradient(135deg, #7db3d6, #3a6f9c)", hover: "linear-gradient(135deg, #6ba3c8, #2f5f8a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc16",
-    slug: "seletti-toiletpaper-kruzhka-eye",
-    image: "images/paloma/catalog/acc16.jpg",
-    name: "Кружка SELETTI Toiletpaper «Eye»",
-    price: 3000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Алюминий",
-    desc: "Кружка SELETTI Toiletpaper «Eye». Размеры 10 × 9 см.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #7db3d6, #3a6f9c)", hover: "linear-gradient(135deg, #6ba3c8, #2f5f8a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc17",
-    slug: "seletti-toiletpaper-kruzhka-plunger",
-    image: "images/paloma/catalog/acc17.jpg",
-    name: "Кружка SELETTI Toiletpaper «Plunger»",
-    price: 3000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Алюминий",
-    desc: "Кружка SELETTI Toiletpaper «Plunger». Размеры 10 × 9 см.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #c9564b, #8f2f28)", hover: "linear-gradient(135deg, #b8463c, #7a231d)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc18",
-    slug: "seletti-toiletpaper-kruzhka-bird",
-    image: "images/paloma/catalog/acc18.jpg",
-    name: "Кружка SELETTI Toiletpaper «Bird»",
-    price: 3000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Алюминий",
-    desc: "Кружка SELETTI Toiletpaper «Bird». Размеры 10 × 9 см.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8ba86a, #566f37)", hover: "linear-gradient(135deg, #7b9a5a, #48602d)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc19",
-    slug: "seletti-svecha-hands-with-snakes",
-    image: "images/paloma/catalog/acc19.jpg",
-    name: "Ароматическая свеча SELETTI «Hands with snakes»",
-    price: 7900,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло, растительный воск, эфирные масла",
-    desc: "Ароматическая свеча SELETTI Toiletpaper «Hands with snakes». Размеры 8 × 8.5 × 8.5 см.",
-    pairs: "Атмосферный подарок для дома.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e0864a, #a85528)", hover: "linear-gradient(135deg, #d0763c, #94491f)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc20",
-    slug: "seletti-svecha-snakes",
-    image: "images/paloma/catalog/acc20.jpg",
-    name: "Ароматическая свеча SELETTI «Snakes»",
-    price: 7900,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло, растительный воск, эфирные масла",
-    desc: "Ароматическая свеча SELETTI Toiletpaper «Snakes». Размеры 8 × 8.5 × 8.5 см.",
-    pairs: "Атмосферный подарок для дома.",
-    placeholderGradient: { main: "linear-gradient(135deg, #3f9c8f, #226b60)", hover: "linear-gradient(135deg, #348c7f, #1b5a50)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc21",
-    slug: "seletti-svecha-shit",
-    image: "images/paloma/catalog/acc21.jpg",
-    name: "Ароматическая свеча SELETTI «Shit»",
-    price: 7900,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло, растительный воск, эфирные масла",
-    desc: "Ароматическая свеча SELETTI Toiletpaper «Shit». Размеры 8 × 8.5 × 8.5 см.",
-    pairs: "Атмосферный подарок для дома.",
-    placeholderGradient: { main: "linear-gradient(135deg, #c9564b, #8f2f28)", hover: "linear-gradient(135deg, #b8463c, #7a231d)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc22",
-    slug: "chocome-makadamia-white",
-    image: "images/paloma/catalog/acc22.jpg",
-    name: "Конфеты chocoMe «Макадамия в белом шоколаде»",
-    price: 2250,
-    categories: ["vases"],
-    badge: null,
-    composition: "Белый «светлый» шоколад ручной работы (какао-масло, сахар, цельное молоко, сухое обезжиренное молоко, масло, эмульгатор: лецитин, натуральный ароматизатор ванили), макадамия, какао-порошок, бобы тонка, корица",
-    desc: "Макадамия в белом шоколаде ручной работы с какао-порошком и бобами тонка. Масса 120 г, 670 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #b98a5a, #7c5730)", hover: "linear-gradient(135deg, #a97a4c, #6a4926)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc23",
-    slug: "chocome-mindal-tryufel",
-    image: "images/paloma/catalog/acc23.jpg",
-    name: "Конфеты chocoMe «Миндаль с трюфелем»",
-    price: 2500,
-    categories: ["vases"],
-    badge: null,
-    composition: "Молочный шоколад ручной работы (какао-масса, тростниковый сахар, какао-масло, цельное сухое молоко, ваниль), миндаль из Валенсии с трюфельным грибом, какао-порошок",
-    desc: "Миндаль из Валенсии в молочном шоколаде с трюфельным грибом. Масса 120 г, 597 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8c6a45, #574026)", hover: "linear-gradient(135deg, #7c5c3b, #47331e)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc24",
-    slug: "chocome-piemontskiy-oreh-kofe",
-    image: "images/paloma/catalog/acc24.jpg",
-    name: "Конфеты chocoMe «Пьемонтский орех с кофе»",
-    price: 1950,
-    categories: ["vases"],
-    badge: null,
-    composition: "Орехово-молочный шоколад ручной работы (сахар, какао-масло, цельное сухое молоко, орехи, какао-масса, сухое обезжиренное молоко, эмульгатор: лецитин, натуральная ваниль), пьемонтский орех, кофе Харар",
-    desc: "Пьемонтский орех в орехово-молочном шоколаде с дроблёным кофе Харар. Масса 120 г, 619 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #7a5a86, #4a3255)", hover: "linear-gradient(135deg, #6a4c76, #3d2848)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc25",
-    slug: "chocome-carre-assorti",
-    image: "images/paloma/catalog/acc25.jpg",
-    name: "Ассорти плиток chocoMe Carré",
-    price: 3150,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), засахаренные лепестки фиалки, фисташки Бронте, лиофилизированная вишня",
-    desc: "Три плитки горького шоколада: с лепестками фиалки, фисташками Бронте и вишней. 3 × 50 г (150 г), 540–586 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #5c3d3a, #331f1d)", hover: "linear-gradient(135deg, #4c3130, #281715)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc26",
-    slug: "chocome-carre-brusnika-chili",
-    image: "images/paloma/catalog/acc26.jpg",
-    name: "Горький шоколад chocoMe «Брусника и чили»",
-    price: 1000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), сушёная брусника, лиофилизированная чёрная смородина, волокна перца чили",
-    desc: "Горький шоколад ручной работы с сушёной брусникой, чёрной смородиной и волокнами перца чили. Масса 50 г, 527 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #7a2f2a, #431614)", hover: "linear-gradient(135deg, #6a2723, #33100f)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc27",
-    slug: "chocome-mindal-dikiy-perets",
-    image: "images/paloma/catalog/acc27.jpg",
-    name: "Конфеты chocoMe «Миндаль с диким перцем»",
-    price: 1950,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), миндаль из Сицилии, какао-порошок, дикий мадагаскарский перец",
-    desc: "Миндаль из Сицилии в горьком шоколаде с диким мадагаскарским перцем и какао-порошком. Масса 120 г, 576 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #4a2f2c, #281413)", hover: "linear-gradient(135deg, #3d2523, #1e0f0e)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "n34",
-    slug: "flamenko",
-    image: "images/paloma/catalog/n34.jpg",
-    name: "Фламенко",
-    price: 10710,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Леукодендрон, целозия, сангисорба, каллы, орнитогалум, французская роза сорта Нина, лист стрелиции, циперус (зонтик), кроксомия",
-    desc: "Насыщенный красный авторский букет с французской розой Нина, целозией, каллами и кроксомией.",
-    pairs: "К эспрессо из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #b02a2f, #6f1519)", hover: "linear-gradient(135deg, #9c2226, #5a1013)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "id": "a1",
+    "desc": "Крупная авторская работа флориста PALOMA: пурпурный аллиум, лилии, дельфиниум и злаки — статусный высокий букет.",
+    "name": "Авторская композиция",
+    "slug": "avtorskiy-alium",
+    "badge": null,
+    "image": "images/paloma/catalog/author-alium.jpg",
+    "pairs": "К эспрессо.",
+    "price": 18000,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
     ],
-  },
-  {
-    id: "acc28",
-    slug: "chocome-carre-fialka-vino",
-    image: "images/paloma/catalog/acc28.jpg",
-    name: "Горький шоколад chocoMe «Фиалка и вино»",
-    price: 1000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), засахаренные лепестки фиалки (сахар, натуральные цветы фиалки, загуститель: гуммиарабик, краситель: настоящий кармин, ароматизатор), лиофилизированная чёрная смородина, морская соль с красным вином (соль, красное вино, перец)",
-    desc: "Горький шоколад ручной работы с засахаренными лепестками фиалки, чёрной смородиной и морской солью с красным вином. Масса 50 г, 519 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #6a4a86, #3a2555)", hover: "linear-gradient(135deg, #5a3c76, #2d1c45)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc29",
-    slug: "chocome-carre-pekan-brusnika",
-    image: "images/paloma/catalog/acc29.jpg",
-    name: "Горький шоколад chocoMe «Пекан и брусника»",
-    price: 1000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), орех пекан, сушёная брусника (брусника, тростниковый сахар, растительное масло), фисташки Бронте, корица",
-    desc: "Горький шоколад ручной работы с орехом пекан, сушёной брусникой, фисташками Бронте и корицей. Масса 50 г, 569 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #5c3d2f, #311e15)", hover: "linear-gradient(135deg, #4c3125, #241510)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc30",
-    slug: "chocome-carre-moloch-pekan-krasnaya-smorodina",
-    image: "images/paloma/catalog/acc30.jpg",
-    name: "Молочный шоколад chocoMe «Пекан и красная смородина»",
-    price: 1000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Молочный шоколад ручной работы (сахар, какао-масса, какао-масло, сухое молоко, сухое обезжиренное молоко, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), орех пекан, фисташки Бронте, лиофилизированная красная смородина",
-    desc: "Молочный шоколад ручной работы с орехом пекан, фисташками Бронте и красной смородиной. Масса 50 г, 586 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8c6a45, #574026)", hover: "linear-gradient(135deg, #7c5c3b, #47331e)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc31",
-    slug: "chocome-carre-white-mindal-kunzhut",
-    image: "images/paloma/catalog/acc31.jpg",
-    name: "Белый шоколад chocoMe «Миндаль и кунжут»",
-    price: 1200,
-    categories: ["vases"],
-    badge: null,
-    composition: "Белый «светлый» шоколад ручной работы (какао-масло, сахар, цельное молоко, сухое обезжиренное молоко, масло, эмульгатор: лецитин, натуральный ароматизатор ванили), миндаль из Сицилии, чёрный кунжут, соль",
-    desc: "Белый «светлый» шоколад ручной работы с миндалём из Сицилии, чёрным кунжутом и солью. Масса 50 г, 586 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #b98a5a, #7c5730)", hover: "linear-gradient(135deg, #a97a4c, #6a4926)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc32",
-    slug: "chocome-carre-moloch-piemont-sol",
-    image: "images/paloma/catalog/acc32.jpg",
-    name: "Молочный шоколад chocoMe «Пьемонтский орех и соль»",
-    price: 970,
-    categories: ["vases"],
-    badge: null,
-    composition: "Молочный шоколад ручной работы (сахар, какао-масса, какао-масло, сухое молоко, сухое обезжиренное молоко, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), пьемонтский орех, соль",
-    desc: "Молочный шоколад ручной работы с пьемонтским орехом и солью. Масса 50 г, 552 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #9c7850, #5f462b)", hover: "linear-gradient(135deg, #8c6a45, #4f3a23)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc33",
-    slug: "chocome-entree-moloch-tri-oreha",
-    image: "images/paloma/catalog/acc33.jpg",
-    name: "Молочный шоколад chocoMe «Три ореха»",
-    price: 1700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Молочный шоколад ручной работы (сахар, какао-масса, какао-масло, сухое молоко, сухое обезжиренное молоко, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), орех пекан, миндаль из Сицилии, фисташки Бронте",
-    desc: "Молочный шоколад ручной работы с орехом пекан, миндалём из Сицилии и фисташками Бронте. Масса 110 г, 579 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8c6a45, #574026)", hover: "linear-gradient(135deg, #7c5c3b, #47331e)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc34",
-    slug: "chocome-entree-moloch-fistashki-yagody",
-    image: "images/paloma/catalog/acc34.jpg",
-    name: "Молочный шоколад chocoMe «Фисташки и ягоды»",
-    price: 1600,
-    categories: ["vases"],
-    badge: null,
-    composition: "Молочный шоколад ручной работы (сахар, какао-масса, какао-масло, сухое молоко, сухое обезжиренное молоко, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), фисташки Бронте, лиофилизированная малина, лиофилизированная ежевика",
-    desc: "Молочный шоколад ручной работы с фисташками Бронте, малиной и ежевикой. Масса 110 г, 549 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #9c5a6a, #5f3040)", hover: "linear-gradient(135deg, #8c4c5c, #4f2636)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc35",
-    slug: "chocome-entree-fialka-fistashki",
-    image: "images/paloma/catalog/acc35.jpg",
-    name: "Горький шоколад chocoMe «Фиалка и фисташки»",
-    price: 1700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), засахаренные лепестки фиалки (сахар, натуральные цветы фиалки, загуститель: гуммиарабик, краситель: настоящий кармин, ароматизатор), фисташки Бронте, лиофилизированная чёрная смородина",
-    desc: "Горький шоколад ручной работы с засахаренными лепестками фиалки, фисташками Бронте и чёрной смородиной. Масса 110 г, 551 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #6a4a86, #3a2555)", hover: "linear-gradient(135deg, #5a3c76, #2d1c45)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc36",
-    slug: "chocome-entree-tri-oreha",
-    image: "images/paloma/catalog/acc36.jpg",
-    name: "Горький шоколад chocoMe «Три ореха»",
-    price: 1700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), орех пекан, миндаль из Сицилии, пьемонтский орех",
-    desc: "Горький шоколад ручной работы с орехом пекан, миндалём из Сицилии и пьемонтским орехом. Масса 110 г, 591 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #4a2f2c, #281413)", hover: "linear-gradient(135deg, #3d2523, #1e0f0e)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc37",
-    slug: "chocome-entree-roza-yagody",
-    image: "images/paloma/catalog/acc37.jpg",
-    name: "Горький шоколад chocoMe «Роза и ягоды»",
-    price: 1700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), засахаренные лепестки розы (сахар, натуральные розы, загуститель: гуммиарабик, краситель: настоящий кармин, ароматизатор), лиофилизированная клубника, лиофилизированная малина",
-    desc: "Горький шоколад ручной работы с засахаренными лепестками розы, клубникой и малиной. Масса 110 г, 544 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #a04a5c, #5f2833)", hover: "linear-gradient(135deg, #8c3f50, #4f2029)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc38",
-    slug: "chocome-entree-orehi-smorodina",
-    image: "images/paloma/catalog/acc38.jpg",
-    name: "Горький шоколад chocoMe «Орехи и смородина»",
-    price: 1600,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), орех пекан, миндаль из Сицилии, лиофилизированная чёрная смородина",
-    desc: "Горький шоколад ручной работы с орехом пекан, миндалём из Сицилии и чёрной смородиной. Масса 110 г, 581 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #4a2f2c, #281413)", hover: "linear-gradient(135deg, #3d2523, #1e0f0e)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc39",
-    slug: "chocome-entree-tri-yagody",
-    image: "images/paloma/catalog/acc39.jpg",
-    name: "Горький шоколад chocoMe «Три ягоды»",
-    price: 1700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), лиофилизированная чёрная смородина, лиофилизированная клубника, лиофилизированная малина",
-    desc: "Горький шоколад ручной работы с чёрной смородиной, клубникой и малиной. Масса 110 г, 551 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #7a2f4a, #431628)", hover: "linear-gradient(135deg, #6a2740, #331020)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc40",
-    slug: "chocome-entree-roza-zoloto",
-    image: "images/paloma/catalog/acc40.jpg",
-    name: "Горький шоколад chocoMe «Роза и золото»",
-    price: 2400,
-    categories: ["vases"],
-    badge: "Хит",
-    composition: "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), фисташки Бронте, засахаренные лепестки розы (сахар, натуральные розы, загуститель: гуммиарабик, краситель: настоящий кармин, ароматизатор), лиофилизированная вишня, натуральный краситель: золото 23 карата",
-    desc: "Горький шоколад ручной работы с фисташками Бронте, лепестками розы, вишней и хлопьями 23-каратного золота. Масса 110 г, 548 ккал / 100 г.",
-    pairs: "К кофе из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #a86a3c, #5f3a1e)", hover: "linear-gradient(135deg, #986033, #4f3018)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "n35",
-    slug: "siena",
-    image: "images/paloma/catalog/n35.jpg",
-    name: "Сиена",
-    price: 15500,
-    priceFrom: true,
-    categories: ["compositions"],
-    badge: null,
-    composition: "Кустовая пионовидная роза Сильва Пинк, циния, оксипеталум, пионовидная роза Мелон, диантус Грин Трик, кустовая пионовидная роза Санни, львиный зев, диантус, книфофия, гортензия",
-    desc: "Яркая летняя композиция в корзине с пионовидными розами, цинниями, книфофией и гортензией.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e08a3c, #a85f1e)", hover: "linear-gradient(135deg, #d47c30, #985218)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
     ],
-  },
-  {
-    id: "n36",
-    slug: "avrora",
-    image: "images/paloma/catalog/n36.jpg",
-    name: "Аврора",
-    price: 5830,
-    priceFrom: true,
-    categories: ["bestsellers"],
-    badge: null,
-    composition: "Кустовая пионовидная роза, гортензия, эустома, диантус",
-    desc: "Нежный букет-бестселлер с кустовой пионовидной розой, гортензией и эустомой.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d87f9c, #9c4f66)", hover: "linear-gradient(135deg, #c86f8c, #8c4256)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "priceFrom": true,
+    "categories": [
+      "authors"
     ],
+    "composition": "Аллиум, лилия классическая, лилия пионовидная, дельфиниум, молюцелла, львиный зев, паникум",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8f7fae, #5e7f4f)",
+      "hover": "linear-gradient(135deg, #7d6d9c, #4a6a3d)"
+    }
   },
   {
-    id: "n37",
-    slug: "margo",
-    image: "images/paloma/catalog/n37.jpg",
-    name: "Марго",
-    price: 3360,
-    priceFrom: true,
-    categories: ["bestsellers"],
-    badge: null,
-    composition: "Хризантема, бархатцы, паникум, циния",
-    desc: "Тёплый букет-бестселлер с хризантемой, бархатцами и цинниями.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d8923c, #a05f1e)", hover: "linear-gradient(135deg, #c88430, #905218)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "id": "n1",
+    "desc": "Пастельный свадебный букет с пионовидной розой Харпер, нерине и амарантом.",
+    "name": "Обручение",
+    "slug": "obruchenie",
+    "badge": null,
+    "image": "images/paloma/catalog/n1.jpg",
+    "pairs": "К капучино.",
+    "price": 8500,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
     ],
-  },
-  {
-    id: "n38",
-    slug: "luara",
-    image: "images/paloma/catalog/n38.jpg",
-    name: "Луара",
-    price: 5330,
-    priceFrom: true,
-    categories: ["bestsellers"],
-    badge: null,
-    composition: "Гортензия, листья малины, эустома, кустовая пионовидная роза, матрикария",
-    desc: "Воздушный букет-бестселлер с гортензией, пионовидной розой и матрикарией.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #c98ca8, #8a5a72)", hover: "linear-gradient(135deg, #b97c98, #7a4c62)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
     ],
-  },
-  {
-    id: "n39",
-    slug: "melon",
-    image: "images/paloma/catalog/n39.jpg",
-    name: "Мелон",
-    price: 5480,
-    priceFrom: true,
-    categories: ["bestsellers"],
-    badge: null,
-    composition: "Пионовидная роза Мелон Экспрешн",
-    desc: "Монобукет из пионовидной розы Мелон Экспрешн. Размеры от S (11 шт) до XL (25 шт).",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e0a46c, #b06f3c)", hover: "linear-gradient(135deg, #d4965e, #a06333)" },
-    sizes: [
-      { code: "s", label: "S — 11 шт", priceDelta: 0 },
-      { code: "m", label: "M — 15 шт", priceDelta: 1720 },
-      { code: "l", label: "L — 21 шт", priceDelta: 4300 },
-      { code: "xl", label: "XL — 25 шт", priceDelta: 6020 },
+    "priceFrom": true,
+    "categories": [
+      "wedding"
     ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "composition": "Пионовидная роза Харпер, антуриум, диантус, диантус Грин Тик, львиный зев, нерине, эустома, молюцелла, амарант",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
+      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
+    }
+  },
+  {
+    "id": "n2",
+    "desc": "Крупная корзина с георгином Пичес, гортензией и кустовой розой.",
+    "name": "Персиковый сад",
+    "slug": "persikoviy-sad",
+    "badge": null,
+    "image": "images/paloma/catalog/n2.jpg",
+    "pairs": "К рафу.",
+    "price": 20000,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
     ],
-  },
-{
-    id: "acc41",
-    slug: "vaza-volna-zheltaya",
-    image: "images/paloma/catalog/acc41.jpg",
-    name: "Ваза «Волна» жёлтая",
-    price: 4200,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Фигурная ваза из жёлтого стекла с волнистым силуэтом. Узкое горлышко — для одного цветка или тонкого букета. Размеры 15 × 32 см, горлышко 2.5 × 4 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e8b33c, #a8781c)", hover: "linear-gradient(135deg, #d8a32e, #986a14)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc42",
-    slug: "vaza-kenzan-keramika",
-    image: "images/paloma/catalog/acc42.jpg",
-    name: "Ваза под кензан, керамика",
-    price: 2100,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Низкая керамическая чаша под кензан для икебаны и композиций в японском стиле. Размеры 17 × 4 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #5a5148, #2b2622)", hover: "linear-gradient(135deg, #4a4239, #1f1b18)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc43",
-    slug: "vaza-interernaya-volan",
-    image: "images/paloma/catalog/acc43.jpg",
-    name: "Интерьерная ваза «Волан»",
-    price: 18000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Крупная интерьерная ваза для сухоцветов со скульптурными складками. Матовая белая керамика. Размеры 17 × 17 × 26 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #f0ece4, #c4bcae)", hover: "linear-gradient(135deg, #e6e0d4, #b2a998)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc44",
-    slug: "vaza-interernaya-vihr",
-    image: "images/paloma/catalog/acc44.jpg",
-    name: "Интерьерная ваза «Вихрь»",
-    price: 18000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Интерьерная ваза для сухоцветов с закрученным рельефом. Матовая белая керамика. Размеры 16 × 16 × 27 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #f0ece4, #c4bcae)", hover: "linear-gradient(135deg, #e6e0d4, #b2a998)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc45",
-    slug: "vaza-mramor-zelenaya",
-    image: "images/paloma/catalog/acc45.jpg",
-    name: "Ваза «Мрамор» зелёная",
-    price: 5600,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Пузатая ваза из молочного стекла с зелёно-оливковыми разводами ручной работы. Размеры 16.5 × 18 см, горлышко 8 × 8 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dcd9c0, #7d8a5e)", hover: "linear-gradient(135deg, #cfcbae, #68764c)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc46",
-    slug: "vaza-dym-seraya",
-    image: "images/paloma/catalog/acc46.jpg",
-    name: "Ваза «Дым» серая",
-    price: 3600,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Ваза из дымчатого стекла со смятой фактурой — свет играет на неровных гранях. Размеры 22 × 22 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #9aa0a6, #5c6266)", hover: "linear-gradient(135deg, #868c92, #4a5054)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc47",
-    slug: "vaza-yantar-shirokaya",
-    image: "images/paloma/catalog/acc47.jpg",
-    name: "Ваза «Янтарь» широкая",
-    price: 5000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Широкая ваза из янтарного стекла с рельефной поверхностью. Просторное горлышко под пышный букет. Размеры 24 × 17 см, горлышко 11 × 7.5 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #c8912e, #8a5c12)", hover: "linear-gradient(135deg, #b8801f, #7a4e0c)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc48",
-    slug: "vaza-biryuza-shar",
-    image: "images/paloma/catalog/acc48.jpg",
-    name: "Ваза «Бирюза» шар",
-    price: 4000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Шарообразная ваза с фактурной бирюзово-белой глазурью под состаренный камень. Размеры 18 × 20 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #8fc0c8, #4a7f8c)", hover: "linear-gradient(135deg, #7db0ba, #3a6b78)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc49",
-    slug: "vaza-dyuny-shar",
-    image: "images/paloma/catalog/acc49.jpg",
-    name: "Ваза «Дюны» шар",
-    price: 3000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Округлая ваза с песочно-белой глазурью и кратерной фактурой. Размеры 17 × 20 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e2c9a0, #b39264)", hover: "linear-gradient(135deg, #d6ba8c, #a08050)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc50",
-    slug: "vaza-mokh-vysokaya",
-    image: "images/paloma/catalog/acc50.jpg",
-    name: "Ваза «Мох» высокая",
-    price: 6500,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Высокая ваза с бело-зелёной фактурной глазурью под замшелый камень. Размеры 33 × 17 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #b8c4b0, #6d7d68)", hover: "linear-gradient(135deg, #a5b39c, #586853)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc51",
-    slug: "vaza-zakat-vysokaya",
-    image: "images/paloma/catalog/acc51.jpg",
-    name: "Ваза «Закат» высокая",
-    price: 5000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Высокая ваза с переходом от белого к тёплому оранжевому и кратерной фактурой. Размеры 32 × 16 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e8b98a, #b8804a)", hover: "linear-gradient(135deg, #dca875, #a26d38)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc52",
-    slug: "vaza-shinuazri-popugay",
-    image: "images/paloma/catalog/acc52.jpg",
-    name: "Ваза «Шинуазри» с попугаем",
-    price: 11000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Высокая ваза в стиле шинуазри: синяя роспись по белому фарфору с попугаем и цветущими ветвями. Размеры 40 × 18 см, горлышко 8 × 8 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #a8bed4, #4c6f96)", hover: "linear-gradient(135deg, #93aec8, #3a5c82)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc53",
-    slug: "vaza-seletti-hybrid-adelma",
-    image: "images/paloma/catalog/acc53.jpg",
-    name: "Ваза SELETTI Hybrid",
-    price: 26000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Толстый фарфор",
-    desc: "Ваза SELETTI Hybrid: две половины разных культур, соединённые золотой линией. Толстый фарфор. Размеры 14 × 32.5 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e6e2dc, #b04a3c)", hover: "linear-gradient(135deg, #d8d2c8, #8f3428)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc54",
-    slug: "vaza-sota-vysokaya",
-    image: "images/paloma/catalog/acc54.jpg",
-    name: "Ваза «Соты» высокая",
-    price: 17000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Высокая ваза из янтарного стекла с гранёной огранкой «соты» и переходом в бордо. Размеры 45 × 14 см, горлышко 4.5 × 4.5 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d6a03c, #8f3a1c)", hover: "linear-gradient(135deg, #c68c2a, #7a2c12)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc55",
-    slug: "vaza-seletti-seagirl",
-    image: "images/paloma/catalog/acc55.jpg",
-    name: "Ваза SELETTI Toiletpaper «Seagirl»",
-    price: 10500,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Ваза SELETTI Toiletpaper «Seagirl» — стекло с золотым кантом и фирменным сюрреалистичным принтом. Размеры 10 × 8 × 14 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #3f6f93, #1e3f5c)", hover: "linear-gradient(135deg, #57a0a8, #16324a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc56",
-    slug: "vaza-ruchnaya-rabota-len",
-    image: "images/paloma/catalog/acc56.jpg",
-    name: "Ваза ручной работы «Лён»",
-    price: 7700,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Крупная ваза ручной работы: белая глазурь мазками поверх тёплой глины, круговой рельеф от гончарного круга. Размеры 30 × 26 см, горлышко 8 × 8 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e8dccb, #b39a78)", hover: "linear-gradient(135deg, #dccbb2, #a08560)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc57",
-    slug: "vaza-terrakota-drapirovka",
-    image: "images/paloma/catalog/acc57.jpg",
-    name: "Ваза «Терракота» с драпировкой",
-    price: 10000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Скульптурная ваза цвета терракоты со струящимся рельефом, похожим на ткань. Размеры 19 × 18 × 32 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d99a68, #a8663a)", hover: "linear-gradient(135deg, #c88a58, #94542c)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc58",
-    slug: "vaza-interernaya-organ",
-    image: "images/paloma/catalog/acc58.jpg",
-    name: "Интерьерная ваза «Орган»",
-    price: 18500,
-    categories: ["vases"],
-    badge: null,
-    composition: "Керамика",
-    desc: "Интерьерная ваза для сухоцветов с вертикальными рёбрами и мягким силуэтом. Матовая белая керамика. Размеры 17.5 × 27 см, горлышко 7 × 7 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #f0ece4, #c4bcae)", hover: "linear-gradient(135deg, #e6e0d4, #b2a998)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc59",
-    slug: "vaza-seletti-snakes",
-    image: "images/paloma/catalog/acc59.jpg",
-    name: "Ваза SELETTI Toiletpaper «Snakes»",
-    price: 10500,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Ваза SELETTI Toiletpaper «Snakes» — прозрачное стекло с золотым кантом и принтом со змеями. Размеры 10 × 8 × 14 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #c8a83c, #7a5a10)", hover: "linear-gradient(135deg, #b89a2e, #684c0a)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc60",
-    slug: "vaza-grani-dymchataya",
-    image: "images/paloma/catalog/acc60.jpg",
-    name: "Ваза «Грани» дымчатая",
-    price: 13000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Ваза из дымчатого стекла с матовой гранёной огранкой, мягко рассеивающей свет. Размеры 22 × 10 × 8 см, горлышко 7.5 × 7.5 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #a89c84, #6b6250)", hover: "linear-gradient(135deg, #988c74, #585044)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc61",
-    slug: "vaza-leopard",
-    image: "images/paloma/catalog/acc61.jpg",
-    name: "Ваза «Леопард»",
-    price: 7000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Ваза из янтарного стекла с чёрными пятнами и тёмным основанием — эффектный акцент. Размеры 20 × 25.5 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d8a548, #2e2418)", hover: "linear-gradient(135deg, #c4922f, #1e1710)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc62",
-    slug: "vaza-kenzan-steklo",
-    image: "images/paloma/catalog/acc62.jpg",
-    name: "Ваза под кензан, стекло",
-    price: 2100,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Низкий стеклянный цилиндр под кензан — для икебаны и плавающих композиций. Размеры 19.5 × 9 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc63",
-    slug: "vaza-zhemchug",
-    image: "images/paloma/catalog/acc63.jpg",
-    name: "Ваза «Жемчуг»",
-    price: 6100,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Ваза из молочного стекла с бежевым крапом и узким горлышком. Размеры 20 × 21.5 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #f0e6da, #c0ab93)", hover: "linear-gradient(135deg, #e4d7c6, #ac9780)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc64",
-    slug: "vaza-izumrud-shar",
-    image: "images/paloma/catalog/acc64.jpg",
-    name: "Ваза «Изумруд» шар",
-    price: 2550,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Шарообразная ваза из изумрудного стекла с рельефными рёбрами. Размеры 18 × 15 см, горлышко 7 × 7 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #2e8f78, #125c4c)", hover: "linear-gradient(135deg, #25806a, #0c4a3c)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc65",
-    slug: "vaza-cilindr-30",
-    image: "images/paloma/catalog/acc65.jpg",
-    name: "Ваза-цилиндр, 30 см",
-    price: 2600,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Высокий стеклянный цилиндр — универсальная база под длинные стебли. Размеры 30 × 10 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc66",
-    slug: "vaza-cilindr-25",
-    image: "images/paloma/catalog/acc66.jpg",
-    name: "Ваза-цилиндр, 25 см",
-    price: 2500,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Стеклянный цилиндр средней высоты — подойдёт почти любому букету. Размеры 25 × 10 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc67",
-    slug: "vaza-cilindr-20",
-    image: "images/paloma/catalog/acc67.jpg",
-    name: "Ваза-цилиндр, 20 см",
-    price: 2400,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Невысокий стеклянный цилиндр для компактных букетов. Размеры 20 × 10 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc68",
-    slug: "vaza-uzkaya-10-25",
-    image: "images/paloma/catalog/acc68.jpg",
-    name: "Ваза узкая, 25 см",
-    price: 1500,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Узкая стеклянная ваза — для одного цветка или тонкой ветки. Размеры 10 × 25 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc69",
-    slug: "vaza-steklo-18-21",
-    image: "images/paloma/catalog/acc69.jpg",
-    name: "Ваза стеклянная, 21 см",
-    price: 2600,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Стеклянная ваза с широким горлышком — удобна для круглых букетов. Размеры 18 × 21 см, горлышко 8 × 8 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc70",
-    slug: "vaza-steklo-18-16",
-    image: "images/paloma/catalog/acc70.jpg",
-    name: "Ваза стеклянная, 16 см",
-    price: 2500,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Невысокая стеклянная ваза для небольших и средних букетов. Размеры 18 × 16 см, горлышко 7 × 7 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc71",
-    slug: "vaza-steklo-13-26",
-    image: "images/paloma/catalog/acc71.jpg",
-    name: "Ваза стеклянная, 26 см",
-    price: 6600,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Стройная стеклянная ваза — вытянутый силуэт для высоких композиций. Размеры 13 × 26 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc72",
-    slug: "vaza-steklo-16-34",
-    image: "images/paloma/catalog/acc72.jpg",
-    name: "Ваза стеклянная, 34 см",
-    price: 9000,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Высокая стеклянная ваза для крупных и длинных букетов. Размеры 16 × 34 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "acc73",
-    slug: "vaza-steklo-14-20",
-    image: "images/paloma/catalog/acc73.jpg",
-    name: "Ваза стеклянная, 20 см",
-    price: 2300,
-    categories: ["vases"],
-    badge: null,
-    composition: "Стекло",
-    desc: "Компактная стеклянная ваза на каждый день. Размеры 14 × 20 см.",
-    pairs: "Под букеты PALOMA.",
-    placeholderGradient: { main: "linear-gradient(135deg, #dfe8ec, #a8bcc4)", hover: "linear-gradient(135deg, #cddce2, #93a9b2)" },
-    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
-    addons: [],
-  },
-  {
-    id: "n41",
-    slug: "fiesta",
-    image: "images/paloma/catalog/n41.jpg",
-    name: "Фиеста",
-    price: 21300,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Антуриум, кроксомия, паникум, каллы, циния, орнитогалум, целозия, книфофия, амарант",
-    desc: "Яркий авторский букет в оранжево-зелёной гамме: зелёные антуриумы, циннии, книфофия и струящийся амарант.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e8873c, #a8501a)", hover: "linear-gradient(135deg, #d8771f, #94420f)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
     ],
-  },
-  {
-    id: "n42",
-    slug: "solnechnyy-den",
-    image: "images/paloma/catalog/n42.jpg",
-    name: "Солнечный день",
-    price: 4410,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Подсолнух, сетария, камыш, амми",
-    desc: "Летний авторский букет из подсолнухов с камышом, сетарией и ажурной амми.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #f0c02c, #b3860c)", hover: "linear-gradient(135deg, #e0b01e, #9c7206)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "priceFrom": true,
+    "categories": [
+      "compositions",
+      "season"
     ],
+    "composition": "Георгин Пичес, гортензия, кустовая пионовидная роза, молюцелла, листья малины",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e6a482, #8a6b4a)",
+      "hover": "linear-gradient(135deg, #d9926f, #75593c)"
+    }
   },
   {
-    id: "n43",
-    slug: "kaskad",
-    image: "images/paloma/catalog/n43.jpg",
-    name: "Каскад",
-    price: 15160,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Орхидея фаленопсис, голландская гортензия, львиный зев, пионовидная лилия, листья малины, пионовидная роза",
-    desc: "Авторский букет с ниспадающей ветвью орхидеи фаленопсис, голубой гортензией и пионовидной розой.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #a8c8e0, #5f86a8)", hover: "linear-gradient(135deg, #93b8d4, #4c7396)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "id": "n3",
+    "desc": "Сине-розовая композиция с дельфиниумом, гортензией и французской розой.",
+    "name": "Лавандовый вечер",
+    "slug": "lavandoviy-vecher",
+    "badge": null,
+    "image": "images/paloma/catalog/n3.jpg",
+    "pairs": "К айс-латте.",
+    "price": 9800,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
     ],
-  },
-  {
-    id: "n47",
-    slug: "avtorskiy-georginy-delfinium",
-    image: "images/paloma/catalog/avt-gortenziya-delfinium.jpg",
-    name: "Авторский с георгинами",
-    price: 10030,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Гортензия, дельфиниум, пионовидная роза, георгин, кустовая роза, паникум, лист стрелиции",
-    desc: "Крупная авторская работа: коралловые пионовидные розы, зелёная гортензия и синий дельфиниум с георгинами и листом стрелиции.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #e2748a, #6f8f5c)", hover: "linear-gradient(135deg, #cd6079, #5d7c4c)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
     ],
-  },
-  {
-    id: "n48",
-    slug: "avtorskiy-podsolnuhi-zontik",
-    image: "images/paloma/catalog/avt-podsolnuhi-zontik.jpg",
-    name: "Авторский с подсолнухами",
-    price: 6050,
-    priceFrom: true,
-    categories: ["authors"],
-    badge: null,
-    composition: "Подсолнух, паникум, зонтик",
-    desc: "Солнечный авторский букет: крупные подсолнухи с зеленью зонтика и лёгким паникумом.",
-    pairs: "К фильтру или лунго.",
-    placeholderGradient: { main: "linear-gradient(135deg, #f0a828, #6f8f4a)", hover: "linear-gradient(135deg, #d8931c, #5d7b3c)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "priceFrom": true,
+    "categories": [
+      "authors"
     ],
+    "composition": "Дельфиниум, голландская гортензия, французская роза Пинк Мондиаль, каллы, эустома, диантус, нерине",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8f9fc0, #56607f)",
+      "hover": "linear-gradient(135deg, #7c8cae, #454f68)"
+    }
   },
   {
-    id: "n49",
-    slug: "svadebnyy-anturium-georgin",
-    image: "images/paloma/catalog/wed-anturium-georgin.jpg",
-    name: "Свадебный с антуриумом",
-    price: 7500,
-    priceFrom: true,
-    categories: ["wedding"],
-    badge: null,
-    composition: "Антуриум, георгин, стабилизированный амарант, паникум, диантус",
-    desc: "Букет невесты с зелёными антуриумами, розовыми георгинами и ниспадающим стабилизированным амарантом.",
-    pairs: "К капучино из PALOMA Coffee.",
-    placeholderGradient: { main: "linear-gradient(135deg, #f0a0a8, #8fae55)", hover: "linear-gradient(135deg, #dc8b94, #7d9a46)" },
-    sizes: [{ code: "base", label: "Базовый", priceDelta: 0 }],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "id": "n4",
+    "desc": "Моно-букет из персиковых георгинов Пичес.",
+    "name": "Георгин Пичес",
+    "slug": "georgin-piches",
+    "badge": null,
+    "image": "images/paloma/catalog/n4.jpg",
+    "pairs": "К капучино.",
+    "price": 7100,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 11 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 21 шт",
+        "priceDelta": 6100
+      },
+      {
+        "code": "L",
+        "label": "L · 31 шт",
+        "priceDelta": 12200
+      },
+      {
+        "code": "XL",
+        "label": "XL · 41 шт",
+        "priceDelta": 18300
+      }
     ],
-  },
-  {
-    id: "n50",
-    slug: "gortenziya",
-    image: "images/paloma/catalog/gortenziya-belaya.jpg",
-    name: "Гортензия",
-    price: 2300,
-    priceFrom: true,
-    categories: ["mono"],
-    badge: null,
-    composition: "Гортензия",
-    desc: "Белая гортензия — крупные шапки, которые заметны даже в небольшом букете.",
-    pairs: "К фильтру или лунго.",
-    placeholderGradient: { main: "linear-gradient(135deg, #d8d2c6, #8f887c)", hover: "linear-gradient(135deg, #c4beb2, #7b756a)" },
-    sizes: [
-      { code: "S", label: "S · 3 шт", priceDelta: 0 },
-      { code: "M", label: "M · 5 шт", priceDelta: 1300 },
-      { code: "L", label: "L · 7 шт", priceDelta: 2600 },
-      { code: "XL", label: "XL · 9 шт", priceDelta: 3900 },
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
     ],
-    addons: [
-      { id: "card", label: "Открытка", price: 350 },
-      { id: "vase", label: "Ваза", price: 1200 },
-      { id: "coffee", label: "Кофе с собой", price: 320 },
+    "photoSize": "M",
+    "priceFrom": true,
+    "categories": [
+      "online",
+      "season",
+      "mono"
     ],
-  },
-];
-
-/* Общие допродажи — отдельные позиции в корзине */
-window.PALOMA_ADDONS = [
-  {
-    id: "addon-coffee",
-    name: "Кофе с собой",
-    price: 320,
-    image: "images/paloma/catalog/upsell-coffee.jpg",
-    placeholderGradient: "linear-gradient(135deg, #c8a584, #6b4a35)",
-    desc: "К букету — стаканчик кофе из PALOMA Coffee",
+    "composition": "Георгин Пичес",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e6a482, #8a6b4a)",
+      "hover": "linear-gradient(135deg, #d9926f, #75593c)"
+    }
   },
   {
-    id: "addon-dessert",
-    name: "Десерт",
-    price: 450,
-    image: "images/paloma/catalog/upsell-dessert.jpg",
-    placeholderGradient: "linear-gradient(135deg, #e2c8b0, #a07560)",
-    desc: "Маленькое сладкое к подарку",
+    "id": "n5",
+    "desc": "Высокая авторская работа с георгином Пичес, эремурусом и злаками.",
+    "name": "Тоскана",
+    "slug": "toskana",
+    "badge": null,
+    "image": "images/paloma/catalog/n5.jpg",
+    "pairs": "К эспрессо.",
+    "price": 28000,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors",
+      "season"
+    ],
+    "composition": "Георгин Пичес, львиный зев, эремурус, орнитогалум, оксипеталум, листья малины, гортензия, колоски, дельфиниум",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e6a482, #8a6b4a)",
+      "hover": "linear-gradient(135deg, #d9926f, #75593c)"
+    }
   },
   {
-    id: "addon-card",
-    name: "Открытка",
-    price: 200,
-    image: "images/paloma/included/card.jpg",
-    placeholderGradient: "linear-gradient(135deg, #d4c8b8, #8a7860)",
-    desc: "Печать вашего текста",
+    "id": "n6",
+    "desc": "Пудровый пион Сара Бернар с георгином Пичес и гортензией.",
+    "name": "Сара Бернар",
+    "slug": "sara-bernar",
+    "badge": null,
+    "image": "images/paloma/catalog/n6.jpg",
+    "pairs": "К рафу.",
+    "price": 19000,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors",
+      "season"
+    ],
+    "composition": "Пион Сара Бернар, георгин Пичес, дельфиниум, гортензия, орнитогалум",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
   },
   {
-    id: "addon-vase",
-    name: "Стеклянная ваза",
-    price: 1200,
-    image: "images/paloma/catalog/upsell-vase.jpg",
-    placeholderGradient: "linear-gradient(135deg, #c8d4d0, #707878)",
-    desc: "Прозрачная, цилиндр",
+    "id": "n7",
+    "desc": "Дуобукет из гортензии и персикового георгина Пичес.",
+    "name": "Персиковое облако",
+    "slug": "persikovoe-oblako",
+    "badge": null,
+    "image": "images/paloma/catalog/n7.jpg",
+    "pairs": "К капучино на кокосовом.",
+    "price": 16200,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "duo",
+      "season"
+    ],
+    "composition": "Гортензия, георгин Пичес",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e6a482, #8a6b4a)",
+      "hover": "linear-gradient(135deg, #d9926f, #75593c)"
+    }
   },
   {
-    id: "addon-gift-wrap",
-    name: "Подарочная упаковка",
-    price: 380,
-    image: "",
-    placeholderGradient: "linear-gradient(135deg, #e8c0c8, #a06070)",
-    desc: "Фирменная коробка PALOMA",
+    "id": "n8",
+    "desc": "Сине-белая композиция с гортензией, дельфиниумом и антуриумом.",
+    "name": "Лазурит",
+    "slug": "lazurit",
+    "badge": null,
+    "image": "images/paloma/catalog/n8.jpg",
+    "pairs": "К айс-латте.",
+    "price": 10215,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Гортензия, дельфиниум, антуриум, эустома, пионовидная роза",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8f9fc0, #56607f)",
+      "hover": "linear-gradient(135deg, #7c8cae, #454f68)"
+    }
   },
+  {
+    "id": "n9",
+    "desc": "Воздушный букет из хризантемы, дельфиниума и гортензии.",
+    "name": "Голубая дымка",
+    "slug": "golubaya-dymka",
+    "badge": null,
+    "image": "images/paloma/catalog/n9.jpg",
+    "pairs": "К фильтру.",
+    "price": 6900,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Хризантема, дельфиниум, гортензия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8f9fc0, #56607f)",
+      "hover": "linear-gradient(135deg, #7c8cae, #454f68)"
+    }
+  },
+  {
+    "id": "n10",
+    "desc": "Розовая композиция с пионовидной лилией, хризантемой и нерине.",
+    "name": "Розовый шёлк",
+    "slug": "rozoviy-shelk",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/n10.jpg",
+    "pairs": "К латте.",
+    "price": 11365,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Пионовидная лилия, хризантема, эустома, нерине",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n11",
+    "desc": "Пышный дуобукет из гортензии и пионовидной розы.",
+    "name": "Пионовый вальс",
+    "slug": "pionoviy-vals",
+    "badge": null,
+    "image": "images/paloma/catalog/n11.jpg",
+    "pairs": "К капучино.",
+    "price": 19410,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Гортензия, пионовидная роза",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n12",
+    "desc": "Нежный дуобукет из гортензии, пионовидной розы и фрезии.",
+    "name": "Первая нежность",
+    "slug": "pervaya-nezhnost",
+    "badge": null,
+    "image": "images/paloma/catalog/n12.jpg",
+    "pairs": "К рафу.",
+    "price": 8640,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Гортензия, пионовидная роза, фрезия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n13",
+    "desc": "Пудровый дуобукет из гортензии и пионовидной розы.",
+    "name": "Пудра",
+    "slug": "pudra",
+    "badge": null,
+    "image": "images/paloma/catalog/n13.jpg",
+    "pairs": "К латте.",
+    "price": 18110,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Гортензия, пионовидная роза",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n14",
+    "desc": "Авторский букет с пионовидной лилией, гортензией и стабилизированным буком.",
+    "name": "Лилиан",
+    "slug": "lilian",
+    "badge": null,
+    "image": "images/paloma/catalog/n14.jpg",
+    "pairs": "К эспрессо.",
+    "price": 8650,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Пионовидная лилия, гортензия, стабилизированный бук",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
+      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
+    }
+  },
+  {
+    "id": "n15",
+    "desc": "Белый дуобукет из французской и классической розы Плая Бланка.",
+    "name": "Белый танец",
+    "slug": "beliy-tanec",
+    "badge": null,
+    "image": "images/paloma/catalog/n15.jpg",
+    "pairs": "К капучино.",
+    "price": 9600,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Французская белая роза, классическая роза сорта Плая Бланка",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
+      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
+    }
+  },
+  {
+    "id": "n16",
+    "desc": "Роскошная композиция с гортензией, каллами, амариллисом и олеандром.",
+    "name": "Ривьера",
+    "slug": "rivyera",
+    "badge": null,
+    "image": "images/paloma/catalog/n16.jpg",
+    "pairs": "К эспрессо.",
+    "price": 20190,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Гортензия, олеандр, пионовидная роза, диантус, эустома, каллы, амариллис, берграсс",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n17",
+    "desc": "Объёмная авторская работа с гортензией, кустовой розой и дельфиниумом.",
+    "name": "Флоренция",
+    "slug": "florenciya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/n17.jpg",
+    "pairs": "К рафу.",
+    "price": 20500,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Гортензия, диантус, кустовая пионовидная роза, дельфиниум, берграсс",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n18",
+    "desc": "Большая корзина из 81 голубой гортензии.",
+    "name": "Лазурная корзина",
+    "slug": "lazurnaya-korzina",
+    "badge": null,
+    "image": "images/paloma/catalog/n18.jpg",
+    "pairs": "К фильтру.",
+    "price": 70000,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "compositions"
+    ],
+    "composition": "Гортензия (81 шт)",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8f9fc0, #56607f)",
+      "hover": "linear-gradient(135deg, #7c8cae, #454f68)"
+    }
+  },
+  {
+    "id": "n21",
+    "desc": "Утренний букет из гортензии, пионовидной розы и нерине.",
+    "name": "Утренний свет",
+    "slug": "utrenniy-svet",
+    "badge": null,
+    "image": "images/paloma/catalog/n21.jpg",
+    "pairs": "К латте.",
+    "price": 13860,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Гортензия, пионовидная роза, нерине",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n22",
+    "desc": "Дуобукет из гортензии и эвкалипта Беби Блю.",
+    "name": "Беби Блю",
+    "slug": "bebi-blyu",
+    "badge": null,
+    "image": "images/paloma/catalog/n22.jpg",
+    "pairs": "К айс-латте.",
+    "price": 5480,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M",
+        "priceDelta": 2890
+      },
+      {
+        "code": "L",
+        "label": "L",
+        "priceDelta": 5780
+      },
+      {
+        "code": "XL",
+        "label": "XL",
+        "priceDelta": 9970
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "S",
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Гортензия, эвкалипт Беби Блю",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #9fb08a, #5e6f4a)",
+      "hover": "linear-gradient(135deg, #8ba076, #4d5e3c)"
+    }
+  },
+  {
+    "id": "n23",
+    "desc": "Моно-букет из пионовидной розы сорта Фатима.",
+    "name": "Роза Фатима",
+    "slug": "roza-fatima",
+    "badge": null,
+    "image": "images/paloma/catalog/n23.jpg",
+    "pairs": "К капучино.",
+    "price": 5030,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 9 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 15 шт",
+        "priceDelta": 3120
+      },
+      {
+        "code": "L",
+        "label": "L · 21 шт",
+        "priceDelta": 6240
+      },
+      {
+        "code": "XL",
+        "label": "XL · 29 шт",
+        "priceDelta": 10400
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "M",
+    "priceFrom": true,
+    "categories": [
+      "mono"
+    ],
+    "composition": "Пионовидная роза сорта Фатима",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n24",
+    "desc": "Королевская корзина с гортензией, белой розой, орхидеей и антуриумом.",
+    "name": "Королевская корзина",
+    "slug": "korolevskaya-korzina",
+    "badge": null,
+    "image": "images/paloma/catalog/n24.jpg",
+    "pairs": "К эспрессо.",
+    "price": 39500,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "compositions"
+    ],
+    "composition": "Гортензия, классическая белая роза, антуриум, орхидея, физостегия, фрезия, ранункулюс, пионовидный тюльпан",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
+      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
+    }
+  },
+  {
+    "id": "n25",
+    "desc": "Свежая композиция с дельфиниумом, гортензией и кокосом.",
+    "name": "Баунти",
+    "slug": "baunti",
+    "badge": null,
+    "image": "images/paloma/catalog/n25.jpg",
+    "pairs": "К кокосовому латте.",
+    "price": 5140,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Дельфиниум, голландская гортензия, листья малины, кокос",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8f9fc0, #56607f)",
+      "hover": "linear-gradient(135deg, #7c8cae, #454f68)"
+    }
+  },
+  {
+    "id": "n26",
+    "desc": "Персиковый букет из пионовидной розы, гортензии и эустомы.",
+    "name": "Персиковый рассвет",
+    "slug": "persikoviy-rassvet",
+    "badge": null,
+    "image": "images/paloma/catalog/n26.jpg",
+    "pairs": "К рафу.",
+    "price": 12305,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Пионовидная роза, гортензия, эустома, листья малины",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e6a482, #8a6b4a)",
+      "hover": "linear-gradient(135deg, #d9926f, #75593c)"
+    }
+  },
+  {
+    "id": "n27",
+    "desc": "Пудровый дуобукет из кустовой розы и гортензии.",
+    "name": "Пудровое облако",
+    "slug": "pudrovoe-oblako",
+    "badge": null,
+    "image": "images/paloma/catalog/n27.jpg",
+    "pairs": "К капучино.",
+    "price": 19540,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Кустовая роза, гортензия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n28",
+    "desc": "Моно-букет из кустовой розы сорта Сильва Пинк.",
+    "name": "Роза Сильва Пинк",
+    "slug": "roza-silva-pink",
+    "badge": null,
+    "image": "images/paloma/catalog/n28.jpg",
+    "pairs": "К латте.",
+    "price": 7280,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 9 веток",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 15 веток",
+        "priceDelta": 4620
+      },
+      {
+        "code": "L",
+        "label": "L · 21 ветка",
+        "priceDelta": 9240
+      },
+      {
+        "code": "XL",
+        "label": "XL · 29 веток",
+        "priceDelta": 15400
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "XL",
+    "priceFrom": true,
+    "categories": [
+      "mono"
+    ],
+    "composition": "Кустовая роза сорта Сильва Пинк",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
+      "hover": "linear-gradient(135deg, #c48c8e, #785154)"
+    }
+  },
+  {
+    "id": "n29",
+    "desc": "Пышный летний букет из подсолнуха, лилии, пиона и полевых цветов.",
+    "name": "Карнавал",
+    "slug": "karnaval",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/n29.jpg",
+    "pairs": "К эспрессо.",
+    "price": 21000,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Подсолнух, лилия, пион, львиный зев, матрикария, пионовидная роза, целозия, дельфиниум, кустовая роза, гладиолус, хризантема, книфофия, сетария, гортензия, маттиола, листья малины",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e6a482, #8a6b4a)",
+      "hover": "linear-gradient(135deg, #d9926f, #75593c)"
+    }
+  },
+  {
+    "id": "n30",
+    "desc": "Свежая композиция из эустомы, молюцеллы, розы и маттиолы.",
+    "name": "Мятный бриз",
+    "slug": "myatniy-briz",
+    "badge": null,
+    "image": "images/paloma/catalog/n30.jpg",
+    "pairs": "К айс-латте.",
+    "price": 3320,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Эустома, молюцелла, пионовидная роза, маттиола",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #9fb08a, #5e6f4a)",
+      "hover": "linear-gradient(135deg, #8ba076, #4d5e3c)"
+    }
+  },
+  {
+    "id": "n31",
+    "desc": "Полевая авторская композиция с цинией, целозией, дельфиниумом и злаками — живой летний характер.",
+    "name": "Летний луг",
+    "slug": "letniy-lug",
+    "badge": null,
+    "image": "images/paloma/catalog/n31.jpg",
+    "pairs": "К фильтр-кофе.",
+    "price": 9840,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Листья малины, циния, целозия, дельфиниум, орнитогалум, паникум, скабиоза",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #c98a6a, #6e7a4a)",
+      "hover": "linear-gradient(135deg, #b8785a, #5c6a3c)"
+    }
+  },
+  {
+    "id": "n32",
+    "desc": "Композиция из 13 гортензий в корзине — объёмная и воздушная.",
+    "name": "Гортензия в корзине",
+    "slug": "gortenziya-korzina",
+    "badge": null,
+    "image": "images/paloma/catalog/n32.jpg",
+    "pairs": "К фильтру.",
+    "price": 11150,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "compositions"
+    ],
+    "composition": "Гортензия (13 шт)",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8f9fc0, #56607f)",
+      "hover": "linear-gradient(135deg, #7c8cae, #454f68)"
+    }
+  },
+  {
+    "id": "acc2",
+    "desc": "Шкатулка SELETTI «Love in a Box». Размеры 13.6 × 18.9 × 7.4 см.",
+    "name": "Шкатулка SELETTI «Love in a Box»",
+    "slug": "seletti-love-in-a-box",
+    "badge": null,
+    "image": "images/paloma/catalog/acc2.jpg",
+    "pairs": "Готовый подарок для украшений или мелочей.",
+    "price": 14700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор, красный вельвет",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #b8404a, #7a2028)",
+      "hover": "linear-gradient(135deg, #a5353f, #64181f)"
+    }
+  },
+  {
+    "id": "acc4",
+    "desc": "Набор SELETTI: поднос, две кофейные чашки и две ложки. Размеры 13 × 20 см.",
+    "name": "Набор из 2 кофейных чашек с подносом SELETTI",
+    "slug": "seletti-nabor-2-chashki-podnos",
+    "badge": null,
+    "image": "images/paloma/catalog/acc4.jpg",
+    "pairs": "Для кофе на двоих.",
+    "price": 6200,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
+      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
+    }
+  },
+  {
+    "id": "acc5",
+    "desc": "Кофейная пара SELETTI: блюдце, чашка и ложка.",
+    "name": "Кофейная пара SELETTI",
+    "slug": "seletti-para-1",
+    "badge": null,
+    "image": "images/paloma/catalog/acc5.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 7300,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
+      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
+    }
+  },
+  {
+    "id": "acc6",
+    "desc": "Кофейная пара SELETTI: блюдце, чашка и ложка.",
+    "name": "Кофейная пара SELETTI",
+    "slug": "seletti-para-2",
+    "badge": null,
+    "image": "images/paloma/catalog/acc6.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 7300,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
+      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
+    }
+  },
+  {
+    "id": "acc7",
+    "desc": "Суповая тарелка SELETTI Hybrid. Размеры 25.4 × 4.2 см.",
+    "name": "Суповая тарелка SELETTI Hybrid",
+    "slug": "seletti-hybrid-supovaya",
+    "badge": null,
+    "image": "images/paloma/catalog/acc7.jpg",
+    "pairs": "Дополнит сервировку стола.",
+    "price": 15700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
+      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
+    }
+  },
+  {
+    "id": "acc8",
+    "desc": "Тарелка SELETTI Kintsugi. Размеры 27.5 × 3 см.",
+    "name": "Тарелка SELETTI Kintsugi",
+    "slug": "seletti-kintsugi-tarelka",
+    "badge": null,
+    "image": "images/paloma/catalog/acc8.jpg",
+    "pairs": "Эффектный акцент в сервировке.",
+    "price": 14700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор, покрытие золотом 24 карата",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e4cf9a, #a8863f)",
+      "hover": "linear-gradient(135deg, #d8bf85, #927231)"
+    }
+  },
+  {
+    "id": "n45",
+    "desc": "Коралловые пионовидные розы с зелёной гортензией и эвкалиптом — тёплый авторский букет с мягким переходом оттенков.",
+    "name": "Коралловое утро",
+    "slug": "korallovoe-utro",
+    "badge": null,
+    "image": "images/paloma/catalog/n45.jpg",
+    "pairs": "К флэт уайту.",
+    "price": 4040,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Гортензия, паникум, эустома, эвкалипт, пионовидная роза, кустовая роза, диантус",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ef8f80, #94a86a)",
+      "hover": "linear-gradient(135deg, #94a86a, #ef8f80)"
+    }
+  },
+  {
+    "id": "n33",
+    "desc": "Насыщенный авторский букет с пионовидной розой Харпер, цинниями, коробочками лотоса и каллами.",
+    "name": "Харпер",
+    "slug": "harper",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/n33.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 9435,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Пионовидная роза Харпер, орнитогалум, коробочка лотоса, циния, каллы, эустома, амми, гортензия, диантус, паникум, львиный зев",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d84f77, #9c2f52)",
+      "hover": "linear-gradient(135deg, #c43f66, #86223f)"
+    }
+  },
+  {
+    "id": "n46",
+    "desc": "Большой авторский букет из одиннадцати культур: георгины, пионовидные розы, дельфиниум и лилия в фирменной коробке PALOMA.",
+    "name": "Фейерверк",
+    "slug": "feyerverk",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/n46.jpg",
+    "pairs": "К эспрессо-тонику.",
+    "price": 14975,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Дельфиниум, пионовидная кустовая роза, гладиолус, георгин, эустома, львиный зев, пионовидная роза, гортензия, паникум, целозия, лилия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e79ab0, #6f86c4)",
+      "hover": "linear-gradient(135deg, #6f86c4, #e79ab0)"
+    }
+  },
+  {
+    "id": "w5",
+    "desc": "Нежный персиковый свадебный букет с антуриумом, каллами и струящимся амарантом.",
+    "name": "Нерине",
+    "slug": "nerine",
+    "badge": null,
+    "image": "images/paloma/catalog/w5.jpg",
+    "pairs": "К свадебному дню невесты.",
+    "price": 12080,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "wedding"
+    ],
+    "composition": "Антуриум, каллы, пионовидная роза, стабилизированный амарант, нерине",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e0a48c, #b06f57)",
+      "hover": "linear-gradient(135deg, #d4917a, #9c5f49)"
+    }
+  },
+  {
+    "id": "w7",
+    "desc": "Букет невесты с каллами и персиковой астрой на жемчужных нитях — компактный, лёгкий, держит форму весь день.",
+    "name": "Перламутр",
+    "slug": "perlamutr",
+    "badge": null,
+    "image": "images/paloma/catalog/w7.jpg",
+    "pairs": "К свадебному оформлению PALOMA.",
+    "price": 9380,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "wedding"
+    ],
+    "composition": "Астра, диантус, эустома, каллы, львиный зев",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f4dcd0, #c8a58f)",
+      "hover": "linear-gradient(135deg, #c8a58f, #f4dcd0)"
+    }
+  },
+  {
+    "id": "acc11",
+    "desc": "Пиала SELETTI Kintsugi. Размеры 11.5 × 6 см.",
+    "name": "Пиала SELETTI Kintsugi",
+    "slug": "seletti-kintsugi-piala",
+    "badge": null,
+    "image": "images/paloma/catalog/acc11.jpg",
+    "pairs": "Дополнит сервировку стола.",
+    "price": 7000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e4cf9a, #a8863f)",
+      "hover": "linear-gradient(135deg, #d8bf85, #927231)"
+    }
+  },
+  {
+    "id": "w8",
+    "desc": "Лаконичный букет невесты: крупные белые георгины, зелень антуриума и жемчужные нити.",
+    "name": "Монблан",
+    "slug": "monblan",
+    "badge": null,
+    "image": "images/paloma/catalog/w8.jpg",
+    "pairs": "К свадебному оформлению PALOMA.",
+    "price": 7180,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "wedding"
+    ],
+    "composition": "Антуриум, георгин, орнитогалум",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f2efe6, #9aa88a)",
+      "hover": "linear-gradient(135deg, #9aa88a, #f2efe6)"
+    }
+  },
+  {
+    "id": "acc12",
+    "desc": "Салатник SELETTI Kintsugi. Размеры 19 × 7.2 см.",
+    "name": "Салатник SELETTI Kintsugi",
+    "slug": "seletti-kintsugi-salatnik",
+    "badge": null,
+    "image": "images/paloma/catalog/acc12.jpg",
+    "pairs": "Эффектный акцент в сервировке.",
+    "price": 17300,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e4cf9a, #a8863f)",
+      "hover": "linear-gradient(135deg, #d8bf85, #927231)"
+    }
+  },
+  {
+    "id": "w9",
+    "desc": "Розово-белый букет невесты с эустомой и берграсом — воздушный силуэт с тонкими травами.",
+    "name": "Сорбет",
+    "slug": "sorbet",
+    "badge": null,
+    "image": "images/paloma/catalog/w9.jpg",
+    "pairs": "К свадебному оформлению PALOMA.",
+    "price": 3355,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "wedding"
+    ],
+    "composition": "Диантус, гладиолус, берграс, эустома",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f3c6cf, #a9c47e)",
+      "hover": "linear-gradient(135deg, #a9c47e, #f3c6cf)"
+    }
+  },
+  {
+    "id": "acc13",
+    "desc": "Чайная пара SELETTI: чашка, блюдце и ложка.",
+    "name": "Чайная пара SELETTI",
+    "slug": "seletti-chaynaya-para",
+    "badge": null,
+    "image": "images/paloma/catalog/acc13.jpg",
+    "pairs": "К чаю или кофе из PALOMA Coffee.",
+    "price": 9200,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
+      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
+    }
+  },
+  {
+    "id": "acc14",
+    "desc": "Кружка SELETTI Hybrid. Размеры 8.5 × 10.2 см.",
+    "name": "Кружка SELETTI Hybrid",
+    "slug": "seletti-hybrid-kruzhka",
+    "badge": null,
+    "image": "images/paloma/catalog/acc14.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 7600,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #4a5c93, #26356a)",
+      "hover": "linear-gradient(135deg, #3d4f85, #1c2a5a)"
+    }
+  },
+  {
+    "id": "acc15",
+    "desc": "Салатник SELETTI Toiletpaper «Eye». Размеры 17 × 8 см.",
+    "name": "Салатник SELETTI Toiletpaper «Eye»",
+    "slug": "seletti-toiletpaper-salatnik-eye",
+    "badge": null,
+    "image": "images/paloma/catalog/acc15.jpg",
+    "pairs": "Смелый акцент на столе.",
+    "price": 3000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Алюминий",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #7db3d6, #3a6f9c)",
+      "hover": "linear-gradient(135deg, #6ba3c8, #2f5f8a)"
+    }
+  },
+  {
+    "id": "acc16",
+    "desc": "Кружка SELETTI Toiletpaper «Eye». Размеры 10 × 9 см.",
+    "name": "Кружка SELETTI Toiletpaper «Eye»",
+    "slug": "seletti-toiletpaper-kruzhka-eye",
+    "badge": null,
+    "image": "images/paloma/catalog/acc16.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 3000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Алюминий",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #7db3d6, #3a6f9c)",
+      "hover": "linear-gradient(135deg, #6ba3c8, #2f5f8a)"
+    }
+  },
+  {
+    "id": "acc17",
+    "desc": "Кружка SELETTI Toiletpaper «Plunger». Размеры 10 × 9 см.",
+    "name": "Кружка SELETTI Toiletpaper «Plunger»",
+    "slug": "seletti-toiletpaper-kruzhka-plunger",
+    "badge": null,
+    "image": "images/paloma/catalog/acc17.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 3000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Алюминий",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #c9564b, #8f2f28)",
+      "hover": "linear-gradient(135deg, #b8463c, #7a231d)"
+    }
+  },
+  {
+    "id": "acc18",
+    "desc": "Кружка SELETTI Toiletpaper «Bird». Размеры 10 × 9 см.",
+    "name": "Кружка SELETTI Toiletpaper «Bird»",
+    "slug": "seletti-toiletpaper-kruzhka-bird",
+    "badge": null,
+    "image": "images/paloma/catalog/acc18.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 3000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Алюминий",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8ba86a, #566f37)",
+      "hover": "linear-gradient(135deg, #7b9a5a, #48602d)"
+    }
+  },
+  {
+    "id": "acc19",
+    "desc": "Ароматическая свеча SELETTI Toiletpaper «Hands with snakes». Размеры 8 × 8.5 × 8.5 см.",
+    "name": "Ароматическая свеча SELETTI «Hands with snakes»",
+    "slug": "seletti-svecha-hands-with-snakes",
+    "badge": null,
+    "image": "images/paloma/catalog/acc19.jpg",
+    "pairs": "Атмосферный подарок для дома.",
+    "price": 7900,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло, растительный воск, эфирные масла",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e0864a, #a85528)",
+      "hover": "linear-gradient(135deg, #d0763c, #94491f)"
+    }
+  },
+  {
+    "id": "acc20",
+    "desc": "Ароматическая свеча SELETTI Toiletpaper «Snakes». Размеры 8 × 8.5 × 8.5 см.",
+    "name": "Ароматическая свеча SELETTI «Snakes»",
+    "slug": "seletti-svecha-snakes",
+    "badge": null,
+    "image": "images/paloma/catalog/acc20.jpg",
+    "pairs": "Атмосферный подарок для дома.",
+    "price": 7900,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло, растительный воск, эфирные масла",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #3f9c8f, #226b60)",
+      "hover": "linear-gradient(135deg, #348c7f, #1b5a50)"
+    }
+  },
+  {
+    "id": "acc21",
+    "desc": "Ароматическая свеча SELETTI Toiletpaper «Shit». Размеры 8 × 8.5 × 8.5 см.",
+    "name": "Ароматическая свеча SELETTI «Shit»",
+    "slug": "seletti-svecha-shit",
+    "badge": null,
+    "image": "images/paloma/catalog/acc21.jpg",
+    "pairs": "Атмосферный подарок для дома.",
+    "price": 7900,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло, растительный воск, эфирные масла",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #c9564b, #8f2f28)",
+      "hover": "linear-gradient(135deg, #b8463c, #7a231d)"
+    }
+  },
+  {
+    "id": "acc22",
+    "desc": "Макадамия в белом шоколаде ручной работы с какао-порошком и бобами тонка. Масса 120 г, 670 ккал / 100 г.",
+    "name": "Конфеты chocoMe «Макадамия в белом шоколаде»",
+    "slug": "chocome-makadamia-white",
+    "badge": null,
+    "image": "images/paloma/catalog/acc22.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 2250,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Белый «светлый» шоколад ручной работы (какао-масло, сахар, цельное молоко, сухое обезжиренное молоко, масло, эмульгатор: лецитин, натуральный ароматизатор ванили), макадамия, какао-порошок, бобы тонка, корица",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #b98a5a, #7c5730)",
+      "hover": "linear-gradient(135deg, #a97a4c, #6a4926)"
+    }
+  },
+  {
+    "id": "acc23",
+    "desc": "Миндаль из Валенсии в молочном шоколаде с трюфельным грибом. Масса 120 г, 597 ккал / 100 г.",
+    "name": "Конфеты chocoMe «Миндаль с трюфелем»",
+    "slug": "chocome-mindal-tryufel",
+    "badge": null,
+    "image": "images/paloma/catalog/acc23.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 2500,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Молочный шоколад ручной работы (какао-масса, тростниковый сахар, какао-масло, цельное сухое молоко, ваниль), миндаль из Валенсии с трюфельным грибом, какао-порошок",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8c6a45, #574026)",
+      "hover": "linear-gradient(135deg, #7c5c3b, #47331e)"
+    }
+  },
+  {
+    "id": "acc24",
+    "desc": "Пьемонтский орех в орехово-молочном шоколаде с дроблёным кофе Харар. Масса 120 г, 619 ккал / 100 г.",
+    "name": "Конфеты chocoMe «Пьемонтский орех с кофе»",
+    "slug": "chocome-piemontskiy-oreh-kofe",
+    "badge": null,
+    "image": "images/paloma/catalog/acc24.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1950,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Орехово-молочный шоколад ручной работы (сахар, какао-масло, цельное сухое молоко, орехи, какао-масса, сухое обезжиренное молоко, эмульгатор: лецитин, натуральная ваниль), пьемонтский орех, кофе Харар",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #7a5a86, #4a3255)",
+      "hover": "linear-gradient(135deg, #6a4c76, #3d2848)"
+    }
+  },
+  {
+    "id": "acc25",
+    "desc": "Три плитки горького шоколада: с лепестками фиалки, фисташками Бронте и вишней. 3 × 50 г (150 г), 540–586 ккал / 100 г.",
+    "name": "Ассорти плиток chocoMe Carré",
+    "slug": "chocome-carre-assorti",
+    "badge": null,
+    "image": "images/paloma/catalog/acc25.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 3150,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), засахаренные лепестки фиалки, фисташки Бронте, лиофилизированная вишня",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #5c3d3a, #331f1d)",
+      "hover": "linear-gradient(135deg, #4c3130, #281715)"
+    }
+  },
+  {
+    "id": "acc26",
+    "desc": "Горький шоколад ручной работы с сушёной брусникой, чёрной смородиной и волокнами перца чили. Масса 50 г, 527 ккал / 100 г.",
+    "name": "Горький шоколад chocoMe «Брусника и чили»",
+    "slug": "chocome-carre-brusnika-chili",
+    "badge": null,
+    "image": "images/paloma/catalog/acc26.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), сушёная брусника, лиофилизированная чёрная смородина, волокна перца чили",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #7a2f2a, #431614)",
+      "hover": "linear-gradient(135deg, #6a2723, #33100f)"
+    }
+  },
+  {
+    "id": "acc27",
+    "desc": "Миндаль из Сицилии в горьком шоколаде с диким мадагаскарским перцем и какао-порошком. Масса 120 г, 576 ккал / 100 г.",
+    "name": "Конфеты chocoMe «Миндаль с диким перцем»",
+    "slug": "chocome-mindal-dikiy-perets",
+    "badge": null,
+    "image": "images/paloma/catalog/acc27.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1950,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), миндаль из Сицилии, какао-порошок, дикий мадагаскарский перец",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #4a2f2c, #281413)",
+      "hover": "linear-gradient(135deg, #3d2523, #1e0f0e)"
+    }
+  },
+  {
+    "id": "n34",
+    "desc": "Насыщенный красный авторский букет с французской розой Нина, целозией, каллами и кроксомией.",
+    "name": "Фламенко",
+    "slug": "flamenko",
+    "badge": null,
+    "image": "images/paloma/catalog/n34.jpg",
+    "pairs": "К эспрессо из PALOMA Coffee.",
+    "price": 10710,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Леукодендрон, целозия, сангисорба, каллы, орнитогалум, французская роза сорта Нина, лист стрелиции, циперус (зонтик), кроксомия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #b02a2f, #6f1519)",
+      "hover": "linear-gradient(135deg, #9c2226, #5a1013)"
+    }
+  },
+  {
+    "id": "acc28",
+    "desc": "Горький шоколад ручной работы с засахаренными лепестками фиалки, чёрной смородиной и морской солью с красным вином. Масса 50 г, 519 ккал / 100 г.",
+    "name": "Горький шоколад chocoMe «Фиалка и вино»",
+    "slug": "chocome-carre-fialka-vino",
+    "badge": null,
+    "image": "images/paloma/catalog/acc28.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), засахаренные лепестки фиалки (сахар, натуральные цветы фиалки, загуститель: гуммиарабик, краситель: настоящий кармин, ароматизатор), лиофилизированная чёрная смородина, морская соль с красным вином (соль, красное вино, перец)",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #6a4a86, #3a2555)",
+      "hover": "linear-gradient(135deg, #5a3c76, #2d1c45)"
+    }
+  },
+  {
+    "id": "acc29",
+    "desc": "Горький шоколад ручной работы с орехом пекан, сушёной брусникой, фисташками Бронте и корицей. Масса 50 г, 569 ккал / 100 г.",
+    "name": "Горький шоколад chocoMe «Пекан и брусника»",
+    "slug": "chocome-carre-pekan-brusnika",
+    "badge": null,
+    "image": "images/paloma/catalog/acc29.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), орех пекан, сушёная брусника (брусника, тростниковый сахар, растительное масло), фисташки Бронте, корица",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #5c3d2f, #311e15)",
+      "hover": "linear-gradient(135deg, #4c3125, #241510)"
+    }
+  },
+  {
+    "id": "acc30",
+    "desc": "Молочный шоколад ручной работы с орехом пекан, фисташками Бронте и красной смородиной. Масса 50 г, 586 ккал / 100 г.",
+    "name": "Молочный шоколад chocoMe «Пекан и красная смородина»",
+    "slug": "chocome-carre-moloch-pekan-krasnaya-smorodina",
+    "badge": null,
+    "image": "images/paloma/catalog/acc30.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Молочный шоколад ручной работы (сахар, какао-масса, какао-масло, сухое молоко, сухое обезжиренное молоко, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), орех пекан, фисташки Бронте, лиофилизированная красная смородина",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8c6a45, #574026)",
+      "hover": "linear-gradient(135deg, #7c5c3b, #47331e)"
+    }
+  },
+  {
+    "id": "acc31",
+    "desc": "Белый «светлый» шоколад ручной работы с миндалём из Сицилии, чёрным кунжутом и солью. Масса 50 г, 586 ккал / 100 г.",
+    "name": "Белый шоколад chocoMe «Миндаль и кунжут»",
+    "slug": "chocome-carre-white-mindal-kunzhut",
+    "badge": null,
+    "image": "images/paloma/catalog/acc31.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1200,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Белый «светлый» шоколад ручной работы (какао-масло, сахар, цельное молоко, сухое обезжиренное молоко, масло, эмульгатор: лецитин, натуральный ароматизатор ванили), миндаль из Сицилии, чёрный кунжут, соль",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #b98a5a, #7c5730)",
+      "hover": "linear-gradient(135deg, #a97a4c, #6a4926)"
+    }
+  },
+  {
+    "id": "acc32",
+    "desc": "Молочный шоколад ручной работы с пьемонтским орехом и солью. Масса 50 г, 552 ккал / 100 г.",
+    "name": "Молочный шоколад chocoMe «Пьемонтский орех и соль»",
+    "slug": "chocome-carre-moloch-piemont-sol",
+    "badge": null,
+    "image": "images/paloma/catalog/acc32.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 970,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Молочный шоколад ручной работы (сахар, какао-масса, какао-масло, сухое молоко, сухое обезжиренное молоко, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), пьемонтский орех, соль",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #9c7850, #5f462b)",
+      "hover": "linear-gradient(135deg, #8c6a45, #4f3a23)"
+    }
+  },
+  {
+    "id": "acc33",
+    "desc": "Молочный шоколад ручной работы с орехом пекан, миндалём из Сицилии и фисташками Бронте. Масса 110 г, 579 ккал / 100 г.",
+    "name": "Молочный шоколад chocoMe «Три ореха»",
+    "slug": "chocome-entree-moloch-tri-oreha",
+    "badge": null,
+    "image": "images/paloma/catalog/acc33.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Молочный шоколад ручной работы (сахар, какао-масса, какао-масло, сухое молоко, сухое обезжиренное молоко, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), орех пекан, миндаль из Сицилии, фисташки Бронте",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #8c6a45, #574026)",
+      "hover": "linear-gradient(135deg, #7c5c3b, #47331e)"
+    }
+  },
+  {
+    "id": "acc34",
+    "desc": "Молочный шоколад ручной работы с фисташками Бронте, малиной и ежевикой. Масса 110 г, 549 ккал / 100 г.",
+    "name": "Молочный шоколад chocoMe «Фисташки и ягоды»",
+    "slug": "chocome-entree-moloch-fistashki-yagody",
+    "badge": null,
+    "image": "images/paloma/catalog/acc34.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1600,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Молочный шоколад ручной работы (сахар, какао-масса, какао-масло, сухое молоко, сухое обезжиренное молоко, эмульгатор: соевый лецитин, натуральный ароматизатор ванили), фисташки Бронте, лиофилизированная малина, лиофилизированная ежевика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #9c5a6a, #5f3040)",
+      "hover": "linear-gradient(135deg, #8c4c5c, #4f2636)"
+    }
+  },
+  {
+    "id": "acc35",
+    "desc": "Горький шоколад ручной работы с засахаренными лепестками фиалки, фисташками Бронте и чёрной смородиной. Масса 110 г, 551 ккал / 100 г.",
+    "name": "Горький шоколад chocoMe «Фиалка и фисташки»",
+    "slug": "chocome-entree-fialka-fistashki",
+    "badge": null,
+    "image": "images/paloma/catalog/acc35.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), засахаренные лепестки фиалки (сахар, натуральные цветы фиалки, загуститель: гуммиарабик, краситель: настоящий кармин, ароматизатор), фисташки Бронте, лиофилизированная чёрная смородина",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #6a4a86, #3a2555)",
+      "hover": "linear-gradient(135deg, #5a3c76, #2d1c45)"
+    }
+  },
+  {
+    "id": "acc36",
+    "desc": "Горький шоколад ручной работы с орехом пекан, миндалём из Сицилии и пьемонтским орехом. Масса 110 г, 591 ккал / 100 г.",
+    "name": "Горький шоколад chocoMe «Три ореха»",
+    "slug": "chocome-entree-tri-oreha",
+    "badge": null,
+    "image": "images/paloma/catalog/acc36.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), орех пекан, миндаль из Сицилии, пьемонтский орех",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #4a2f2c, #281413)",
+      "hover": "linear-gradient(135deg, #3d2523, #1e0f0e)"
+    }
+  },
+  {
+    "id": "acc37",
+    "desc": "Горький шоколад ручной работы с засахаренными лепестками розы, клубникой и малиной. Масса 110 г, 544 ккал / 100 г.",
+    "name": "Горький шоколад chocoMe «Роза и ягоды»",
+    "slug": "chocome-entree-roza-yagody",
+    "badge": null,
+    "image": "images/paloma/catalog/acc37.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), засахаренные лепестки розы (сахар, натуральные розы, загуститель: гуммиарабик, краситель: настоящий кармин, ароматизатор), лиофилизированная клубника, лиофилизированная малина",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #a04a5c, #5f2833)",
+      "hover": "linear-gradient(135deg, #8c3f50, #4f2029)"
+    }
+  },
+  {
+    "id": "acc38",
+    "desc": "Горький шоколад ручной работы с орехом пекан, миндалём из Сицилии и чёрной смородиной. Масса 110 г, 581 ккал / 100 г.",
+    "name": "Горький шоколад chocoMe «Орехи и смородина»",
+    "slug": "chocome-entree-orehi-smorodina",
+    "badge": null,
+    "image": "images/paloma/catalog/acc38.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1600,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), орех пекан, миндаль из Сицилии, лиофилизированная чёрная смородина",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #4a2f2c, #281413)",
+      "hover": "linear-gradient(135deg, #3d2523, #1e0f0e)"
+    }
+  },
+  {
+    "id": "acc39",
+    "desc": "Горький шоколад ручной работы с чёрной смородиной, клубникой и малиной. Масса 110 г, 551 ккал / 100 г.",
+    "name": "Горький шоколад chocoMe «Три ягоды»",
+    "slug": "chocome-entree-tri-yagody",
+    "badge": null,
+    "image": "images/paloma/catalog/acc39.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 1700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), лиофилизированная чёрная смородина, лиофилизированная клубника, лиофилизированная малина",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #7a2f4a, #431628)",
+      "hover": "linear-gradient(135deg, #6a2740, #331020)"
+    }
+  },
+  {
+    "id": "acc40",
+    "desc": "Горький шоколад ручной работы с фисташками Бронте, лепестками розы, вишней и хлопьями 23-каратного золота. Масса 110 г, 548 ккал / 100 г.",
+    "name": "Горький шоколад chocoMe «Роза и золото»",
+    "slug": "chocome-entree-roza-zoloto",
+    "badge": "Хит",
+    "image": "images/paloma/catalog/acc40.jpg",
+    "pairs": "К кофе из PALOMA Coffee.",
+    "price": 2400,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Горький шоколад ручной работы (какао-масса, сахар, какао-масло, эмульгатор: лецитин, натуральный ароматизатор ванили), фисташки Бронте, засахаренные лепестки розы (сахар, натуральные розы, загуститель: гуммиарабик, краситель: настоящий кармин, ароматизатор), лиофилизированная вишня, натуральный краситель: золото 23 карата",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #a86a3c, #5f3a1e)",
+      "hover": "linear-gradient(135deg, #986033, #4f3018)"
+    }
+  },
+  {
+    "id": "n35",
+    "desc": "Яркая летняя композиция в корзине с пионовидными розами, цинниями, книфофией и гортензией.",
+    "name": "Сиена",
+    "slug": "siena",
+    "badge": null,
+    "image": "images/paloma/catalog/n35.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 15500,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "compositions"
+    ],
+    "composition": "Кустовая пионовидная роза Сильва Пинк, циния, оксипеталум, пионовидная роза Мелон, диантус Грин Трик, кустовая пионовидная роза Санни, львиный зев, диантус, книфофия, гортензия",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e08a3c, #a85f1e)",
+      "hover": "linear-gradient(135deg, #d47c30, #985218)"
+    }
+  },
+  {
+    "id": "n36",
+    "desc": "Нежный букет-бестселлер с кустовой пионовидной розой, гортензией и эустомой.",
+    "name": "Аврора",
+    "slug": "avrora",
+    "badge": null,
+    "image": "images/paloma/catalog/n36.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 5830,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "bestsellers"
+    ],
+    "composition": "Кустовая пионовидная роза, гортензия, эустома, диантус",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d87f9c, #9c4f66)",
+      "hover": "linear-gradient(135deg, #c86f8c, #8c4256)"
+    }
+  },
+  {
+    "id": "n37",
+    "desc": "Тёплый букет-бестселлер с хризантемой, бархатцами и цинниями.",
+    "name": "Марго",
+    "slug": "margo",
+    "badge": null,
+    "image": "images/paloma/catalog/n37.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 3360,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "bestsellers"
+    ],
+    "composition": "Хризантема, бархатцы, паникум, циния",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d8923c, #a05f1e)",
+      "hover": "linear-gradient(135deg, #c88430, #905218)"
+    }
+  },
+  {
+    "id": "n38",
+    "desc": "Воздушный букет-бестселлер с гортензией, пионовидной розой и матрикарией.",
+    "name": "Луара",
+    "slug": "luara",
+    "badge": null,
+    "image": "images/paloma/catalog/n38.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 5330,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "bestsellers"
+    ],
+    "composition": "Гортензия, листья малины, эустома, кустовая пионовидная роза, матрикария",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #c98ca8, #8a5a72)",
+      "hover": "linear-gradient(135deg, #b97c98, #7a4c62)"
+    }
+  },
+  {
+    "id": "n39",
+    "desc": "Монобукет из пионовидной розы Мелон Экспрешн. Размеры от S (11 шт) до XL (25 шт).",
+    "name": "Мелон",
+    "slug": "melon",
+    "badge": null,
+    "image": "images/paloma/catalog/n39.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 5480,
+    "sizes": [
+      {
+        "code": "s",
+        "label": "s · S — 11 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "m",
+        "label": "m · M — 15 шт",
+        "priceDelta": 1720
+      },
+      {
+        "code": "l",
+        "label": "l · L — 21 шт",
+        "priceDelta": 4300
+      },
+      {
+        "code": "xl",
+        "label": "xl · XL — 25 шт",
+        "priceDelta": 6020
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "s",
+    "priceFrom": true,
+    "categories": [
+      "bestsellers"
+    ],
+    "composition": "Пионовидная роза Мелон Экспрешн",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e0a46c, #b06f3c)",
+      "hover": "linear-gradient(135deg, #d4965e, #a06333)"
+    }
+  },
+  {
+    "id": "acc41",
+    "desc": "Фигурная ваза из жёлтого стекла с волнистым силуэтом. Узкое горлышко — для одного цветка или тонкого букета. Размеры 15 × 32 см, горлышко 2.5 × 4 см.",
+    "name": "Ваза «Волна» жёлтая",
+    "slug": "vaza-volna-zheltaya",
+    "badge": null,
+    "image": "images/paloma/catalog/acc41.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 4200,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e8b33c, #a8781c)",
+      "hover": "linear-gradient(135deg, #d8a32e, #986a14)"
+    }
+  },
+  {
+    "id": "acc42",
+    "desc": "Низкая керамическая чаша под кензан для икебаны и композиций в японском стиле. Размеры 17 × 4 см.",
+    "name": "Ваза под кензан, керамика",
+    "slug": "vaza-kenzan-keramika",
+    "badge": null,
+    "image": "images/paloma/catalog/acc42.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 2100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Керамика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #5a5148, #2b2622)",
+      "hover": "linear-gradient(135deg, #4a4239, #1f1b18)"
+    }
+  },
+  {
+    "id": "acc43",
+    "desc": "Крупная интерьерная ваза для сухоцветов со скульптурными складками. Матовая белая керамика. Размеры 17 × 17 × 26 см.",
+    "name": "Интерьерная ваза «Волан»",
+    "slug": "vaza-interernaya-volan",
+    "badge": null,
+    "image": "images/paloma/catalog/acc43.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 18000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Керамика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f0ece4, #c4bcae)",
+      "hover": "linear-gradient(135deg, #e6e0d4, #b2a998)"
+    }
+  },
+  {
+    "id": "acc44",
+    "desc": "Интерьерная ваза для сухоцветов с закрученным рельефом. Матовая белая керамика. Размеры 16 × 16 × 27 см.",
+    "name": "Интерьерная ваза «Вихрь»",
+    "slug": "vaza-interernaya-vihr",
+    "badge": null,
+    "image": "images/paloma/catalog/acc44.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 18000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Керамика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f0ece4, #c4bcae)",
+      "hover": "linear-gradient(135deg, #e6e0d4, #b2a998)"
+    }
+  },
+  {
+    "id": "acc45",
+    "desc": "Пузатая ваза из молочного стекла с зелёно-оливковыми разводами ручной работы. Размеры 16.5 × 18 см, горлышко 8 × 8 см.",
+    "name": "Ваза «Мрамор» зелёная",
+    "slug": "vaza-mramor-zelenaya",
+    "badge": null,
+    "image": "images/paloma/catalog/acc45.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 5600,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #dcd9c0, #7d8a5e)",
+      "hover": "linear-gradient(135deg, #cfcbae, #68764c)"
+    }
+  },
+  {
+    "id": "acc49",
+    "desc": "Округлая ваза с песочно-белой глазурью и кратерной фактурой. Размеры 17 × 20 см.",
+    "name": "Ваза «Дюны» шар",
+    "slug": "vaza-dyuny-shar",
+    "badge": null,
+    "image": "images/paloma/catalog/acc49.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 3000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Керамика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e2c9a0, #b39264)",
+      "hover": "linear-gradient(135deg, #d6ba8c, #a08050)"
+    }
+  },
+  {
+    "id": "acc50",
+    "desc": "Высокая ваза с бело-зелёной фактурной глазурью под замшелый камень. Размеры 33 × 17 см.",
+    "name": "Ваза «Мох» высокая",
+    "slug": "vaza-mokh-vysokaya",
+    "badge": null,
+    "image": "images/paloma/catalog/acc50.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 6500,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Керамика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #b8c4b0, #6d7d68)",
+      "hover": "linear-gradient(135deg, #a5b39c, #586853)"
+    }
+  },
+  {
+    "id": "acc51",
+    "desc": "Высокая ваза с переходом от белого к тёплому оранжевому и кратерной фактурой. Размеры 32 × 16 см.",
+    "name": "Ваза «Закат» высокая",
+    "slug": "vaza-zakat-vysokaya",
+    "badge": null,
+    "image": "images/paloma/catalog/acc51.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 5000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Керамика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e8b98a, #b8804a)",
+      "hover": "linear-gradient(135deg, #dca875, #a26d38)"
+    }
+  },
+  {
+    "id": "acc52",
+    "desc": "Высокая ваза в стиле шинуазри: синяя роспись по белому фарфору с попугаем и цветущими ветвями. Размеры 40 × 18 см, горлышко 8 × 8 см.",
+    "name": "Ваза «Шинуазри» с попугаем",
+    "slug": "vaza-shinuazri-popugay",
+    "badge": null,
+    "image": "images/paloma/catalog/acc52.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 11000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Керамика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #a8bed4, #4c6f96)",
+      "hover": "linear-gradient(135deg, #93aec8, #3a5c82)"
+    }
+  },
+  {
+    "id": "acc53",
+    "desc": "Ваза SELETTI Hybrid: две половины разных культур, соединённые золотой линией. Толстый фарфор. Размеры 14 × 32.5 см.",
+    "name": "Ваза SELETTI Hybrid",
+    "slug": "vaza-seletti-hybrid-adelma",
+    "badge": null,
+    "image": "images/paloma/catalog/acc53.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 26000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Толстый фарфор",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e6e2dc, #b04a3c)",
+      "hover": "linear-gradient(135deg, #d8d2c8, #8f3428)"
+    }
+  },
+  {
+    "id": "acc54",
+    "desc": "Высокая ваза из янтарного стекла с гранёной огранкой «соты» и переходом в бордо. Размеры 45 × 14 см, горлышко 4.5 × 4.5 см.",
+    "name": "Ваза «Соты» высокая",
+    "slug": "vaza-sota-vysokaya",
+    "badge": null,
+    "image": "images/paloma/catalog/acc54.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 17000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d6a03c, #8f3a1c)",
+      "hover": "linear-gradient(135deg, #c68c2a, #7a2c12)"
+    }
+  },
+  {
+    "id": "acc55",
+    "desc": "Ваза SELETTI Toiletpaper «Seagirl» — стекло с золотым кантом и фирменным сюрреалистичным принтом. Размеры 10 × 8 × 14 см.",
+    "name": "Ваза SELETTI Toiletpaper «Seagirl»",
+    "slug": "vaza-seletti-seagirl",
+    "badge": null,
+    "image": "images/paloma/catalog/acc55.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 10500,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #3f6f93, #1e3f5c)",
+      "hover": "linear-gradient(135deg, #57a0a8, #16324a)"
+    }
+  },
+  {
+    "id": "acc57",
+    "desc": "Скульптурная ваза цвета терракоты со струящимся рельефом, похожим на ткань. Размеры 19 × 18 × 32 см.",
+    "name": "Ваза «Терракота» с драпировкой",
+    "slug": "vaza-terrakota-drapirovka",
+    "badge": null,
+    "image": "images/paloma/catalog/acc57.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 10000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Керамика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #d99a68, #a8663a)",
+      "hover": "linear-gradient(135deg, #c88a58, #94542c)"
+    }
+  },
+  {
+    "id": "acc58",
+    "desc": "Интерьерная ваза для сухоцветов с вертикальными рёбрами и мягким силуэтом. Матовая белая керамика. Размеры 17.5 × 27 см, горлышко 7 × 7 см.",
+    "name": "Интерьерная ваза «Орган»",
+    "slug": "vaza-interernaya-organ",
+    "badge": null,
+    "image": "images/paloma/catalog/acc58.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 18500,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Керамика",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f0ece4, #c4bcae)",
+      "hover": "linear-gradient(135deg, #e6e0d4, #b2a998)"
+    }
+  },
+  {
+    "id": "acc59",
+    "desc": "Ваза SELETTI Toiletpaper «Snakes» — прозрачное стекло с золотым кантом и принтом со змеями. Размеры 10 × 8 × 14 см.",
+    "name": "Ваза SELETTI Toiletpaper «Snakes»",
+    "slug": "vaza-seletti-snakes",
+    "badge": null,
+    "image": "images/paloma/catalog/acc59.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 10500,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #c8a83c, #7a5a10)",
+      "hover": "linear-gradient(135deg, #b89a2e, #684c0a)"
+    }
+  },
+  {
+    "id": "acc60",
+    "desc": "Ваза из дымчатого стекла с матовой гранёной огранкой, мягко рассеивающей свет. Размеры 22 × 10 × 8 см, горлышко 7.5 × 7.5 см.",
+    "name": "Ваза «Грани» дымчатая",
+    "slug": "vaza-grani-dymchataya",
+    "badge": null,
+    "image": "images/paloma/catalog/acc60.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 13000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #a89c84, #6b6250)",
+      "hover": "linear-gradient(135deg, #988c74, #585044)"
+    }
+  },
+  {
+    "id": "acc62",
+    "desc": "Низкий стеклянный цилиндр под кензан — для икебаны и плавающих композиций. Размеры 19.5 × 9 см.",
+    "name": "Ваза под кензан, стекло",
+    "slug": "vaza-kenzan-steklo",
+    "badge": null,
+    "image": "images/paloma/catalog/acc62.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 2100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #dfe8ec, #a8bcc4)",
+      "hover": "linear-gradient(135deg, #cddce2, #93a9b2)"
+    }
+  },
+  {
+    "id": "acc63",
+    "desc": "Ваза из молочного стекла с бежевым крапом и узким горлышком. Размеры 20 × 21.5 см.",
+    "name": "Ваза «Жемчуг»",
+    "slug": "vaza-zhemchug",
+    "badge": null,
+    "image": "images/paloma/catalog/acc63.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 6100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f0e6da, #c0ab93)",
+      "hover": "linear-gradient(135deg, #e4d7c6, #ac9780)"
+    }
+  },
+  {
+    "id": "acc64",
+    "desc": "Шарообразная ваза из изумрудного стекла с рельефными рёбрами. Размеры 18 × 15 см, горлышко 7 × 7 см.",
+    "name": "Ваза «Изумруд» шар",
+    "slug": "vaza-izumrud-shar",
+    "badge": null,
+    "image": "images/paloma/catalog/acc64.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 2550,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #2e8f78, #125c4c)",
+      "hover": "linear-gradient(135deg, #25806a, #0c4a3c)"
+    }
+  },
+  {
+    "id": "acc67",
+    "desc": "Невысокий стеклянный цилиндр для компактных букетов. Размеры 20 × 10 см.",
+    "name": "Ваза-цилиндр, 20 см",
+    "slug": "vaza-cilindr-20",
+    "badge": null,
+    "image": "images/paloma/catalog/acc67.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 2400,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #dfe8ec, #a8bcc4)",
+      "hover": "linear-gradient(135deg, #cddce2, #93a9b2)"
+    }
+  },
+  {
+    "id": "acc68",
+    "desc": "Узкая стеклянная ваза — для одного цветка или тонкой ветки. Размеры 10 × 25 см.",
+    "name": "Ваза узкая, 25 см",
+    "slug": "vaza-uzkaya-10-25",
+    "badge": null,
+    "image": "images/paloma/catalog/acc68.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 1500,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #dfe8ec, #a8bcc4)",
+      "hover": "linear-gradient(135deg, #cddce2, #93a9b2)"
+    }
+  },
+  {
+    "id": "acc70",
+    "desc": "Невысокая стеклянная ваза для небольших и средних букетов. Размеры 18 × 16 см, горлышко 7 × 7 см.",
+    "name": "Ваза стеклянная, 16 см",
+    "slug": "vaza-steklo-18-16",
+    "badge": null,
+    "image": "images/paloma/catalog/acc70.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 2500,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #dfe8ec, #a8bcc4)",
+      "hover": "linear-gradient(135deg, #cddce2, #93a9b2)"
+    }
+  },
+  {
+    "id": "acc71",
+    "desc": "Стройная стеклянная ваза — вытянутый силуэт для высоких композиций. Размеры 13 × 26 см.",
+    "name": "Ваза стеклянная, 26 см",
+    "slug": "vaza-steklo-13-26",
+    "badge": null,
+    "image": "images/paloma/catalog/acc71.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 6600,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #dfe8ec, #a8bcc4)",
+      "hover": "linear-gradient(135deg, #cddce2, #93a9b2)"
+    }
+  },
+  {
+    "id": "acc72",
+    "desc": "Высокая стеклянная ваза для крупных и длинных букетов. Размеры 16 × 34 см.",
+    "name": "Ваза стеклянная, 34 см",
+    "slug": "vaza-steklo-16-34",
+    "badge": null,
+    "image": "images/paloma/catalog/acc72.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 9000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #dfe8ec, #a8bcc4)",
+      "hover": "linear-gradient(135deg, #cddce2, #93a9b2)"
+    }
+  },
+  {
+    "id": "acc73",
+    "desc": "Компактная стеклянная ваза на каждый день. Размеры 14 × 20 см.",
+    "name": "Ваза стеклянная, 20 см",
+    "slug": "vaza-steklo-14-20",
+    "badge": null,
+    "image": "images/paloma/catalog/acc73.jpg",
+    "pairs": "Под букеты PALOMA.",
+    "price": 2300,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [],
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #dfe8ec, #a8bcc4)",
+      "hover": "linear-gradient(135deg, #cddce2, #93a9b2)"
+    }
+  },
+  {
+    "id": "n41",
+    "desc": "Яркий авторский букет в оранжево-зелёной гамме: зелёные антуриумы, циннии, книфофия и струящийся амарант.",
+    "name": "Фиеста",
+    "slug": "fiesta",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/n41.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 21300,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Антуриум, кроксомия, паникум, каллы, циния, орнитогалум, целозия, книфофия, амарант",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e8873c, #a8501a)",
+      "hover": "linear-gradient(135deg, #d8771f, #94420f)"
+    }
+  },
+  {
+    "id": "n42",
+    "desc": "Летний авторский букет из подсолнухов с камышом, сетарией и ажурной амми.",
+    "name": "Солнечный день",
+    "slug": "solnechnyy-den",
+    "badge": null,
+    "image": "images/paloma/catalog/n42.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 4410,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Подсолнух, сетария, камыш, амми",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f0c02c, #b3860c)",
+      "hover": "linear-gradient(135deg, #e0b01e, #9c7206)"
+    }
+  },
+  {
+    "id": "n43",
+    "desc": "Авторский букет с ниспадающей ветвью орхидеи фаленопсис, голубой гортензией и пионовидной розой.",
+    "name": "Каскад",
+    "slug": "kaskad",
+    "badge": null,
+    "image": "images/paloma/catalog/n43.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 15160,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Орхидея фаленопсис, голландская гортензия, львиный зев, пионовидная лилия, листья малины, пионовидная роза",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #a8c8e0, #5f86a8)",
+      "hover": "linear-gradient(135deg, #93b8d4, #4c7396)"
+    }
+  },
+  {
+    "id": "n47",
+    "desc": "Крупная авторская работа: коралловые пионовидные розы, зелёная гортензия и синий дельфиниум с георгинами и листом стрелиции.",
+    "name": "Авторский с георгинами",
+    "slug": "avtorskiy-georginy-delfinium",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/avt-gortenziya-delfinium.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 10030,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Гортензия, дельфиниум, пионовидная роза, георгин, кустовая роза, паникум, лист стрелиции",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #e2748a, #6f8f5c)",
+      "hover": "linear-gradient(135deg, #cd6079, #5d7c4c)"
+    }
+  },
+  {
+    "id": "n48",
+    "desc": "Солнечный авторский букет: крупные подсолнухи с зеленью зонтика и лёгким паникумом.",
+    "name": "Авторский с подсолнухами",
+    "slug": "avtorskiy-podsolnuhi-zontik",
+    "badge": null,
+    "image": "images/paloma/catalog/avt-podsolnuhi-zontik.jpg",
+    "pairs": "К фильтру или лунго.",
+    "price": 6050,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Подсолнух, паникум, зонтик",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f0a828, #6f8f4a)",
+      "hover": "linear-gradient(135deg, #d8931c, #5d7b3c)"
+    }
+  },
+  {
+    "id": "n49",
+    "desc": "Букет невесты с зелёными антуриумами, розовыми георгинами и ниспадающим стабилизированным амарантом.",
+    "name": "Свадебный с антуриумом",
+    "slug": "svadebnyy-anturium-georgin",
+    "badge": null,
+    "image": "images/paloma/catalog/wed-anturium-georgin.jpg",
+    "pairs": "К капучино из PALOMA Coffee.",
+    "price": 7500,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "priceFrom": true,
+    "categories": [
+      "wedding"
+    ],
+    "composition": "Антуриум, георгин, стабилизированный амарант, паникум, диантус",
+    "placeholderGradient": {
+      "main": "linear-gradient(135deg, #f0a0a8, #8fae55)",
+      "hover": "linear-gradient(135deg, #dc8b94, #7d9a46)"
+    }
+  },
+  {
+    "id": "p1788982832531",
+    "desc": "",
+    "name": "Гортензия Китай",
+    "slug": "gortenziya-kitay",
+    "badge": "Новинка",
+    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imtui6rekirqzir",
+    "price": 2150,
+    "sizes": [
+      {
+        "code": "s",
+        "label": "s · 1",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 3",
+        "priceDelta": 3600
+      },
+      {
+        "code": "L",
+        "label": "L · 5",
+        "priceDelta": 7100
+      },
+      {
+        "code": "XL",
+        "label": "XL · 7",
+        "priceDelta": 10800
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "M",
+    "priceFrom": false,
+    "categories": [
+      "mono"
+    ],
+    "composition": "гортензия"
+  },
+  {
+    "id": "p1789461486044",
+    "desc": "",
+    "name": "Авторская Осень",
+    "slug": "avtorskaya-osen",
+    "badge": "Новинка",
+    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imu2f6wd6yw5pmz",
+    "price": 9300,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors"
+    ],
+    "composition": "Эвкалипт, хризантема бигуди рэд, помпасная трава, львиный зев, антуриум, уплощив, леукодендрон"
+  },
+  {
+    "id": "p1790702821378",
+    "desc": "Пышная осенняя композиция: хризантемы сорта Бигуди Перпл с веточками эвкалипта в плетёной корзине. Три размера — от компактной до большой.",
+    "name": "Корзины с хризантемой бигуди и эвкалиптом",
+    "slug": "korziny-s-hrizantemoy-bigudi-i-evkaliptom",
+    "badge": null,
+    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imumy83a0exlba3",
+    "price": 8050,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · малая",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · средняя",
+        "priceDelta": 2400
+      },
+      {
+        "code": "L",
+        "label": "L · большая",
+        "priceDelta": 7150
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "S",
+    "priceFrom": false,
+    "categories": [
+      "autumn",
+      "online",
+      "season",
+      "compositions"
+    ],
+    "composition": "Хризантема Бигуди Перпл, эвкалипт, плетёная корзина"
+  },
+  {
+    "id": "p1790858038885",
+    "desc": "Оранжевые георгины, эвкалипт стабилизированный",
+    "name": "Георгины с эвкалиптом стабилизированным осенним",
+    "slug": "georginy-s-evkaliptom-stabilizirovannym-osennim",
+    "badge": null,
+    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imupimy4oqaahfv",
+    "price": 9600,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "autumn",
+      "online",
+      "authors"
+    ],
+    "composition": "Оранжевые георгины, эвкалипт стабилизированный"
+  },
+  {
+    "id": "p1791301432836",
+    "desc": "Ваза-кукла «Amina» из новой коллекции Canopie — коллаборация итальянского бренда SELETTI и художницы Elena Cutolo. Оранжевое горлышко-воронка и узор из оранжевых квадратов на белом фарфоре, лицо нарисовано в стиле поп-арт. Работает и как ваза для букета, и как арт-объект сама по себе. Фарфор. Размеры 41,6 × 17,2 × 17,2 см. Поставляется в фирменной коробке Canopie.",
+    "name": "Ваза SELETTI Canopie «Amina»",
+    "slug": "vaza-seletti-canopie-amina",
+    "badge": null,
+    "image": "images/paloma/catalog/canopie-amina-1.webp",
+    "price": 30000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "one",
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Фарфор"
+  },
+  {
+    "id": "p1791301433223",
+    "desc": "Ваза-кукла «Zita» из новой коллекции Canopie — коллаборация итальянского бренда SELETTI и художницы Elena Cutolo. Бирюзовое горлышко-цилиндр и рассыпанные бирюзовые звёздочки на белом фарфоре, лицо нарисовано в стиле поп-арт. Работает и как ваза для букета, и как арт-объект сама по себе. Фарфор. Размеры 41,6 × 17,2 × 17,2 см. Поставляется в фирменной коробке Canopie.",
+    "name": "Ваза SELETTI Canopie «Zita»",
+    "slug": "vaza-seletti-canopie-zita",
+    "badge": null,
+    "image": "images/paloma/catalog/canopie-zita-1.webp",
+    "price": 30000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "one",
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Фарфор"
+  },
+  {
+    "id": "p1791301433604",
+    "desc": "Ваза-кукла «Kiki» из новой коллекции Canopie — коллаборация итальянского бренда SELETTI и художницы Elena Cutolo. Голубое горлышко-чаша и горох в тонкую голубую полоску на белом фарфоре, лицо нарисовано в стиле поп-арт. Работает и как ваза для букета, и как арт-объект сама по себе. Фарфор. Размеры 41,6 × 17,2 × 17,2 см. Поставляется в фирменной коробке Canopie.",
+    "name": "Ваза SELETTI Canopie «Kiki»",
+    "slug": "vaza-seletti-canopie-kiki",
+    "badge": null,
+    "image": "images/paloma/catalog/canopie-kiki-1.webp",
+    "price": 30000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "one",
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Фарфор"
+  },
+  {
+    "id": "p1791301434348",
+    "desc": "Ваза-кукла «Pietra» из новой коллекции Canopie — коллаборация итальянского бренда SELETTI и художницы Elena Cutolo. Зелёное горлышко-воронка и зелёный узор из «молекул» на белом фарфоре, лицо нарисовано в стиле поп-арт. Работает и как ваза для букета, и как арт-объект сама по себе. Фарфор. Размеры 41,6 × 17,2 × 17,2 см. Поставляется в фирменной коробке Canopie.",
+    "name": "Ваза SELETTI Canopie «Pietra»",
+    "slug": "vaza-seletti-canopie-pietra",
+    "badge": null,
+    "image": "images/paloma/catalog/canopie-pietra-1.webp",
+    "price": 30000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "one",
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Фарфор"
+  },
+  {
+    "id": "p1791622440830",
+    "desc": "Ваза из матового белого стекла с мягкими складками и волнистым горлом.",
+    "name": "Ваза «Иней»",
+    "slug": "vaza-iney",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-inei.jpg",
+    "price": 9500,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Матовое стекло"
+  },
+  {
+    "id": "p1791622441201",
+    "desc": "Голубая ваза из цветного стекла: волнистый край, жёлтая ручка-завиток и синяя ножка.",
+    "name": "Ваза «Завиток» голубая",
+    "slug": "vaza-zavitok-golubaya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-zavitok-blue.jpg",
+    "price": 8200,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Цветное стекло"
+  },
+  {
+    "id": "p1791622441952",
+    "desc": "Розовая ваза из цветного стекла: волнистый край, голубая ручка-завиток и бордовая ножка.",
+    "name": "Ваза «Завиток» розовая",
+    "slug": "vaza-zavitok-rozovaya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-zavitok-pink.jpg",
+    "price": 7700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Цветное стекло"
+  },
+  {
+    "id": "p1791622442625",
+    "desc": "Высокая бордовая ваза с розовой стеклянной лентой-поясом.",
+    "name": "Ваза «Лента» бордовая",
+    "slug": "vaza-lenta-bordovaya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-lenta-bordo.jpg",
+    "price": 6700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Цветное стекло"
+  },
+  {
+    "id": "p1791622443239",
+    "desc": "Высокий цилиндр из кремового стекла с изумрудными и сиреневыми разводами.",
+    "name": "Ваза «Акварель»",
+    "slug": "vaza-akvarel",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-akvarel.jpg",
+    "price": 6200,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Цветное стекло"
+  },
+  {
+    "id": "p1791622443933",
+    "desc": "Широкая ваза из стекла песочного оттенка с мелкими пузырьками воздуха.",
+    "name": "Ваза «Песок» широкая",
+    "slug": "vaza-pesok-shirokaya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-pesok-wide.jpg",
+    "price": 6000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "p1791622444620",
+    "desc": "Цилиндр из мятного стекла с двумя ручками-завитками — жёлтой и терракотовой.",
+    "name": "Ваза «Мята» с ручками",
+    "slug": "vaza-myata-s-ruchkami",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-myata.jpg",
+    "price": 6000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Цветное стекло"
+  },
+  {
+    "id": "p1791622445221",
+    "desc": "Ваза из стеклянных «колец» с переходом от пудрово-розового к терракотовому.",
+    "name": "Ваза «Камешки»",
+    "slug": "vaza-kameshki",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-kameshki.jpg",
+    "price": 5800,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Цветное стекло"
+  },
+  {
+    "id": "p1791622445575",
+    "desc": "Ваза из стекла песочного оттенка: узкое высокое горло и широкое основание.",
+    "name": "Ваза «Песок» с горлом",
+    "slug": "vaza-pesok-s-gorlom",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-pesok-gorlo.jpg",
+    "price": 5400,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "p1791622445922",
+    "desc": "Невысокая светло-розовая ваза с розовой стеклянной лентой-поясом.",
+    "name": "Ваза «Лента» пудровая",
+    "slug": "vaza-lenta-pudrovaya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/vase-lenta-pudra.jpg",
+    "price": 4800,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": "Цветное стекло"
+  },
+  {
+    "id": "p1791622446336",
+    "desc": "Свадебный букет в глубокой винной гамме: антуриумы, каллы, орхидея ашима и каскад амаранта.",
+    "name": "Бордо",
+    "slug": "bordo",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/wed-bordo.jpg",
+    "price": 14300,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "wedding"
+    ],
+    "composition": "Ашима, антуриум, амарант, каллы"
+  }
 ];

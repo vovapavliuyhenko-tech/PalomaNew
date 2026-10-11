@@ -791,7 +791,8 @@
        ЖДЁМ отправку перед переходом: на мобильных браузерах «fire-and-forget»
        fetch часто обрывается при немедленном переходе на thank-you, и заказ
        не долетал до бота. Ограничиваем ожидание 6с, чтобы не держать клиента. */
-    await notifyManagerOfOrder(orderData);
+    const delivered = await notifyManagerOfOrder(orderData);
+    if (!delivered) await offerMessengerFallback(orderData);
 
     emptyCart();
     showSuccess(orderId);
@@ -833,11 +834,48 @@
         messengerContact: orderData.messengerContact || "",
         managerText: managerText,
       }),
-    }).catch(() => {}); /* уведомление не должно мешать оформлению заказа */
+    }).then((r) => !!(r && r.ok)).catch(() => false); /* уведомление не должно мешать оформлению заказа */
+    /* true — сервер подтвердил приём; false — не ответил за 8 с или ошибка
+       (например, сбой облака). Тогда заказ отдаём клиенту в мессенджер. */
     return Promise.race([
       send,
-      new Promise((resolve) => setTimeout(resolve, 6000)),
+      new Promise((resolve) => setTimeout(() => resolve(false), 8000)),
     ]);
+  }
+
+  /* ── Запасной путь: сервер недоступен (сбой облака) ──
+     Заказ НЕ теряем и не говорим «принят», пока он не дошёл: показываем
+     готовый текст заказа и кнопки отправить его в WhatsApp / Telegram
+     или позвонить. */
+  function offerMessengerFallback(orderData) {
+    return new Promise((resolve) => {
+      const text = (orderData.managerText || buildManagerText(orderData)).slice(0, 3500);
+      const wa = "https://wa.me/79897707000?text=" +
+        encodeURIComponent("Здравствуйте! Хочу оформить заказ:\n\n" + text);
+      const btn = "display:block;text-align:center;border-radius:12px;padding:12px;margin-bottom:8px;text-decoration:none;font-weight:600;";
+      const box = document.createElement("div");
+      box.setAttribute("role", "dialog");
+      box.setAttribute("aria-modal", "true");
+      box.style.cssText = "position:fixed;inset:0;z-index:100000;background:rgba(27,26,24,.55);" +
+        "display:flex;align-items:center;justify-content:center;padding:16px";
+      box.innerHTML =
+        '<div style="background:#fff;border-radius:18px;max-width:420px;width:100%;padding:22px 20px;' +
+          'font:14px/1.5 Montserrat,Arial,sans-serif;color:#1B1A18;box-shadow:0 20px 60px rgba(0,0,0,.3)">' +
+        '<div style="font-size:17px;font-weight:600;margin-bottom:8px">Заказ почти оформлен</div>' +
+        '<div style="font-size:13px;color:#555;margin-bottom:16px">Сервер заказов сейчас не отвечает. ' +
+          'Чтобы заказ точно дошёл, отправьте его нам в мессенджер — текст заказа уже готов. Или просто позвоните.</div>' +
+        '<a data-k="wa" href="' + wa + '" target="_blank" rel="noopener" style="' + btn + 'background:#25D366;color:#fff">Отправить в WhatsApp</a>' +
+        '<a data-k="tg" href="https://t.me/palomanvrsk" target="_blank" rel="noopener" style="' + btn + 'background:#2AABEE;color:#fff">Скопировать заказ и открыть Telegram</a>' +
+        '<a href="tel:+79897707000" style="' + btn + 'border:1px solid #1B1A18;color:#1B1A18;margin-bottom:12px">Позвонить +7 989 770-70-00</a>' +
+        '<button type="button" data-k="done" style="display:block;width:100%;background:none;border:0;color:#888;' +
+          'font:inherit;font-size:12px;text-decoration:underline;cursor:pointer">Я отправил(а) заказ</button>' +
+        "</div>";
+      document.body.appendChild(box);
+      box.querySelector('[data-k="tg"]').addEventListener("click", () => {
+        try { if (navigator.clipboard) navigator.clipboard.writeText(text); } catch (e) { /* ок */ }
+      });
+      box.querySelector('[data-k="done"]').addEventListener("click", () => { box.remove(); resolve(); });
+    });
   }
 
   function emptyCart() {
@@ -1075,8 +1113,9 @@
          отправляется в бот с пометкой, что оплату надо согласовать руками —
          потерять заказ хуже, чем принять его без предоплаты. */
       const reason = err && err.message ? err.message : "ошибка связи";
+      let delivered = false;
       try {
-        await notifyManagerOfOrder(orderData, {
+        delivered = await notifyManagerOfOrder(orderData, {
           header: "❗ ЗАКАЗ БЕЗ ОПЛАТЫ — онлайн-оплата не создалась",
           note:
             "Клиент выбрал оплату картой, но счёт не выставился.\n" +
@@ -1086,11 +1125,16 @@
       } catch (e) {
         console.error("[PALOMA] уведомление о неудачной оплате:", e);
       }
+      if (!delivered) {
+        /* сервер вообще недоступен — заказ отдаём клиенту в мессенджер */
+        await offerMessengerFallback(orderData);
+      } else {
+        alert(
+          "Оплата картой сейчас недоступна.\n\n" +
+            "Заказ мы приняли — менеджер свяжется с вами, чтобы согласовать оплату.",
+        );
+      }
       emptyCart();
-      alert(
-        "Оплата картой сейчас недоступна.\n\n" +
-          "Заказ мы приняли — менеджер свяжется с вами, чтобы согласовать оплату.",
-      );
       showSuccess(orderData.id);
     }
   }
