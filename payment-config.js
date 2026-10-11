@@ -20,7 +20,7 @@ window.PALOMA_PAYMENT_CONFIG = {
      чекаут молча работает как раньше (заявка менеджеру). */
   /* Функция в Яндекс Облаке (рядом с PayKeeper — счёт выставляется за ~0.7 с;
      Netlify зависал на 30 с из-за зарубежных серверов и был отброшен). */
-  PAYMENT_ENDPOINT: "https://functions.yandexcloud.net/d4ek26aklvok10biu54h",
+  PAYMENT_ENDPOINT: "https://palomanew.onrender.com",
 
   RETURN_URL_SUCCESS: "thank-you.html?paid=1",
   RETURN_URL_FAIL: "checkout.html?payment=failed",
@@ -45,7 +45,7 @@ window.palomaFetch = function (query, init) {
   try { downAt = Number(sessionStorage.getItem(DOWN_KEY)) || 0; } catch (e) { /* приватный режим */ }
   var mainDown = backup && Date.now() - downAt < 5 * 60 * 1000;
   var list = [];
-  if (main && !mainDown) list.push({ url: main, ms: backup ? 7000 : 25000, main: true });
+  if (main && !mainDown) list.push({ url: main, ms: backup ? 7000 : 60000, main: true });
   if (backup) list.push({ url: backup, ms: 15000 });
   if (main && mainDown) list.push({ url: main, ms: 15000, main: true });
 
@@ -70,3 +70,13 @@ window.palomaFetch = function (query, init) {
   }
   return attempt(0);
 };
+
+/* Бесплатный сервер Render засыпает после 15 минут тишины и просыпается
+   до минуты. Будим его заранее — при открытии любой страницы с корзиной,
+   чтобы к моменту оформления заказа он уже отвечал. */
+(function () {
+  try {
+    var ep = String((window.PALOMA_PAYMENT_CONFIG || {}).PAYMENT_ENDPOINT || "");
+    if (ep && typeof fetch === "function") fetch(ep + "?a=ping", { cache: "no-store" }).catch(function () {});
+  } catch (e) { /* не мешаем странице */ }
+})();

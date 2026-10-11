@@ -4681,7 +4681,7 @@ window.PALOMA_PRODUCTS = [
     "name": "Гортензия Китай",
     "slug": "gortenziya-kitay",
     "badge": "Новинка",
-    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imtui6rekirqzir",
+    "image": "https://palomanew.onrender.com?a=img&id=imtui6rekirqzir",
     "price": 2150,
     "sizes": [
       {
@@ -4735,7 +4735,7 @@ window.PALOMA_PRODUCTS = [
     "name": "Авторская Осень",
     "slug": "avtorskaya-osen",
     "badge": "Новинка",
-    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imu2f6wd6yw5pmz",
+    "image": "https://palomanew.onrender.com?a=img&id=imu2f6wd6yw5pmz",
     "price": 9300,
     "sizes": [
       {
@@ -4774,7 +4774,7 @@ window.PALOMA_PRODUCTS = [
     "name": "Корзины с хризантемой бигуди и эвкалиптом",
     "slug": "korziny-s-hrizantemoy-bigudi-i-evkaliptom",
     "badge": null,
-    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imumy83a0exlba3",
+    "image": "https://palomanew.onrender.com?a=img&id=imumy83a0exlba3",
     "price": 8050,
     "sizes": [
       {
@@ -4826,7 +4826,7 @@ window.PALOMA_PRODUCTS = [
     "name": "Георгины с эвкалиптом стабилизированным осенним",
     "slug": "georginy-s-evkaliptom-stabilizirovannym-osennim",
     "badge": null,
-    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imupimy4oqaahfv",
+    "image": "https://palomanew.onrender.com?a=img&id=imupimy4oqaahfv",
     "price": 9600,
     "sizes": [
       {

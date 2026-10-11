@@ -17,7 +17,9 @@
 (function () {
   "use strict";
 
-  var API = "https://functions.yandexcloud.net/d4ek26aklvok10biu54h";
+  /* 12.10.2026: сервер переехал с Яндекс Облака на Render (Яндекс лежал). */
+  var API = "https://palomanew.onrender.com";
+  var OLD_API = "https://functions.yandexcloud.net/d4ek26aklvok10biu54h";
   var KEY = "paloma:products:v1";
   var CACHE_TTL = 24 * 60 * 60 * 1000; // сутки — дальше кэшу не верим
 
@@ -65,7 +67,15 @@
   /* Меняем массив НА МЕСТЕ: на него уже могли сохранить ссылку другие скрипты. */
   function apply(list) {
     if (!Array.isArray(list) || !list.length) return false;
-    list = pinCategories(list);
+    list = pinCategories(list).map(function (p) {
+      /* фото, загруженные в админке, ещё ссылаются на старый адрес Яндекса */
+      if (p && typeof p.image === "string" && p.image.indexOf(OLD_API) === 0) {
+        var c = {}; for (var k in p) c[k] = p[k];
+        c.image = API + p.image.slice(OLD_API.length);
+        return c;
+      }
+      return p;
+    });
     var cur = window.PALOMA_PRODUCTS;
     if (!Array.isArray(cur)) { window.PALOMA_PRODUCTS = list.slice(); return true; }
     if (same(cur, list)) return false;
