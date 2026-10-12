@@ -1,4 +1,4 @@
-/* PALOMA — запасная копия каталога: снимок базы на 2026-10-11.
+/* PALOMA — запасная копия каталога: снимок базы на 2026-10-12.
    Сайт берёт каталог из базы (products-live.js); эта копия видна, только если
    облако недоступно. Обновлять снимком из базы после крупных правок каталога. */
 window.PALOMA_PRODUCTS = [
@@ -3575,94 +3575,6 @@ window.PALOMA_PRODUCTS = [
     }
   },
   {
-    "id": "n36",
-    "desc": "Нежный букет-бестселлер с кустовой пионовидной розой, гортензией и эустомой.",
-    "name": "Аврора",
-    "slug": "avrora",
-    "badge": null,
-    "image": "images/paloma/catalog/n36.jpg",
-    "pairs": "К капучино из PALOMA Coffee.",
-    "price": 5830,
-    "sizes": [
-      {
-        "code": "base",
-        "label": "Базовый",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "photoSize": null,
-    "priceFrom": true,
-    "categories": [
-      "bestsellers"
-    ],
-    "composition": "Кустовая пионовидная роза, гортензия, эустома, диантус",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #d87f9c, #9c4f66)",
-      "hover": "linear-gradient(135deg, #c86f8c, #8c4256)"
-    }
-  },
-  {
-    "id": "n37",
-    "desc": "Тёплый букет-бестселлер с хризантемой, бархатцами и цинниями.",
-    "name": "Марго",
-    "slug": "margo",
-    "badge": null,
-    "image": "images/paloma/catalog/n37.jpg",
-    "pairs": "К капучино из PALOMA Coffee.",
-    "price": 3360,
-    "sizes": [
-      {
-        "code": "base",
-        "label": "Базовый",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "photoSize": null,
-    "priceFrom": true,
-    "categories": [
-      "bestsellers"
-    ],
-    "composition": "Хризантема, бархатцы, паникум, циния",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #d8923c, #a05f1e)",
-      "hover": "linear-gradient(135deg, #c88430, #905218)"
-    }
-  },
-  {
     "id": "n38",
     "desc": "Воздушный букет-бестселлер с гортензией, пионовидной розой и матрикарией.",
     "name": "Луара",
@@ -3704,65 +3616,6 @@ window.PALOMA_PRODUCTS = [
     "placeholderGradient": {
       "main": "linear-gradient(135deg, #c98ca8, #8a5a72)",
       "hover": "linear-gradient(135deg, #b97c98, #7a4c62)"
-    }
-  },
-  {
-    "id": "n39",
-    "desc": "Монобукет из пионовидной розы Мелон Экспрешн. Размеры от S (11 шт) до XL (25 шт).",
-    "name": "Мелон",
-    "slug": "melon",
-    "badge": null,
-    "image": "images/paloma/catalog/n39.jpg",
-    "pairs": "К капучино из PALOMA Coffee.",
-    "price": 5480,
-    "sizes": [
-      {
-        "code": "s",
-        "label": "s · S — 11 шт",
-        "priceDelta": 0
-      },
-      {
-        "code": "m",
-        "label": "m · M — 15 шт",
-        "priceDelta": 1720
-      },
-      {
-        "code": "l",
-        "label": "l · L — 21 шт",
-        "priceDelta": 4300
-      },
-      {
-        "code": "xl",
-        "label": "xl · XL — 25 шт",
-        "priceDelta": 6020
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "photoSize": "s",
-    "priceFrom": true,
-    "categories": [
-      "bestsellers"
-    ],
-    "composition": "Пионовидная роза Мелон Экспрешн",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #e0a46c, #b06f3c)",
-      "hover": "linear-gradient(135deg, #d4965e, #a06333)"
     }
   },
   {
@@ -5445,5 +5298,481 @@ window.PALOMA_PRODUCTS = [
       "wedding"
     ],
     "composition": "Ашима, антуриум, амарант, каллы"
+  },
+  {
+    "id": "p1791800000001",
+    "desc": "Моно-букет из пышных георгинов. На фото — 11 шт.",
+    "name": "Георгин",
+    "slug": "georgin",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/mono-georgin.jpg",
+    "price": 5870,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 9 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 11 шт",
+        "priceDelta": 1220
+      },
+      {
+        "code": "L",
+        "label": "L · 15 шт",
+        "priceDelta": 3660
+      },
+      {
+        "code": "XL",
+        "label": "XL · 21 шт",
+        "priceDelta": 7320
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "M",
+    "priceFrom": false,
+    "categories": [
+      "online",
+      "mono"
+    ],
+    "composition": "Георгин"
+  },
+  {
+    "id": "p1791800000002",
+    "desc": "Моно-букет из хризантем. На фото — 21 шт.",
+    "name": "Хризантема",
+    "slug": "hrizantema",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/mono-xrizantema.jpg",
+    "price": 5060,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 9 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 15 шт",
+        "priceDelta": 3120
+      },
+      {
+        "code": "L",
+        "label": "L · 21 шт",
+        "priceDelta": 6240
+      },
+      {
+        "code": "XL",
+        "label": "XL · 31 шт",
+        "priceDelta": 11440
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "L",
+    "priceFrom": false,
+    "categories": [
+      "online",
+      "mono"
+    ],
+    "composition": "Хризантема"
+  },
+  {
+    "id": "p1791800000003",
+    "desc": "Авторский букет в тёплой осенней гамме: хризантема, амариллис, горец, маттиола и стабилизированный бук.",
+    "name": "Солнечная осень",
+    "slug": "solnechnaya-osen",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/author-xrizantema-amarillis.jpg",
+    "price": 4560,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors",
+      "autumn"
+    ],
+    "composition": "Хризантема, амариллис, горец, маттиола, стабилизированный бук"
+  },
+  {
+    "id": "p1791800000004",
+    "desc": "Большой авторский букет: гортензия, каллы, пионовидная роза, дельфиниум, амариллис, хризантема, сангисорба, антуриум и стабилизированный бук.",
+    "name": "Осенняя палитра",
+    "slug": "osennyaya-palitra",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/author-osennyaya-palitra.jpg",
+    "price": 20085,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors",
+      "autumn"
+    ],
+    "composition": "Гортензия, каллы, роза пионовидная, дельфиниум, амариллис, хризантема, стабилизированный бук, сангисорба, антуриум"
+  },
+  {
+    "id": "p1791800000005",
+    "desc": "Авторский букет с георгином, целозией и ягодами шиповника, хризантемой и стабилизированным эвкалиптом.",
+    "name": "Георгин и целозия",
+    "slug": "georgin-i-celoziya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/author-georgin-celoziya.jpg",
+    "price": 7890,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "authors",
+      "autumn"
+    ],
+    "composition": "Хризантема, георгин, целозия, шиповник, стабилизированный эвкалипт"
+  },
+  {
+    "id": "p1791800000006",
+    "desc": "Свадебный букет: эустома, орхидея фаленопсис и каскад стабилизированного амаранта.",
+    "name": "Белая орхидея",
+    "slug": "belaya-orhideya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/wed-eustoma-orhideya.jpg",
+    "price": 8820,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "wedding"
+    ],
+    "composition": "Эустома, орхидея фаленопсис, стабилизированный амарант"
+  },
+  {
+    "id": "p1791800000007",
+    "desc": "Свадебный букет из калл — лаконичный и элегантный.",
+    "name": "Каллы",
+    "slug": "kally",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/wed-kally.jpg",
+    "price": 9200,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 11 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 13 шт",
+        "priceDelta": 1600
+      },
+      {
+        "code": "L",
+        "label": "L · 15 шт",
+        "priceDelta": 3200
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "wedding"
+    ],
+    "composition": "Каллы"
+  },
+  {
+    "id": "p1791800000008",
+    "desc": "Дуо-букет из гортензии, пионовидной и кустовой пионовидной розы.",
+    "name": "Пионовидная нежность",
+    "slug": "pionovidnaya-nezhnost",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/duo-gortenziya-kustovaya.jpg",
+    "price": 26800,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Гортензия, пионовидная роза, пионовидная кустовая роза"
+  },
+  {
+    "id": "p1791800000009",
+    "desc": "Дуо-букет из гортензии и пионовидной розы.",
+    "name": "Гортензия и роза",
+    "slug": "gortenziya-i-roza",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/duo-gortenziya-roza.jpg",
+    "price": 14170,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "duo"
+    ],
+    "composition": "Гортензия, пионовидная роза"
+  },
+  {
+    "id": "p1791800000010",
+    "desc": "Осенняя композиция в корзине: амариллис, хризантема, георгин, целозия, шиповник, мискантус, стабилизированные бук и эвкалипт.",
+    "name": "Осенняя корзина",
+    "slug": "osennyaya-korzina",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/basket-osennyaya.jpg",
+    "price": 19080,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "compositions",
+      "autumn"
+    ],
+    "composition": "Амариллис, хризантема, шиповник, георгин, стабилизированный бук, стабилизированный эвкалипт, целозия, мискантус"
+  },
+  {
+    "id": "p1791800000011",
+    "desc": "Большая корзина: голубая гортензия, георгины-помпоны, пионовидные и кустовые пионовидные розы, стабилизированный эвкалипт.",
+    "name": "Большая корзина",
+    "slug": "bolshaya-korzina",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/basket-gortenziya-georgin.jpg",
+    "price": 60260,
+    "sizes": [
+      {
+        "code": "base",
+        "label": "Базовый",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": true,
+    "categories": [
+      "compositions",
+      "autumn"
+    ],
+    "composition": "Гортензия, георгин, кустовая пионовидная роза, пионовидная роза, стабилизированный эвкалипт"
   }
 ];
