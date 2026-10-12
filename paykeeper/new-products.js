@@ -92,4 +92,10 @@ module.exports = [
     desc: "Осенняя композиция в корзине: амариллис, хризантема, георгин, целозия, шиповник, мискантус, стабилизированные бук и эвкалипт.",
     image: "images/paloma/catalog/basket-osennyaya.jpg", price: 19080, priceFrom: true, sizes: one,
   }),
+  Object.assign({}, NEW, {
+    id: "p1791800000011", name: "Большая корзина", categories: ["compositions", "autumn"],
+    composition: "Гортензия, георгин, кустовая пионовидная роза, пионовидная роза, стабилизированный эвкалипт",
+    desc: "Большая корзина: голубая гортензия, георгины-помпоны, пионовидные и кустовые пионовидные розы, стабилизированный эвкалипт.",
+    image: "images/paloma/catalog/basket-gortenziya-georgin.jpg", price: 60260, priceFrom: true, sizes: one,
+  }),
 ];
