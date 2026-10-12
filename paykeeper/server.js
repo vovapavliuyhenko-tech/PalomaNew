@@ -61,6 +61,24 @@ http.createServer((req, res) => {
   });
 }).listen(PORT, () => console.log("[server] paloma-pay слушает порт", PORT));
 
+/* Новые товары, присланные без админки (см. new-products.js):
+   добавляем только отсутствующие, существующие не трогаем. */
+(async function addNewProducts() {
+  try {
+    const products = require("./products.js");
+    const { query } = require("./db.js");
+    await products.ensureTable();
+    for (const p of require("./new-products.js")) {
+      const r = await query("SELECT 1 FROM products WHERE id = $1", [p.id]);
+      if (r.rows.length) continue;
+      await products.save(p);
+      console.log("[server] добавлен товар", p.id, p.name);
+    }
+  } catch (e) {
+    console.error("[server] новые товары не добавлены:", e && e.message);
+  }
+})();
+
 /* Таймер: сверка оплат и освобождение просроченных броней (как в Яндексе). */
 setInterval(() => {
   handler({}).catch((e) => console.error("[timer]", e && e.message));
