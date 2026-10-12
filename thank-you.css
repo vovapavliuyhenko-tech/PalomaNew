@@ -11,7 +11,8 @@
   padding: clamp(28px, 4.4vw, 56px) clamp(16px, 4vw, 40px) clamp(56px, 8vw, 96px);
   padding-top: calc(var(--paloma-header-offset, 96px) + clamp(20px, 4vw, 44px));
   background:
-    radial-gradient(circle at 50% 0, rgba(231, 56, 90, 0.05), transparent 60%);
+    radial-gradient(circle at 50% 0, rgba(231, 56, 90, 0.05), transparent 60%),
+    var(--paper, #FFFFFF); /* непрозрачный: под страницей «шторка» подвала */
 }
 
 .ty-inner {
