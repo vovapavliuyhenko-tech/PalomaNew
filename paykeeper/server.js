@@ -62,7 +62,8 @@ http.createServer((req, res) => {
 }).listen(PORT, () => console.log("[server] paloma-pay слушает порт", PORT));
 
 /* Новые товары, присланные без админки (см. new-products.js):
-   добавляем только отсутствующие, существующие не трогаем. */
+   добавляем только отсутствующие, существующие не трогаем.
+   Здесь же — разовые скрытия товаров. */
 (async function addNewProducts() {
   try {
     const products = require("./products.js");
@@ -73,6 +74,20 @@ http.createServer((req, res) => {
       if (r.rows.length) continue;
       await products.save(p);
       console.log("[server] добавлен товар", p.id, p.name);
+    }
+    /* Разовые скрытия по просьбе владельца (без админки). Каждое выполняется
+       один раз — отметка в app_settings, — чтобы потом товар можно было
+       вернуть галочкой в админке и перезапуск его снова не спрятал. */
+    const HIDE_ONCE = {
+      "hide_2026_10_12": ["n36", "n37", "n39"], // Аврора, Марго, Мелон
+    };
+    await query("CREATE TABLE IF NOT EXISTS app_settings (key TEXT PRIMARY KEY, value TEXT, updated_at TIMESTAMPTZ NOT NULL DEFAULT now())");
+    for (const [key, ids] of Object.entries(HIDE_ONCE)) {
+      const done = await query("SELECT 1 FROM app_settings WHERE key = $1", [key]);
+      if (done.rows.length) continue;
+      for (const id of ids) await products.setActive(id, false);
+      await query("INSERT INTO app_settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO NOTHING", [key, ids.join(",")]);
+      console.log("[server] скрыты товары", ids.join(", "));
     }
   } catch (e) {
     console.error("[server] новые товары не добавлены:", e && e.message);
