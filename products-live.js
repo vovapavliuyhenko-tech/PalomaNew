@@ -17,9 +17,10 @@
 (function () {
   "use strict";
 
-  /* 12.10.2026: сервер переехал с Яндекс Облака на Render (Яндекс лежал). */
-  var API = "https://palomanew.onrender.com";
-  var OLD_API = "https://functions.yandexcloud.net/d4ek26aklvok10biu54h";
+  /* Основной сервер — Яндекс Облако, резерв — Render (оба читают одну базу).
+     Фото из админки лежат в базе и отдаются любым из них. */
+  var APIS = ["https://functions.yandexcloud.net/d4ek26aklvok10biu54h", "https://palomanew.onrender.com"];
+  var API = APIS[0];
   var KEY = "paloma:products:v1";
   var CACHE_TTL = 24 * 60 * 60 * 1000; // сутки — дальше кэшу не верим
 
@@ -68,11 +69,14 @@
   function apply(list) {
     if (!Array.isArray(list) || !list.length) return false;
     list = pinCategories(list).map(function (p) {
-      /* фото, загруженные в админке, ещё ссылаются на старый адрес Яндекса */
-      if (p && typeof p.image === "string" && p.image.indexOf(OLD_API) === 0) {
-        var c = {}; for (var k in p) c[k] = p[k];
-        c.image = API + p.image.slice(OLD_API.length);
-        return c;
+      /* фото из админки берём с того сервера, который сейчас ответил */
+      for (var j = 0; j < APIS.length; j++) {
+        var host = APIS[j];
+        if (host !== API && p && typeof p.image === "string" && p.image.indexOf(host) === 0) {
+          var c = {}; for (var k in p) c[k] = p[k];
+          c.image = API + p.image.slice(host.length);
+          return c;
+        }
       }
       return p;
     });
@@ -263,10 +267,17 @@
   /* ── 2. в фоне: свежий список ── */
   function refresh() {
     if (typeof fetch !== "function") return;
-    fetch(API + "?a=products", { cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : null; })
+    function get(i) {
+      return fetch(APIS[i] + "?a=products", { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (d && d.ok && Array.isArray(d.products) && d.products.length) { API = APIS[i]; return d; }
+          throw new Error("пусто");
+        })
+        .catch(function (e) { if (i + 1 < APIS.length) return get(i + 1); throw e; });
+    }
+    get(0)
       .then(function (d) {
-        if (!d || !d.ok || !Array.isArray(d.products) || !d.products.length) return;
         try {
           localStorage.setItem(KEY, JSON.stringify({ at: Date.now(), products: d.products }));
         } catch (e) { /* не влезло — не беда */ }

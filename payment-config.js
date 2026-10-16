@@ -20,7 +20,7 @@ window.PALOMA_PAYMENT_CONFIG = {
      чекаут молча работает как раньше (заявка менеджеру). */
   /* Функция в Яндекс Облаке (рядом с PayKeeper — счёт выставляется за ~0.7 с;
      Netlify зависал на 30 с из-за зарубежных серверов и был отброшен). */
-  PAYMENT_ENDPOINT: "https://palomanew.onrender.com",
+  PAYMENT_ENDPOINT: "https://functions.yandexcloud.net/d4ek26aklvok10biu54h",
 
   RETURN_URL_SUCCESS: "thank-you.html?paid=1",
   RETURN_URL_FAIL: "checkout.html?payment=failed",
@@ -31,7 +31,7 @@ window.PALOMA_PAYMENT_CONFIG = {
    заказы, заявки и оплата идут через резервный сервер (Cloudflare Worker,
    paykeeper/backup-worker.js). Пустая строка — резерв выключен.
    ════════════════════════════════════════════════════════ */
-window.PALOMA_PAYMENT_CONFIG.BACKUP_ENDPOINT = "";
+window.PALOMA_PAYMENT_CONFIG.BACKUP_ENDPOINT = "https://palomanew.onrender.com"; /* Render, paykeeper/server.js */
 
 /* palomaFetch("?a=create", init) — запрос сначала к основному серверу,
    при обрыве или молчании дольше 7 с — к резервному. Если основной уже
@@ -71,12 +71,15 @@ window.palomaFetch = function (query, init) {
   return attempt(0);
 };
 
-/* Бесплатный сервер Render засыпает после 15 минут тишины и просыпается
-   до минуты. Будим его заранее — при открытии любой страницы с корзиной,
-   чтобы к моменту оформления заказа он уже отвечал. */
+/* Будим оба сервера заранее — при открытии любой страницы с корзиной.
+   Бесплатный резерв на Render засыпает после 15 минут тишины и просыпается
+   до минуты: если Яндекс снова упадёт, резерв уже будет на ногах. */
 (function () {
   try {
-    var ep = String((window.PALOMA_PAYMENT_CONFIG || {}).PAYMENT_ENDPOINT || "");
-    if (ep && typeof fetch === "function") fetch(ep + "?a=ping", { cache: "no-store" }).catch(function () {});
+    var cfg = window.PALOMA_PAYMENT_CONFIG || {};
+    [cfg.PAYMENT_ENDPOINT, cfg.BACKUP_ENDPOINT].forEach(function (ep) {
+      ep = String(ep || "");
+      if (ep && typeof fetch === "function") fetch(ep + "?a=ping", { cache: "no-store" }).catch(function () {});
+    });
   } catch (e) { /* не мешаем странице */ }
 })();
