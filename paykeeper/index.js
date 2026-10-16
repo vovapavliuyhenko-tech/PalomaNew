@@ -848,7 +848,7 @@ async function createInvoice(body, origin) {
     method: "POST",
     headers: {
       Authorization: AUTH,
-      "Content-Type": "application/x-www-form-urlencoded; charset=utf-8", // без charset PayKeeper портил кириллицу (имя, услуга → «���»)
+      "Content-Type": "application/x-www-form-urlencoded",
     },
     body: form.toString(),
   }, 12000);
