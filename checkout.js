@@ -480,8 +480,9 @@
     milkshake: "Коктейли", tea: "Чай", dessert: "Десерты", corpus: "Корпусные",
   };
 
-  function menuPicker(cats) {
+  function menuPicker(cats, rows) {
     return {
+      rows: !!rows, /* без фото — аккуратным списком */
       inCart: (c) => c.category === "coffee" && cats.some((k) => String(c.id).indexOf("menu-" + k + "-") === 0),
       load: () => loadMenu().then((m) => m
         .filter((it) => cats.indexOf(it.category) >= 0 && Number(it.price) > 0)
@@ -489,7 +490,7 @@
         .map((it) => ({
           group: MENU_CATS[it.category] || "",
           name: it.title,
-          image: it.image || MENU_IMG[it.category] || "",
+          image: rows ? "" : it.image || MENU_IMG[it.category] || "",
           bg: it.imageBg || "",
           sizes: menuSizes(it),
           toCart: (sz) => ({
@@ -524,7 +525,7 @@
         }))),
     },
     coffee: Object.assign({ title: "Выберите напиток" }, menuPicker(["classic", "cacaoraf", "cold", "milkshake", "tea"])),
-    dessert: Object.assign({ title: "Выберите десерт" }, menuPicker(["dessert", "corpus"])),
+    dessert: Object.assign({ title: "Выберите десерт" }, menuPicker(["dessert", "corpus"], true)),
   };
 
   function money(n) { return Number(n).toLocaleString("ru-RU") + " ₽"; }
@@ -597,7 +598,7 @@
         if (g !== group) {
           if (group !== null) html += "</div>";
           if (g) html += `<p class="co-sheet__group">${esc(g)}</p>`;
-          html += '<div class="co-sheet__grid">';
+          html += P.rows ? '<div class="co-sheet__list">' : '<div class="co-sheet__grid">';
           group = g;
         }
         const photo = o.image
@@ -607,6 +608,18 @@
           ? '<div class="co-sheet-card__sizes">' + o.sizes.map((sz, k) =>
               `<button type="button" class="co-sheet-size${k ? "" : " is-on"}" data-size-btn="${k}">${esc(sz.label || "№" + (k + 1))}</button>`).join("") + "</div>"
           : "";
+        if (P.rows) {
+          html += `
+          <div class="co-sheet-card co-sheet-card--row" data-i="${i}">
+            <div class="co-sheet-card__info">
+              <p class="co-sheet-card__name">${esc(o.name)}</p>
+              ${sizes}
+            </div>
+            <p class="co-sheet-card__price">${money(o.sizes[0].price)}</p>
+            <button type="button" class="co-upsell-card__btn" data-add aria-label="Добавить ${esc(o.name)}">Добавить</button>
+          </div>`;
+          return;
+        }
         html += `
           <div class="co-sheet-card" data-i="${i}">
             <div class="co-sheet-card__photo">${photo}</div>

@@ -1600,3 +1600,10 @@ html.co-sheet-lock, html.co-sheet-lock body { overflow: hidden; }
   border: 1px solid var(--co-line); background: #fff; color: var(--co-dark);
 }
 .co-sheet-size.is-on { background: var(--co-dark); border-color: var(--co-dark); color: #fff; }
+/* Десерты в панели — списком, без фото */
+.co-sheet__list { display: flex; flex-direction: column; gap: 8px; }
+.co-sheet-card--row { flex-direction: row; align-items: center; gap: 12px; padding: 10px 12px; }
+.co-sheet-card--row .co-sheet-card__info { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.co-sheet-card--row .co-sheet-card__name { margin: 0; font-size: 13px; }
+.co-sheet-card--row .co-sheet-card__price { margin: 0; white-space: nowrap; }
+.co-sheet-card--row .co-upsell-card__btn { width: auto; flex: 0 0 auto; padding: 8px 14px; }
