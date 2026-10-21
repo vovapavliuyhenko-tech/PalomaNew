@@ -1591,3 +1591,12 @@ html.co-sheet-lock, html.co-sheet-lock body { overflow: hidden; }
 .co-sheet-card__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .co-sheet-card__name { margin: 4px 0 0; font-size: 12px; line-height: 1.3; color: var(--co-dark); }
 .co-sheet-card__price { margin: 0 0 4px; font-size: 13px; font-weight: 700; color: var(--co-dark); margin-top: auto; }
+.co-sheet__group { margin: 16px 2px 8px; font-size: 13px; font-weight: 600; color: var(--co-dark); }
+.co-sheet__group:first-child { margin-top: 2px; }
+.co-sheet-card__ph { display: block; width: 100%; height: 100%; }
+.co-sheet-card__sizes { display: flex; flex-wrap: wrap; gap: 4px; }
+.co-sheet-size {
+  padding: 4px 8px; font-size: 11px; line-height: 1.2; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--co-line); background: #fff; color: var(--co-dark);
+}
+.co-sheet-size.is-on { background: var(--co-dark); border-color: var(--co-dark); color: #fff; }
