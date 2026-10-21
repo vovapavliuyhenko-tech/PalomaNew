@@ -99,3 +99,24 @@
 .wishlist-hero__inner {
   max-width: none !important;
 }
+
+/* ── Ленты карточек (витрина, «Дополните букет», «С этим часто покупают»,
+   «Смотреть ещё»): лента во всю ширину экрана, карточки уходят за край.
+   Отступ слева/справа теперь у самой ленты (а не у секции) — первая
+   карточка стоит ровно под заголовком, а при прокрутке карточки уезжают
+   до самого края экрана. ── */
+.home-showcase {
+  --sc-pad: clamp(12px, 2vw, 28px);   /* прежний боковой отступ секции */
+  --sc-in: clamp(4px, 1vw, 12px);     /* прежний отступ заголовка */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+@media (max-width: 768px) { .home-showcase { --sc-pad: 12px; } }
+@media (max-width: 420px) { .home-showcase { --sc-pad: 8px; --sc-in: 4px; } }
+.home-showcase__head { margin-left: var(--sc-pad) !important; margin-right: var(--sc-pad) !important; }
+.home-showcase__progress { margin-left: var(--sc-pad) !important; margin-right: var(--sc-pad) !important; }
+.home-showcase__viewport {
+  padding-left: calc(var(--sc-pad) + var(--sc-in)) !important;
+  padding-right: calc(var(--sc-pad) + var(--sc-in)) !important;
+  scroll-padding-inline: calc(var(--sc-pad) + var(--sc-in));
+}
