@@ -48,9 +48,10 @@
       corpus: "Корпусные",
       dessert: "Десерты",
       chokome: "ChokoMe",
+      schaste: "Счастье",
     };
     /* «сладкие» разделы: оранжевый акцент и попап без добавок к напитку */
-    var SWEET_CATS = { dessert: 1, corpus: 1, chokome: 1 };
+    var SWEET_CATS = { dessert: 1, corpus: 1, chokome: 1, schaste: 1 };
     /* фото по разделам — доступные кадры кофейни */
     var imgByCat = {
       classic: "images/paloma/coffee/cup-classic.jpg",
@@ -83,6 +84,7 @@
       corpus: "signature cakes",
       dessert: "sweet & art",
       chokome: "chocolate bar",
+      schaste: "fabrique de chocolat",
     };
     /* порядок категорий — как встречаются в данных */
     var catOrder = MENU.map(function (i) { return i.category; })
@@ -477,7 +479,8 @@
         /* Бутылочные напитки (лимонады «Лапочка», соки) — высокие: при cover
            обрезались верх/низ. Показываем целиком (contain) с подложкой под
            синий фон фото. Кофе в стаканах остаётся как есть (cover). */
-        var fullFit = it.category === "lemonade" || it.category === "juice" || it.category === "water";
+        var fullFit = it.category === "lemonade" || it.category === "juice" || it.category === "water" ||
+          it.category === "chokome" || it.category === "schaste"; /* коробки шоколада — целиком */
         imgEl.classList.toggle("cf-modal__img--full", !!fullFit);
       } else {
         /* нет своего фото — без фото-колонки (не показываем градиент-заглушку) */

@@ -80,6 +80,8 @@ http.createServer((req, res) => {
        вернуть галочкой в админке и перезапуск его снова не спрятал. */
     const HIDE_ONCE = {
       "hide_2026_10_12": ["n36", "n37", "n39"], // Аврора, Марго, Мелон
+      /* шоколад ChocoMe и «Счастье» переехали в меню кофейни (coffee-menu-data.js) */
+      "hide_2026_10_21_sweets": ["acc22","acc23","acc24","acc25","acc26","acc27","acc28","acc29","acc30","acc31","acc32","acc33","acc34","acc35","acc36","acc37","acc38","acc39","acc40","p1791800000012","p1791800000013","p1791800000014","p1791800000015","p1791800000016","p1791800000017","p1791800000018","p1791800000019","p1791800000020","p1791800000021","p1791800000022","p1791800000023","p1791800000024","p1791800000025"],
     };
     await query("CREATE TABLE IF NOT EXISTS app_settings (key TEXT PRIMARY KEY, value TEXT, updated_at TIMESTAMPTZ NOT NULL DEFAULT now())");
     for (const [key, ids] of Object.entries(HIDE_ONCE)) {
