@@ -528,6 +528,7 @@ function rebuildCatalog() {
     "upsell-vase": 1500,
     "upsell-secateurs": 1000,
     "upsell-dessert": 190,
+    "upsell-dessert-day": 250, // «Десерт дня» в чекауте с 21.10.2026
   });
   const prefixes = [
     ...new Set(

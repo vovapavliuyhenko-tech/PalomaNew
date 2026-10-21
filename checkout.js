@@ -24,10 +24,12 @@
       image: "images/paloma/catalog/upsell-coffee.jpg",
     },
     {
+      /* Не товар, а кнопка выбора: открывает панель со всеми вазами каталога */
       id: "upsell-vase",
+      picker: "vases",
       name: "Ваза для букета",
-      price: 1500,
-      priceLabel: "от 1500 ₽",
+      price: 2000,
+      priceLabel: "от 2 000 ₽",
       ph: "linear-gradient(135deg,#d8e8f0,#b8c8d8)",
       image: "images/paloma/catalog/upsell-vase.jpg",
     },
@@ -40,10 +42,11 @@
       image: "images/paloma/catalog/upsell-secateurs.jpg",
     },
     {
-      id: "upsell-dessert",
+      /* новый id: старая цена 190 ₽ зашита в сервере под «upsell-dessert» */
+      id: "upsell-dessert-day",
       name: "Десерт дня",
-      price: 190,
-      priceLabel: "от 190 ₽",
+      price: 250,
+      priceLabel: "от 250 ₽",
       ph: "linear-gradient(135deg,#e8c8b8,#c09878)",
       image: "images/paloma/catalog/upsell-dessert.jpg",
     },
@@ -139,6 +142,22 @@
     $upsellGrid.innerHTML = "";
 
     UPSELL_ITEMS.forEach((item) => {
+      if (item.picker) {
+        const picked = cart.some((c) => c.category === "vases");
+        const div = document.createElement("div");
+        div.className = "co-upsell-card";
+        div.innerHTML = `
+          <div class="co-upsell-card__photo"><img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy"></div>
+          <div class="co-upsell-card__body">
+            <p class="co-upsell-card__name">${esc(item.name)}</p>
+            <p class="co-upsell-card__price">${esc(item.priceLabel)}</p>
+            <button type="button" class="co-upsell-card__btn ${picked ? "is-picked" : ""}" data-vase-picker>
+              ${picked ? "✓ Выбрана · ещё" : "Выбрать"}
+            </button>
+          </div>`;
+        $upsellGrid.appendChild(div);
+        return;
+      }
       const inCart = cart.some((c) => c.id === item.id);
       const div = document.createElement("div");
       div.className = "co-upsell-card";
@@ -398,6 +417,111 @@
     updateView();
   }
 
+  /* ── Выбор вазы: панель снизу со всеми вазами каталога ──────────────
+     Клиент листает вазы, не уходя со страницы заказа: «Добавить» кладёт
+     вазу в корзину и закрывает панель, крестик/фон/Esc — просто закрыть. */
+  let vaseList = null;
+  function loadVases() {
+    if (vaseList) return Promise.resolve(vaseList);
+    const pick = (list) =>
+      (Array.isArray(list) ? list : [])
+        .filter((p) => p && Number(p.price) > 0 && (p.categories || [p.category]).indexOf("vases") >= 0 &&
+          /ваз/i.test(p.name)) /* в «Вазах и подарках» есть ещё посуда и свечи */
+        .sort((a, b) => a.price - b.price);
+    if (Array.isArray(window.PALOMA_PRODUCTS) && window.PALOMA_PRODUCTS.length) {
+      vaseList = pick(window.PALOMA_PRODUCTS);
+      return Promise.resolve(vaseList);
+    }
+    const fromServer = window.palomaFetch
+      ? window.palomaFetch("?a=products", { cache: "no-store" }).then((r) => r.json()).then((d) => pick(d && d.products))
+      : Promise.reject(new Error("нет сервера"));
+    return fromServer
+      .then((l) => { if (!l.length) throw new Error("пусто"); return l; })
+      .catch(() => new Promise((resolve) => {
+        /* сервер молчит — берём запасной каталог с сайта */
+        const s = document.createElement("script");
+        s.src = "paloma-products.js?v=p63";
+        s.onload = () => resolve(pick(window.PALOMA_PRODUCTS));
+        s.onerror = () => resolve([]);
+        document.head.appendChild(s);
+      }))
+      .then((l) => (vaseList = l));
+  }
+
+  function vaseImg(p) {
+    const src = String(p.image || "");
+    return src ? `<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy">` : "";
+  }
+
+  function closeVasePicker() {
+    const box = document.getElementById("coVaseSheet");
+    if (!box) return;
+    box.classList.remove("is-open");
+    document.documentElement.classList.remove("co-sheet-lock");
+    setTimeout(() => box.remove(), 260);
+    document.removeEventListener("keydown", onSheetKey);
+  }
+  function onSheetKey(e) { if (e.key === "Escape") closeVasePicker(); }
+
+  function openVasePicker() {
+    if (document.getElementById("coVaseSheet")) return;
+    const box = document.createElement("div");
+    box.id = "coVaseSheet";
+    box.className = "co-sheet";
+    box.innerHTML = `
+      <div class="co-sheet__backdrop" data-sheet-close></div>
+      <div class="co-sheet__panel" role="dialog" aria-modal="true" aria-label="Выберите вазу">
+        <div class="co-sheet__head">
+          <span class="co-sheet__grip" aria-hidden="true"></span>
+          <p class="co-sheet__title">Выберите вазу</p>
+          <button type="button" class="co-sheet__close" data-sheet-close aria-label="Закрыть">×</button>
+        </div>
+        <div class="co-sheet__body"><p class="co-sheet__msg">Загружаем вазы…</p></div>
+      </div>`;
+    document.body.appendChild(box);
+    document.documentElement.classList.add("co-sheet-lock");
+    void box.offsetWidth; /* зафиксировать стартовое положение, чтобы панель выехала плавно */
+    box.classList.add("is-open");
+    document.addEventListener("keydown", onSheetKey);
+
+    box.addEventListener("click", (e) => {
+      if (e.target.closest("[data-sheet-close]")) { closeVasePicker(); return; }
+      const btn = e.target.closest("[data-vase-id]");
+      if (!btn) return;
+      const p = (vaseList || []).find((v) => String(v.id) === btn.dataset.vaseId);
+      if (!p) return;
+      window.PalomaCart?.add?.({
+        id: p.id + "-quick-one-" + p.price,
+        name: p.name,
+        size: "",
+        addons: [],
+        price: Number(p.price) || 0,
+        qty: 1,
+        image: p.image || "",
+        category: "vases",
+      });
+      btn.textContent = "✓ Добавлено";
+      btn.classList.add("is-added");
+      updateView();
+      setTimeout(closeVasePicker, 450);
+    });
+
+    const body = box.querySelector(".co-sheet__body");
+    loadVases().then((list) => {
+      if (!list.length) {
+        body.innerHTML = '<p class="co-sheet__msg">Не удалось загрузить вазы. Попробуйте ещё раз чуть позже.</p>';
+        return;
+      }
+      body.innerHTML = '<div class="co-sheet__grid">' + list.map((p) => `
+        <div class="co-sheet-card">
+          <div class="co-sheet-card__photo">${vaseImg(p)}</div>
+          <p class="co-sheet-card__name">${esc(p.name)}</p>
+          <p class="co-sheet-card__price">${Number(p.price).toLocaleString("ru-RU")} ₽</p>
+          <button type="button" class="co-upsell-card__btn" data-vase-id="${esc(p.id)}">Добавить</button>
+        </div>`).join("") + "</div>";
+    });
+  }
+
   function addUpsell(id) {
     const item = UPSELL_ITEMS.find((u) => u.id === id);
     const cart = getCart();
@@ -429,6 +553,11 @@
     );
     if (qtyBtn && $items?.contains(qtyBtn)) {
       cartAction(qtyBtn.dataset.id, qtyBtn.dataset.action);
+      return;
+    }
+
+    if (e.target.closest("[data-vase-picker]")) {
+      openVasePicker();
       return;
     }
 

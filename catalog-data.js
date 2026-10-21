@@ -128,7 +128,11 @@
 
     getByCategory(cat) {
       const want = resolveFilter(cat);
-      if (want === "all") return this.getAll();
+      /* «Все» — только цветы: вазы, посуда и шоколад живут в своём разделе
+         «Вазы и подарки» и общий каталог не засоряют (просьба владельца 21.10.2026). */
+      if (want === "all") {
+        return this.getAll().filter((p) => !p.categories.length || p.categories.some((c) => c !== "vases"));
+      }
       return this.getAll().filter((p) => p.categories.includes(want));
     },
 

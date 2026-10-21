@@ -91,6 +91,18 @@ http.createServer((req, res) => {
       await query("INSERT INTO app_settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO NOTHING", [key, ids.join(",")]);
       console.log("[server] скрыты товары", ids.join(", "));
     }
+    /* Разовые возвраты на сайт — та же схема с отметкой. Шоколад вернули
+       в «Вазы и подарки» (в общий каталог «Все» он не попадает — catalog-data.js). */
+    const SHOW_ONCE = {
+      "show_2026_10_21_sweets": ["acc22","acc23","acc24","acc25","acc26","acc27","acc28","acc29","acc30","acc31","acc32","acc33","acc34","acc35","acc36","acc37","acc38","acc39","acc40","p1791800000012","p1791800000013","p1791800000014","p1791800000015","p1791800000016","p1791800000017","p1791800000018","p1791800000019","p1791800000020","p1791800000021","p1791800000022","p1791800000023","p1791800000024","p1791800000025"],
+    };
+    for (const [key, ids] of Object.entries(SHOW_ONCE)) {
+      const done = await query("SELECT 1 FROM app_settings WHERE key = $1", [key]);
+      if (done.rows.length) continue;
+      for (const id of ids) await products.setActive(id, true);
+      await query("INSERT INTO app_settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO NOTHING", [key, ids.join(",")]);
+      console.log("[server] возвращены товары", ids.join(", "));
+    }
   } catch (e) {
     console.error("[server] новые товары не добавлены:", e && e.message);
   }
