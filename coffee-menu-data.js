@@ -1188,7 +1188,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 440,
     "priceLabel": "440 ₽",
     "volumes": "",
-    "desc": "Конфета пралине в молочном шоколаде с фисташкой и базиликом. Шоколадная фабрика «Счастье», Санкт-Петербург.",
+    "desc": "Французское пралине с эссенцией базилика на масле виноградной косточки и кусочками фисташки в молочном шоколаде 30%. Ручная работа фабрики «Счастье». Масса 50 г, 566 ккал / 100 г.",
     "image": "images/paloma/catalog/schaste-fistashka-bazilik.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1200,7 +1200,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 440,
     "priceLabel": "440 ₽",
     "volumes": "",
-    "desc": "Конфета пралине с грецкими орехами и карамелью в молочном шоколаде. Шоколадная фабрика «Счастье».",
+    "desc": "Пралине с обжаренными вручную грецкими орехами и домашней сливочной карамелью в молочном шоколаде. Масса 50 г, 546 ккал / 100 г.",
     "image": "images/paloma/catalog/schaste-gretskiy-karamel.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1212,7 +1212,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 440,
     "priceLabel": "440 ₽",
     "volumes": "",
-    "desc": "Конфета пралине с черносливом и грецкими орехами в горьком шоколаде. Шоколадная фабрика «Счастье».",
+    "desc": "Пралине с отборным черносливом и обжаренными грецкими орехами в горьком шоколаде. Масса 50 г, 470 ккал / 100 г.",
     "image": "images/paloma/catalog/schaste-chernosliv.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1224,7 +1224,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 440,
     "priceLabel": "440 ₽",
     "volumes": "",
-    "desc": "Конфета пралине с кунжутом и морской солью в горьком шоколаде. Шоколадная фабрика «Счастье».",
+    "desc": "Фундучно-арахисовое пралине с чёрным и белым кунжутом, морской солью и хрустящей вафельной крошкой в горьком шоколаде. Яркий сладко-солёный вкус. Масса 50 г, 533 ккал / 100 г.",
     "image": "images/paloma/catalog/schaste-kunzhut-sol.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1236,7 +1236,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 1520,
     "priceLabel": "1 520 ₽",
     "volumes": "",
-    "desc": "Подарочная коробка из четырёх конфет пралине «Счастье» — набор № 3.",
+    "desc": "Подарочная коробка из четырёх кубиков пралине «Счастье» разных вкусов — набор № 3. Ручная работа по рецептам французской школы. Масса 200 г.",
     "image": "images/paloma/catalog/schaste-praline-4-n3.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1248,7 +1248,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 1640,
     "priceLabel": "1 640 ₽",
     "volumes": "",
-    "desc": "Подарочная коробка из четырёх конфет пралине «Счастье» — набор № 4.",
+    "desc": "Подарочная коробка из четырёх кубиков пралине «Счастье» разных вкусов — набор № 4. Ручная работа по рецептам французской школы. Масса 200 г.",
     "image": "images/paloma/catalog/schaste-praline-4-n4.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1260,7 +1260,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 1100,
     "priceLabel": "1 100 ₽",
     "volumes": "",
-    "desc": "Коллекция мини-пралине «Счастье» — 10 конфет ассорти в длинной подарочной коробке.",
+    "desc": "10 мини-пралине разных вкусов: фундук, грецкий орех с карамелью, кокос, имбирь с семенами чиа, малина с розовым перцем и другие — в молочном шоколаде. Масса 85 г, 548 ккал / 100 г.",
     "image": "images/paloma/catalog/schaste-mini-10.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1272,7 +1272,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 2200,
     "priceLabel": "2 200 ₽",
     "volumes": "",
-    "desc": "Коллекция мини-пралине «Счастье» — 20 конфет ассорти в подарочной коробке.",
+    "desc": "20 мини-пралине разных вкусов: фундук, грецкий орех с карамелью, кокос, имбирь с семенами чиа, малина с розовым перцем и другие — в молочном шоколаде. Масса 170 г, 548 ккал / 100 г.",
     "image": "images/paloma/catalog/schaste-mini-20.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1284,7 +1284,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 3800,
     "priceLabel": "3 800 ₽",
     "volumes": "",
-    "desc": "Коллекция мини-пралине «Счастье» — 36 конфет ассорти в большой подарочной коробке.",
+    "desc": "36 мини-пралине 14 вкусов в молочном и горьком шоколаде: ваниль с фундуком, кофе, карамель с грецким орехом, грильяж, кунжут с морской солью, фисташка с базиликом, вишня с миндалём, лаванда и другие. Масса 306 г, 540 ккал / 100 г.",
     "image": "images/paloma/catalog/schaste-mini-36.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1296,7 +1296,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 1020,
     "priceLabel": "1 020 ₽",
     "volumes": "",
-    "desc": "Коллекция оригинальных сливочно-карамельных ирисок «Счастье» в шоколаде. Масса 140 г.",
+    "desc": "Сливочно-карамельные ириски ручной работы: карамель варят на натуральных сливках 33%, режут небольшими кубиками и покрывают шоколадом. Масса 140 г.",
     "image": "images/paloma/catalog/schaste-iriski-1.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1308,7 +1308,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 630,
     "priceLabel": "630 ₽",
     "volumes": "",
-    "desc": "Кунжутное печенье с морской солью и ганашем из молочного шоколада. Biscuit Maison от фабрики «Счастье».",
+    "desc": "Домашнее кунжутное печенье в форме ангела с морской солью и ганашем из молочного шоколада. Печётся по рецептам, которые фабрика «Счастье» хранит больше десяти лет. Масса 100 г, 449 ккал / 100 г.",
     "image": "images/paloma/catalog/schaste-angel.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1320,7 +1320,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 630,
     "priceLabel": "630 ₽",
     "volumes": "",
-    "desc": "Домашнее печенье в форме сердца в подарочной коробке. Biscuit Maison от фабрики «Счастье».",
+    "desc": "Имбирное печенье в форме сердца с начинкой из клюквы и белого шоколада с розовым перцем. Из коллекции печенья Friends фабрики «Счастье». Масса 90 г, 310 ккал / 100 г.",
     "image": "images/paloma/catalog/schaste-serdce.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1332,7 +1332,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 630,
     "priceLabel": "630 ₽",
     "volumes": "",
-    "desc": "Домашнее шоколадное печенье с ганашем из белого шоколада. Biscuit Maison от фабрики «Счастье».",
+    "desc": "Домашнее шоколадное печенье в форме мишки с ганашем из белого шоколада. Из коллекции печенья Friends фабрики «Счастье».",
     "image": "images/paloma/catalog/schaste-mishka.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
@@ -1344,7 +1344,7 @@ if (!window.PALOMA_COFFEE_MENU) {
     "price": 380,
     "priceLabel": "380 ₽",
     "volumes": "",
-    "desc": "Молочный шоколад «Счастье» для детей — les petits Chocolats.",
+    "desc": "Молочный шоколад из детской коллекции «Счастье» KIDS — в сказочной коробочке les petits Chocolats.",
     "image": "images/paloma/catalog/schaste-kids-shokolad.jpg",
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
