@@ -20,7 +20,7 @@ const crypto = require("crypto");
 
 /* Дата сборки архива. Видна в ?a=ping — по ней проверяют, что в облако
    загрузился именно свежий paloma-pay.zip, а не старый. */
-const BUILD = "2026-10-22-split";
+const BUILD = "2026-10-22-split2";
 
 /* ── настройки из переменных окружения функции ── */
 const PK_SERVER = (process.env.PK_SERVER || "https://paloma.server.paykeeper.ru").replace(/\/+$/, "");
@@ -1247,15 +1247,17 @@ async function reconcilePending(force) {
     return { ok: false };
   }
   const paid = [];
+  const split = []; /* статусы заказов Сплита — для диагностики (без личных данных) */
   for (const { order_id: id } of rows) {
     const info = await paymentInfoFor(id);
+    if (require("./ypay").isSplitOrder(id)) split.push(id.slice(0, 7) + "…:" + (info ? info.status : "нет ответа"));
     if (info && info.paid) {
       await processPaid(id, info.sum, info.clientid, "reconcile");
       paid.push(id);
     }
   }
   if (paid.length) console.log("[reconcile] проведены", paid.join(", "));
-  return { ok: true, checked: rows.length, paid };
+  return { ok: true, checked: rows.length, paid, split };
 }
 
 /* ── POST-оповещение об оплате ──
@@ -1377,7 +1379,7 @@ module.exports.handler = async function handler(event) {
      проводит уже оплаченные заказы. Дёргают CRM и страница «спасибо». ── */
   if (action === "reconcile") {
     const rec = await reconcilePending(false).catch((e) => ({ ok: false, error: e && e.message }));
-    return reply(200, { ok: !!rec.ok, checked: rec.checked || 0, paid: (rec.paid || []).length, throttled: !!rec.throttled }, origin);
+    return reply(200, { ok: !!rec.ok, checked: rec.checked || 0, paid: (rec.paid || []).length, split: rec.split || [], throttled: !!rec.throttled }, origin);
   }
 
   // ── Публичный каталог из базы (для сайта). GET и POST, без токена. ──
