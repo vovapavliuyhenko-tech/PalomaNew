@@ -20,7 +20,7 @@ const crypto = require("crypto");
 
 /* Дата сборки архива. Видна в ?a=ping — по ней проверяют, что в облако
    загрузился именно свежий paloma-pay.zip, а не старый. */
-const BUILD = "2026-10-08-1";
+const BUILD = "2026-10-22-split";
 
 /* ── настройки из переменных окружения функции ── */
 const PK_SERVER = (process.env.PK_SERVER || "https://paloma.server.paykeeper.ru").replace(/\/+$/, "");
@@ -927,6 +927,92 @@ async function createInvoice(body, origin) {
   );
 }
 
+/* ── Яндекс Сплит: заказ в Яндекс Пэй вместо счёта PayKeeper ──
+   Всё остальное как у оплаты картой: детали — в pending_orders, заказ сразу
+   в CRM «ждёт оплаты», в бот — только после оплаты (webhook / сверка). */
+async function createSplit(body, origin) {
+  const ypay = require("./ypay");
+  if (!ypay.enabled()) return reply(503, { error: "Оплата Сплитом пока не подключена" }, origin);
+  const orderId = String(body.orderId || "").trim();
+  if (!/^SPL-[A-Za-z0-9-]{3,60}$/.test(orderId)) return reply(400, { error: "Некорректный номер заказа" }, origin);
+  await refreshCatalog();
+  const cart = verifyCart(body);
+  if (cart.error) return reply(400, { error: cart.error }, origin);
+
+  let paymentUrl;
+  try {
+    paymentUrl = await ypay.createOrder({
+      orderId,
+      lines: (body.items || []).map((it) => ({ id: it.id, name: it.name, price: Number(it.price), qty: Number(it.qty) || 1 })),
+      delivery: Number(body.delivery) || 0,
+      total: cart.total,
+      site: PK_SITE,
+      phone: body.phone || "",
+    });
+  } catch (e) {
+    return reply(502, { error: e && e.message ? e.message : "Яндекс Пэй не принял заказ" }, origin);
+  }
+  console.log("[ypay] order", orderId, cart.total);
+
+  const details = String(body.managerText || cart.names.join(", ")).slice(0, 3500);
+  const photos = bouquetPhotos(body);
+  let stashed = false;
+  try {
+    stashed = await pendingStore(orderId, details, photos, cart.total, {
+      clientName: body.clientName || "",
+      phone: body.phone || "",
+      email: body.email || "",
+      messenger: body.messengerContact || body.messenger || "",
+      items: Array.isArray(body.items) ? body.items : [],
+      deliveryInfo: body.deliveryInfo || {},
+    });
+  } catch (e) {
+    console.error("[pending] store error", orderId, e && e.message);
+  }
+  try {
+    await require("./crm").save(
+      orderId,
+      "online_pending",
+      "⏳ ЖДЁТ ОПЛАТЫ (Яндекс Сплит)\n№ " + orderId + "\nСумма: " +
+        cart.total.toLocaleString("ru-RU") + " ₽\n\n" + details,
+      crmMeta(body, { payment: "split", total: cart.total }),
+      "pending",
+    );
+  } catch (e) {
+    console.error("[crm] pending save skipped", e && e.message);
+  }
+  if (!stashed) {
+    await notifyManager("🆕 НОВЫЙ ЗАКАЗ (⏳ Сплит, ещё не оплачен)\n№ " + orderId + "\nСумма: " +
+      cart.total.toLocaleString("ru-RU") + " ₽\n\n" + details);
+    await notifyPhotos(photos, "🖼 Букеты по заказу № " + orderId);
+  }
+  return reply(200, { paymentUrl, orderId, total: cart.total }, origin);
+}
+
+/* Уведомление Яндекс Пэй: номер заказа из тела, статус — только у Яндекса. */
+async function handleYpayWebhook(event) {
+  const ypay = require("./ypay");
+  const orderId = ypay.webhookOrderId(rawBody(event));
+  if (orderId) {
+    const info = await ypay.paymentInfo(orderId);
+    if (info && info.paid) {
+      try { await processPaid(orderId, info.sum, "", "ypay-webhook"); }
+      catch (e) { console.error("[ypay] webhook paid error", orderId, e && e.message); }
+    }
+    console.log("[ypay] webhook", orderId, info && info.status);
+  }
+  return { statusCode: 200, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status: "success" }) };
+}
+
+/* Кто знает, оплачен ли заказ: Сплит — Яндекс, остальное — PayKeeper. */
+function paymentInfoFor(orderId) {
+  const ypay = require("./ypay");
+  return ypay.isSplitOrder(orderId) ? ypay.paymentInfo(orderId) : pkPaymentInfo(orderId);
+}
+function paidTitle(orderId) {
+  return require("./ypay").isSplitOrder(orderId) ? "✅ ОПЛАЧЕН (Яндекс Сплит)" : "✅ ОПЛАЧЕН (онлайн картой)";
+}
+
 /* ── уведомление менеджеру без оплаты (заказ «при получении») ──
    Цель — чтобы В БОТ ПОПАДАЛИ АБСОЛЮТНО ВСЕ заказы, а не только онлайн-оплаты.
    PayKeeper тут не участвует: просто пересылаем менеджеру состав заказа.
@@ -986,7 +1072,7 @@ async function handleNotify(body, origin) {
     /* Страница «спасибо» — запасной путь к оповещению PayKeeper. Раньше
        сервер верил ей на слово: любой, кто знает номер заказа, мог отметить
        его оплаченным. Теперь сначала спрашиваем сам PayKeeper. */
-    const info = await pkPaymentInfo(orderId);
+    const info = await paymentInfoFor(orderId);
     if (!info) {
       /* PayKeeper не ответил — сейчас не решаем, заказ проведёт сверка. */
       console.log("[paykeeper] notify online_paid: PayKeeper не ответил, ждём сверку", orderId);
@@ -1111,7 +1197,7 @@ async function processPaid(orderId, amount, clientid, source, fallbackText) {
   }
   if (row) {
     const sumStr = amountStr || (row.total ? row.total.toLocaleString("ru-RU") + " ₽" : "");
-    const msg = "✅ ОПЛАЧЕН (онлайн картой)\n№ " + orderId + (sumStr ? "\nСумма: " + sumStr : "") + "\n\n" + row.manager_text +
+    const msg = paidTitle(orderId) + "\n№ " + orderId + (sumStr ? "\nСумма: " + sumStr : "") + "\n\n" + row.manager_text +
       (source === "reconcile" ? "\n\nℹ️ Оповещение об оплате от PayKeeper не пришло — оплата найдена сверкой." : "");
     const logId = await logOrder(orderId, "online_paid", msg,
       crmMeta(row.meta, { payment: "online_paid", total: Number.isFinite(amount) && amount > 0 ? Math.round(amount) : row.total }));
@@ -1126,7 +1212,7 @@ async function processPaid(orderId, amount, clientid, source, fallbackText) {
      (оплата по ссылке из кабинета, сбой базы). Если оплату ещё никто не
      проводил — шлём хотя бы короткое сообщение: факт оплаты важнее всего. */
   if (await alreadyPaidLogged(orderId)) return { ok: true, skipped: true };
-  const msg = "✅ ОПЛАЧЕН (онлайн картой)\n№ " + orderId + (amountStr ? "\nСумма: " + amountStr : "") +
+  const msg = paidTitle(orderId) + "\n№ " + orderId + (amountStr ? "\nСумма: " + amountStr : "") +
     (fallbackText ? "\n\n" + String(fallbackText).slice(0, 3500)
       : "\nКлиент: " + (clientid || "—") +
         "\n\n⚠️ Состав заказа на сервере не найден — посмотрите платёж в кабинете PayKeeper и свяжитесь с клиентом.");
@@ -1162,7 +1248,7 @@ async function reconcilePending(force) {
   }
   const paid = [];
   for (const { order_id: id } of rows) {
-    const info = await pkPaymentInfo(id);
+    const info = await paymentInfoFor(id);
     if (info && info.paid) {
       await processPaid(id, info.sum, info.clientid, "reconcile");
       paid.push(id);
@@ -1261,11 +1347,15 @@ module.exports.handler = async function handler(event) {
 
   if (method === "OPTIONS") return { statusCode: 204, headers: cors(origin), body: "" };
 
+  /* Яндекс Пэй: уведомление об оплате (server.js переводит сюда /v1/webhook) */
+  if (action === "ypay-webhook" && method === "POST") return handleYpayWebhook(event);
+
   /* ── Проверка «какая версия функции сейчас работает». Без токена: отдаём
      только версию сборки и количества товаров, ничего секретного. Нужна,
      чтобы после загрузки нового архива было видно, доехал он или нет. ── */
   if (action === "ping") {
     const out = { ok: true, версия: BUILD };
+    try { out.split = require("./ypay").enabled(); } catch (e) { out.split = false; }
     /* Свой же адрес, как его видит функция. Не секрет — спрашивающему
        возвращаем только его собственный адрес. Нужно, чтобы проверять
        работу лимитов фактом: если тут «не определён», счётчики по адресу
@@ -1589,6 +1679,7 @@ module.exports.handler = async function handler(event) {
     }
 
     if (action === "notify") return await handleNotify(body, origin);
+    if (action === "ypay-create") return await createSplit(body, origin);
     return await createInvoice(body, origin);
   } catch (e) {
     console.error("[paykeeper] error", e && e.stack);

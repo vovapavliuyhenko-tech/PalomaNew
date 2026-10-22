@@ -24,6 +24,8 @@ function toEvent(req, body) {
   const url = new URL(req.url, "http://localhost");
   const qs = {};
   url.searchParams.forEach((v, k) => { qs[k] = v; });
+  /* Яндекс Пэй шлёт уведомления на <адрес>/v1/webhook — без ?a= */
+  if (/\/v1\/webhook\/?$/.test(url.pathname)) qs.a = "ypay-webhook";
   const headers = {};
   for (const [k, v] of Object.entries(req.headers)) headers[k] = Array.isArray(v) ? v.join(",") : v;
   /* реальный адрес клиента за прокси хостинга — для лимитов частоты */

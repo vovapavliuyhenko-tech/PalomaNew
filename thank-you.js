@@ -155,7 +155,10 @@
       : order.managerText || buildMessage(order, f);
     /* Сервер сверяет оплату с PayKeeper. Если банк ещё не успел провести
        платёж (ответ pending/notPaid) — повторяем через 15 и 45 секунд. */
-    const send = (attempt) => window.palomaFetch("?a=notify", {
+    const backup = String(window.PALOMA_PAYMENT_CONFIG?.BACKUP_ENDPOINT || "").trim();
+    const isSplit = String(order.id || "").indexOf("SPL-") === 0 && backup;
+    const post = (q, init) => (isSplit ? fetch(backup + q, init) : window.palomaFetch(q, init));
+    const send = (attempt) => post("?a=notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       keepalive: true,
@@ -234,7 +237,8 @@
   }
 
   function paymentText(p) {
-    if (order.paid) return "Оплачено онлайн картой.";
+    if (order.paid) return p === "split" ? "Оплачено Яндекс Сплитом." : "Оплачено онлайн картой.";
+    if (p === "split") return "Яндекс Сплит — оплата частями.";
     return p === "online"
       ? "Онлайн-оплата картой."
       : "Оплата при получении — наличными курьеру или любым удобным способом в студии.";
@@ -261,10 +265,12 @@
     setText(
       "tyMetaPayment",
       o.paid
-        ? "Оплачено картой"
+        ? (o.payment === "split" ? "Оплачено Яндекс Сплитом" : "Оплачено картой")
         : o.payment === "online"
           ? "Онлайн-оплата картой"
-          : "Оплата при получении",
+          : o.payment === "split"
+            ? "Яндекс Сплит"
+            : "Оплата при получении",
     );
   }
 

@@ -761,7 +761,7 @@
 
   document.addEventListener("paloma-cart-updated", updateView);
 
-  const ALLOWED_PAYMENTS = ["payment_on_receipt", "online"];
+  const ALLOWED_PAYMENTS = ["payment_on_receipt", "online", "split"];
   let submitting = false;
 
   /* показать поле выбранного мессенджера, скрыть остальные */
@@ -981,13 +981,14 @@
     });
 
     const totals = calcTotals(cart);
-    const orderId = "ORD-" + Date.now().toString(36).toUpperCase();
-
     /* оплата — только из allowlist, не доверяем произвольному value */
     const payEl = document.querySelector('[name="payment"]:checked');
     const payment = ALLOWED_PAYMENTS.includes(payEl?.value)
       ? payEl.value
       : ALLOWED_PAYMENTS[0];
+    /* Номер заказа Сплита — с префиксом SPL-: по нему сервер знает, что статус
+       оплаты спрашивать у Яндекс Пэй, а не у PayKeeper. */
+    const orderId = (payment === "split" ? "SPL-" : "ORD-") + Date.now().toString(36).toUpperCase();
 
     const messenger = document.querySelector('[name="messenger"]:checked')?.value;
     const rawContact = document.getElementById("co-msg-" + messenger)?.value || "";
@@ -1024,6 +1025,10 @@
        Онлайн-заказ уходит менеджеру внутри initPayment (createInvoice). */
     if (payment === "online" && payEndpoint()) {
       initPayment(orderData);
+      return;
+    }
+    if (payment === "split" && splitEndpoint()) {
+      initPayment(orderData, true);
       return;
     }
 
@@ -1298,7 +1303,22 @@
 
   /* Онлайн-оплата: сервер сам пересчитывает цены по каталогу и выставляет
      счёт в PayKeeper. Цены из localStorage сервер не принимает на веру. */
-  async function initPayment(orderData) {
+  /* Яндекс Сплит работает только на сервере Render (там ключи Яндекс Пэй) —
+     запросы Сплита идут туда напрямую, а не через основной сервер. */
+  function splitEndpoint() {
+    return String((window.PALOMA_PAYMENT_CONFIG || {}).BACKUP_ENDPOINT || "").trim();
+  }
+  (function showSplitIfReady() {
+    const opt = document.getElementById("coSplitPayOption");
+    const ep = splitEndpoint();
+    if (!opt || !ep || typeof fetch !== "function") return;
+    fetch(ep + "?a=ping", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((d) => { if (d && d.split) opt.hidden = false; })
+      .catch(() => { /* сервер спит или Сплит не подключён — вариант не показываем */ });
+  })();
+
+  async function initPayment(orderData, split) {
     const f = orderData.form || {};
     /* Обрыв связи на телефоне (Safari пишет «Load failed», Chrome — «Failed
        to fetch») — повторяем запрос до двух раз с паузой, прежде чем считать,
@@ -1306,8 +1326,16 @@
     const sendCreate = async (payload) => {
       for (let attempt = 0; ; attempt++) {
         const ctrl = typeof AbortController === "function" ? new AbortController() : null;
-        const timer = ctrl ? setTimeout(() => ctrl.abort(), 25000) : 0;
+        const timer = ctrl ? setTimeout(() => ctrl.abort(), split ? 60000 : 25000) : 0;
         try {
+          if (split) {
+            return await fetch(splitEndpoint() + "?a=ypay-create", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: payload,
+              signal: ctrl ? ctrl.signal : undefined,
+            });
+          }
           return await window.palomaFetch("?a=create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -1359,7 +1387,8 @@
         delivered = await notifyManagerOfOrder(orderData, {
           header: "❗ ЗАКАЗ БЕЗ ОПЛАТЫ — онлайн-оплата не создалась",
           note:
-            "Клиент выбрал оплату картой, но счёт не выставился.\n" +
+            (split ? "Клиент выбрал Яндекс Сплит, но заказ в Яндекс Пэй не создался.\n"
+              : "Клиент выбрал оплату картой, но счёт не выставился.\n") +
             "Причина: " + reason + "\n" +
             "СВЯЖИТЕСЬ С КЛИЕНТОМ и согласуйте оплату.",
         });
