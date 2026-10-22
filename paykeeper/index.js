@@ -946,7 +946,7 @@ async function createSplit(body, origin) {
       lines: (body.items || []).map((it) => ({ id: it.id, name: it.name, price: Number(it.price), qty: Number(it.qty) || 1 })),
       delivery: Number(body.delivery) || 0,
       total: cart.total,
-      site: PK_SITE,
+      site: SITE,
       phone: body.phone || "",
     });
   } catch (e) {
