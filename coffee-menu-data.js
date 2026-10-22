@@ -1349,6 +1349,18 @@ if (!window.PALOMA_COFFEE_MENU) {
     "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
   },
   {
+    "id": "menu-schaste-15",
+    "num": "134",
+    "title": "Набор конфет «Счастье» KIDS",
+    "category": "schaste",
+    "price": 690,
+    "priceLabel": "690 ₽",
+    "volumes": "",
+    "desc": "Детская коллекция «Счастье»: 6 мини-пралине в молочном шоколаде с любимыми детскими вкусами — малина, клубника, кокос, ваниль и печенье. В сказочной коробочке KIDS. Масса 51 г, 558 ккал / 100 г.",
+    "image": "images/paloma/catalog/schaste-kids-nabor.jpg",
+    "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
+  },
+  {
     "id": "menu-lemonade-86",
     "num": "086",
     "title": "Лапочка «Арбуз + Мелисса»",

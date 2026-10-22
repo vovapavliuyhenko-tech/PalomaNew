@@ -197,4 +197,11 @@ module.exports = [
     image: "images/paloma/catalog/schaste-kids-shokolad.jpg", price: 380, priceFrom: false,
     sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
   }),
+  Object.assign({}, NEW, {
+    id: "p1791800000026", name: "Набор конфет «Счастье» KIDS", categories: ["vases"],
+    composition: "",
+    desc: "Детская коллекция «Счастье»: 6 мини-пралине в молочном шоколаде с любимыми детскими вкусами — малина, клубника, кокос, ваниль и печенье. В сказочной коробочке KIDS. Масса 51 г, 558 ккал / 100 г.",
+    image: "images/paloma/catalog/schaste-kids-nabor.jpg", price: 690, priceFrom: false,
+    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
+  }),
 ];

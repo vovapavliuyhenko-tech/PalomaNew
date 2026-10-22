@@ -449,7 +449,7 @@
 
   function loadMenu() {
     if (Array.isArray(window.PALOMA_COFFEE_MENU)) return Promise.resolve(window.PALOMA_COFFEE_MENU);
-    return loadScript("coffee-menu-data.js?v=25").then(() => window.PALOMA_COFFEE_MENU || []);
+    return loadScript("coffee-menu-data.js?v=26").then(() => window.PALOMA_COFFEE_MENU || []);
   }
 
   /* «220 / 270 / 300 ₽» + «250 / 350 / 450 мл» → размеры (как в меню кофейни) */
