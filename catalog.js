@@ -29,7 +29,7 @@
   let catFromUrl = false;
 
   /* Бюджет и порядок показа — поверх выбранной категории.
-     "all" | "0-3000" | "3000-6000" | "6000-" и default (сначала новые) | price-asc | price-desc */
+     "all" | "0-4000" | "4000-6000" | "6000-" и default (сначала новые) | price-asc | price-desc */
   let currentBudget = "all";
   let currentSort = "default";
 
