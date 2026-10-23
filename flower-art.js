@@ -70,8 +70,11 @@
     for (let i = 0; i < n; i++) {
       const a = rot + (360 / n) * i + (jitter ? (rnd() - 0.5) * jitter : 0);
       const ll = l * (jitter ? 0.9 + rnd() * 0.2 : 1);
-      s += `<path d="${(shape || petal)(ll, w)}" fill="${fill}" stroke="${stroke}" stroke-width=".6" ` +
-        `transform="rotate(${f(a)}) translate(0,${f(-(dist || 0))})"/>`;
+      const sh = shape || petal, tr = `rotate(${f(a)}) translate(0,${f(-(dist || 0))})`;
+      s += `<path d="${sh(ll, w)}" fill="${fill}" stroke="${stroke}" stroke-width=".7" stroke-opacity=".55" transform="${tr}"/>`;
+      /* блик у кончика и прожилка — акварельный объём */
+      s += `<path d="${sh(ll * 0.62, w * 0.42)}" fill="#fff" opacity=".2" transform="${tr} translate(0,${f(-ll * 0.3)})"/>`;
+      s += `<path d="M0,${f(-ll * 0.12)} L0,${f(-ll * 0.7)}" stroke="${stroke}" stroke-width=".5" opacity=".22" transform="${tr}"/>`;
     }
     return s;
   }
@@ -81,15 +84,16 @@
   /* ════════ ГОЛОВКИ ════════ */
   const HEADS = {
     rose(c, r, rnd) {
-      const g = uid("g");
-      let s = `<defs>${radGrad(g, light(c, 0.55), c, dark(c, 0.18))}</defs>`;
-      s += ring(5, r, r * 0.62, `url(#${g})`, dark(c, 0.25), rnd() * 72, 0, petal, 10, rnd);
-      s += ring(5, r * 0.78, r * 0.5, `url(#${g})`, dark(c, 0.3), 36 + rnd() * 20, 0, petal, 10, rnd);
-      s += ring(4, r * 0.55, r * 0.42, mix(c, light(c, 0.3), 0.5), dark(c, 0.3), rnd() * 90, 0, petal, 12, rnd);
-      /* закрученная серединка */
-      s += `<circle r="${f(r * 0.3)}" fill="${dark(c, 0.12)}"/>`;
-      s += `<path d="M${f(-r * 0.22)},0 A${f(r * 0.22)},${f(r * 0.22)} 0 1 1 ${f(r * 0.15)},${f(r * 0.12)} ` +
-        `A${f(r * 0.13)},${f(r * 0.13)} 0 1 1 ${f(-r * 0.06)},${f(-r * 0.08)}" fill="none" stroke="${dark(c, 0.35)}" stroke-width="${f(r * 0.05)}" stroke-linecap="round"/>`;
+      const g = uid("g"), g2 = uid("g");
+      let s = `<defs>${radGrad(g, light(c, 0.45), c, dark(c, 0.22))}${radGrad(g2, dark(c, 0.05), dark(c, 0.18), dark(c, 0.35))}</defs>`;
+      s += ring(6, r, r * 0.6, `url(#${g})`, dark(c, 0.3), rnd() * 60, 0, (l, w) => petal(l, w, 0.68), 12, rnd);
+      s += ring(5, r * 0.84, r * 0.52, `url(#${g})`, dark(c, 0.32), 30 + rnd() * 20, 0, (l, w) => petal(l, w, 0.66), 12, rnd);
+      s += ring(5, r * 0.64, r * 0.44, light(c, 0.08), dark(c, 0.32), rnd() * 72, 0, (l, w) => petal(l, w, 0.64), 14, rnd);
+      s += `<circle r="${f(r * 0.34)}" fill="url(#${g2})"/>`;
+      for (let i = 0; i < 4; i++) {
+        const rr = r * (0.3 - i * 0.065), rot = rnd() * 360;
+        s += `<path d="M${f(-rr)},${f(rr * 0.15)} A${f(rr)},${f(rr * 0.85)} 0 0 1 ${f(rr)},${f(rr * 0.15)}" fill="${i % 2 ? light(c, 0.1) : c}" stroke="${dark(c, 0.4)}" stroke-width=".7" stroke-opacity=".6" transform="rotate(${f(rot)})"/>`;
+      }
       return s;
     },
     gardenrose(c, r, rnd) {
@@ -121,7 +125,7 @@
     },
     hydrangea(c, r, rnd) {
       let s = `<circle r="${f(r * 0.95)}" fill="${dark(c, 0.08)}" opacity=".55"/>`;
-      const n = 26;
+      const n = 34;
       for (let i = 0; i < n; i++) {
         const a = i * 2.39996, d = r * 0.82 * Math.sqrt((i + 0.5) / n);
         const x = Math.cos(a) * d, y = Math.sin(a) * d;
@@ -363,9 +367,11 @@
 
   function defs() {
     return '<filter id="paWc" x="-20%" y="-20%" width="140%" height="140%">' +
-      '<feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" result="n"/>' +
-      '<feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G" result="d"/>' +
-      '<feGaussianBlur in="d" stdDeviation=".25"/></filter>';
+      '<feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="4" result="n"/>' +
+      '<feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/>' +
+      '<feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9" result="g"/>' +
+      '<feDisplacementMap in="d" in2="g" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d2"/>' +
+      '<feGaussianBlur in="d2" stdDeviation=".35"/></filter>';
   }
 
   window.PalomaArt = {

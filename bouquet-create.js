@@ -95,10 +95,10 @@
     const spikes = all.filter((s) => s.kind === "spike");
     const clouds = all.filter((s) => s.kind === "gyps");
     const N = Math.max(heads.length, 1);
-    const targetR = Math.max(120, Math.min(205, 96 + Math.sqrt(N) * 17));
+    const targetR = Math.max(128, Math.min(210, 104 + Math.sqrt(N) * 16));
     const c = targetR / Math.sqrt(N);
     const mean = heads.reduce((a, h) => a + h.size, 0) / N || 34;
-    const k = Math.max(0.55, Math.min(1.6, c / (mean * 0.92))); /* головки чуть заходят друг на друга — букет плотный */
+    const k = Math.max(0.6, Math.min(1.75, c / (mean * 0.8))); /* головки чуть заходят друг на друга — букет плотный */
     const R = c * Math.sqrt(N);
 
     /* перемешиваем порядок головок (зерно «Перемешать») */
@@ -112,13 +112,16 @@
     const ribbon = byId(D.ribbons, S.ribbon);
     const gx = CX, gy = Math.min(CY + R + 85, 610); /* точка, где сходятся стебли */
 
-    let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" class="bc-svg" role="img" aria-label="Ваш букет">`;
-    s += `<defs>${A.defs()}<linearGradient id="bcBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${b1}"/><stop offset="1" stop-color="${b2}"/></linearGradient>`;
+    /* рамка по самому букету: маленький букет показываем крупно */
+    const pad = 150, vx = Math.max(0, CX - R - pad), vy = Math.max(0, CY - R - pad);
+    const vw = Math.min(W, 2 * (CX - vx)), vh = Math.min(H, (opts.wrap ? gy + 110 : gy + 95) - vy);
+    let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${opts.full ? "0 0 " + W + " " + H : vx.toFixed(0) + " " + vy.toFixed(0) + " " + vw.toFixed(0) + " " + vh.toFixed(0)}" class="bc-svg" role="img" aria-label="Ваш букет">`;
+    s += `<defs>${A.defs()}<filter id="bcSh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#5a2a35" flood-opacity=".28"/></filter><linearGradient id="bcBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${b1}"/><stop offset="1" stop-color="${b2}"/></linearGradient>`;
     if (wrap && wrap.color) {
       s += `<linearGradient id="bcWrapB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${A.light(wrap.color, 0.25)}"/><stop offset="1" stop-color="${A.dark(wrap.color, 0.08)}"/></linearGradient>`;
       s += `<linearGradient id="bcWrapF" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${A.dark(wrap.color, 0.1)}"/><stop offset=".5" stop-color="${A.light(wrap.color, 0.2)}"/><stop offset="1" stop-color="${A.dark(wrap.color, 0.14)}"/></linearGradient>`;
     }
-    s += `</defs><rect width="${W}" height="${H}" fill="url(#bcBg)"/>`;
+    s += `</defs><rect x="-400" y="-400" width="${W + 800}" height="${H + 800}" fill="url(#bcBg)"/>`;
 
     /* упаковка — задний лист */
     if (wrap && wrap.color) {
@@ -162,12 +165,23 @@
       s += `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)})">${A.gyps(cl.color, 34 * k + 10, 21 + i)}</g>`;
     });
 
+    /* листья, выглядывающие между цветами */
+    if (S.green && S.green !== "none") {
+      const nl = Math.round(N * 0.9) + 4;
+      for (let i = 0; i < nl; i++) {
+        const a = R0() * Math.PI * 2, d = R * (0.35 + R0() * 0.7);
+        const x = CX + Math.cos(a) * d, y = CY + Math.sin(a) * d * 0.84;
+        const rot = (Math.atan2(y - (CY + R * 0.4), x - CX) * 180) / Math.PI + 90;
+        s += `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) rotate(${rot.toFixed(1)})">${A.green(S.green, 46 + R0() * 30, 77 + i)}</g>`;
+      }
+    }
+
     /* головки: дальние первыми, центр — сверху */
     pos.slice().sort((a, b) => b.d - a.d).forEach((p, j) => {
       const off = S.offsets[p.key] || [0, 0];
       const rr = p.h.size * k * (1 - (p.d / (R + 1)) * 0.12);
       const rot = (R0() - 0.5) * 50;
-      s += `<g class="bc-head" data-k="${p.key}" transform="translate(${(p.x + off[0]).toFixed(1)},${(p.y + off[1]).toFixed(1)}) rotate(${rot.toFixed(1)})">` +
+      s += `<g class="bc-head" filter="url(#bcSh)" data-k="${p.key}" transform="translate(${(p.x + off[0]).toFixed(1)},${(p.y + off[1]).toFixed(1)}) rotate(${rot.toFixed(1)})">` +
         A.head(p.h.kind, p.h.color, rr, 31 + j * 13) + "</g>";
     });
 
@@ -257,6 +271,7 @@
     const fresh = document.createElement("div");
     fresh.innerHTML = cardHtml(fl);
     card.replaceWith(fresh.firstElementChild);
+    drawStages();
     updateBar();
   });
 
@@ -270,6 +285,7 @@
     save();
     setTab("all");
     renderGrid();
+    drawStages();
     updateBar();
     toast("Готово: «" + p.name + "». Можно поменять состав или нажать «Собрать букет»");
   });
@@ -285,17 +301,19 @@
   $("#bcClear", root).addEventListener("click", () => {
     S.sel = {}; S.fillers = {}; S.offsets = {}; save();
     $("#bcSearch", root).value = "";
-    renderGrid(); updateBar();
+    renderGrid(); drawStages(); updateBar();
   });
 
   /* ════════ ШАГ 2: БУКЕТ И ОТКРЫТКА ════════ */
-  const stage2 = $("#bcStage2", root), stage3 = $("#bcStage3", root), picker = $("#bcPicker", root);
+  const stage = $("#bcStage", root), picker = $("#bcPicker", root);
   let moveMode = false, pickerKind = "";
 
+  /* Сцена слева видна на всех шагах: букет растёт прямо во время выбора */
   function drawStages() {
-    if (S.step === 2) stage2.innerHTML = compose({ wrap: false });
-    if (S.step === 3) stage3.innerHTML = compose({ wrap: true });
-    stage2.classList.toggle("is-move", moveMode);
+    stage.innerHTML = stems().length
+      ? compose({ wrap: S.step === 3 })
+      : '<div class="bc-stage__empty"><b>Здесь появится ваш букет</b><span>Добавьте цветы справа</span></div>';
+    stage.classList.toggle("is-move", moveMode && S.step === 2);
   }
 
   function openPicker(kind) {
@@ -349,18 +367,20 @@
   $$("[data-tool]", root).forEach((b) => b.addEventListener("click", () => {
     const t = b.dataset.tool;
     if (t === "shuffle") { S.seed = (S.seed * 7 + 13) % 9973 || 3; S.offsets = {}; save(); drawStages(); return; }
-    if (t === "move") { moveMode = !moveMode; b.classList.toggle("is-on", moveMode); drawStages(); toast(moveMode ? "Перетаскивайте цветы пальцем или мышкой" : "Готово"); return; }
+    if (t === "move") {
+      if (S.step !== 2) go(2); moveMode = !moveMode; b.classList.toggle("is-on", moveMode); drawStages(); toast(moveMode ? "Перетаскивайте цветы пальцем или мышкой" : "Готово"); return; }
     if (t === "more") { go(1); return; }
+    if (S.step !== 2) go(2);
     openPicker(t);
   }));
 
   /* перетаскивание головок */
   let drag = null;
-  stage2.addEventListener("pointerdown", (e) => {
+  stage.addEventListener("pointerdown", (e) => {
     if (!moveMode) return;
     const g = e.target.closest(".bc-head");
     if (!g) return;
-    const svg = stage2.querySelector("svg"), pt = svg.createSVGPoint();
+    const svg = stage.querySelector("svg"), pt = svg.createSVGPoint();
     pt.x = e.clientX; pt.y = e.clientY;
     const p = pt.matrixTransform(svg.getScreenCTM().inverse());
     const off = S.offsets[g.dataset.k] || [0, 0];
@@ -369,9 +389,9 @@
     g.setPointerCapture(e.pointerId);
     e.preventDefault();
   });
-  stage2.addEventListener("pointermove", (e) => {
+  stage.addEventListener("pointermove", (e) => {
     if (!drag) return;
-    const svg = stage2.querySelector("svg"), pt = svg.createSVGPoint();
+    const svg = stage.querySelector("svg"), pt = svg.createSVGPoint();
     pt.x = e.clientX; pt.y = e.clientY;
     const p = pt.matrixTransform(svg.getScreenCTM().inverse());
     const dx = p.x - drag.sx, dy = p.y - drag.sy;
@@ -383,8 +403,8 @@
     S.offsets[drag.k] = [drag.ox + (drag.dx || 0), drag.oy + (drag.dy || 0)];
     drag = null; save();
   };
-  stage2.addEventListener("pointerup", endDrag);
-  stage2.addEventListener("pointercancel", endDrag);
+  stage.addEventListener("pointerup", endDrag);
+  stage.addEventListener("pointercancel", endDrag);
 
   /* открытка */
   const cTo = $("#bcTo", root), cFrom = $("#bcFrom", root), cText = $("#bcText", root), cFont = $("#bcFont", root);
@@ -470,7 +490,7 @@
   });
 
   $("#bcDownload", root).addEventListener("click", () => {
-    const svg = compose({ wrap: true });
+    const svg = compose({ wrap: true, full: true });
     const img = new Image();
     img.onload = () => {
       const cv = document.createElement("canvas");
@@ -527,7 +547,8 @@
     if (step === 2) syncCard();
     drawStages();
     updateBar();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const sc = $("[data-step=\"" + step + "\"] .bc-scroll", root);
+    if (sc) sc.scrollTop = 0;
   }
   $("#bcNext", root).addEventListener("click", () => go(S.step + 1));
   $("#bcBack", root).addEventListener("click", () => go(S.step - 1));
