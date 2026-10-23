@@ -120,3 +120,14 @@
   padding-right: calc(var(--sc-pad) + var(--sc-in)) !important;
   scroll-padding-inline: calc(var(--sc-pad) + var(--sc-in));
 }
+
+/* ── Полоса прокрутки страницы — розовая, в цвет сайта ── */
+html { scrollbar-color: #E7385A #FBF3F5; }
+html::-webkit-scrollbar { width: 10px; height: 10px; }
+html::-webkit-scrollbar-track { background: #FBF3F5; }
+html::-webkit-scrollbar-thumb {
+  background: #E7385A;
+  border-radius: 999px;
+  border: 2px solid #FBF3F5;
+}
+html::-webkit-scrollbar-thumb:hover { background: #C92748; }
