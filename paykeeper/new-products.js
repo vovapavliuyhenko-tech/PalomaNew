@@ -204,4 +204,12 @@ module.exports = [
     image: "images/paloma/catalog/schaste-kids-nabor.jpg", price: 690, priceFrom: false,
     sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
   }),
+  /* Свадебный (23.10.2026) */
+  Object.assign({}, NEW, {
+    id: "p1791800000027", name: "Белый жемчуг", categories: ["wedding"],
+    composition: "Эустома, георгин, калла, львиный зев",
+    desc: "Свадебный букет в белом: эустома, георгины-помпоны, каллы и львиный зев. Ручка обвита атласной лентой с нитями жемчуга.",
+    image: "images/paloma/catalog/wed-belyj-zhemchug.jpg", price: 8030, priceFrom: false,
+    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
+  }),
 ];
