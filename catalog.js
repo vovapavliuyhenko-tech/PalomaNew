@@ -29,22 +29,40 @@
   let catFromUrl = false;
 
   /* Бюджет и порядок показа — поверх выбранной категории.
-     "all" | "0-4000" | "3000-6000" | "6000-" и default (сначала новые) | price-asc | price-desc */
+     "all" | "0-3000" | "3000-6000" | "6000-" и default (сначала новые) | price-asc | price-desc */
   let currentBudget = "all";
   let currentSort = "default";
 
-  function budgetMatch(price) {
+  /* Букет подходит под бюджет, если в него попадает хоть один его размер:
+     на карточке стоит цена размера с фото, а самый маленький размер бывает
+     заметно дешевле — такой букет должен найтись в «до 3 000 ₽». */
+  function budgetMatch(p) {
     if (currentBudget === "all") return true;
     const [min, max] = currentBudget.split("-");
-    if (min && price < Number(min)) return false;
-    if (max && price >= Number(max)) return false;
+    const lo = Number.isFinite(p.minPrice) ? p.minPrice : p.price;
+    const hi = Number.isFinite(p.maxPrice) ? p.maxPrice : p.price;
+    if (min && hi < Number(min)) return false;
+    if (max && lo >= Number(max)) return false;
     return true;
+  }
+
+  /* Цена на карточке — размера с фото. Если она в выбранный бюджет не
+     попадает, показываем самый дешёвый размер, который попадает: «от 2 330 ₽».
+     Этот же размер уйдёт в корзину кнопкой «В корзину». */
+  function fitToBudget(p) {
+    if (currentBudget === "all" || !Array.isArray(p.sizePrices) || !p.sizePrices.length) return p;
+    const [min, max] = currentBudget.split("-");
+    const inRange = (v) => (!min || v >= Number(min)) && (!max || v < Number(max));
+    if (inRange(p.price)) return p;
+    const fit = p.sizePrices.filter((s) => inRange(s.price)).sort((a, b) => a.price - b.price)[0];
+    if (!fit) return p;
+    return Object.assign({}, p, { price: fit.price, displaySize: fit.code || p.displaySize, priceFrom: true });
   }
 
   /* Цена у карточки — начальная (минимальный размер), по ней и считаем:
      человек выбирает бюджет и должен увидеть то, что в него укладывается. */
   function applyTools(list) {
-    const out = list.filter((p) => budgetMatch(p.price));
+    const out = list.filter((p) => budgetMatch(p)).map(fitToBudget);
     if (currentSort === "price-asc") return out.sort((a, b) => a.price - b.price);
     if (currentSort === "price-desc") return out.sort((a, b) => b.price - a.price);
     /* «Сначала новые»: добавленные через админку товары (id = p + время

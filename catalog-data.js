@@ -91,6 +91,18 @@
       category: cats[0] || "online",
       categoryLabel: CATEGORY_LABELS[cats[0]] || "",
       price: displayPrice,
+      /* Вилка цен по всем размерам: самый маленький … самый большой.
+         По ней работает фильтр бюджета в каталоге. */
+      minPrice: Array.isArray(p.sizes) && p.sizes.length
+        ? p.price + Math.min.apply(null, p.sizes.map((s) => s.priceDelta || 0))
+        : p.price,
+      maxPrice: Array.isArray(p.sizes) && p.sizes.length
+        ? p.price + Math.max.apply(null, p.sizes.map((s) => s.priceDelta || 0))
+        : p.price,
+      /* все размеры с ценами — фильтр бюджета подставляет подходящий */
+      sizePrices: Array.isArray(p.sizes)
+        ? p.sizes.map((s) => ({ code: s.code || s.label || "", price: p.price + (s.priceDelta || 0) }))
+        : [],
       /* размер, которому соответствует цена выше */
       displaySize: displaySize,
       photoSize: p.photoSize || null,
