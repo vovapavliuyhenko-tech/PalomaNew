@@ -65,12 +65,50 @@
     const out = list.filter((p) => budgetMatch(p)).map(fitToBudget);
     if (currentSort === "price-asc") return out.sort((a, b) => a.price - b.price);
     if (currentSort === "price-desc") return out.sort((a, b) => b.price - a.price);
+    /* «Все» без фильтров: сначала популярные недорогие букеты (12 на ПК,
+       10 на телефоне) с ценой самого маленького размера, дальше — как было */
+    if (currentFilter === "all" && currentBudget === "all") {
+      const top = budgetTop(out, window.matchMedia && window.matchMedia("(max-width: 700px)").matches ? 10 : 12);
+      const ids = new Set(top.map((p) => p.id));
+      const rest = out.filter((p) => !ids.has(p.id))
+        .map((p, i) => ({ p, i, t: addedAt(p) }))
+        .sort((a, b) => b.t - a.t || a.i - b.i)
+        .map((x) => x.p);
+      return top.concat(rest);
+    }
     /* «Сначала новые»: добавленные через админку товары (id = p + время
        создания) — сверху, самые свежие первыми; остальные — в прежнем порядке */
     return out
       .map((p, i) => ({ p, i, t: addedAt(p) }))
       .sort((a, b) => b.t - a.t || a.i - b.i)
       .map((x) => x.p);
+  }
+
+  /* Популярность — по меткам каталога: «Хит», бестселлеры, онлайн-витрина.
+     Свадебные и вазы сюда не берём. Цена — самого маленького размера. */
+  const BUDGET_MAX = 4000;
+  function popularity(p) {
+    const c = p.categories || [];
+    return (String(p.badge || "").indexOf("Хит") >= 0 ? 3 : 0) +
+      (c.indexOf("bestsellers") >= 0 ? 2 : 0) + (c.indexOf("online") >= 0 ? 1 : 0) + (c.indexOf("mono") >= 0 ? 1 : 0);
+  }
+  function cheapest(p) {
+    const lo = Number.isFinite(p.minPrice) ? p.minPrice : p.price;
+    if (lo >= p.price || !Array.isArray(p.sizePrices)) return p;
+    const s = p.sizePrices.slice().sort((a, b) => a.price - b.price)[0];
+    return Object.assign({}, p, { price: s.price, displaySize: s.code || p.displaySize, priceFrom: true });
+  }
+  function budgetTop(list, n) {
+    return list
+      .filter((p) => {
+        const c = p.categories || [];
+        const lo = Number.isFinite(p.minPrice) ? p.minPrice : p.price;
+        return lo <= BUDGET_MAX && c.indexOf("wedding") < 0 && c.some((x) => x !== "vases");
+      })
+      .map((p) => ({ p, pop: popularity(p), lo: Number.isFinite(p.minPrice) ? p.minPrice : p.price }))
+      .sort((a, b) => b.pop - a.pop || a.lo - b.lo)
+      .slice(0, n)
+      .map((x) => cheapest(x.p));
   }
 
   function addedAt(p) {

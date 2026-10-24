@@ -109,7 +109,9 @@
   /* Цена ровно по тому же правилу, что было в свёрстанной разметке:
      базовая цена товара, «от» — когда итог согласует менеджер. */
   function priceText(p) {
-    return (p.priceFrom ? "от " : "") + Number(p.price || 0).toLocaleString("ru-RU") + " ₽";
+    var many = Array.isArray(p.sizes) && p.sizes.length > 1;
+    var v = many ? minPrice(p) : Number(p.price || 0);
+    return (p.priceFrom || many ? "от " : "") + v.toLocaleString("ru-RU") + " ₽";
   }
 
   function cardHtml(p) {
@@ -134,13 +136,33 @@
     "</article>";
   }
 
+  /* Витрина на главной: сначала популярные недорогие букеты (до 4 000 ₽ за
+     самый маленький размер) — человек сразу видит, за сколько можно взять.
+     Добираем остальными из онлайн-витрины. Цена на карточке — минимальная. */
+  function minPrice(p) {
+    var d = Array.isArray(p.sizes) && p.sizes.length
+      ? Math.min.apply(null, p.sizes.map(function (s) { return s.priceDelta || 0; })) : 0;
+    return (Number(p.price) || 0) + d;
+  }
+  function popularity(p) {
+    var c = Array.isArray(p.categories) ? p.categories : [p.category];
+    return (String(p.badge || "").indexOf("Хит") >= 0 ? 3 : 0) +
+      (c.indexOf("bestsellers") >= 0 ? 2 : 0) + (c.indexOf("online") >= 0 ? 1 : 0) + (c.indexOf("mono") >= 0 ? 1 : 0);
+  }
   function pickShowcase() {
     var list = window.PALOMA_PRODUCTS || [];
-    var out = [];
+    var budget = list.filter(function (p) {
+      var c = Array.isArray(p.categories) ? p.categories : [p.category];
+      return minPrice(p) <= 4000 && c.indexOf("wedding") < 0 &&
+        c.some(function (x) { return x !== "vases"; });
+    }).sort(function (a, b) {
+      return popularity(b) - popularity(a) || minPrice(a) - minPrice(b);
+    });
+    var out = budget.slice(0, SHOWCASE_MAX);
     for (var i = 0; i < list.length && out.length < SHOWCASE_MAX; i++) {
       var cats = list[i].categories;
       var has = Array.isArray(cats) ? cats.indexOf(SHOWCASE_CAT) >= 0 : cats === SHOWCASE_CAT;
-      if (has) out.push(list[i]);
+      if (has && out.indexOf(list[i]) < 0) out.push(list[i]);
     }
     return out;
   }
