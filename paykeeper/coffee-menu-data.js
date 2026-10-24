@@ -4,6 +4,31 @@
    ════════════════════════════════════════════════════════ */
 if (!window.PALOMA_COFFEE_MENU) {
   window.PALOMA_COFFEE_MENU = [
+  /* Осеннее меню (24.10.2026) — первым разделом */
+  {
+    "id": "menu-autumn-1",
+    "num": "001",
+    "title": "Тыквенный латте",
+    "category": "autumn",
+    "price": 550,
+    "priceLabel": "550 ₽",
+    "volumes": "",
+    "desc": "Осенний латте с тыквой и пряностями: эспрессо, молоко, взбитые сливки и корица. Подаём в настоящей тыкве.",
+    "image": "images/paloma/coffee/pumpkin-latte.jpg",
+    "imageBg": "linear-gradient(160deg,#F6DDBA 0%,#E2A35A 55%,#A8612A 100%)"
+  },
+  {
+    "id": "menu-autumn-2",
+    "num": "002",
+    "title": "Тыквенный матча-латте",
+    "category": "autumn",
+    "price": 500,
+    "priceLabel": "500 ₽",
+    "volumes": "",
+    "desc": "Матча на молоке с тыквой и осенними пряностями, взбитые сливки и корица. Подаём в настоящей тыкве.",
+    "image": "images/paloma/coffee/pumpkin-matcha.jpg",
+    "imageBg": "linear-gradient(160deg,#EEF0D2 0%,#C9C27A 55%,#8E7A3A 100%)"
+  },
   {
     "id": "menu-classic-1",
     "num": "001",

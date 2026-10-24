@@ -36,6 +36,7 @@
     var MENU = window.PALOMA_COFFEE_MENU || [];
     var catLabels = {
       all: "Всё меню",
+      autumn: "Осеннее меню",
       classic: "Классика",
       cacaoraf: "Какао и раф",
       smoothie: "Смузи",
@@ -72,6 +73,7 @@
 
     /* скрипт-надписи категорий (как эйбрау «our menu») */
     var catEyebrow = {
+      autumn: "pumpkin season",
       classic: "coffee classics",
       cacaoraf: "cocoa & raf",
       smoothie: "smoothie bar",
