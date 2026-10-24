@@ -1,6 +1,5 @@
-/* PALOMA — запасная копия каталога: снимок базы на 2026-10-12.
-   Сайт берёт каталог из базы (products-live.js); эта копия видна, только если
-   облако недоступно. Обновлять снимком из базы после крупных правок каталога. */
+/* PALOMA — запасная копия каталога: снимок базы на 2026-10-24 (tools/build-seo.mjs при публикации).
+   Сайт берёт каталог из базы (products-live.js); эта копия видна, только если сервер не ответил. */
 window.PALOMA_PRODUCTS = [
   {
     "id": "m1",
@@ -550,64 +549,6 @@ window.PALOMA_PRODUCTS = [
     "placeholderGradient": {
       "main": "linear-gradient(135deg, #e8a986, #7f8f5a)",
       "hover": "linear-gradient(135deg, #dd9873, #6b7a4a)"
-    }
-  },
-  {
-    "id": "m10",
-    "desc": "Высокие свечи гладиолусов, жёлтые со сливочным. Соцветия раскрываются снизу вверх, поэтому букет живёт долго.",
-    "name": "Жёлтые гладиолусы",
-    "slug": "zheltye-gladiolusy",
-    "badge": null,
-    "image": "images/paloma/catalog/mono-gladiolus-yellow.jpg",
-    "pairs": "К капучино.",
-    "price": 2700,
-    "sizes": [
-      {
-        "code": "S",
-        "label": "S · 5 шт",
-        "priceDelta": 0
-      },
-      {
-        "code": "M",
-        "label": "M · 7 шт",
-        "priceDelta": 940
-      },
-      {
-        "code": "L",
-        "label": "L · 9 шт",
-        "priceDelta": 1880
-      },
-      {
-        "code": "XL",
-        "label": "XL · 11 шт",
-        "priceDelta": 2820
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "photoSize": "L",
-    "categories": [
-      "mono"
-    ],
-    "composition": "Гладиолусы",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #cfc978, #8e8f57)",
-      "hover": "linear-gradient(135deg, #b8b268, #767748)"
     }
   },
   {
@@ -2249,32 +2190,6 @@ window.PALOMA_PRODUCTS = [
     }
   },
   {
-    "id": "acc2",
-    "desc": "Шкатулка SELETTI «Love in a Box». Размеры 13.6 × 18.9 × 7.4 см.",
-    "name": "Шкатулка SELETTI «Love in a Box»",
-    "slug": "seletti-love-in-a-box",
-    "badge": null,
-    "image": "images/paloma/catalog/acc2.jpg",
-    "pairs": "Готовый подарок для украшений или мелочей.",
-    "price": 14700,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Толстый фарфор, красный вельвет",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #b8404a, #7a2028)",
-      "hover": "linear-gradient(135deg, #a5353f, #64181f)"
-    }
-  },
-  {
     "id": "acc4",
     "desc": "Набор SELETTI: поднос, две кофейные чашки и две ложки. Размеры 13 × 20 см.",
     "name": "Набор из 2 кофейных чашек с подносом SELETTI",
@@ -2758,32 +2673,6 @@ window.PALOMA_PRODUCTS = [
     "placeholderGradient": {
       "main": "linear-gradient(135deg, #f3c6cf, #a9c47e)",
       "hover": "linear-gradient(135deg, #a9c47e, #f3c6cf)"
-    }
-  },
-  {
-    "id": "acc13",
-    "desc": "Чайная пара SELETTI: чашка, блюдце и ложка.",
-    "name": "Чайная пара SELETTI",
-    "slug": "seletti-chaynaya-para",
-    "badge": null,
-    "image": "images/paloma/catalog/acc13.jpg",
-    "pairs": "К чаю или кофе из PALOMA Coffee.",
-    "price": 9200,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Толстый фарфор",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #ece6da, #b6a98c)",
-      "hover": "linear-gradient(135deg, #e0d8c8, #a3957a)"
     }
   },
   {
@@ -4534,7 +4423,7 @@ window.PALOMA_PRODUCTS = [
     "name": "Гортензия Китай",
     "slug": "gortenziya-kitay",
     "badge": "Новинка",
-    "image": "https://palomanew.onrender.com?a=img&id=imtui6rekirqzir",
+    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imtui6rekirqzir",
     "price": 2150,
     "sizes": [
       {
@@ -4588,7 +4477,7 @@ window.PALOMA_PRODUCTS = [
     "name": "Авторская Осень",
     "slug": "avtorskaya-osen",
     "badge": "Новинка",
-    "image": "https://palomanew.onrender.com?a=img&id=imu2f6wd6yw5pmz",
+    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imu2f6wd6yw5pmz",
     "price": 9300,
     "sizes": [
       {
@@ -4627,7 +4516,7 @@ window.PALOMA_PRODUCTS = [
     "name": "Корзины с хризантемой бигуди и эвкалиптом",
     "slug": "korziny-s-hrizantemoy-bigudi-i-evkaliptom",
     "badge": null,
-    "image": "https://palomanew.onrender.com?a=img&id=imumy83a0exlba3",
+    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imumy83a0exlba3",
     "price": 8050,
     "sizes": [
       {
@@ -4679,7 +4568,7 @@ window.PALOMA_PRODUCTS = [
     "name": "Георгины с эвкалиптом стабилизированным осенним",
     "slug": "georginy-s-evkaliptom-stabilizirovannym-osennim",
     "badge": null,
-    "image": "https://palomanew.onrender.com?a=img&id=imupimy4oqaahfv",
+    "image": "https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&id=imupimy4oqaahfv",
     "price": 9600,
     "sizes": [
       {
@@ -4799,45 +4688,6 @@ window.PALOMA_PRODUCTS = [
     "slug": "vaza-seletti-canopie-kiki",
     "badge": null,
     "image": "images/paloma/catalog/canopie-kiki-1.webp",
-    "price": 30000,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "photoSize": "one",
-    "priceFrom": false,
-    "categories": [
-      "vases"
-    ],
-    "composition": "Фарфор"
-  },
-  {
-    "id": "p1791301434348",
-    "desc": "Ваза-кукла «Pietra» из новой коллекции Canopie — коллаборация итальянского бренда SELETTI и художницы Elena Cutolo. Зелёное горлышко-воронка и зелёный узор из «молекул» на белом фарфоре, лицо нарисовано в стиле поп-арт. Работает и как ваза для букета, и как арт-объект сама по себе. Фарфор. Размеры 41,6 × 17,2 × 17,2 см. Поставляется в фирменной коробке Canopie.",
-    "name": "Ваза SELETTI Canopie «Pietra»",
-    "slug": "vaza-seletti-canopie-pietra",
-    "badge": null,
-    "image": "images/paloma/catalog/canopie-pietra-1.webp",
     "price": 30000,
     "sizes": [
       {
@@ -5774,5 +5624,720 @@ window.PALOMA_PRODUCTS = [
       "autumn"
     ],
     "composition": "Гортензия, георгин, кустовая пионовидная роза, пионовидная роза, стабилизированный эвкалипт"
+  },
+  {
+    "id": "p1791800000012",
+    "desc": "Французское пралине с эссенцией базилика на масле виноградной косточки и кусочками фисташки в молочном шоколаде 30%. Ручная работа фабрики «Счастье». Масса 50 г, 566 ккал / 100 г.",
+    "name": "Конфета «Счастье» пралине с фисташкой и базиликом",
+    "slug": "konfeta-schaste-praline-s-fistashkoy-i-bazilikom",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-fistashka-bazilik.jpg",
+    "price": 440,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000013",
+    "desc": "Пралине с обжаренными вручную грецкими орехами и домашней сливочной карамелью в молочном шоколаде. Масса 50 г, 546 ккал / 100 г.",
+    "name": "Конфета «Счастье» пралине с грецким орехом и карамелью",
+    "slug": "konfeta-schaste-praline-s-greckim-orehom-i-karamelyu",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-gretskiy-karamel.jpg",
+    "price": 440,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000014",
+    "desc": "Пралине с отборным черносливом и обжаренными грецкими орехами в горьком шоколаде. Масса 50 г, 470 ккал / 100 г.",
+    "name": "Конфета «Счастье» пралине с черносливом и грецким орехом",
+    "slug": "konfeta-schaste-praline-s-chernoslivom-i-greckim-orehom",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-chernosliv.jpg",
+    "price": 440,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000015",
+    "desc": "Фундучно-арахисовое пралине с чёрным и белым кунжутом, морской солью и хрустящей вафельной крошкой в горьком шоколаде. Яркий сладко-солёный вкус. Масса 50 г, 533 ккал / 100 г.",
+    "name": "Конфета «Счастье» пралине с кунжутом и морской солью",
+    "slug": "konfeta-schaste-praline-s-kunzhutom-i-morskoy-solyu",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-kunzhut-sol.jpg",
+    "price": 440,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000016",
+    "desc": "Подарочная коробка из четырёх кубиков пралине «Счастье» разных вкусов — набор № 3. Ручная работа по рецептам французской школы. Масса 200 г.",
+    "name": "Конфеты «Счастье» пралине, 4 шт. № 3",
+    "slug": "konfety-schaste-praline-4-sht-3",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-praline-4-n3.jpg",
+    "price": 1520,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000017",
+    "desc": "Подарочная коробка из четырёх кубиков пралине «Счастье» разных вкусов — набор № 4. Ручная работа по рецептам французской школы. Масса 200 г.",
+    "name": "Конфеты «Счастье» пралине, 4 шт. № 4",
+    "slug": "konfety-schaste-praline-4-sht-4",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-praline-4-n4.jpg",
+    "price": 1640,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000018",
+    "desc": "10 мини-пралине разных вкусов: фундук, грецкий орех с карамелью, кокос, имбирь с семенами чиа, малина с розовым перцем и другие — в молочном шоколаде. Масса 85 г, 548 ккал / 100 г.",
+    "name": "Мини-пралине «Счастье», 10 шт. Ассорти",
+    "slug": "mini-praline-schaste-10-sht-assorti",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-mini-10.jpg",
+    "price": 1100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000019",
+    "desc": "20 мини-пралине разных вкусов: фундук, грецкий орех с карамелью, кокос, имбирь с семенами чиа, малина с розовым перцем и другие — в молочном шоколаде. Масса 170 г, 548 ккал / 100 г.",
+    "name": "Мини-пралине «Счастье», 20 шт. Ассорти",
+    "slug": "mini-praline-schaste-20-sht-assorti",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-mini-20.jpg",
+    "price": 2200,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000020",
+    "desc": "36 мини-пралине 14 вкусов в молочном и горьком шоколаде: ваниль с фундуком, кофе, карамель с грецким орехом, грильяж, кунжут с морской солью, фисташка с базиликом, вишня с миндалём, лаванда и другие. Масса 306 г, 540 ккал / 100 г.",
+    "name": "Мини-пралине «Счастье», 36 шт. Ассорти",
+    "slug": "mini-praline-schaste-36-sht-assorti",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-mini-36.jpg",
+    "price": 3800,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000021",
+    "desc": "Сливочно-карамельные ириски ручной работы: карамель варят на натуральных сливках 33%, режут небольшими кубиками и покрывают шоколадом. Масса 140 г.",
+    "name": "Ириски «Счастье» — коллекция № 1",
+    "slug": "iriski-schaste-kollekciya-1",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-iriski-1.jpg",
+    "price": 1020,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000022",
+    "desc": "Домашнее кунжутное печенье в форме ангела с морской солью и ганашем из молочного шоколада. Печётся по рецептам, которые фабрика «Счастье» хранит больше десяти лет. Масса 100 г, 449 ккал / 100 г.",
+    "name": "Печенье «Ангел счастья»",
+    "slug": "pechene-angel-schastya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-angel.jpg",
+    "price": 630,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000023",
+    "desc": "Имбирное печенье в форме сердца с начинкой из клюквы и белого шоколада с розовым перцем. Из коллекции печенья Friends фабрики «Счастье». Масса 90 г, 310 ккал / 100 г.",
+    "name": "Печенье «Сердце счастья»",
+    "slug": "pechene-serdce-schastya",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-serdce.jpg",
+    "price": 630,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000024",
+    "desc": "Домашнее шоколадное печенье в форме мишки с ганашем из белого шоколада. Из коллекции печенья Friends фабрики «Счастье».",
+    "name": "Печенье «Шоколадный Мишка»",
+    "slug": "pechene-shokoladnyy-mishka",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-mishka.jpg",
+    "price": 630,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000025",
+    "desc": "Молочный шоколад из детской коллекции «Счастье» KIDS — в сказочной коробочке les petits Chocolats.",
+    "name": "Молочный шоколад «Счастье» Kids",
+    "slug": "molochnyy-shokolad-schaste-kids",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-kids-shokolad.jpg",
+    "price": 380,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000026",
+    "desc": "Детская коллекция «Счастье»: 6 мини-пралине в молочном шоколаде с любимыми детскими вкусами — малина, клубника, кокос, ваниль и печенье. В сказочной коробочке KIDS. Масса 51 г, 558 ккал / 100 г.",
+    "name": "Набор конфет «Счастье» KIDS",
+    "slug": "nabor-konfet-schaste-kids",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/schaste-kids-nabor.jpg",
+    "price": 690,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "vases"
+    ],
+    "composition": ""
+  },
+  {
+    "id": "p1791800000027",
+    "desc": "Свадебный букет в белом: эустома, георгины-помпоны, каллы и львиный зев. Ручка обвита атласной лентой с нитями жемчуга.",
+    "name": "Белый жемчуг",
+    "slug": "belyy-zhemchug",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/wed-belyj-zhemchug.jpg",
+    "price": 8030,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "wedding"
+    ],
+    "composition": "Эустома, георгин, калла, львиный зев"
+  },
+  {
+    "id": "p1791800000028",
+    "desc": "Моно-букет из крупных бордовых хризантем в матовой упаковке PALOMA. Глубокий винный цвет и пышные головки — самый осенний букет сезона.",
+    "name": "Бордовые хризантемы",
+    "slug": "bordovye-hrizantemy",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/mono-xrizantema-bordo-m.jpg",
+    "price": 2680,
+    "sizes": [
+      {
+        "code": "S",
+        "label": "S · 5 шт",
+        "priceDelta": 0
+      },
+      {
+        "code": "M",
+        "label": "M · 7 шт",
+        "priceDelta": 920
+      },
+      {
+        "code": "L",
+        "label": "L · 11 шт",
+        "priceDelta": 2760
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": "M",
+    "priceFrom": false,
+    "categories": [
+      "mono",
+      "season",
+      "autumn"
+    ],
+    "composition": "Хризантема одноголовая"
+  },
+  {
+    "id": "p1791800000029",
+    "desc": "Моно-букет из нежно-розовых французских роз с волнистыми, будто кружевными лепестками. В матовой упаковке PALOMA.",
+    "name": "Пудровые французские розы",
+    "slug": "pudrovye-francuzskie-rozy",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/mono-french-pudra.jpg",
+    "price": 3145,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "online",
+      "mono"
+    ],
+    "composition": "Французская роза"
   }
 ];

@@ -212,7 +212,7 @@
     article.innerHTML = `
       <div class="product-card__media">
         ${mediaContent}
-        <a href="product.html?slug=${encodeURIComponent(slug)}"
+        <a href="/buket/${encodeURIComponent(slug)}/"
            class="product-card__media-link"
            aria-label="Перейти на страницу ${esc(product.name)}"
            tabindex="-1"
@@ -230,7 +230,7 @@
         </button>
       </div>
       <div class="product-card__body">
-        <a href="product.html?slug=${encodeURIComponent(slug)}"
+        <a href="/buket/${encodeURIComponent(slug)}/"
            class="product-card__name-link">
           <h3 class="product-card__name">${esc(product.name)}</h3>
         </a>
@@ -241,7 +241,7 @@
         }
         <p class="product-card__price">${product.priceFrom ? "от " : ""}${product.price.toLocaleString("ru-RU")} ₽</p>
         <div class="product-card__btns">
-          <a href="product.html?slug=${encodeURIComponent(slug)}"
+          <a href="/buket/${encodeURIComponent(slug)}/"
              class="product-card__btn product-card__btn--detail"
              aria-label="Подробнее о ${esc(product.name)}">
             Подробнее
@@ -563,13 +563,14 @@
     if (productId) {
       const p = window.PALOMA_CATALOG?.getById(productId);
       const slug = p?.slug || productId;
-      location.href = `product.html?slug=${encodeURIComponent(slug)}`;
+      location.href = `/buket/${encodeURIComponent(slug)}/`;
     }
   });
 
   function initFromUrl() {
     const qp = new URLSearchParams(window.location.search);
-    const cat = qp.get("cat") || "all";
+    /* /katalog/<раздел>/ — статическая SEO-страница раздела: <html data-cat> */
+    const cat = qp.get("cat") || document.documentElement.dataset.cat || "all";
     const resolved = window.PALOMA_CATALOG.resolveFilter(cat);
 
     const targetBtn =

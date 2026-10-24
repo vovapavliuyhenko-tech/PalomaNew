@@ -164,7 +164,7 @@
   function updateSeoMeta() {
     if (!product) return;
     var slug = product.slug || product.id;
-    var url = SITE + "/product.html?slug=" + encodeURIComponent(slug);
+    var url = SITE + "/buket/" + encodeURIComponent(slug) + "/";
     var img = absUrl((rawProduct && rawProduct.image) || product.image) || "";
     var raw = (rawProduct && rawProduct.desc) || product.composition || "";
     var priceTxt = product.price
@@ -220,7 +220,7 @@
   function injectSeoSchema() {
     if (!product) return;
     var slug = product.slug || product.id;
-    var productUrl = SITE + "/product.html?slug=" + encodeURIComponent(slug);
+    var productUrl = SITE + "/buket/" + encodeURIComponent(slug) + "/";
     var img = absUrl((rawProduct && rawProduct.image) || product.image);
     var descText =
       (rawProduct && rawProduct.desc) || product.desc || product.composition || product.name;
@@ -834,7 +834,7 @@
     if (!items.length) return;
     similarGrid.innerHTML = items
       .map(function (p) {
-        const href = "product.html?slug=" + encodeURIComponent(p.slug || p.id);
+        const href = "/buket/" + encodeURIComponent(p.slug || p.id) + "/";
         const media = p.image
           ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="600" height="870">'
           : '<span class="home-product-card__ph" style="background:' + esc(p.placeholderBg || "") + '"></span>';
@@ -877,7 +877,8 @@
 
   function init() {
     const params = new URLSearchParams(window.location.search);
-    const slug = params.get("slug") || params.get("id");
+    /* /buket/<slug>/ — статическая SEO-страница: slug лежит в <html data-slug> */
+    const slug = params.get("slug") || params.get("id") || document.documentElement.dataset.slug;
 
     if (!slug) {
       showNotFound();
@@ -917,11 +918,11 @@
      Товар, который отрисован, не трогаем: обработчики уже навешаны. */
   (window.PALOMA_RERENDER = window.PALOMA_RERENDER || []).push(function () {
     if (product) return;
-    if (!findProducts(new URLSearchParams(location.search).get("slug") ||
+    if (!findProducts(new URLSearchParams(location.search).get("slug") || document.documentElement.dataset.slug ||
                       new URLSearchParams(location.search).get("id")).norm) return;
     try {
-      if (sessionStorage.getItem("paloma:pdp-reloaded") === location.search) return;
-      sessionStorage.setItem("paloma:pdp-reloaded", location.search);
+      if (sessionStorage.getItem("paloma:pdp-reloaded") === location.pathname + location.search) return;
+      sessionStorage.setItem("paloma:pdp-reloaded", location.pathname + location.search);
     } catch (e) { /* приватный режим — просто перезагрузим */ }
     location.reload();
   });

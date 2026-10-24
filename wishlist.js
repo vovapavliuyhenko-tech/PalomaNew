@@ -354,7 +354,7 @@ window.PalomaWishlist = (function () {
 
   function _drawerItemHTML(p) {
     const bg = p.bg || "var(--color-bg-alt, #f3efe9)";
-    const href = `product.html?slug=${encodeURIComponent(p.slug || p.id)}`;
+    const href = `/buket/${encodeURIComponent(p.slug || p.id)}/`;
     const img = p.image
       ? `<img src="${_escWl(p.image)}" alt="${_escWl(p.name)}" class="cart-drawer__item-img" loading="lazy" onerror="this.style.display='none'">`
       : "";

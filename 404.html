@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Страница не найдена — PALOMA</title>
+  <script>
+  /* Новый букет добавили в админке, а SEO-страница /buket/<slug>/ появится
+     только при следующей публикации (раз в сутки). До тех пор ведём на
+     общую страницу товара — покупатель не видит ошибку. Так же с разделами. */
+  (function () {
+    var p = location.pathname, m;
+    if ((m = p.match(/^\/buket\/([^/]+)\/?$/))) location.replace("/product.html?slug=" + m[1]);
+    else if ((m = p.match(/^\/katalog\/([^/]+)\/?$/))) location.replace("/catalog.html?cat=" + m[1]);
+  })();
+  </script>
+  <style>
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: Montserrat, Arial, sans-serif; color: #1B1A18; background: #fff; text-align: center; padding: 24px; box-sizing: border-box; }
+    h1 { font-family: Georgia, serif; font-style: italic; font-weight: 400; font-size: 40px; margin: 0 0 12px; }
+    p { color: rgba(27, 26, 24, .6); margin: 0 0 24px; }
+    a { display: inline-block; padding: 14px 28px; border-radius: 999px; background: #E7385A; color: #fff; text-decoration: none; letter-spacing: .1em; text-transform: uppercase; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Страница не найдена</h1>
+    <p>Возможно, букет уже продан или адрес изменился.</p>
+    <a href="/catalog.html">Перейти в каталог</a>
+  </main>
+</body>
+</html>

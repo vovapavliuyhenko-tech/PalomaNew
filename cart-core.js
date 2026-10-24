@@ -116,7 +116,7 @@ window.PalomaCart = (function () {
     const slug =
       item.slug ||
       (window.PALOMA_CATALOG?.getById?.(baseId)?.slug ?? null);
-    if (slug) return `product.html?slug=${encodeURIComponent(slug)}`;
+    if (slug) return `/buket/${encodeURIComponent(slug)}/`;
     if (baseId) return `product.html?id=${encodeURIComponent(baseId)}`;
     return "catalog.html";
   }

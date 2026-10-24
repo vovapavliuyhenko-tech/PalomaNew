@@ -37,3 +37,6 @@ IMG_20*.jpg
 # временный локальный сервер и черновик портфолио — не для сайта
 _devserver.js
 portfolio-paloma.html
+
+# Генерируются при публикации (tools/build-seo.mjs)
+/indexnow-urls.txt

@@ -1,1255 +1,2193 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-07-25 12:31">
+<yml_catalog date="2026-10-24 16:48">
   <shop>
     <name>PALOMA</name>
-    <company>PALOMA</company>
+    <company>PALOMA — студия цветов и кофе, Новороссийск</company>
     <url>https://paloma.website</url>
-    <currencies>
-      <currency id="RUR" rate="1"/>
-    </currencies>
+    <currencies><currency id="RUR" rate="1"/></currencies>
     <categories>
-      <category id="1">Моно и дуобукеты</category>
+      <category id="1">Монобукеты</category>
       <category id="2">Дуобукеты</category>
-      <category id="3">Свадебные букеты</category>
-      <category id="4">Авторские букеты</category>
+      <category id="3">Авторские букеты</category>
+      <category id="4">Свадебные букеты</category>
       <category id="5">Композиции и корзины</category>
       <category id="6">Вазы и подарки</category>
+      <category id="7">Онлайн-витрина</category>
+      <category id="8">Самый сезон</category>
+      <category id="9">Осенние букеты</category>
+      <category id="10">Бестселлеры</category>
     </categories>
     <offers>
       <offer id="m1" available="true">
-        <url>https://paloma.website/product.html?slug=belaya-gortenziya</url>
-        <price>7500</price>
+        <url>https://paloma.website/buket/belaya-gortenziya/</url>
+        <price>2330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-white.jpg</picture>
         <name>Белая гортензия</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия</param>
         <description>Крупные белые шапки гортензии — объёмный и спокойный моно-букет.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="m2" available="true">
-        <url>https://paloma.website/product.html?slug=roza-mandarin</url>
-        <price>7280</price>
+        <url>https://paloma.website/buket/roza-mandarin/</url>
+        <price>3890</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-mandarin.jpg</picture>
         <name>Роза сорта Мандарин</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная роза</param>
         <description>Пионовидная роза кораллового оттенка — плотные бутоны с ярусами лепестков.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="m3" available="true">
-        <url>https://paloma.website/product.html?slug=roza-melon</url>
-        <price>11100</price>
+        <url>https://paloma.website/buket/roza-melon/</url>
+        <price>3890</price>
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-melon.jpg</picture>
         <name>Роза сорта Мелон</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная роза</param>
         <description>Пионовидная роза персиково-медового тона — тёплый и мягкий моно-букет.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="m4" available="true">
-        <url>https://paloma.website/product.html?slug=francuzskaya-krasnaya-roza</url>
-        <price>3320</price>
+        <url>https://paloma.website/buket/francuzskaya-krasnaya-roza/</url>
+        <price>3890</price>
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-french-red.jpg</picture>
         <name>Французская красная роза</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Вывернутая роза сорта Нина</param>
         <description>Вывернутая роза сорта Нина — глубокий красный и бархатная фактура.</description>
-      </offer>
-      <offer id="m5" available="true">
-        <url>https://paloma.website/product.html?slug=belaya-klassicheskaya-roza</url>
-        <price>9600</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/mono-rose-white.jpg</picture>
-        <name>Белая классическая роза</name>
-        <vendor>PALOMA</vendor>
-        <param name="Состав">Роза сорта Плая Бланка</param>
-        <description>Роза сорта Плая Бланка — чистый белый и строгий классический силуэт.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="m6" available="true">
-        <url>https://paloma.website/product.html?slug=rozovaya-gortenziya</url>
-        <price>3600</price>
+        <url>https://paloma.website/buket/rozovaya-gortenziya/</url>
+        <price>2330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-pink.jpg</picture>
         <name>Розовая гортензия</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия</param>
         <description>Пудрово-розовые шапки гортензии — нежный объём без лишних деталей.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="m7" available="true">
-        <url>https://paloma.website/product.html?slug=golubaya-gortenziya</url>
-        <price>3600</price>
+        <url>https://paloma.website/buket/golubaya-gortenziya/</url>
+        <price>2330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-blue.jpg</picture>
         <name>Голубая гортензия</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия</param>
         <description>Голубая гортензия — прохладный оттенок и крупная фактура соцветий.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="m8" available="true">
-        <url>https://paloma.website/product.html?slug=francuzskaya-rozovaya-roza</url>
-        <price>3680</price>
+        <url>https://paloma.website/buket/francuzskaya-rozovaya-roza/</url>
+        <price>3890</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-french-pink.jpg</picture>
         <name>Французская розовая роза</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Вывернутая роза сорта Пинк Мондиаль</param>
         <description>Вывернутая роза сорта Пинк Мондиаль — раскрытые пионовидные бутоны.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="m9" available="true">
-        <url>https://paloma.website/product.html?slug=liliya</url>
-        <price>26600</price>
+        <url>https://paloma.website/buket/liliya/</url>
+        <price>9100</price>
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-lily.jpg</picture>
         <name>Лилия</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная лилия</param>
         <description>Пионовидная лилия — крупные соцветия и выразительный аромат.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="d1" available="true">
-        <url>https://paloma.website/product.html?slug=duo-piches</url>
+        <url>https://paloma.website/buket/duo-piches/</url>
         <price>5700</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/duo-peaches.jpg</picture>
         <name>Дуобукет «Пичес»</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Георгин Пичес, листья малины</param>
         <description>Персиковые георгины Пичес с зеленью малины — тёплый дуобукет в фирменной упаковке PALOMA.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="d2" available="true">
-        <url>https://paloma.website/product.html?slug=duo-mondial</url>
-        <price>10600</price>
+        <url>https://paloma.website/buket/duo-mondial/</url>
+        <price>4740</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/duo-frrose.jpg</picture>
         <name>Французская роза</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Роза Мондиаль, роза Пинк Мондиаль, эвкалипт</param>
         <description>Пудровые и кремовые французские розы Мондиаль с эвкалиптом — пышный дуобукет из двух сортов.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="w1" available="true">
-        <url>https://paloma.website/product.html?slug=neo-serebro</url>
+        <url>https://paloma.website/buket/neo-serebro/</url>
         <price>8000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-neo-silver.jpg</picture>
         <name>Нео-серебро</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Георгин, краспедия, калла, антуриум, амарант</param>
         <description>Серебристая калла и антуриум с георгином и амарантом — графичный букет с металлическим блеском.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="w2" available="true">
-        <url>https://paloma.website/product.html?slug=klassicheskiy-gladiolus</url>
+        <url>https://paloma.website/buket/klassicheskiy-gladiolus/</url>
         <price>3000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-gladiolus.jpg</picture>
         <name>Классический Гладиолус</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гладиолус</param>
         <description>Белый гладиолус в чистом моно-исполнении — строгая классика для церемонии.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="w3" available="true">
-        <url>https://paloma.website/product.html?slug=sumochka-s-orhideey</url>
+        <url>https://paloma.website/buket/sumochka-s-orhideey/</url>
         <price>15000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-orchid-bag.jpg</picture>
         <name>Сумочка с орхидеей</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Орхидея фаленопсис, стабилизированная гортензия, эвкалипт</param>
         <description>Орхидея фаленопсис каскадом на сумочке-основе со стабилизированной гортензией — букет, который носят на руке.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="w4" available="true">
-        <url>https://paloma.website/product.html?slug=dofaminoviy</url>
+        <url>https://paloma.website/buket/dofaminoviy/</url>
         <price>7000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-dopamine.jpg</picture>
         <name>Дофаминовый</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Оксипеталум, дельфиниум, пионовидная роза Харпер, эустома, диантус, львиный зев</param>
         <description>Пастельная россыпь из пионовидной розы Харпер, дельфиниума и львиного зева — яркий и живой букет.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="a1" available="true">
-        <url>https://paloma.website/product.html?slug=avtorskiy-alium</url>
+        <url>https://paloma.website/buket/avtorskiy-alium/</url>
         <price>18000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/author-alium.jpg</picture>
         <name>Авторская композиция</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Аллиум, лилия классическая, лилия пионовидная, дельфиниум, молюцелла, львиный зев, паникум</param>
         <description>Крупная авторская работа флориста PALOMA: пурпурный аллиум, лилии, дельфиниум и злаки — статусный высокий букет.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n1" available="true">
-        <url>https://paloma.website/product.html?slug=obruchenie</url>
+        <url>https://paloma.website/buket/obruchenie/</url>
         <price>8500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n1.jpg</picture>
         <name>Обручение</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная роза Харпер, антуриум, диантус, диантус Грин Тик, львиный зев, нерине, эустома, молюцелла, амарант</param>
         <description>Пастельный свадебный букет с пионовидной розой Харпер, нерине и амарантом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n2" available="true">
-        <url>https://paloma.website/product.html?slug=persikoviy-sad</url>
+        <url>https://paloma.website/buket/persikoviy-sad/</url>
         <price>20000</price>
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n2.jpg</picture>
         <name>Персиковый сад</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Георгин Пичес, гортензия, кустовая пионовидная роза, молюцелла, листья малины</param>
         <description>Крупная корзина с георгином Пичес, гортензией и кустовой розой.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n3" available="true">
-        <url>https://paloma.website/product.html?slug=lavandoviy-vecher</url>
+        <url>https://paloma.website/buket/lavandoviy-vecher/</url>
         <price>9800</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n3.jpg</picture>
         <name>Лавандовый вечер</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Дельфиниум, голландская гортензия, французская роза Пинк Мондиаль, каллы, эустома, диантус, нерине</param>
         <description>Сине-розовая композиция с дельфиниумом, гортензией и французской розой.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n4" available="true">
-        <url>https://paloma.website/product.html?slug=georgin-piches</url>
-        <price>15050</price>
+        <url>https://paloma.website/buket/georgin-piches/</url>
+        <price>7100</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n4.jpg</picture>
         <name>Георгин Пичес</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Георгин Пичес</param>
         <description>Моно-букет из персиковых георгинов Пичес.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n5" available="true">
-        <url>https://paloma.website/product.html?slug=toskana</url>
+        <url>https://paloma.website/buket/toskana/</url>
         <price>28000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n5.jpg</picture>
         <name>Тоскана</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Георгин Пичес, львиный зев, эремурус, орнитогалум, оксипеталум, листья малины, гортензия, колоски, дельфиниум</param>
         <description>Высокая авторская работа с георгином Пичес, эремурусом и злаками.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n6" available="true">
-        <url>https://paloma.website/product.html?slug=sara-bernar</url>
+        <url>https://paloma.website/buket/sara-bernar/</url>
         <price>19000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n6.jpg</picture>
         <name>Сара Бернар</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пион Сара Бернар, георгин Пичес, дельфиниум, гортензия, орнитогалум</param>
         <description>Пудровый пион Сара Бернар с георгином Пичес и гортензией.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n7" available="true">
-        <url>https://paloma.website/product.html?slug=persikovoe-oblako</url>
-        <price>10150</price>
+        <url>https://paloma.website/buket/persikovoe-oblako/</url>
+        <price>16200</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n7.jpg</picture>
         <name>Персиковое облако</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, георгин Пичес</param>
         <description>Дуобукет из гортензии и персикового георгина Пичес.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n8" available="true">
-        <url>https://paloma.website/product.html?slug=lazurit</url>
+        <url>https://paloma.website/buket/lazurit/</url>
         <price>10215</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n8.jpg</picture>
         <name>Лазурит</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, дельфиниум, антуриум, эустома, пионовидная роза</param>
         <description>Сине-белая композиция с гортензией, дельфиниумом и антуриумом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n9" available="true">
-        <url>https://paloma.website/product.html?slug=golubaya-dymka</url>
+        <url>https://paloma.website/buket/golubaya-dymka/</url>
         <price>6900</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n9.jpg</picture>
         <name>Голубая дымка</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Хризантема, дельфиниум, гортензия</param>
         <description>Воздушный букет из хризантемы, дельфиниума и гортензии.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n10" available="true">
-        <url>https://paloma.website/product.html?slug=rozoviy-shelk</url>
+        <url>https://paloma.website/buket/rozoviy-shelk/</url>
         <price>11365</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n10.jpg</picture>
         <name>Розовый шёлк</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная лилия, хризантема, эустома, нерине</param>
         <description>Розовая композиция с пионовидной лилией, хризантемой и нерине.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n11" available="true">
-        <url>https://paloma.website/product.html?slug=pionoviy-vals</url>
+        <url>https://paloma.website/buket/pionoviy-vals/</url>
         <price>19410</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n11.jpg</picture>
         <name>Пионовый вальс</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, пионовидная роза</param>
         <description>Пышный дуобукет из гортензии и пионовидной розы.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n12" available="true">
-        <url>https://paloma.website/product.html?slug=pervaya-nezhnost</url>
+        <url>https://paloma.website/buket/pervaya-nezhnost/</url>
         <price>8640</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n12.jpg</picture>
         <name>Первая нежность</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, пионовидная роза, фрезия</param>
         <description>Нежный дуобукет из гортензии, пионовидной розы и фрезии.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n13" available="true">
-        <url>https://paloma.website/product.html?slug=pudra</url>
+        <url>https://paloma.website/buket/pudra/</url>
         <price>18110</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n13.jpg</picture>
         <name>Пудра</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, пионовидная роза</param>
         <description>Пудровый дуобукет из гортензии и пионовидной розы.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n14" available="true">
-        <url>https://paloma.website/product.html?slug=lilian</url>
+        <url>https://paloma.website/buket/lilian/</url>
         <price>8650</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n14.jpg</picture>
         <name>Лилиан</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная лилия, гортензия, стабилизированный бук</param>
         <description>Авторский букет с пионовидной лилией, гортензией и стабилизированным буком.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n15" available="true">
-        <url>https://paloma.website/product.html?slug=beliy-tanec</url>
+        <url>https://paloma.website/buket/beliy-tanec/</url>
         <price>9600</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n15.jpg</picture>
         <name>Белый танец</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Французская белая роза, классическая роза сорта Плая Бланка</param>
         <description>Белый дуобукет из французской и классической розы Плая Бланка.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n16" available="true">
-        <url>https://paloma.website/product.html?slug=rivyera</url>
+        <url>https://paloma.website/buket/rivyera/</url>
         <price>20190</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n16.jpg</picture>
         <name>Ривьера</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, олеандр, пионовидная роза, диантус, эустома, каллы, амариллис, берграсс</param>
         <description>Роскошная композиция с гортензией, каллами, амариллисом и олеандром.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n17" available="true">
-        <url>https://paloma.website/product.html?slug=florenciya</url>
+        <url>https://paloma.website/buket/florenciya/</url>
         <price>20500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n17.jpg</picture>
         <name>Флоренция</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, диантус, кустовая пионовидная роза, дельфиниум, берграсс</param>
         <description>Объёмная авторская работа с гортензией, кустовой розой и дельфиниумом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n18" available="true">
-        <url>https://paloma.website/product.html?slug=lazurnaya-korzina</url>
+        <url>https://paloma.website/buket/lazurnaya-korzina/</url>
         <price>70000</price>
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n18.jpg</picture>
         <name>Лазурная корзина</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия (81 шт)</param>
         <description>Большая корзина из 81 голубой гортензии.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n21" available="true">
-        <url>https://paloma.website/product.html?slug=utrenniy-svet</url>
+        <url>https://paloma.website/buket/utrenniy-svet/</url>
         <price>13860</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n21.jpg</picture>
         <name>Утренний свет</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, пионовидная роза, нерине</param>
         <description>Утренний букет из гортензии, пионовидной розы и нерине.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n22" available="true">
-        <url>https://paloma.website/product.html?slug=bebi-blyu</url>
+        <url>https://paloma.website/buket/bebi-blyu/</url>
         <price>5480</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n22.jpg</picture>
         <name>Беби Блю</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, эвкалипт Беби Блю</param>
         <description>Дуобукет из гортензии и эвкалипта Беби Блю.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n23" available="true">
-        <url>https://paloma.website/product.html?slug=roza-fatima</url>
-        <price>8150</price>
+        <url>https://paloma.website/buket/roza-fatima/</url>
+        <price>5030</price>
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n23.jpg</picture>
         <name>Роза Фатима</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная роза сорта Фатима</param>
         <description>Моно-букет из пионовидной розы сорта Фатима.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n24" available="true">
-        <url>https://paloma.website/product.html?slug=korolevskaya-korzina</url>
+        <url>https://paloma.website/buket/korolevskaya-korzina/</url>
         <price>39500</price>
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n24.jpg</picture>
         <name>Королевская корзина</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, классическая белая роза, антуриум, орхидея, физостегия, фрезия, ранункулюс, пионовидный тюльпан</param>
         <description>Королевская корзина с гортензией, белой розой, орхидеей и антуриумом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n25" available="true">
-        <url>https://paloma.website/product.html?slug=baunti</url>
+        <url>https://paloma.website/buket/baunti/</url>
         <price>5140</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n25.jpg</picture>
         <name>Баунти</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Дельфиниум, голландская гортензия, листья малины, кокос</param>
         <description>Свежая композиция с дельфиниумом, гортензией и кокосом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n26" available="true">
-        <url>https://paloma.website/product.html?slug=persikoviy-rassvet</url>
+        <url>https://paloma.website/buket/persikoviy-rassvet/</url>
         <price>12305</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n26.jpg</picture>
         <name>Персиковый рассвет</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная роза, гортензия, эустома, листья малины</param>
         <description>Персиковый букет из пионовидной розы, гортензии и эустомы.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n27" available="true">
-        <url>https://paloma.website/product.html?slug=pudrovoe-oblako</url>
+        <url>https://paloma.website/buket/pudrovoe-oblako/</url>
         <price>19540</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n27.jpg</picture>
         <name>Пудровое облако</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Кустовая роза, гортензия</param>
         <description>Пудровый дуобукет из кустовой розы и гортензии.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n28" available="true">
-        <url>https://paloma.website/product.html?slug=roza-silva-pink</url>
-        <price>22680</price>
+        <url>https://paloma.website/buket/roza-silva-pink/</url>
+        <price>7280</price>
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n28.jpg</picture>
         <name>Роза Сильва Пинк</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Кустовая роза сорта Сильва Пинк</param>
         <description>Моно-букет из кустовой розы сорта Сильва Пинк.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n29" available="true">
-        <url>https://paloma.website/product.html?slug=karnaval</url>
+        <url>https://paloma.website/buket/karnaval/</url>
         <price>21000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n29.jpg</picture>
         <name>Карнавал</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Подсолнух, лилия, пион, львиный зев, матрикария, пионовидная роза, целозия, дельфиниум, кустовая роза, гладиолус, хризантема, книфофия, сетария, гортензия, маттиола, листья малины</param>
         <description>Пышный летний букет из подсолнуха, лилии, пиона и полевых цветов.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n30" available="true">
-        <url>https://paloma.website/product.html?slug=myatniy-briz</url>
+        <url>https://paloma.website/buket/myatniy-briz/</url>
         <price>3320</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n30.jpg</picture>
         <name>Мятный бриз</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Эустома, молюцелла, пионовидная роза, маттиола</param>
         <description>Свежая композиция из эустомы, молюцеллы, розы и маттиолы.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n31" available="true">
-        <url>https://paloma.website/product.html?slug=letniy-lug</url>
+        <url>https://paloma.website/buket/letniy-lug/</url>
         <price>9840</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n31.jpg</picture>
         <name>Летний луг</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Листья малины, циния, целозия, дельфиниум, орнитогалум, паникум, скабиоза</param>
         <description>Полевая авторская композиция с цинией, целозией, дельфиниумом и злаками — живой летний характер.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n32" available="true">
-        <url>https://paloma.website/product.html?slug=gortenziya-korzina</url>
+        <url>https://paloma.website/buket/gortenziya-korzina/</url>
         <price>11150</price>
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n32.jpg</picture>
         <name>Гортензия в корзине</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия (13 шт)</param>
         <description>Композиция из 13 гортензий в корзине — объёмная и воздушная.</description>
-      </offer>
-      <offer id="acc1" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-kintsugi-tray</url>
-        <price>41700</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc1.jpg</picture>
-        <name>Блюдо SELETTI Kintsugi</name>
-        <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор, покрытие золотом 24 карата</param>
-        <description>Декоративное блюдо SELETTI Kintsugi. Размеры 42.5 × 29.5 × 3.5 см.</description>
-      </offer>
-      <offer id="acc2" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-love-in-a-box</url>
-        <price>14700</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc2.jpg</picture>
-        <name>Шкатулка SELETTI «Love in a Box»</name>
-        <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор, красный вельвет</param>
-        <description>Шкатулка SELETTI «Love in a Box». Размеры 13.6 × 18.9 × 7.4 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc4" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-nabor-2-chashki-podnos</url>
+        <url>https://paloma.website/buket/seletti-nabor-2-chashki-podnos/</url>
         <price>6200</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc4.jpg</picture>
         <name>Набор из 2 кофейных чашек с подносом SELETTI</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор</param>
         <description>Набор SELETTI: поднос, две кофейные чашки и две ложки. Размеры 13 × 20 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc5" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-para-1</url>
+        <url>https://paloma.website/buket/seletti-para-1/</url>
         <price>7300</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc5.jpg</picture>
         <name>Кофейная пара SELETTI</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор</param>
         <description>Кофейная пара SELETTI: блюдце, чашка и ложка.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc6" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-para-2</url>
+        <url>https://paloma.website/buket/seletti-para-2/</url>
         <price>7300</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc6.jpg</picture>
         <name>Кофейная пара SELETTI</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор</param>
         <description>Кофейная пара SELETTI: блюдце, чашка и ложка.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc7" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-hybrid-supovaya</url>
+        <url>https://paloma.website/buket/seletti-hybrid-supovaya/</url>
         <price>15700</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc7.jpg</picture>
         <name>Суповая тарелка SELETTI Hybrid</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор</param>
         <description>Суповая тарелка SELETTI Hybrid. Размеры 25.4 × 4.2 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc8" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-kintsugi-tarelka</url>
+        <url>https://paloma.website/buket/seletti-kintsugi-tarelka/</url>
         <price>14700</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc8.jpg</picture>
         <name>Тарелка SELETTI Kintsugi</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор, покрытие золотом 24 карата</param>
         <description>Тарелка SELETTI Kintsugi. Размеры 27.5 × 3 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="n45" available="true">
+        <url>https://paloma.website/buket/korallovoe-utro/</url>
+        <price>4040</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/n45.jpg</picture>
+        <name>Коралловое утро</name>
+        <vendor>PALOMA</vendor>
+        <description>Коралловые пионовидные розы с зелёной гортензией и эвкалиптом — тёплый авторский букет с мягким переходом оттенков.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n33" available="true">
-        <url>https://paloma.website/product.html?slug=harper</url>
+        <url>https://paloma.website/buket/harper/</url>
         <price>9435</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n33.jpg</picture>
         <name>Харпер</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная роза Харпер, орнитогалум, коробочка лотоса, циния, каллы, эустома, амми, гортензия, диантус, паникум, львиный зев</param>
         <description>Насыщенный авторский букет с пионовидной розой Харпер, цинниями, коробочками лотоса и каллами.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
-      <offer id="w5" available="true">
-        <url>https://paloma.website/product.html?slug=nerine</url>
-        <price>12080</price>
+      <offer id="n46" available="true">
+        <url>https://paloma.website/buket/feyerverk/</url>
+        <price>14975</price>
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/n46.jpg</picture>
+        <name>Фейерверк</name>
+        <vendor>PALOMA</vendor>
+        <description>Большой авторский букет из одиннадцати культур: георгины, пионовидные розы, дельфиниум и лилия в фирменной коробке PALOMA.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="w5" available="true">
+        <url>https://paloma.website/buket/nerine/</url>
+        <price>12080</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/w5.jpg</picture>
         <name>Нерине</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Антуриум, каллы, пионовидная роза, стабилизированный амарант, нерине</param>
         <description>Нежный персиковый свадебный букет с антуриумом, каллами и струящимся амарантом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="w7" available="true">
+        <url>https://paloma.website/buket/perlamutr/</url>
+        <price>9380</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/w7.jpg</picture>
+        <name>Перламутр</name>
+        <vendor>PALOMA</vendor>
+        <description>Букет невесты с каллами и персиковой астрой на жемчужных нитях — компактный, лёгкий, держит форму весь день.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc11" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-kintsugi-piala</url>
+        <url>https://paloma.website/buket/seletti-kintsugi-piala/</url>
         <price>7000</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc11.jpg</picture>
         <name>Пиала SELETTI Kintsugi</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор</param>
         <description>Пиала SELETTI Kintsugi. Размеры 11.5 × 6 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="w8" available="true">
+        <url>https://paloma.website/buket/monblan/</url>
+        <price>7180</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/w8.jpg</picture>
+        <name>Монблан</name>
+        <vendor>PALOMA</vendor>
+        <description>Лаконичный букет невесты: крупные белые георгины, зелень антуриума и жемчужные нити.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc12" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-kintsugi-salatnik</url>
+        <url>https://paloma.website/buket/seletti-kintsugi-salatnik/</url>
         <price>17300</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc12.jpg</picture>
         <name>Салатник SELETTI Kintsugi</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор</param>
         <description>Салатник SELETTI Kintsugi. Размеры 19 × 7.2 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
-      <offer id="acc13" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-chaynaya-para</url>
-        <price>9200</price>
+      <offer id="w9" available="true">
+        <url>https://paloma.website/buket/sorbet/</url>
+        <price>3355</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc13.jpg</picture>
-        <name>Чайная пара SELETTI</name>
+        <categoryId>4</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/w9.jpg</picture>
+        <name>Сорбет</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор</param>
-        <description>Чайная пара SELETTI: чашка, блюдце и ложка.</description>
+        <description>Розово-белый букет невесты с эустомой и берграсом — воздушный силуэт с тонкими травами.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc14" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-hybrid-kruzhka</url>
+        <url>https://paloma.website/buket/seletti-hybrid-kruzhka/</url>
         <price>7600</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc14.jpg</picture>
         <name>Кружка SELETTI Hybrid</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Толстый фарфор</param>
         <description>Кружка SELETTI Hybrid. Размеры 8.5 × 10.2 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc15" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-toiletpaper-salatnik-eye</url>
+        <url>https://paloma.website/buket/seletti-toiletpaper-salatnik-eye/</url>
         <price>3000</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc15.jpg</picture>
         <name>Салатник SELETTI Toiletpaper «Eye»</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Алюминий</param>
         <description>Салатник SELETTI Toiletpaper «Eye». Размеры 17 × 8 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc16" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-toiletpaper-kruzhka-eye</url>
+        <url>https://paloma.website/buket/seletti-toiletpaper-kruzhka-eye/</url>
         <price>3000</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc16.jpg</picture>
         <name>Кружка SELETTI Toiletpaper «Eye»</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Алюминий</param>
         <description>Кружка SELETTI Toiletpaper «Eye». Размеры 10 × 9 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc17" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-toiletpaper-kruzhka-plunger</url>
+        <url>https://paloma.website/buket/seletti-toiletpaper-kruzhka-plunger/</url>
         <price>3000</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc17.jpg</picture>
         <name>Кружка SELETTI Toiletpaper «Plunger»</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Алюминий</param>
         <description>Кружка SELETTI Toiletpaper «Plunger». Размеры 10 × 9 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc18" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-toiletpaper-kruzhka-bird</url>
+        <url>https://paloma.website/buket/seletti-toiletpaper-kruzhka-bird/</url>
         <price>3000</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc18.jpg</picture>
         <name>Кружка SELETTI Toiletpaper «Bird»</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Алюминий</param>
         <description>Кружка SELETTI Toiletpaper «Bird». Размеры 10 × 9 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc19" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-svecha-hands-with-snakes</url>
+        <url>https://paloma.website/buket/seletti-svecha-hands-with-snakes/</url>
         <price>7900</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc19.jpg</picture>
         <name>Ароматическая свеча SELETTI «Hands with snakes»</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Стекло, растительный воск, эфирные масла</param>
         <description>Ароматическая свеча SELETTI Toiletpaper «Hands with snakes». Размеры 8 × 8.5 × 8.5 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc20" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-svecha-snakes</url>
+        <url>https://paloma.website/buket/seletti-svecha-snakes/</url>
         <price>7900</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc20.jpg</picture>
         <name>Ароматическая свеча SELETTI «Snakes»</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Стекло, растительный воск, эфирные масла</param>
         <description>Ароматическая свеча SELETTI Toiletpaper «Snakes». Размеры 8 × 8.5 × 8.5 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc21" available="true">
-        <url>https://paloma.website/product.html?slug=seletti-svecha-shit</url>
+        <url>https://paloma.website/buket/seletti-svecha-shit/</url>
         <price>7900</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc21.jpg</picture>
         <name>Ароматическая свеча SELETTI «Shit»</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Стекло, растительный воск, эфирные масла</param>
         <description>Ароматическая свеча SELETTI Toiletpaper «Shit». Размеры 8 × 8.5 × 8.5 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc22" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-makadamia-white</url>
+        <url>https://paloma.website/buket/chocome-makadamia-white/</url>
         <price>2250</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc22.jpg</picture>
         <name>Конфеты chocoMe «Макадамия в белом шоколаде»</name>
-        <vendor>chocoMe</vendor>
-        <param name="Масса">120 г</param>
-        <description>Макадамия в белом шоколаде ручной работы с какао-порошком и бобами тонка. Масса 120 г.</description>
+        <vendor>PALOMA</vendor>
+        <description>Макадамия в белом шоколаде ручной работы с какао-порошком и бобами тонка. Масса 120 г, 670 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc23" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-mindal-tryufel</url>
+        <url>https://paloma.website/buket/chocome-mindal-tryufel/</url>
         <price>2500</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc23.jpg</picture>
         <name>Конфеты chocoMe «Миндаль с трюфелем»</name>
-        <vendor>chocoMe</vendor>
-        <param name="Масса">120 г</param>
-        <description>Миндаль из Валенсии в молочном шоколаде с трюфельным грибом. Масса 120 г.</description>
+        <vendor>PALOMA</vendor>
+        <description>Миндаль из Валенсии в молочном шоколаде с трюфельным грибом. Масса 120 г, 597 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc24" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-piemontskiy-oreh-kofe</url>
+        <url>https://paloma.website/buket/chocome-piemontskiy-oreh-kofe/</url>
         <price>1950</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc24.jpg</picture>
         <name>Конфеты chocoMe «Пьемонтский орех с кофе»</name>
-        <vendor>chocoMe</vendor>
-        <param name="Масса">120 г</param>
-        <description>Пьемонтский орех в орехово-молочном шоколаде с дроблёным кофе Харар. Масса 120 г.</description>
+        <vendor>PALOMA</vendor>
+        <description>Пьемонтский орех в орехово-молочном шоколаде с дроблёным кофе Харар. Масса 120 г, 619 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc25" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-carre-assorti</url>
+        <url>https://paloma.website/buket/chocome-carre-assorti/</url>
         <price>3150</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc25.jpg</picture>
         <name>Ассорти плиток chocoMe Carré</name>
-        <vendor>chocoMe</vendor>
-        <param name="Масса">150 г</param>
-        <description>Три плитки горького шоколада: с лепестками фиалки, фисташками Бронте и вишней. 3 × 50 г.</description>
+        <vendor>PALOMA</vendor>
+        <description>Три плитки горького шоколада: с лепестками фиалки, фисташками Бронте и вишней. 3 × 50 г (150 г), 540–586 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc26" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-carre-brusnika-chili</url>
+        <url>https://paloma.website/buket/chocome-carre-brusnika-chili/</url>
         <price>1000</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc26.jpg</picture>
         <name>Горький шоколад chocoMe «Брусника и чили»</name>
-        <vendor>chocoMe</vendor>
-        <param name="Масса">50 г</param>
-        <description>Горький шоколад ручной работы с сушёной брусникой, чёрной смородиной и волокнами перца чили. Масса 50 г.</description>
+        <vendor>PALOMA</vendor>
+        <description>Горький шоколад ручной работы с сушёной брусникой, чёрной смородиной и волокнами перца чили. Масса 50 г, 527 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc27" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-mindal-dikiy-perets</url>
+        <url>https://paloma.website/buket/chocome-mindal-dikiy-perets/</url>
         <price>1950</price>
         <currencyId>RUR</currencyId>
         <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc27.jpg</picture>
         <name>Конфеты chocoMe «Миндаль с диким перцем»</name>
-        <vendor>chocoMe</vendor>
-        <param name="Масса">120 г</param>
-        <description>Миндаль из Сицилии в горьком шоколаде с диким мадагаскарским перцем. Масса 120 г.</description>
+        <vendor>PALOMA</vendor>
+        <description>Миндаль из Сицилии в горьком шоколаде с диким мадагаскарским перцем и какао-порошком. Масса 120 г, 576 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n34" available="true">
-        <url>https://paloma.website/product.html?slug=flamenko</url>
+        <url>https://paloma.website/buket/flamenko/</url>
         <price>10710</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n34.jpg</picture>
         <name>Фламенко</name>
         <vendor>PALOMA</vendor>
-        <param name="Состав">Леукодендрон, целозия, сангисорба, каллы, орнитогалум, французская роза сорта Нина, лист стрелиции, циперус, кроксомия</param>
         <description>Насыщенный красный авторский букет с французской розой Нина, целозией, каллами и кроксомией.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc28" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-carre-fialka-vino</url>
-        <price>1000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-carre-fialka-vino/</url>
+        <price>1000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc28.jpg</picture>
-        <name>Горький шоколад chocoMe «Фиалка и вино»</name><vendor>chocoMe</vendor>
-        <param name="Масса">50 г</param>
-        <description>Горький шоколад ручной работы с засахаренными лепестками фиалки, чёрной смородиной и морской солью с красным вином. 50 г.</description>
+        <name>Горький шоколад chocoMe «Фиалка и вино»</name>
+        <vendor>PALOMA</vendor>
+        <description>Горький шоколад ручной работы с засахаренными лепестками фиалки, чёрной смородиной и морской солью с красным вином. Масса 50 г, 519 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc29" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-carre-pekan-brusnika</url>
-        <price>1000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-carre-pekan-brusnika/</url>
+        <price>1000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc29.jpg</picture>
-        <name>Горький шоколад chocoMe «Пекан и брусника»</name><vendor>chocoMe</vendor>
-        <param name="Масса">50 г</param>
-        <description>Горький шоколад ручной работы с орехом пекан, сушёной брусникой, фисташками Бронте и корицей. 50 г.</description>
+        <name>Горький шоколад chocoMe «Пекан и брусника»</name>
+        <vendor>PALOMA</vendor>
+        <description>Горький шоколад ручной работы с орехом пекан, сушёной брусникой, фисташками Бронте и корицей. Масса 50 г, 569 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc30" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-carre-moloch-pekan-krasnaya-smorodina</url>
-        <price>1000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-carre-moloch-pekan-krasnaya-smorodina/</url>
+        <price>1000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc30.jpg</picture>
-        <name>Молочный шоколад chocoMe «Пекан и красная смородина»</name><vendor>chocoMe</vendor>
-        <param name="Масса">50 г</param>
-        <description>Молочный шоколад ручной работы с орехом пекан, фисташками Бронте и красной смородиной. 50 г.</description>
+        <name>Молочный шоколад chocoMe «Пекан и красная смородина»</name>
+        <vendor>PALOMA</vendor>
+        <description>Молочный шоколад ручной работы с орехом пекан, фисташками Бронте и красной смородиной. Масса 50 г, 586 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc31" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-carre-white-mindal-kunzhut</url>
-        <price>1200</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-carre-white-mindal-kunzhut/</url>
+        <price>1200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc31.jpg</picture>
-        <name>Белый шоколад chocoMe «Миндаль и кунжут»</name><vendor>chocoMe</vendor>
-        <param name="Масса">50 г</param>
-        <description>Белый «светлый» шоколад ручной работы с миндалём из Сицилии, чёрным кунжутом и солью. 50 г.</description>
+        <name>Белый шоколад chocoMe «Миндаль и кунжут»</name>
+        <vendor>PALOMA</vendor>
+        <description>Белый «светлый» шоколад ручной работы с миндалём из Сицилии, чёрным кунжутом и солью. Масса 50 г, 586 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc32" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-carre-moloch-piemont-sol</url>
-        <price>970</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-carre-moloch-piemont-sol/</url>
+        <price>970</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc32.jpg</picture>
-        <name>Молочный шоколад chocoMe «Пьемонтский орех и соль»</name><vendor>chocoMe</vendor>
-        <param name="Масса">50 г</param>
-        <description>Молочный шоколад ручной работы с пьемонтским орехом и солью. 50 г.</description>
+        <name>Молочный шоколад chocoMe «Пьемонтский орех и соль»</name>
+        <vendor>PALOMA</vendor>
+        <description>Молочный шоколад ручной работы с пьемонтским орехом и солью. Масса 50 г, 552 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc33" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-entree-moloch-tri-oreha</url>
-        <price>1700</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-entree-moloch-tri-oreha/</url>
+        <price>1700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc33.jpg</picture>
-        <name>Молочный шоколад chocoMe «Три ореха»</name><vendor>chocoMe</vendor>
-        <param name="Масса">110 г</param>
-        <description>Молочный шоколад ручной работы с орехом пекан, миндалём из Сицилии и фисташками Бронте. 110 г.</description>
+        <name>Молочный шоколад chocoMe «Три ореха»</name>
+        <vendor>PALOMA</vendor>
+        <description>Молочный шоколад ручной работы с орехом пекан, миндалём из Сицилии и фисташками Бронте. Масса 110 г, 579 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc34" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-entree-moloch-fistashki-yagody</url>
-        <price>1600</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-entree-moloch-fistashki-yagody/</url>
+        <price>1600</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc34.jpg</picture>
-        <name>Молочный шоколад chocoMe «Фисташки и ягоды»</name><vendor>chocoMe</vendor>
-        <param name="Масса">110 г</param>
-        <description>Молочный шоколад ручной работы с фисташками Бронте, малиной и ежевикой. 110 г.</description>
+        <name>Молочный шоколад chocoMe «Фисташки и ягоды»</name>
+        <vendor>PALOMA</vendor>
+        <description>Молочный шоколад ручной работы с фисташками Бронте, малиной и ежевикой. Масса 110 г, 549 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc35" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-entree-fialka-fistashki</url>
-        <price>1700</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-entree-fialka-fistashki/</url>
+        <price>1700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc35.jpg</picture>
-        <name>Горький шоколад chocoMe «Фиалка и фисташки»</name><vendor>chocoMe</vendor>
-        <param name="Масса">110 г</param>
-        <description>Горький шоколад ручной работы с засахаренными лепестками фиалки, фисташками Бронте и чёрной смородиной. 110 г.</description>
+        <name>Горький шоколад chocoMe «Фиалка и фисташки»</name>
+        <vendor>PALOMA</vendor>
+        <description>Горький шоколад ручной работы с засахаренными лепестками фиалки, фисташками Бронте и чёрной смородиной. Масса 110 г, 551 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc36" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-entree-tri-oreha</url>
-        <price>1700</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-entree-tri-oreha/</url>
+        <price>1700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc36.jpg</picture>
-        <name>Горький шоколад chocoMe «Три ореха»</name><vendor>chocoMe</vendor>
-        <param name="Масса">110 г</param>
-        <description>Горький шоколад ручной работы с орехом пекан, миндалём из Сицилии и пьемонтским орехом. 110 г.</description>
+        <name>Горький шоколад chocoMe «Три ореха»</name>
+        <vendor>PALOMA</vendor>
+        <description>Горький шоколад ручной работы с орехом пекан, миндалём из Сицилии и пьемонтским орехом. Масса 110 г, 591 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc37" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-entree-roza-yagody</url>
-        <price>1700</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-entree-roza-yagody/</url>
+        <price>1700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc37.jpg</picture>
-        <name>Горький шоколад chocoMe «Роза и ягоды»</name><vendor>chocoMe</vendor>
-        <param name="Масса">110 г</param>
-        <description>Горький шоколад ручной работы с засахаренными лепестками розы, клубникой и малиной. 110 г.</description>
+        <name>Горький шоколад chocoMe «Роза и ягоды»</name>
+        <vendor>PALOMA</vendor>
+        <description>Горький шоколад ручной работы с засахаренными лепестками розы, клубникой и малиной. Масса 110 г, 544 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc38" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-entree-orehi-smorodina</url>
-        <price>1600</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-entree-orehi-smorodina/</url>
+        <price>1600</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc38.jpg</picture>
-        <name>Горький шоколад chocoMe «Орехи и смородина»</name><vendor>chocoMe</vendor>
-        <param name="Масса">110 г</param>
-        <description>Горький шоколад ручной работы с орехом пекан, миндалём из Сицилии и чёрной смородиной. 110 г.</description>
+        <name>Горький шоколад chocoMe «Орехи и смородина»</name>
+        <vendor>PALOMA</vendor>
+        <description>Горький шоколад ручной работы с орехом пекан, миндалём из Сицилии и чёрной смородиной. Масса 110 г, 581 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc39" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-entree-tri-yagody</url>
-        <price>1700</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-entree-tri-yagody/</url>
+        <price>1700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc39.jpg</picture>
-        <name>Горький шоколад chocoMe «Три ягоды»</name><vendor>chocoMe</vendor>
-        <param name="Масса">110 г</param>
-        <description>Горький шоколад ручной работы с чёрной смородиной, клубникой и малиной. 110 г.</description>
+        <name>Горький шоколад chocoMe «Три ягоды»</name>
+        <vendor>PALOMA</vendor>
+        <description>Горький шоколад ручной работы с чёрной смородиной, клубникой и малиной. Масса 110 г, 551 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc40" available="true">
-        <url>https://paloma.website/product.html?slug=chocome-entree-roza-zoloto</url>
-        <price>2400</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/chocome-entree-roza-zoloto/</url>
+        <price>2400</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc40.jpg</picture>
-        <name>Горький шоколад chocoMe «Роза и золото»</name><vendor>chocoMe</vendor>
-        <param name="Масса">110 г</param>
-        <description>Горький шоколад ручной работы с фисташками Бронте, лепестками розы, вишней и хлопьями 23-каратного золота. 110 г.</description>
+        <name>Горький шоколад chocoMe «Роза и золото»</name>
+        <vendor>PALOMA</vendor>
+        <description>Горький шоколад ручной работы с фисташками Бронте, лепестками розы, вишней и хлопьями 23-каратного золота. Масса 110 г, 548 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n35" available="true">
-        <url>https://paloma.website/product.html?slug=siena</url>
-        <price>15500</price><currencyId>RUR</currencyId><categoryId>5</categoryId>
+        <url>https://paloma.website/buket/siena/</url>
+        <price>15500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n35.jpg</picture>
-        <name>Сиена</name><vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидные розы, циния, оксипеталум, диантус, львиный зев, книфофия, гортензия</param>
+        <name>Сиена</name>
+        <vendor>PALOMA</vendor>
         <description>Яркая летняя композиция в корзине с пионовидными розами, цинниями, книфофией и гортензией.</description>
-      </offer>
-      <offer id="n36" available="true">
-        <url>https://paloma.website/product.html?slug=avrora</url>
-        <price>5830</price><currencyId>RUR</currencyId><categoryId>4</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/n36.jpg</picture>
-        <name>Аврора</name><vendor>PALOMA</vendor>
-        <param name="Состав">Кустовая пионовидная роза, гортензия, эустома, диантус</param>
-        <description>Нежный букет-бестселлер с кустовой пионовидной розой, гортензией и эустомой.</description>
-      </offer>
-      <offer id="n37" available="true">
-        <url>https://paloma.website/product.html?slug=margo</url>
-        <price>3360</price><currencyId>RUR</currencyId><categoryId>4</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/n37.jpg</picture>
-        <name>Марго</name><vendor>PALOMA</vendor>
-        <param name="Состав">Хризантема, бархатцы, паникум, циния</param>
-        <description>Тёплый букет-бестселлер с хризантемой, бархатцами и цинниями.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n38" available="true">
-        <url>https://paloma.website/product.html?slug=luara</url>
-        <price>5330</price><currencyId>RUR</currencyId><categoryId>4</categoryId>
+        <url>https://paloma.website/buket/luara/</url>
+        <price>5330</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n38.jpg</picture>
-        <name>Луара</name><vendor>PALOMA</vendor>
-        <param name="Состав">Гортензия, листья малины, эустома, кустовая пионовидная роза, матрикария</param>
+        <name>Луара</name>
+        <vendor>PALOMA</vendor>
         <description>Воздушный букет-бестселлер с гортензией, пионовидной розой и матрикарией.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
-      <offer id="n39" available="true">
-        <url>https://paloma.website/product.html?slug=melon</url>
-        <price>5480</price><currencyId>RUR</currencyId><categoryId>1</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/n39.jpg</picture>
-        <name>Мелон</name><vendor>PALOMA</vendor>
-        <param name="Состав">Пионовидная роза Мелон Экспрешн</param>
-        <description>Монобукет из пионовидной розы Мелон Экспрешн. Размеры от S (11 шт) до XL (25 шт).</description>
-      </offer>
-<offer id="acc41" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-volna-zheltaya</url>
-        <price>4200</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+      <offer id="acc41" available="true">
+        <url>https://paloma.website/buket/vaza-volna-zheltaya/</url>
+        <price>4200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc41.jpg</picture>
-        <name>Ваза «Волна» жёлтая</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза «Волна» жёлтая</name>
+        <vendor>PALOMA</vendor>
         <description>Фигурная ваза из жёлтого стекла с волнистым силуэтом. Узкое горлышко — для одного цветка или тонкого букета. Размеры 15 × 32 см, горлышко 2.5 × 4 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc42" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-kenzan-keramika</url>
-        <price>2100</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-kenzan-keramika/</url>
+        <price>2100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc42.jpg</picture>
-        <name>Ваза под кензан, керамика</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
+        <name>Ваза под кензан, керамика</name>
+        <vendor>PALOMA</vendor>
         <description>Низкая керамическая чаша под кензан для икебаны и композиций в японском стиле. Размеры 17 × 4 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc43" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-interernaya-volan</url>
-        <price>18000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-interernaya-volan/</url>
+        <price>18000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc43.jpg</picture>
-        <name>Интерьерная ваза «Волан»</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
+        <name>Интерьерная ваза «Волан»</name>
+        <vendor>PALOMA</vendor>
         <description>Крупная интерьерная ваза для сухоцветов со скульптурными складками. Матовая белая керамика. Размеры 17 × 17 × 26 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc44" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-interernaya-vihr</url>
-        <price>18000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-interernaya-vihr/</url>
+        <price>18000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc44.jpg</picture>
-        <name>Интерьерная ваза «Вихрь»</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
+        <name>Интерьерная ваза «Вихрь»</name>
+        <vendor>PALOMA</vendor>
         <description>Интерьерная ваза для сухоцветов с закрученным рельефом. Матовая белая керамика. Размеры 16 × 16 × 27 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc45" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-mramor-zelenaya</url>
-        <price>5600</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-mramor-zelenaya/</url>
+        <price>5600</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc45.jpg</picture>
-        <name>Ваза «Мрамор» зелёная</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза «Мрамор» зелёная</name>
+        <vendor>PALOMA</vendor>
         <description>Пузатая ваза из молочного стекла с зелёно-оливковыми разводами ручной работы. Размеры 16.5 × 18 см, горлышко 8 × 8 см.</description>
-      </offer>
-      <offer id="acc46" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-dym-seraya</url>
-        <price>3600</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc46.jpg</picture>
-        <name>Ваза «Дым» серая</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
-        <description>Ваза из дымчатого стекла со смятой фактурой — свет играет на неровных гранях. Размеры 22 × 22 см.</description>
-      </offer>
-      <offer id="acc47" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-yantar-shirokaya</url>
-        <price>5000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc47.jpg</picture>
-        <name>Ваза «Янтарь» широкая</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
-        <description>Широкая ваза из янтарного стекла с рельефной поверхностью. Просторное горлышко под пышный букет. Размеры 24 × 17 см, горлышко 11 × 7.5 см.</description>
-      </offer>
-      <offer id="acc48" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-biryuza-shar</url>
-        <price>4000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc48.jpg</picture>
-        <name>Ваза «Бирюза» шар</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
-        <description>Шарообразная ваза с фактурной бирюзово-белой глазурью под состаренный камень. Размеры 18 × 20 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc49" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-dyuny-shar</url>
-        <price>3000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-dyuny-shar/</url>
+        <price>3000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc49.jpg</picture>
-        <name>Ваза «Дюны» шар</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
+        <name>Ваза «Дюны» шар</name>
+        <vendor>PALOMA</vendor>
         <description>Округлая ваза с песочно-белой глазурью и кратерной фактурой. Размеры 17 × 20 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc50" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-mokh-vysokaya</url>
-        <price>6500</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-mokh-vysokaya/</url>
+        <price>6500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc50.jpg</picture>
-        <name>Ваза «Мох» высокая</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
+        <name>Ваза «Мох» высокая</name>
+        <vendor>PALOMA</vendor>
         <description>Высокая ваза с бело-зелёной фактурной глазурью под замшелый камень. Размеры 33 × 17 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc51" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-zakat-vysokaya</url>
-        <price>5000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-zakat-vysokaya/</url>
+        <price>5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc51.jpg</picture>
-        <name>Ваза «Закат» высокая</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
+        <name>Ваза «Закат» высокая</name>
+        <vendor>PALOMA</vendor>
         <description>Высокая ваза с переходом от белого к тёплому оранжевому и кратерной фактурой. Размеры 32 × 16 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc52" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-shinuazri-popugay</url>
-        <price>11000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-shinuazri-popugay/</url>
+        <price>11000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc52.jpg</picture>
-        <name>Ваза «Шинуазри» с попугаем</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
+        <name>Ваза «Шинуазри» с попугаем</name>
+        <vendor>PALOMA</vendor>
         <description>Высокая ваза в стиле шинуазри: синяя роспись по белому фарфору с попугаем и цветущими ветвями. Размеры 40 × 18 см, горлышко 8 × 8 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc53" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-seletti-hybrid-adelma</url>
-        <price>26000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-seletti-hybrid-adelma/</url>
+        <price>26000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc53.jpg</picture>
-        <name>Ваза SELETTI Hybrid</name><vendor>PALOMA</vendor>
-        <param name="Материал">Толстый фарфор</param>
+        <name>Ваза SELETTI Hybrid</name>
+        <vendor>PALOMA</vendor>
         <description>Ваза SELETTI Hybrid: две половины разных культур, соединённые золотой линией. Толстый фарфор. Размеры 14 × 32.5 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc54" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-sota-vysokaya</url>
-        <price>17000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-sota-vysokaya/</url>
+        <price>17000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc54.jpg</picture>
-        <name>Ваза «Соты» высокая</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза «Соты» высокая</name>
+        <vendor>PALOMA</vendor>
         <description>Высокая ваза из янтарного стекла с гранёной огранкой «соты» и переходом в бордо. Размеры 45 × 14 см, горлышко 4.5 × 4.5 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc55" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-seletti-seagirl</url>
-        <price>10500</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-seletti-seagirl/</url>
+        <price>10500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc55.jpg</picture>
-        <name>Ваза SELETTI Toiletpaper «Seagirl»</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза SELETTI Toiletpaper «Seagirl»</name>
+        <vendor>PALOMA</vendor>
         <description>Ваза SELETTI Toiletpaper «Seagirl» — стекло с золотым кантом и фирменным сюрреалистичным принтом. Размеры 10 × 8 × 14 см.</description>
-      </offer>
-      <offer id="acc56" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-ruchnaya-rabota-len</url>
-        <price>7700</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc56.jpg</picture>
-        <name>Ваза ручной работы «Лён»</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
-        <description>Крупная ваза ручной работы: белая глазурь мазками поверх тёплой глины, круговой рельеф от гончарного круга. Размеры 30 × 26 см, горлышко 8 × 8 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc57" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-terrakota-drapirovka</url>
-        <price>10000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-terrakota-drapirovka/</url>
+        <price>10000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc57.jpg</picture>
-        <name>Ваза «Терракота» с драпировкой</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
+        <name>Ваза «Терракота» с драпировкой</name>
+        <vendor>PALOMA</vendor>
         <description>Скульптурная ваза цвета терракоты со струящимся рельефом, похожим на ткань. Размеры 19 × 18 × 32 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc58" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-interernaya-organ</url>
-        <price>18500</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-interernaya-organ/</url>
+        <price>18500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc58.jpg</picture>
-        <name>Интерьерная ваза «Орган»</name><vendor>PALOMA</vendor>
-        <param name="Материал">Керамика</param>
+        <name>Интерьерная ваза «Орган»</name>
+        <vendor>PALOMA</vendor>
         <description>Интерьерная ваза для сухоцветов с вертикальными рёбрами и мягким силуэтом. Матовая белая керамика. Размеры 17.5 × 27 см, горлышко 7 × 7 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc59" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-seletti-snakes</url>
-        <price>10500</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-seletti-snakes/</url>
+        <price>10500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc59.jpg</picture>
-        <name>Ваза SELETTI Toiletpaper «Snakes»</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза SELETTI Toiletpaper «Snakes»</name>
+        <vendor>PALOMA</vendor>
         <description>Ваза SELETTI Toiletpaper «Snakes» — прозрачное стекло с золотым кантом и принтом со змеями. Размеры 10 × 8 × 14 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc60" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-grani-dymchataya</url>
-        <price>13000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-grani-dymchataya/</url>
+        <price>13000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc60.jpg</picture>
-        <name>Ваза «Грани» дымчатая</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза «Грани» дымчатая</name>
+        <vendor>PALOMA</vendor>
         <description>Ваза из дымчатого стекла с матовой гранёной огранкой, мягко рассеивающей свет. Размеры 22 × 10 × 8 см, горлышко 7.5 × 7.5 см.</description>
-      </offer>
-      <offer id="acc61" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-leopard</url>
-        <price>7000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc61.jpg</picture>
-        <name>Ваза «Леопард»</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
-        <description>Ваза из янтарного стекла с чёрными пятнами и тёмным основанием — эффектный акцент. Размеры 20 × 25.5 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc62" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-kenzan-steklo</url>
-        <price>2100</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-kenzan-steklo/</url>
+        <price>2100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc62.jpg</picture>
-        <name>Ваза под кензан, стекло</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза под кензан, стекло</name>
+        <vendor>PALOMA</vendor>
         <description>Низкий стеклянный цилиндр под кензан — для икебаны и плавающих композиций. Размеры 19.5 × 9 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc63" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-zhemchug</url>
-        <price>6100</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-zhemchug/</url>
+        <price>6100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc63.jpg</picture>
-        <name>Ваза «Жемчуг»</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза «Жемчуг»</name>
+        <vendor>PALOMA</vendor>
         <description>Ваза из молочного стекла с бежевым крапом и узким горлышком. Размеры 20 × 21.5 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc64" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-izumrud-shar</url>
-        <price>2550</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-izumrud-shar/</url>
+        <price>2550</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc64.jpg</picture>
-        <name>Ваза «Изумруд» шар</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза «Изумруд» шар</name>
+        <vendor>PALOMA</vendor>
         <description>Шарообразная ваза из изумрудного стекла с рельефными рёбрами. Размеры 18 × 15 см, горлышко 7 × 7 см.</description>
-      </offer>
-      <offer id="acc65" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-cilindr-30</url>
-        <price>2600</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc65.jpg</picture>
-        <name>Ваза-цилиндр, 30 см</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
-        <description>Высокий стеклянный цилиндр — универсальная база под длинные стебли. Размеры 30 × 10 см.</description>
-      </offer>
-      <offer id="acc66" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-cilindr-25</url>
-        <price>2500</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc66.jpg</picture>
-        <name>Ваза-цилиндр, 25 см</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
-        <description>Стеклянный цилиндр средней высоты — подойдёт почти любому букету. Размеры 25 × 10 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc67" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-cilindr-20</url>
-        <price>2400</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-cilindr-20/</url>
+        <price>2400</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc67.jpg</picture>
-        <name>Ваза-цилиндр, 20 см</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза-цилиндр, 20 см</name>
+        <vendor>PALOMA</vendor>
         <description>Невысокий стеклянный цилиндр для компактных букетов. Размеры 20 × 10 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc68" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-uzkaya-10-25</url>
-        <price>1500</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-uzkaya-10-25/</url>
+        <price>1500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc68.jpg</picture>
-        <name>Ваза узкая, 25 см</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза узкая, 25 см</name>
+        <vendor>PALOMA</vendor>
         <description>Узкая стеклянная ваза — для одного цветка или тонкой ветки. Размеры 10 × 25 см.</description>
-      </offer>
-      <offer id="acc69" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-steklo-18-21</url>
-        <price>2600</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc69.jpg</picture>
-        <name>Ваза стеклянная, 21 см</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
-        <description>Стеклянная ваза с широким горлышком — удобна для круглых букетов. Размеры 18 × 21 см, горлышко 8 × 8 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc70" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-steklo-18-16</url>
-        <price>2500</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-steklo-18-16/</url>
+        <price>2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc70.jpg</picture>
-        <name>Ваза стеклянная, 16 см</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза стеклянная, 16 см</name>
+        <vendor>PALOMA</vendor>
         <description>Невысокая стеклянная ваза для небольших и средних букетов. Размеры 18 × 16 см, горлышко 7 × 7 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc71" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-steklo-13-26</url>
-        <price>6600</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-steklo-13-26/</url>
+        <price>6600</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc71.jpg</picture>
-        <name>Ваза стеклянная, 26 см</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза стеклянная, 26 см</name>
+        <vendor>PALOMA</vendor>
         <description>Стройная стеклянная ваза — вытянутый силуэт для высоких композиций. Размеры 13 × 26 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc72" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-steklo-16-34</url>
-        <price>9000</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-steklo-16-34/</url>
+        <price>9000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc72.jpg</picture>
-        <name>Ваза стеклянная, 34 см</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза стеклянная, 34 см</name>
+        <vendor>PALOMA</vendor>
         <description>Высокая стеклянная ваза для крупных и длинных букетов. Размеры 16 × 34 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="acc73" available="true">
-        <url>https://paloma.website/product.html?slug=vaza-steklo-14-20</url>
-        <price>2300</price><currencyId>RUR</currencyId><categoryId>6</categoryId>
+        <url>https://paloma.website/buket/vaza-steklo-14-20/</url>
+        <price>2300</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc73.jpg</picture>
-        <name>Ваза стеклянная, 20 см</name><vendor>PALOMA</vendor>
-        <param name="Материал">Стекло</param>
+        <name>Ваза стеклянная, 20 см</name>
+        <vendor>PALOMA</vendor>
         <description>Компактная стеклянная ваза на каждый день. Размеры 14 × 20 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
-          <offer id="n41" available="true">
-        <url>https://paloma.website/product.html?slug=fiesta</url>
-        <price>21300</price><currencyId>RUR</currencyId><categoryId>4</categoryId>
+      <offer id="n41" available="true">
+        <url>https://paloma.website/buket/fiesta/</url>
+        <price>21300</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n41.jpg</picture>
-        <name>Фиеста</name><vendor>PALOMA</vendor>
-        <param name="Состав">Антуриум, кроксомия, паникум, каллы, циния, орнитогалум, целозия, книфофия, амарант</param>
+        <name>Фиеста</name>
+        <vendor>PALOMA</vendor>
         <description>Яркий авторский букет в оранжево-зелёной гамме: зелёные антуриумы, циннии, книфофия и струящийся амарант.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n42" available="true">
-        <url>https://paloma.website/product.html?slug=solnechnyy-den</url>
-        <price>4410</price><currencyId>RUR</currencyId><categoryId>4</categoryId>
+        <url>https://paloma.website/buket/solnechnyy-den/</url>
+        <price>4410</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n42.jpg</picture>
-        <name>Солнечный день</name><vendor>PALOMA</vendor>
-        <param name="Состав">Подсолнух, сетария, камыш, амми</param>
+        <name>Солнечный день</name>
+        <vendor>PALOMA</vendor>
         <description>Летний авторский букет из подсолнухов с камышом, сетарией и ажурной амми.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
       <offer id="n43" available="true">
-        <url>https://paloma.website/product.html?slug=kaskad</url>
-        <price>15160</price><currencyId>RUR</currencyId><categoryId>4</categoryId>
+        <url>https://paloma.website/buket/kaskad/</url>
+        <price>15160</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n43.jpg</picture>
-        <name>Каскад</name><vendor>PALOMA</vendor>
-        <param name="Состав">Орхидея фаленопсис, голландская гортензия, львиный зев, пионовидная лилия, листья малины, пионовидная роза</param>
+        <name>Каскад</name>
+        <vendor>PALOMA</vendor>
         <description>Авторский букет с ниспадающей ветвью орхидеи фаленопсис, голубой гортензией и пионовидной розой.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="n47" available="true">
+        <url>https://paloma.website/buket/avtorskiy-georginy-delfinium/</url>
+        <price>10030</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/avt-gortenziya-delfinium.jpg</picture>
+        <name>Авторский с георгинами</name>
+        <vendor>PALOMA</vendor>
+        <description>Крупная авторская работа: коралловые пионовидные розы, зелёная гортензия и синий дельфиниум с георгинами и листом стрелиции.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="n48" available="true">
+        <url>https://paloma.website/buket/avtorskiy-podsolnuhi-zontik/</url>
+        <price>6050</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/avt-podsolnuhi-zontik.jpg</picture>
+        <name>Авторский с подсолнухами</name>
+        <vendor>PALOMA</vendor>
+        <description>Солнечный авторский букет: крупные подсолнухи с зеленью зонтика и лёгким паникумом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="n49" available="true">
+        <url>https://paloma.website/buket/svadebnyy-anturium-georgin/</url>
+        <price>7500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/wed-anturium-georgin.jpg</picture>
+        <name>Свадебный с антуриумом</name>
+        <vendor>PALOMA</vendor>
+        <description>Букет невесты с зелёными антуриумами, розовыми георгинами и ниспадающим стабилизированным амарантом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1788982832531" available="true">
+        <url>https://paloma.website/buket/gortenziya-kitay/</url>
+        <price>2150</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imtui6rekirqzir</picture>
+        <name>Гортензия Китай</name>
+        <vendor>PALOMA</vendor>
+        <description>гортензия</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1789461486044" available="true">
+        <url>https://paloma.website/buket/avtorskaya-osen/</url>
+        <price>9300</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imu2f6wd6yw5pmz</picture>
+        <name>Авторская Осень</name>
+        <vendor>PALOMA</vendor>
+        <description>Эвкалипт, хризантема бигуди рэд, помпасная трава, львиный зев, антуриум, уплощив, леукодендрон</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1790702821378" available="true">
+        <url>https://paloma.website/buket/korziny-s-hrizantemoy-bigudi-i-evkaliptom/</url>
+        <price>8050</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imumy83a0exlba3</picture>
+        <name>Корзины с хризантемой бигуди и эвкалиптом</name>
+        <vendor>PALOMA</vendor>
+        <description>Пышная осенняя композиция: хризантемы сорта Бигуди Перпл с веточками эвкалипта в плетёной корзине. Три размера — от компактной до большой.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1790858038885" available="true">
+        <url>https://paloma.website/buket/georginy-s-evkaliptom-stabilizirovannym-osennim/</url>
+        <price>9600</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>9</categoryId>
+        <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imupimy4oqaahfv</picture>
+        <name>Георгины с эвкалиптом стабилизированным осенним</name>
+        <vendor>PALOMA</vendor>
+        <description>Оранжевые георгины, эвкалипт стабилизированный</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791301432836" available="true">
+        <url>https://paloma.website/buket/vaza-seletti-canopie-amina/</url>
+        <price>30000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/canopie-amina-1.webp</picture>
+        <name>Ваза SELETTI Canopie «Amina»</name>
+        <vendor>PALOMA</vendor>
+        <description>Ваза-кукла «Amina» из новой коллекции Canopie — коллаборация итальянского бренда SELETTI и художницы Elena Cutolo. Оранжевое горлышко-воронка и узор из оранжевых квадратов на белом фарфоре, лицо нарисовано в стиле поп-арт. Работает и как ваза для букета, и как арт-объект сама по себе. Фарфор. Размеры 41,6 × 17,2 × 17,2 см. Поставляется в фирменной коробке Canopie.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791301433223" available="true">
+        <url>https://paloma.website/buket/vaza-seletti-canopie-zita/</url>
+        <price>30000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/canopie-zita-1.webp</picture>
+        <name>Ваза SELETTI Canopie «Zita»</name>
+        <vendor>PALOMA</vendor>
+        <description>Ваза-кукла «Zita» из новой коллекции Canopie — коллаборация итальянского бренда SELETTI и художницы Elena Cutolo. Бирюзовое горлышко-цилиндр и рассыпанные бирюзовые звёздочки на белом фарфоре, лицо нарисовано в стиле поп-арт. Работает и как ваза для букета, и как арт-объект сама по себе. Фарфор. Размеры 41,6 × 17,2 × 17,2 см. Поставляется в фирменной коробке Canopie.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791301433604" available="true">
+        <url>https://paloma.website/buket/vaza-seletti-canopie-kiki/</url>
+        <price>30000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/canopie-kiki-1.webp</picture>
+        <name>Ваза SELETTI Canopie «Kiki»</name>
+        <vendor>PALOMA</vendor>
+        <description>Ваза-кукла «Kiki» из новой коллекции Canopie — коллаборация итальянского бренда SELETTI и художницы Elena Cutolo. Голубое горлышко-чаша и горох в тонкую голубую полоску на белом фарфоре, лицо нарисовано в стиле поп-арт. Работает и как ваза для букета, и как арт-объект сама по себе. Фарфор. Размеры 41,6 × 17,2 × 17,2 см. Поставляется в фирменной коробке Canopie.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622440830" available="true">
+        <url>https://paloma.website/buket/vaza-iney/</url>
+        <price>9500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-inei.jpg</picture>
+        <name>Ваза «Иней»</name>
+        <vendor>PALOMA</vendor>
+        <description>Ваза из матового белого стекла с мягкими складками и волнистым горлом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622441201" available="true">
+        <url>https://paloma.website/buket/vaza-zavitok-golubaya/</url>
+        <price>8200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-zavitok-blue.jpg</picture>
+        <name>Ваза «Завиток» голубая</name>
+        <vendor>PALOMA</vendor>
+        <description>Голубая ваза из цветного стекла: волнистый край, жёлтая ручка-завиток и синяя ножка.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622441952" available="true">
+        <url>https://paloma.website/buket/vaza-zavitok-rozovaya/</url>
+        <price>7700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-zavitok-pink.jpg</picture>
+        <name>Ваза «Завиток» розовая</name>
+        <vendor>PALOMA</vendor>
+        <description>Розовая ваза из цветного стекла: волнистый край, голубая ручка-завиток и бордовая ножка.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622442625" available="true">
+        <url>https://paloma.website/buket/vaza-lenta-bordovaya/</url>
+        <price>6700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-lenta-bordo.jpg</picture>
+        <name>Ваза «Лента» бордовая</name>
+        <vendor>PALOMA</vendor>
+        <description>Высокая бордовая ваза с розовой стеклянной лентой-поясом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622443239" available="true">
+        <url>https://paloma.website/buket/vaza-akvarel/</url>
+        <price>6200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-akvarel.jpg</picture>
+        <name>Ваза «Акварель»</name>
+        <vendor>PALOMA</vendor>
+        <description>Высокий цилиндр из кремового стекла с изумрудными и сиреневыми разводами.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622443933" available="true">
+        <url>https://paloma.website/buket/vaza-pesok-shirokaya/</url>
+        <price>6000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-pesok-wide.jpg</picture>
+        <name>Ваза «Песок» широкая</name>
+        <vendor>PALOMA</vendor>
+        <description>Широкая ваза из стекла песочного оттенка с мелкими пузырьками воздуха.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622444620" available="true">
+        <url>https://paloma.website/buket/vaza-myata-s-ruchkami/</url>
+        <price>6000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-myata.jpg</picture>
+        <name>Ваза «Мята» с ручками</name>
+        <vendor>PALOMA</vendor>
+        <description>Цилиндр из мятного стекла с двумя ручками-завитками — жёлтой и терракотовой.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622445221" available="true">
+        <url>https://paloma.website/buket/vaza-kameshki/</url>
+        <price>5800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-kameshki.jpg</picture>
+        <name>Ваза «Камешки»</name>
+        <vendor>PALOMA</vendor>
+        <description>Ваза из стеклянных «колец» с переходом от пудрово-розового к терракотовому.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622445575" available="true">
+        <url>https://paloma.website/buket/vaza-pesok-s-gorlom/</url>
+        <price>5400</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-pesok-gorlo.jpg</picture>
+        <name>Ваза «Песок» с горлом</name>
+        <vendor>PALOMA</vendor>
+        <description>Ваза из стекла песочного оттенка: узкое высокое горло и широкое основание.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622445922" available="true">
+        <url>https://paloma.website/buket/vaza-lenta-pudrovaya/</url>
+        <price>4800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/vase-lenta-pudra.jpg</picture>
+        <name>Ваза «Лента» пудровая</name>
+        <vendor>PALOMA</vendor>
+        <description>Невысокая светло-розовая ваза с розовой стеклянной лентой-поясом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791622446336" available="true">
+        <url>https://paloma.website/buket/bordo/</url>
+        <price>14300</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/wed-bordo.jpg</picture>
+        <name>Бордо</name>
+        <vendor>PALOMA</vendor>
+        <description>Свадебный букет в глубокой винной гамме: антуриумы, каллы, орхидея ашима и каскад амаранта.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000001" available="true">
+        <url>https://paloma.website/buket/georgin/</url>
+        <price>5870</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/mono-georgin.jpg</picture>
+        <name>Георгин</name>
+        <vendor>PALOMA</vendor>
+        <description>Моно-букет из пышных георгинов. На фото — 11 шт.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000002" available="true">
+        <url>https://paloma.website/buket/hrizantema/</url>
+        <price>5060</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/mono-xrizantema.jpg</picture>
+        <name>Хризантема</name>
+        <vendor>PALOMA</vendor>
+        <description>Моно-букет из хризантем. На фото — 21 шт.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000003" available="true">
+        <url>https://paloma.website/buket/solnechnaya-osen/</url>
+        <price>4560</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/author-xrizantema-amarillis.jpg</picture>
+        <name>Солнечная осень</name>
+        <vendor>PALOMA</vendor>
+        <description>Авторский букет в тёплой осенней гамме: хризантема, амариллис, горец, маттиола и стабилизированный бук.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000004" available="true">
+        <url>https://paloma.website/buket/osennyaya-palitra/</url>
+        <price>20085</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/author-osennyaya-palitra.jpg</picture>
+        <name>Осенняя палитра</name>
+        <vendor>PALOMA</vendor>
+        <description>Большой авторский букет: гортензия, каллы, пионовидная роза, дельфиниум, амариллис, хризантема, сангисорба, антуриум и стабилизированный бук.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000005" available="true">
+        <url>https://paloma.website/buket/georgin-i-celoziya/</url>
+        <price>7890</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/author-georgin-celoziya.jpg</picture>
+        <name>Георгин и целозия</name>
+        <vendor>PALOMA</vendor>
+        <description>Авторский букет с георгином, целозией и ягодами шиповника, хризантемой и стабилизированным эвкалиптом.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000006" available="true">
+        <url>https://paloma.website/buket/belaya-orhideya/</url>
+        <price>8820</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/wed-eustoma-orhideya.jpg</picture>
+        <name>Белая орхидея</name>
+        <vendor>PALOMA</vendor>
+        <description>Свадебный букет: эустома, орхидея фаленопсис и каскад стабилизированного амаранта.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000007" available="true">
+        <url>https://paloma.website/buket/kally/</url>
+        <price>9200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/wed-kally.jpg</picture>
+        <name>Каллы</name>
+        <vendor>PALOMA</vendor>
+        <description>Свадебный букет из калл — лаконичный и элегантный.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000008" available="true">
+        <url>https://paloma.website/buket/pionovidnaya-nezhnost/</url>
+        <price>26800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/duo-gortenziya-kustovaya.jpg</picture>
+        <name>Пионовидная нежность</name>
+        <vendor>PALOMA</vendor>
+        <description>Дуо-букет из гортензии, пионовидной и кустовой пионовидной розы.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000009" available="true">
+        <url>https://paloma.website/buket/gortenziya-i-roza/</url>
+        <price>14170</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/duo-gortenziya-roza.jpg</picture>
+        <name>Гортензия и роза</name>
+        <vendor>PALOMA</vendor>
+        <description>Дуо-букет из гортензии и пионовидной розы.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000010" available="true">
+        <url>https://paloma.website/buket/osennyaya-korzina/</url>
+        <price>19080</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/basket-osennyaya.jpg</picture>
+        <name>Осенняя корзина</name>
+        <vendor>PALOMA</vendor>
+        <description>Осенняя композиция в корзине: амариллис, хризантема, георгин, целозия, шиповник, мискантус, стабилизированные бук и эвкалипт.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000011" available="true">
+        <url>https://paloma.website/buket/bolshaya-korzina/</url>
+        <price>60260</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/basket-gortenziya-georgin.jpg</picture>
+        <name>Большая корзина</name>
+        <vendor>PALOMA</vendor>
+        <description>Большая корзина: голубая гортензия, георгины-помпоны, пионовидные и кустовые пионовидные розы, стабилизированный эвкалипт.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000012" available="true">
+        <url>https://paloma.website/buket/konfeta-schaste-praline-s-fistashkoy-i-bazilikom/</url>
+        <price>440</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-fistashka-bazilik.jpg</picture>
+        <name>Конфета «Счастье» пралине с фисташкой и базиликом</name>
+        <vendor>PALOMA</vendor>
+        <description>Французское пралине с эссенцией базилика на масле виноградной косточки и кусочками фисташки в молочном шоколаде 30%. Ручная работа фабрики «Счастье». Масса 50 г, 566 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000013" available="true">
+        <url>https://paloma.website/buket/konfeta-schaste-praline-s-greckim-orehom-i-karamelyu/</url>
+        <price>440</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-gretskiy-karamel.jpg</picture>
+        <name>Конфета «Счастье» пралине с грецким орехом и карамелью</name>
+        <vendor>PALOMA</vendor>
+        <description>Пралине с обжаренными вручную грецкими орехами и домашней сливочной карамелью в молочном шоколаде. Масса 50 г, 546 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000014" available="true">
+        <url>https://paloma.website/buket/konfeta-schaste-praline-s-chernoslivom-i-greckim-orehom/</url>
+        <price>440</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-chernosliv.jpg</picture>
+        <name>Конфета «Счастье» пралине с черносливом и грецким орехом</name>
+        <vendor>PALOMA</vendor>
+        <description>Пралине с отборным черносливом и обжаренными грецкими орехами в горьком шоколаде. Масса 50 г, 470 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000015" available="true">
+        <url>https://paloma.website/buket/konfeta-schaste-praline-s-kunzhutom-i-morskoy-solyu/</url>
+        <price>440</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-kunzhut-sol.jpg</picture>
+        <name>Конфета «Счастье» пралине с кунжутом и морской солью</name>
+        <vendor>PALOMA</vendor>
+        <description>Фундучно-арахисовое пралине с чёрным и белым кунжутом, морской солью и хрустящей вафельной крошкой в горьком шоколаде. Яркий сладко-солёный вкус. Масса 50 г, 533 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000016" available="true">
+        <url>https://paloma.website/buket/konfety-schaste-praline-4-sht-3/</url>
+        <price>1520</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-praline-4-n3.jpg</picture>
+        <name>Конфеты «Счастье» пралине, 4 шт. № 3</name>
+        <vendor>PALOMA</vendor>
+        <description>Подарочная коробка из четырёх кубиков пралине «Счастье» разных вкусов — набор № 3. Ручная работа по рецептам французской школы. Масса 200 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000017" available="true">
+        <url>https://paloma.website/buket/konfety-schaste-praline-4-sht-4/</url>
+        <price>1640</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-praline-4-n4.jpg</picture>
+        <name>Конфеты «Счастье» пралине, 4 шт. № 4</name>
+        <vendor>PALOMA</vendor>
+        <description>Подарочная коробка из четырёх кубиков пралине «Счастье» разных вкусов — набор № 4. Ручная работа по рецептам французской школы. Масса 200 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000018" available="true">
+        <url>https://paloma.website/buket/mini-praline-schaste-10-sht-assorti/</url>
+        <price>1100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-mini-10.jpg</picture>
+        <name>Мини-пралине «Счастье», 10 шт. Ассорти</name>
+        <vendor>PALOMA</vendor>
+        <description>10 мини-пралине разных вкусов: фундук, грецкий орех с карамелью, кокос, имбирь с семенами чиа, малина с розовым перцем и другие — в молочном шоколаде. Масса 85 г, 548 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000019" available="true">
+        <url>https://paloma.website/buket/mini-praline-schaste-20-sht-assorti/</url>
+        <price>2200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-mini-20.jpg</picture>
+        <name>Мини-пралине «Счастье», 20 шт. Ассорти</name>
+        <vendor>PALOMA</vendor>
+        <description>20 мини-пралине разных вкусов: фундук, грецкий орех с карамелью, кокос, имбирь с семенами чиа, малина с розовым перцем и другие — в молочном шоколаде. Масса 170 г, 548 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000020" available="true">
+        <url>https://paloma.website/buket/mini-praline-schaste-36-sht-assorti/</url>
+        <price>3800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-mini-36.jpg</picture>
+        <name>Мини-пралине «Счастье», 36 шт. Ассорти</name>
+        <vendor>PALOMA</vendor>
+        <description>36 мини-пралине 14 вкусов в молочном и горьком шоколаде: ваниль с фундуком, кофе, карамель с грецким орехом, грильяж, кунжут с морской солью, фисташка с базиликом, вишня с миндалём, лаванда и другие. Масса 306 г, 540 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000021" available="true">
+        <url>https://paloma.website/buket/iriski-schaste-kollekciya-1/</url>
+        <price>1020</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-iriski-1.jpg</picture>
+        <name>Ириски «Счастье» — коллекция № 1</name>
+        <vendor>PALOMA</vendor>
+        <description>Сливочно-карамельные ириски ручной работы: карамель варят на натуральных сливках 33%, режут небольшими кубиками и покрывают шоколадом. Масса 140 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000022" available="true">
+        <url>https://paloma.website/buket/pechene-angel-schastya/</url>
+        <price>630</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-angel.jpg</picture>
+        <name>Печенье «Ангел счастья»</name>
+        <vendor>PALOMA</vendor>
+        <description>Домашнее кунжутное печенье в форме ангела с морской солью и ганашем из молочного шоколада. Печётся по рецептам, которые фабрика «Счастье» хранит больше десяти лет. Масса 100 г, 449 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000023" available="true">
+        <url>https://paloma.website/buket/pechene-serdce-schastya/</url>
+        <price>630</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-serdce.jpg</picture>
+        <name>Печенье «Сердце счастья»</name>
+        <vendor>PALOMA</vendor>
+        <description>Имбирное печенье в форме сердца с начинкой из клюквы и белого шоколада с розовым перцем. Из коллекции печенья Friends фабрики «Счастье». Масса 90 г, 310 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000024" available="true">
+        <url>https://paloma.website/buket/pechene-shokoladnyy-mishka/</url>
+        <price>630</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-mishka.jpg</picture>
+        <name>Печенье «Шоколадный Мишка»</name>
+        <vendor>PALOMA</vendor>
+        <description>Домашнее шоколадное печенье в форме мишки с ганашем из белого шоколада. Из коллекции печенья Friends фабрики «Счастье».</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000025" available="true">
+        <url>https://paloma.website/buket/molochnyy-shokolad-schaste-kids/</url>
+        <price>380</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-kids-shokolad.jpg</picture>
+        <name>Молочный шоколад «Счастье» Kids</name>
+        <vendor>PALOMA</vendor>
+        <description>Молочный шоколад из детской коллекции «Счастье» KIDS — в сказочной коробочке les petits Chocolats.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000026" available="true">
+        <url>https://paloma.website/buket/nabor-konfet-schaste-kids/</url>
+        <price>690</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>6</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/schaste-kids-nabor.jpg</picture>
+        <name>Набор конфет «Счастье» KIDS</name>
+        <vendor>PALOMA</vendor>
+        <description>Детская коллекция «Счастье»: 6 мини-пралине в молочном шоколаде с любимыми детскими вкусами — малина, клубника, кокос, ваниль и печенье. В сказочной коробочке KIDS. Масса 51 г, 558 ккал / 100 г.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000027" available="true">
+        <url>https://paloma.website/buket/belyy-zhemchug/</url>
+        <price>8030</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/wed-belyj-zhemchug.jpg</picture>
+        <name>Белый жемчуг</name>
+        <vendor>PALOMA</vendor>
+        <description>Свадебный букет в белом: эустома, георгины-помпоны, каллы и львиный зев. Ручка обвита атласной лентой с нитями жемчуга.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000028" available="true">
+        <url>https://paloma.website/buket/bordovye-hrizantemy/</url>
+        <price>2680</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/mono-xrizantema-bordo-m.jpg</picture>
+        <name>Бордовые хризантемы</name>
+        <vendor>PALOMA</vendor>
+        <description>Моно-букет из крупных бордовых хризантем в матовой упаковке PALOMA. Глубокий винный цвет и пышные головки — самый осенний букет сезона.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000029" available="true">
+        <url>https://paloma.website/buket/pudrovye-francuzskie-rozy/</url>
+        <price>3145</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>7</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/mono-french-pudra.jpg</picture>
+        <name>Пудровые французские розы</name>
+        <vendor>PALOMA</vendor>
+        <description>Моно-букет из нежно-розовых французских роз с волнистыми, будто кружевными лепестками. В матовой упаковке PALOMA.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
       </offer>
     </offers>
   </shop>

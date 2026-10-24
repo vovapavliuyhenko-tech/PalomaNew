@@ -14,6 +14,9 @@ Disallow: /catalog-admin.html
 
 # Метки рекламных кампаний не создают отдельные страницы в индексе
 Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid
+# Товары и разделы живут на /buket/<slug>/ и /katalog/<раздел>/ — параметры не плодят дублей
+Clean-param: slug&id /product.html
+Clean-param: cat /catalog.html
 
 # AI-краулеры — разрешаем индексацию для ответов ассистентов
 User-agent: GPTBot

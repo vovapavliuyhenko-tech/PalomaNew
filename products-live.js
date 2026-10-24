@@ -117,7 +117,7 @@
   function cardHtml(p) {
     var slug = encodeURIComponent(p.slug || p.id);
     var name = esc(p.name || "");
-    var href = "product.html?slug=" + slug;
+    var href = "/buket/" + slug + "/";
     return '<article class="home-product-card">' +
       '<a href="' + href + '" class="home-product-card__media" aria-label="Подробнее: ' + name + '">' +
         (p.image
@@ -226,9 +226,12 @@
     var hidden = 0;
 
     Array.prototype.forEach.call(cards, function (card) {
-      var link = card.querySelector('a[href*="slug="]');
+      var link = card.querySelector('a[href*="slug="], a[href*="/buket/"]');
       if (!link) return;
-      var slug = (link.getAttribute("href").split("slug=")[1] || "").split("&")[0];
+      var href0 = link.getAttribute("href");
+      var slug = href0.indexOf("/buket/") >= 0
+        ? (href0.split("/buket/")[1] || "").split("/")[0]
+        : (href0.split("slug=")[1] || "").split("&")[0];
       try { slug = decodeURIComponent(slug); } catch (e) { /* оставляем как есть */ }
       if (!slug) return;
 
