@@ -344,12 +344,12 @@
 }
 
 /* Chrysanthemums — protea and hydrangea mix */
-/* Самый сезон — георгины крупным планом, кадр заполнен целиком */
+/* Самый сезон — букет пудровых хризантем (24.10.2026, вместо георгинов) */
 .home-categories__photo--chrysanthemums {
   background-image:
     linear-gradient(to bottom, rgba(27, 26, 24, 0.04) 0%, rgba(27, 26, 24, 0.18) 100%),
-    url("images/paloma/catalog/season-tile.jpg");
-  background-position: center 45%;
+    url("images/paloma/catalog/mono-xrizantema.jpg");
+  background-position: center 38%;
 }
 
 .home-categories__photo--bouquets {
