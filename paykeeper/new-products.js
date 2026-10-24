@@ -212,4 +212,17 @@ module.exports = [
     image: "images/paloma/catalog/wed-belyj-zhemchug.jpg", price: 8030, priceFrom: false,
     sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
   }),
+  /* Бордовые хризантемы (24.10.2026): фото под каждый размер — product.js SIZE_PHOTOS */
+  Object.assign({}, NEW, {
+    id: "p1791800000028", name: "Бордовые хризантемы", categories: ["mono", "season", "autumn"],
+    composition: "Хризантема одноголовая",
+    desc: "Моно-букет из крупных бордовых хризантем в матовой упаковке PALOMA. Глубокий винный цвет и пышные головки — самый осенний букет сезона.",
+    image: "images/paloma/catalog/mono-xrizantema-bordo-m.jpg", price: 2680, priceFrom: false,
+    sizes: [
+      { code: "S", label: "S · 5 шт", priceDelta: 0 },
+      { code: "M", label: "M · 7 шт", priceDelta: 920 },
+      { code: "L", label: "L · 11 шт", priceDelta: 2760 },
+    ],
+    photoSize: "M",
+  }),
 ];

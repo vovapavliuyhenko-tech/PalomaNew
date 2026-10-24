@@ -573,6 +573,12 @@
       M: "images/paloma/catalog/chrysanthemum-baskets-m.webp",
       L: "images/paloma/catalog/chrysanthemum-baskets-l.webp",
     },
+    /* «Бордовые хризантемы» — 5 / 7 / 11 шт */
+    p1791800000028: {
+      S: "images/paloma/catalog/mono-xrizantema-bordo-s.jpg",
+      M: "images/paloma/catalog/mono-xrizantema-bordo-m.jpg",
+      L: "images/paloma/catalog/mono-xrizantema-bordo-l.jpg",
+    },
   };
 
   function sizePhotosFor() {
