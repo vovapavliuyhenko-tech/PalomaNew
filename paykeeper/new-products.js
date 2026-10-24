@@ -225,4 +225,12 @@ module.exports = [
     ],
     photoSize: "M",
   }),
+  /* 24.10.2026 */
+  Object.assign({}, NEW, {
+    id: "p1791800000029", name: "Пудровые французские розы", categories: ["online", "mono"],
+    composition: "Французская роза",
+    desc: "Моно-букет из нежно-розовых французских роз с волнистыми, будто кружевными лепестками. В матовой упаковке PALOMA.",
+    image: "images/paloma/catalog/mono-french-pudra.jpg", price: 3145, priceFrom: false,
+    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
+  }),
 ];
