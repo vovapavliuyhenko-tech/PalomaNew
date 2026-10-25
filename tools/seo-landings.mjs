@@ -196,7 +196,7 @@ export function buildLandings({ tpl, products, write, esc, money, abs, purl, min
     return `<a class="lp-card" href="${purl(p)}">` +
       (p.image ? `<span class="lp-card__img"><img src="${esc(p.image)}" alt="${esc(p.name)} — букет PALOMA" loading="lazy" decoding="async" width="600" height="800"></span>` : "") +
       `<span class="lp-card__name">${esc(p.name)}</span>` +
-      `<span class="lp-card__price">${p.priceFrom || many ? "от " : ""}${money(minPrice(p))}</span></a>`;
+      `<span class="lp-card__price">${money(minPrice(p))}</span></a>`;
   };
 
   const steps = `<ol class="lp-steps">
@@ -231,7 +231,7 @@ export function buildLandings({ tpl, products, write, esc, money, abs, purl, min
     <header class="lp-hero">
       <h1 class="lp-title">${esc(h1)}</h1>
       <p class="lp-lead">${esc(lead)}</p>
-      <p class="lp-badges"><span>от ${money(Math.min(...list.map(minPrice)))}</span><span>доставка за 1–1,5 часа</span><span>фото до отправки</span></p>
+      <p class="lp-badges"><span>доставка за 1–1,5 часа</span><span>фото до отправки</span></p>
     </header>
     <section class="lp-grid" aria-label="Букеты">${list.map(card).join("")}</section>
     <p class="lp-more"><a class="lp-btn" href="/catalog.html">Смотреть весь каталог</a> <a class="lp-btn lp-btn--line" href="/bouquet-create.html">Собрать свой букет</a></p>

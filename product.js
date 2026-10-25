@@ -168,7 +168,7 @@
     var img = absUrl((rawProduct && rawProduct.image) || product.image) || "";
     var raw = (rawProduct && rawProduct.desc) || product.composition || "";
     var priceTxt = product.price
-      ? (product.priceFrom ? "от " : "") + formatPrice(product.price) + ". "
+      ? formatPrice(product.price) + ". "
       : "";
     var desc = (
       product.name +
@@ -277,7 +277,7 @@
       rawProduct && rawProduct.price != null ? rawProduct.price : product.price;
     const total = budgetMode ? product.price : base + sizePriceDelta;
     priceEl.textContent =
-      (product.priceFrom ? "от " : "") + formatPrice(total);
+      formatPrice(total);
   }
 
   function showNotFound() {
@@ -844,7 +844,7 @@
           '<div class="home-product-card__body">' +
           '<h3 class="home-product-card__title"><a href="' + href + '">' + esc(p.name) + "</a></h3>" +
           /* «от» — как в каталоге и в карусели на главной: цена начальная */
-          '<p class="home-product-card__price">' + (p.priceFrom ? "от " : "") + formatPrice(p.price) + "</p>" +
+          '<p class="home-product-card__price">' + formatPrice(p.price) + "</p>" +
           '<div class="home-product-card__actions">' +
           '<a href="' + href + '" class="home-product-card__more">Подробнее</a>' +
           "</div></div></article>"

@@ -111,7 +111,7 @@
   function priceText(p) {
     var many = Array.isArray(p.sizes) && p.sizes.length > 1;
     var v = many ? minPrice(p) : Number(p.price || 0);
-    return (p.priceFrom || many ? "от " : "") + v.toLocaleString("ru-RU") + " ₽";
+    return v.toLocaleString("ru-RU") + " ₽";
   }
 
   function cardHtml(p) {

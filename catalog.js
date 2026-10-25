@@ -239,7 +239,7 @@
             ? `<p class="product-card__desc">${esc(product.description)}</p>`
             : ""
         }
-        <p class="product-card__price">${product.priceFrom ? "от " : ""}${product.price.toLocaleString("ru-RU")} ₽</p>
+        <p class="product-card__price">${product.price.toLocaleString("ru-RU")} ₽</p>
         <div class="product-card__btns">
           <a href="/buket/${encodeURIComponent(slug)}/"
              class="product-card__btn product-card__btn--detail"

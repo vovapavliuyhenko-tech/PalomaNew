@@ -86,7 +86,7 @@ function productPage(tpl, p, all) {
   const catLabel = c0 ? CATS[c0].label : "Каталог";
   const many = (p.sizes || []).length > 1;
   const lo = minPrice(p), hi = maxPrice(p);
-  const priceTxt = (p.priceFrom || many ? "от " : "") + money(lo);
+  const priceTxt = money(lo);
   const gift = isGift(p);
   const title = gift
     ? `${p.name} — купить в Новороссийске, ${priceTxt} | PALOMA`
@@ -192,7 +192,7 @@ function categoryPage(tpl, cat, list) {
   s = s.replace('<h1 class="catalog-hero__title">Каталог</h1>', `<h1 class="catalog-hero__title">${esc(C.h1)}</h1>`);
   const block = `<section class="seo-cat" aria-label="${esc(C.label)}"><p class="seo-cat__text">${esc(C.text)}</p>` +
     `<nav class="seo-links" aria-label="Все позиции раздела"><p class="seo-links__t">${esc(C.label)}: ${list.length} ${list.length % 10 === 1 && list.length % 100 !== 11 ? "позиция" : "позиций"}</p>` +
-    list.map((p) => `<a href="${purl(p)}">${esc(p.name)} — ${(p.priceFrom || (p.sizes || []).length > 1 ? "от " : "") + money(minPrice(p))}</a>`).join("") +
+    list.map((p) => `<a href="${purl(p)}">${esc(p.name)} — ${money(minPrice(p))}</a>`).join("") +
     `</nav>` + landingLinks(esc) + `</section>`;
   s = s.replace("</main>", `  ${block}\n  </main>`);
   s = s.replace(/href="#([^"]*)"/g, (m, h) => `href="/katalog/${cat}/#${h}"`);
