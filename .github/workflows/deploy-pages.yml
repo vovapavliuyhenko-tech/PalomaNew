@@ -6,6 +6,10 @@ on:
   push:
     branches: [main, gh-pages]
   workflow_dispatch:
+  # Раз в сутки (06:00 МСК) — пересобрать SEO-страницы: новые букеты из
+  # админки попадают в поиск без ручной публикации.
+  schedule:
+    - cron: "0 3 * * *"
 
 permissions:
   contents: read
@@ -43,6 +47,17 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # SEO: страницы букетов /buket/<slug>/, разделов /katalog/<раздел>/,
+      # sitemap.xml, фид Яндекса и свежий запасной каталог — из базы товаров.
+      # Сбой генерации не должен останавливать публикацию сайта.
+      - name: SEO-страницы из базы
+        continue-on-error: true
+        run: node tools/build-seo.mjs
 
       # Раньше здесь стояло `path: .` — на сайт уезжала ВСЯ папка, включая
       # исходники облачной функции, схему базы и служебные скрипты. Всё это
@@ -123,3 +138,15 @@ jobs:
         id: deploy4
         if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure' && steps.deploy3.outcome == 'failure'
         uses: actions/deploy-pages@v4
+
+      # IndexNow: сразу сообщаем Яндексу (и Bing) обо всех адресах из sitemap,
+      # чтобы новые букеты попадали в поиск за часы, а не недели.
+      - name: IndexNow
+        continue-on-error: true
+        run: |
+          if [ -f indexnow-urls.txt ]; then
+            node -e "const u=require(\"fs\").readFileSync(\"indexnow-urls.txt\",\"utf8\").trim().split(\"\n\").slice(0,9000);
+            fetch(\"https://yandex.com/indexnow\",{method:\"POST\",headers:{\"Content-Type\":\"application/json; charset=utf-8\"},
+            body:JSON.stringify({host:\"paloma.website\",key:\"5ba199760698e3f681182c57fefd5987\",keyLocation:\"https://paloma.website/5ba199760698e3f681182c57fefd5987.txt\",urlList:u})})
+            .then(r=>console.log(\"IndexNow\",r.status,u.length))"
+          fi
