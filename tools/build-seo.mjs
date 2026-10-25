@@ -21,6 +21,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { buildLandings, landingLinks } from "./seo-landings.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..");
 const SITE = "https://paloma.website";
@@ -192,7 +193,7 @@ function categoryPage(tpl, cat, list) {
   const block = `<section class="seo-cat" aria-label="${esc(C.label)}"><p class="seo-cat__text">${esc(C.text)}</p>` +
     `<nav class="seo-links" aria-label="Все позиции раздела"><p class="seo-links__t">${esc(C.label)}: ${list.length} ${list.length % 10 === 1 && list.length % 100 !== 11 ? "позиция" : "позиций"}</p>` +
     list.map((p) => `<a href="${purl(p)}">${esc(p.name)} — ${(p.priceFrom || (p.sizes || []).length > 1 ? "от " : "") + money(minPrice(p))}</a>`).join("") +
-    `</nav></section>`;
+    `</nav>` + landingLinks(esc) + `</section>`;
   s = s.replace("</main>", `  ${block}\n  </main>`);
   s = s.replace(/href="#([^"]*)"/g, (m, h) => `href="/katalog/${cat}/#${h}"`);
   return s;
@@ -226,6 +227,8 @@ const ptpl = read("product.html"), ctpl = read("catalog.html");
 
 fs.rmSync(path.join(ROOT, "buket"), { recursive: true, force: true });
 fs.rmSync(path.join(ROOT, "katalog"), { recursive: true, force: true });
+fs.rmSync(path.join(ROOT, "povod"), { recursive: true, force: true });
+fs.rmSync(path.join(ROOT, "dostavka"), { recursive: true, force: true });
 for (const p of products) write(`buket/${p.slug}/index.html`, productPage(ptpl, p, products));
 const catPages = [];
 for (const cat of Object.keys(CATS)) {
@@ -237,10 +240,13 @@ for (const cat of Object.keys(CATS)) {
 
 /* статические страницы — из прежней карты сайта, без старых product.html?slug */
 const old = fs.existsSync(path.join(ROOT, "sitemap.xml")) ? read("sitemap.xml") : "";
-const statics = [...old.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).filter((u) => !/product\.html\?|\/buket\/|\/katalog\//.test(u));
+const statics = [...old.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).filter((u) => !/product\.html\?|\/buket\/|\/katalog\/|\/povod\/|\/dostavka\//.test(u));
 const urls = [
   ...statics.map((loc) => ({ loc, freq: /\/$|catalog\.html$/.test(loc) ? "daily" : "weekly", pr: /\/$/.test(loc) ? "1.0" : /catalog\.html$/.test(loc) ? "0.9" : "0.7" })),
   ...catPages.map((c) => ({ loc: `${SITE}/katalog/${c}/`, freq: "daily", pr: "0.9" })),
+  /* посадочные страницы под поводы и города */
+  ...buildLandings({ tpl: read("delivery.html"), products, write, esc, money, abs, purl, minPrice, cats, SITE })
+    .map((loc) => ({ loc, freq: "weekly", pr: "0.85" })),
   ...products.map((p) => ({ loc: SITE + purl(p), freq: "weekly", pr: isGift(p) ? "0.6" : "0.8", img: abs(p.image) })),
 ];
 /* запасной каталог сайта — свежий снимок базы, чтобы новый посетитель
