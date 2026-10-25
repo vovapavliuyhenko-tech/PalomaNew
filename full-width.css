@@ -150,12 +150,12 @@ html::-webkit-scrollbar-thumb:hover { background: #C92748; }
 html body .product-card__price,
 html body .home-product-card__price,
 html body .lp-card__price {
-  font-size: 18px !important;
+  font-size: 21px !important;
   color: #1B1A18 !important;
   line-height: 1.25 !important;
 }
 @media (max-width: 700px) {
   html body .product-card__price,
   html body .home-product-card__price,
-  html body .lp-card__price { font-size: 15px !important; }
+  html body .lp-card__price { font-size: 17px !important; }
 }
