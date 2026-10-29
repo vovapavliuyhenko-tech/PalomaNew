@@ -1312,7 +1312,7 @@
     const opt = document.getElementById("coSplitPayOption");
     const ep = splitEndpoint();
     if (!opt || !ep || typeof fetch !== "function") return;
-    fetch(ep + "?a=ping", { cache: "no-store" })
+    fetch(ep + "?a=wake", { cache: "no-store" })
       .then((r) => r.json())
       .then((d) => { if (d && d.split) opt.hidden = false; })
       .catch(() => { /* сервер спит или Сплит не подключён — вариант не показываем */ });

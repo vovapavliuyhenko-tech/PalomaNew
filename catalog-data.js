@@ -7,6 +7,7 @@
   "use strict";
 
   const CATEGORY_LABELS = {
+    newyear: "Новый год",
     autumn: "Осень",
     online: "Онлайн-витрина",
     season: "Самый сезон",
@@ -143,7 +144,8 @@
       /* «Все» — только цветы: вазы, посуда и шоколад живут в своём разделе
          «Вазы и подарки» и общий каталог не засоряют (просьба владельца 21.10.2026). */
       if (want === "all") {
-        return this.getAll().filter((p) => !p.categories.length || p.categories.some((c) => c !== "vases"));
+        /* новогодние игрушки — тоже только в своём разделе «Новый год» */
+        return this.getAll().filter((p) => !p.categories.length || p.categories.some((c) => c !== "vases" && c !== "newyear"));
       }
       return this.getAll().filter((p) => p.categories.includes(want));
     },

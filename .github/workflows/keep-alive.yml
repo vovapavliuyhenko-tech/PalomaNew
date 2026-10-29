@@ -9,4 +9,4 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -s -m 90 "https://palomanew.onrender.com/?a=ping" || true
+      - run: curl -s -m 90 "https://palomanew.onrender.com/?a=wake" || true

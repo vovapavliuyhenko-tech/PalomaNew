@@ -48,8 +48,12 @@
      строку лучше убрать. Сейчас пусто: правки 30.09.2026 перенесены в базу. */
   var PRODUCT_OVERRIDES = {};
 
+  /* Сняты с продажи (по просьбе владельца). Убираем из любого списка —
+     из базы, из запасного каталога и из кэша браузера. */
+  var HIDDEN_IDS = { m10: 1, w2: 1 }; /* Жёлтые гладиолусы, Классический Гладиолус — 29.10.2026 */
+
   function pinCategories(list) {
-    return list.map(function (p) {
+    return list.filter(function (p) { return !(p && HIDDEN_IDS[p.id]); }).map(function (p) {
       var extra = p && PINNED_CATEGORIES[p.id];
       var over = p && PRODUCT_OVERRIDES[p.id];
       if (!extra && !over) return p;
@@ -290,8 +294,13 @@
   } catch (e) { /* приватный режим, переполненное хранилище */ }
 
   /* ── 2. в фоне: свежий список ── */
+  var REFRESH_MS = 20 * 60 * 1000;
   function refresh() {
     if (typeof fetch !== "function") return;
+    try {
+      var box0 = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (box0 && box0.at && Date.now() - box0.at < REFRESH_MS) return; /* кэш свежий — базу не будим */
+    } catch (e) { /* нет кэша — идём на сервер */ }
     function get(i) {
       return fetch(APIS[i] + "?a=products", { cache: "no-store" })
         .then(function (r) { return r.ok ? r.json() : null; })

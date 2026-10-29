@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-25 21:04">
+<yml_catalog date="2026-10-29 12:53">
   <shop>
     <name>PALOMA</name>
     <company>PALOMA — студия цветов и кофе, Новороссийск</company>
@@ -14,8 +14,9 @@
       <category id="6">Вазы и подарки</category>
       <category id="7">Онлайн-витрина</category>
       <category id="8">Самый сезон</category>
-      <category id="9">Осенние букеты</category>
-      <category id="10">Бестселлеры</category>
+      <category id="9">Новый год</category>
+      <category id="10">Осенние букеты</category>
+      <category id="11">Бестселлеры</category>
     </categories>
     <offers>
       <offer id="m1" available="true">
@@ -157,19 +158,6 @@
         <name>Нео-серебро</name>
         <vendor>PALOMA</vendor>
         <description>Серебристая калла и антуриум с георгином и амарантом — графичный букет с металлическим блеском.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="w2" available="true">
-        <url>https://paloma.website/buket/klassicheskiy-gladiolus/</url>
-        <price>3000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/wed-gladiolus.jpg</picture>
-        <name>Классический Гладиолус</name>
-        <vendor>PALOMA</vendor>
-        <description>Белый гладиолус в чистом моно-исполнении — строгая классика для церемонии.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1166,7 +1154,7 @@
         <url>https://paloma.website/buket/luara/</url>
         <price>5330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>10</categoryId>
+        <categoryId>11</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n38.jpg</picture>
         <name>Луара</name>
         <vendor>PALOMA</vendor>
@@ -1608,7 +1596,7 @@
         <url>https://paloma.website/buket/korziny-s-hrizantemoy-bigudi-i-evkaliptom/</url>
         <price>8050</price>
         <currencyId>RUR</currencyId>
-        <categoryId>9</categoryId>
+        <categoryId>10</categoryId>
         <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imumy83a0exlba3</picture>
         <name>Корзины с хризантемой бигуди и эвкалиптом</name>
         <vendor>PALOMA</vendor>
@@ -1621,7 +1609,7 @@
         <url>https://paloma.website/buket/georginy-s-evkaliptom-stabilizirovannym-osennim/</url>
         <price>9600</price>
         <currencyId>RUR</currencyId>
-        <categoryId>9</categoryId>
+        <categoryId>10</categoryId>
         <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imupimy4oqaahfv</picture>
         <name>Георгины с эвкалиптом стабилизированным осенним</name>
         <vendor>PALOMA</vendor>

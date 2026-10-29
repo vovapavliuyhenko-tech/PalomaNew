@@ -57,7 +57,7 @@
   <meta name="twitter:image" content="https://paloma.website/images/paloma/hero/hero-main.jpg">
   <link rel="stylesheet" href="mobile-polish.css?v=42">
   <script src="paloma-schema.js?v=1"></script>
-  <link rel="stylesheet" href="full-width.css?v=7">
+  <link rel="stylesheet" href="full-width.css?v=8">
   <link rel="stylesheet" href="mobile-tune.css?v=88">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"Монобукеты в Новороссийске","url":"https://paloma.website/katalog/mono/","description":"Монобукеты из одного вида цветов: гортензии, пионовидные и французские розы, хризантемы, георгины. Выберите количество — от компактного букета до пышного. Покажем фото перед отправкой, доставим по Новороссийску в день заказа.","mainEntity":{"@type":"ItemList","numberOfItems":16,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://paloma.website/buket/gortenziya-kitay/","name":"Гортензия Китай"},{"@type":"ListItem","position":2,"url":"https://paloma.website/buket/belaya-gortenziya/","name":"Белая гортензия"},{"@type":"ListItem","position":3,"url":"https://paloma.website/buket/rozovaya-gortenziya/","name":"Розовая гортензия"},{"@type":"ListItem","position":4,"url":"https://paloma.website/buket/golubaya-gortenziya/","name":"Голубая гортензия"},{"@type":"ListItem","position":5,"url":"https://paloma.website/buket/bordovye-hrizantemy/","name":"Бордовые хризантемы"},{"@type":"ListItem","position":6,"url":"https://paloma.website/buket/pudrovye-francuzskie-rozy/","name":"Пудровые французские розы"},{"@type":"ListItem","position":7,"url":"https://paloma.website/buket/roza-mandarin/","name":"Роза сорта Мандарин"},{"@type":"ListItem","position":8,"url":"https://paloma.website/buket/roza-melon/","name":"Роза сорта Мелон"},{"@type":"ListItem","position":9,"url":"https://paloma.website/buket/francuzskaya-krasnaya-roza/","name":"Французская красная роза"},{"@type":"ListItem","position":10,"url":"https://paloma.website/buket/francuzskaya-rozovaya-roza/","name":"Французская розовая роза"},{"@type":"ListItem","position":11,"url":"https://paloma.website/buket/roza-fatima/","name":"Роза Фатима"},{"@type":"ListItem","position":12,"url":"https://paloma.website/buket/hrizantema/","name":"Хризантема"},{"@type":"ListItem","position":13,"url":"https://paloma.website/buket/georgin/","name":"Георгин"},{"@type":"ListItem","position":14,"url":"https://paloma.website/buket/georgin-piches/","name":"Георгин Пичес"},{"@type":"ListItem","position":15,"url":"https://paloma.website/buket/roza-silva-pink/","name":"Роза Сильва Пинк"},{"@type":"ListItem","position":16,"url":"https://paloma.website/buket/liliya/","name":"Лилия"}]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://paloma.website/"},{"@type":"ListItem","position":2,"name":"Каталог","item":"https://paloma.website/catalog.html"},{"@type":"ListItem","position":3,"name":"Монобукеты","item":"https://paloma.website/katalog/mono/"}]}]}</script>
 </head>
@@ -119,6 +119,20 @@
             <div class="catalog-dropdown" id="catalogDropdown" role="region" aria-labelledby="catalogNavTriggerCatalog">
               <div class="catalog-dropdown__inner">
                 <div class="catalog-dropdown__grid">
+
+                  <a href="catalog.html?cat=newyear"
+                     class="catalog-nav-item" data-cursor="hover" data-season-tab="newyear" hidden>
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2l5 7h-3l4 6h-3l4 6H5l4-6H6l4-6H7z"/>
+                        <path d="M12 21v1"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Новый год</span>
+                      <span class="catalog-nav-item__sub">Ёлочные игрушки и подарки</span>
+                    </div>
+                  </a>
 
                   <a href="catalog.html?cat=autumn"
                      class="catalog-nav-item" data-cursor="hover" data-season-tab="autumn" hidden>
@@ -417,6 +431,7 @@
       <!-- Сезонная вкладка. Спрятана в разметке и появляется сама, когда в
            каталоге есть хоть один товар с этим разделом (products-live.js).
            Управляется галочкой «Осень» в панели каталога. -->
+      <button type="button" class="catalog-filter-btn" data-filter="newyear" aria-pressed="false" data-season-tab="newyear" hidden>Новый год</button>
       <button type="button" class="catalog-filter-btn" data-filter="autumn" aria-pressed="false" data-season-tab="autumn" hidden>Осень</button>
       <!-- Праздничная вкладка. Показывается сама, когда в каталоге появляется
            хоть один товар с этим разделом, и так же сама исчезает, когда их
@@ -736,12 +751,12 @@
   </div>
 
   <script src="paloma-products.js?v=p63"></script>
-  <script src="products-live.js?v=16"></script>
-  <script src="catalog-data.js?v=p54"></script>
+  <script src="products-live.js?v=17"></script>
+  <script src="catalog-data.js?v=p55"></script>
   <script src="preloader.js?v=giraffe1"></script>
   <script src="attribution.js?v=1"></script>
   <script src="cart-core.js?v=seo1"></script>
-  <script src="payment-config.js?v=yr1"></script>
+  <script src="payment-config.js?v=wake1"></script>
   <script src="lead-send.js?v=bk1"></script>
   <script src="script.js?v=perf9"></script>
   <script src="footer-mobile.js?v=9" defer></script>

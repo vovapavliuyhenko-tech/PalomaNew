@@ -20,7 +20,7 @@ const crypto = require("crypto");
 
 /* Дата сборки архива. Видна в ?a=ping — по ней проверяют, что в облако
    загрузился именно свежий paloma-pay.zip, а не старый. */
-const BUILD = "2026-10-22-split2";
+const BUILD = "2026-10-29-wake";
 
 /* ── настройки из переменных окружения функции ── */
 const PK_SERVER = (process.env.PK_SERVER || "https://paloma.server.paykeeper.ru").replace(/\/+$/, "");
@@ -1355,6 +1355,13 @@ module.exports.handler = async function handler(event) {
   /* ── Проверка «какая версия функции сейчас работает». Без токена: отдаём
      только версию сборки и количества товаров, ничего секретного. Нужна,
      чтобы после загрузки нового архива было видно, доехал он или нет. ── */
+  /* Лёгкая проверка «сервер жив»: без базы — её можно дёргать сколько угодно */
+  if (action === "wake") {
+    let split = false;
+    try { split = require("./ypay").enabled(); } catch (e) { /* ок */ }
+    return reply(200, { ok: true, версия: BUILD, split }, origin);
+  }
+
   if (action === "ping") {
     const out = { ok: true, версия: BUILD };
     try { out.split = require("./ypay").enabled(); } catch (e) { out.split = false; }

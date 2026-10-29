@@ -1,4 +1,4 @@
-/* PALOMA — запасная копия каталога: снимок базы на 2026-10-25 (tools/build-seo.mjs при публикации).
+/* PALOMA — запасная копия каталога: снимок базы на 2026-10-29 (tools/build-seo.mjs при публикации).
    Сайт берёт каталог из базы (products-live.js); эта копия видна, только если сервер не ответил. */
 window.PALOMA_PRODUCTS = [
   {
@@ -651,49 +651,6 @@ window.PALOMA_PRODUCTS = [
     "placeholderGradient": {
       "main": "linear-gradient(135deg, #7f7b6c, #5b594e)",
       "hover": "linear-gradient(135deg, #706c5f, #4a473f)"
-    }
-  },
-  {
-    "id": "w2",
-    "desc": "Белый гладиолус в чистом моно-исполнении — строгая классика для церемонии.",
-    "name": "Классический Гладиолус",
-    "slug": "klassicheskiy-gladiolus",
-    "badge": null,
-    "image": "images/paloma/catalog/wed-gladiolus.jpg",
-    "pairs": "К капучино.",
-    "price": 3000,
-    "sizes": [
-      {
-        "code": "base",
-        "label": "Базовый",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "priceFrom": true,
-    "categories": [
-      "wedding"
-    ],
-    "composition": "Гладиолус",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #818680, #5d605c)",
-      "hover": "linear-gradient(135deg, #727671, #4b4e4a)"
     }
   },
   {

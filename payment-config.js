@@ -79,7 +79,7 @@ window.palomaFetch = function (query, init) {
     var cfg = window.PALOMA_PAYMENT_CONFIG || {};
     [cfg.PAYMENT_ENDPOINT, cfg.BACKUP_ENDPOINT].forEach(function (ep) {
       ep = String(ep || "");
-      if (ep && typeof fetch === "function") fetch(ep + "?a=ping", { cache: "no-store" }).catch(function () {});
+      if (ep && typeof fetch === "function") fetch(ep + "?a=wake", { cache: "no-store" }).catch(function () {});
     });
   } catch (e) { /* не мешаем странице */ }
 })();

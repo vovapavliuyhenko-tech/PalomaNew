@@ -118,6 +118,20 @@
               <div class="catalog-dropdown__inner">
                 <div class="catalog-dropdown__grid">
 
+                  <a href="catalog.html?cat=newyear"
+                     class="catalog-nav-item" data-cursor="hover" data-season-tab="newyear" hidden>
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 2l5 7h-3l4 6h-3l4 6H5l4-6H6l4-6H7z"/>
+                        <path d="M12 21v1"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">Новый год</span>
+                      <span class="catalog-nav-item__sub">Ёлочные игрушки и подарки</span>
+                    </div>
+                  </a>
+
                   <a href="catalog.html?cat=autumn"
                      class="catalog-nav-item" data-cursor="hover" data-season-tab="autumn" hidden>
                     <div class="catalog-nav-item__icon" aria-hidden="true">
@@ -415,6 +429,7 @@
       <!-- Сезонная вкладка. Спрятана в разметке и появляется сама, когда в
            каталоге есть хоть один товар с этим разделом (products-live.js).
            Управляется галочкой «Осень» в панели каталога. -->
+      <button type="button" class="catalog-filter-btn" data-filter="newyear" aria-pressed="false" data-season-tab="newyear" hidden>Новый год</button>
       <button type="button" class="catalog-filter-btn" data-filter="autumn" aria-pressed="false" data-season-tab="autumn" hidden>Осень</button>
       <!-- Праздничная вкладка. Показывается сама, когда в каталоге появляется
            хоть один товар с этим разделом, и так же сама исчезает, когда их
@@ -733,12 +748,12 @@
   </div>
 
   <script src="paloma-products.js?v=p63"></script>
-  <script src="products-live.js?v=16"></script>
-  <script src="catalog-data.js?v=p54"></script>
+  <script src="products-live.js?v=17"></script>
+  <script src="catalog-data.js?v=p55"></script>
   <script src="preloader.js?v=giraffe1"></script>
   <script src="attribution.js?v=1"></script>
   <script src="cart-core.js?v=seo1"></script>
-  <script src="payment-config.js?v=yr1"></script>
+  <script src="payment-config.js?v=wake1"></script>
   <script src="lead-send.js?v=bk1"></script>
   <script src="script.js?v=perf9"></script>
   <script src="footer-mobile.js?v=9" defer></script>
