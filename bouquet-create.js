@@ -1,14 +1,14 @@
 /* ════════════════════════════════════════════════════════
-   bouquet-create.js — конструктор «Соберите букет» (bouquet-create.html)
+   bouquet-create.js — конструктор «Соберите букет» (v2, по видео владельца)
 
-   Шаг 1 — выбор цветов (цвет, количество, поиск, готовые идеи).
-   Шаг 2 — букет и открытка: перемешать, фон, зелень, двигать цветы,
-           добавки (гипсофила, лаванда…), текст открытки.
-   Шаг 3 — упаковка, лента, итог → «Оформить заказ» (в корзину и на
-           оформление) или «Скачать картинку».
+   Сверху — букет, вид сверху: круг из цветов в упаковке, ленты, зелень,
+   открытка, конфеты, мишка. Под ним — «N цветов · большой букет» и
+   «Расставить автоматически». Вкладки: Цветы / Упаковка / Дополнения /
+   Состав. Внизу всегда — сумма и «Отправить заявку» → панель заявки
+   (имя, телефон, дата) → «Заявка отправлена».
 
-   Данные — bouquet-create-data.js, рисунки — flower-art.js.
-   Состояние хранится в localStorage, чтобы букет не пропал при обновлении.
+   Данные — bouquet-create-data.js (flowers + v2), рисунки — flower-art.js.
+   Заявка уходит менеджеру в Telegram через lead-send.js (palomaSendLead).
    ════════════════════════════════════════════════════════ */
 (function () {
   "use strict";
@@ -16,554 +16,375 @@
   const D = window.PALOMA_CREATE_DATA;
   const A = window.PalomaArt;
   const root = document.getElementById("bcApp");
-  if (!D || !A || !root) return;
+  if (!D || !D.v2 || !A || !root) return;
+  const V = D.v2;
 
-  const KEY = "paloma_create_v1";
-  const $ = (s, el) => (el || document).querySelector(s);
-  const $$ = (s, el) => Array.from((el || document).querySelectorAll(s));
-  const money = (n) => Number(n).toLocaleString("ru-RU") + " ₽";
+  const KEY = "paloma_create_v2";
+  const $ = (s, el) => (el || root).querySelector(s);
+  const $$ = (s, el) => Array.from((el || root).querySelectorAll(s));
+  const money = (n) => Math.round(n).toLocaleString("ru-RU") + " ₽";
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const byId = (list, id) => list.find((x) => x.id === id);
+  const pick = (list, id) => list.find((x) => x[0] === id) || list[0];
 
   /* ── состояние ── */
   const fresh = () => ({
-    step: 1, sel: {}, fillers: {}, green: "eucalyptus", bg: "white",
-    wrap: "film-blush", ribbon: "pink", seed: 7, offsets: {},
-    card: { to: "", from: "", text: "", font: "hand" },
+    sel: {}, seed: 7, tab: "flowers",
+    wrap: "milk", ribbons: ["powder"],
+    green: false, card: false, cardText: "", candy: false, bear: "none",
   });
   let S = fresh();
   try {
     const saved = JSON.parse(localStorage.getItem(KEY) || "null");
-    if (saved && saved.sel) S = Object.assign(fresh(), saved, { card: Object.assign(fresh().card, saved.card || {}) });
+    if (saved && saved.sel) S = Object.assign(fresh(), saved);
   } catch (e) { /* приватный режим */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* ок */ } };
 
-  const stemCount = () => Object.values(S.sel).reduce((a, b) => a + b, 0);
-  const fillerCount = () => Object.values(S.fillers).reduce((a, b) => a + b, 0);
-
-  /* ── цена ── */
-  function priceParts() {
-    const lines = [];
-    Object.keys(S.sel).forEach((k) => {
-      const [fid, ci] = k.split("|"), fl = byId(D.flowers, fid), n = S.sel[k];
-      if (!fl || !n) return;
-      lines.push({ label: fl.name + " " + fl.colors[+ci][0].toLowerCase(), n, sum: fl.price * n });
-    });
-    Object.keys(S.fillers).forEach((id) => {
-      const fi = byId(D.fillers, id), n = S.fillers[id];
-      if (fi && n) lines.push({ label: fi.name, n, sum: fi.price * n });
-    });
-    const g = byId(D.greens, S.green);
-    if (g && g.price) lines.push({ label: "Зелень: " + g.name.toLowerCase(), n: 0, sum: g.price });
-    const w = byId(D.wraps, S.wrap);
-    if (w && w.price) lines.push({ label: "Упаковка: " + w.name.toLowerCase(), n: 0, sum: w.price });
-    if (S.card.text.trim() && D.cardPrice) lines.push({ label: "Открытка", n: 0, sum: D.cardPrice });
-    return lines;
-  }
-  const total = () => priceParts().reduce((a, l) => a + l.sum, 0);
-
-  /* ════════ СБОРКА БУКЕТА (SVG) ════════ */
-  const W = 600, H = 720, CX = 300, CY = 290;
-  function rnd(seed) { return A.rng(seed); }
-
-  function stems() {
-    const out = [];
-    Object.keys(S.sel).forEach((k) => {
-      const [fid, ci] = k.split("|"), fl = byId(D.flowers, fid);
-      if (!fl) return;
-      for (let i = 0; i < S.sel[k]; i++) out.push({ kind: fl.kind, spike: fl.spike, color: fl.colors[+ci][1], size: fl.size });
-    });
-    Object.keys(S.fillers).forEach((id) => {
-      const fi = byId(D.fillers, id);
-      if (!fi) return;
-      for (let i = 0; i < S.fillers[id]; i++) out.push({ kind: fi.kind, spike: fi.spike, color: fi.color, size: fi.kind === "hydrangea" ? 50 : 30, filler: true });
-    });
-    return out;
-  }
-
-  function bgColors() {
-    const b = byId(D.backdrops, S.bg) || D.backdrops[0];
-    const m = String(b.css).match(/#[0-9a-f]{6}/gi) || ["#FFFFFF"];
-    return [m[0], m[1] || m[0]];
-  }
-
-  /* opts: { wrap: true/false (показывать упаковку), interactive } */
-  function compose(opts) {
-    const R0 = rnd(S.seed * 9973 + 11);
-    const all = stems();
-    const heads = all.filter((s) => s.kind !== "spike" && s.kind !== "gyps");
-    const spikes = all.filter((s) => s.kind === "spike");
-    const clouds = all.filter((s) => s.kind === "gyps");
-    const N = Math.max(heads.length, 1);
-    const targetR = Math.max(128, Math.min(210, 104 + Math.sqrt(N) * 16));
-    const c = targetR / Math.sqrt(N);
-    const mean = heads.reduce((a, h) => a + h.size, 0) / N || 34;
-    const k = Math.max(0.6, Math.min(1.75, c / (mean * 0.8))); /* головки чуть заходят друг на друга — букет плотный */
-    const R = c * Math.sqrt(N);
-
-    /* перемешиваем порядок головок (зерно «Перемешать») */
-    const order = heads.map((h, i) => ({ h, i, r: R0() })).sort((a, b) => a.r - b.r);
-    const pos = order.map((o, j) => {
-      const a = j * 2.39996 + S.seed * 0.7, d = c * Math.sqrt(j + 0.5);
-      return { h: o.h, key: "h" + j, x: CX + Math.cos(a) * d, y: CY + Math.sin(a) * d * 0.84, d };
-    });
-    const [b1, b2] = bgColors();
-    const wrap = opts.wrap ? byId(D.wraps, S.wrap) : null;
-    const ribbon = byId(D.ribbons, S.ribbon);
-    const gx = CX, gy = Math.min(CY + R + 85, 610); /* точка, где сходятся стебли */
-
-    /* рамка по самому букету: маленький букет показываем крупно */
-    const pad = 150, vx = Math.max(0, CX - R - pad), vy = Math.max(0, CY - R - pad);
-    const vw = Math.min(W, 2 * (CX - vx)), vh = Math.min(H, (opts.wrap ? gy + 110 : gy + 95) - vy);
-    let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${opts.full ? "0 0 " + W + " " + H : vx.toFixed(0) + " " + vy.toFixed(0) + " " + vw.toFixed(0) + " " + vh.toFixed(0)}" class="bc-svg" role="img" aria-label="Ваш букет">`;
-    s += `<defs>${A.defs()}<filter id="bcSh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#5a2a35" flood-opacity=".28"/></filter><linearGradient id="bcBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${b1}"/><stop offset="1" stop-color="${b2}"/></linearGradient>`;
-    if (wrap && wrap.color) {
-      s += `<linearGradient id="bcWrapB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${A.light(wrap.color, 0.25)}"/><stop offset="1" stop-color="${A.dark(wrap.color, 0.08)}"/></linearGradient>`;
-      s += `<linearGradient id="bcWrapF" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${A.dark(wrap.color, 0.1)}"/><stop offset=".5" stop-color="${A.light(wrap.color, 0.2)}"/><stop offset="1" stop-color="${A.dark(wrap.color, 0.14)}"/></linearGradient>`;
-    }
-    s += `</defs><rect x="-400" y="-400" width="${W + 800}" height="${H + 800}" fill="url(#bcBg)"/>`;
-
-    /* упаковка — задний лист */
-    if (wrap && wrap.color) {
-      const tw = R * 1.35, ty = CY - R * 0.62;
-      s += `<path d="M${gx},${gy + 40} L${CX - tw},${ty} Q${CX},${ty - R * 0.55} ${CX + tw},${ty} Z" fill="url(#bcWrapB)" stroke="${A.dark(wrap.color, 0.2)}" stroke-width="1" opacity=".96"/>`;
-    }
-
-    /* зелень — веером позади */
-    if (S.green && S.green !== "none") {
-      const n = 11 + Math.round(N / 3);
-      for (let i = 0; i < n; i++) {
-        const a = -78 + (156 / (n - 1)) * i + (R0() - 0.5) * 12;
-        const len = R + 75 + R0() * 55;
-        s += `<g transform="translate(${gx},${CY + R * 0.45}) rotate(${a.toFixed(1)})">${A.green(S.green, len, 11 + i * 7)}</g>`;
-      }
-    }
-
-    /* колосья (дельфиниум, маттиола, лаванда…) — за головками */
-    spikes.forEach((sp, i) => {
-      const a = spikes.length === 1 ? (R0() - 0.5) * 30 : -55 + (110 / (spikes.length - 1)) * i + (R0() - 0.5) * 14;
-      const rad = (a * Math.PI) / 180;
-      const bx = CX + Math.sin(rad) * R * 0.25, by = CY + R * 0.2;
-      s += `<g transform="translate(${bx.toFixed(1)},${by.toFixed(1)}) rotate(${a.toFixed(1)})">${A.spike(sp.spike || "delphinium", sp.color, R * 0.75 + 70, 5 + i)}</g>`;
-    });
-
-    /* стебли без упаковки — пучок к точке сборки */
-    if (!wrap || !wrap.color) {
-      let st = "";
-      pos.forEach((p) => { st += `<path d="M${p.x.toFixed(1)},${p.y.toFixed(1)} L${(gx + (p.x - gx) * 0.08).toFixed(1)},${gy}" stroke="#6F9258" stroke-width="2.2"/>`; });
-      for (let i = 0; i < Math.min(N, 14); i++) {
-        const x = gx - 10 + (20 / 13) * i;
-        st += `<path d="M${x.toFixed(1)},${gy} L${(x + (i - 7) * 1.2).toFixed(1)},${H - 20}" stroke="#6F9258" stroke-width="2.2"/>`;
-      }
-      s += `<g opacity=".95">${st}</g>`;
-    }
-
-    /* гипсофила — облачками по краю */
-    clouds.forEach((cl, i) => {
-      const a = (i * 2.39996 + 1.3) % (Math.PI * 2);
-      const x = CX + Math.cos(a) * R * 0.92, y = CY + Math.sin(a) * R * 0.78;
-      s += `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)})">${A.gyps(cl.color, 34 * k + 10, 21 + i)}</g>`;
-    });
-
-    /* листья, выглядывающие между цветами */
-    if (S.green && S.green !== "none") {
-      const nl = Math.round(N * 0.9) + 4;
-      for (let i = 0; i < nl; i++) {
-        const a = R0() * Math.PI * 2, d = R * (0.35 + R0() * 0.7);
-        const x = CX + Math.cos(a) * d, y = CY + Math.sin(a) * d * 0.84;
-        const rot = (Math.atan2(y - (CY + R * 0.4), x - CX) * 180) / Math.PI + 90;
-        s += `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) rotate(${rot.toFixed(1)})">${A.green(S.green, 46 + R0() * 30, 77 + i)}</g>`;
-      }
-    }
-
-    /* головки: дальние первыми, центр — сверху */
-    pos.slice().sort((a, b) => b.d - a.d).forEach((p, j) => {
-      const off = S.offsets[p.key] || [0, 0];
-      const rr = p.h.size * k * (1 - (p.d / (R + 1)) * 0.12);
-      const rot = (R0() - 0.5) * 50;
-      s += `<g class="bc-head" filter="url(#bcSh)" data-k="${p.key}" transform="translate(${(p.x + off[0]).toFixed(1)},${(p.y + off[1]).toFixed(1)}) rotate(${rot.toFixed(1)})">` +
-        A.head(p.h.kind, p.h.color, rr, 31 + j * 13) + "</g>";
-    });
-
-    /* упаковка — передние лепестки и лента */
-    if (wrap && wrap.color) {
-      const fw = R * 1.12, fy = CY + R * 0.42;
-      s += `<path d="M${gx},${gy + 60} L${CX - fw},${fy} Q${CX - fw * 0.45},${fy + R * 0.28} ${CX + 12},${fy + R * 0.12} Z" fill="url(#bcWrapF)" stroke="${A.dark(wrap.color, 0.22)}" stroke-width="1"/>`;
-      s += `<path d="M${gx},${gy + 60} L${CX + fw},${fy} Q${CX + fw * 0.45},${fy + R * 0.28} ${CX - 12},${fy + R * 0.12} Z" fill="url(#bcWrapF)" stroke="${A.dark(wrap.color, 0.22)}" stroke-width="1" opacity=".97"/>`;
-    }
-    if (ribbon && ribbon.color) {
-      const ry = wrap && wrap.color ? gy - 6 : gy + 8, rc = ribbon.color, rd = A.dark(rc, 0.2);
-      s += `<g transform="translate(${gx},${ry})">` +
-        `<path d="M-6,0 C-40,-22 -44,14 -6,4Z" fill="${rc}" stroke="${rd}"/><path d="M6,0 C40,-22 44,14 6,4Z" fill="${rc}" stroke="${rd}"/>` +
-        `<path d="M-3,4 L-18,58 L-8,54 L2,6Z" fill="${rc}" stroke="${rd}"/><path d="M3,4 L20,62 L10,58 L-1,6Z" fill="${rc}" stroke="${rd}"/>` +
-        `<rect x="-7" y="-5" width="14" height="12" rx="4" fill="${rd}"/></g>`;
-    }
-    s += "</svg>";
-    return s;
-  }
-
-  /* ════════ ШАГ 1: ЦВЕТЫ ════════ */
-  const grid = $("#bcGrid", root), presetsBox = $("#bcPresets", root);
-  const colorPick = {}; /* выбранный цвет в карточке */
-
-  function thumb(fl, ci) {
-    const col = fl.colors[ci][1];
-    const art = fl.kind === "spike"
-      ? `<g transform="translate(0,52)">${A.spike(fl.spike || "delphinium", col, 104, 3)}</g>`
-      : A.head(fl.kind, col, 38, 17);
-    return `<svg viewBox="-55 -55 110 110" aria-hidden="true"><defs>${A.defs()}</defs>${art}</svg>`;
-  }
-
-  function cardHtml(fl) {
-    /* по умолчанию показываем цвет, который уже в букете */
-    if (colorPick[fl.id] == null) {
-      const inB = fl.colors.findIndex((c, i) => S.sel[fl.id + "|" + i]);
-      colorPick[fl.id] = inB >= 0 ? inB : 0;
-    }
-    const ci = colorPick[fl.id], key = fl.id + "|" + ci, n = S.sel[key] || 0;
-    const totalOfFlower = Object.keys(S.sel).filter((k) => k.indexOf(fl.id + "|") === 0).reduce((a, k) => a + S.sel[k], 0);
-    const dots = fl.colors.length > 1 ? `<div class="bc-dots" role="group" aria-label="Цвет">` + fl.colors.map((c, i) =>
-      `<button type="button" class="bc-dot${i === ci ? " is-on" : ""}" data-color="${i}" style="--c:${c[1]}" title="${esc(c[0])}" aria-label="${esc(c[0])}"></button>`).join("") + "</div>" : `<div class="bc-dots bc-dots--one">${esc(fl.colors[0][0])}</div>`;
-    return `<article class="bc-flower${n ? " is-in" : ""}" data-id="${fl.id}">
-      ${totalOfFlower ? `<span class="bc-flower__badge">${totalOfFlower}</span>` : ""}
-      <div class="bc-flower__art">${thumb(fl, ci)}</div>
-      <h3 class="bc-flower__name">${esc(fl.name)}</h3>
-      <p class="bc-flower__price">${money(fl.price)} <span>/ шт</span></p>
-      ${dots}
-      ${n ? `<div class="bc-qty"><button type="button" data-q="-1" aria-label="Убрать">−</button><b>${n}</b><button type="button" data-q="1" aria-label="Добавить">+</button></div>`
-        : `<button type="button" class="bc-add" data-q="1">Добавить <span aria-hidden="true">+</span></button>`}
-    </article>`;
-  }
-
-  function renderGrid() {
-    const q = ($("#bcSearch", root).value || "").trim().toLowerCase();
-    const list = D.flowers.filter((fl) => fl.inStock !== false && (!q || fl.name.toLowerCase().indexOf(q) >= 0 ||
-      fl.colors.some((c) => c[0].toLowerCase().indexOf(q) >= 0)));
-    grid.innerHTML = list.length ? list.map(cardHtml).join("")
-      : `<div class="bc-empty"><b>Такого цветка нет</b><span>Попробуйте другое название</span></div>`;
-  }
-
-  function renderPresets() {
-    presetsBox.innerHTML = D.presets.map((p, i) => {
-      const comp = p.items.map(([id, ci, n]) => { const fl = byId(D.flowers, id); return fl ? fl.name + " ×" + n : ""; }).filter(Boolean).join(", ");
-      const sum = p.items.reduce((a, [id, ci, n]) => { const fl = byId(D.flowers, id); return a + (fl ? fl.price * n : 0); }, 0);
-      const art = p.items.slice(0, 3).map(([id, ci], j) => { const fl = byId(D.flowers, id); return fl ? `<g transform="translate(${(j - 1) * 30},${j === 1 ? -6 : 6})">${fl.kind === "spike" ? "" : A.head(fl.kind, fl.colors[ci][1], 26, 5 + j)}</g>` : ""; }).join("");
-      return `<button type="button" class="bc-preset" data-preset="${i}">
-        <svg viewBox="-60 -40 120 80" aria-hidden="true"><defs>${A.defs()}</defs>${art}</svg>
-        <b>${esc(p.name)}</b><span>${esc(comp)}</span><em>${money(sum)}</em></button>`;
-    }).join("");
-  }
-
-  grid.addEventListener("click", (e) => {
-    const card = e.target.closest(".bc-flower");
-    if (!card) return;
-    const fl = byId(D.flowers, card.dataset.id);
-    const dot = e.target.closest("[data-color]");
-    if (dot) { colorPick[fl.id] = +dot.dataset.color; card.outerHTML = cardHtml(fl); return; }
-    const q = e.target.closest("[data-q]");
-    if (!q) return;
-    const key = fl.id + "|" + (colorPick[fl.id] || 0), d = +q.dataset.q;
-    if (d > 0 && stemCount() >= D.maxStems) { toast("В букете уже " + D.maxStems + " цветок — это максимум"); return; }
-    S.sel[key] = Math.max(0, (S.sel[key] || 0) + d);
-    if (!S.sel[key]) delete S.sel[key];
-    S.offsets = {};
-    save();
-    const fresh = document.createElement("div");
-    fresh.innerHTML = cardHtml(fl);
-    card.replaceWith(fresh.firstElementChild);
-    drawStages();
-    updateBar();
-  });
-
-  presetsBox.addEventListener("click", (e) => {
-    const b = e.target.closest("[data-preset]");
-    if (!b) return;
-    const p = D.presets[+b.dataset.preset];
-    S.sel = {};
-    p.items.forEach(([id, ci, n]) => { S.sel[id + "|" + ci] = (S.sel[id + "|" + ci] || 0) + n; });
-    S.offsets = {};
-    save();
-    setTab("all");
-    renderGrid();
-    drawStages();
-    updateBar();
-    toast("Готово: «" + p.name + "». Можно поменять состав или нажать «Собрать букет»");
-  });
-
-  function setTab(t) {
-    $$("[data-tab]", root).forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.tab === t)));
-    grid.hidden = t !== "all";
-    presetsBox.hidden = t !== "presets";
-    $(".bc-search", root).hidden = t !== "all";
-  }
-  $$("[data-tab]", root).forEach((b) => b.addEventListener("click", () => setTab(b.dataset.tab)));
-  $("#bcSearch", root).addEventListener("input", renderGrid);
-  $("#bcClear", root).addEventListener("click", () => {
-    S.sel = {}; S.fillers = {}; S.offsets = {}; save();
-    $("#bcSearch", root).value = "";
-    renderGrid(); drawStages(); updateBar();
-  });
-
-  /* ════════ ШАГ 2: БУКЕТ И ОТКРЫТКА ════════ */
-  const stage = $("#bcStage", root), picker = $("#bcPicker", root);
-  let moveMode = false, pickerKind = "";
-
-  /* Сцена слева видна на всех шагах: букет растёт прямо во время выбора */
-  function drawStages() {
-    stage.innerHTML = stems().length
-      ? compose({ wrap: S.step === 3 })
-      : '<div class="bc-stage__empty"><b>Здесь появится ваш букет</b><span>Добавьте цветы справа</span></div>';
-    stage.classList.toggle("is-move", moveMode && S.step === 2);
-  }
-
-  function openPicker(kind) {
-    if (pickerKind === kind) { closePicker(); return; }
-    pickerKind = kind;
-    $$("[data-tool]", root).forEach((b) => b.classList.toggle("is-on", b.dataset.tool === kind || (b.dataset.tool === "move" && moveMode)));
-    let h = "";
-    if (kind === "bg") {
-      h += `<p class="bc-picker__t">Фон</p><div class="bc-chips">` + D.backdrops.map((b) =>
-        `<button type="button" class="bc-chip bc-chip--sw${S.bg === b.id ? " is-on" : ""}" data-bg="${b.id}"><i style="background:${b.css}"></i>${esc(b.name)}</button>`).join("") + "</div>";
-      h += `<p class="bc-picker__t">Зелень</p><div class="bc-chips">` + D.greens.map((g) =>
-        `<button type="button" class="bc-chip${S.green === g.id ? " is-on" : ""}" data-green="${g.id}">` +
-        (g.id === "none" ? "" : `<svg viewBox="-30 -150 60 160" aria-hidden="true"><defs>${A.defs()}</defs>${A.green(g.id, 140, 4)}</svg>`) +
-        `${esc(g.name)}${g.price ? `<small>+${money(g.price)}</small>` : ""}</button>`).join("") + "</div>";
-    } else if (kind === "fillers") {
-      h += `<p class="bc-picker__t">Добавки — живые цветы в букет</p><div class="bc-chips">` + D.fillers.map((fi) => {
-        const n = S.fillers[fi.id] || 0;
-        const art = fi.kind === "spike" ? `<g transform="translate(0,50)">${A.spike(fi.spike, fi.color, 100, 3)}</g>`
-          : fi.kind === "gyps" ? A.gyps("#ffffff", 34, 3) : A.head(fi.kind, fi.color, 34, 3);
-        return `<div class="bc-chip bc-chip--fill${n ? " is-on" : ""}"><svg viewBox="-50 -50 100 100" aria-hidden="true"><defs>${A.defs()}</defs>${art}</svg>` +
-          `<span>${esc(fi.name)}<small>${money(fi.price)}</small></span>` +
-          `<span class="bc-qty bc-qty--s"><button type="button" data-fill="${fi.id}" data-q="-1" aria-label="Меньше">−</button><b>${n}</b><button type="button" data-fill="${fi.id}" data-q="1" aria-label="Больше">+</button></span></div>`;
-      }).join("") + "</div>";
-    }
-    picker.innerHTML = h + `<button type="button" class="bc-picker__close" data-close-picker aria-label="Закрыть">×</button>`;
-    picker.hidden = false;
-  }
-  function closePicker() {
-    pickerKind = "";
-    picker.hidden = true;
-    $$("[data-tool]", root).forEach((b) => b.classList.toggle("is-on", b.dataset.tool === "move" && moveMode));
-  }
-
-  picker.addEventListener("click", (e) => {
-    if (e.target.closest("[data-close-picker]")) { closePicker(); return; }
-    const bg = e.target.closest("[data-bg]"), gr = e.target.closest("[data-green]"), fl = e.target.closest("[data-fill]");
-    if (bg) S.bg = bg.dataset.bg;
-    else if (gr) S.green = gr.dataset.green;
-    else if (fl) {
-      const id = fl.dataset.fill, d = +fl.dataset.q;
-      if (d > 0 && stemCount() + fillerCount() >= D.maxStems + 10) return;
-      S.fillers[id] = Math.max(0, (S.fillers[id] || 0) + d);
-      if (!S.fillers[id]) delete S.fillers[id];
-      S.offsets = {};
-    } else return;
-    save();
-    const k = pickerKind; pickerKind = ""; openPicker(k);
-    drawStages(); updateBar();
-  });
-
-  $$("[data-tool]", root).forEach((b) => b.addEventListener("click", () => {
-    const t = b.dataset.tool;
-    if (t === "shuffle") { S.seed = (S.seed * 7 + 13) % 9973 || 3; S.offsets = {}; save(); drawStages(); return; }
-    if (t === "move") {
-      if (S.step !== 2) go(2); moveMode = !moveMode; b.classList.toggle("is-on", moveMode); drawStages(); toast(moveMode ? "Перетаскивайте цветы пальцем или мышкой" : "Готово"); return; }
-    if (t === "more") { go(1); return; }
-    if (S.step !== 2) go(2);
-    openPicker(t);
-  }));
-
-  /* перетаскивание головок */
-  let drag = null;
-  stage.addEventListener("pointerdown", (e) => {
-    if (!moveMode) return;
-    const g = e.target.closest(".bc-head");
-    if (!g) return;
-    const svg = stage.querySelector("svg"), pt = svg.createSVGPoint();
-    pt.x = e.clientX; pt.y = e.clientY;
-    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
-    const off = S.offsets[g.dataset.k] || [0, 0];
-    drag = { g, k: g.dataset.k, sx: p.x, sy: p.y, ox: off[0], oy: off[1], base: g.getAttribute("transform") };
-    svg.appendChild(g); /* поверх остальных */
-    g.setPointerCapture(e.pointerId);
-    e.preventDefault();
-  });
-  stage.addEventListener("pointermove", (e) => {
-    if (!drag) return;
-    const svg = stage.querySelector("svg"), pt = svg.createSVGPoint();
-    pt.x = e.clientX; pt.y = e.clientY;
-    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
-    const dx = p.x - drag.sx, dy = p.y - drag.sy;
-    drag.g.setAttribute("transform", `translate(${dx.toFixed(1)},${dy.toFixed(1)}) ` + drag.base);
-    drag.dx = dx; drag.dy = dy;
-  });
-  const endDrag = () => {
-    if (!drag) return;
-    S.offsets[drag.k] = [drag.ox + (drag.dx || 0), drag.oy + (drag.dy || 0)];
-    drag = null; save();
-  };
-  stage.addEventListener("pointerup", endDrag);
-  stage.addEventListener("pointercancel", endDrag);
-
-  /* открытка */
-  const cTo = $("#bcTo", root), cFrom = $("#bcFrom", root), cText = $("#bcText", root), cFont = $("#bcFont", root);
-  function syncCard() {
-    cTo.value = S.card.to; cFrom.value = S.card.from; cText.value = S.card.text; cFont.value = S.card.font;
-    cText.dataset.font = S.card.font;
-    $("#bcTextCount", root).textContent = cText.value.length + " / 300";
-  }
-  [cTo, cFrom, cText].forEach((el) => el.addEventListener("input", () => {
-    S.card.to = cTo.value.slice(0, 40); S.card.from = cFrom.value.slice(0, 40); S.card.text = cText.value.slice(0, 300);
-    $("#bcTextCount", root).textContent = cText.value.length + " / 300";
-    save(); updateBar();
-  }));
-  cFont.addEventListener("change", () => { S.card.font = cFont.value; cText.dataset.font = S.card.font; save(); });
-
-  const sugTabs = $("#bcSugTabs", root), sugList = $("#bcSugList", root);
-  function renderSug(topic) {
-    const topics = Object.keys(D.suggestions);
-    topic = topic || topics[0];
-    sugTabs.innerHTML = topics.map((t) => `<button type="button" class="bc-chip${t === topic ? " is-on" : ""}" data-topic="${esc(t)}">${esc(t)}</button>`).join("");
-    sugList.innerHTML = D.suggestions[topic].map((t) => `<button type="button" class="bc-sug" data-sug>${esc(t)}</button>`).join("");
-  }
-  sugTabs.addEventListener("click", (e) => { const b = e.target.closest("[data-topic]"); if (b) renderSug(b.dataset.topic); });
-  sugList.addEventListener("click", (e) => {
-    const b = e.target.closest("[data-sug]");
-    if (!b) return;
-    S.card.text = b.textContent; save(); syncCard(); updateBar();
-  });
-  $("#bcSugToggle", root).addEventListener("click", (e) => {
-    const box = $("#bcSug", root), open = box.hidden;
-    box.hidden = !open;
-    e.currentTarget.setAttribute("aria-expanded", String(open));
-  });
-
-  /* ════════ ШАГ 3: УПАКОВКА И ЗАКАЗ ════════ */
-  function renderStep3() {
-    $("#bcWraps", root).innerHTML = D.wraps.map((w) =>
-      `<button type="button" class="bc-chip bc-chip--sw${S.wrap === w.id ? " is-on" : ""}" data-wrap="${w.id}"><i style="background:${w.color || "repeating-linear-gradient(45deg,#fff 0 4px,#eee 4px 8px)"}"></i>${esc(w.name)}${w.price ? `<small>+${money(w.price)}</small>` : ""}</button>`).join("");
-    $("#bcRibbons", root).innerHTML = D.ribbons.map((r) =>
-      `<button type="button" class="bc-chip bc-chip--sw${S.ribbon === r.id ? " is-on" : ""}" data-ribbon="${r.id}"><i style="background:${r.color || "repeating-linear-gradient(45deg,#fff 0 4px,#eee 4px 8px)"}"></i>${esc(r.name)}</button>`).join("");
-    const lines = priceParts();
-    $("#bcSummary", root).innerHTML = lines.map((l) =>
-      `<li><span>${esc(l.label)}${l.n ? ` × ${l.n}` : ""}</span><b>${money(l.sum)}</b></li>`).join("") +
-      `<li class="bc-sum__total"><span>Итого</span><b>${money(total())}</b></li>`;
-    const card = $("#bcCardPreview", root);
-    if (S.card.text.trim()) {
-      card.hidden = false;
-      card.dataset.font = S.card.font;
-      card.innerHTML = (S.card.to ? `<p class="bc-cardp__to">${esc(S.card.to)},</p>` : "") +
-        `<p class="bc-cardp__text">${esc(S.card.text)}</p>` + (S.card.from ? `<p class="bc-cardp__from">${esc(S.card.from)}</p>` : "");
-    } else card.hidden = true;
-  }
-  $("#bcWraps", root).addEventListener("click", (e) => { const b = e.target.closest("[data-wrap]"); if (b) { S.wrap = b.dataset.wrap; save(); renderStep3(); drawStages(); updateBar(); } });
-  $("#bcRibbons", root).addEventListener("click", (e) => { const b = e.target.closest("[data-ribbon]"); if (b) { S.ribbon = b.dataset.ribbon; save(); renderStep3(); drawStages(); } });
-
-  function composition() {
-    return priceParts().filter((l) => l.n).map((l) => l.label + " ×" + l.n).join(", ");
-  }
-
-  $("#bcOrder", root).addEventListener("click", () => {
-    if (stemCount() < D.minStems) { go(1); return; }
-    const g = byId(D.greens, S.green), w = byId(D.wraps, S.wrap), r = byId(D.ribbons, S.ribbon);
-    const addons = [];
-    if (g && g.id !== "none") addons.push("зелень: " + g.name.toLowerCase());
-    if (w) addons.push(w.id === "none" ? "без упаковки" : "упаковка: " + w.name.toLowerCase());
-    if (r && r.id !== "none") addons.push("лента: " + r.name.toLowerCase());
-    if (S.card.text.trim()) {
-      addons.push("открытка" + (S.card.to ? " для «" + S.card.to + "»" : "") + ": «" + S.card.text.trim() + "»" + (S.card.from ? " — " + S.card.from : ""));
-    }
-    if (!window.PalomaCart || !window.PalomaCart.add) { toast("Корзина не загрузилась — обновите страницу"); return; }
-    window.PalomaCart.add({
-      id: "constructor-" + Date.now().toString(36),
-      name: "Букет из конструктора",
-      size: composition(),
-      addons,
-      price: total(),
-      qty: 1,
-      category: "authors",
-      bg: "linear-gradient(135deg,#F6D9DE,#E7385A)",
-    });
-    if (window.palomaGoal) window.palomaGoal("constructor_order");
-    location.href = "checkout.html";
-  });
-
-  $("#bcDownload", root).addEventListener("click", () => {
-    const svg = compose({ wrap: true, full: true });
-    const img = new Image();
-    img.onload = () => {
-      const cv = document.createElement("canvas");
-      cv.width = W * 2; cv.height = H * 2;
-      const ctx = cv.getContext("2d");
-      ctx.drawImage(img, 0, 0, cv.width, cv.height);
-      ctx.fillStyle = "rgba(231,56,90,.85)";
-      ctx.font = "italic 34px Georgia, serif";
-      ctx.textAlign = "right";
-      ctx.fillText("PALOMA", cv.width - 40, cv.height - 36);
-      const a = document.createElement("a");
-      a.download = "paloma-buket.png";
-      a.href = cv.toDataURL("image/png");
-      a.click();
-    };
-    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
-  });
-
-  /* ════════ ШАГИ, НИЖНЯЯ ПАНЕЛЬ ════════ */
-  const bar = $("#bcBar", root);
-  function updateBar() {
-    const n = stemCount();
-    const need = Math.max(0, D.minStems - n);
-    $("#bcCount", root).textContent = n
-      ? `Выбрано: ${n} ${plural(n, "цветок", "цветка", "цветов")}` + (need ? ` · добавьте ещё ${need}` : "") + ` · до ${D.maxStems}`
-      : `Выберите минимум ${D.minStems} цветка`;
-    $("#bcCount", root).classList.toggle("is-ok", !need && n > 0);
-    $("#bcBarSum", root).textContent = money(n ? total() : 0);
-    $("#bcBarInfo", root).textContent = n ? `${n + fillerCount()} ${plural(n + fillerCount(), "цветок", "цветка", "цветов")}` : "Букет пуст";
-    const next = $("#bcNext", root);
-    next.disabled = S.step === 1 && need > 0;
-    next.hidden = S.step === 3;
-    next.innerHTML = (S.step === 1 ? "Собрать букет" : "Упаковка и заказ") + ' <span aria-hidden="true">→</span>';
-    $("#bcBack", root).hidden = S.step === 1;
-    if (S.step === 3) renderStep3();
-  }
-  function plural(n, a, b, c) {
+  const stems = () => Object.values(S.sel).reduce((a, b) => a + b, 0);
+  const plural = (n, a, b, c) => {
     const m10 = n % 10, m100 = n % 100;
     if (m10 === 1 && m100 !== 11) return a;
     if (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) return b;
     return c;
+  };
+  const flowersWord = (n) => n + " " + plural(n, "цветок", "цветка", "цветов");
+  const tier = (n) => (V.tiers.find((t) => n <= t[0]) || V.tiers[V.tiers.length - 1])[1];
+  const branches = () => Math.max(1, Math.ceil(stems() / 10));
+
+  /* ── цена: строки состава ── */
+  function lines() {
+    const out = [];
+    D.flowers.forEach((fl) => {
+      fl.colors.forEach((c, ci) => {
+        const n = S.sel[fl.id + "|" + ci] || 0;
+        if (n) out.push({ t: `${fl.name}, ${c[0].toLowerCase()}`, n, sum: n * fl.price });
+      });
+    });
+    if (stems()) {
+      out.push({ t: "Упаковка: " + pick(V.wraps, S.wrap)[1].toLowerCase(), sum: V.wrapPrice });
+      S.ribbons.forEach((r, i) => out.push({ t: (i ? "Лента " + (i + 1) : "Лента") + ": " + pick(V.ribbons, r)[1].toLowerCase(), sum: V.ribbonPrice }));
+      if (S.green) out.push({ t: `Зелень, ${branches()} ${plural(branches(), "ветка", "ветки", "веток")}`, sum: branches() * V.greenPerBranch });
+      if (S.card) out.push({ t: "Открытка" + (S.cardText.trim() ? ": «" + S.cardText.trim() + "»" : ""), sum: V.cardPrice });
+      if (S.candy) out.push({ t: V.candy.name, sum: V.candy.price });
+      if (S.bear !== "none") out.push({ t: V.bear.name + (S.bear === "in" ? " — в букете" : " — рядом"), sum: V.bear.price });
+    }
+    return out;
+  }
+  const total = () => lines().reduce((a, l) => a + l.sum, 0);
+
+  /* ════════ РИСУНОК: букет сверху ════════ */
+  const CX = 300, CY = 285;
+
+  function heads() {
+    const out = [];
+    D.flowers.forEach((fl) => fl.colors.forEach((c, ci) => {
+      for (let i = 0; i < (S.sel[fl.id + "|" + ci] || 0); i++) out.push({ fl, color: c[1] });
+    }));
+    return out;
   }
 
-  function go(step) {
-    if (step > 1 && stemCount() < D.minStems) step = 1;
-    S.step = step; save();
-    $$("[data-step]", root).forEach((sec) => { sec.hidden = +sec.dataset.step !== step; });
-    $$(".bc-steps li", root).forEach((li, i) => {
-      li.classList.toggle("is-on", i + 1 === step);
-      li.classList.toggle("is-done", i + 1 < step);
-    });
-    if (step !== 2) { closePicker(); moveMode = false; }
-    if (step === 1) renderGrid();
-    if (step === 2) syncCard();
-    drawStages();
-    updateBar();
-    const sc = $("[data-step=\"" + step + "\"] .bc-scroll", root);
-    if (sc) sc.scrollTop = 0;
+  /* Плюшевый мишка — простой собственный рисунок */
+  function bearSvg(x, y, s) {
+    const f = "#C8925E", d = "#9C6A3F", l = "#E8C9A2";
+    return `<g transform="translate(${x},${y}) scale(${s})">
+      <ellipse cx="0" cy="44" rx="34" ry="36" fill="${f}" stroke="${d}" stroke-width="1.5"/>
+      <ellipse cx="0" cy="50" rx="18" ry="20" fill="${l}"/>
+      <circle cx="-30" cy="62" r="11" fill="${f}" stroke="${d}" stroke-width="1.5"/>
+      <circle cx="30" cy="62" r="11" fill="${f}" stroke="${d}" stroke-width="1.5"/>
+      <circle cx="-26" cy="-22" r="12" fill="${f}" stroke="${d}" stroke-width="1.5"/><circle cx="-26" cy="-22" r="6" fill="${l}"/>
+      <circle cx="26" cy="-22" r="12" fill="${f}" stroke="${d}" stroke-width="1.5"/><circle cx="26" cy="-22" r="6" fill="${l}"/>
+      <circle cx="0" cy="0" r="30" fill="${f}" stroke="${d}" stroke-width="1.5"/>
+      <ellipse cx="0" cy="10" rx="13" ry="10" fill="${l}"/>
+      <ellipse cx="0" cy="5" rx="4.5" ry="3.5" fill="#3A2416"/>
+      <path d="M0 9 v4 M-4 14 q4 3 8 0" stroke="#3A2416" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <circle cx="-10" cy="-6" r="3" fill="#2A1A10"/><circle cx="10" cy="-6" r="3" fill="#2A1A10"/>
+      <path d="M-14 26 q14 10 28 0" stroke="#E7385A" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </g>`;
   }
-  $("#bcNext", root).addEventListener("click", () => go(S.step + 1));
-  $("#bcBack", root).addEventListener("click", () => go(S.step - 1));
-  $$(".bc-steps li", root).forEach((li, i) => li.addEventListener("click", () => go(i + 1)));
+
+  function candySvg(x, y) {
+    let s = `<g transform="translate(${x},${y}) rotate(-8)"><rect x="-44" y="-44" width="88" height="88" rx="8" fill="#FBF8F2" stroke="#D9D2C4" stroke-width="1.5"/>`;
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
+      s += `<circle cx="${-26 + c * 26}" cy="${-26 + r * 26}" r="10" fill="#F4EDE0" stroke="#D8CBB4" stroke-width="1"/><circle cx="${-29 + c * 26}" cy="${-29 + r * 26}" r="3" fill="#fff" opacity=".9"/>`;
+    }
+    return s + "</g>";
+  }
+
+  function cardSvg(text) {
+    const words = String(text || "С любовью").split(/\s+/);
+    const rows = [];
+    let row = "";
+    words.forEach((w) => { if ((row + " " + w).trim().length > 12) { if (row) rows.push(row); row = w; } else row = (row + " " + w).trim(); });
+    if (row) rows.push(row);
+    const t = rows.slice(0, 4).map((r, i) => `<text x="0" y="${-14 + i * 15}" text-anchor="middle" font-family="Caveat, 'Segoe Print', cursive" font-size="15" fill="#3A3633">${esc(r)}</text>`).join("");
+    return `<g transform="translate(520,70) rotate(8)"><rect x="-52" y="-38" width="104" height="80" rx="3" fill="#FFFDF9" stroke="#DCD3C6" stroke-width="1.2"/>${t}</g>`;
+  }
+
+  function compose() {
+    const all = heads();
+    const R0 = A.rng(S.seed * 7919 + 3);
+    const N = all.length;
+    let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" class="bc-svg" role="img" aria-label="Ваш букет, вид сверху"><defs>${A.defs()}` +
+      `<filter id="bcSh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-color="#3c1e24" flood-opacity=".28"/></filter></defs>`;
+    if (!N) {
+      return s + `<circle cx="${CX}" cy="${CY}" r="170" fill="#F6F1EC"/><text x="${CX}" y="${CY - 6}" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="26" fill="#1B1A18">Здесь появится букет</text>` +
+        `<text x="${CX}" y="${CY + 24}" text-anchor="middle" font-size="14" fill="#8a8580">Добавьте цветы ниже</text></svg>`;
+    }
+    const targetR = Math.max(92, Math.min(205, 70 + Math.sqrt(N) * 21));
+    const c = targetR / Math.sqrt(N);
+    const R = c * Math.sqrt(N);
+    const wrap = pick(V.wraps, S.wrap)[2];
+    const RW = R + 30;
+
+    /* ленты — хвосты вниз из-под букета */
+    S.ribbons.forEach((r, i) => {
+      const col = pick(V.ribbons, r)[2], dk = A.dark(col, 0.2), dx = (i - (S.ribbons.length - 1) / 2) * 22;
+      s += `<path d="M${CX - 10 + dx},${CY + RW - 18} C${CX - 30 + dx},${CY + RW + 40} ${CX - 40 + dx},${CY + RW + 80} ${CX - 52 + dx},598 L${CX - 32 + dx},598 C${CX - 22 + dx},${CY + RW + 70} ${CX - 12 + dx},${CY + RW + 30} ${CX + 2 + dx},${CY + RW - 18}Z" fill="${col}" stroke="${dk}" stroke-width="1"/>` +
+        `<path d="M${CX + 10 + dx},${CY + RW - 18} C${CX + 30 + dx},${CY + RW + 40} ${CX + 40 + dx},${CY + RW + 80} ${CX + 52 + dx},598 L${CX + 32 + dx},598 C${CX + 22 + dx},${CY + RW + 70} ${CX + 12 + dx},${CY + RW + 30} ${CX - 2 + dx},${CY + RW - 18}Z" fill="${A.dark(col, 0.06)}" stroke="${dk}" stroke-width="1"/>`;
+    });
+
+    /* упаковка — круг с волнистым краем бумаги */
+    let edge = "";
+    const waves = 22;
+    for (let i = 0; i <= waves * 2; i++) {
+      const a = (Math.PI * 2 * i) / (waves * 2);
+      const rr = RW + (i % 2 ? 7 : -3) + (R0() - 0.5) * 4;
+      edge += (i ? "L" : "M") + (CX + Math.cos(a) * rr).toFixed(1) + "," + (CY + Math.sin(a) * rr).toFixed(1);
+    }
+    s += `<path d="${edge}Z" fill="${wrap}" stroke="${A.dark(wrap, 0.16)}" stroke-width="1.2" filter="url(#bcSh)"/>`;
+    s += `<circle cx="${CX}" cy="${CY}" r="${(RW - 14).toFixed(1)}" fill="${A.dark(wrap, 0.07)}"/>`;
+
+    /* зелень по краю и между цветами */
+    if (S.green) {
+      const nb = branches() * 3 + 6;
+      for (let i = 0; i < nb; i++) {
+        const a = (Math.PI * 2 * i) / nb + R0() * 0.3, d = R * (0.82 + R0() * 0.22);
+        s += `<g transform="translate(${(CX + Math.cos(a) * d).toFixed(1)},${(CY + Math.sin(a) * d).toFixed(1)}) rotate(${((a * 180) / Math.PI + 90).toFixed(1)})">${A.green("eucalyptus", 52 + R0() * 22, 40 + i)}</g>`;
+      }
+    }
+
+    /* головки: порядок перемешивает «Расставить автоматически» */
+    const order = all.map((h) => ({ h, r: R0() })).sort((a, b) => a.r - b.r).map((x) => x.h);
+    order.forEach((h, j) => {
+      const a = j * 2.39996 + S.seed * 0.9, d = c * Math.sqrt(j + 0.5);
+      h.x = CX + Math.cos(a) * d; h.y = CY + Math.sin(a) * d; h.d = d;
+    });
+    order.slice().sort((a, b) => b.d - a.d).forEach((h, j) => {
+      const size = (h.fl.size || 34) / 34;
+      const rr = c * 0.95 * Math.max(0.85, Math.min(1.4, size));
+      const art = h.fl.kind === "spike"
+        ? A.head("hydrangea", h.color, rr * 0.8, 9 + j) /* сверху колос похож на пышную кисть */
+        : A.head(h.fl.kind, h.color, rr, 13 + j * 7);
+      s += `<g filter="url(#bcSh)" transform="translate(${h.x.toFixed(1)},${h.y.toFixed(1)}) rotate(${(R0() * 360).toFixed(0)})">${art}</g>`;
+    });
+
+    if (S.bear === "in") s += bearSvg(CX + R * 0.55, CY + R * 0.5, 0.75);
+    if (S.bear === "near") s += bearSvg(530, 470, 0.95);
+    if (S.candy) s += candySvg(78, 500);
+    if (S.card) s += cardSvg(S.cardText);
+    return s + "</svg>";
+  }
+
+  /* ════════ ВКЛАДКИ ════════ */
+  const panel = $("#bcPanel");
+  const colorPick = {};
+
+  function thumb(fl, ci) {
+    const col = fl.colors[ci][1];
+    const art = fl.kind === "spike"
+      ? `<g transform="translate(0,48)">${A.spike(fl.spike || "delphinium", col, 96, 3)}</g>`
+      : A.head(fl.kind, col, 38, 17);
+    return `<svg viewBox="-50 -50 100 100" aria-hidden="true"><defs>${A.defs()}</defs>${art}</svg>`;
+  }
+
+  function flowerRow(fl) {
+    if (colorPick[fl.id] == null) {
+      const inB = fl.colors.findIndex((c, i) => S.sel[fl.id + "|" + i]);
+      colorPick[fl.id] = inB >= 0 ? inB : 0;
+    }
+    const ci = colorPick[fl.id], n = S.sel[fl.id + "|" + ci] || 0;
+    const any = fl.colors.some((c, i) => S.sel[fl.id + "|" + i]);
+    const dots = fl.colors.length > 1 ? `<div class="bc-dots">` + fl.colors.map((c, i) => {
+      const cnt = S.sel[fl.id + "|" + i] || 0;
+      return `<button type="button" class="bc-dot${i === ci ? " is-on" : ""}" data-color="${i}" style="--c:${c[1]}" aria-label="${esc(c[0])}">${cnt ? `<b>${cnt}</b>` : ""}</button>`;
+    }).join("") + "</div>" : "";
+    return `<div class="bc-row${any ? " is-in" : ""}" data-id="${fl.id}">
+      <div class="bc-row__art">${thumb(fl, ci)}</div>
+      <div class="bc-row__info">
+        <p class="bc-row__name">${esc(fl.name)}</p>
+        <p class="bc-row__meta">${money(fl.price)} за шт. · ${esc(fl.colors[ci][0].toLowerCase())}</p>
+        ${dots}
+      </div>
+      <div class="bc-qty"><button type="button" data-q="-1" aria-label="Убрать"${n ? "" : " disabled"}>−</button><b>${n}</b><button type="button" data-q="1" aria-label="Добавить">+</button></div>
+    </div>`;
+  }
+
+  function swatches(list, current, attrs) {
+    return `<div class="bc-sw">` + list.map(([id, name, col]) =>
+      `<button type="button" class="bc-sw__item${current === id ? " is-on" : ""}" ${attrs}="${id}"><i style="background:${col}"></i><span>${esc(name)}</span></button>`).join("") + "</div>";
+  }
+
+  function toggle(attr, value, options) {
+    return `<div class="bc-toggle" role="group">` + options.map(([v, label]) =>
+      `<button type="button" data-${attr}="${v}" class="${String(value) === String(v) ? "is-on" : ""}">${label}</button>`).join("") + "</div>";
+  }
+
+  function renderPanel() {
+    $$(".bc-tabs button").forEach((b) => b.classList.toggle("is-on", b.dataset.tab === S.tab));
+    let h = "";
+    if (S.tab === "flowers") {
+      h = D.flowers.filter((fl) => fl.inStock !== false).map(flowerRow).join("");
+    } else if (S.tab === "wrap") {
+      h = `<div class="bc-sec"><div class="bc-sec__head"><b>Цвет упаковки</b><span>${money(V.wrapPrice)}</span></div>${swatches(V.wraps, S.wrap, "data-wrap")}</div>`;
+      S.ribbons.forEach((r, i) => {
+        h += `<div class="bc-sec"><div class="bc-sec__head"><b>${i ? "Лента " + (i + 1) : "Лента"} <em>· ${esc(pick(V.ribbons, r)[1])}</em></b><span>${money(V.ribbonPrice)} <button type="button" class="bc-link" data-rib-remove="${i}">Убрать</button></span></div>` +
+          swatches(V.ribbons, r, `data-rib="${i}" data-ribcolor`) + "</div>";
+      });
+      if (S.ribbons.length < 3) h += `<button type="button" class="bc-add-line" data-rib-add>+ ${S.ribbons.length ? "Добавить ещё ленту" : "Добавить ленту"} · ${money(V.ribbonPrice)}</button>`;
+    } else if (S.tab === "extras") {
+      const b = branches();
+      h = `<div class="bc-extra"><div class="bc-extra__art"><svg viewBox="-30 -70 60 80" aria-hidden="true"><defs>${A.defs()}</defs>${A.green("eucalyptus", 66, 3)}</svg></div>
+          <div class="bc-extra__info"><b>Зелень</b><span>${b} ${plural(b, "ветка", "ветки", "веток")} — по одной на 10 цветов · ${money(b * V.greenPerBranch)}</span></div>
+          ${toggle("green", S.green, [[false, "Нет"], [true, "Есть"]])}</div>
+        <div class="bc-extra bc-extra--wide"><div class="bc-extra__art bc-extra__art--icon">✉</div>
+          <div class="bc-extra__info"><b>Открытка с вашим текстом</b><span>Добавить — ${money(V.cardPrice)}</span></div>
+          ${toggle("card", S.card, [[false, "Нет"], [true, "Добавить"]])}
+          ${S.card ? `<textarea class="bc-cardtext" id="bcCardText" maxlength="120" placeholder="Текст открытки, например: «С днём рождения, мама!»">${esc(S.cardText)}</textarea>` : ""}</div>
+        <div class="bc-extra"><div class="bc-extra__art"><svg viewBox="-50 -50 100 100" aria-hidden="true">${candySvg(0, 0)}</svg></div>
+          <div class="bc-extra__info"><b>${esc(V.candy.name)}</b><span>Добавить — ${money(V.candy.price)}</span></div>
+          ${toggle("candy", S.candy, [[false, "Нет"], [true, "Добавить"]])}</div>
+        <div class="bc-extra"><div class="bc-extra__art"><svg viewBox="-50 -40 100 120" aria-hidden="true">${bearSvg(0, 0, 0.9)}</svg></div>
+          <div class="bc-extra__info"><b>${esc(V.bear.name)}</b><span>${money(V.bear.price)}</span></div>
+          ${toggle("bear", S.bear, [["none", "Нет"], ["near", "Рядом"], ["in", "В букете"]])}</div>`;
+    } else {
+      const ls = lines();
+      h = ls.length ? `<ul class="bc-sum">` + ls.map((l) => `<li><span>${esc(l.t)}${l.n ? ` × ${l.n}` : ""}</span><b>${money(l.sum)}</b></li>`).join("") +
+        `<li class="bc-sum__total"><span>Итого</span><b>${money(total())}</b></li></ul>` : `<p class="bc-empty">Добавьте цветы во вкладке «Цветы».</p>`;
+    }
+    panel.innerHTML = h;
+    const ta = $("#bcCardText");
+    if (ta) ta.addEventListener("input", () => { S.cardText = ta.value.slice(0, 120); save(); drawStage(); updateBar(); });
+  }
+
+  panel.addEventListener("click", (e) => {
+    const row = e.target.closest(".bc-row");
+    if (row) {
+      const fl = byId(D.flowers, row.dataset.id);
+      const dot = e.target.closest("[data-color]");
+      if (dot) colorPick[fl.id] = +dot.dataset.color;
+      const q = e.target.closest("[data-q]");
+      if (q) {
+        const key = fl.id + "|" + (colorPick[fl.id] || 0), d = +q.dataset.q;
+        if (d > 0 && stems() >= D.maxStems) { toast("В букете уже " + D.maxStems + " цветок — это максимум"); return; }
+        S.sel[key] = Math.max(0, (S.sel[key] || 0) + d);
+        if (!S.sel[key]) delete S.sel[key];
+      }
+      if (dot || q) {
+        save();
+        const tmp = document.createElement("div");
+        tmp.innerHTML = flowerRow(fl);
+        row.replaceWith(tmp.firstElementChild);
+        drawStage(); updateBar();
+      }
+      return;
+    }
+    const t = e.target.closest("button");
+    if (!t) return;
+    if (t.dataset.wrap) S.wrap = t.dataset.wrap;
+    else if (t.dataset.ribcolor) S.ribbons[+t.dataset.rib] = t.dataset.ribcolor;
+    else if (t.dataset.ribRemove != null) S.ribbons.splice(+t.dataset.ribRemove, 1);
+    else if (t.hasAttribute("data-rib-add")) S.ribbons.push(S.ribbons.length ? "white" : "powder");
+    else if (t.dataset.green != null) S.green = t.dataset.green === "true";
+    else if (t.dataset.card != null) S.card = t.dataset.card === "true";
+    else if (t.dataset.candy != null) S.candy = t.dataset.candy === "true";
+    else if (t.dataset.bear != null) S.bear = t.dataset.bear;
+    else return;
+    save(); renderPanel(); drawStage(); updateBar();
+    if (t.dataset.card === "true") { const ta = $("#bcCardText"); if (ta) ta.focus(); }
+  });
+
+  $$(".bc-tabs button").forEach((b) => b.addEventListener("click", () => { S.tab = b.dataset.tab; save(); renderPanel(); panel.scrollTop = 0; }));
+
+  /* ════════ сцена, подпись, нижняя панель ════════ */
+  const stage = $("#bcStage");
+  function drawStage() {
+    stage.innerHTML = compose();
+    const n = stems();
+    $("#bcLabel").textContent = n ? `${flowersWord(n)} · ${tier(n)}` : "Букет пуст";
+  }
+  function updateBar() {
+    const n = stems();
+    $("#bcBarSum").textContent = money(total());
+    $("#bcBarInfo").textContent = n ? flowersWord(n) : "Добавьте цветы";
+    $("#bcSend").disabled = n < D.minStems;
+  }
+
+  $("#bcShuffle").addEventListener("click", () => {
+    if (!stems()) { toast("Сначала добавьте цветы"); return; }
+    S.seed = (S.seed * 31 + 17) % 99991 || 5; save(); drawStage();
+    toast("Новый вариант — нажмите ещё, если не нравится");
+  });
+
+  /* ════════ заявка ════════ */
+  const sheet = $("#bcSheet");
+  function openSheet() {
+    $("#bcSheetSum").textContent = `${flowersWord(stems())} · ${money(total())}. Флорист перезвонит, уточнит детали и соберёт букет по вашей схеме.`;
+    $("#bcForm").hidden = false; $("#bcDone").hidden = true;
+    sheet.hidden = false; void sheet.offsetWidth; sheet.classList.add("is-open");
+    document.documentElement.classList.add("bc-lock");
+    setTimeout(() => { const i = $("#bcName"); if (i) i.focus(); }, 250);
+  }
+  function closeSheet() {
+    sheet.classList.remove("is-open");
+    document.documentElement.classList.remove("bc-lock");
+    setTimeout(() => { sheet.hidden = true; }, 260);
+  }
+  $("#bcSend").addEventListener("click", () => { if (stems() >= D.minStems) openSheet(); });
+  $$("[data-sheet-close]", sheet).forEach((b) => b.addEventListener("click", closeSheet));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
+
+  const phone = $("#bcPhone");
+  phone.addEventListener("input", () => {
+    let d = phone.value.replace(/\D/g, "");
+    if (d.startsWith("8")) d = "7" + d.slice(1);
+    if (!d.startsWith("7")) d = "7" + d;
+    d = d.slice(0, 11);
+    const p = d.slice(1);
+    phone.value = "+7" + (p.length ? " (" + p.slice(0, 3) : "") + (p.length >= 3 ? ") " + p.slice(3, 6) : "") +
+      (p.length >= 6 ? "-" + p.slice(6, 8) : "") + (p.length >= 8 ? "-" + p.slice(8, 10) : "");
+  });
+  const dateIn = $("#bcDate");
+  try { dateIn.min = new Date().toISOString().slice(0, 10); } catch (e) { /* ок */ }
+
+  $("#bcForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = $("#bcName").value.trim();
+    const digits = phone.value.replace(/\D/g, "");
+    if (digits.length < 11) { $("#bcErr").textContent = "Укажите телефон полностью — флорист перезвонит."; phone.focus(); return; }
+    $("#bcErr").textContent = "";
+    const btn = $("#bcSubmit");
+    btn.disabled = true; btn.textContent = "Отправляем…";
+    const details = "Состав букета:\n" + lines().map((l) => "• " + l.t + (l.n ? " × " + l.n : "") + " — " + money(l.sum)).join("\n") +
+      `\n\nИтого: ${money(total())} (${flowersWord(stems())}, ${tier(stems())})`;
+    const payload = { page: "bouquet-builder", name, phone: phone.value, date: dateIn.value, details, source: "Конструктор букета" };
+    const send = window.palomaSendLead ? window.palomaSendLead(payload) : Promise.resolve({ ok: false });
+    send.then(() => {
+      btn.disabled = false; btn.textContent = "Отправить заявку";
+      $("#bcDoneText").textContent = `Флорист перезвонит${name ? ", " + name : ""}, уточнит детали и соберёт букет по вашей схеме.`;
+      $("#bcForm").hidden = true; $("#bcDone").hidden = false;
+      if (window.palomaGoal) window.palomaGoal("constructor_lead");
+    });
+  });
 
   let toastTimer = 0;
   function toast(msg) {
-    const t = $("#bcToast", root);
+    const t = $("#bcToast");
     t.textContent = msg; t.classList.add("is-on");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove("is-on"), 2600);
+    toastTimer = setTimeout(() => t.classList.remove("is-on"), 2400);
   }
 
-  renderPresets();
-  renderSug();
-  setTab("all");
-  go(S.step || 1);
+  renderPanel();
+  drawStage();
+  updateBar();
 })();

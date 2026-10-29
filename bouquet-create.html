@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="product.css?v=bb2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap">
-  <link rel="stylesheet" href="bouquet-create.css?v=3">
+  <link rel="stylesheet" href="bouquet-create.css?v=4">
   <link rel="stylesheet" href="full-width.css?v=8">
   <link rel="stylesheet" href="mobile-tune.css?v=88">
 </head>
@@ -384,102 +384,54 @@
 
   <main class="bc" id="main" aria-label="Конструктор букета">
     <div id="bcApp" class="bc-app">
-      <div class="bc-top">
-        <h1 class="bc-title">Соберите букет</h1>
-        <ol class="bc-steps" aria-label="Шаги">
-          <li class="is-on"><i>1</i><span>Цветы</span></li>
-          <li><i>2</i><span>Букет и открытка</span></li>
-          <li><i>3</i><span>Упаковка и заказ</span></li>
-        </ol>
-        <p class="bc-sub" id="bcCount">Выберите минимум 3 цветка</p>
-      </div>
-
+      <h1 class="bc-title">Соберите букет</h1>
       <div class="bc-body">
         <div class="bc-left">
           <div class="bc-stage" id="bcStage"></div>
-          <div class="bc-toolbar">
-            <button type="button" data-tool="shuffle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3c4 0 6 10 10 10h3M4 17h3c1.6 0 2.8-1.6 3.8-3.4M13.2 10.4C14.2 8.6 15.4 7 17 7h3M18 4l3 3-3 3M18 14l3 3-3 3"/></svg>Перемешать</button>
-            <button type="button" data-tool="bg"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 15l4-4 4 4 3-3 5 5"/><circle cx="15" cy="9" r="1.5"/></svg>Фон и зелень</button>
-            <button type="button" data-tool="move"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/></svg>Двигать</button>
-            <button type="button" data-tool="fillers"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"/><circle cx="7" cy="14" r="3"/><circle cx="17" cy="14" r="3"/><path d="M12 11v10"/></svg>Добавки</button>
-            <button type="button" data-tool="more"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Ещё цветы</button>
+          <div class="bc-under">
+            <p class="bc-label" id="bcLabel">Букет пуст</p>
+            <button type="button" class="bc-shuffle" id="bcShuffle">✦ Расставить автоматически</button>
           </div>
         </div>
-
         <div class="bc-right">
-          <!-- ШАГ 1 -->
-          <section class="bc-panel" data-step="1" aria-label="Выбор цветов">
-            <div class="bc-tools1">
-              <div class="bc-search">
-                <input id="bcSearch" type="search" placeholder="Найти цветок: роза, пион, белый…" aria-label="Поиск цветка" autocomplete="off">
-                <button type="button" id="bcClear">Очистить</button>
-              </div>
-              <div class="bc-tabs" role="group" aria-label="Режим">
-                <button type="button" data-tab="all" aria-pressed="true">Все цветы</button>
-                <button type="button" data-tab="presets" aria-pressed="false">Готовые идеи</button>
-              </div>
-            </div>
-            <div class="bc-scroll">
-              <div class="bc-grid" id="bcGrid"></div>
-              <div class="bc-presets" id="bcPresets" hidden></div>
-            </div>
-          </section>
-
-          <!-- ШАГ 2 -->
-          <section class="bc-panel" data-step="2" hidden aria-label="Букет и открытка">
-            <div class="bc-scroll">
-              <div class="bc-picker" id="bcPicker" hidden></div>
-              <div class="bc-card">
-                <div class="bc-row2">
-                  <label class="bc-field"><span>Кому</span><input class="bc-input" id="bcTo" maxlength="40" placeholder="Имя получателя"></label>
-                  <label class="bc-field"><span>От кого</span><input class="bc-input" id="bcFrom" maxlength="40" placeholder="Ваше имя"></label>
-                </div>
-                <div class="bc-letter">
-                  <div class="bc-letter__top">
-                    <select class="bc-input" id="bcFont" aria-label="Шрифт открытки">
-                      <option value="hand">Рукописный</option>
-                      <option value="serif">Изящный</option>
-                      <option value="sans">Простой</option>
-                    </select>
-                  </div>
-                  <textarea id="bcText" maxlength="300" placeholder="Напишите тёплые слова — флорист перенесёт их на открытку от руки" data-font="hand"></textarea>
-                  <span class="bc-letter__count" id="bcTextCount">0 / 300</span>
-                </div>
-                <button type="button" class="bc-sug-toggle" id="bcSugToggle" aria-expanded="false" aria-controls="bcSug">Идеи для текста <span aria-hidden="true">⌄</span></button>
-                <div id="bcSug" hidden>
-                  <div class="bc-chips" id="bcSugTabs"></div>
-                  <div id="bcSugList"></div>
-                </div>
-                <p class="bc-note">Открытку можно оставить пустой. Текст флорист напишет от руки на фирменной открытке PALOMA.</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- ШАГ 3 -->
-          <section class="bc-panel" data-step="3" hidden aria-label="Упаковка и заказ">
-            <div class="bc-scroll">
-              <div class="bc-side">
-                <div class="bc-block"><h3>Упаковка</h3><div class="bc-chips" id="bcWraps"></div></div>
-                <div class="bc-block"><h3>Лента</h3><div class="bc-chips" id="bcRibbons"></div></div>
-                <div class="bc-cardp" id="bcCardPreview" hidden></div>
-                <div class="bc-block"><h3>Ваш букет</h3><ul class="bc-sum" id="bcSummary"></ul></div>
-                <div class="bc-actions">
-                  <button type="button" class="bc-btn bc-btn--pink" id="bcOrder">Оформить заказ</button>
-                  <button type="button" class="bc-btn bc-btn--line" id="bcDownload">Скачать картинку букета</button>
-                  <p class="bc-promise">Цветы живые и сезонные: оттенок может немного отличаться от рисунка — флорист согласует замену и пришлёт фото до доставки.</p>
-                </div>
-              </div>
-            </div>
-          </section>
+          <div class="bc-tabs" role="tablist" aria-label="Разделы">
+            <button type="button" data-tab="flowers">Цветы</button>
+            <button type="button" data-tab="wrap">Упаковка</button>
+            <button type="button" data-tab="extras">Дополнения</button>
+            <button type="button" data-tab="sum">Состав</button>
+          </div>
+          <div class="bc-panel" id="bcPanel"></div>
         </div>
       </div>
 
       <div class="bc-bar" id="bcBar">
-        <div class="bc-bar__info"><small id="bcBarInfo">Букет пуст</small><b id="bcBarSum">0 ₽</b></div>
-        <button type="button" class="bc-bar__back" id="bcBack" hidden>← Назад</button>
-        <button type="button" class="bc-bar__next" id="bcNext" disabled>Собрать букет →</button>
+        <div class="bc-bar__info"><b id="bcBarSum">0 ₽</b><small id="bcBarInfo">Добавьте цветы</small></div>
+        <button type="button" class="bc-bar__send" id="bcSend" disabled>Отправить заявку</button>
       </div>
       <div class="bc-toast" id="bcToast" role="status" aria-live="polite"></div>
+
+      <div class="bc-sheet" id="bcSheet" hidden>
+        <div class="bc-sheet__back" data-sheet-close></div>
+        <div class="bc-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="bcSheetTitle">
+          <form id="bcForm" novalidate>
+            <h2 id="bcSheetTitle">Оставить заявку</h2>
+            <p class="bc-sheet__sum" id="bcSheetSum"></p>
+            <label class="bc-f"><span>Имя</span><input id="bcName" autocomplete="name" maxlength="60" placeholder="Как к вам обращаться"></label>
+            <label class="bc-f"><span>Телефон</span><input id="bcPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label>
+            <label class="bc-f"><span>Когда нужен букет</span><input id="bcDate" type="date"></label>
+            <p class="bc-err" id="bcErr" role="alert"></p>
+            <button type="submit" class="bc-btn bc-btn--pink" id="bcSubmit">Отправить заявку</button>
+            <button type="button" class="bc-btn bc-btn--line" data-sheet-close>Закрыть</button>
+            <p class="bc-sheet__note">Нажимая «Отправить», вы соглашаетесь с <a href="privacy.html">политикой конфиденциальности</a>.</p>
+          </form>
+          <div class="bc-done" id="bcDone" hidden>
+            <div class="bc-done__icon" aria-hidden="true">✓</div>
+            <h2>Заявка отправлена</h2>
+            <p id="bcDoneText"></p>
+            <button type="button" class="bc-btn bc-btn--pink" data-sheet-close>Хорошо</button>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -703,8 +655,8 @@
   <script src="wishlist.js?v=seo1"></script>
   <script src="clients.js"></script>
   <script src="flower-art.js?v=2"></script>
-  <script src="bouquet-create-data.js?v=1"></script>
-  <script src="bouquet-create.js?v=2"></script>
+  <script src="bouquet-create-data.js?v=2"></script>
+  <script src="bouquet-create.js?v=3"></script>
   <script src="cursor.js?v=press3"></script>
   <script src="cookie-consent.js?v=3"></script>
   <!-- Выезжающая панель «Избранное» -->
