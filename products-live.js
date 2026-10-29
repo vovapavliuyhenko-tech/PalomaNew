@@ -220,7 +220,24 @@
   /* Запасной путь: подборка пуста, на главной остаются свёрстанные карточки.
      Цену, название и фото всё равно сверяем с каталогом, а пропавший товар
      прячем — карточка не должна вести на пустую страницу. */
+  /* «Смотреть ещё» на странице подписки: раньше там были свёрстанные карточки
+     «Букет из 7 пионов» и т. п. — таких товаров нет, ссылки вели на «не найдено».
+     Теперь — те же букеты, что в онлайн-витрине главной. */
+  var subFilled = false;
+  function renderSubShowcase() {
+    var section = document.querySelector(".sub-showcase");
+    if (!section || subFilled) return;
+    var track = section.querySelector("[data-carousel-track]");
+    var picked = pickShowcase();
+    if (!track || !picked.length) return;
+    track.innerHTML = picked.map(cardHtml).join("");
+    subFilled = true;
+    if (section.dataset.autoscrollInit === "1") cloneForLoop(track);
+    try { window.dispatchEvent(new Event("resize")); } catch (e) { /* ок */ }
+  }
+
   function syncHomeShowcase() {
+    renderSubShowcase();
     if (renderShowcase()) return;
 
     var cards = document.querySelectorAll(".home-product-card");
