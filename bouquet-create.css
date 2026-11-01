@@ -7,8 +7,11 @@
 .bc { --ink: #1B1A18; --mute: rgba(27, 26, 24, .55); --line: #ECE7E1; --pink: #E7385A; --soft: #FBF7F4;
   background: #fff; color: var(--ink); margin-top: 0; padding: 92px 16px 110px; }
 .bc-app { max-width: 1240px; margin: 0 auto; }
-.bc-title { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 400;
-  font-size: clamp(30px, 5vw, 46px); margin: 0 0 12px; text-align: center; }
+/* Заголовок — как в каталоге: слева, шрифт сайта (Classica One), без курсива */
+.bc-title { font-family: var(--serif, "Classica One", "Italiana", cursive); font-style: normal; font-weight: 400;
+  font-size: clamp(44px, 5vw, 72px); line-height: 1.02; letter-spacing: .02em; text-transform: none;
+  color: var(--ink); margin: 0 0 24px; text-align: left; }
+@media (max-width: 767px) { .bc-title { font-size: 28px; line-height: 1.12; letter-spacing: -.01em; margin-bottom: 14px; } }
 
 .bc-body { display: grid; gap: 18px; }
 @media (min-width: 900px) {
@@ -27,7 +30,7 @@
 .bc-shuffle:hover { background: var(--ink); color: #fff; }
 
 /* ── вкладки ── */
-.bc-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; background: #F4F0EC; border-radius: 999px;
+.bc-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; background: #F4F0EC; border-radius: 999px;
   position: sticky; top: 64px; z-index: 5; }
 .bc-tabs button { border: 0; background: transparent; border-radius: 999px; padding: 10px 4px; font: inherit; font-size: 13px; color: var(--mute); cursor: pointer; }
 .bc-tabs button.is-on { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(0, 0, 0, .08); font-weight: 600; }
@@ -53,20 +56,6 @@
 .bc-qty button:disabled { opacity: .35; cursor: default; }
 .bc-qty b { min-width: 22px; text-align: center; font-size: 14px; }
 
-/* ── упаковка ── */
-.bc-sec { padding: 14px; border: 1px solid var(--line); border-radius: 18px; }
-.bc-sec__head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; font-size: 15px; }
-.bc-sec__head em { font-style: normal; font-weight: 400; color: var(--mute); }
-.bc-sec__head span { color: var(--mute); font-size: 14px; white-space: nowrap; }
-.bc-link { border: 0; background: none; color: var(--pink); font: inherit; font-size: 13px; cursor: pointer; padding: 0 0 0 8px; text-decoration: underline; }
-.bc-sw { display: grid; grid-template-columns: repeat(auto-fill, minmax(66px, 1fr)); gap: 10px 6px; }
-.bc-sw__item { border: 0; background: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; font: inherit; color: var(--ink); }
-.bc-sw__item i { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, .12); }
-.bc-sw__item span { font-size: 11px; color: var(--mute); text-align: center; line-height: 1.2; }
-.bc-sw__item.is-on i { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--pink); }
-.bc-sw__item.is-on span { color: var(--ink); font-weight: 600; }
-.bc-add-line { border: 1.5px dashed #D9D2C9; background: #fff; border-radius: 18px; padding: 14px; font: inherit; font-size: 14px; cursor: pointer; color: var(--ink); }
-.bc-add-line:hover { border-color: var(--pink); color: var(--pink); }
 
 /* ── дополнения ── */
 .bc-extra { display: grid; grid-template-columns: 56px 1fr; gap: 6px 12px; align-items: center; padding: 12px 14px;

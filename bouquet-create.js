@@ -38,6 +38,9 @@
     const saved = JSON.parse(localStorage.getItem(KEY) || "null");
     if (saved && saved.sel) S = Object.assign(fresh(), saved);
   } catch (e) { /* приватный режим */ }
+  /* Упаковка и лента у PALOMA единые — выбора нет */
+  S.wrap = "milk"; S.ribbons = ["powder"];
+  if (S.tab === "wrap") S.tab = "flowers";
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* ок */ } };
 
   const stems = () => Object.values(S.sel).reduce((a, b) => a + b, 0);
@@ -61,8 +64,7 @@
       });
     });
     if (stems()) {
-      out.push({ t: "Упаковка: " + pick(V.wraps, S.wrap)[1].toLowerCase(), sum: V.wrapPrice });
-      S.ribbons.forEach((r, i) => out.push({ t: (i ? "Лента " + (i + 1) : "Лента") + ": " + pick(V.ribbons, r)[1].toLowerCase(), sum: V.ribbonPrice }));
+      out.push({ t: "Фирменная упаковка PALOMA с лентой", sum: V.wrapPrice + V.ribbonPrice });
       if (S.green) out.push({ t: `Зелень, ${branches()} ${plural(branches(), "ветка", "ветки", "веток")}`, sum: branches() * V.greenPerBranch });
       if (S.card) out.push({ t: "Открытка" + (S.cardText.trim() ? ": «" + S.cardText.trim() + "»" : ""), sum: V.cardPrice });
       if (S.candy) out.push({ t: V.candy.name, sum: V.candy.price });
@@ -219,11 +221,6 @@
     </div>`;
   }
 
-  function swatches(list, current, attrs) {
-    return `<div class="bc-sw">` + list.map(([id, name, col]) =>
-      `<button type="button" class="bc-sw__item${current === id ? " is-on" : ""}" ${attrs}="${id}"><i style="background:${col}"></i><span>${esc(name)}</span></button>`).join("") + "</div>";
-  }
-
   function toggle(attr, value, options) {
     return `<div class="bc-toggle" role="group">` + options.map(([v, label]) =>
       `<button type="button" data-${attr}="${v}" class="${String(value) === String(v) ? "is-on" : ""}">${label}</button>`).join("") + "</div>";
@@ -234,20 +231,13 @@
     let h = "";
     if (S.tab === "flowers") {
       h = D.flowers.filter((fl) => fl.inStock !== false).map(flowerRow).join("");
-    } else if (S.tab === "wrap") {
-      h = `<div class="bc-sec"><div class="bc-sec__head"><b>Цвет упаковки</b><span>${money(V.wrapPrice)}</span></div>${swatches(V.wraps, S.wrap, "data-wrap")}</div>`;
-      S.ribbons.forEach((r, i) => {
-        h += `<div class="bc-sec"><div class="bc-sec__head"><b>${i ? "Лента " + (i + 1) : "Лента"} <em>· ${esc(pick(V.ribbons, r)[1])}</em></b><span>${money(V.ribbonPrice)} <button type="button" class="bc-link" data-rib-remove="${i}">Убрать</button></span></div>` +
-          swatches(V.ribbons, r, `data-rib="${i}" data-ribcolor`) + "</div>";
-      });
-      if (S.ribbons.length < 3) h += `<button type="button" class="bc-add-line" data-rib-add>+ ${S.ribbons.length ? "Добавить ещё ленту" : "Добавить ленту"} · ${money(V.ribbonPrice)}</button>`;
     } else if (S.tab === "extras") {
       const b = branches();
       h = `<div class="bc-extra"><div class="bc-extra__art"><svg viewBox="-30 -70 60 80" aria-hidden="true"><defs>${A.defs()}</defs>${A.green("eucalyptus", 66, 3)}</svg></div>
           <div class="bc-extra__info"><b>Зелень</b><span>${b} ${plural(b, "ветка", "ветки", "веток")} — по одной на 10 цветов · ${money(b * V.greenPerBranch)}</span></div>
           ${toggle("green", S.green, [[false, "Нет"], [true, "Есть"]])}</div>
         <div class="bc-extra bc-extra--wide"><div class="bc-extra__art bc-extra__art--icon">✉</div>
-          <div class="bc-extra__info"><b>Открытка с вашим текстом</b><span>Добавить — ${money(V.cardPrice)}</span></div>
+          <div class="bc-extra__info"><b>Открытка с вашим текстом</b><span>Бесплатно — флорист напишет от руки</span></div>
           ${toggle("card", S.card, [[false, "Нет"], [true, "Добавить"]])}
           ${S.card ? `<textarea class="bc-cardtext" id="bcCardText" maxlength="120" placeholder="Текст открытки, например: «С днём рождения, мама!»">${esc(S.cardText)}</textarea>` : ""}</div>
         <div class="bc-extra"><div class="bc-extra__art"><svg viewBox="-50 -50 100 100" aria-hidden="true">${candySvg(0, 0)}</svg></div>
@@ -258,7 +248,7 @@
           ${toggle("bear", S.bear, [["none", "Нет"], ["near", "Рядом"], ["in", "В букете"]])}</div>`;
     } else {
       const ls = lines();
-      h = ls.length ? `<ul class="bc-sum">` + ls.map((l) => `<li><span>${esc(l.t)}${l.n ? ` × ${l.n}` : ""}</span><b>${money(l.sum)}</b></li>`).join("") +
+      h = ls.length ? `<ul class="bc-sum">` + ls.map((l) => `<li><span>${esc(l.t)}${l.n ? ` × ${l.n}` : ""}</span><b>${l.sum ? money(l.sum) : "бесплатно"}</b></li>`).join("") +
         `<li class="bc-sum__total"><span>Итого</span><b>${money(total())}</b></li></ul>` : `<p class="bc-empty">Добавьте цветы во вкладке «Цветы».</p>`;
     }
     panel.innerHTML = h;
@@ -290,11 +280,7 @@
     }
     const t = e.target.closest("button");
     if (!t) return;
-    if (t.dataset.wrap) S.wrap = t.dataset.wrap;
-    else if (t.dataset.ribcolor) S.ribbons[+t.dataset.rib] = t.dataset.ribcolor;
-    else if (t.dataset.ribRemove != null) S.ribbons.splice(+t.dataset.ribRemove, 1);
-    else if (t.hasAttribute("data-rib-add")) S.ribbons.push(S.ribbons.length ? "white" : "powder");
-    else if (t.dataset.green != null) S.green = t.dataset.green === "true";
+    if (t.dataset.green != null) S.green = t.dataset.green === "true";
     else if (t.dataset.card != null) S.card = t.dataset.card === "true";
     else if (t.dataset.candy != null) S.candy = t.dataset.candy === "true";
     else if (t.dataset.bear != null) S.bear = t.dataset.bear;
@@ -364,7 +350,7 @@
     $("#bcErr").textContent = "";
     const btn = $("#bcSubmit");
     btn.disabled = true; btn.textContent = "Отправляем…";
-    const details = "Состав букета:\n" + lines().map((l) => "• " + l.t + (l.n ? " × " + l.n : "") + " — " + money(l.sum)).join("\n") +
+    const details = "Состав букета:\n" + lines().map((l) => "• " + l.t + (l.n ? " × " + l.n : "") + " — " + (l.sum ? money(l.sum) : "бесплатно")).join("\n") +
       `\n\nИтого: ${money(total())} (${flowersWord(stems())}, ${tier(stems())})`;
     const payload = { page: "bouquet-builder", name, phone: phone.value, date: dateIn.value, details, source: "Конструктор букета" };
     const send = window.palomaSendLead ? window.palomaSendLead(payload) : Promise.resolve({ ok: false });
