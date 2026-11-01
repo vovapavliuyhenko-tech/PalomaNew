@@ -144,7 +144,7 @@ window.PALOMA_CREATE_DATA = {
 window.PALOMA_CREATE_DATA.v2 = {
   /* подпись под букетом по количеству цветов */
   tiers: [[15, "мини-букет"], [25, "компактный букет"], [35, "средний букет"], [999, "большой букет"]],
-  wrapPrice: 300,
+  wrapPrice: 0,
   wraps: [
     ["white", "Белая", "#F7F5F1"], ["milk", "Молочная", "#F1E8DA"], ["cream", "Кремовая", "#E9D7BA"],
     ["sand", "Песочная", "#D8BE98"], ["kraft", "Крафт", "#C39565"], ["powder", "Пудровая", "#EBCBC6"],
@@ -152,7 +152,7 @@ window.PALOMA_CREATE_DATA.v2 = {
     ["mint", "Мятная", "#C3E3D2"], ["olive", "Оливковая", "#A6AD7C"], ["green", "Тёмно-зелёная", "#2E4A3A"],
     ["grey", "Серая", "#B8B7B3"], ["black", "Чёрная", "#25242A"],
   ],
-  ribbonPrice: 100,
+  ribbonPrice: 0,
   ribbons: [
     ["white", "Белая", "#FAF8F4"], ["cream", "Кремовая", "#EFE3CC"], ["powder", "Пудровая", "#E8B4B4"],
     ["pink", "Розовая", "#E98AA6"], ["fuchsia", "Фуксия", "#C8326B"], ["red", "Красная", "#C81E32"],
