@@ -31,7 +31,7 @@
   const fresh = () => ({
     sel: {}, seed: 7, tab: "flowers",
     wrap: "milk", ribbons: ["powder"],
-    green: false, card: false, cardText: "", candy: false, bear: "none",
+    green: false, card: false, cardText: "", adds: [],
   });
   let S = fresh();
   try {
@@ -67,8 +67,7 @@
       out.push({ t: "Фирменная упаковка PALOMA с лентой", sum: V.wrapPrice + V.ribbonPrice });
       if (S.green) out.push({ t: `Зелень, ${branches()} ${plural(branches(), "ветка", "ветки", "веток")}`, sum: branches() * V.greenPerBranch });
       if (S.card) out.push({ t: "Открытка" + (S.cardText.trim() ? ": «" + S.cardText.trim() + "»" : ""), sum: V.cardPrice });
-      if (S.candy) out.push({ t: V.candy.name, sum: V.candy.price });
-      if (S.bear !== "none") out.push({ t: V.bear.name + (S.bear === "in" ? " — в букете" : " — рядом"), sum: V.bear.price });
+      S.adds.forEach((a) => out.push({ t: ADD_KINDS[a.k].label + ": " + a.name, n: a.qty > 1 ? a.qty : 0, sum: a.price * a.qty }));
     }
     return out;
   }
@@ -85,22 +84,29 @@
     return out;
   }
 
-  /* Плюшевый мишка — простой собственный рисунок */
-  function bearSvg(x, y, s) {
-    const f = "#C8925E", d = "#9C6A3F", l = "#E8C9A2";
-    return `<g transform="translate(${x},${y}) scale(${s})">
-      <ellipse cx="0" cy="44" rx="34" ry="36" fill="${f}" stroke="${d}" stroke-width="1.5"/>
-      <ellipse cx="0" cy="50" rx="18" ry="20" fill="${l}"/>
-      <circle cx="-30" cy="62" r="11" fill="${f}" stroke="${d}" stroke-width="1.5"/>
-      <circle cx="30" cy="62" r="11" fill="${f}" stroke="${d}" stroke-width="1.5"/>
-      <circle cx="-26" cy="-22" r="12" fill="${f}" stroke="${d}" stroke-width="1.5"/><circle cx="-26" cy="-22" r="6" fill="${l}"/>
-      <circle cx="26" cy="-22" r="12" fill="${f}" stroke="${d}" stroke-width="1.5"/><circle cx="26" cy="-22" r="6" fill="${l}"/>
-      <circle cx="0" cy="0" r="30" fill="${f}" stroke="${d}" stroke-width="1.5"/>
-      <ellipse cx="0" cy="10" rx="13" ry="10" fill="${l}"/>
-      <ellipse cx="0" cy="5" rx="4.5" ry="3.5" fill="#3A2416"/>
-      <path d="M0 9 v4 M-4 14 q4 3 8 0" stroke="#3A2416" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-      <circle cx="-10" cy="-6" r="3" fill="#2A1A10"/><circle cx="10" cy="-6" r="3" fill="#2A1A10"/>
-      <path d="M-14 26 q14 10 28 0" stroke="#E7385A" stroke-width="5" fill="none" stroke-linecap="round"/>
+  /* Чашка кофе сверху — блюдце, чашка, пенка с сердечком */
+  function cupSvg(x, y) {
+    return `<g transform="translate(${x},${y})">
+      <circle r="46" fill="#FBF8F3" stroke="#DDD3C6" stroke-width="1.5"/>
+      <path d="M30 -6 q20 0 20 12 q0 12 -20 10" fill="none" stroke="#E9E2D8" stroke-width="7" stroke-linecap="round"/>
+      <circle r="32" fill="#fff" stroke="#DDD3C6" stroke-width="1.5"/>
+      <circle r="26" fill="#B7845A"/>
+      <path d="M0 12 C-16 0 -14 -12 -6 -12 C-2 -12 0 -9 0 -6 C0 -9 2 -12 6 -12 C14 -12 16 0 0 12Z" fill="#F4E7D6"/>
+    </g>`;
+  }
+  /* Десерт на тарелке сверху */
+  function dessertSvg(x, y) {
+    return `<g transform="translate(${x},${y})">
+      <circle r="44" fill="#fff" stroke="#DDD3C6" stroke-width="1.5"/><circle r="34" fill="none" stroke="#EFE9E1" stroke-width="1.2"/>
+      <circle r="22" fill="#E8B9A8"/><circle r="22" fill="none" stroke="#D49A86" stroke-width="2" stroke-dasharray="3 3"/>
+      <circle cx="-6" cy="-5" r="5" fill="#C8243C"/><circle cx="6" cy="2" r="4" fill="#C8243C"/><path d="M-2 -10 q3 -4 7 -3" stroke="#6E8F5E" stroke-width="2" fill="none"/>
+    </g>`;
+  }
+  /* Ваза сверху — горлышко с бликом */
+  function vaseSvg(x, y) {
+    return `<g transform="translate(${x},${y})">
+      <circle r="40" fill="#DCE6E8" stroke="#B8C8CC" stroke-width="1.5"/><circle r="28" fill="#C8D7DB"/><circle r="20" fill="#9FB4BA"/>
+      <path d="M-28 -16 a32 32 0 0 1 22 -20" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8"/>
     </g>`;
   }
 
@@ -180,9 +186,11 @@
       s += `<g filter="url(#bcSh)" transform="translate(${h.x.toFixed(1)},${h.y.toFixed(1)}) rotate(${(R0() * 360).toFixed(0)})">${art}</g>`;
     });
 
-    if (S.bear === "in") s += bearSvg(CX + R * 0.55, CY + R * 0.5, 0.75);
-    if (S.bear === "near") s += bearSvg(530, 470, 0.95);
-    if (S.candy) s += candySvg(78, 500);
+    const has = (k) => S.adds.some((a) => a.k === k);
+    if (has("vases")) s += vaseSvg(530, 480);
+    if (has("coffee")) s += cupSvg(70, 90);
+    if (has("dessert")) s += dessertSvg(66, 210);
+    if (has("choco")) s += candySvg(78, 500);
     if (S.card) s += cardSvg(S.cardText);
     return s + "</svg>";
   }
@@ -226,6 +234,159 @@
       `<button type="button" data-${attr}="${v}" class="${String(value) === String(v) ? "is-on" : ""}">${label}</button>`).join("") + "</div>";
   }
 
+  /* ════════ ВАЗЫ, КОФЕ, ДЕСЕРТЫ, ШОКОЛАД ════════
+     Как на странице оформления заказа: «Выбрать» открывает панель снизу
+     с вариантами. Вазы — из каталога, остальное — из меню кофейни.
+     Выбранное попадает в состав, в сумму и в заявку флористу. */
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const el = document.createElement("script");
+      el.src = src; el.onload = () => resolve(true); el.onerror = () => resolve(false);
+      document.head.appendChild(el);
+    });
+  }
+  function loadCatalog() {
+    if (Array.isArray(window.PALOMA_PRODUCTS) && window.PALOMA_PRODUCTS.length) return Promise.resolve(window.PALOMA_PRODUCTS);
+    const fromServer = window.palomaFetch
+      ? window.palomaFetch("?a=products", { cache: "no-store" }).then((r) => r.json()).then((d) => d && d.products)
+      : Promise.reject(new Error("нет сервера"));
+    return fromServer
+      .then((l) => { if (!Array.isArray(l) || !l.length) throw new Error("пусто"); return l; })
+      .catch(() => loadScript("paloma-products.js?v=p63").then(() => window.PALOMA_PRODUCTS || []));
+  }
+  function loadMenu() {
+    if (Array.isArray(window.PALOMA_COFFEE_MENU)) return Promise.resolve(window.PALOMA_COFFEE_MENU);
+    return loadScript("coffee-menu-data.js?v=27").then(() => window.PALOMA_COFFEE_MENU || []);
+  }
+  /* «220 / 270 / 300 ₽» + «250 / 350 / 450 мл» → размеры */
+  function menuSizes(it) {
+    const vols = String(it.volumes || "").split("/").map((x) => x.trim()).filter(Boolean);
+    const nums = String(it.priceLabel || "").split("/").map((x) => parseInt(x.replace(/[^0-9]/g, ""), 10) || 0);
+    if (nums.length > 1 && (vols.length === nums.length || !vols.length)) {
+      const unit = (String(it.volumes || "").match(/[^\d\s/]+\s*$/) || [""])[0].trim();
+      return nums.map((pr, i) => {
+        let v = vols[i] || "";
+        if (v && /^\d+$/.test(v) && unit) v += " " + unit;
+        return { label: v, price: pr };
+      });
+    }
+    return [{ label: vols[0] || "", price: Number(it.price) || nums[0] || 0 }];
+  }
+  const MENU_IMG = {
+    classic: "images/paloma/coffee/cup-classic.jpg", cacaoraf: "images/paloma/coffee/cup-raf.jpg",
+    milkshake: "images/paloma/coffee/cup-milkshake.jpg", tea: "images/paloma/coffee/cup-tea.jpg",
+    cold: "images/paloma/coffee/cup-cold.jpg", autumn: "images/paloma/coffee/pumpkin-latte.jpg",
+  };
+  const MENU_CATS = {
+    autumn: "Осеннее меню", classic: "Классика", cacaoraf: "Какао и раф", cold: "Холодные", milkshake: "Коктейли", tea: "Чай",
+    dessert: "Десерты", corpus: "Корпусные", schaste: "Конфеты «Счастье»", chokome: "Шоколад и конфеты",
+  };
+  const menuPick = (cats, rows) => ({
+    rows: !!rows,
+    load: () => loadMenu().then((m) => m
+      .filter((it) => cats.indexOf(it.category) >= 0 && Number(it.price) > 0)
+      .sort((a, b) => cats.indexOf(a.category) - cats.indexOf(b.category))
+      .map((it) => ({ id: it.id, group: MENU_CATS[it.category] || "", name: it.title,
+        image: rows ? "" : it.image || MENU_IMG[it.category] || "", bg: it.imageBg || "", sizes: menuSizes(it) }))),
+  });
+  const ADD_KINDS = {
+    vases: { label: "Ваза", title: "Выберите вазу", hint: "Чтобы букет сразу встал в воду", art: () => vaseSvg(0, 0),
+      load: () => loadCatalog().then((list) => (Array.isArray(list) ? list : [])
+        .filter((p) => p && Number(p.price) > 0 && (p.categories || [p.category]).indexOf("vases") >= 0 && /ваз/i.test(p.name))
+        .sort((a, b) => a.price - b.price)
+        .map((p) => ({ id: p.id, name: p.name, image: p.image || "", sizes: [{ label: "", price: Number(p.price) }] }))) },
+    coffee: Object.assign({ label: "Кофе", title: "Выберите напиток", hint: "Свежий кофе из нашей кофейни", art: () => cupSvg(0, 0) },
+      menuPick(["autumn", "classic", "cacaoraf", "cold", "milkshake", "tea"])),
+    dessert: Object.assign({ label: "Десерт", title: "Выберите десерт", hint: "К чаю или кофе", art: () => dessertSvg(0, 0) },
+      menuPick(["dessert", "corpus"], true)),
+    choco: Object.assign({ label: "Шоколад", title: "Выберите шоколад", hint: "Конфеты ручной работы", art: () => candySvg(0, 0) },
+      menuPick(["schaste", "chokome"])),
+  };
+
+  function addRow(k) {
+    const K = ADD_KINDS[k], mine = S.adds.filter((a) => a.k === k);
+    const list = mine.length ? `<ul class="bc-picked">` + mine.map((a) =>
+      `<li><span>${esc(a.name)}${a.qty > 1 ? " × " + a.qty : ""}</span><b>${money(a.price * a.qty)}</b><button type="button" data-add-del="${esc(a.key)}" aria-label="Убрать">×</button></li>`).join("") + "</ul>" : "";
+    return `<div class="bc-extra bc-extra--wide"><div class="bc-extra__art"><svg viewBox="-50 -50 100 100" aria-hidden="true">${K.art()}</svg></div>
+      <div class="bc-extra__info"><b>${K.label}</b><span>${K.hint}</span></div>
+      <button type="button" class="bc-pickbtn" data-pick="${k}">${mine.length ? "+ Ещё" : "Выбрать"}</button>${list}</div>`;
+  }
+
+  function closePick() {
+    const box = document.getElementById("bcPick");
+    if (!box) return;
+    box.classList.remove("is-open");
+    document.documentElement.classList.remove("bc-lock");
+    setTimeout(() => box.remove(), 260);
+  }
+  function openPick(k) {
+    const K = ADD_KINDS[k];
+    if (!K || document.getElementById("bcPick")) return;
+    let options = [];
+    const box = document.createElement("div");
+    box.id = "bcPick"; box.className = "bc-pick";
+    box.innerHTML = `<div class="bc-pick__back" data-pick-close></div>
+      <div class="bc-pick__panel" role="dialog" aria-modal="true" aria-label="${esc(K.title)}">
+        <div class="bc-pick__head"><span class="bc-pick__grip" aria-hidden="true"></span><p class="bc-pick__title">${esc(K.title)}</p>
+          <button type="button" class="bc-pick__close" data-pick-close aria-label="Закрыть">×</button></div>
+        <div class="bc-pick__body"><p class="bc-pick__msg">Загружаем…</p></div></div>`;
+    document.body.appendChild(box);
+    document.documentElement.classList.add("bc-lock");
+    void box.offsetWidth; box.classList.add("is-open");
+
+    box.addEventListener("click", (e) => {
+      if (e.target.closest("[data-pick-close]")) { closePick(); return; }
+      const card = e.target.closest(".bc-pc");
+      const o = card && options[+card.dataset.i];
+      if (!o) return;
+      const sb = e.target.closest("[data-size]");
+      if (sb) {
+        card.dataset.s = sb.dataset.size;
+        card.querySelectorAll("[data-size]").forEach((b) => b.classList.toggle("is-on", b === sb));
+        card.querySelector(".bc-pc__price").textContent = money(o.sizes[+sb.dataset.size].price);
+        return;
+      }
+      const add = e.target.closest("[data-pc-add]");
+      if (!add) return;
+      const sz = o.sizes[+(card.dataset.s || 0)];
+      const key = k + ":" + o.id + ":" + (sz.label || "");
+      const have = S.adds.find((a) => a.key === key);
+      if (have) have.qty++;
+      else S.adds.push({ key, k, name: o.name + (sz.label ? " · " + sz.label : ""), price: sz.price, qty: 1 });
+      save(); renderPanel(); drawStage(); updateBar();
+      add.textContent = "✓ Добавлено"; add.classList.add("is-added");
+      setTimeout(closePick, 450);
+    });
+
+    const body = box.querySelector(".bc-pick__body");
+    K.load().then((list) => {
+      options = list || [];
+      if (!options.length) { body.innerHTML = '<p class="bc-pick__msg">Не удалось загрузить. Попробуйте ещё раз чуть позже.</p>'; return; }
+      let html = "", group = null;
+      options.forEach((o, i) => {
+        const g = o.group || "";
+        if (g !== group) {
+          if (group !== null) html += "</div>";
+          if (g) html += `<p class="bc-pick__group">${esc(g)}</p>`;
+          html += K.rows ? '<div class="bc-pick__list">' : '<div class="bc-pick__grid">';
+          group = g;
+        }
+        const sizes = o.sizes.length > 1 ? '<div class="bc-pc__sizes">' + o.sizes.map((sz, n) =>
+          `<button type="button" class="${n ? "" : "is-on"}" data-size="${n}">${esc(sz.label || "№" + (n + 1))}</button>`).join("") + "</div>" : "";
+        if (K.rows) {
+          html += `<div class="bc-pc bc-pc--row" data-i="${i}"><div class="bc-pc__info"><p class="bc-pc__name">${esc(o.name)}</p>${sizes}</div>
+            <p class="bc-pc__price">${money(o.sizes[0].price)}</p><button type="button" class="bc-pc__add" data-pc-add>Добавить</button></div>`;
+          return;
+        }
+        const photo = o.image ? `<img src="${esc(o.image)}" alt="${esc(o.name)}" loading="lazy">` : `<span style="background:${esc(o.bg || "#f6f3ef")}"></span>`;
+        html += `<div class="bc-pc" data-i="${i}"><div class="bc-pc__photo">${photo}</div><p class="bc-pc__name">${esc(o.name)}</p>${sizes}
+          <p class="bc-pc__price">${money(o.sizes[0].price)}</p><button type="button" class="bc-pc__add" data-pc-add>Добавить</button></div>`;
+      });
+      body.innerHTML = html + "</div>";
+    });
+  }
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePick(); });
+
   function renderPanel() {
     $$(".bc-tabs button").forEach((b) => b.classList.toggle("is-on", b.dataset.tab === S.tab));
     let h = "";
@@ -239,13 +400,8 @@
         <div class="bc-extra bc-extra--wide"><div class="bc-extra__art bc-extra__art--icon">✉</div>
           <div class="bc-extra__info"><b>Открытка с вашим текстом</b><span>Бесплатно — флорист напишет от руки</span></div>
           ${toggle("card", S.card, [[false, "Нет"], [true, "Добавить"]])}
-          ${S.card ? `<textarea class="bc-cardtext" id="bcCardText" maxlength="120" placeholder="Текст открытки, например: «С днём рождения, мама!»">${esc(S.cardText)}</textarea>` : ""}</div>
-        <div class="bc-extra"><div class="bc-extra__art"><svg viewBox="-50 -50 100 100" aria-hidden="true">${candySvg(0, 0)}</svg></div>
-          <div class="bc-extra__info"><b>${esc(V.candy.name)}</b><span>Добавить — ${money(V.candy.price)}</span></div>
-          ${toggle("candy", S.candy, [[false, "Нет"], [true, "Добавить"]])}</div>
-        <div class="bc-extra"><div class="bc-extra__art"><svg viewBox="-50 -40 100 120" aria-hidden="true">${bearSvg(0, 0, 0.9)}</svg></div>
-          <div class="bc-extra__info"><b>${esc(V.bear.name)}</b><span>${money(V.bear.price)}</span></div>
-          ${toggle("bear", S.bear, [["none", "Нет"], ["near", "Рядом"], ["in", "В букете"]])}</div>`;
+          ${S.card ? `<textarea class="bc-cardtext" id="bcCardText" maxlength="120" placeholder="Текст открытки, например: «С днём рождения, мама!»">${esc(S.cardText)}</textarea>` : ""}</div>` +
+        Object.keys(ADD_KINDS).map(addRow).join("");
     } else {
       const ls = lines();
       h = ls.length ? `<ul class="bc-sum">` + ls.map((l) => `<li><span>${esc(l.t)}${l.n ? ` × ${l.n}` : ""}</span><b>${l.sum ? money(l.sum) : "бесплатно"}</b></li>`).join("") +
@@ -280,10 +436,10 @@
     }
     const t = e.target.closest("button");
     if (!t) return;
-    if (t.dataset.green != null) S.green = t.dataset.green === "true";
+    if (t.dataset.pick) { openPick(t.dataset.pick); return; }
+    if (t.dataset.addDel != null) S.adds = S.adds.filter((a) => a.key !== t.dataset.addDel);
+    else if (t.dataset.green != null) S.green = t.dataset.green === "true";
     else if (t.dataset.card != null) S.card = t.dataset.card === "true";
-    else if (t.dataset.candy != null) S.candy = t.dataset.candy === "true";
-    else if (t.dataset.bear != null) S.bear = t.dataset.bear;
     else return;
     save(); renderPanel(); drawStage(); updateBar();
     if (t.dataset.card === "true") { const ta = $("#bcCardText"); if (ta) ta.focus(); }
@@ -370,7 +526,21 @@
     toastTimer = setTimeout(() => t.classList.remove("is-on"), 2400);
   }
 
+  /* Телефон: букет «прилипает» под шапкой, вкладки — под букетом.
+     Шапка сайта прячется/появляется при прокрутке, поэтому меряем её на ходу. */
+  const siteTop = document.getElementById("siteTop");
+  const leftBox = $(".bc-left");
+  function stick() {
+    const top = siteTop ? Math.max(0, Math.round(siteTop.getBoundingClientRect().bottom)) : 0;
+    root.style.setProperty("--bc-top", top + "px");
+    root.style.setProperty("--bc-left-h", leftBox.offsetHeight + "px");
+  }
+  window.addEventListener("scroll", stick, { passive: true });
+  window.addEventListener("resize", stick);
+  if (window.ResizeObserver) new ResizeObserver(stick).observe(leftBox);
+
   renderPanel();
   drawStage();
   updateBar();
+  stick();
 })();
