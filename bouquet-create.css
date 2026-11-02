@@ -5,17 +5,17 @@
    Стиль PALOMA: белый фон, графит #1B1A18, розовый акцент #E7385A.
    ════════════════════════════════════════════════════════ */
 .bc { --ink: #1B1A18; --mute: rgba(27, 26, 24, .55); --line: #ECE7E1; --pink: #E7385A; --soft: #FBF7F4;
-  background: #fff; color: var(--ink); margin-top: 0; padding: 92px 16px 110px; }
+  background: #fff; color: var(--ink); margin-top: 0; padding: 92px 16px 56px; }
 .bc-app { max-width: 1760px; margin: 0 auto; }
 /* Заголовок — как в каталоге: слева, шрифт сайта (Classica One), без курсива */
 .bc-title { font-family: var(--serif, "Classica One", "Italiana", cursive); font-style: normal; font-weight: 400;
-  font-size: clamp(36px, 3.6vw, 54px); line-height: 1.02; letter-spacing: .02em; text-transform: none;
-  color: var(--ink); margin: 0 0 24px; text-align: left; }
+  font-size: clamp(30px, 2.8vw, 42px); line-height: 1.25; letter-spacing: .02em; text-transform: none;
+  color: var(--ink); margin: 0 0 28px; padding-bottom: .15em; text-align: left; }
 @media (max-width: 767px) { .bc-title { font-size: 28px; line-height: 1.12; letter-spacing: -.01em; margin-bottom: 14px; } }
 
 .bc-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
 @media (min-width: 900px) {
-  .bc { padding: 120px clamp(24px, 3vw, 56px) 120px; }
+  .bc { padding: 120px clamp(24px, 3vw, 56px) 72px; }
   .bc-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 4vw, 72px); align-items: start; }
   .bc-left { position: sticky; top: 90px; }
 }
@@ -69,7 +69,7 @@
 .bc-toggle button { border: 0; background: transparent; border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 13px; cursor: pointer; color: var(--mute); }
 .bc-toggle button.is-on { background: var(--ink); color: #fff; }
 .bc-cardtext { grid-column: 1 / -1; min-height: 84px; border: 1px solid var(--line); border-radius: 14px; padding: 12px; resize: vertical;
-  font-family: Caveat, "Segoe Print", cursive; font-size: 20px; margin-top: 6px; }
+  font: inherit; font-size: 15px; line-height: 1.5; color: var(--ink); margin-top: 6px; }
 .bc-cardtext:focus { outline: none; border-color: var(--pink); }
 
 /* ── состав ── */
@@ -92,7 +92,7 @@
 .bc-bar__send:disabled { background: #E9E3DD; color: #9a948e; cursor: default; }
 @media (min-width: 900px) { .bc-bar { padding-left: max(32px, calc((100vw - 1760px) / 2)); padding-right: max(32px, calc((100vw - 1760px) / 2)); } }
 
-.bc-toast { position: fixed; left: 50%; bottom: 92px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; z-index: 70;
+.bc-toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; z-index: 70;
   background: var(--ink); color: #fff; padding: 11px 18px; border-radius: 999px; font-size: 13px; transition: opacity .25s, transform .25s;
   max-width: calc(100vw - 32px); text-align: center; }
 .bc-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
@@ -177,3 +177,40 @@ main.bc { overflow: visible !important; overflow-x: clip !important; }
 .bc-pc--row { flex-direction: row; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; }
 .bc-pc--row .bc-pc__info { flex: 1; display: flex; flex-direction: column; gap: 6px; }
 .bc-pc--row .bc-pc__price { white-space: nowrap; }
+
+/* «Очистить всё» над списком цветов */
+.bc-clear { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-radius: 14px; background: var(--soft); font-size: 14px; }
+.bc-clear button { border: 0; background: none; color: var(--pink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; padding: 4px 0; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── иконки дополнений: тонкая линия + розовый акцент, лёгкое движение ── */
+.bc-ico { grid-row: span 2; width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center;
+  background: linear-gradient(145deg, #FFFFFF 0%, #F7F1EC 100%); border: 1px solid #EFE8E1; box-shadow: 0 6px 14px -10px rgba(60, 30, 36, .35); }
+.bc-ico svg { width: 30px; height: 30px; overflow: visible; fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.bc-ico .i-acc { fill: var(--pink); stroke: none; }
+.bc-ico .i-acc-line { stroke: var(--pink); }
+.bc-ico .i-sway { transform-origin: 12px 21px; animation: bcSway 4.5s ease-in-out infinite; }
+.bc-ico .i-twinkle { transform-box: fill-box; transform-origin: center; animation: bcTwinkle 2.6s ease-in-out infinite; }
+.bc-ico .i-float { transform-box: fill-box; transform-origin: center; animation: bcFloat 3.2s ease-in-out infinite; }
+.bc-ico .i-wave { animation: bcWave 3s linear infinite; }
+.bc-ico .i-steam path { animation: bcSteam 2.4s ease-in-out infinite; }
+.bc-ico .i-steam path:nth-child(2) { animation-delay: .5s; }
+.bc-ico .i-steam path:nth-child(3) { animation-delay: 1s; }
+.bc-ico .i-hop { transform-box: fill-box; transform-origin: bottom; animation: bcHop 2.8s cubic-bezier(.3, 0, .3, 1) infinite; }
+.bc-extra:hover .bc-ico { border-color: #F3C6CF; }
+.bc-extra:hover .bc-ico * { animation-duration: 1.4s; }
+@keyframes bcSway { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes bcTwinkle { 0%, 100% { opacity: .25; transform: scale(.6); } 50% { opacity: 1; transform: scale(1.15); } }
+@keyframes bcFloat { 0%, 100% { transform: translateY(1px) scale(.92); } 50% { transform: translateY(-2.2px) scale(1.05); } }
+@keyframes bcWave { from { transform: translateX(0); } to { transform: translateX(-9px); } }
+@keyframes bcSteam { 0% { opacity: 0; transform: translateY(2px); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(-3px); } }
+@keyframes bcHop { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-2.5px); } }
+@media (prefers-reduced-motion: reduce) { .bc-ico * { animation: none !important; } }
+
+/* ── шаги: «Дальше» и отправка заявки на третьем шаге ── */
+.bc-next { align-self: flex-end; margin-top: 6px; border: 1px solid var(--ink); background: #fff; color: var(--ink); border-radius: 999px; padding: 13px 24px;
+  font: inherit; font-size: 14px; cursor: pointer; transition: background .2s, color .2s; }
+.bc-next:hover { background: var(--ink); color: #fff; }
+.bc-send { margin-top: 6px; text-align: center; }
+.bc-send .bc-btn { font-size: 16px; padding: 17px; }
+.bc-send .bc-btn:disabled { background: #E9E3DD; color: #9a948e; opacity: 1; cursor: default; }
+.bc-send p { margin: 10px 0 0; font-size: 13px; color: var(--mute); }

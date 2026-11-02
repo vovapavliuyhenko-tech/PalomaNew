@@ -1821,6 +1821,9 @@ if (document.body.classList.contains("event-decoration-page")) {
   }
 
   function init() {
+    /* Шторку на ПК выключили по просьбе владельца: подвал листается обычно.
+       Чтобы вернуть — удалить эту строку. */
+    return;
     footer = document.querySelector(".site-footer");
     main = document.querySelector("main");
     if (!footer || !main) return;

@@ -234,6 +234,30 @@
       `<button type="button" data-${attr}="${v}" class="${String(value) === String(v) ? "is-on" : ""}">${label}</button>`).join("") + "</div>";
   }
 
+  /* ════════ ИКОНКИ ДОПОЛНЕНИЙ ════════
+     Один стиль: тонкая графитовая линия + розовый акцент. Каждая чуть живёт:
+     веточка покачивается, над чашкой поднимается пар, в вазе колышется вода,
+     сердечко вылетает из конверта, вишенка подпрыгивает, искра мерцает. */
+  const ICONS = {
+    green: `<path d="M12 21.5c.2-5.5.4-11-.6-17"/>
+      <g class="i-sway"><path d="M11.8 8.2C9.2 8 7.6 6.8 7.2 5.2c2.4-.3 4.1.8 4.6 3z"/><path d="M11.9 11c2.6-.2 4.2-1.4 4.6-3-2.4-.3-4.1.8-4.6 3z"/>
+      <path d="M12 14.2c-2.8-.1-4.5-1.4-4.9-3.1 2.6-.4 4.4.8 4.9 3.1z"/><path d="M12.1 17.2c2.8-.1 4.5-1.4 4.9-3.1-2.6-.4-4.4.8-4.9 3.1z"/></g>
+      <circle class="i-acc i-twinkle" cx="17.6" cy="4.6" r="1"/>`,
+    card: `<rect x="3" y="8.5" width="18" height="12" rx="2"/><path d="M3.6 9.4l8.4 6 8.4-6"/>
+      <path class="i-acc i-float" d="M12 7.4c-.8-1.2-2.8-.8-2.8.7 0 1.3 2.8 2.9 2.8 2.9s2.8-1.6 2.8-2.9c0-1.5-2-1.9-2.8-.7z"/>`,
+    vases: `<path d="M9 3h6M9.6 3v2.6c0 1.1-3.6 3.1-3.6 7.6C6 17.4 8.6 21 12 21s6-3.6 6-7.8c0-4.5-3.6-6.5-3.6-7.6V3"/>
+      <defs><clipPath id="bcVaseClip"><path d="M9.6 5.6c0 1.1-3.6 3.1-3.6 7.6C6 17.4 8.6 21 12 21s6-3.6 6-7.8c0-4.5-3.6-6.5-3.6-7.6z"/></clipPath></defs>
+      <g clip-path="url(#bcVaseClip)"><g class="i-wave"><path class="i-acc-line" d="M3 13.2c1.5-.7 3 .7 4.5 0s3-.7 4.5 0 3 .7 4.5 0 3-.7 4.5 0 3 .7 4.5 0"/></g></g>`,
+    coffee: `<path d="M5 11h11.5v3.5a5 5 0 0 1-5 5h-1.5a5 5 0 0 1-5-5z"/><path d="M16.5 12h1.3a2.3 2.3 0 0 1 0 4.6h-1.6"/><path d="M4 21.5h14"/>
+      <g class="i-steam i-acc-line"><path d="M8.6 8.4c-.9-.9.9-1.8 0-3.1"/><path d="M11.4 8.4c-.9-.9.9-1.8 0-3.1"/><path d="M14.2 8.4c-.9-.9.9-1.8 0-3.1"/></g>`,
+    dessert: `<path d="M2.5 20.5h19"/><path d="M4.5 18V12l14-3.5V18z"/><path d="M4.5 12c1.6.9 3.2-.5 4.6.3s2.8-.9 4.4-.1 3-.9 5-.7"/><path d="M4.5 15h14"/>
+      <g class="i-hop"><path d="M14.2 5.4c.3-1.1 1.1-1.8 2.2-2"/><circle class="i-acc" cx="13.8" cy="6.6" r="1.5"/></g>`,
+    choco: `<rect x="3.5" y="11" width="17" height="10" rx="1.6"/><path d="M2.5 8.2h19V11h-19z"/><path d="M12 8.2V21"/>
+      <path d="M12 8.2c-1.3-2.8-4.4-3-4-1.1.3 1.4 4 1.1 4 1.1zm0 0c1.3-2.8 4.4-3 4-1.1-.3 1.4-4 1.1-4 1.1z"/>
+      <path class="i-acc-line i-twinkle" d="M19.5 2.2v3.2M17.9 3.8h3.2"/>`,
+  };
+  const icon = (k) => `<span class="bc-ico bc-ico--${k}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[k]}</svg></span>`;
+
   /* ════════ ВАЗЫ, КОФЕ, ДЕСЕРТЫ, ШОКОЛАД ════════
      Как на странице оформления заказа: «Выбрать» открывает панель снизу
      с вариантами. Вазы — из каталога, остальное — из меню кофейни.
@@ -307,7 +331,7 @@
     const K = ADD_KINDS[k], mine = S.adds.filter((a) => a.k === k);
     const list = mine.length ? `<ul class="bc-picked">` + mine.map((a) =>
       `<li><span>${esc(a.name)}${a.qty > 1 ? " × " + a.qty : ""}</span><b>${money(a.price * a.qty)}</b><button type="button" data-add-del="${esc(a.key)}" aria-label="Убрать">×</button></li>`).join("") + "</ul>" : "";
-    return `<div class="bc-extra bc-extra--wide"><div class="bc-extra__art"><svg viewBox="-50 -50 100 100" aria-hidden="true">${K.art()}</svg></div>
+    return `<div class="bc-extra bc-extra--wide">${icon(k)}
       <div class="bc-extra__info"><b>${K.label}</b><span>${K.hint}</span></div>
       <button type="button" class="bc-pickbtn" data-pick="${k}">${mine.length ? "+ Ещё" : "Выбрать"}</button>${list}</div>`;
   }
@@ -391,22 +415,29 @@
     $$(".bc-tabs button").forEach((b) => b.classList.toggle("is-on", b.dataset.tab === S.tab));
     let h = "";
     if (S.tab === "flowers") {
-      h = D.flowers.filter((fl) => fl.inStock !== false).map(flowerRow).join("");
+      const n = stems();
+      h = (n ? `<div class="bc-clear"><span>В букете ${flowersWord(n)}</span><button type="button" data-clear>Очистить всё</button></div>` : "") +
+        D.flowers.filter((fl) => fl.inStock !== false).map(flowerRow).join("");
     } else if (S.tab === "extras") {
       const b = branches();
-      h = `<div class="bc-extra"><div class="bc-extra__art"><svg viewBox="-30 -70 60 80" aria-hidden="true"><defs>${A.defs()}</defs>${A.green("eucalyptus", 66, 3)}</svg></div>
+      h = `<div class="bc-extra">${icon("green")}
           <div class="bc-extra__info"><b>Зелень</b><span>${b} ${plural(b, "ветка", "ветки", "веток")} — по одной на 10 цветов · ${money(b * V.greenPerBranch)}</span></div>
           ${toggle("green", S.green, [[false, "Нет"], [true, "Есть"]])}</div>
-        <div class="bc-extra bc-extra--wide"><div class="bc-extra__art bc-extra__art--icon">✉</div>
+        <div class="bc-extra bc-extra--wide">${icon("card")}
           <div class="bc-extra__info"><b>Открытка с вашим текстом</b><span>Бесплатно — флорист напишет от руки</span></div>
           ${toggle("card", S.card, [[false, "Нет"], [true, "Добавить"]])}
           ${S.card ? `<textarea class="bc-cardtext" id="bcCardText" maxlength="120" placeholder="Текст открытки, например: «С днём рождения, мама!»">${esc(S.cardText)}</textarea>` : ""}</div>` +
         Object.keys(ADD_KINDS).map(addRow).join("");
     } else {
-      const ls = lines();
+      const ls = lines(), n = stems(), ok = n >= D.minStems;
       h = ls.length ? `<ul class="bc-sum">` + ls.map((l) => `<li><span>${esc(l.t)}${l.n ? ` × ${l.n}` : ""}</span><b>${l.sum ? money(l.sum) : "бесплатно"}</b></li>`).join("") +
         `<li class="bc-sum__total"><span>Итого</span><b>${money(total())}</b></li></ul>` : `<p class="bc-empty">Добавьте цветы во вкладке «Цветы».</p>`;
+      h += `<div class="bc-send"><button type="button" class="bc-btn bc-btn--pink" data-send${ok ? "" : " disabled"}>Отправить заявку</button>
+        <p>${ok ? "Флорист перезвонит, уточнит детали и соберёт букет по вашей схеме." : `Добавьте хотя бы ${D.minStems} цветка, чтобы отправить заявку.`}</p></div>`;
     }
+    /* шаги 1 и 2 заканчиваются кнопкой «Дальше» */
+    if (S.tab === "flowers") h += `<button type="button" class="bc-next" data-next="extras">Дальше: дополнения →</button>`;
+    if (S.tab === "extras") h += `<button type="button" class="bc-next" data-next="sum">Дальше: состав и заявка →</button>`;
     panel.innerHTML = h;
     const ta = $("#bcCardText");
     if (ta) ta.addEventListener("input", () => { S.cardText = ta.value.slice(0, 120); save(); drawStage(); updateBar(); });
@@ -430,6 +461,10 @@
         const tmp = document.createElement("div");
         tmp.innerHTML = flowerRow(fl);
         row.replaceWith(tmp.firstElementChild);
+        /* строка «Очистить всё» — появляется с первым цветком, счётчик обновляется */
+        const bar = $(".bc-clear");
+        if (!stems() !== !bar) renderPanel();
+        else if (bar) bar.firstElementChild.textContent = "В букете " + flowersWord(stems());
         drawStage(); updateBar();
       }
       return;
@@ -437,6 +472,13 @@
     const t = e.target.closest("button");
     if (!t) return;
     if (t.dataset.pick) { openPick(t.dataset.pick); return; }
+    if (t.dataset.next) { goTab(t.dataset.next); return; }
+    if (t.hasAttribute("data-send")) { if (stems() >= D.minStems) openSheet(); return; }
+    if (t.hasAttribute("data-clear")) {
+      S.sel = {}; Object.keys(colorPick).forEach((id) => delete colorPick[id]);
+      save(); renderPanel(); drawStage(); updateBar(); toast("Все цветы убраны из букета");
+      return;
+    }
     if (t.dataset.addDel != null) S.adds = S.adds.filter((a) => a.key !== t.dataset.addDel);
     else if (t.dataset.green != null) S.green = t.dataset.green === "true";
     else if (t.dataset.card != null) S.card = t.dataset.card === "true";
@@ -445,27 +487,26 @@
     if (t.dataset.card === "true") { const ta = $("#bcCardText"); if (ta) ta.focus(); }
   });
 
-  $$(".bc-tabs button").forEach((b) => b.addEventListener("click", () => { S.tab = b.dataset.tab; save(); renderPanel(); panel.scrollTop = 0; }));
+  function goTab(tab) {
+    S.tab = tab; save(); renderPanel();
+    const tabs = $(".bc-tabs"), y = tabs.getBoundingClientRect().top;
+    if (y < 0 || y > innerHeight * 0.6) window.scrollTo({ top: scrollY + y - (parseInt(getComputedStyle(root).getPropertyValue("--bc-top"), 10) || 70) - 10, behavior: "smooth" });
+  }
+  $$(".bc-tabs button").forEach((b) => b.addEventListener("click", () => goTab(b.dataset.tab)));
 
   /* ════════ сцена, подпись, нижняя панель ════════ */
   const stage = $("#bcStage");
   function drawStage() {
     stage.innerHTML = compose();
     const n = stems();
-    $("#bcLabel").textContent = n ? `${flowersWord(n)} · ${tier(n)}` : "Букет пуст";
+    $("#bcLabel").textContent = n ? `${flowersWord(n)} · ${tier(n)} · ${money(total())}` : "Букет пуст";
   }
+  /* подпись под букетом: сколько цветов, какой букет и сумма */
   function updateBar() {
     const n = stems();
-    $("#bcBarSum").textContent = money(total());
-    $("#bcBarInfo").textContent = n ? flowersWord(n) : "Добавьте цветы";
-    $("#bcSend").disabled = n < D.minStems;
+    $("#bcLabel").textContent = n ? `${flowersWord(n)} · ${tier(n)} · ${money(total())}` : "Букет пуст";
   }
 
-  $("#bcShuffle").addEventListener("click", () => {
-    if (!stems()) { toast("Сначала добавьте цветы"); return; }
-    S.seed = (S.seed * 31 + 17) % 99991 || 5; save(); drawStage();
-    toast("Новый вариант — нажмите ещё, если не нравится");
-  });
 
   /* ════════ заявка ════════ */
   const sheet = $("#bcSheet");
@@ -481,7 +522,6 @@
     document.documentElement.classList.remove("bc-lock");
     setTimeout(() => { sheet.hidden = true; }, 260);
   }
-  $("#bcSend").addEventListener("click", () => { if (stems() >= D.minStems) openSheet(); });
   $$("[data-sheet-close]", sheet).forEach((b) => b.addEventListener("click", closeSheet));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
 
