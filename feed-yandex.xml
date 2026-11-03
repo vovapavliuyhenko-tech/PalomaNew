@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-10-29 12:53">
+<yml_catalog date="2026-11-03 12:35">
   <shop>
     <name>PALOMA</name>
     <company>PALOMA — студия цветов и кофе, Новороссийск</company>
@@ -825,19 +825,6 @@
         <delivery>true</delivery>
         <pickup>true</pickup>
       </offer>
-      <offer id="acc18" available="true">
-        <url>https://paloma.website/buket/seletti-toiletpaper-kruzhka-bird/</url>
-        <price>3000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc18.jpg</picture>
-        <name>Кружка SELETTI Toiletpaper «Bird»</name>
-        <vendor>PALOMA</vendor>
-        <description>Кружка SELETTI Toiletpaper «Bird». Размеры 10 × 9 см.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
       <offer id="acc19" available="true">
         <url>https://paloma.website/buket/seletti-svecha-hands-with-snakes/</url>
         <price>7900</price>
@@ -1215,19 +1202,6 @@
         <delivery>true</delivery>
         <pickup>true</pickup>
       </offer>
-      <offer id="acc45" available="true">
-        <url>https://paloma.website/buket/vaza-mramor-zelenaya/</url>
-        <price>5600</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc45.jpg</picture>
-        <name>Ваза «Мрамор» зелёная</name>
-        <vendor>PALOMA</vendor>
-        <description>Пузатая ваза из молочного стекла с зелёно-оливковыми разводами ручной работы. Размеры 16.5 × 18 см, горлышко 8 × 8 см.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
       <offer id="acc49" available="true">
         <url>https://paloma.website/buket/vaza-dyuny-shar/</url>
         <price>3000</price>
@@ -1449,19 +1423,6 @@
         <delivery>true</delivery>
         <pickup>true</pickup>
       </offer>
-      <offer id="acc71" available="true">
-        <url>https://paloma.website/buket/vaza-steklo-13-26/</url>
-        <price>6600</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc71.jpg</picture>
-        <name>Ваза стеклянная, 26 см</name>
-        <vendor>PALOMA</vendor>
-        <description>Стройная стеклянная ваза — вытянутый силуэт для высоких композиций. Размеры 13 × 26 см.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
       <offer id="acc72" available="true">
         <url>https://paloma.website/buket/vaza-steklo-16-34/</url>
         <price>9000</price>
@@ -1471,19 +1432,6 @@
         <name>Ваза стеклянная, 34 см</name>
         <vendor>PALOMA</vendor>
         <description>Высокая стеклянная ваза для крупных и длинных букетов. Размеры 16 × 34 см.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="acc73" available="true">
-        <url>https://paloma.website/buket/vaza-steklo-14-20/</url>
-        <price>2300</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc73.jpg</picture>
-        <name>Ваза стеклянная, 20 см</name>
-        <vendor>PALOMA</vendor>
-        <description>Компактная стеклянная ваза на каждый день. Размеры 14 × 20 см.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1683,32 +1631,6 @@
         <delivery>true</delivery>
         <pickup>true</pickup>
       </offer>
-      <offer id="p1791622441952" available="true">
-        <url>https://paloma.website/buket/vaza-zavitok-rozovaya/</url>
-        <price>7700</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/vase-zavitok-pink.jpg</picture>
-        <name>Ваза «Завиток» розовая</name>
-        <vendor>PALOMA</vendor>
-        <description>Розовая ваза из цветного стекла: волнистый край, голубая ручка-завиток и бордовая ножка.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="p1791622442625" available="true">
-        <url>https://paloma.website/buket/vaza-lenta-bordovaya/</url>
-        <price>6700</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/vase-lenta-bordo.jpg</picture>
-        <name>Ваза «Лента» бордовая</name>
-        <vendor>PALOMA</vendor>
-        <description>Высокая бордовая ваза с розовой стеклянной лентой-поясом.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
       <offer id="p1791622443239" available="true">
         <url>https://paloma.website/buket/vaza-akvarel/</url>
         <price>6200</price>
@@ -1770,19 +1692,6 @@
         <name>Ваза «Песок» с горлом</name>
         <vendor>PALOMA</vendor>
         <description>Ваза из стекла песочного оттенка: узкое высокое горло и широкое основание.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="p1791622445922" available="true">
-        <url>https://paloma.website/buket/vaza-lenta-pudrovaya/</url>
-        <price>4800</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/vase-lenta-pudra.jpg</picture>
-        <name>Ваза «Лента» пудровая</name>
-        <vendor>PALOMA</vendor>
-        <description>Невысокая светло-розовая ваза с розовой стеклянной лентой-поясом.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -2155,11 +2064,11 @@
         <url>https://paloma.website/buket/bordovye-hrizantemy/</url>
         <price>2680</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>10</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-xrizantema-bordo-m.jpg</picture>
         <name>Бордовые хризантемы</name>
         <vendor>PALOMA</vendor>
-        <description>Моно-букет из крупных бордовых хризантем в матовой упаковке PALOMA. Глубокий винный цвет и пышные головки — самый осенний букет сезона.</description>
+        <description>Моно-букет из крупных бордовых хризантем в матовой упаковке PALOMA. Глубокий винный цвет — самый осенний букет сезона.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>

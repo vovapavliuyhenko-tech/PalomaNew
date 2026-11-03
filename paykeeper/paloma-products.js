@@ -2846,3 +2846,8 @@ window.PALOMA_ADDONS = [
     desc: "Фирменная коробка PALOMA",
   },
 ];
+
+/* Проданы / сняты с сайта — не возвращать их из запасной копии (03.11.2026) */
+window.PALOMA_PRODUCTS = window.PALOMA_PRODUCTS.filter(function (p) {
+  return ["acc73", "acc18", "acc45", "acc71"].indexOf(p.id) < 0;
+});

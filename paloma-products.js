@@ -1,4 +1,4 @@
-/* PALOMA — запасная копия каталога: снимок базы на 2026-10-29 (tools/build-seo.mjs при публикации).
+/* PALOMA — запасная копия каталога: снимок базы на 2026-11-03 (tools/build-seo.mjs при публикации).
    Сайт берёт каталог из базы (products-live.js); эта копия видна, только если сервер не ответил. */
 window.PALOMA_PRODUCTS = [
   {
@@ -2737,32 +2737,6 @@ window.PALOMA_PRODUCTS = [
     }
   },
   {
-    "id": "acc18",
-    "desc": "Кружка SELETTI Toiletpaper «Bird». Размеры 10 × 9 см.",
-    "name": "Кружка SELETTI Toiletpaper «Bird»",
-    "slug": "seletti-toiletpaper-kruzhka-bird",
-    "badge": null,
-    "image": "images/paloma/catalog/acc18.jpg",
-    "pairs": "К кофе из PALOMA Coffee.",
-    "price": 3000,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Алюминий",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #8ba86a, #566f37)",
-      "hover": "linear-gradient(135deg, #7b9a5a, #48602d)"
-    }
-  },
-  {
     "id": "acc19",
     "desc": "Ароматическая свеча SELETTI Toiletpaper «Hands with snakes». Размеры 8 × 8.5 × 8.5 см.",
     "name": "Ароматическая свеча SELETTI «Hands with snakes»",
@@ -3569,32 +3543,6 @@ window.PALOMA_PRODUCTS = [
     }
   },
   {
-    "id": "acc45",
-    "desc": "Пузатая ваза из молочного стекла с зелёно-оливковыми разводами ручной работы. Размеры 16.5 × 18 см, горлышко 8 × 8 см.",
-    "name": "Ваза «Мрамор» зелёная",
-    "slug": "vaza-mramor-zelenaya",
-    "badge": null,
-    "image": "images/paloma/catalog/acc45.jpg",
-    "pairs": "Под букеты PALOMA.",
-    "price": 5600,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Стекло",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #dcd9c0, #7d8a5e)",
-      "hover": "linear-gradient(135deg, #cfcbae, #68764c)"
-    }
-  },
-  {
     "id": "acc49",
     "desc": "Округлая ваза с песочно-белой глазурью и кратерной фактурой. Размеры 17 × 20 см.",
     "name": "Ваза «Дюны» шар",
@@ -4037,32 +3985,6 @@ window.PALOMA_PRODUCTS = [
     }
   },
   {
-    "id": "acc71",
-    "desc": "Стройная стеклянная ваза — вытянутый силуэт для высоких композиций. Размеры 13 × 26 см.",
-    "name": "Ваза стеклянная, 26 см",
-    "slug": "vaza-steklo-13-26",
-    "badge": null,
-    "image": "images/paloma/catalog/acc71.jpg",
-    "pairs": "Под букеты PALOMA.",
-    "price": 6600,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Стекло",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #dfe8ec, #a8bcc4)",
-      "hover": "linear-gradient(135deg, #cddce2, #93a9b2)"
-    }
-  },
-  {
     "id": "acc72",
     "desc": "Высокая стеклянная ваза для крупных и длинных букетов. Размеры 16 × 34 см.",
     "name": "Ваза стеклянная, 34 см",
@@ -4071,32 +3993,6 @@ window.PALOMA_PRODUCTS = [
     "image": "images/paloma/catalog/acc72.jpg",
     "pairs": "Под букеты PALOMA.",
     "price": 9000,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Стекло",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #dfe8ec, #a8bcc4)",
-      "hover": "linear-gradient(135deg, #cddce2, #93a9b2)"
-    }
-  },
-  {
-    "id": "acc73",
-    "desc": "Компактная стеклянная ваза на каждый день. Размеры 14 × 20 см.",
-    "name": "Ваза стеклянная, 20 см",
-    "slug": "vaza-steklo-14-20",
-    "badge": null,
-    "image": "images/paloma/catalog/acc73.jpg",
-    "pairs": "Под букеты PALOMA.",
-    "price": 2300,
     "sizes": [
       {
         "code": "one",
@@ -4756,84 +4652,6 @@ window.PALOMA_PRODUCTS = [
     "composition": "Цветное стекло"
   },
   {
-    "id": "p1791622441952",
-    "desc": "Розовая ваза из цветного стекла: волнистый край, голубая ручка-завиток и бордовая ножка.",
-    "name": "Ваза «Завиток» розовая",
-    "slug": "vaza-zavitok-rozovaya",
-    "badge": "Новинка",
-    "image": "images/paloma/catalog/vase-zavitok-pink.jpg",
-    "price": 7700,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "photoSize": null,
-    "priceFrom": false,
-    "categories": [
-      "vases"
-    ],
-    "composition": "Цветное стекло"
-  },
-  {
-    "id": "p1791622442625",
-    "desc": "Высокая бордовая ваза с розовой стеклянной лентой-поясом.",
-    "name": "Ваза «Лента» бордовая",
-    "slug": "vaza-lenta-bordovaya",
-    "badge": "Новинка",
-    "image": "images/paloma/catalog/vase-lenta-bordo.jpg",
-    "price": 6700,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "photoSize": null,
-    "priceFrom": false,
-    "categories": [
-      "vases"
-    ],
-    "composition": "Цветное стекло"
-  },
-  {
     "id": "p1791622443239",
     "desc": "Высокий цилиндр из кремового стекла с изумрудными и сиреневыми разводами.",
     "name": "Ваза «Акварель»",
@@ -5027,45 +4845,6 @@ window.PALOMA_PRODUCTS = [
       "vases"
     ],
     "composition": "Стекло"
-  },
-  {
-    "id": "p1791622445922",
-    "desc": "Невысокая светло-розовая ваза с розовой стеклянной лентой-поясом.",
-    "name": "Ваза «Лента» пудровая",
-    "slug": "vaza-lenta-pudrovaya",
-    "badge": "Новинка",
-    "image": "images/paloma/catalog/vase-lenta-pudra.jpg",
-    "price": 4800,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "photoSize": null,
-    "priceFrom": false,
-    "categories": [
-      "vases"
-    ],
-    "composition": "Цветное стекло"
   },
   {
     "id": "p1791622446336",
@@ -6208,7 +5987,7 @@ window.PALOMA_PRODUCTS = [
   },
   {
     "id": "p1791800000028",
-    "desc": "Моно-букет из крупных бордовых хризантем в матовой упаковке PALOMA. Глубокий винный цвет и пышные головки — самый осенний букет сезона.",
+    "desc": "Моно-букет из крупных бордовых хризантем в матовой упаковке PALOMA. Глубокий винный цвет — самый осенний букет сезона.",
     "name": "Бордовые хризантемы",
     "slug": "bordovye-hrizantemy",
     "badge": "Новинка",
@@ -6251,9 +6030,9 @@ window.PALOMA_PRODUCTS = [
     "photoSize": "M",
     "priceFrom": false,
     "categories": [
-      "mono",
+      "autumn",
       "season",
-      "autumn"
+      "mono"
     ],
     "composition": "Хризантема одноголовая"
   },
