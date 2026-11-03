@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════
    bouquet-create.css — конструктор «Соберите букет» (v2)
-   Телефон: букет сверху, под ним вкладки, внизу — липкая панель с суммой.
+   Телефон: букет сверху (прилипает), под ним вкладки-шаги и список.
    Компьютер: букет слева (липкий), вкладки справа.
    Стиль PALOMA: белый фон, графит #1B1A18, розовый акцент #E7385A.
    ════════════════════════════════════════════════════════ */
@@ -25,9 +25,6 @@
 .bc-svg { display: block; width: 100%; height: 100%; }
 .bc-under { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 12px; }
 .bc-label { margin: 0; font-size: 15px; color: var(--mute); }
-.bc-shuffle { border: 1px solid var(--ink); background: #fff; color: var(--ink); border-radius: 999px; padding: 11px 22px;
-  font: inherit; font-size: 14px; cursor: pointer; transition: background .2s, color .2s; }
-.bc-shuffle:hover { background: var(--ink); color: #fff; }
 
 /* ── вкладки ── */
 .bc-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; background: #F4F0EC; border-radius: 999px;
@@ -60,9 +57,6 @@
 /* ── дополнения ── */
 .bc-extra { display: grid; grid-template-columns: 56px 1fr; gap: 6px 12px; align-items: center; padding: 12px 14px;
   border: 1px solid var(--line); border-radius: 18px; }
-.bc-extra__art { grid-row: span 2; width: 56px; height: 56px; border-radius: 14px; background: var(--soft); overflow: hidden; display: grid; place-items: center; }
-.bc-extra__art svg { width: 100%; height: 100%; }
-.bc-extra__art--icon { font-size: 26px; color: var(--pink); }
 .bc-extra__info b { display: block; font-size: 15px; }
 .bc-extra__info span { font-size: 13px; color: var(--mute); }
 .bc-toggle { display: inline-flex; justify-self: start; background: #F4F0EC; border-radius: 999px; padding: 3px; gap: 2px; }
@@ -81,16 +75,6 @@
 .bc-sum__total b { font-weight: 700; }
 .bc-empty { color: var(--mute); text-align: center; padding: 30px 0; }
 
-/* ── нижняя панель ── */
-.bc-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: flex; align-items: center; justify-content: space-between; gap: 14px;
-  padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .96); backdrop-filter: blur(10px);
-  border-top: 1px solid var(--line); }
-.bc-bar__info { display: flex; flex-direction: column; }
-.bc-bar__info b { font-size: 21px; }
-.bc-bar__info small { font-size: 12px; color: var(--mute); }
-.bc-bar__send { border: 0; background: var(--pink); color: #fff; border-radius: 999px; padding: 14px 26px; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
-.bc-bar__send:disabled { background: #E9E3DD; color: #9a948e; cursor: default; }
-@media (min-width: 900px) { .bc-bar { padding-left: max(32px, calc((100vw - 1760px) / 2)); padding-right: max(32px, calc((100vw - 1760px) / 2)); } }
 
 .bc-toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; z-index: 70;
   background: var(--ink); color: #fff; padding: 11px 18px; border-radius: 999px; font-size: 13px; transition: opacity .25s, transform .25s;
@@ -134,7 +118,6 @@ main.bc { overflow: visible !important; overflow-x: clip !important; }
   .bc-stage { width: min(100%, 34vh); border-radius: 18px; }
   .bc-under { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px 12px; margin-top: 8px; }
   .bc-label { font-size: 13px; }
-  .bc-shuffle { padding: 8px 14px; font-size: 13px; white-space: nowrap; }
   .bc-tabs { top: calc(var(--bc-top, 64px) + var(--bc-left-h, 0px)); }
 }
 
@@ -214,3 +197,70 @@ main.bc { overflow: visible !important; overflow-x: clip !important; }
 .bc-send .bc-btn { font-size: 16px; padding: 17px; }
 .bc-send .bc-btn:disabled { background: #E9E3DD; color: #9a948e; opacity: 1; cursor: default; }
 .bc-send p { margin: 10px 0 0; font-size: 13px; color: var(--mute); }
+
+/* ════════ ТЕЛЕФОН: компактнее ════════
+   Всё мельче и плотнее: букет занимает меньше экрана, строки цветов ниже,
+   кнопки и подписи меньше — в кадр помещается больше вариантов. */
+@media (max-width: 767px) {
+  .bc { padding: 78px 12px 40px; }
+  .bc-title { font-size: 22px; line-height: 1.2; margin: 0 0 6px; padding-bottom: .1em; }
+  .bc-body { gap: 10px; }
+  .bc-left { padding: 4px 0 6px; }
+  .bc-stage { width: min(100%, 27vh); border-radius: 14px; }
+  .bc-under { margin-top: 4px; }
+  .bc-label { font-size: 12px; }
+
+  .bc-tabs { padding: 3px; gap: 2px; }
+  .bc-tabs button { padding: 8px 2px; font-size: 12px; }
+  .bc-panel { margin-top: 8px; gap: 6px; }
+
+  .bc-row { grid-template-columns: 46px 1fr auto; gap: 10px; padding: 7px 9px; border-radius: 14px; border-width: 1px; }
+  .bc-row__art { width: 46px; height: 46px; border-radius: 10px; }
+  .bc-row__name { font-size: 13.5px; }
+  .bc-row__meta { font-size: 11.5px; margin-top: 1px; }
+  .bc-dots { gap: 5px; margin-top: 5px; }
+  .bc-dot { width: 18px; height: 18px; }
+  .bc-dot.is-on { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px var(--ink); }
+  .bc-dot b { top: -6px; right: -7px; min-width: 14px; height: 14px; line-height: 14px; font-size: 9px; padding: 0 3px; }
+  .bc-qty { padding: 2px; }
+  .bc-qty button { width: 28px; height: 28px; font-size: 16px; }
+  .bc-qty b { min-width: 18px; font-size: 13px; }
+
+  .bc-clear { padding: 8px 12px; border-radius: 12px; font-size: 12.5px; }
+  .bc-clear button { font-size: 12.5px; }
+
+  .bc-extra { grid-template-columns: 44px 1fr; gap: 4px 10px; padding: 9px 10px; border-radius: 14px; }
+  .bc-ico { width: 44px; height: 44px; border-radius: 12px; }
+  .bc-ico svg { width: 24px; height: 24px; }
+  .bc-extra__info b { font-size: 13.5px; }
+  .bc-extra__info span { font-size: 11.5px; }
+  .bc-toggle button { padding: 6px 12px; font-size: 12px; }
+  .bc-pickbtn { padding: 6px 14px; font-size: 12px; }
+  .bc-picked li { padding: 6px 6px 6px 10px; font-size: 12px; border-radius: 10px; }
+  .bc-picked button { width: 22px; height: 22px; font-size: 14px; }
+  .bc-cardtext { min-height: 64px; padding: 10px; font-size: 14px; border-radius: 12px; }
+
+  .bc-sum { padding: 2px 12px; border-radius: 14px; }
+  .bc-sum li { padding: 8px 0; font-size: 12.5px; }
+  .bc-sum__total { font-size: 14px !important; }
+  .bc-next { align-self: stretch; padding: 11px 16px; font-size: 13px; margin-top: 4px; }
+  .bc-send .bc-btn { font-size: 14px; padding: 14px; }
+  .bc-send p { font-size: 12px; }
+
+  .bc-sheet__panel { padding: 20px 16px calc(16px + env(safe-area-inset-bottom)); }
+  .bc-sheet h2 { font-size: 22px; }
+  .bc-sheet__sum { font-size: 13px; margin-bottom: 12px; }
+  .bc-f { margin-bottom: 9px; }
+  .bc-f input { padding: 11px 12px; border-radius: 12px; }
+  .bc-btn { padding: 13px; font-size: 14px; }
+
+  .bc-pick__head { padding: 16px 52px 10px 16px; }
+  .bc-pick__title { font-size: 16px; }
+  .bc-pick__body { padding: 4px 12px calc(16px + env(safe-area-inset-bottom)); }
+  .bc-pick__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .bc-pc__name { font-size: 12px; }
+  .bc-pc__price { font-size: 13.5px; }
+  .bc-pc__add { padding: 8px 12px; font-size: 12px; }
+  .bc-pc--row { padding: 8px 10px; gap: 10px; }
+  .bc-toast { bottom: 18px; font-size: 12px; padding: 9px 14px; }
+}
