@@ -42,6 +42,8 @@
     return m ? decodeURIComponent(m[1]) : null;
   }
   function cookieSet(name, value) {
+    /* cookie на год — только после «Принять» в уведомлении о cookie (152-ФЗ) */
+    if (lsGet("paloma-cookie-consent") !== "accepted") return;
     try {
       document.cookie = name + "=" + encodeURIComponent(value) +
         "; max-age=" + 60 * 60 * 24 * 400 + "; path=/; SameSite=Lax" +

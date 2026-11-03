@@ -7,11 +7,11 @@
        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
        m[i].l=1*new Date();
        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       m.palomaMetrikaSrc=r; try { if (localStorage.getItem("paloma-cookie-consent") !== "accepted") return; } catch (x) { return; } /* Метрика — только после согласия на cookie */
        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110912456', 'ym');
    ym(110912456, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
 </script>
-<noscript><div><img decoding="async" src="https://mc.yandex.ru/watch/110912456" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -205,6 +205,7 @@ a{text-decoration:none;color:inherit}
 </style>
   <link rel="stylesheet" href="mobile-polish.css?v=42">
   <script src="paloma-schema.js?v=1"></script>
+  <link rel="stylesheet" href="legal.css?v=2">
 </head>
 <body class="ea-paper">
 <div class="ea-wrap">
@@ -465,9 +466,11 @@ document.getElementById('eaForm').addEventListener('submit',e=>{
   e.target.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);
 });
 </script>
-  <script src="attribution.js?v=1"></script>
+  <script src="attribution.js?v=2"></script>
   <script src="payment-config.js?v=wake1"></script>
   <script src="lead-send.js?v=bk1"></script>
   <script src="maintenance-banner.js?v=2"></script>
+  <script src="cookie-consent.js?v=4"></script>
+  <script src="pd-consent.js?v=1"></script>
 </body>
 </html>

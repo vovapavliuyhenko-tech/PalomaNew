@@ -1,7 +1,7 @@
 /* ════════════════════════════════════════════════════════
    cookie-consent.js — баннер согласия на использование cookie
    Показывается один раз до выбора. Выбор хранится в localStorage.
-   Соответствует ст. 9 152-ФЗ (информирование + согласие).
+   Аналитика (Яндекс Метрика) включается только после «Принять» — opt-in по 152-ФЗ.
    ════════════════════════════════════════════════════════ */
 (function () {
   "use strict";
@@ -24,6 +24,19 @@
     }
   }
 
+  /* Яндекс Метрика ставит cookie, поэтому подключаем её только после «Принять»
+     (152-ФЗ в ред. ФЗ-156, ФЗ-420). До этого вызовы ym() просто копятся в очереди
+     и ничего никуда не уходят. Адрес счётчика кладёт сниппет в <head>. */
+  function startMetrika() {
+    var src = window.palomaMetrikaSrc;
+    if (!src) return;
+    for (var j = 0; j < document.scripts.length; j++) if (document.scripts[j].src === src) return;
+    var k = document.createElement("script");
+    k.async = true;
+    k.src = src;
+    document.head.appendChild(k);
+  }
+
   function build() {
     var bar = document.createElement("div");
     bar.className = "cookie-bar";
@@ -32,8 +45,8 @@
     bar.setAttribute("aria-label", "Уведомление об использовании cookie");
     bar.innerHTML =
       '<div class="cookie-bar__inner">' +
-      '<p class="cookie-bar__text">Используем cookie, чтобы сайт работал удобно. Подробнее — в ' +
-      '<a href="cookies.html">политике cookie</a> и <a href="privacy.html">конфиденциальности</a>.</p>' +
+      '<p class="cookie-bar__text">Сайт использует необходимые cookie, а с вашего согласия — ещё и Яндекс Метрику для статистики посещений. Подробнее — в ' +
+      '<a href="cookies.html">политике cookie</a> и <a href="privacy.html">политике конфиденциальности</a>.</p>' +
       '<div class="cookie-bar__actions">' +
       '<button type="button" class="cookie-bar__btn cookie-bar__btn--accept" id="cookieAccept" data-cursor="hover">Принять</button>' +
       '<button type="button" class="cookie-bar__btn cookie-bar__btn--decline" id="cookieDecline" data-cursor="hover">Только необходимые</button>' +
@@ -57,7 +70,7 @@
 
     var accept = bar.querySelector("#cookieAccept");
     var decline = bar.querySelector("#cookieDecline");
-    if (accept) accept.addEventListener("click", function () { close("accepted"); });
+    if (accept) accept.addEventListener("click", function () { close("accepted"); startMetrika(); });
     if (decline) decline.addEventListener("click", function () { close("necessary"); });
   }
 
