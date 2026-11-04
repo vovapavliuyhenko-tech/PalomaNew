@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-03 12:35">
+<yml_catalog date="2026-11-04 18:46">
   <shop>
     <name>PALOMA</name>
     <company>PALOMA — студия цветов и кофе, Новороссийск</company>
@@ -123,19 +123,6 @@
         <delivery>true</delivery>
         <pickup>true</pickup>
       </offer>
-      <offer id="d1" available="true">
-        <url>https://paloma.website/buket/duo-piches/</url>
-        <price>5700</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/duo-peaches.jpg</picture>
-        <name>Дуобукет «Пичес»</name>
-        <vendor>PALOMA</vendor>
-        <description>Персиковые георгины Пичес с зеленью малины — тёплый дуобукет в фирменной упаковке PALOMA.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
       <offer id="d2" available="true">
         <url>https://paloma.website/buket/duo-mondial/</url>
         <price>4740</price>
@@ -214,19 +201,6 @@
         <delivery>true</delivery>
         <pickup>true</pickup>
       </offer>
-      <offer id="n2" available="true">
-        <url>https://paloma.website/buket/persikoviy-sad/</url>
-        <price>20000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/n2.jpg</picture>
-        <name>Персиковый сад</name>
-        <vendor>PALOMA</vendor>
-        <description>Крупная корзина с георгином Пичес, гортензией и кустовой розой.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
       <offer id="n3" available="true">
         <url>https://paloma.website/buket/lavandoviy-vecher/</url>
         <price>9800</price>
@@ -236,58 +210,6 @@
         <name>Лавандовый вечер</name>
         <vendor>PALOMA</vendor>
         <description>Сине-розовая композиция с дельфиниумом, гортензией и французской розой.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="n4" available="true">
-        <url>https://paloma.website/buket/georgin-piches/</url>
-        <price>7100</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/n4.jpg</picture>
-        <name>Георгин Пичес</name>
-        <vendor>PALOMA</vendor>
-        <description>Моно-букет из персиковых георгинов Пичес.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="n5" available="true">
-        <url>https://paloma.website/buket/toskana/</url>
-        <price>28000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/n5.jpg</picture>
-        <name>Тоскана</name>
-        <vendor>PALOMA</vendor>
-        <description>Высокая авторская работа с георгином Пичес, эремурусом и злаками.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="n6" available="true">
-        <url>https://paloma.website/buket/sara-bernar/</url>
-        <price>19000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/n6.jpg</picture>
-        <name>Сара Бернар</name>
-        <vendor>PALOMA</vendor>
-        <description>Пудровый пион Сара Бернар с георгином Пичес и гортензией.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="n7" available="true">
-        <url>https://paloma.website/buket/persikovoe-oblako/</url>
-        <price>16200</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/n7.jpg</picture>
-        <name>Персиковое облако</name>
-        <vendor>PALOMA</vendor>
-        <description>Дуобукет из гортензии и персикового георгина Пичес.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1553,19 +1475,6 @@
         <delivery>true</delivery>
         <pickup>true</pickup>
       </offer>
-      <offer id="p1790858038885" available="true">
-        <url>https://paloma.website/buket/georginy-s-evkaliptom-stabilizirovannym-osennim/</url>
-        <price>9600</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>10</categoryId>
-        <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imupimy4oqaahfv</picture>
-        <name>Георгины с эвкалиптом стабилизированным осенним</name>
-        <vendor>PALOMA</vendor>
-        <description>Оранжевые георгины, эвкалипт стабилизированный</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
       <offer id="p1791301432836" available="true">
         <url>https://paloma.website/buket/vaza-seletti-canopie-amina/</url>
         <price>30000</price>
@@ -1709,19 +1618,6 @@
         <delivery>true</delivery>
         <pickup>true</pickup>
       </offer>
-      <offer id="p1791800000001" available="true">
-        <url>https://paloma.website/buket/georgin/</url>
-        <price>5870</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/mono-georgin.jpg</picture>
-        <name>Георгин</name>
-        <vendor>PALOMA</vendor>
-        <description>Моно-букет из пышных георгинов. На фото — 11 шт.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
       <offer id="p1791800000002" available="true">
         <url>https://paloma.website/buket/hrizantema/</url>
         <price>5060</price>
@@ -1757,19 +1653,6 @@
         <name>Осенняя палитра</name>
         <vendor>PALOMA</vendor>
         <description>Большой авторский букет: гортензия, каллы, пионовидная роза, дельфиниум, амариллис, хризантема, сангисорба, антуриум и стабилизированный бук.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="p1791800000005" available="true">
-        <url>https://paloma.website/buket/georgin-i-celoziya/</url>
-        <price>7890</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/author-georgin-celoziya.jpg</picture>
-        <name>Георгин и целозия</name>
-        <vendor>PALOMA</vendor>
-        <description>Авторский букет с георгином, целозией и ягодами шиповника, хризантемой и стабилизированным эвкалиптом.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>

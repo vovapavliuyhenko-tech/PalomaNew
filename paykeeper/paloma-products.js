@@ -2851,3 +2851,8 @@ window.PALOMA_ADDONS = [
 window.PALOMA_PRODUCTS = window.PALOMA_PRODUCTS.filter(function (p) {
   return ["acc73", "acc18", "acc45", "acc71"].indexOf(p.id) < 0;
 });
+
+/* сезон георгинов закончился 04.11.2026: Георгин Пичес, Персиковое облако, Сара Бернар, Персиковый сад, Георгин, Дуобукет «Пичес», Георгин и целозия, Георгины с эвкалиптом, Тоскана */
+window.PALOMA_PRODUCTS = window.PALOMA_PRODUCTS.filter(function (p) {
+  return ["n4","n7","n6","n2","p1791800000001","d1","p1791800000005","p1790858038885","n5"].indexOf(p.id) < 0;
+});

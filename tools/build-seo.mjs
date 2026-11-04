@@ -224,7 +224,7 @@ function yml(list) {
 
 /* ── запуск ── */
 /* Сняты с сайта, даже если база ещё не обновилась (проданы / убраны владельцем) — как HIDDEN_IDS в products-live.js */
-const HIDDEN = new Set(["m10", "w2", "acc73", "acc18", "p1791622445922", "acc45", "acc71", "p1791622442625", "p1791622441952"]);
+const HIDDEN = new Set(["m10", "w2", "acc73", "acc18", "p1791622445922", "acc45", "acc71", "p1791622442625", "p1791622441952", "n4", "n7", "n6", "n2", "p1791800000001", "d1", "p1791800000005", "p1790858038885", "n5"]);
 const products = (await loadProducts()).filter((p) => p && p.slug && p.name && p.price > 0 && !HIDDEN.has(p.id));
 const ptpl = read("product.html"), ctpl = read("catalog.html");
 
