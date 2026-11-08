@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-04 18:46">
+<yml_catalog date="2026-11-08 13:49">
   <shop>
     <name>PALOMA</name>
     <company>PALOMA — студия цветов и кофе, Новороссийск</company>
@@ -23,7 +23,7 @@
         <url>https://paloma.website/buket/belaya-gortenziya/</url>
         <price>2330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
+        <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-white.jpg</picture>
         <name>Белая гортензия</name>
         <vendor>PALOMA</vendor>
@@ -36,7 +36,7 @@
         <url>https://paloma.website/buket/roza-mandarin/</url>
         <price>3890</price>
         <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
+        <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-mandarin.jpg</picture>
         <name>Роза сорта Мандарин</name>
         <vendor>PALOMA</vendor>
@@ -75,7 +75,7 @@
         <url>https://paloma.website/buket/rozovaya-gortenziya/</url>
         <price>2330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
+        <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-pink.jpg</picture>
         <name>Розовая гортензия</name>
         <vendor>PALOMA</vendor>
@@ -88,7 +88,7 @@
         <url>https://paloma.website/buket/golubaya-gortenziya/</url>
         <price>2330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
+        <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-blue.jpg</picture>
         <name>Голубая гортензия</name>
         <vendor>PALOMA</vendor>
@@ -101,7 +101,7 @@
         <url>https://paloma.website/buket/francuzskaya-rozovaya-roza/</url>
         <price>3890</price>
         <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
+        <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-french-pink.jpg</picture>
         <name>Французская розовая роза</name>
         <vendor>PALOMA</vendor>
@@ -144,7 +144,7 @@
         <picture>https://paloma.website/images/paloma/catalog/wed-neo-silver.jpg</picture>
         <name>Нео-серебро</name>
         <vendor>PALOMA</vendor>
-        <description>Серебристая калла и антуриум с георгином и амарантом — графичный букет с металлическим блеском.</description>
+        <description>Серебристая калла и антуриум с георгином и амарантом — графичный букет с металлическим блеском. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -612,7 +612,7 @@
         <picture>https://paloma.website/images/paloma/catalog/n46.jpg</picture>
         <name>Фейерверк</name>
         <vendor>PALOMA</vendor>
-        <description>Большой авторский букет из одиннадцати культур: георгины, пионовидные розы, дельфиниум и лилия в фирменной коробке PALOMA.</description>
+        <description>Большой авторский букет из одиннадцати культур: георгины, пионовидные розы, дельфиниум и лилия в фирменной коробке PALOMA. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -664,7 +664,7 @@
         <picture>https://paloma.website/images/paloma/catalog/w8.jpg</picture>
         <name>Монблан</name>
         <vendor>PALOMA</vendor>
-        <description>Лаконичный букет невесты: крупные белые георгины, зелень антуриума и жемчужные нити.</description>
+        <description>Лаконичный букет невесты: крупные белые георгины, зелень антуриума и жемчужные нити. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1405,7 +1405,7 @@
         <picture>https://paloma.website/images/paloma/catalog/avt-gortenziya-delfinium.jpg</picture>
         <name>Авторский с георгинами</name>
         <vendor>PALOMA</vendor>
-        <description>Крупная авторская работа: коралловые пионовидные розы, зелёная гортензия и синий дельфиниум с георгинами и листом стрелиции.</description>
+        <description>Крупная авторская работа: коралловые пионовидные розы, зелёная гортензия и синий дельфиниум с георгинами и листом стрелиции. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1431,7 +1431,7 @@
         <picture>https://paloma.website/images/paloma/catalog/wed-anturium-georgin.jpg</picture>
         <name>Свадебный с антуриумом</name>
         <vendor>PALOMA</vendor>
-        <description>Букет невесты с зелёными антуриумами, розовыми георгинами и ниспадающим стабилизированным амарантом.</description>
+        <description>Букет невесты с зелёными антуриумами, розовыми георгинами и ниспадающим стабилизированным амарантом. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1466,7 +1466,7 @@
         <url>https://paloma.website/buket/korziny-s-hrizantemoy-bigudi-i-evkaliptom/</url>
         <price>8050</price>
         <currencyId>RUR</currencyId>
-        <categoryId>10</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imumy83a0exlba3</picture>
         <name>Корзины с хризантемой бигуди и эвкалиптом</name>
         <vendor>PALOMA</vendor>
@@ -1622,7 +1622,7 @@
         <url>https://paloma.website/buket/hrizantema/</url>
         <price>5060</price>
         <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
+        <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-xrizantema.jpg</picture>
         <name>Хризантема</name>
         <vendor>PALOMA</vendor>
@@ -1717,7 +1717,7 @@
         <picture>https://paloma.website/images/paloma/catalog/basket-osennyaya.jpg</picture>
         <name>Осенняя корзина</name>
         <vendor>PALOMA</vendor>
-        <description>Осенняя композиция в корзине: амариллис, хризантема, георгин, целозия, шиповник, мискантус, стабилизированные бук и эвкалипт.</description>
+        <description>Осенняя композиция в корзине: амариллис, хризантема, георгин, целозия, шиповник, мискантус, стабилизированные бук и эвкалипт. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1730,7 +1730,7 @@
         <picture>https://paloma.website/images/paloma/catalog/basket-gortenziya-georgin.jpg</picture>
         <name>Большая корзина</name>
         <vendor>PALOMA</vendor>
-        <description>Большая корзина: голубая гортензия, георгины-помпоны, пионовидные и кустовые пионовидные розы, стабилизированный эвкалипт.</description>
+        <description>Большая корзина: голубая гортензия, георгины-помпоны, пионовидные и кустовые пионовидные розы, стабилизированный эвкалипт. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1938,7 +1938,7 @@
         <picture>https://paloma.website/images/paloma/catalog/wed-belyj-zhemchug.jpg</picture>
         <name>Белый жемчуг</name>
         <vendor>PALOMA</vendor>
-        <description>Свадебный букет в белом: эустома, георгины-помпоны, каллы и львиный зев. Ручка обвита атласной лентой с нитями жемчуга.</description>
+        <description>Свадебный букет в белом: эустома, георгины-помпоны, каллы и львиный зев. Ручка обвита атласной лентой с нитями жемчуга. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1947,7 +1947,7 @@
         <url>https://paloma.website/buket/bordovye-hrizantemy/</url>
         <price>2680</price>
         <currencyId>RUR</currencyId>
-        <categoryId>10</categoryId>
+        <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-xrizantema-bordo-m.jpg</picture>
         <name>Бордовые хризантемы</name>
         <vendor>PALOMA</vendor>
@@ -1960,7 +1960,7 @@
         <url>https://paloma.website/buket/pudrovye-francuzskie-rozy/</url>
         <price>3145</price>
         <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
+        <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-french-pudra.jpg</picture>
         <name>Пудровые французские розы</name>
         <vendor>PALOMA</vendor>

@@ -27,8 +27,13 @@ window.PalomaCart = (function () {
      detail / add / remove / purchase. Никогда не ломаем основную логику. */
   function ecomProduct(src, extra) {
     src = src || {};
+    /* id как в товарном фиде (offer id): у строки корзины к id товара
+       дописан размер — «m1-S», «m1-b2300», «m1-quick-m-3500». Отрезаем.
+       У позиций кофейни и допродаж дефис — часть самого id, их не трогаем. */
+    var id = String(src.id != null ? src.id : src.slug || "");
+    if (!/^(menu|upsell)-/.test(id)) id = id.split("-")[0];
     var p = {
-      id: String(src.id != null ? src.id : src.slug || ""),
+      id: id,
       name: src.name || "Товар",
       brand: "PALOMA",
     };

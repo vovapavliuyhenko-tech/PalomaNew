@@ -207,6 +207,9 @@ function sitemap(urls) {
       (u.img ? `    <image:image><image:loc>${esc(u.img)}</image:loc></image:image>\n` : "") + `  </url>`).join("\n") + `\n</urlset>\n`;
 }
 
+/* Порядок «основного» типа товара для фида: сначала форма букета, вазы — последними */
+const TYPE_ORDER = ["mono", "duo", "authors", "compositions", "wedding", "vases"];
+
 function yml(list) {
   const catIds = Object.keys(CATS);
   const date = new Date().toISOString().slice(0, 16).replace("T", " ");
@@ -214,7 +217,9 @@ function yml(list) {
     `    <currencies><currency id="RUR" rate="1"/></currencies>\n    <categories>\n` +
     catIds.map((c, i) => `      <category id="${i + 1}">${esc(CATS[c].label)}</category>`).join("\n") + `\n    </categories>\n    <offers>\n` +
     list.map((p) => {
-      const c = cats(p).find((x) => CATS[x]);
+      /* Категория в фиде — основной тип букета (по нему удобно фильтровать в Директе),
+         а не первая попавшаяся: у многих товаров первой стоит «Онлайн-витрина» или «Самый сезон». */
+      const c = TYPE_ORDER.find((x) => cats(p).includes(x)) || cats(p).find((x) => CATS[x]);
       return `      <offer id="${esc(p.id)}" available="true">\n        <url>${SITE}${purl(p)}</url>\n        <price>${minPrice(p)}</price>\n        <currencyId>RUR</currencyId>\n` +
         `        <categoryId>${c ? catIds.indexOf(c) + 1 : 1}</categoryId>\n` + (p.image ? `        <picture>${esc(abs(p.image))}</picture>\n` : "") +
         `        <name>${esc(p.name)}</name>\n        <vendor>PALOMA</vendor>\n        <description>${esc((p.desc || p.composition || p.name).slice(0, 2900))}</description>\n` +
