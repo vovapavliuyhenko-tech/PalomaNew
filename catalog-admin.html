@@ -220,6 +220,10 @@
     <label for="fDesc">Описание</label>
     <textarea id="fDesc" placeholder="Пара фраз о букете — их видно на странице товара"></textarea>
 
+    <label for="fAdTitle">Название для рекламы <span id="fAdTitleLen" style="font-weight:400;color:#8a8580"></span></label>
+    <input id="fAdTitle" maxlength="80" placeholder="Букет «Пудра» из гортензий и пионовидных роз">
+    <p class="hint" style="margin:4px 0 0;font-size:12px;color:#8a8580">Только для рекламы в Яндекс Директе — на сайте не видно. Тип + «Название» + 1–2 известных цветка, лучше до 40 символов (не больше 56). Без «лучший», «самый» и города. Пусто — подставится автоматически.</p>
+
     <div class="row">
       <div>
         <label for="fBadge">Плашка на карточке</label>
@@ -259,6 +263,16 @@
   "use strict";
 
   var FN = "https://functions.yandexcloud.net/d4ek26aklvok10biu54h";
+
+  /* Счётчик длины «Названия для рекламы»: Директ показывает в карточке ~56 символов */
+  function adTitleLen() {
+    var el = document.getElementById("fAdTitle"), out = document.getElementById("fAdTitleLen");
+    if (!el || !out) return;
+    var n = el.value.trim().length;
+    out.textContent = n ? "· " + n + " из 56" : "";
+    out.style.color = n > 56 ? "#E7385A" : "#8a8580";
+  }
+  document.addEventListener("input", function (e) { if (e.target && e.target.id === "fAdTitle") adTitleLen(); });
   var KEY = "paloma:catalog-admin:pass";
 
   var CATS = [
@@ -552,6 +566,8 @@
     $("fPrice").value = p ? (p.price || "") : "";
     $("fComposition").value = p ? (p.composition || "") : "";
     $("fDesc").value = p ? (p.desc || "") : "";
+    $("fAdTitle").value = p ? (p.adTitle || "") : "";
+    adTitleLen();
     $("fBadge").value = p ? (p.badge || "") : "";
     $("fActive").value = p ? (p.active ? "1" : "0") : "1";
     $("fSlug").value = p ? (p.slug || "") : "";
@@ -815,6 +831,7 @@
         categories: cats,
         composition: $("fComposition").value.trim(),
         desc: $("fDesc").value.trim(),
+        adTitle: $("fAdTitle").value.trim(),
         badge: $("fBadge").value,
         image: image,
         active: $("fActive").value === "1",

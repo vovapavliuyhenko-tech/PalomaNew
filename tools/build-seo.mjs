@@ -210,6 +210,28 @@ function sitemap(urls) {
 /* Порядок «основного» типа товара для фида: сначала форма букета, вазы — последними */
 const TYPE_ORDER = ["mono", "duo", "authors", "compositions", "wedding", "vases"];
 
+/* Название для рекламы в <name> фида (ТЗ feed-ad-titles). На сайте — прежнее name.
+   adTitle берём из базы; если база его ещё не отдала — из запасной копии каталога.
+   Пусто — собираем по основной категории: «Монобукет «Пудра»» и т. п. */
+const LOCAL_AD = (() => {
+  try {
+    const ctx = { window: {} };
+    vm.runInNewContext(read("paloma-products.js"), ctx);
+    return Object.fromEntries((ctx.window.PALOMA_PRODUCTS || []).filter((p) => p.adTitle).map((p) => [p.id, p.adTitle]));
+  } catch (e) { return {}; }
+})();
+const AD_PREFIX = { mono: "Монобукет", duo: "Букет", authors: "Букет", wedding: "Свадебный букет", compositions: "Композиция" };
+function adName(p, mainCat) {
+  const own = String(p.adTitle || LOCAL_AD[p.id] || "").trim();
+  if (own) return own;
+  const type = AD_PREFIX[mainCat];
+  if (!type) return p.name;
+  /* «Авторский с подсолнухами», «Свадебный с антуриумом» — тип уже в названии */
+  const first = String(p.name).split(/\s+/)[0].toLowerCase();
+  if (/^(монобукет|букет|авторск|свадебн|композиц|корзин)/.test(first)) return p.name;
+  return type + " «" + p.name + "»";
+}
+
 function yml(list) {
   const catIds = Object.keys(CATS);
   const date = new Date().toISOString().slice(0, 16).replace("T", " ");
@@ -220,9 +242,11 @@ function yml(list) {
       /* Категория в фиде — основной тип букета (по нему удобно фильтровать в Директе),
          а не первая попавшаяся: у многих товаров первой стоит «Онлайн-витрина» или «Самый сезон». */
       const c = TYPE_ORDER.find((x) => cats(p).includes(x)) || cats(p).find((x) => CATS[x]);
+      const nm = adName(p, c);
+      if (nm.length > 56) console.warn("⚠ длинное название в фиде (" + nm.length + " > 56):", p.id, nm);
       return `      <offer id="${esc(p.id)}" available="true">\n        <url>${SITE}${purl(p)}</url>\n        <price>${minPrice(p)}</price>\n        <currencyId>RUR</currencyId>\n` +
         `        <categoryId>${c ? catIds.indexOf(c) + 1 : 1}</categoryId>\n` + (p.image ? `        <picture>${esc(abs(p.image))}</picture>\n` : "") +
-        `        <name>${esc(p.name)}</name>\n        <vendor>PALOMA</vendor>\n        <description>${esc((p.desc || p.composition || p.name).slice(0, 2900))}</description>\n` +
+        `        <name>${esc(nm)}</name>\n        <vendor>PALOMA</vendor>\n        <description>${esc((p.desc || p.composition || p.name).slice(0, 2900))}</description>\n` +
         `        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>\n        <delivery>true</delivery>\n        <pickup>true</pickup>\n      </offer>`;
     }).join("\n") + `\n    </offers>\n  </shop>\n</yml_catalog>\n`;
 }

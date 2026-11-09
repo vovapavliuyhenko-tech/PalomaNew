@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-08 13:49">
+<yml_catalog date="2026-11-09 18:00">
   <shop>
     <name>PALOMA</name>
     <company>PALOMA — студия цветов и кофе, Новороссийск</company>
@@ -25,7 +25,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-white.jpg</picture>
-        <name>Белая гортензия</name>
+        <name>Монобукет из белых гортензий</name>
         <vendor>PALOMA</vendor>
         <description>Крупные белые шапки гортензии — объёмный и спокойный моно-букет.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -38,7 +38,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-mandarin.jpg</picture>
-        <name>Роза сорта Мандарин</name>
+        <name>Монобукет из пионовидных роз Мандарин</name>
         <vendor>PALOMA</vendor>
         <description>Пионовидная роза кораллового оттенка — плотные бутоны с ярусами лепестков.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -51,7 +51,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-melon.jpg</picture>
-        <name>Роза сорта Мелон</name>
+        <name>Монобукет из пионовидных роз Мелон</name>
         <vendor>PALOMA</vendor>
         <description>Пионовидная роза персиково-медового тона — тёплый и мягкий моно-букет.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -64,7 +64,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-french-red.jpg</picture>
-        <name>Французская красная роза</name>
+        <name>Монобукет из красных французских роз</name>
         <vendor>PALOMA</vendor>
         <description>Вывернутая роза сорта Нина — глубокий красный и бархатная фактура.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -77,7 +77,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-pink.jpg</picture>
-        <name>Розовая гортензия</name>
+        <name>Монобукет из розовых гортензий</name>
         <vendor>PALOMA</vendor>
         <description>Пудрово-розовые шапки гортензии — нежный объём без лишних деталей.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -90,7 +90,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-blue.jpg</picture>
-        <name>Голубая гортензия</name>
+        <name>Монобукет из голубых гортензий</name>
         <vendor>PALOMA</vendor>
         <description>Голубая гортензия — прохладный оттенок и крупная фактура соцветий.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -103,7 +103,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-french-pink.jpg</picture>
-        <name>Французская розовая роза</name>
+        <name>Монобукет из розовых французских роз</name>
         <vendor>PALOMA</vendor>
         <description>Вывернутая роза сорта Пинк Мондиаль — раскрытые пионовидные бутоны.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -116,7 +116,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-lily.jpg</picture>
-        <name>Лилия</name>
+        <name>Монобукет из пионовидных лилий</name>
         <vendor>PALOMA</vendor>
         <description>Пионовидная лилия — крупные соцветия и выразительный аромат.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -129,7 +129,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/duo-frrose.jpg</picture>
-        <name>Французская роза</name>
+        <name>Букет из французских роз с эвкалиптом</name>
         <vendor>PALOMA</vendor>
         <description>Пудровые и кремовые французские розы Мондиаль с эвкалиптом — пышный дуобукет из двух сортов.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -142,7 +142,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-neo-silver.jpg</picture>
-        <name>Нео-серебро</name>
+        <name>Свадебный букет «Нео-серебро» с каллами</name>
         <vendor>PALOMA</vendor>
         <description>Серебристая калла и антуриум с георгином и амарантом — графичный букет с металлическим блеском. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -155,7 +155,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-orchid-bag.jpg</picture>
-        <name>Сумочка с орхидеей</name>
+        <name>Свадебный букет-сумочка с орхидеей</name>
         <vendor>PALOMA</vendor>
         <description>Орхидея фаленопсис каскадом на сумочке-основе со стабилизированной гортензией — букет, который носят на руке.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -168,7 +168,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-dopamine.jpg</picture>
-        <name>Дофаминовый</name>
+        <name>Свадебный букет «Дофаминовый» с розами</name>
         <vendor>PALOMA</vendor>
         <description>Пастельная россыпь из пионовидной розы Харпер, дельфиниума и львиного зева — яркий и живой букет.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -181,7 +181,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/author-alium.jpg</picture>
-        <name>Авторская композиция</name>
+        <name>Авторский букет с лилиями и аллиумом</name>
         <vendor>PALOMA</vendor>
         <description>Крупная авторская работа флориста PALOMA: пурпурный аллиум, лилии, дельфиниум и злаки — статусный высокий букет.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -194,7 +194,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n1.jpg</picture>
-        <name>Обручение</name>
+        <name>Свадебный букет «Обручение» с розами</name>
         <vendor>PALOMA</vendor>
         <description>Пастельный свадебный букет с пионовидной розой Харпер, нерине и амарантом.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -207,7 +207,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n3.jpg</picture>
-        <name>Лавандовый вечер</name>
+        <name>Букет «Лавандовый вечер» с дельфиниумом</name>
         <vendor>PALOMA</vendor>
         <description>Сине-розовая композиция с дельфиниумом, гортензией и французской розой.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -220,7 +220,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n8.jpg</picture>
-        <name>Лазурит</name>
+        <name>Букет «Лазурит» с гортензией и дельфиниумом</name>
         <vendor>PALOMA</vendor>
         <description>Сине-белая композиция с гортензией, дельфиниумом и антуриумом.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -233,7 +233,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n9.jpg</picture>
-        <name>Голубая дымка</name>
+        <name>Букет «Голубая дымка» с гортензией</name>
         <vendor>PALOMA</vendor>
         <description>Воздушный букет из хризантемы, дельфиниума и гортензии.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -246,7 +246,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n10.jpg</picture>
-        <name>Розовый шёлк</name>
+        <name>Букет «Розовый шёлк» с пионовидной лилией</name>
         <vendor>PALOMA</vendor>
         <description>Розовая композиция с пионовидной лилией, хризантемой и нерине.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -259,7 +259,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n11.jpg</picture>
-        <name>Пионовый вальс</name>
+        <name>Букет «Пионовый вальс» из гортензий и роз</name>
         <vendor>PALOMA</vendor>
         <description>Пышный дуобукет из гортензии и пионовидной розы.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -272,7 +272,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n12.jpg</picture>
-        <name>Первая нежность</name>
+        <name>Букет «Первая нежность» из гортензий и роз</name>
         <vendor>PALOMA</vendor>
         <description>Нежный дуобукет из гортензии, пионовидной розы и фрезии.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -285,7 +285,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n13.jpg</picture>
-        <name>Пудра</name>
+        <name>Букет «Пудра» из гортензий и пионовидных роз</name>
         <vendor>PALOMA</vendor>
         <description>Пудровый дуобукет из гортензии и пионовидной розы.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -298,7 +298,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n14.jpg</picture>
-        <name>Лилиан</name>
+        <name>Букет «Лилиан» с лилиями и гортензией</name>
         <vendor>PALOMA</vendor>
         <description>Авторский букет с пионовидной лилией, гортензией и стабилизированным буком.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -311,7 +311,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n15.jpg</picture>
-        <name>Белый танец</name>
+        <name>Букет «Белый танец» из белых роз</name>
         <vendor>PALOMA</vendor>
         <description>Белый дуобукет из французской и классической розы Плая Бланка.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -324,7 +324,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n16.jpg</picture>
-        <name>Ривьера</name>
+        <name>Букет «Ривьера» с гортензией и розами</name>
         <vendor>PALOMA</vendor>
         <description>Роскошная композиция с гортензией, каллами, амариллисом и олеандром.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -337,7 +337,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n17.jpg</picture>
-        <name>Флоренция</name>
+        <name>Букет «Флоренция» с гортензией и розами</name>
         <vendor>PALOMA</vendor>
         <description>Объёмная авторская работа с гортензией, кустовой розой и дельфиниумом.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -350,7 +350,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n18.jpg</picture>
-        <name>Лазурная корзина</name>
+        <name>Корзина из 81 голубой гортензии</name>
         <vendor>PALOMA</vendor>
         <description>Большая корзина из 81 голубой гортензии.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -363,7 +363,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n21.jpg</picture>
-        <name>Утренний свет</name>
+        <name>Букет «Утренний свет» с гортензией и розами</name>
         <vendor>PALOMA</vendor>
         <description>Утренний букет из гортензии, пионовидной розы и нерине.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -376,7 +376,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n22.jpg</picture>
-        <name>Беби Блю</name>
+        <name>Букет «Беби Блю» из гортензии и эвкалипта</name>
         <vendor>PALOMA</vendor>
         <description>Дуобукет из гортензии и эвкалипта Беби Блю.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -389,7 +389,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n23.jpg</picture>
-        <name>Роза Фатима</name>
+        <name>Монобукет из пионовидных роз Фатима</name>
         <vendor>PALOMA</vendor>
         <description>Моно-букет из пионовидной розы сорта Фатима.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -402,7 +402,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n24.jpg</picture>
-        <name>Королевская корзина</name>
+        <name>Королевская корзина с гортензией и орхидеей</name>
         <vendor>PALOMA</vendor>
         <description>Королевская корзина с гортензией, белой розой, орхидеей и антуриумом.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -415,7 +415,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n25.jpg</picture>
-        <name>Баунти</name>
+        <name>Букет «Баунти» с гортензией и дельфиниумом</name>
         <vendor>PALOMA</vendor>
         <description>Свежая композиция с дельфиниумом, гортензией и кокосом.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -428,7 +428,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n26.jpg</picture>
-        <name>Персиковый рассвет</name>
+        <name>Букет «Персиковый рассвет» с розами</name>
         <vendor>PALOMA</vendor>
         <description>Персиковый букет из пионовидной розы, гортензии и эустомы.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -441,7 +441,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n27.jpg</picture>
-        <name>Пудровое облако</name>
+        <name>Букет «Пудровое облако» из роз и гортензий</name>
         <vendor>PALOMA</vendor>
         <description>Пудровый дуобукет из кустовой розы и гортензии.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -454,7 +454,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n28.jpg</picture>
-        <name>Роза Сильва Пинк</name>
+        <name>Монобукет из кустовых роз Сильва Пинк</name>
         <vendor>PALOMA</vendor>
         <description>Моно-букет из кустовой розы сорта Сильва Пинк.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -467,7 +467,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n29.jpg</picture>
-        <name>Карнавал</name>
+        <name>Букет «Карнавал» с подсолнухами и лилиями</name>
         <vendor>PALOMA</vendor>
         <description>Пышный летний букет из подсолнуха, лилии, пиона и полевых цветов.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -480,7 +480,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n30.jpg</picture>
-        <name>Мятный бриз</name>
+        <name>Букет «Мятный бриз» с эустомой и розами</name>
         <vendor>PALOMA</vendor>
         <description>Свежая композиция из эустомы, молюцеллы, розы и маттиолы.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -493,7 +493,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n31.jpg</picture>
-        <name>Летний луг</name>
+        <name>Букет «Летний луг» с цинией и дельфиниумом</name>
         <vendor>PALOMA</vendor>
         <description>Полевая авторская композиция с цинией, целозией, дельфиниумом и злаками — живой летний характер.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -506,7 +506,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n32.jpg</picture>
-        <name>Гортензия в корзине</name>
+        <name>Корзина из 13 гортензий</name>
         <vendor>PALOMA</vendor>
         <description>Композиция из 13 гортензий в корзине — объёмная и воздушная.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -584,7 +584,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n45.jpg</picture>
-        <name>Коралловое утро</name>
+        <name>Букет «Коралловое утро» с гортензией</name>
         <vendor>PALOMA</vendor>
         <description>Коралловые пионовидные розы с зелёной гортензией и эвкалиптом — тёплый авторский букет с мягким переходом оттенков.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -597,7 +597,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n33.jpg</picture>
-        <name>Харпер</name>
+        <name>Букет «Харпер» с пионовидными розами</name>
         <vendor>PALOMA</vendor>
         <description>Насыщенный авторский букет с пионовидной розой Харпер, цинниями, коробочками лотоса и каллами.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -610,7 +610,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n46.jpg</picture>
-        <name>Фейерверк</name>
+        <name>Букет «Фейерверк» с дельфиниумом и розами</name>
         <vendor>PALOMA</vendor>
         <description>Большой авторский букет из одиннадцати культур: георгины, пионовидные розы, дельфиниум и лилия в фирменной коробке PALOMA. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -623,7 +623,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/w5.jpg</picture>
-        <name>Нерине</name>
+        <name>Свадебный букет «Нерине» с каллами</name>
         <vendor>PALOMA</vendor>
         <description>Нежный персиковый свадебный букет с антуриумом, каллами и струящимся амарантом.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -636,7 +636,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/w7.jpg</picture>
-        <name>Перламутр</name>
+        <name>Свадебный букет «Перламутр» с каллами</name>
         <vendor>PALOMA</vendor>
         <description>Букет невесты с каллами и персиковой астрой на жемчужных нитях — компактный, лёгкий, держит форму весь день.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -662,7 +662,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/w8.jpg</picture>
-        <name>Монблан</name>
+        <name>Свадебный букет «Монблан» с антуриумом</name>
         <vendor>PALOMA</vendor>
         <description>Лаконичный букет невесты: крупные белые георгины, зелень антуриума и жемчужные нити. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -688,7 +688,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/w9.jpg</picture>
-        <name>Сорбет</name>
+        <name>Свадебный букет «Сорбет» с гладиолусом</name>
         <vendor>PALOMA</vendor>
         <description>Розово-белый букет невесты с эустомой и берграсом — воздушный силуэт с тонкими травами.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -870,7 +870,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n34.jpg</picture>
-        <name>Фламенко</name>
+        <name>Букет «Фламенко» с каллами и розами</name>
         <vendor>PALOMA</vendor>
         <description>Насыщенный красный авторский букет с французской розой Нина, целозией, каллами и кроксомией.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1052,7 +1052,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n35.jpg</picture>
-        <name>Сиена</name>
+        <name>Композиция «Сиена» с розами и цинией</name>
         <vendor>PALOMA</vendor>
         <description>Яркая летняя композиция в корзине с пионовидными розами, цинниями, книфофией и гортензией.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1065,7 +1065,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>11</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n38.jpg</picture>
-        <name>Луара</name>
+        <name>Букет «Луара» с гортензией и розами</name>
         <vendor>PALOMA</vendor>
         <description>Воздушный букет-бестселлер с гортензией, пионовидной розой и матрикарией.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1364,7 +1364,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n41.jpg</picture>
-        <name>Фиеста</name>
+        <name>Букет «Фиеста» с антуриумом и каллами</name>
         <vendor>PALOMA</vendor>
         <description>Яркий авторский букет в оранжево-зелёной гамме: зелёные антуриумы, циннии, книфофия и струящийся амарант.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1377,7 +1377,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n42.jpg</picture>
-        <name>Солнечный день</name>
+        <name>Букет «Солнечный день» с подсолнухами</name>
         <vendor>PALOMA</vendor>
         <description>Летний авторский букет из подсолнухов с камышом, сетарией и ажурной амми.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1390,7 +1390,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n43.jpg</picture>
-        <name>Каскад</name>
+        <name>Букет «Каскад» с орхидеей и гортензией</name>
         <vendor>PALOMA</vendor>
         <description>Авторский букет с ниспадающей ветвью орхидеи фаленопсис, голубой гортензией и пионовидной розой.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1403,7 +1403,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/avt-gortenziya-delfinium.jpg</picture>
-        <name>Авторский с георгинами</name>
+        <name>Авторский букет с гортензией и дельфиниумом</name>
         <vendor>PALOMA</vendor>
         <description>Крупная авторская работа: коралловые пионовидные розы, зелёная гортензия и синий дельфиниум с георгинами и листом стрелиции. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1416,7 +1416,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/avt-podsolnuhi-zontik.jpg</picture>
-        <name>Авторский с подсолнухами</name>
+        <name>Авторский букет с подсолнухами</name>
         <vendor>PALOMA</vendor>
         <description>Солнечный авторский букет: крупные подсолнухи с зеленью зонтика и лёгким паникумом.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1429,7 +1429,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-anturium-georgin.jpg</picture>
-        <name>Свадебный с антуриумом</name>
+        <name>Свадебный букет с антуриумом</name>
         <vendor>PALOMA</vendor>
         <description>Букет невесты с зелёными антуриумами, розовыми георгинами и ниспадающим стабилизированным амарантом. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1442,7 +1442,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imtui6rekirqzir</picture>
-        <name>Гортензия Китай</name>
+        <name>Монобукет из гортензии Китай</name>
         <vendor>PALOMA</vendor>
         <description>гортензия</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1455,7 +1455,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imu2f6wd6yw5pmz</picture>
-        <name>Авторская Осень</name>
+        <name>Осенний букет с хризантемой и антуриумом</name>
         <vendor>PALOMA</vendor>
         <description>Эвкалипт, хризантема бигуди рэд, помпасная трава, львиный зев, антуриум, уплощив, леукодендрон</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1468,7 +1468,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imumy83a0exlba3</picture>
-        <name>Корзины с хризантемой бигуди и эвкалиптом</name>
+        <name>Корзина с хризантемой и эвкалиптом</name>
         <vendor>PALOMA</vendor>
         <description>Пышная осенняя композиция: хризантемы сорта Бигуди Перпл с веточками эвкалипта в плетёной корзине. Три размера — от компактной до большой.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1611,7 +1611,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-bordo.jpg</picture>
-        <name>Бордо</name>
+        <name>Свадебный букет «Бордо» с каллами</name>
         <vendor>PALOMA</vendor>
         <description>Свадебный букет в глубокой винной гамме: антуриумы, каллы, орхидея ашима и каскад амаранта.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1624,7 +1624,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-xrizantema.jpg</picture>
-        <name>Хризантема</name>
+        <name>Монобукет из хризантем</name>
         <vendor>PALOMA</vendor>
         <description>Моно-букет из хризантем. На фото — 21 шт.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1637,7 +1637,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/author-xrizantema-amarillis.jpg</picture>
-        <name>Солнечная осень</name>
+        <name>Букет «Солнечная осень» с хризантемой</name>
         <vendor>PALOMA</vendor>
         <description>Авторский букет в тёплой осенней гамме: хризантема, амариллис, горец, маттиола и стабилизированный бук.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1650,7 +1650,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/author-osennyaya-palitra.jpg</picture>
-        <name>Осенняя палитра</name>
+        <name>Букет «Осенняя палитра» с гортензией</name>
         <vendor>PALOMA</vendor>
         <description>Большой авторский букет: гортензия, каллы, пионовидная роза, дельфиниум, амариллис, хризантема, сангисорба, антуриум и стабилизированный бук.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1663,7 +1663,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-eustoma-orhideya.jpg</picture>
-        <name>Белая орхидея</name>
+        <name>Свадебный букет с белой орхидеей</name>
         <vendor>PALOMA</vendor>
         <description>Свадебный букет: эустома, орхидея фаленопсис и каскад стабилизированного амаранта.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1676,7 +1676,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-kally.jpg</picture>
-        <name>Каллы</name>
+        <name>Свадебный букет из калл</name>
         <vendor>PALOMA</vendor>
         <description>Свадебный букет из калл — лаконичный и элегантный.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1689,7 +1689,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/duo-gortenziya-kustovaya.jpg</picture>
-        <name>Пионовидная нежность</name>
+        <name>Букет «Пионовидная нежность» с гортензией</name>
         <vendor>PALOMA</vendor>
         <description>Дуо-букет из гортензии, пионовидной и кустовой пионовидной розы.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1702,7 +1702,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/duo-gortenziya-roza.jpg</picture>
-        <name>Гортензия и роза</name>
+        <name>Букет из гортензий и пионовидных роз</name>
         <vendor>PALOMA</vendor>
         <description>Дуо-букет из гортензии и пионовидной розы.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1715,7 +1715,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/basket-osennyaya.jpg</picture>
-        <name>Осенняя корзина</name>
+        <name>Осенняя корзина с амариллисом</name>
         <vendor>PALOMA</vendor>
         <description>Осенняя композиция в корзине: амариллис, хризантема, георгин, целозия, шиповник, мискантус, стабилизированные бук и эвкалипт. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1728,7 +1728,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/basket-gortenziya-georgin.jpg</picture>
-        <name>Большая корзина</name>
+        <name>Большая корзина с гортензией и розами</name>
         <vendor>PALOMA</vendor>
         <description>Большая корзина: голубая гортензия, георгины-помпоны, пионовидные и кустовые пионовидные розы, стабилизированный эвкалипт. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1936,7 +1936,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-belyj-zhemchug.jpg</picture>
-        <name>Белый жемчуг</name>
+        <name>Свадебный букет «Белый жемчуг» с каллой</name>
         <vendor>PALOMA</vendor>
         <description>Свадебный букет в белом: эустома, георгины-помпоны, каллы и львиный зев. Ручка обвита атласной лентой с нитями жемчуга. Георгины сейчас вне сезона — флорист соберёт букет без них или заменит их цветами в той же стилистике и гамме.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1949,7 +1949,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-xrizantema-bordo-m.jpg</picture>
-        <name>Бордовые хризантемы</name>
+        <name>Монобукет из бордовых хризантем</name>
         <vendor>PALOMA</vendor>
         <description>Моно-букет из крупных бордовых хризантем в матовой упаковке PALOMA. Глубокий винный цвет — самый осенний букет сезона.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
@@ -1962,7 +1962,7 @@
         <currencyId>RUR</currencyId>
         <categoryId>1</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-french-pudra.jpg</picture>
-        <name>Пудровые французские розы</name>
+        <name>Монобукет из пудровых французских роз</name>
         <vendor>PALOMA</vendor>
         <description>Моно-букет из нежно-розовых французских роз с волнистыми, будто кружевными лепестками. В матовой упаковке PALOMA.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>

@@ -248,6 +248,8 @@ function buildProduct(input, existing) {
     badge,
     composition: input.composition != null ? String(input.composition) : (base.composition || ""),
     desc: input.desc != null ? String(input.desc) : (base.desc || ""),
+    /* Название для рекламы — только для товарного фида Директа (до 56 символов) */
+    adTitle: input.adTitle != null ? String(input.adTitle).trim().slice(0, 120) : (base.adTitle || ""),
     image: input.image != null ? String(input.image) : (base.image || ""),
   });
 
