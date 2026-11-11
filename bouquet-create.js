@@ -280,7 +280,7 @@
   }
   function loadMenu() {
     if (Array.isArray(window.PALOMA_COFFEE_MENU)) return Promise.resolve(window.PALOMA_COFFEE_MENU);
-    return loadScript("coffee-menu-data.js?v=27").then(() => window.PALOMA_COFFEE_MENU || []);
+    return loadScript("coffee-menu-data.js?v=28").then(() => window.PALOMA_COFFEE_MENU || []);
   }
   /* «220 / 270 / 300 ₽» + «250 / 350 / 450 мл» → размеры */
   function menuSizes(it) {
@@ -302,7 +302,7 @@
     cold: "images/paloma/coffee/cup-cold.jpg", autumn: "images/paloma/coffee/pumpkin-latte.jpg",
   };
   const MENU_CATS = {
-    autumn: "Осеннее меню", classic: "Классика", cacaoraf: "Какао и раф", cold: "Холодные", milkshake: "Коктейли", tea: "Чай",
+    autumn: "Осеннее меню", classic: "Классика", cacaoraf: "Какао и раф", cold: "Холодные", author: "Авторские напитки", tea: "Чай",
     dessert: "Десерты", corpus: "Корпусные", schaste: "Конфеты «Счастье»", chokome: "Шоколад и конфеты",
   };
   const menuPick = (cats, rows) => ({
@@ -320,7 +320,7 @@
         .sort((a, b) => a.price - b.price)
         .map((p) => ({ id: p.id, name: p.name, image: p.image || "", sizes: [{ label: "", price: Number(p.price) }] }))) },
     coffee: Object.assign({ label: "Кофе", title: "Выберите напиток", hint: "Свежий кофе из нашей кофейни", art: () => cupSvg(0, 0) },
-      menuPick(["autumn", "classic", "cacaoraf", "cold", "milkshake", "tea"])),
+      menuPick(["autumn", "classic", "cacaoraf", "cold", "author", "tea"])),
     dessert: Object.assign({ label: "Десерт", title: "Выберите десерт", hint: "К чаю или кофе", art: () => dessertSvg(0, 0) },
       menuPick(["dessert", "corpus"], true)),
     choco: Object.assign({ label: "Шоколад", title: "Выберите шоколад", hint: "Конфеты ручной работы", art: () => candySvg(0, 0) },

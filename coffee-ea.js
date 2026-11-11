@@ -43,6 +43,7 @@
       milkshake: "Коктейли",
       tea: "Чай",
       cold: "Холодные",
+      author: "Авторские напитки",
       lemonade: "Лимонады Лапочка",
       juice: "Соки",
       water: "Вода",
@@ -61,6 +62,7 @@
       milkshake: "images/paloma/coffee/cup-milkshake.jpg",
       tea: "images/paloma/coffee/cup-tea.jpg",
       cold: "images/paloma/coffee/cup-cold.jpg",
+      author: "images/paloma/coffee/cup-raf.jpg",
     };
     function itemImg(it) {
       return it.image || imgByCat[it.category] || "";
@@ -80,6 +82,7 @@
       milkshake: "shakes & cocktails",
       tea: "tea ceremony",
       cold: "cold & fresh",
+      author: "signature drinks",
       lemonade: "sweet lemonades",
       juice: "fresh juices",
       water: "still & sparkling",
@@ -287,7 +290,7 @@
     var COLD_ADDONS = {
       milk:  { label: "Молоко", multi: false, opts: [
         { n: "Обычное", p: 0 }, { n: "Альтернативное", p: 0 } ] },
-      syrup: { label: "Сироп", multi: true, opts: [ { n: "Сироп", p: 60 } ] },
+      syrup: { label: "Сироп", multi: true, opts: [ { n: "Сироп 10 мл", p: 30 }, { n: "Сироп 20 мл", p: 60 } ] },
       extra: { label: "Топпинг", multi: true, opts: [ { n: "Сахар", p: 0 }, { n: "Корица", p: 0 } ] },
       ice:   { label: "Лёд", multi: false, opts: [ { n: "Обычный", p: 0 }, { n: "Больше льда", p: 0 } ] },
       color: { label: "Цвет матчи", multi: false, opts: [ { n: "Зелёная", p: 0 }, { n: "Голубая", p: 0 }, { n: "Розовая", p: 0 } ] },

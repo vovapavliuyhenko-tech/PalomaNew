@@ -18,6 +18,7 @@
     milkshake: "Молочный коктейль",
     tea: "Чай",
     cold: "Холодные напитки",
+    author: "Авторские напитки",
     water: "Вода",
   };
   var imgByCat = {
@@ -27,11 +28,14 @@
     milkshake: "images/paloma/coffee/cup-milkshake.jpg",
     tea: "images/paloma/coffee/cup-tea.jpg",
     cold: "images/paloma/coffee/cup-cold.jpg",
+    author: "images/paloma/coffee/cup-raf.jpg",
   };
 
   /* вкусы сиропа — раскрываются при выборе «Сироп на выбор» */
-  var SYRUPS = ["Карамель", "Ваниль", "Солёная карамель", "Лесной орех", "Кокос", "Миндаль"];
-  var syrup = { id: "syrup", name: "Сироп на выбор", price: 50, syrups: SYRUPS };
+  /* как в меню кофейни: сироп 10 мл — 30 ₽ */
+  var SYRUPS = ["Малина", "Клубника", "Банан", "Мята", "Лаванда", "Вишня", "Гренадин", "Манго", "Фисташка", "Кокос",
+    "Солёная карамель", "Карамель", "Ваниль", "Миндаль", "Шоколад", "Клён", "Ирландский крем", "Лесной орех", "Попкорн", "Имбирный пряник"];
+  var syrup = { id: "syrup", name: "Сироп на выбор, 10 мл", price: 30, syrups: SYRUPS };
 
   /* ── доп. ингредиенты по разделам меню (по смыслу к напитку) ── */
   var addonsByCat = {
@@ -75,6 +79,8 @@
       { id: "mint", name: "Мята", price: 20 },
     ],
   };
+  /* авторские — латте, мокко и чаи: те же добавки, что к какао и рафу */
+  addonsByCat.author = addonsByCat.cacaoraf;
 
   function init() {
     var MENU = window.PALOMA_COFFEE_MENU || [];

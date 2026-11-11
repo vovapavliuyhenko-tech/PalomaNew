@@ -449,7 +449,7 @@
 
   function loadMenu() {
     if (Array.isArray(window.PALOMA_COFFEE_MENU)) return Promise.resolve(window.PALOMA_COFFEE_MENU);
-    return loadScript("coffee-menu-data.js?v=27").then(() => window.PALOMA_COFFEE_MENU || []);
+    return loadScript("coffee-menu-data.js?v=28").then(() => window.PALOMA_COFFEE_MENU || []);
   }
 
   /* «220 / 270 / 300 ₽» + «250 / 350 / 450 мл» → размеры (как в меню кофейни) */
@@ -476,7 +476,7 @@
     cold: "images/paloma/coffee/cup-cold.jpg",
   };
   const MENU_CATS = {
-    classic: "Классика", cacaoraf: "Какао и раф", cold: "Холодные",
+    classic: "Классика", cacaoraf: "Какао и раф", cold: "Холодные", author: "Авторские напитки", autumn: "Осеннее меню",
     milkshake: "Коктейли", tea: "Чай", dessert: "Десерты", corpus: "Корпусные",
   };
 
@@ -524,7 +524,7 @@
           }),
         }))),
     },
-    coffee: Object.assign({ title: "Выберите напиток" }, menuPicker(["classic", "cacaoraf", "cold", "milkshake", "tea"])),
+    coffee: Object.assign({ title: "Выберите напиток" }, menuPicker(["autumn", "classic", "cacaoraf", "cold", "author", "tea"])),
     dessert: Object.assign({ title: "Выберите десерт" }, menuPicker(["dessert", "corpus"], true)),
   };
 
