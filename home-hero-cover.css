@@ -318,3 +318,23 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   .paloma-cover__cta       { animation: none !important; opacity: 1 !important; transform: none !important; }
   .paloma-cover__scroll-line { animation: none !important; }
 }
+
+/* ── Оффер над кнопкой «Выбрать букет» (вариант 2, 12.11.2026) ──
+   Простым шрифтом, тихо и по центру — логотип PALOMA остаётся главным. */
+.paloma-cover__offer {
+  position: absolute; left: 0; right: 0; z-index: 4;
+  bottom: calc(clamp(16px, 2.2vw, 30px) + clamp(46px, 4vw, 58px) + 22px);
+  padding: 0 20px; text-align: center; color: #fff;
+  font-family: var(--font-sans, 'Manrope', sans-serif); font-style: normal;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  animation: coverFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
+}
+.paloma-cover__offer p { margin: 0; font-style: normal; }
+.paloma-cover__offer-title { font-weight: 500; font-size: clamp(17px, 1.6vw, 22px); letter-spacing: 0.01em; }
+.paloma-cover__offer-sub { margin-top: 8px !important; font-size: clamp(12px, 0.95vw, 14px); letter-spacing: 0.02em; opacity: 0.85; }
+@media (max-width: 767px) {
+  .paloma-cover__offer-title { font-size: 16px; line-height: 1.35; }
+  .paloma-cover__offer-sub { font-size: 12px; line-height: 1.5; }
+}
+@media (prefers-reduced-motion: reduce) { .paloma-cover__offer { animation: none; opacity: 1; } }
