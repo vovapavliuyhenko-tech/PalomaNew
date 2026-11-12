@@ -45,7 +45,7 @@
     bar.setAttribute("aria-label", "Уведомление об использовании cookie");
     bar.innerHTML =
       '<div class="cookie-bar__inner">' +
-      '<p class="cookie-bar__text">Сайт использует необходимые cookie, а с вашего согласия — ещё и Яндекс Метрику для статистики посещений. Подробнее — в ' +
+      '<p class="cookie-bar__text">Используем cookie. Яндекс Метрика — только с вашего согласия. Подробнее — в ' +
       '<a href="cookies.html">политике cookie</a> и <a href="privacy.html">политике конфиденциальности</a>.</p>' +
       '<div class="cookie-bar__actions">' +
       '<button type="button" class="cookie-bar__btn cookie-bar__btn--accept" id="cookieAccept" data-cursor="hover">Принять</button>' +
@@ -57,12 +57,17 @@
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         bar.classList.add("is-shown");
+        /* место под уведомлением: кнопки внизу страницы (оформление заказа)
+           можно докрутить выше него, а не нажимать сквозь него */
+        var pad = parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
+        document.body.style.paddingBottom = (pad + bar.offsetHeight) + "px";
       });
     });
 
     function close(choice) {
       setChoice(choice);
       bar.classList.remove("is-shown");
+      document.body.style.paddingBottom = "";
       window.setTimeout(function () {
         if (bar.parentNode) bar.parentNode.removeChild(bar);
       }, 600);

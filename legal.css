@@ -207,7 +207,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 99990;
+  z-index: 1990; /* ниже корзины (2000) и окон — не перекрывает кнопки заказа */
   width: 100%;
   background: #1b1a18;
   color: #fff;
@@ -383,4 +383,16 @@
 .care-page main.client-page > .contacts-studio {
   padding-top: 0;
   padding-bottom: clamp(24px, 3vw, 44px);
+}
+
+/* Уведомление о cookie не должно закрывать кнопки заказа (12.11.2026: на телефоне
+   оно перекрывало «Оформить заказ» в корзине). Пока открыта корзина, избранное,
+   меню или любое окно — прячем его; закроют окно — оно вернётся. */
+body:has(.cart-drawer:not([hidden])) .cookie-bar,
+body:has(.site-header__mobile-panel[aria-hidden="false"]) .cookie-bar,
+body:has(.product-modal[aria-hidden="false"]) .cookie-bar,
+body:has(.co-sheet) .cookie-bar,
+body:has(.bc-sheet:not([hidden])) .cookie-bar,
+body:has(.bc-pick) .cookie-bar {
+  display: none !important;
 }
