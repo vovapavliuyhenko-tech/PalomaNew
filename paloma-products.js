@@ -5749,8 +5749,7 @@ window.PALOMA_PRODUCTS = [
     "photoSize": null,
     "priceFrom": false,
     "categories": [
-      "amaryllis",
-      "newyear"
+      "amaryllis"
     ],
     "composition": "Луковица амариллиса в чёрном воске, золотая и серебряная поталь"
   },
@@ -5790,8 +5789,7 @@ window.PALOMA_PRODUCTS = [
     "photoSize": null,
     "priceFrom": false,
     "categories": [
-      "amaryllis",
-      "newyear"
+      "amaryllis"
     ],
     "composition": "Луковица амариллиса в бордовом воске, серебряная поталь"
   },
@@ -5831,8 +5829,7 @@ window.PALOMA_PRODUCTS = [
     "photoSize": null,
     "priceFrom": false,
     "categories": [
-      "amaryllis",
-      "newyear"
+      "amaryllis"
     ],
     "composition": "Луковица амариллиса в пушистом сером воске, жемчужные бусы"
   },
@@ -5872,8 +5869,7 @@ window.PALOMA_PRODUCTS = [
     "photoSize": null,
     "priceFrom": false,
     "categories": [
-      "amaryllis",
-      "newyear"
+      "amaryllis"
     ],
     "composition": "Луковица амариллиса в пушистом розовом воске, жемчужные бусы"
   },
@@ -5913,8 +5909,7 @@ window.PALOMA_PRODUCTS = [
     "photoSize": null,
     "priceFrom": false,
     "categories": [
-      "amaryllis",
-      "newyear"
+      "amaryllis"
     ],
     "composition": "Луковица амариллиса в красном бархатном воске, жемчужные бусы, лента PALOMA"
   }
