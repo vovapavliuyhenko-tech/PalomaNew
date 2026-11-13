@@ -21,7 +21,8 @@
      Фото из админки лежат в базе и отдаются любым из них. */
   var APIS = ["https://functions.yandexcloud.net/d4ek26aklvok10biu54h", "https://palomanew.onrender.com"];
   var API = APIS[0];
-  var KEY = "paloma:products:v1";
+  /* v2 (13.11.2026): новый ключ — у всех сразу подтянулся свежий каталог с амариллисами */
+  var KEY = "paloma:products:v2";
   var CACHE_TTL = 24 * 60 * 60 * 1000; // сутки — дальше кэшу не верим
 
   /* Перерисовщики страниц. Каждая страница добавляет свой:
