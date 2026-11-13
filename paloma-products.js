@@ -1,4 +1,4 @@
-/* PALOMA — запасная копия каталога: снимок базы на 2026-11-09 (tools/build-seo.mjs при публикации).
+/* PALOMA — запасная копия каталога: снимок базы на 2026-11-13 (tools/build-seo.mjs при публикации).
    Сайт берёт каталог из базы (products-live.js); эта копия видна, только если сервер не ответил. */
 window.PALOMA_PRODUCTS = [
   {
@@ -54,6 +54,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из белых гортензий",
     "photoSize": "XXL",
     "priceFrom": false,
     "categories": [
@@ -114,6 +115,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из пионовидных роз Мандарин",
     "photoSize": "L",
     "priceFrom": false,
     "categories": [
@@ -174,6 +176,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из пионовидных роз Мелон",
     "photoSize": "XL",
     "priceFrom": false,
     "categories": [
@@ -233,6 +236,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из красных французских роз",
     "photoSize": "S",
     "priceFrom": false,
     "categories": [
@@ -297,6 +301,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из розовых гортензий",
     "photoSize": "M",
     "priceFrom": false,
     "categories": [
@@ -362,6 +367,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из голубых гортензий",
     "photoSize": "M",
     "priceFrom": false,
     "categories": [
@@ -422,6 +428,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из розовых французских роз",
     "photoSize": "S",
     "priceFrom": false,
     "categories": [
@@ -482,6 +489,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из пионовидных лилий",
     "photoSize": "XL",
     "categories": [
       "mono"
@@ -540,6 +548,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет из французских роз с эвкалиптом",
     "photoSize": "XL",
     "priceFrom": true,
     "categories": [
@@ -584,6 +593,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет «Нео-серебро» с каллами",
     "priceFrom": true,
     "categories": [
       "wedding"
@@ -627,6 +637,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет-сумочка с орхидеей",
     "priceFrom": true,
     "categories": [
       "wedding"
@@ -670,6 +681,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет «Дофаминовый» с розами",
     "priceFrom": true,
     "categories": [
       "wedding"
@@ -713,6 +725,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Авторский букет с лилиями и аллиумом",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -756,6 +769,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет «Обручение» с розами",
     "priceFrom": true,
     "categories": [
       "wedding"
@@ -799,6 +813,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Лавандовый вечер» с дельфиниумом",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -842,6 +857,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Лазурит» с гортензией и дельфиниумом",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -885,6 +901,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Голубая дымка» с гортензией",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -928,6 +945,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Розовый шёлк» с пионовидной лилией",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -972,6 +990,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Пионовый вальс» из гортензий и роз",
     "priceFrom": true,
     "categories": [
       "duo"
@@ -1015,6 +1034,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Первая нежность» из гортензий и роз",
     "priceFrom": true,
     "categories": [
       "duo"
@@ -1058,6 +1078,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Пудра» из гортензий и пионовидных роз",
     "priceFrom": true,
     "categories": [
       "duo"
@@ -1101,6 +1122,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Лилиан» с лилиями и гортензией",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -1144,6 +1166,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Белый танец» из белых роз",
     "priceFrom": true,
     "categories": [
       "duo"
@@ -1187,6 +1210,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Ривьера» с гортензией и розами",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -1230,6 +1254,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Флоренция» с гортензией и розами",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -1274,6 +1299,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Корзина из 81 голубой гортензии",
     "priceFrom": true,
     "categories": [
       "compositions"
@@ -1317,6 +1343,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Утренний свет» с гортензией и розами",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -1375,6 +1402,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Беби Блю» из гортензии и эвкалипта",
     "photoSize": "S",
     "priceFrom": true,
     "categories": [
@@ -1434,6 +1462,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из пионовидных роз Фатима",
     "photoSize": "M",
     "priceFrom": true,
     "categories": [
@@ -1478,6 +1507,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Королевская корзина с гортензией и орхидеей",
     "priceFrom": true,
     "categories": [
       "compositions"
@@ -1521,6 +1551,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Баунти» с гортензией и дельфиниумом",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -1564,6 +1595,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Персиковый рассвет» с розами",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -1607,6 +1639,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Пудровое облако» из роз и гортензий",
     "priceFrom": true,
     "categories": [
       "duo"
@@ -1665,6 +1698,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из кустовых роз Сильва Пинк",
     "photoSize": "XL",
     "priceFrom": true,
     "categories": [
@@ -1709,6 +1743,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Карнавал» с подсолнухами и лилиями",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -1753,6 +1788,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Мятный бриз» с эустомой и розами",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -1796,6 +1832,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Летний луг» с цинией и дельфиниумом",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -1839,6 +1876,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Корзина из 13 гортензий",
     "priceFrom": true,
     "categories": [
       "compositions"
@@ -2012,6 +2050,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Коралловое утро» с гортензией",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -2055,6 +2094,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Харпер» с пионовидными розами",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -2099,6 +2139,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Фейерверк» с дельфиниумом и розами",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -2143,6 +2184,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет «Нерине» с каллами",
     "priceFrom": true,
     "categories": [
       "wedding"
@@ -2186,6 +2228,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет «Перламутр» с каллами",
     "priceFrom": true,
     "categories": [
       "wedding"
@@ -2255,6 +2298,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет «Монблан» с антуриумом",
     "priceFrom": true,
     "categories": [
       "wedding"
@@ -2324,6 +2368,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет «Сорбет» с гладиолусом",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -2706,6 +2751,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Фламенко» с каллами и розами",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -3087,6 +3133,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Композиция «Сиена» с розами и цинией",
     "priceFrom": true,
     "categories": [
       "compositions"
@@ -3130,6 +3177,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Луара» с гортензией и розами",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -3746,6 +3794,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Фиеста» с антуриумом и каллами",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -3790,6 +3839,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Солнечный день» с подсолнухами",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -3833,6 +3883,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Каскад» с орхидеей и гортензией",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -3876,6 +3927,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Авторский букет с гортензией и дельфиниумом",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -3920,6 +3972,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Авторский букет с подсолнухами",
     "priceFrom": true,
     "categories": [
       "authors"
@@ -3963,6 +4016,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет с антуриумом",
     "priceFrom": true,
     "categories": [
       "wedding"
@@ -4020,6 +4074,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из гортензии Китай",
     "photoSize": "M",
     "priceFrom": false,
     "categories": [
@@ -4059,6 +4114,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Осенний букет с хризантемой и антуриумом",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -4108,6 +4164,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Корзина с хризантемой и эвкалиптом",
     "photoSize": "S",
     "priceFrom": false,
     "categories": [
@@ -4540,6 +4597,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет «Бордо» с каллами",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -4594,6 +4652,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из хризантем",
     "photoSize": "L",
     "priceFrom": false,
     "categories": [
@@ -4634,6 +4693,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Солнечная осень» с хризантемой",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -4674,6 +4734,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Осенняя палитра» с гортензией",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -4714,6 +4775,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет с белой орхидеей",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -4763,6 +4825,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет из калл",
     "photoSize": null,
     "priceFrom": false,
     "categories": [
@@ -4802,6 +4865,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет «Пионовидная нежность» с гортензией",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -4841,6 +4905,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Букет из гортензий и пионовидных роз",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -4880,6 +4945,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Осенняя корзина с амариллисом",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -4920,6 +4986,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Большая корзина с гортензией и розами",
     "photoSize": null,
     "priceFrom": true,
     "categories": [
@@ -5545,6 +5612,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Свадебный букет «Белый жемчуг» с каллой",
     "photoSize": null,
     "priceFrom": false,
     "categories": [
@@ -5594,6 +5662,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из бордовых хризантем",
     "photoSize": "M",
     "priceFrom": false,
     "categories": [
@@ -5635,6 +5704,7 @@ window.PALOMA_PRODUCTS = [
         "price": 320
       }
     ],
+    "adTitle": "Монобукет из пудровых французских роз",
     "photoSize": null,
     "priceFrom": false,
     "categories": [
@@ -5644,21 +5714,13 @@ window.PALOMA_PRODUCTS = [
     "composition": "Французская роза"
   },
   {
-    "active": true,
-    "badge": "Новинка",
     "id": "p1791800000030",
-    "slug": "amarillis-v-voske-chernoe-zoloto",
-    "name": "Амариллис в воске «Чёрное золото»",
-    "categories": [
-      "newyear",
-      "compositions"
-    ],
-    "composition": "Луковица амариллиса в чёрном воске, золотая и серебряная поталь",
     "desc": "Амариллис в чёрном воске с золотой и серебряной поталью — эффектный, почти ювелирный подарок. Луковица амариллиса (гиппеаструма) покрыта воском: он удерживает влагу, поэтому поливать, подкармливать и пересаживать её не нужно — всё для цветения уже есть внутри. Поставьте в светлое тёплое место, и через несколько недель вырастет высокий цветонос с крупными цветами-колокольчиками. Долгоиграющий подарок вместо букета: радует несколько недель, на Новый год и праздники, коллегам и близким. Доставим по Новороссийску.",
-    "adTitle": "Амариллис в воске «Чёрное золото»",
+    "name": "Амариллис в воске «Чёрное золото»",
+    "slug": "amarillis-v-voske-chernoe-zoloto",
+    "badge": "Новинка",
     "image": "images/paloma/catalog/amarillis-vosk-chernoe-zoloto.jpg",
     "price": 3655,
-    "priceFrom": false,
     "sizes": [
       {
         "code": "one",
@@ -5682,24 +5744,24 @@ window.PALOMA_PRODUCTS = [
         "label": "Кофе с собой",
         "price": 320
       }
-    ]
-  },
-  {
-    "active": true,
-    "badge": "Новинка",
-    "id": "p1791800000031",
-    "slug": "amarillis-v-voske-bordo-serebro",
-    "name": "Амариллис в воске «Бордо и серебро»",
+    ],
+    "adTitle": "Амариллис в воске «Чёрное золото»",
+    "photoSize": null,
+    "priceFrom": false,
     "categories": [
       "newyear",
       "compositions"
     ],
-    "composition": "Луковица амариллиса в бордовом воске, серебряная поталь",
+    "composition": "Луковица амариллиса в чёрном воске, золотая и серебряная поталь"
+  },
+  {
+    "id": "p1791800000031",
     "desc": "Амариллис в глубоком бордовом воске с серебряной поталью — праздничный и благородный. Луковица амариллиса (гиппеаструма) покрыта воском: он удерживает влагу, поэтому поливать, подкармливать и пересаживать её не нужно — всё для цветения уже есть внутри. Поставьте в светлое тёплое место, и через несколько недель вырастет высокий цветонос с крупными цветами-колокольчиками. Долгоиграющий подарок вместо букета: радует несколько недель, на Новый год и праздники, коллегам и близким. Доставим по Новороссийску.",
-    "adTitle": "Амариллис в воске «Бордо и серебро»",
+    "name": "Амариллис в воске «Бордо и серебро»",
+    "slug": "amarillis-v-voske-bordo-serebro",
+    "badge": "Новинка",
     "image": "images/paloma/catalog/amarillis-vosk-bordo-serebro.jpg",
     "price": 3655,
-    "priceFrom": false,
     "sizes": [
       {
         "code": "one",
@@ -5723,24 +5785,24 @@ window.PALOMA_PRODUCTS = [
         "label": "Кофе с собой",
         "price": 320
       }
-    ]
-  },
-  {
-    "active": true,
-    "badge": "Новинка",
-    "id": "p1791800000032",
-    "slug": "amarillis-v-voske-seryy-sviter",
-    "name": "Амариллис в воске «Серый свитер»",
+    ],
+    "adTitle": "Амариллис в воске «Бордо и серебро»",
+    "photoSize": null,
+    "priceFrom": false,
     "categories": [
       "newyear",
       "compositions"
     ],
-    "composition": "Луковица амариллиса в пушистом сером воске, жемчужные бусы",
+    "composition": "Луковица амариллиса в бордовом воске, серебряная поталь"
+  },
+  {
+    "id": "p1791800000032",
     "desc": "Амариллис в пушистом сером воске, будто в уютном свитере, с нитями жемчужных бус. Луковица амариллиса (гиппеаструма) покрыта воском: он удерживает влагу, поэтому поливать, подкармливать и пересаживать её не нужно — всё для цветения уже есть внутри. Поставьте в светлое тёплое место, и через несколько недель вырастет высокий цветонос с крупными цветами-колокольчиками. Долгоиграющий подарок вместо букета: радует несколько недель, на Новый год и праздники, коллегам и близким. Доставим по Новороссийску.",
-    "adTitle": "Амариллис в воске «Серый свитер»",
+    "name": "Амариллис в воске «Серый свитер»",
+    "slug": "amarillis-v-voske-seryy-sviter",
+    "badge": "Новинка",
     "image": "images/paloma/catalog/amarillis-vosk-sviter-seryy.jpg",
     "price": 5250,
-    "priceFrom": false,
     "sizes": [
       {
         "code": "one",
@@ -5764,24 +5826,24 @@ window.PALOMA_PRODUCTS = [
         "label": "Кофе с собой",
         "price": 320
       }
-    ]
-  },
-  {
-    "active": true,
-    "badge": "Новинка",
-    "id": "p1791800000033",
-    "slug": "amarillis-v-voske-rozovyy-sviter",
-    "name": "Амариллис в воске «Розовый свитер»",
+    ],
+    "adTitle": "Амариллис в воске «Серый свитер»",
+    "photoSize": null,
+    "priceFrom": false,
     "categories": [
       "newyear",
       "compositions"
     ],
-    "composition": "Луковица амариллиса в пушистом розовом воске, жемчужные бусы",
+    "composition": "Луковица амариллиса в пушистом сером воске, жемчужные бусы"
+  },
+  {
+    "id": "p1791800000033",
     "desc": "Амариллис в нежном розовом пушистом воске, будто в вязаном свитере, с жемчужным бантом. Луковица амариллиса (гиппеаструма) покрыта воском: он удерживает влагу, поэтому поливать, подкармливать и пересаживать её не нужно — всё для цветения уже есть внутри. Поставьте в светлое тёплое место, и через несколько недель вырастет высокий цветонос с крупными цветами-колокольчиками. Долгоиграющий подарок вместо букета: радует несколько недель, на Новый год и праздники, коллегам и близким. Доставим по Новороссийску.",
-    "adTitle": "Амариллис в воске «Розовый свитер»",
+    "name": "Амариллис в воске «Розовый свитер»",
+    "slug": "amarillis-v-voske-rozovyy-sviter",
+    "badge": "Новинка",
     "image": "images/paloma/catalog/amarillis-vosk-sviter-rozovyy.jpg",
     "price": 5250,
-    "priceFrom": false,
     "sizes": [
       {
         "code": "one",
@@ -5805,24 +5867,24 @@ window.PALOMA_PRODUCTS = [
         "label": "Кофе с собой",
         "price": 320
       }
-    ]
-  },
-  {
-    "active": true,
-    "badge": "Новинка",
-    "id": "p1791800000034",
-    "slug": "amarillis-v-voske-krasnyy-barhat",
-    "name": "Амариллис в бархатном воске «Красный бархат»",
+    ],
+    "adTitle": "Амариллис в воске «Розовый свитер»",
+    "photoSize": null,
+    "priceFrom": false,
     "categories": [
       "newyear",
       "compositions"
     ],
-    "composition": "Луковица амариллиса в красном бархатном воске, жемчужные бусы, лента PALOMA",
+    "composition": "Луковица амариллиса в пушистом розовом воске, жемчужные бусы"
+  },
+  {
+    "id": "p1791800000034",
     "desc": "Амариллис в ярко-красном бархатном воске с жемчугом и белой лентой PALOMA — самый новогодний. Луковица амариллиса (гиппеаструма) покрыта воском: он удерживает влагу, поэтому поливать, подкармливать и пересаживать её не нужно — всё для цветения уже есть внутри. Поставьте в светлое тёплое место, и через несколько недель вырастет высокий цветонос с крупными цветами-колокольчиками. Долгоиграющий подарок вместо букета: радует несколько недель, на Новый год и праздники, коллегам и близким. Доставим по Новороссийску.",
-    "adTitle": "Амариллис в бархатном воске «Красный бархат»",
+    "name": "Амариллис в бархатном воске «Красный бархат»",
+    "slug": "amarillis-v-voske-krasnyy-barhat",
+    "badge": "Новинка",
     "image": "images/paloma/catalog/amarillis-vosk-barhat-krasnyy.jpg",
     "price": 5650,
-    "priceFrom": false,
     "sizes": [
       {
         "code": "one",
@@ -5846,6 +5908,14 @@ window.PALOMA_PRODUCTS = [
         "label": "Кофе с собой",
         "price": 320
       }
-    ]
+    ],
+    "adTitle": "Амариллис в бархатном воске «Красный бархат»",
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear",
+      "compositions"
+    ],
+    "composition": "Луковица амариллиса в красном бархатном воске, жемчужные бусы, лента PALOMA"
   }
 ];

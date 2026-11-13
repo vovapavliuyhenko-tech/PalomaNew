@@ -77,6 +77,8 @@ const minPrice = (p) => (Number(p.price) || 0) + Math.min(0, ...((p.sizes || [])
 const maxPrice = (p) => (Number(p.price) || 0) + Math.max(0, ...((p.sizes || []).map((s) => s.priceDelta || 0)));
 const cats = (p) => (Array.isArray(p.categories) ? p.categories : p.category ? [p.category] : []);
 const isGift = (p) => cats(p).length && cats(p).every((c) => c === "vases");
+/* не букет: амариллисы в воске, новогодние подарки — без слова «букет» в заголовке */
+const isNotBouquet = (p) => cats(p).includes("newyear") || /в воске|^амариллис/i.test(p.name || "");
 const purl = (p) => `/buket/${encodeURIComponent(p.slug || p.id)}/`;
 
 /* ── 2. страницы товаров ── */
@@ -89,11 +91,14 @@ function productPage(tpl, p, all) {
   const lo = minPrice(p), hi = maxPrice(p);
   const priceTxt = money(lo);
   const gift = isGift(p);
+  const notBouquet = isNotBouquet(p);
   const title = gift
     ? `${p.name} — купить в Новороссийске, ${priceTxt} | PALOMA`
-    : `${p.name} — купить букет с доставкой в ${CITY}, ${priceTxt} | PALOMA`;
+    : notBouquet
+      ? `${p.name} — купить с доставкой в ${CITY}, ${priceTxt} | PALOMA`
+      : `${p.name} — купить букет с доставкой в ${CITY}, ${priceTxt} | PALOMA`;
   const desc = (`${p.name}: ${priceTxt}. ${p.desc || p.composition || ""} ` +
-    (gift ? "Можно добавить к букету и доставить вместе." : "Доставка по Новороссийску, Геленджику и Анапе, фото букета до отправки."))
+    (gift ? "Можно добавить к букету и доставить вместе." : notBouquet ? "Доставка по Новороссийску, Геленджику и Анапе, фото до отправки." : "Доставка по Новороссийску, Геленджику и Анапе, фото букета до отправки."))
     .replace(/\s+/g, " ").trim().slice(0, 300);
   const img = abs(p.image);
   const schema = {
