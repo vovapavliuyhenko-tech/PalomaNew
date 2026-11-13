@@ -396,3 +396,5 @@ body:has(.bc-sheet:not([hidden])) .cookie-bar,
 body:has(.bc-pick) .cookie-bar {
   display: none !important;
 }
+/* страница оформления заказа: нижняя панель «Оформить заказ» важнее уведомления */
+body:has(.co-mobile-bar) .cookie-bar { display: none !important; }

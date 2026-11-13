@@ -82,6 +82,10 @@
   function init() {
     if (getChoice()) return; // выбор уже сделан
     if (document.getElementById("cookieBar")) return;
+    /* На странице оформления заказа уведомление не показываем: на телефоне
+       единственная кнопка «Оформить заказ» — в нижней панели, и уведомление
+       её закрывало (13.11.2026). Согласие спросим на любой другой странице. */
+    if (document.getElementById("coMobileBar") || document.getElementById("checkoutForm")) return;
     build();
   }
 
