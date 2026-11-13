@@ -300,8 +300,13 @@
      на час позже текущего момента: интервал 09:00–12:00 можно заказать
      не позже 11:00. Для будущих дат ограничений нет. */
   const LEAD_MIN = 60;
+  /* дата по местному времени (toISOString давал вчерашний день с 00:00 до 03:00 МСК) */
+  function localDateStr(d) {
+    const p = (n) => String(n).padStart(2, "0");
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+  }
   function todayStr() {
-    return new Date().toISOString().split("T")[0];
+    return localDateStr(new Date());
   }
   function nowMinutes() {
     const d = new Date();
@@ -758,6 +763,52 @@
     e.preventDefault();
     handleSubmit();
   });
+
+  /* ── Не завершил оформление → менеджеру (13.11.2026) ──
+     Человек ввёл телефон, отметил согласие и ушёл со страницы (свернул,
+     закрыл), не нажав «Оформить». Шлём менеджеру имя, телефон и корзину —
+     можно перезвонить и помочь. Без галочки согласия ничего не уходит
+     (152-ФЗ). Один раз за сессию на номер; после нажатия «Оформить» — нет. */
+  function sendAbandoned() {
+    if (submitting || !window.palomaFetch) return;
+    const cart = getCart();
+    const phone = (document.getElementById("co-phone")?.value || "").trim();
+    const digits = phone.replace(/\D/g, "");
+    if (!cart.length || digits.length < 11 || !document.getElementById("co-consent")?.checked) return;
+    const key = "paloma_abandon_" + digits;
+    try {
+      if (sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key, "1");
+    } catch (e) { /* приватный режим — отправим, повтор не страшен */ }
+    const name = (document.getElementById("co-name")?.value || "").trim();
+    const rub = (n) => Number(n || 0).toLocaleString("ru-RU") + " ₽";
+    const total = cart.reduce((s, i) => s + (i.price || 0) * (i.qty || 1), 0);
+    const lines = ["🛒 НЕ ЗАВЕРШИЛ ЗАКАЗ — перезвонить", "Имя: " + (name || "—"), "Телефон: " + phone, "", "В корзине:"]
+      .concat(cart.map((i) => "• " + i.name + (i.size ? " (" + i.size + ")" : "") + " × " + (i.qty || 1) + " — " + rub((i.price || 0) * (i.qty || 1))))
+      .concat(["Сумма: " + rub(total), "",
+        "Клиент начал оформление на сайте и ушёл, не нажав «Оформить». Если заказ от него всё же придёт — это сообщение можно не учитывать."]);
+    if (window.palomaAttribution && typeof window.palomaAttribution.text === "function") {
+      try { lines.push("", window.palomaAttribution.text()); } catch (e) { /* без источника */ }
+    }
+    window.palomaFetch("?a=notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+      body: JSON.stringify({
+        orderId: "LEAD-" + Date.now().toString(36).toUpperCase(),
+        kind: "event_lead",
+        managerText: lines.join("\n"),
+        clientName: name,
+        phone: phone,
+        deliveryInfo: { page: "checkout-abandon", source: "Оформление заказа" },
+      }),
+    }).catch(() => { /* не мешаем уходу со страницы */ });
+    if (window.palomaGoal) window.palomaGoal("checkout_abandon");
+  }
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") sendAbandoned();
+  });
+  window.addEventListener("pagehide", sendAbandoned);
 
   document.addEventListener("paloma-cart-updated", updateView);
 
@@ -1553,7 +1604,14 @@
 
     const dateInput = document.getElementById("co-date");
     if (dateInput) {
-      dateInput.min = new Date().toISOString().split("T")[0];
+      dateInput.min = todayStr();
+      /* Дату подставляем сразу — одним обязательным полем меньше: сегодня,
+         а после 21:00 (доставка до 22:00, не раньше чем через час) — завтра. */
+      if (!dateInput.value) {
+        const d = new Date();
+        if (d.getHours() >= 21) d.setDate(d.getDate() + 1);
+        dateInput.value = localDateStr(d);
+      }
     }
     document.querySelectorAll("select.co-select").forEach(enhanceSelect);
     updateTimeConstraints();
