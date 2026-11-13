@@ -338,3 +338,6 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   .paloma-cover__offer-sub { font-size: 12px; line-height: 1.5; }
 }
 @media (prefers-reduced-motion: reduce) { .paloma-cover__offer { animation: none; opacity: 1; } }
+/* без подзаголовка: заголовок не шире 860px — на средних экранах переносится
+   на вторую строку, а не упирается в край */
+.paloma-cover__offer-title { max-width: 860px; margin: 0 auto !important; }
