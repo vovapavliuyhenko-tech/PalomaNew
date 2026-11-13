@@ -8,6 +8,7 @@
 
   const CATEGORY_LABELS = {
     newyear: "Новый год",
+    amaryllis: "Амариллисы в воске",
     autumn: "Осень",
     online: "Онлайн-витрина",
     season: "Самый сезон",

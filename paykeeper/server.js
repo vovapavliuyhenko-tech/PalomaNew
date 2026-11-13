@@ -141,6 +141,7 @@ http.createServer((req, res) => {
     }
     /* Правка полей товара один раз (состав, описание…) — jsonb-слияние с data */
     const PATCH_ONCE = {
+      "patch_2026_11_13_amaryllis_cat": {"p1791800000030":{"categories":["amaryllis","newyear"]},"p1791800000031":{"categories":["amaryllis","newyear"]},"p1791800000032":{"categories":["amaryllis","newyear"]},"p1791800000033":{"categories":["amaryllis","newyear"]},"p1791800000034":{"categories":["amaryllis","newyear"]}}, // своя категория «Амариллисы в воске»
       "patch_2026_11_09_adtitle": {
         "m1":{"adTitle":"Монобукет из белых гортензий"},
         "m2":{"adTitle":"Монобукет из пионовидных роз Мандарин"},
