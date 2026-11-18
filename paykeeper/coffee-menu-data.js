@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════
    PALOMA COFFEE MENU DATA — полное меню кофейни
-   123 позиций, 13 категорий · напитки по меню кофейни от 11.11.2026
+   116 позиций, 12 категорий · напитки по меню кофейни от 11.11.2026
    ════════════════════════════════════════════════════════ */
 if (!window.PALOMA_COFFEE_MENU) {
   window.PALOMA_COFFEE_MENU = [
@@ -1323,90 +1323,6 @@ if (!window.PALOMA_COFFEE_MENU) {
       "desc": "Детская коллекция «Счастье»: 6 мини-пралине в молочном шоколаде с любимыми детскими вкусами — малина, клубника, кокос, ваниль и печенье. В сказочной коробочке KIDS. Масса 51 г, 558 ккал / 100 г.",
       "image": "images/paloma/catalog/schaste-kids-nabor.jpg",
       "imageBg": "linear-gradient(160deg,#efe6dc 0%,#d8c3ad 55%,#a88a6c 100%)"
-    },
-    {
-      "id": "menu-lemonade-86",
-      "num": "086",
-      "title": "Лапочка «Арбуз + Мелисса»",
-      "category": "lemonade",
-      "price": 250,
-      "priceLabel": "250 ₽",
-      "volumes": "330 мл",
-      "desc": "Вода питьевая, сок арбуза, экстракт мелиссы. Б 0 · Ж 0 · У 8.3 · 34 ккал",
-      "image": "images/paloma/coffee/lemon-arbuz-melissa.jpg",
-      "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
-    },
-    {
-      "id": "menu-lemonade-87",
-      "num": "087",
-      "title": "Лапочка «Ананас + Личи»",
-      "category": "lemonade",
-      "price": 250,
-      "priceLabel": "250 ₽",
-      "volumes": "330 мл",
-      "desc": "Вода питьевая, сок ананаса, сок личи. Б 0 · Ж 0 · У 7.9 · 31 ккал",
-      "image": "images/paloma/coffee/lemon-ananas-lichi.jpg",
-      "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
-    },
-    {
-      "id": "menu-lemonade-88",
-      "num": "088",
-      "title": "Лапочка «Крем-сода»",
-      "category": "lemonade",
-      "price": 250,
-      "priceLabel": "250 ₽",
-      "volumes": "330 мл",
-      "desc": "Вода питьевая, сок груши, сок яблока, экстракт ванили, экстракт цедры апельсина, ароматизаторы. Б 0 · Ж 0 · У 8.7 · 35 ккал",
-      "image": "images/paloma/coffee/lemon-krem-soda.jpg",
-      "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
-    },
-    {
-      "id": "menu-lemonade-89",
-      "num": "089",
-      "title": "Лапочка «Лимонад»",
-      "category": "lemonade",
-      "price": 250,
-      "priceLabel": "250 ₽",
-      "volumes": "330 мл",
-      "desc": "Без сахара. Вода, сок дыни, сок клубники, сок малины, сок лимона, экстракт лемонграсса, экстракт лайма. Б 0 · Ж 0 · У 8.6 · 34 ккал",
-      "image": "images/paloma/coffee/lemon-limonad.jpg",
-      "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
-    },
-    {
-      "id": "menu-lemonade-90",
-      "num": "090",
-      "title": "Лапочка «Дыня-мята»",
-      "category": "lemonade",
-      "price": 260,
-      "priceLabel": "260 ₽",
-      "volumes": "330 мл",
-      "desc": "Без сахара. Вода, сок дыни, сок лимона, экстракт мяты перечной. Б 0 · Ж 0 · У 8.6 · 34 ккал",
-      "image": "images/paloma/coffee/lemon-dynya-myata.jpg",
-      "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
-    },
-    {
-      "id": "menu-lemonade-91",
-      "num": "091",
-      "title": "Лапочка «Физзи Розе»",
-      "category": "lemonade",
-      "price": 250,
-      "priceLabel": "250 ₽",
-      "volumes": "330 мл",
-      "desc": "Без сахара. Вода, сок винограда, сок яблока, сок клубники, лимонная кислота, натуральный ароматизатор «просекко». Б 0 · Ж 0 · У 8.4 · 34 ккал",
-      "image": "images/paloma/coffee/lemon-fizzi-roze.jpg",
-      "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
-    },
-    {
-      "id": "menu-lemonade-96",
-      "num": "096",
-      "title": "Лапочка «Физзи рислинг»",
-      "category": "lemonade",
-      "price": 250,
-      "priceLabel": "250 ₽",
-      "volumes": "330 мл",
-      "desc": "Вода питьевая, сок винограда, сок яблока, экстракт лимона, винная кислота, яблочная кислота, натуральные ароматизаторы. Б 0 · Ж 0 · У 9.4 · 37.6 ккал",
-      "image": "images/paloma/coffee/lemon-fizzi-risling.jpg",
-      "imageBg": "linear-gradient(160deg,#ffd7de 0%,#ff9fbb 55%,#e8628c 100%)"
     },
     {
       "id": "menu-juice-92",

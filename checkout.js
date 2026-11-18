@@ -454,7 +454,7 @@
 
   function loadMenu() {
     if (Array.isArray(window.PALOMA_COFFEE_MENU)) return Promise.resolve(window.PALOMA_COFFEE_MENU);
-    return loadScript("coffee-menu-data.js?v=28").then(() => window.PALOMA_COFFEE_MENU || []);
+    return loadScript("coffee-menu-data.js?v=29").then(() => window.PALOMA_COFFEE_MENU || []);
   }
 
   /* «220 / 270 / 300 ₽» + «250 / 350 / 450 мл» → размеры (как в меню кофейни) */
@@ -1283,6 +1283,29 @@
   function money(n) {
     return (Number(n) || 0).toLocaleString("ru-RU") + " ₽";
   }
+  /* Раздел меню кофейни для заказа в Telegram: «Корпусные, малина», а не просто
+     «Малина» (просьба кофейни 18.11.2026). Раздел берём из самого меню —
+     часть напитков переехала между разделами, а id остался прежним. */
+  const SECTION_LABELS = Object.assign({}, MENU_CATS, {
+    schaste: "Конфеты «Счастье»", chokome: "ChokoMe", juice: "Соки", water: "Вода", lemonade: "Лимонады",
+  });
+  function coffeeSection(item) {
+    const id = String(item.id || "");
+    if (!/^menu-/.test(id)) return "";
+    const menu = Array.isArray(window.PALOMA_COFFEE_MENU) ? window.PALOMA_COFFEE_MENU : [];
+    const hit = menu
+      .filter((m) => id === m.id || id.indexOf(m.id + "-") === 0)
+      .sort((a, b) => b.id.length - a.id.length)[0];
+    const cat = hit ? hit.category : (id.match(/^menu-([a-z]+)-/) || [])[1];
+    return SECTION_LABELS[cat] || "";
+  }
+  function withSection(item) {
+    const name = String(item.name || "");
+    const sec = coffeeSection(item);
+    if (!sec || name.toLowerCase().indexOf(sec.toLowerCase()) === 0) return name;
+    return sec + ", " + name.charAt(0).toLowerCase() + name.slice(1);
+  }
+
   function buildManagerText(o) {
     const f = o.form || {};
     const items = o.items
@@ -1291,7 +1314,7 @@
         if (i.size && i.size !== "—" && i.category !== "coffee") opt.push(i.size);
         if (Array.isArray(i.addons)) opt.push(...i.addons.filter(Boolean));
         const suffix = opt.length ? " (" + opt.join(", ") + ")" : "";
-        return `${n + 1}. ${i.name}${suffix} — ${i.qty || 1} шт. — ${money(i.price * (i.qty || 1))}`;
+        return `${n + 1}. ${withSection(i)}${suffix} — ${i.qty || 1} шт. — ${money(i.price * (i.qty || 1))}`;
       })
       .join("\n");
 
