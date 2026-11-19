@@ -83,6 +83,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   text-align: center;
   pointer-events: none;
   user-select: none;
+  /* заголовок чуть выше центра экрана (просьба заказчицы) */
+  transform: translateY(-4vh);
 }
 
 /* ── Heading wrapper (semantic H1) ───────────────────── */
