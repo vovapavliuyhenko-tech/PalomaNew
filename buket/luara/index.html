@@ -8,10 +8,10 @@
        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
        m[i].l=1*new Date();
        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-       m.palomaMetrikaSrc=r; try { if (localStorage.getItem("paloma-cookie-consent") !== "accepted") return; } catch (x) { return; } /* Метрика — только после согласия на cookie */
+       m.palomaMetrikaSrc=r; var palomaConsent = null; try { palomaConsent = localStorage.getItem("paloma-cookie-consent"); } catch (x) { palomaConsent = "accepted"; } /* Метрика — с первого визита в lite-режиме (без вебвизора/кликмапа); «Только необходимые» — не подключаем */ if (palomaConsent === "necessary") return; m.palomaMetrikaLite = (palomaConsent !== "accepted");
        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110912456', 'ym');
-   ym(110912456, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+   ym(110912456, 'init', (function(){var lite = window.palomaMetrikaLite === true; return {ssr:true, webvisor:!lite, clickmap:!lite, ecommerce:"dataLayer", accurateTrackBounce:!lite, trackLinks:true};})());
 </script>
 <!-- /Yandex.Metrika counter -->
   <meta charset="UTF-8">
@@ -791,7 +791,7 @@
   <script src="product.js?v=noot1"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=press3"></script>
-  <script src="cookie-consent.js?v=7"></script>
+  <script src="cookie-consent.js?v=8"></script>
   <script src="pd-consent.js?v=1"></script>
   <!-- Выезжающая панель «Избранное» -->
   <div class="cart-drawer wishlist-drawer" id="wishlistDrawer"
