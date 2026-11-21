@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
   <link rel="stylesheet" href="legal.css?v=6">
-  <link rel="stylesheet" href="home-hero-cover.css?v=12">
-  <link rel="stylesheet" href="home-editorial.css?v=12">
+  <link rel="stylesheet" href="home-hero-cover.css?v=13">
+  <link rel="stylesheet" href="home-editorial.css?v=13">
   <link rel="stylesheet" href="formats.css?v=fmt14">
   <link rel="stylesheet" href="event-author.css?v=ea6">
   <link rel="stylesheet" href="paloma-wave.css?v=w1">
@@ -554,6 +554,56 @@
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         PALOMA MOTHER'S DAY — editorial card, оформление как
+         у блока «Цветы по подписке» (единый стиль главной)
+         ===================================================== -->
+    <section class="home-subscription home-mday" id="mothersday" aria-label="День матери в Paloma">
+      <div class="home-subscription__bg home-mday__bg" data-parallax-bg aria-hidden="true"></div>
+
+      <div class="home-subscription__card">
+        <img decoding="async" height="784" width="550"
+          class="home-subscription__giraffe"
+          src="assets/images/paloma-giraffe.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          onerror="this.src='assets/images/giraffe.svg'">
+
+        <div class="paloma-wave home-subscription__wave" aria-hidden="true">
+          <svg class="paloma-wave__svg" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+              <path id="palomaWaveMday" fill="none"
+                d="M0,75 Q200,16 400,75 T800,75 T1200,75"/>
+            </defs>
+            <text class="paloma-wave__text">
+              <textPath href="#palomaWaveMday" xlink:href="#palomaWaveMday" startOffset="0">×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×</textPath>
+            </text>
+          </svg>
+        </div>
+
+        <div class="home-subscription__mark" aria-hidden="true">*</div>
+
+        <h2 class="home-subscription__title">Ко Дню матери</h2>
+
+        <p class="home-subscription__text">
+          Хочется подарить маме то самое чувство, которое она так часто дарит нам:
+          обо мне помнят, обо мне заботятся. Поэтому мы объединились с Doctor&nbsp;Luna:
+          к букету добавим сертификат на 30 минут массажа — полчаса, чтобы выдохнуть,
+          отпустить заботы и никуда не спешить. Выбирайте любимые мамины цветы —
+          бережно соберём букет и вложим записку с вашими тёплыми словами.
+        </p>
+
+        <a class="home-subscription__link" href="catalog.html?cat=mothersday">
+          Выбрать букет для мамы
+        </a>
+
+        <p class="home-subscription__note">
+          Предзаказы ко Дню матери уже открыты
+        </p>
       </div>
     </section>
 
@@ -1570,7 +1620,7 @@
   <script src="catalog-data.js?v=p57"></script>
   <script src="payment-config.js?v=wake1"></script>
   <script src="lead-send.js?v=bk1"></script>
-  <script src="script.js?v=perf10"></script>
+  <script src="script.js?v=perf11"></script>
   <script src="footer-mobile.js?v=9" defer></script>
   <script src="paloma-animations.js"></script>
   <script src="paloma-media-paths.js"></script>
