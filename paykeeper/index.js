@@ -591,7 +591,7 @@ async function refreshCatalog() {
 /* Категории, которые считаем «букетом» — только их фото шлём менеджеру.
    Вазы, десерты, подписка, оформление, кофе и допы в фото не попадают. */
 const BOUQUET_CATS = new Set([
-  "mono", "duo", "wedding", "authors", "online", "season", "bestsellers", "compositions",
+  "mothersday", "mono", "duo", "wedding", "authors", "online", "season", "bestsellers", "compositions",
 ]);
 
 /* Публичные ссылки на фото букетов из заказа (без повторов, максимум 10). */

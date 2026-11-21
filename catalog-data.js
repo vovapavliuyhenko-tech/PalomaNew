@@ -7,6 +7,7 @@
   "use strict";
 
   const CATEGORY_LABELS = {
+    mothersday: "День матери",
     newyear: "Новый год",
     amaryllis: "Амариллисы в воске",
     autumn: "Осень",

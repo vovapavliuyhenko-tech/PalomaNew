@@ -118,6 +118,19 @@
               <div class="catalog-dropdown__inner">
                 <div class="catalog-dropdown__grid">
 
+                  <a href="catalog.html?cat=mothersday"
+                     class="catalog-nav-item" data-cursor="hover" data-season-tab="mothersday" hidden>
+                    <div class="catalog-nav-item__icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M12 20.5s-7.5-4.9-9.3-9.6C1.4 7.3 4 3.9 7.4 3.9c2 0 3.6 1.1 4.6 2.7 1-1.6 2.6-2.7 4.6-2.7 3.4 0 6 3.4 5.7 7-1.8 4.7-9.3 9.6-9.3 9.6z"/>
+                      </svg>
+                    </div>
+                    <div class="catalog-nav-item__body">
+                      <span class="catalog-nav-item__title">День матери</span>
+                      <span class="catalog-nav-item__sub">Букеты для мамы</span>
+                    </div>
+                  </a>
+
                   <a href="catalog.html?cat=newyear"
                      class="catalog-nav-item" data-cursor="hover" data-season-tab="newyear" hidden>
                     <div class="catalog-nav-item__icon" aria-hidden="true">
@@ -439,7 +452,11 @@
 
   <div class="catalog-filters-wrap" id="catalogFiltersWrap">
     <div class="catalog-filters" id="catalogFilters" role="group" aria-label="Фильтры каталога">
-      <button type="button" class="catalog-filter-btn is-active" data-filter="all" aria-pressed="true">Все</button>
+      <!-- «День матери» — праздничная подборка идёт первой, пока категория
+           наполнена; потом вкладка уходит, и каталог снова открывается на
+           «Все» (products-live.js сам скрывает пустую сезонную вкладку). -->
+      <button type="button" class="catalog-filter-btn is-active" data-filter="mothersday" aria-pressed="true" data-season-tab="mothersday" hidden>День матери</button>
+      <button type="button" class="catalog-filter-btn" data-filter="all" aria-pressed="false">Все</button>
       <!-- Сезонная вкладка. Спрятана в разметке и появляется сама, когда в
            каталоге есть хоть один товар с этим разделом (products-live.js).
            Управляется галочкой «Осень» в панели каталога. -->
@@ -763,9 +780,9 @@
     <div class="custom-cursor__ring"></div>
   </div>
 
-  <script src="paloma-products.js?v=p63"></script>
+  <script src="paloma-products.js?v=p64"></script>
   <script src="products-live.js?v=21"></script>
-  <script src="catalog-data.js?v=p56"></script>
+  <script src="catalog-data.js?v=p57"></script>
   <script src="preloader.js?v=giraffe1"></script>
   <script src="attribution.js?v=2"></script>
   <script src="cart-core.js?v=feed1"></script>
@@ -779,7 +796,7 @@
 
   <script src="wishlist.js?v=seo1"></script>
   <script src="manager-config.js?v=1"></script>
-  <script src="catalog.js?v=50"></script>
+  <script src="catalog.js?v=51"></script>
   <script src="clients.js"></script>
   <script src="cursor.js?v=press3"></script>
   <script src="cookie-consent.js?v=8"></script>

@@ -295,4 +295,48 @@ module.exports = [
       }
     ]
   }),
+  /* 21.11.2026 — подборка ко Дню матери (категория «День матери») */
+  Object.assign({}, NEW, {
+    id: "p1793200000001", slug: "xrizantema-bigudi-mama", name: "Хризантема бигуди", categories: ["mothersday", "mono"],
+    composition: "Хризантема бигуди",
+    desc: "Моно-букет из бордовых хризантем бигуди в фирменной упаковке PALOMA с лентой. Пышные бархатные головки и глубокий винный оттенок — нежный и тёплый подарок для мамы. На фото — 7 шт.",
+    image: "images/paloma/catalog/mday-xrizantema-bigudi-1.jpg", price: 3460, priceFrom: false, photoSize: "S",
+    sizes: [
+      { code: "S", label: "S · 7 шт", priceDelta: 0 },
+      { code: "M", label: "M · 9 шт", priceDelta: 880 },
+      { code: "L", label: "L · 11 шт", priceDelta: 1760 },
+      { code: "XL", label: "XL · 15 шт", priceDelta: 3520 },
+    ],
+  }),
+  Object.assign({}, NEW, {
+    id: "p1793200000002", slug: "golubaya-gortenziya-buket", name: "Букет из голубых гортензий", categories: ["mothersday", "mono"],
+    composition: "Гортензия",
+    desc: "Моно-букет из нежно-голубых гортензий в фирменной упаковке PALOMA с лентой. Гортензии пышные, воздушные, долго стоят в воде и хорошо переносят дорогу. На фото — 5 шт.",
+    image: "images/paloma/catalog/mday-gortenziya-golubaya-1.jpg", price: 3630, priceFrom: false, photoSize: "S",
+    sizes: [
+      { code: "S", label: "S · 5 шт", priceDelta: 0 },
+      { code: "M", label: "M · 7 шт", priceDelta: 1300 },
+      { code: "L", label: "L · 9 шт", priceDelta: 2600 },
+      { code: "XL", label: "XL · 11 шт", priceDelta: 3900 },
+    ],
+  }),
+  Object.assign({}, NEW, {
+    id: "p1793200000003", slug: "rozovaya-xrizantema", name: "Хризантема розовая", categories: ["mothersday", "mono"],
+    composition: "Хризантема розовая",
+    desc: "Моно-букет из розовых хризантем в фирменной упаковке PALOMA с лентой. Нежный розовый оттенок и пышные головки — классика для мамы. На фото — 9 шт.",
+    image: "images/paloma/catalog/mday-xrizantema-rozovaya-1.jpg", price: 4230, priceFrom: false, photoSize: "M",
+    sizes: [
+      { code: "S", label: "S · 7 шт", priceDelta: 0 },
+      { code: "M", label: "M · 9 шт", priceDelta: 1100 },
+      { code: "L", label: "L · 11 шт", priceDelta: 2200 },
+      { code: "XL", label: "XL · 15 шт", priceDelta: 4400 },
+    ],
+  }),
+  Object.assign({}, NEW, {
+    id: "p1793200000004", slug: "avtorskiy-den-materi", name: "Авторский ко Дню матери", categories: ["mothersday", "authors"],
+    composition: "Пионовидная роза, хризантема, антуриум, львиный зев, тубероза, орнитогалум, голландская гортензия, шафердия",
+    desc: "Авторский букет ко Дню матери: пионовидная роза, хризантема, антуриум, львиный зев, тубероза, орнитогалум, голландская гортензия и шафердия. Собирает флорист в единственном экземпляре — точный состав и итоговую стоимость согласует менеджер.",
+    image: "images/paloma/catalog/mday-avtorskiy-1.jpg", price: 10940, priceFrom: true,
+    sizes: [{ code: "one", label: "Один размер", priceDelta: 0 }],
+  }),
 ];

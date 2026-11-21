@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-13 17:50">
+<yml_catalog date="2026-11-21 09:03">
   <shop>
     <name>PALOMA</name>
     <company>PALOMA — студия цветов и кофе, Новороссийск</company>
     <url>https://paloma.website</url>
     <currencies><currency id="RUR" rate="1"/></currencies>
     <categories>
-      <category id="1">Монобукеты</category>
-      <category id="2">Дуобукеты</category>
-      <category id="3">Авторские букеты</category>
-      <category id="4">Свадебные букеты</category>
-      <category id="5">Композиции и корзины</category>
-      <category id="6">Вазы и подарки</category>
-      <category id="7">Онлайн-витрина</category>
-      <category id="8">Самый сезон</category>
-      <category id="9">Новый год</category>
-      <category id="10">Осенние букеты</category>
-      <category id="11">Бестселлеры</category>
+      <category id="1">День матери</category>
+      <category id="2">Монобукеты</category>
+      <category id="3">Дуобукеты</category>
+      <category id="4">Авторские букеты</category>
+      <category id="5">Свадебные букеты</category>
+      <category id="6">Композиции и корзины</category>
+      <category id="7">Вазы и подарки</category>
+      <category id="8">Онлайн-витрина</category>
+      <category id="9">Самый сезон</category>
+      <category id="10">Амариллисы в воске</category>
+      <category id="11">Новый год</category>
+      <category id="12">Осенние букеты</category>
+      <category id="13">Бестселлеры</category>
     </categories>
     <offers>
       <offer id="m1" available="true">
         <url>https://paloma.website/buket/belaya-gortenziya/</url>
         <price>2330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-white.jpg</picture>
         <name>Монобукет из белых гортензий</name>
         <vendor>PALOMA</vendor>
@@ -36,7 +38,7 @@
         <url>https://paloma.website/buket/roza-mandarin/</url>
         <price>3890</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-mandarin.jpg</picture>
         <name>Монобукет из пионовидных роз Мандарин</name>
         <vendor>PALOMA</vendor>
@@ -49,7 +51,7 @@
         <url>https://paloma.website/buket/roza-melon/</url>
         <price>3890</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-melon.jpg</picture>
         <name>Монобукет из пионовидных роз Мелон</name>
         <vendor>PALOMA</vendor>
@@ -62,7 +64,7 @@
         <url>https://paloma.website/buket/francuzskaya-krasnaya-roza/</url>
         <price>3890</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-french-red.jpg</picture>
         <name>Монобукет из красных французских роз</name>
         <vendor>PALOMA</vendor>
@@ -75,7 +77,7 @@
         <url>https://paloma.website/buket/rozovaya-gortenziya/</url>
         <price>2330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-pink.jpg</picture>
         <name>Монобукет из розовых гортензий</name>
         <vendor>PALOMA</vendor>
@@ -88,7 +90,7 @@
         <url>https://paloma.website/buket/golubaya-gortenziya/</url>
         <price>2330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-hydrangea-blue.jpg</picture>
         <name>Монобукет из голубых гортензий</name>
         <vendor>PALOMA</vendor>
@@ -101,7 +103,7 @@
         <url>https://paloma.website/buket/francuzskaya-rozovaya-roza/</url>
         <price>3890</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-rose-french-pink.jpg</picture>
         <name>Монобукет из розовых французских роз</name>
         <vendor>PALOMA</vendor>
@@ -114,7 +116,7 @@
         <url>https://paloma.website/buket/liliya/</url>
         <price>9100</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-lily.jpg</picture>
         <name>Монобукет из пионовидных лилий</name>
         <vendor>PALOMA</vendor>
@@ -127,7 +129,7 @@
         <url>https://paloma.website/buket/duo-mondial/</url>
         <price>4740</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/duo-frrose.jpg</picture>
         <name>Букет из французских роз с эвкалиптом</name>
         <vendor>PALOMA</vendor>
@@ -140,7 +142,7 @@
         <url>https://paloma.website/buket/neo-serebro/</url>
         <price>8000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-neo-silver.jpg</picture>
         <name>Свадебный букет «Нео-серебро» с каллами</name>
         <vendor>PALOMA</vendor>
@@ -153,7 +155,7 @@
         <url>https://paloma.website/buket/sumochka-s-orhideey/</url>
         <price>15000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-orchid-bag.jpg</picture>
         <name>Свадебный букет-сумочка с орхидеей</name>
         <vendor>PALOMA</vendor>
@@ -166,7 +168,7 @@
         <url>https://paloma.website/buket/dofaminoviy/</url>
         <price>7000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-dopamine.jpg</picture>
         <name>Свадебный букет «Дофаминовый» с розами</name>
         <vendor>PALOMA</vendor>
@@ -179,7 +181,7 @@
         <url>https://paloma.website/buket/avtorskiy-alium/</url>
         <price>18000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/author-alium.jpg</picture>
         <name>Авторский букет с лилиями и аллиумом</name>
         <vendor>PALOMA</vendor>
@@ -192,7 +194,7 @@
         <url>https://paloma.website/buket/obruchenie/</url>
         <price>8500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n1.jpg</picture>
         <name>Свадебный букет «Обручение» с розами</name>
         <vendor>PALOMA</vendor>
@@ -205,7 +207,7 @@
         <url>https://paloma.website/buket/lavandoviy-vecher/</url>
         <price>9800</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n3.jpg</picture>
         <name>Букет «Лавандовый вечер» с дельфиниумом</name>
         <vendor>PALOMA</vendor>
@@ -218,7 +220,7 @@
         <url>https://paloma.website/buket/lazurit/</url>
         <price>10215</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n8.jpg</picture>
         <name>Букет «Лазурит» с гортензией и дельфиниумом</name>
         <vendor>PALOMA</vendor>
@@ -231,7 +233,7 @@
         <url>https://paloma.website/buket/golubaya-dymka/</url>
         <price>6900</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n9.jpg</picture>
         <name>Букет «Голубая дымка» с гортензией</name>
         <vendor>PALOMA</vendor>
@@ -244,7 +246,7 @@
         <url>https://paloma.website/buket/rozoviy-shelk/</url>
         <price>11365</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n10.jpg</picture>
         <name>Букет «Розовый шёлк» с пионовидной лилией</name>
         <vendor>PALOMA</vendor>
@@ -257,7 +259,7 @@
         <url>https://paloma.website/buket/pionoviy-vals/</url>
         <price>19410</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n11.jpg</picture>
         <name>Букет «Пионовый вальс» из гортензий и роз</name>
         <vendor>PALOMA</vendor>
@@ -270,7 +272,7 @@
         <url>https://paloma.website/buket/pervaya-nezhnost/</url>
         <price>8640</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n12.jpg</picture>
         <name>Букет «Первая нежность» из гортензий и роз</name>
         <vendor>PALOMA</vendor>
@@ -283,7 +285,7 @@
         <url>https://paloma.website/buket/pudra/</url>
         <price>18110</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n13.jpg</picture>
         <name>Букет «Пудра» из гортензий и пионовидных роз</name>
         <vendor>PALOMA</vendor>
@@ -296,7 +298,7 @@
         <url>https://paloma.website/buket/lilian/</url>
         <price>8650</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n14.jpg</picture>
         <name>Букет «Лилиан» с лилиями и гортензией</name>
         <vendor>PALOMA</vendor>
@@ -309,7 +311,7 @@
         <url>https://paloma.website/buket/beliy-tanec/</url>
         <price>9600</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n15.jpg</picture>
         <name>Букет «Белый танец» из белых роз</name>
         <vendor>PALOMA</vendor>
@@ -322,7 +324,7 @@
         <url>https://paloma.website/buket/rivyera/</url>
         <price>20190</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n16.jpg</picture>
         <name>Букет «Ривьера» с гортензией и розами</name>
         <vendor>PALOMA</vendor>
@@ -335,7 +337,7 @@
         <url>https://paloma.website/buket/florenciya/</url>
         <price>20500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n17.jpg</picture>
         <name>Букет «Флоренция» с гортензией и розами</name>
         <vendor>PALOMA</vendor>
@@ -348,7 +350,7 @@
         <url>https://paloma.website/buket/lazurnaya-korzina/</url>
         <price>70000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n18.jpg</picture>
         <name>Корзина из 81 голубой гортензии</name>
         <vendor>PALOMA</vendor>
@@ -361,7 +363,7 @@
         <url>https://paloma.website/buket/utrenniy-svet/</url>
         <price>13860</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n21.jpg</picture>
         <name>Букет «Утренний свет» с гортензией и розами</name>
         <vendor>PALOMA</vendor>
@@ -374,7 +376,7 @@
         <url>https://paloma.website/buket/bebi-blyu/</url>
         <price>5480</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n22.jpg</picture>
         <name>Букет «Беби Блю» из гортензии и эвкалипта</name>
         <vendor>PALOMA</vendor>
@@ -387,7 +389,7 @@
         <url>https://paloma.website/buket/roza-fatima/</url>
         <price>5030</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n23.jpg</picture>
         <name>Монобукет из пионовидных роз Фатима</name>
         <vendor>PALOMA</vendor>
@@ -400,7 +402,7 @@
         <url>https://paloma.website/buket/korolevskaya-korzina/</url>
         <price>39500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n24.jpg</picture>
         <name>Королевская корзина с гортензией и орхидеей</name>
         <vendor>PALOMA</vendor>
@@ -413,7 +415,7 @@
         <url>https://paloma.website/buket/baunti/</url>
         <price>5140</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n25.jpg</picture>
         <name>Букет «Баунти» с гортензией и дельфиниумом</name>
         <vendor>PALOMA</vendor>
@@ -426,7 +428,7 @@
         <url>https://paloma.website/buket/persikoviy-rassvet/</url>
         <price>12305</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n26.jpg</picture>
         <name>Букет «Персиковый рассвет» с розами</name>
         <vendor>PALOMA</vendor>
@@ -439,7 +441,7 @@
         <url>https://paloma.website/buket/pudrovoe-oblako/</url>
         <price>19540</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n27.jpg</picture>
         <name>Букет «Пудровое облако» из роз и гортензий</name>
         <vendor>PALOMA</vendor>
@@ -452,7 +454,7 @@
         <url>https://paloma.website/buket/roza-silva-pink/</url>
         <price>7280</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n28.jpg</picture>
         <name>Монобукет из кустовых роз Сильва Пинк</name>
         <vendor>PALOMA</vendor>
@@ -465,7 +467,7 @@
         <url>https://paloma.website/buket/karnaval/</url>
         <price>21000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n29.jpg</picture>
         <name>Букет «Карнавал» с подсолнухами и лилиями</name>
         <vendor>PALOMA</vendor>
@@ -478,7 +480,7 @@
         <url>https://paloma.website/buket/myatniy-briz/</url>
         <price>3320</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n30.jpg</picture>
         <name>Букет «Мятный бриз» с эустомой и розами</name>
         <vendor>PALOMA</vendor>
@@ -491,7 +493,7 @@
         <url>https://paloma.website/buket/letniy-lug/</url>
         <price>9840</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n31.jpg</picture>
         <name>Букет «Летний луг» с цинией и дельфиниумом</name>
         <vendor>PALOMA</vendor>
@@ -504,7 +506,7 @@
         <url>https://paloma.website/buket/gortenziya-korzina/</url>
         <price>11150</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n32.jpg</picture>
         <name>Корзина из 13 гортензий</name>
         <vendor>PALOMA</vendor>
@@ -517,7 +519,7 @@
         <url>https://paloma.website/buket/seletti-nabor-2-chashki-podnos/</url>
         <price>6200</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc4.jpg</picture>
         <name>Набор из 2 кофейных чашек с подносом SELETTI</name>
         <vendor>PALOMA</vendor>
@@ -530,7 +532,7 @@
         <url>https://paloma.website/buket/seletti-para-1/</url>
         <price>7300</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc5.jpg</picture>
         <name>Кофейная пара SELETTI</name>
         <vendor>PALOMA</vendor>
@@ -543,7 +545,7 @@
         <url>https://paloma.website/buket/seletti-para-2/</url>
         <price>7300</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc6.jpg</picture>
         <name>Кофейная пара SELETTI</name>
         <vendor>PALOMA</vendor>
@@ -556,7 +558,7 @@
         <url>https://paloma.website/buket/seletti-hybrid-supovaya/</url>
         <price>15700</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc7.jpg</picture>
         <name>Суповая тарелка SELETTI Hybrid</name>
         <vendor>PALOMA</vendor>
@@ -569,7 +571,7 @@
         <url>https://paloma.website/buket/seletti-kintsugi-tarelka/</url>
         <price>14700</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc8.jpg</picture>
         <name>Тарелка SELETTI Kintsugi</name>
         <vendor>PALOMA</vendor>
@@ -582,7 +584,7 @@
         <url>https://paloma.website/buket/korallovoe-utro/</url>
         <price>4040</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n45.jpg</picture>
         <name>Букет «Коралловое утро» с гортензией</name>
         <vendor>PALOMA</vendor>
@@ -595,7 +597,7 @@
         <url>https://paloma.website/buket/harper/</url>
         <price>9435</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n33.jpg</picture>
         <name>Букет «Харпер» с пионовидными розами</name>
         <vendor>PALOMA</vendor>
@@ -608,7 +610,7 @@
         <url>https://paloma.website/buket/feyerverk/</url>
         <price>14975</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n46.jpg</picture>
         <name>Букет «Фейерверк» с дельфиниумом и розами</name>
         <vendor>PALOMA</vendor>
@@ -621,7 +623,7 @@
         <url>https://paloma.website/buket/nerine/</url>
         <price>12080</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/w5.jpg</picture>
         <name>Свадебный букет «Нерине» с каллами</name>
         <vendor>PALOMA</vendor>
@@ -634,7 +636,7 @@
         <url>https://paloma.website/buket/perlamutr/</url>
         <price>9380</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/w7.jpg</picture>
         <name>Свадебный букет «Перламутр» с каллами</name>
         <vendor>PALOMA</vendor>
@@ -647,7 +649,7 @@
         <url>https://paloma.website/buket/seletti-kintsugi-piala/</url>
         <price>7000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc11.jpg</picture>
         <name>Пиала SELETTI Kintsugi</name>
         <vendor>PALOMA</vendor>
@@ -660,7 +662,7 @@
         <url>https://paloma.website/buket/monblan/</url>
         <price>7180</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/w8.jpg</picture>
         <name>Свадебный букет «Монблан» с антуриумом</name>
         <vendor>PALOMA</vendor>
@@ -673,7 +675,7 @@
         <url>https://paloma.website/buket/seletti-kintsugi-salatnik/</url>
         <price>17300</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc12.jpg</picture>
         <name>Салатник SELETTI Kintsugi</name>
         <vendor>PALOMA</vendor>
@@ -686,7 +688,7 @@
         <url>https://paloma.website/buket/sorbet/</url>
         <price>3355</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/w9.jpg</picture>
         <name>Свадебный букет «Сорбет» с гладиолусом</name>
         <vendor>PALOMA</vendor>
@@ -699,7 +701,7 @@
         <url>https://paloma.website/buket/seletti-hybrid-kruzhka/</url>
         <price>7600</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc14.jpg</picture>
         <name>Кружка SELETTI Hybrid</name>
         <vendor>PALOMA</vendor>
@@ -712,7 +714,7 @@
         <url>https://paloma.website/buket/seletti-toiletpaper-salatnik-eye/</url>
         <price>3000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc15.jpg</picture>
         <name>Салатник SELETTI Toiletpaper «Eye»</name>
         <vendor>PALOMA</vendor>
@@ -725,7 +727,7 @@
         <url>https://paloma.website/buket/seletti-toiletpaper-kruzhka-eye/</url>
         <price>3000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc16.jpg</picture>
         <name>Кружка SELETTI Toiletpaper «Eye»</name>
         <vendor>PALOMA</vendor>
@@ -738,7 +740,7 @@
         <url>https://paloma.website/buket/seletti-toiletpaper-kruzhka-plunger/</url>
         <price>3000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc17.jpg</picture>
         <name>Кружка SELETTI Toiletpaper «Plunger»</name>
         <vendor>PALOMA</vendor>
@@ -751,7 +753,7 @@
         <url>https://paloma.website/buket/seletti-svecha-hands-with-snakes/</url>
         <price>7900</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc19.jpg</picture>
         <name>Ароматическая свеча SELETTI «Hands with snakes»</name>
         <vendor>PALOMA</vendor>
@@ -764,7 +766,7 @@
         <url>https://paloma.website/buket/seletti-svecha-snakes/</url>
         <price>7900</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc20.jpg</picture>
         <name>Ароматическая свеча SELETTI «Snakes»</name>
         <vendor>PALOMA</vendor>
@@ -777,7 +779,7 @@
         <url>https://paloma.website/buket/seletti-svecha-shit/</url>
         <price>7900</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc21.jpg</picture>
         <name>Ароматическая свеча SELETTI «Shit»</name>
         <vendor>PALOMA</vendor>
@@ -790,7 +792,7 @@
         <url>https://paloma.website/buket/chocome-makadamia-white/</url>
         <price>2250</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc22.jpg</picture>
         <name>Конфеты chocoMe «Макадамия в белом шоколаде»</name>
         <vendor>PALOMA</vendor>
@@ -803,7 +805,7 @@
         <url>https://paloma.website/buket/chocome-mindal-tryufel/</url>
         <price>2500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc23.jpg</picture>
         <name>Конфеты chocoMe «Миндаль с трюфелем»</name>
         <vendor>PALOMA</vendor>
@@ -816,7 +818,7 @@
         <url>https://paloma.website/buket/chocome-piemontskiy-oreh-kofe/</url>
         <price>1950</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc24.jpg</picture>
         <name>Конфеты chocoMe «Пьемонтский орех с кофе»</name>
         <vendor>PALOMA</vendor>
@@ -829,7 +831,7 @@
         <url>https://paloma.website/buket/chocome-carre-assorti/</url>
         <price>3150</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc25.jpg</picture>
         <name>Ассорти плиток chocoMe Carré</name>
         <vendor>PALOMA</vendor>
@@ -842,7 +844,7 @@
         <url>https://paloma.website/buket/chocome-carre-brusnika-chili/</url>
         <price>1000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc26.jpg</picture>
         <name>Горький шоколад chocoMe «Брусника и чили»</name>
         <vendor>PALOMA</vendor>
@@ -855,7 +857,7 @@
         <url>https://paloma.website/buket/chocome-mindal-dikiy-perets/</url>
         <price>1950</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc27.jpg</picture>
         <name>Конфеты chocoMe «Миндаль с диким перцем»</name>
         <vendor>PALOMA</vendor>
@@ -868,7 +870,7 @@
         <url>https://paloma.website/buket/flamenko/</url>
         <price>10710</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n34.jpg</picture>
         <name>Букет «Фламенко» с каллами и розами</name>
         <vendor>PALOMA</vendor>
@@ -881,7 +883,7 @@
         <url>https://paloma.website/buket/chocome-carre-fialka-vino/</url>
         <price>1000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc28.jpg</picture>
         <name>Горький шоколад chocoMe «Фиалка и вино»</name>
         <vendor>PALOMA</vendor>
@@ -894,7 +896,7 @@
         <url>https://paloma.website/buket/chocome-carre-pekan-brusnika/</url>
         <price>1000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc29.jpg</picture>
         <name>Горький шоколад chocoMe «Пекан и брусника»</name>
         <vendor>PALOMA</vendor>
@@ -907,7 +909,7 @@
         <url>https://paloma.website/buket/chocome-carre-moloch-pekan-krasnaya-smorodina/</url>
         <price>1000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc30.jpg</picture>
         <name>Молочный шоколад chocoMe «Пекан и красная смородина»</name>
         <vendor>PALOMA</vendor>
@@ -920,7 +922,7 @@
         <url>https://paloma.website/buket/chocome-carre-white-mindal-kunzhut/</url>
         <price>1200</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc31.jpg</picture>
         <name>Белый шоколад chocoMe «Миндаль и кунжут»</name>
         <vendor>PALOMA</vendor>
@@ -933,7 +935,7 @@
         <url>https://paloma.website/buket/chocome-carre-moloch-piemont-sol/</url>
         <price>970</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc32.jpg</picture>
         <name>Молочный шоколад chocoMe «Пьемонтский орех и соль»</name>
         <vendor>PALOMA</vendor>
@@ -946,7 +948,7 @@
         <url>https://paloma.website/buket/chocome-entree-moloch-tri-oreha/</url>
         <price>1700</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc33.jpg</picture>
         <name>Молочный шоколад chocoMe «Три ореха»</name>
         <vendor>PALOMA</vendor>
@@ -959,7 +961,7 @@
         <url>https://paloma.website/buket/chocome-entree-moloch-fistashki-yagody/</url>
         <price>1600</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc34.jpg</picture>
         <name>Молочный шоколад chocoMe «Фисташки и ягоды»</name>
         <vendor>PALOMA</vendor>
@@ -972,7 +974,7 @@
         <url>https://paloma.website/buket/chocome-entree-fialka-fistashki/</url>
         <price>1700</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc35.jpg</picture>
         <name>Горький шоколад chocoMe «Фиалка и фисташки»</name>
         <vendor>PALOMA</vendor>
@@ -985,7 +987,7 @@
         <url>https://paloma.website/buket/chocome-entree-tri-oreha/</url>
         <price>1700</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc36.jpg</picture>
         <name>Горький шоколад chocoMe «Три ореха»</name>
         <vendor>PALOMA</vendor>
@@ -998,7 +1000,7 @@
         <url>https://paloma.website/buket/chocome-entree-roza-yagody/</url>
         <price>1700</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc37.jpg</picture>
         <name>Горький шоколад chocoMe «Роза и ягоды»</name>
         <vendor>PALOMA</vendor>
@@ -1011,7 +1013,7 @@
         <url>https://paloma.website/buket/chocome-entree-orehi-smorodina/</url>
         <price>1600</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc38.jpg</picture>
         <name>Горький шоколад chocoMe «Орехи и смородина»</name>
         <vendor>PALOMA</vendor>
@@ -1024,7 +1026,7 @@
         <url>https://paloma.website/buket/chocome-entree-tri-yagody/</url>
         <price>1700</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc39.jpg</picture>
         <name>Горький шоколад chocoMe «Три ягоды»</name>
         <vendor>PALOMA</vendor>
@@ -1037,7 +1039,7 @@
         <url>https://paloma.website/buket/chocome-entree-roza-zoloto/</url>
         <price>2400</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc40.jpg</picture>
         <name>Горький шоколад chocoMe «Роза и золото»</name>
         <vendor>PALOMA</vendor>
@@ -1050,7 +1052,7 @@
         <url>https://paloma.website/buket/siena/</url>
         <price>15500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n35.jpg</picture>
         <name>Композиция «Сиена» с розами и цинией</name>
         <vendor>PALOMA</vendor>
@@ -1063,7 +1065,7 @@
         <url>https://paloma.website/buket/luara/</url>
         <price>5330</price>
         <currencyId>RUR</currencyId>
-        <categoryId>11</categoryId>
+        <categoryId>13</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n38.jpg</picture>
         <name>Букет «Луара» с гортензией и розами</name>
         <vendor>PALOMA</vendor>
@@ -1076,7 +1078,7 @@
         <url>https://paloma.website/buket/vaza-volna-zheltaya/</url>
         <price>4200</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc41.jpg</picture>
         <name>Ваза «Волна» жёлтая</name>
         <vendor>PALOMA</vendor>
@@ -1089,7 +1091,7 @@
         <url>https://paloma.website/buket/vaza-kenzan-keramika/</url>
         <price>2100</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc42.jpg</picture>
         <name>Ваза под кензан, керамика</name>
         <vendor>PALOMA</vendor>
@@ -1102,7 +1104,7 @@
         <url>https://paloma.website/buket/vaza-interernaya-volan/</url>
         <price>18000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc43.jpg</picture>
         <name>Интерьерная ваза «Волан»</name>
         <vendor>PALOMA</vendor>
@@ -1115,7 +1117,7 @@
         <url>https://paloma.website/buket/vaza-interernaya-vihr/</url>
         <price>18000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc44.jpg</picture>
         <name>Интерьерная ваза «Вихрь»</name>
         <vendor>PALOMA</vendor>
@@ -1128,7 +1130,7 @@
         <url>https://paloma.website/buket/vaza-dyuny-shar/</url>
         <price>3000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc49.jpg</picture>
         <name>Ваза «Дюны» шар</name>
         <vendor>PALOMA</vendor>
@@ -1141,7 +1143,7 @@
         <url>https://paloma.website/buket/vaza-mokh-vysokaya/</url>
         <price>6500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc50.jpg</picture>
         <name>Ваза «Мох» высокая</name>
         <vendor>PALOMA</vendor>
@@ -1154,7 +1156,7 @@
         <url>https://paloma.website/buket/vaza-zakat-vysokaya/</url>
         <price>5000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc51.jpg</picture>
         <name>Ваза «Закат» высокая</name>
         <vendor>PALOMA</vendor>
@@ -1167,7 +1169,7 @@
         <url>https://paloma.website/buket/vaza-shinuazri-popugay/</url>
         <price>11000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc52.jpg</picture>
         <name>Ваза «Шинуазри» с попугаем</name>
         <vendor>PALOMA</vendor>
@@ -1180,7 +1182,7 @@
         <url>https://paloma.website/buket/vaza-seletti-hybrid-adelma/</url>
         <price>26000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc53.jpg</picture>
         <name>Ваза SELETTI Hybrid</name>
         <vendor>PALOMA</vendor>
@@ -1193,7 +1195,7 @@
         <url>https://paloma.website/buket/vaza-sota-vysokaya/</url>
         <price>17000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc54.jpg</picture>
         <name>Ваза «Соты» высокая</name>
         <vendor>PALOMA</vendor>
@@ -1206,7 +1208,7 @@
         <url>https://paloma.website/buket/vaza-seletti-seagirl/</url>
         <price>10500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc55.jpg</picture>
         <name>Ваза SELETTI Toiletpaper «Seagirl»</name>
         <vendor>PALOMA</vendor>
@@ -1219,7 +1221,7 @@
         <url>https://paloma.website/buket/vaza-terrakota-drapirovka/</url>
         <price>10000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc57.jpg</picture>
         <name>Ваза «Терракота» с драпировкой</name>
         <vendor>PALOMA</vendor>
@@ -1232,7 +1234,7 @@
         <url>https://paloma.website/buket/vaza-interernaya-organ/</url>
         <price>18500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc58.jpg</picture>
         <name>Интерьерная ваза «Орган»</name>
         <vendor>PALOMA</vendor>
@@ -1245,7 +1247,7 @@
         <url>https://paloma.website/buket/vaza-seletti-snakes/</url>
         <price>10500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc59.jpg</picture>
         <name>Ваза SELETTI Toiletpaper «Snakes»</name>
         <vendor>PALOMA</vendor>
@@ -1258,7 +1260,7 @@
         <url>https://paloma.website/buket/vaza-grani-dymchataya/</url>
         <price>13000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc60.jpg</picture>
         <name>Ваза «Грани» дымчатая</name>
         <vendor>PALOMA</vendor>
@@ -1271,7 +1273,7 @@
         <url>https://paloma.website/buket/vaza-kenzan-steklo/</url>
         <price>2100</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc62.jpg</picture>
         <name>Ваза под кензан, стекло</name>
         <vendor>PALOMA</vendor>
@@ -1284,7 +1286,7 @@
         <url>https://paloma.website/buket/vaza-zhemchug/</url>
         <price>6100</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc63.jpg</picture>
         <name>Ваза «Жемчуг»</name>
         <vendor>PALOMA</vendor>
@@ -1297,7 +1299,7 @@
         <url>https://paloma.website/buket/vaza-izumrud-shar/</url>
         <price>2550</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc64.jpg</picture>
         <name>Ваза «Изумруд» шар</name>
         <vendor>PALOMA</vendor>
@@ -1310,7 +1312,7 @@
         <url>https://paloma.website/buket/vaza-cilindr-20/</url>
         <price>2400</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc67.jpg</picture>
         <name>Ваза-цилиндр, 20 см</name>
         <vendor>PALOMA</vendor>
@@ -1323,7 +1325,7 @@
         <url>https://paloma.website/buket/vaza-uzkaya-10-25/</url>
         <price>1500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc68.jpg</picture>
         <name>Ваза узкая, 25 см</name>
         <vendor>PALOMA</vendor>
@@ -1336,7 +1338,7 @@
         <url>https://paloma.website/buket/vaza-steklo-18-16/</url>
         <price>2500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc70.jpg</picture>
         <name>Ваза стеклянная, 16 см</name>
         <vendor>PALOMA</vendor>
@@ -1349,7 +1351,7 @@
         <url>https://paloma.website/buket/vaza-steklo-16-34/</url>
         <price>9000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/acc72.jpg</picture>
         <name>Ваза стеклянная, 34 см</name>
         <vendor>PALOMA</vendor>
@@ -1362,7 +1364,7 @@
         <url>https://paloma.website/buket/fiesta/</url>
         <price>21300</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n41.jpg</picture>
         <name>Букет «Фиеста» с антуриумом и каллами</name>
         <vendor>PALOMA</vendor>
@@ -1375,7 +1377,7 @@
         <url>https://paloma.website/buket/solnechnyy-den/</url>
         <price>4410</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n42.jpg</picture>
         <name>Букет «Солнечный день» с подсолнухами</name>
         <vendor>PALOMA</vendor>
@@ -1388,7 +1390,7 @@
         <url>https://paloma.website/buket/kaskad/</url>
         <price>15160</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/n43.jpg</picture>
         <name>Букет «Каскад» с орхидеей и гортензией</name>
         <vendor>PALOMA</vendor>
@@ -1401,7 +1403,7 @@
         <url>https://paloma.website/buket/avtorskiy-georginy-delfinium/</url>
         <price>10030</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/avt-gortenziya-delfinium.jpg</picture>
         <name>Авторский букет с гортензией и дельфиниумом</name>
         <vendor>PALOMA</vendor>
@@ -1414,7 +1416,7 @@
         <url>https://paloma.website/buket/avtorskiy-podsolnuhi-zontik/</url>
         <price>6050</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/avt-podsolnuhi-zontik.jpg</picture>
         <name>Авторский букет с подсолнухами</name>
         <vendor>PALOMA</vendor>
@@ -1427,7 +1429,7 @@
         <url>https://paloma.website/buket/svadebnyy-anturium-georgin/</url>
         <price>7500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-anturium-georgin.jpg</picture>
         <name>Свадебный букет с антуриумом</name>
         <vendor>PALOMA</vendor>
@@ -1440,7 +1442,7 @@
         <url>https://paloma.website/buket/gortenziya-kitay/</url>
         <price>2150</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imtui6rekirqzir</picture>
         <name>Монобукет из гортензии Китай</name>
         <vendor>PALOMA</vendor>
@@ -1453,7 +1455,7 @@
         <url>https://paloma.website/buket/avtorskaya-osen/</url>
         <price>9300</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imu2f6wd6yw5pmz</picture>
         <name>Осенний букет с хризантемой и антуриумом</name>
         <vendor>PALOMA</vendor>
@@ -1466,7 +1468,7 @@
         <url>https://paloma.website/buket/korziny-s-hrizantemoy-bigudi-i-evkaliptom/</url>
         <price>8050</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>6</categoryId>
         <picture>https://functions.yandexcloud.net/d4ek26aklvok10biu54h?a=img&amp;id=imumy83a0exlba3</picture>
         <name>Корзина с хризантемой и эвкалиптом</name>
         <vendor>PALOMA</vendor>
@@ -1479,7 +1481,7 @@
         <url>https://paloma.website/buket/vaza-seletti-canopie-amina/</url>
         <price>30000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/canopie-amina-1.webp</picture>
         <name>Ваза SELETTI Canopie «Amina»</name>
         <vendor>PALOMA</vendor>
@@ -1492,7 +1494,7 @@
         <url>https://paloma.website/buket/vaza-seletti-canopie-zita/</url>
         <price>30000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/canopie-zita-1.webp</picture>
         <name>Ваза SELETTI Canopie «Zita»</name>
         <vendor>PALOMA</vendor>
@@ -1505,7 +1507,7 @@
         <url>https://paloma.website/buket/vaza-seletti-canopie-kiki/</url>
         <price>30000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/canopie-kiki-1.webp</picture>
         <name>Ваза SELETTI Canopie «Kiki»</name>
         <vendor>PALOMA</vendor>
@@ -1518,7 +1520,7 @@
         <url>https://paloma.website/buket/vaza-iney/</url>
         <price>9500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/vase-inei.jpg</picture>
         <name>Ваза «Иней»</name>
         <vendor>PALOMA</vendor>
@@ -1531,7 +1533,7 @@
         <url>https://paloma.website/buket/vaza-zavitok-golubaya/</url>
         <price>8200</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/vase-zavitok-blue.jpg</picture>
         <name>Ваза «Завиток» голубая</name>
         <vendor>PALOMA</vendor>
@@ -1544,7 +1546,7 @@
         <url>https://paloma.website/buket/vaza-akvarel/</url>
         <price>6200</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/vase-akvarel.jpg</picture>
         <name>Ваза «Акварель»</name>
         <vendor>PALOMA</vendor>
@@ -1557,7 +1559,7 @@
         <url>https://paloma.website/buket/vaza-pesok-shirokaya/</url>
         <price>6000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/vase-pesok-wide.jpg</picture>
         <name>Ваза «Песок» широкая</name>
         <vendor>PALOMA</vendor>
@@ -1570,7 +1572,7 @@
         <url>https://paloma.website/buket/vaza-myata-s-ruchkami/</url>
         <price>6000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/vase-myata.jpg</picture>
         <name>Ваза «Мята» с ручками</name>
         <vendor>PALOMA</vendor>
@@ -1583,7 +1585,7 @@
         <url>https://paloma.website/buket/vaza-kameshki/</url>
         <price>5800</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/vase-kameshki.jpg</picture>
         <name>Ваза «Камешки»</name>
         <vendor>PALOMA</vendor>
@@ -1596,7 +1598,7 @@
         <url>https://paloma.website/buket/vaza-pesok-s-gorlom/</url>
         <price>5400</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/vase-pesok-gorlo.jpg</picture>
         <name>Ваза «Песок» с горлом</name>
         <vendor>PALOMA</vendor>
@@ -1609,7 +1611,7 @@
         <url>https://paloma.website/buket/bordo/</url>
         <price>14300</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-bordo.jpg</picture>
         <name>Свадебный букет «Бордо» с каллами</name>
         <vendor>PALOMA</vendor>
@@ -1622,7 +1624,7 @@
         <url>https://paloma.website/buket/hrizantema/</url>
         <price>5060</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-xrizantema.jpg</picture>
         <name>Монобукет из хризантем</name>
         <vendor>PALOMA</vendor>
@@ -1635,7 +1637,7 @@
         <url>https://paloma.website/buket/solnechnaya-osen/</url>
         <price>4560</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/author-xrizantema-amarillis.jpg</picture>
         <name>Букет «Солнечная осень» с хризантемой</name>
         <vendor>PALOMA</vendor>
@@ -1648,7 +1650,7 @@
         <url>https://paloma.website/buket/osennyaya-palitra/</url>
         <price>20085</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/author-osennyaya-palitra.jpg</picture>
         <name>Букет «Осенняя палитра» с гортензией</name>
         <vendor>PALOMA</vendor>
@@ -1661,7 +1663,7 @@
         <url>https://paloma.website/buket/belaya-orhideya/</url>
         <price>8820</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-eustoma-orhideya.jpg</picture>
         <name>Свадебный букет с белой орхидеей</name>
         <vendor>PALOMA</vendor>
@@ -1674,7 +1676,7 @@
         <url>https://paloma.website/buket/kally/</url>
         <price>9200</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-kally.jpg</picture>
         <name>Свадебный букет из калл</name>
         <vendor>PALOMA</vendor>
@@ -1687,7 +1689,7 @@
         <url>https://paloma.website/buket/pionovidnaya-nezhnost/</url>
         <price>26800</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/duo-gortenziya-kustovaya.jpg</picture>
         <name>Букет «Пионовидная нежность» с гортензией</name>
         <vendor>PALOMA</vendor>
@@ -1700,7 +1702,7 @@
         <url>https://paloma.website/buket/gortenziya-i-roza/</url>
         <price>14170</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>3</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/duo-gortenziya-roza.jpg</picture>
         <name>Букет из гортензий и пионовидных роз</name>
         <vendor>PALOMA</vendor>
@@ -1713,7 +1715,7 @@
         <url>https://paloma.website/buket/osennyaya-korzina/</url>
         <price>19080</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/basket-osennyaya.jpg</picture>
         <name>Осенняя корзина с амариллисом</name>
         <vendor>PALOMA</vendor>
@@ -1726,7 +1728,7 @@
         <url>https://paloma.website/buket/bolshaya-korzina/</url>
         <price>60260</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>6</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/basket-gortenziya-georgin.jpg</picture>
         <name>Большая корзина с гортензией и розами</name>
         <vendor>PALOMA</vendor>
@@ -1739,7 +1741,7 @@
         <url>https://paloma.website/buket/konfeta-schaste-praline-s-fistashkoy-i-bazilikom/</url>
         <price>440</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-fistashka-bazilik.jpg</picture>
         <name>Конфета «Счастье» пралине с фисташкой и базиликом</name>
         <vendor>PALOMA</vendor>
@@ -1752,7 +1754,7 @@
         <url>https://paloma.website/buket/konfeta-schaste-praline-s-greckim-orehom-i-karamelyu/</url>
         <price>440</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-gretskiy-karamel.jpg</picture>
         <name>Конфета «Счастье» пралине с грецким орехом и карамелью</name>
         <vendor>PALOMA</vendor>
@@ -1765,7 +1767,7 @@
         <url>https://paloma.website/buket/konfeta-schaste-praline-s-chernoslivom-i-greckim-orehom/</url>
         <price>440</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-chernosliv.jpg</picture>
         <name>Конфета «Счастье» пралине с черносливом и грецким орехом</name>
         <vendor>PALOMA</vendor>
@@ -1778,7 +1780,7 @@
         <url>https://paloma.website/buket/konfeta-schaste-praline-s-kunzhutom-i-morskoy-solyu/</url>
         <price>440</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-kunzhut-sol.jpg</picture>
         <name>Конфета «Счастье» пралине с кунжутом и морской солью</name>
         <vendor>PALOMA</vendor>
@@ -1791,7 +1793,7 @@
         <url>https://paloma.website/buket/konfety-schaste-praline-4-sht-3/</url>
         <price>1520</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-praline-4-n3.jpg</picture>
         <name>Конфеты «Счастье» пралине, 4 шт. № 3</name>
         <vendor>PALOMA</vendor>
@@ -1804,7 +1806,7 @@
         <url>https://paloma.website/buket/konfety-schaste-praline-4-sht-4/</url>
         <price>1640</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-praline-4-n4.jpg</picture>
         <name>Конфеты «Счастье» пралине, 4 шт. № 4</name>
         <vendor>PALOMA</vendor>
@@ -1817,7 +1819,7 @@
         <url>https://paloma.website/buket/mini-praline-schaste-10-sht-assorti/</url>
         <price>1100</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-mini-10.jpg</picture>
         <name>Мини-пралине «Счастье», 10 шт. Ассорти</name>
         <vendor>PALOMA</vendor>
@@ -1830,7 +1832,7 @@
         <url>https://paloma.website/buket/mini-praline-schaste-20-sht-assorti/</url>
         <price>2200</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-mini-20.jpg</picture>
         <name>Мини-пралине «Счастье», 20 шт. Ассорти</name>
         <vendor>PALOMA</vendor>
@@ -1843,7 +1845,7 @@
         <url>https://paloma.website/buket/mini-praline-schaste-36-sht-assorti/</url>
         <price>3800</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-mini-36.jpg</picture>
         <name>Мини-пралине «Счастье», 36 шт. Ассорти</name>
         <vendor>PALOMA</vendor>
@@ -1856,7 +1858,7 @@
         <url>https://paloma.website/buket/iriski-schaste-kollekciya-1/</url>
         <price>1020</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-iriski-1.jpg</picture>
         <name>Ириски «Счастье» — коллекция № 1</name>
         <vendor>PALOMA</vendor>
@@ -1869,7 +1871,7 @@
         <url>https://paloma.website/buket/pechene-angel-schastya/</url>
         <price>630</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-angel.jpg</picture>
         <name>Печенье «Ангел счастья»</name>
         <vendor>PALOMA</vendor>
@@ -1882,7 +1884,7 @@
         <url>https://paloma.website/buket/pechene-serdce-schastya/</url>
         <price>630</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-serdce.jpg</picture>
         <name>Печенье «Сердце счастья»</name>
         <vendor>PALOMA</vendor>
@@ -1895,7 +1897,7 @@
         <url>https://paloma.website/buket/pechene-shokoladnyy-mishka/</url>
         <price>630</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-mishka.jpg</picture>
         <name>Печенье «Шоколадный Мишка»</name>
         <vendor>PALOMA</vendor>
@@ -1908,7 +1910,7 @@
         <url>https://paloma.website/buket/molochnyy-shokolad-schaste-kids/</url>
         <price>380</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-kids-shokolad.jpg</picture>
         <name>Молочный шоколад «Счастье» Kids</name>
         <vendor>PALOMA</vendor>
@@ -1921,7 +1923,7 @@
         <url>https://paloma.website/buket/nabor-konfet-schaste-kids/</url>
         <price>690</price>
         <currencyId>RUR</currencyId>
-        <categoryId>6</categoryId>
+        <categoryId>7</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/schaste-kids-nabor.jpg</picture>
         <name>Набор конфет «Счастье» KIDS</name>
         <vendor>PALOMA</vendor>
@@ -1934,7 +1936,7 @@
         <url>https://paloma.website/buket/belyy-zhemchug/</url>
         <price>8030</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/wed-belyj-zhemchug.jpg</picture>
         <name>Свадебный букет «Белый жемчуг» с каллой</name>
         <vendor>PALOMA</vendor>
@@ -1947,7 +1949,7 @@
         <url>https://paloma.website/buket/bordovye-hrizantemy/</url>
         <price>2680</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-xrizantema-bordo-m.jpg</picture>
         <name>Монобукет из бордовых хризантем</name>
         <vendor>PALOMA</vendor>
@@ -1960,7 +1962,7 @@
         <url>https://paloma.website/buket/pudrovye-francuzskie-rozy/</url>
         <price>3145</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mono-french-pudra.jpg</picture>
         <name>Монобукет из пудровых французских роз</name>
         <vendor>PALOMA</vendor>
@@ -1973,7 +1975,7 @@
         <url>https://paloma.website/buket/amarillis-v-voske-chernoe-zoloto/</url>
         <price>3655</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>10</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/amarillis-vosk-chernoe-zoloto.jpg</picture>
         <name>Амариллис в воске «Чёрное золото»</name>
         <vendor>PALOMA</vendor>
@@ -1986,7 +1988,7 @@
         <url>https://paloma.website/buket/amarillis-v-voske-bordo-serebro/</url>
         <price>3655</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>10</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/amarillis-vosk-bordo-serebro.jpg</picture>
         <name>Амариллис в воске «Бордо и серебро»</name>
         <vendor>PALOMA</vendor>
@@ -1999,7 +2001,7 @@
         <url>https://paloma.website/buket/amarillis-v-voske-seryy-sviter/</url>
         <price>5250</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>10</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/amarillis-vosk-sviter-seryy.jpg</picture>
         <name>Амариллис в воске «Серый свитер»</name>
         <vendor>PALOMA</vendor>
@@ -2012,7 +2014,7 @@
         <url>https://paloma.website/buket/amarillis-v-voske-rozovyy-sviter/</url>
         <price>5250</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>10</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/amarillis-vosk-sviter-rozovyy.jpg</picture>
         <name>Амариллис в воске «Розовый свитер»</name>
         <vendor>PALOMA</vendor>
@@ -2025,11 +2027,76 @@
         <url>https://paloma.website/buket/amarillis-v-voske-krasnyy-barhat/</url>
         <price>5650</price>
         <currencyId>RUR</currencyId>
-        <categoryId>5</categoryId>
+        <categoryId>10</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/amarillis-vosk-barhat-krasnyy.jpg</picture>
         <name>Амариллис в бархатном воске «Красный бархат»</name>
         <vendor>PALOMA</vendor>
         <description>Амариллис в ярко-красном бархатном воске с жемчугом и белой лентой PALOMA — самый новогодний. Луковица амариллиса (гиппеаструма) покрыта воском: он удерживает влагу, поэтому поливать, подкармливать и пересаживать её не нужно — всё для цветения уже есть внутри. Поставьте в светлое тёплое место, и через несколько недель вырастет высокий цветонос с крупными цветами-колокольчиками. Долгоиграющий подарок вместо букета: радует несколько недель, на Новый год и праздники, коллегам и близким. Доставим по Новороссийску.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1791800000035" available="true">
+        <url>https://paloma.website/buket/amarillis-v-voske-zhemchuzhnyy/</url>
+        <price>3655</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>10</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/amarillis-vosk-belyy-zhemchug.jpg</picture>
+        <name>Амариллис в воске «Жемчужный»</name>
+        <vendor>PALOMA</vendor>
+        <description>Амариллис в белоснежном воске, обвитый нитями жемчуга, с бантом из ленты PALOMA — нежный и праздничный. Луковица амариллиса (гиппеаструма) покрыта воском: он удерживает влагу, поэтому поливать, подкармливать и пересаживать её не нужно — всё для цветения уже есть внутри. Поставьте в светлое тёплое место, и через несколько недель вырастет высокий цветонос с крупными цветами-колокольчиками. Долгоиграющий подарок вместо букета: радует несколько недель, на праздники, коллегам и близким. Доставим по Новороссийску.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1793200000001" available="true">
+        <url>https://paloma.website/buket/xrizantema-bigudi-mama/</url>
+        <price>3460</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/mday-xrizantema-bigudi-1.jpg</picture>
+        <name>Монобукет «Хризантема бигуди»</name>
+        <vendor>PALOMA</vendor>
+        <description>Моно-букет из бордовых хризантем бигуди в фирменной упаковке PALOMA с лентой. Пышные бархатные головки и глубокий винный оттенок — нежный и тёплый подарок для мамы. На фото — 7 шт.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1793200000002" available="true">
+        <url>https://paloma.website/buket/golubaya-gortenziya-buket/</url>
+        <price>3630</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/mday-gortenziya-golubaya-1.jpg</picture>
+        <name>Букет из голубых гортензий</name>
+        <vendor>PALOMA</vendor>
+        <description>Моно-букет из нежно-голубых гортензий в фирменной упаковке PALOMA с лентой. Гортензии пышные, воздушные, долго стоят в воде и хорошо переносят дорогу. На фото — 5 шт.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1793200000003" available="true">
+        <url>https://paloma.website/buket/rozovaya-xrizantema/</url>
+        <price>4230</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/mday-xrizantema-rozovaya-1.jpg</picture>
+        <name>Монобукет «Хризантема розовая»</name>
+        <vendor>PALOMA</vendor>
+        <description>Моно-букет из розовых хризантем в фирменной упаковке PALOMA с лентой. Нежный розовый оттенок и пышные головки — классика для мамы. На фото — 9 шт.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="p1793200000004" available="true">
+        <url>https://paloma.website/buket/avtorskiy-den-materi/</url>
+        <price>10940</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/mday-avtorskiy-1.jpg</picture>
+        <name>Авторский ко Дню матери</name>
+        <vendor>PALOMA</vendor>
+        <description>Авторский букет ко Дню матери: пионовидная роза, хризантема, антуриум, львиный зев, тубероза, орнитогалум, голландская гортензия и шафердия. Собирает флорист в единственном экземпляре — точный состав и итоговую стоимость согласует менеджер.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>

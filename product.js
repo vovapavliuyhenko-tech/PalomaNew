@@ -507,6 +507,8 @@
     (EXTRA_PHOTOS[product.image] || []).forEach((src, i) =>
       photos.push({ src, alt: `${product.name} — фото ${i + 2}` }));
 
+    galleryPhotos = photos;
+
     if (!photos.length) {
       if (mainImg) {
         mainImg.removeAttribute("src");
@@ -551,6 +553,40 @@
     });
   }
 
+  /* Свайп по главному фото листает галерею — на телефоне удобнее,
+     чем целиться в миниатюры (просьба владелицы, подборка ко Дню матери). */
+  let galleryPhotos = [];
+  let galleryIndex = 0;
+
+  function stepPhoto(dir) {
+    if (galleryPhotos.length < 2) return;
+    galleryIndex = (galleryIndex + dir + galleryPhotos.length) % galleryPhotos.length;
+    setMainPhoto(galleryPhotos[galleryIndex], galleryIndex);
+  }
+
+  (function enableGallerySwipe() {
+    const zone = document.getElementById("pdpGalleryMain") || mainPh || mainImg;
+    if (!zone) return;
+    let x0 = null;
+    let y0 = null;
+    zone.addEventListener("touchstart", (e) => {
+      const t = e.touches[0];
+      x0 = t.clientX;
+      y0 = t.clientY;
+    }, { passive: true });
+    zone.addEventListener("touchend", (e) => {
+      if (x0 === null) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - x0;
+      const dy = t.clientY - y0;
+      x0 = null;
+      /* Горизонтальный свайп увереннее вертикального — иначе листание
+         конфликтует с прокруткой страницы */
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+      stepPhoto(dx < 0 ? 1 : -1);
+    }, { passive: true });
+  })();
+
   /* ── Фото под размер ──────────────────────────────────────
      Для букетов, снятых в каждом размере, по клику на размер показываем
      его фото — покупатель видит, как выглядит S, M или L. В базе у размера
@@ -559,6 +595,15 @@
   /* Галерея: главное фото товара (как в базе) → ещё снимки */
   const CANOPIE_GROUP = "images/paloma/catalog/canopie-group.webp";
   const EXTRA_PHOTOS = {
+    "images/paloma/catalog/mday-xrizantema-bigudi-1.jpg": [
+      "images/paloma/catalog/mday-xrizantema-bigudi-2.jpg",
+      "images/paloma/catalog/mday-xrizantema-bigudi-3.jpg",
+      "images/paloma/catalog/mday-xrizantema-bigudi-4.jpg",
+      "images/paloma/catalog/mday-xrizantema-bigudi-5.jpg",
+      "images/paloma/catalog/mday-xrizantema-bigudi-6.jpg",
+      "images/paloma/catalog/mday-xrizantema-bigudi-7.jpg",
+    ],
+    "images/paloma/catalog/mday-avtorskiy-1.jpg": ["images/paloma/catalog/mday-avtorskiy-2.jpg"],
     "images/paloma/catalog/canopie-amina-1.webp": ["images/paloma/catalog/canopie-amina-2.webp", CANOPIE_GROUP],
     "images/paloma/catalog/canopie-zita-1.webp": ["images/paloma/catalog/canopie-zita-2.webp", CANOPIE_GROUP],
     "images/paloma/catalog/canopie-luna-1.webp": ["images/paloma/catalog/canopie-luna-2.webp", CANOPIE_GROUP],
@@ -601,6 +646,7 @@
   }
 
   function setMainPhoto(photo, index) {
+    if (index >= 0) galleryIndex = index;
     if (mainImg) {
       mainImg.src = photo.src;
       mainImg.alt = photo.alt;

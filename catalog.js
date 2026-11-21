@@ -570,7 +570,15 @@
   function initFromUrl() {
     const qp = new URLSearchParams(window.location.search);
     /* /katalog/<раздел>/ — статическая SEO-страница раздела: <html data-cat> */
-    const cat = qp.get("cat") || document.documentElement.dataset.cat || "all";
+    let cat = qp.get("cat") || document.documentElement.dataset.cat || "";
+    /* Без параметров каталог открывается на «День матери» — праздничная
+       подборка важнее общего списка. Когда категория опустеет (праздник
+       прошёл, товары убрали) — молча откатываемся на «Все». */
+    if (!cat) {
+      cat = window.PALOMA_CATALOG.getByCategory("mothersday").length
+        ? "mothersday"
+        : "all";
+    }
     const resolved = window.PALOMA_CATALOG.resolveFilter(cat);
 
     const targetBtn =
