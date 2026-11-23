@@ -203,19 +203,33 @@
 }
 
 /* =====================================================
-   HOME MOTHER'S DAY — тот же editorial card, что у подписки,
-   другой фон и слово волны. Секция висит, пока идёт праздник.
+   HOME MOTHER'S DAY — две колонки, как у блока «Оформление».
    ===================================================== */
 
-.home-mday__bg {
-  background:
-    linear-gradient(rgba(27, 26, 24, 0.6), rgba(27, 26, 24, 0.6)),
-    url("images/paloma/catalog/mday-xrizantema-rozovaya-1.jpg") center 32% / cover no-repeat;
+.home-mday .ea-hero__video {
+  object-position: center 46%;
 }
 
-/* розовый акцент заголовка — чуть мягче под нежное фото */
-.home-mday .home-subscription__title {
-  color: #E7385A;
+.home-mday .ea-hero__lead {
+  max-width: 440px;
+}
+
+@media (max-width: 900px) {
+  .home-mday .ea-hero__right {
+    padding: 44px 24px 32px;
+  }
+
+  .home-mday .ea-hero__logo {
+    margin-top: 0;
+  }
+
+  .home-mday .ea-hero__mid {
+    margin: 44px 0;
+  }
+
+  .home-mday .ea-hero__lead {
+    margin-bottom: 0;
+  }
 }
 
 /* =====================================================

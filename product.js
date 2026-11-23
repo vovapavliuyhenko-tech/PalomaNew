@@ -892,7 +892,7 @@
           /* «от» — как в каталоге и в карусели на главной: цена начальная */
           '<p class="home-product-card__price">' + formatPrice(p.price) + "</p>" +
           '<div class="home-product-card__actions">' +
-          '<a href="' + href + '" class="home-product-card__more">Подробнее</a>' +
+          '<a href="' + href + '" class="home-product-card__more" data-add-home data-product-slug="' + esc(p.slug || p.id) + '" role="button">В корзину</a>' +
           "</div></div></article>"
         );
       })

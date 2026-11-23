@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="paloma-responsive.css?v=nomarq1">
   <link rel="stylesheet" href="cursor.css?v=press1">
   <link rel="stylesheet" href="legal.css?v=6">
-  <link rel="stylesheet" href="home-hero-cover.css?v=13">
-  <link rel="stylesheet" href="home-editorial.css?v=13">
+  <link rel="stylesheet" href="home-hero-cover.css?v=14">
+  <link rel="stylesheet" href="home-editorial.css?v=14">
   <link rel="stylesheet" href="formats.css?v=fmt14">
   <link rel="stylesheet" href="event-author.css?v=ea6">
   <link rel="stylesheet" href="paloma-wave.css?v=w1">
@@ -500,13 +500,12 @@
       </div>
 
 
-      <!-- Оффер над кнопкой (вариант 2, 12.11.2026): простым шрифтом, логотип не трогаем -->
       <div class="paloma-cover__offer">
-        <p class="paloma-cover__offer-title">Букет под ваш повод и бюджет — доставим по Новороссийску за 1 час</p>
+        <p class="paloma-cover__offer-title">Ко Дню матери: любимые цветы и 30 минут массажа в подарок</p>
       </div>
 
-      <a href="catalog.html" class="paloma-cover__cta">
-        Выбрать букет
+      <a href="catalog.html?cat=mothersday" class="paloma-cover__cta">
+        Оформить предзаказ
         <span class="paloma-cover__cta-arrow" aria-hidden="true">→</span>
       </a>
 
@@ -558,56 +557,6 @@
     </section>
 
     <!-- =====================================================
-         PALOMA MOTHER'S DAY — editorial card, оформление как
-         у блока «Цветы по подписке» (единый стиль главной)
-         ===================================================== -->
-    <section class="home-subscription home-mday" id="mothersday" aria-label="День матери в Paloma">
-      <div class="home-subscription__bg home-mday__bg" data-parallax-bg aria-hidden="true"></div>
-
-      <div class="home-subscription__card">
-        <img decoding="async" height="784" width="550"
-          class="home-subscription__giraffe"
-          src="assets/images/paloma-giraffe.png"
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          onerror="this.src='assets/images/giraffe.svg'">
-
-        <div class="paloma-wave home-subscription__wave" aria-hidden="true">
-          <svg class="paloma-wave__svg" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <defs>
-              <path id="palomaWaveMday" fill="none"
-                d="M0,75 Q200,16 400,75 T800,75 T1200,75"/>
-            </defs>
-            <text class="paloma-wave__text">
-              <textPath href="#palomaWaveMday" xlink:href="#palomaWaveMday" startOffset="0">×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×&#160;MAMA PALOMA&#160;×</textPath>
-            </text>
-          </svg>
-        </div>
-
-        <div class="home-subscription__mark" aria-hidden="true">*</div>
-
-        <h2 class="home-subscription__title">Ко Дню матери</h2>
-
-        <p class="home-subscription__text">
-          Хочется подарить маме то самое чувство, которое она так часто дарит нам:
-          обо мне помнят, обо мне заботятся. Поэтому мы объединились с Doctor&nbsp;Luna:
-          к букету добавим сертификат на 30 минут массажа — полчаса, чтобы выдохнуть,
-          отпустить заботы и никуда не спешить. Выбирайте любимые мамины цветы —
-          бережно соберём букет и вложим записку с вашими тёплыми словами.
-        </p>
-
-        <a class="home-subscription__link" href="catalog.html?cat=mothersday">
-          Выбрать букет для мамы
-        </a>
-
-        <p class="home-subscription__note">
-          Предзаказы ко Дню матери уже открыты
-        </p>
-      </div>
-    </section>
-
-    <!-- =====================================================
          PALOMA ONLINE SHOWCASE
          ===================================================== -->
     <section class="home-showcase" id="online-showcase" aria-label="Онлайн витрина PALOMA" data-product-carousel>
@@ -638,7 +587,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/belaya-gortenziya/">Белая гортензия</a></h3>
                 <p class="home-product-card__price">2 300 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/belaya-gortenziya/" class="home-product-card__more" aria-label="Белая гортензия — подробнее">Подробнее</a>
+                  <a href="/buket/belaya-gortenziya/" class="home-product-card__more" data-add-home data-product-slug="belaya-gortenziya" role="button" aria-label="Белая гортензия — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -651,7 +600,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/roza-melon/">Роза сорта Мелон</a></h3>
                 <p class="home-product-card__price">4 220 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/roza-melon/" class="home-product-card__more" aria-label="Роза сорта Мелон — подробнее">Подробнее</a>
+                  <a href="/buket/roza-melon/" class="home-product-card__more" data-add-home data-product-slug="roza-melon" role="button" aria-label="Роза сорта Мелон — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -665,7 +614,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/rozovaya-gortenziya/">Розовая гортензия</a></h3>
                 <p class="home-product-card__price">2 300 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/rozovaya-gortenziya/" class="home-product-card__more" aria-label="Розовая гортензия — подробнее">Подробнее</a>
+                  <a href="/buket/rozovaya-gortenziya/" class="home-product-card__more" data-add-home data-product-slug="rozovaya-gortenziya" role="button" aria-label="Розовая гортензия — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -678,7 +627,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/golubaya-gortenziya/">Голубая гортензия</a></h3>
                 <p class="home-product-card__price">2 300 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/golubaya-gortenziya/" class="home-product-card__more" aria-label="Голубая гортензия — подробнее">Подробнее</a>
+                  <a href="/buket/golubaya-gortenziya/" class="home-product-card__more" data-add-home data-product-slug="golubaya-gortenziya" role="button" aria-label="Голубая гортензия — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -691,7 +640,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/liliya/">Лилия</a></h3>
                 <p class="home-product-card__price">9 100 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/liliya/" class="home-product-card__more" aria-label="Лилия — подробнее">Подробнее</a>
+                  <a href="/buket/liliya/" class="home-product-card__more" data-add-home data-product-slug="liliya" role="button" aria-label="Лилия — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -705,7 +654,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/duo-mondial/">Французская роза</a></h3>
                 <p class="home-product-card__price">3 930 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/duo-mondial/" class="home-product-card__more" aria-label="Французская роза — подробнее">Подробнее</a>
+                  <a href="/buket/duo-mondial/" class="home-product-card__more" data-add-home data-product-slug="duo-mondial" role="button" aria-label="Французская роза — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -728,6 +677,30 @@
       </div>
 
     </section>
+
+    <!-- =====================================================
+         PALOMA MOTHER'S DAY — фото и оффер, как в блоке «Оформление»
+         ===================================================== -->
+    <div class="ea-stack">
+    <section class="ea-page ea-panel ea-hero home-mday" id="mothersday" aria-label="День матери в Paloma">
+      <div class="ea-hero__left">
+        <img class="ea-hero__video" src="images/paloma/catalog/mday-avtorskiy-1.jpg"
+          alt="Авторский букет PALOMA ко Дню матери" width="1050" height="1400" loading="lazy" decoding="async">
+      </div>
+      <div class="ea-hero__right">
+        <img decoding="async" loading="lazy" height="480" width="1600" class="ea-hero__logo"
+          src="images/paloma/logo/paloma-wordmark-pink.png" alt="PALOMA — flowers · coffee · you">
+        <div class="ea-hero__mid">
+          <h2 class="ea-hero__h1">Подарите маме <br>заботу вдвойне</h2>
+          <p class="ea-hero__lead">Её любимые цветы + сертификат<br>на 30 минут массажа от Doctor Luna.<br>Соберём букет и вложим открытку<br>с вашими самыми тёплыми словами.</p>
+        </div>
+        <a class="ea-btn" href="catalog.html?cat=mothersday" data-cursor="hover">
+          <span class="ea-hero__btn-txt">Оформить предзаказ</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.8-10-9.3C.3 8.4 1.7 5 5 5c2 0 3.2 1.2 4 2.4C9.8 6.2 11 5 13 5c3.3 0 4.7 3.4 3 6.7C19.5 16.2 12 21 12 21z"/></svg>
+        </a>
+      </div>
+    </section>
+    </div>
 
     <!-- PALOMA фирменная волнистая строка -->
     <div class="paloma-wave paloma-wave-band" aria-hidden="true">
@@ -840,7 +813,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/sumochka-s-orhideey/">Сумочка с орхидеей</a></h3>
                 <p class="home-product-card__price">15 000 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/sumochka-s-orhideey/" class="home-product-card__more" aria-label="Сумочка с орхидеей — подробнее">Подробнее</a>
+                  <a href="/buket/sumochka-s-orhideey/" class="home-product-card__more" data-add-home data-product-slug="sumochka-s-orhideey" role="button" aria-label="Сумочка с орхидеей — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -853,7 +826,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/avtorskiy-alium/">Авторская композиция</a></h3>
                 <p class="home-product-card__price">18 000 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/avtorskiy-alium/" class="home-product-card__more" aria-label="Авторская композиция — подробнее">Подробнее</a>
+                  <a href="/buket/avtorskiy-alium/" class="home-product-card__more" data-add-home data-product-slug="avtorskiy-alium" role="button" aria-label="Авторская композиция — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -866,7 +839,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/roza-mandarin/">Роза сорта Мандарин</a></h3>
                 <p class="home-product-card__price">3 320 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/roza-mandarin/" class="home-product-card__more" aria-label="Роза сорта Мандарин — подробнее">Подробнее</a>
+                  <a href="/buket/roza-mandarin/" class="home-product-card__more" data-add-home data-product-slug="roza-mandarin" role="button" aria-label="Роза сорта Мандарин — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -879,7 +852,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/francuzskaya-krasnaya-roza/">Французская красная роза</a></h3>
                 <p class="home-product-card__price">3 320 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/francuzskaya-krasnaya-roza/" class="home-product-card__more" aria-label="Французская красная роза — подробнее">Подробнее</a>
+                  <a href="/buket/francuzskaya-krasnaya-roza/" class="home-product-card__more" data-add-home data-product-slug="francuzskaya-krasnaya-roza" role="button" aria-label="Французская красная роза — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -892,7 +865,7 @@
                 <h3 class="home-product-card__title"><a href="/buket/francuzskaya-rozovaya-roza/">Французская розовая роза</a></h3>
                 <p class="home-product-card__price">3 680 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/francuzskaya-rozovaya-roza/" class="home-product-card__more" aria-label="Французская розовая роза — подробнее">Подробнее</a>
+                  <a href="/buket/francuzskaya-rozovaya-roza/" class="home-product-card__more" data-add-home data-product-slug="francuzskaya-rozovaya-roza" role="button" aria-label="Французская розовая роза — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -1002,7 +975,7 @@
                 </h3>
                 <p class="home-product-card__price">9 500 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/vaza-iney/" class="home-product-card__more" aria-label="Ваза «Иней» — подробнее">Подробнее</a>
+                  <a href="/buket/vaza-iney/" class="home-product-card__more" data-add-home data-product-slug="vaza-iney" role="button" aria-label="Ваза «Иней» — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -1017,7 +990,7 @@
                 </h3>
                 <p class="home-product-card__price">8 200 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/vaza-zavitok-golubaya/" class="home-product-card__more" aria-label="Ваза «Завиток» голубая — подробнее">Подробнее</a>
+                  <a href="/buket/vaza-zavitok-golubaya/" class="home-product-card__more" data-add-home data-product-slug="vaza-zavitok-golubaya" role="button" aria-label="Ваза «Завиток» голубая — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -1034,7 +1007,7 @@
                 </h3>
                 <p class="home-product-card__price">6 200 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/vaza-akvarel/" class="home-product-card__more" aria-label="Ваза «Акварель» — подробнее">Подробнее</a>
+                  <a href="/buket/vaza-akvarel/" class="home-product-card__more" data-add-home data-product-slug="vaza-akvarel" role="button" aria-label="Ваза «Акварель» — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -1049,7 +1022,7 @@
                 </h3>
                 <p class="home-product-card__price">6 000 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/vaza-pesok-shirokaya/" class="home-product-card__more" aria-label="Ваза «Песок» широкая — подробнее">Подробнее</a>
+                  <a href="/buket/vaza-pesok-shirokaya/" class="home-product-card__more" data-add-home data-product-slug="vaza-pesok-shirokaya" role="button" aria-label="Ваза «Песок» широкая — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -1064,7 +1037,7 @@
                 </h3>
                 <p class="home-product-card__price">6 000 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/vaza-myata-s-ruchkami/" class="home-product-card__more" aria-label="Ваза «Мята» с ручками — подробнее">Подробнее</a>
+                  <a href="/buket/vaza-myata-s-ruchkami/" class="home-product-card__more" data-add-home data-product-slug="vaza-myata-s-ruchkami" role="button" aria-label="Ваза «Мята» с ручками — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -1079,7 +1052,7 @@
                 </h3>
                 <p class="home-product-card__price">5 800 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/vaza-kameshki/" class="home-product-card__more" aria-label="Ваза «Камешки» — подробнее">Подробнее</a>
+                  <a href="/buket/vaza-kameshki/" class="home-product-card__more" data-add-home data-product-slug="vaza-kameshki" role="button" aria-label="Ваза «Камешки» — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -1094,7 +1067,7 @@
                 </h3>
                 <p class="home-product-card__price">5 400 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/vaza-pesok-s-gorlom/" class="home-product-card__more" aria-label="Ваза «Песок» с горлом — подробнее">Подробнее</a>
+                  <a href="/buket/vaza-pesok-s-gorlom/" class="home-product-card__more" data-add-home data-product-slug="vaza-pesok-s-gorlom" role="button" aria-label="Ваза «Песок» с горлом — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -1111,7 +1084,7 @@
                 </h3>
                 <p class="home-product-card__price">14 700 ₽</p>
                 <div class="home-product-card__actions">
-                  <a href="/buket/seletti-kintsugi-tarelka/" class="home-product-card__more" aria-label="Тарелка SELETTI Kintsugi — подробнее">Подробнее</a>
+                  <a href="/buket/seletti-kintsugi-tarelka/" class="home-product-card__more" data-add-home data-product-slug="seletti-kintsugi-tarelka" role="button" aria-label="Тарелка SELETTI Kintsugi — добавить в корзину">В корзину</a>
                 </div>
               </div>
             </article>
@@ -1616,7 +1589,7 @@
   <script src="attribution.js?v=2"></script>
   <script src="cart-core.js?v=feed1"></script>
   <script src="paloma-products.js?v=p64"></script>
-  <script src="products-live.js?v=21"></script>
+  <script src="products-live.js?v=25"></script>
   <script src="catalog-data.js?v=p57"></script>
   <script src="payment-config.js?v=wake1"></script>
   <script src="lead-send.js?v=bk1"></script>

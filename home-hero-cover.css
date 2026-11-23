@@ -321,8 +321,8 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   .paloma-cover__scroll-line { animation: none !important; }
 }
 
-/* ── Оффер над кнопкой «Выбрать букет» (вариант 2, 12.11.2026) ──
-   Простым шрифтом, тихо и по центру — логотип PALOMA остаётся главным. */
+/* ── Сезонный оффер над основной кнопкой ──
+   Простым шрифтом, по центру — логотип PALOMA остаётся главным. */
 .paloma-cover__offer {
   position: absolute; left: 0; right: 0; z-index: 4;
   bottom: calc(clamp(16px, 2.2vw, 30px) + clamp(46px, 4vw, 58px) + 22px);
@@ -331,8 +331,6 @@ body.is-home .site-header:not(.is-scrolled) .site-header__actions svg {
   text-shadow: 0 1px 16px rgba(0, 0, 0, 0.4);
   opacity: 0;
   animation: coverFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
-  /* на десктопе убран (просьба владелицы 21.11.2026) — живёт только в мобильной версии */
-  display: none;
 }
 .paloma-cover__offer p { margin: 0; font-style: normal; }
 .paloma-cover__offer-title { font-weight: 500; font-size: clamp(17px, 1.6vw, 22px); letter-spacing: 0.01em; }

@@ -141,8 +141,8 @@
         '<h3 class="home-product-card__title"><a href="' + href + '">' + name + "</a></h3>" +
         '<p class="home-product-card__price">' + esc(priceText(p)) + "</p>" +
         '<div class="home-product-card__actions">' +
-          '<a href="' + href + '" class="home-product-card__more" aria-label="' + name +
-            ' — подробнее">Подробнее</a>' +
+          '<a href="' + href + '" class="home-product-card__more" data-add-home data-product-slug="' + esc(p.slug || p.id) + '" role="button" aria-label="' + name +
+            ' — добавить в корзину">В корзину</a>' +
         "</div>" +
       "</div>" +
     "</article>";
@@ -156,6 +156,51 @@
       ? Math.min.apply(null, p.sizes.map(function (s) { return s.priceDelta || 0; })) : 0;
     return (Number(p.price) || 0) + d;
   }
+  /* Быстрое добавление из каруселей. В корзину уходит именно тот размер,
+     чья минимальная цена показана на карточке; ссылка остаётся запасным
+     переходом на товар, если корзина по какой-то причине не загрузилась. */
+  function initHomeQuickAdd() {
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest && e.target.closest("[data-add-home]");
+      if (!btn || !window.PalomaCart || !window.PalomaCart.add) return;
+      var slug = btn.getAttribute("data-product-slug") || "";
+      if (!slug) {
+        var card = btn.closest(".home-product-card");
+        var link = card && card.querySelector('a[href*="/buket/"]');
+        if (!link) return;
+        slug = (link.getAttribute("href").split("/buket/")[1] || "").split("/")[0];
+      }
+      try { slug = decodeURIComponent(slug); } catch (err) { /* уже строка */ }
+      var list = window.PALOMA_PRODUCTS || [];
+      var p = null;
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].slug === slug || list[i].id === slug) { p = list[i]; break; }
+      }
+      if (!p) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+      var sizes = Array.isArray(p.sizes) ? p.sizes : [];
+      var size = null;
+      sizes.forEach(function (s) {
+        if (!size || Number(s.priceDelta || 0) < Number(size.priceDelta || 0)) size = s;
+      });
+      var sizeCode = size ? String(size.code || size.label || "") : "";
+      var cats = Array.isArray(p.categories) ? p.categories : [p.category];
+      window.PalomaCart.add({
+        id: p.id + "-quick-" + (sizeCode ? sizeCode.toLowerCase() : "std") + "-" + minPrice(p),
+        name: p.name || "Товар",
+        size: sizeCode,
+        price: minPrice(p),
+        qty: 1,
+        image: p.image || "",
+        category: cats[0] || "",
+        slug: p.slug || slug,
+        addons: []
+      });
+    }, true);
+  }
+
   function popularity(p) {
     var c = Array.isArray(p.categories) ? p.categories : [p.category];
     return (String(p.badge || "").indexOf("Хит") >= 0 ? 3 : 0) +
@@ -246,7 +291,7 @@
 
   function syncHomeShowcase() {
     renderSubShowcase();
-    if (renderShowcase()) return;
+    renderShowcase();
 
     var cards = document.querySelectorAll(".home-product-card");
     if (!cards.length) return;
@@ -373,6 +418,7 @@
     } catch (e) { /* приватный режим */ }
   }
 
+  initHomeQuickAdd();
   window.PALOMA_RERENDER.push(syncHomeShowcase);
   window.PALOMA_RERENDER.push(syncSeasonTabs);
 
