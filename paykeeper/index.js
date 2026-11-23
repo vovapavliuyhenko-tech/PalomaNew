@@ -557,6 +557,14 @@ const LOG_WAIT_MS = 4000;
 const MARK_WAIT_MS = 1500;
 let catalogLoadedAt = 0;
 let catalogFromDb = false;
+/* Публичный список для ?a=products: его дёргает КАЖДЫЙ заход на сайт.
+   Без кэша база не засыпает ни минуты и сгорает месячная квота Neon
+   (191,9 ч — CRM падала именно так, 22.11.2026). Отдаём список из памяти
+   60 секунд; любая правка каталога в панели кэш сбрасывает. */
+const SITE_CATALOG_TTL_MS = 60000;
+let siteCatalogCache = null;
+let siteCatalogCacheAt = 0;
+function resetSiteCatalog() { siteCatalogCache = null; siteCatalogCacheAt = 0; }
 
 async function readCatalog() {
   const list = await require("./products.js").listForPricing();
@@ -1391,10 +1399,17 @@ module.exports.handler = async function handler(event) {
 
   // ── Публичный каталог из базы (для сайта). GET и POST, без токена. ──
   if (action === "products") {
+    /* Свежий список берём из памяти: на каждый заход на сайт базу не дёргаем —
+       иначе она не успевает уснуть и сгорает месячная квота Neon. */
+    if (siteCatalogCache && Date.now() - siteCatalogCacheAt < SITE_CATALOG_TTL_MS) {
+      return reply(200, { ok: true, ...siteCatalogCache }, origin);
+    }
     try {
       require("./paloma-products.js");
       const seedCount = ((global.window && global.window.PALOMA_PRODUCTS) || []).length;
       const res = await require("./products.js").listForSite(seedCount);
+      siteCatalogCache = res;
+      siteCatalogCacheAt = Date.now();
       return reply(200, { ok: true, ...res }, origin);
     } catch (e) {
       console.error("[products] list error", e && e.stack);
@@ -1560,6 +1575,7 @@ module.exports.handler = async function handler(event) {
       try {
         const products = require("./products.js");
         catalogLoadedAt = 0; // каталог правили — перечитать при следующем заказе
+        resetSiteCatalog();  // и сбросить публичный кэш ?a=products
         const builtInPrice = () => {
           require("./paloma-products.js"); // наполняет global.window.PALOMA_PRODUCTS
           return (global.window && global.window.PALOMA_PRODUCTS) || [];
