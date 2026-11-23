@@ -24,7 +24,16 @@
   /* v3 (21.11.2026): новый ключ — подборка ко Дню матери видна всем сразу,
      без ожидания протухания кэша v2 (он держит список до суток) */
   var KEY = "paloma:products:v3";
-  var CACHE_TTL = 24 * 60 * 60 * 1000; // сутки — дальше кэшу не верим
+  /* Четыре часа: дальше честнее показать встроенный прайс (вчерашний снимок
+     базы из репозитория) — чем кэш с вчерашними полями. Когда база лежит,
+     свежего кэша не появляется, и залежавшийся список начинает врать:
+     карточки без фото, пропавшие вкладки разделов. */
+  var CACHE_TTL = 4 * 60 * 60 * 1000;
+
+  /* Встроенный прайс: paloma-products.js грузится раньше этого файла и
+     наполняет window.PALOMA_PRODUCTS. Снимок нужен, чтобы доставать фото
+     для товаров, у которых в свежем списке (база/кэш) снимка нет. */
+  var BUILT_IN = (window.PALOMA_PRODUCTS || []).slice();
 
   /* Перерисовщики страниц. Каждая страница добавляет свой:
      (window.PALOMA_RERENDER = window.PALOMA_RERENDER || []).push(fn) */
@@ -94,6 +103,22 @@
       }
       return p;
     });
+    /* Фото из встроенного прайса, если в свежем списке их нет: запись в базе
+       может обойтись без снимка, а файл лежит в репозитории — без подстановки
+       карточка остаётся серой, хотя фотография существует. */
+    if (BUILT_IN.length) {
+      list = list.map(function (p) {
+        if (!p || p.image) return p;
+        for (var i = 0; i < BUILT_IN.length; i++) {
+          if (BUILT_IN[i].id === p.id && BUILT_IN[i].image) {
+            var c = {}; for (var k in p) c[k] = p[k];
+            c.image = BUILT_IN[i].image;
+            return c;
+          }
+        }
+        return p;
+      });
+    }
     var cur = window.PALOMA_PRODUCTS;
     if (!Array.isArray(cur)) { window.PALOMA_PRODUCTS = list.slice(); return true; }
     if (same(cur, list)) return false;
