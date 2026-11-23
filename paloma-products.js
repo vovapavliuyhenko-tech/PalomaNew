@@ -1,4 +1,4 @@
-/* PALOMA — запасная копия каталога: снимок базы на 2026-11-21 (tools/build-seo.mjs при публикации).
+/* PALOMA — запасная копия каталога: снимок базы на 2026-11-23 (tools/build-seo.mjs при публикации).
    Сайт берёт каталог из базы (products-live.js); эта копия видна, только если сервер не ответил. */
 window.PALOMA_PRODUCTS = [
   {
@@ -1708,95 +1708,6 @@ window.PALOMA_PRODUCTS = [
     "placeholderGradient": {
       "main": "linear-gradient(135deg, #d6a0a2, #8f6668)",
       "hover": "linear-gradient(135deg, #c48c8e, #785154)"
-    }
-  },
-  {
-    "id": "n29",
-    "desc": "Пышный летний букет из подсолнуха, лилии, пиона и полевых цветов.",
-    "name": "Карнавал",
-    "slug": "karnaval",
-    "badge": "Новинка",
-    "image": "images/paloma/catalog/n29.jpg",
-    "pairs": "К эспрессо.",
-    "price": 21000,
-    "sizes": [
-      {
-        "code": "base",
-        "label": "Базовый",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "adTitle": "Букет «Карнавал» с подсолнухами и лилиями",
-    "photoSize": null,
-    "priceFrom": true,
-    "categories": [
-      "authors"
-    ],
-    "composition": "Подсолнух, лилия, пион, львиный зев, матрикария, пионовидная роза, целозия, дельфиниум, кустовая роза, гладиолус, хризантема, книфофия, сетария, гортензия, маттиола, листья малины",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #e6a482, #8a6b4a)",
-      "hover": "linear-gradient(135deg, #d9926f, #75593c)"
-    }
-  },
-  {
-    "id": "n30",
-    "desc": "Свежая композиция из эустомы, молюцеллы, розы и маттиолы.",
-    "name": "Мятный бриз",
-    "slug": "myatniy-briz",
-    "badge": null,
-    "image": "images/paloma/catalog/n30.jpg",
-    "pairs": "К айс-латте.",
-    "price": 3320,
-    "sizes": [
-      {
-        "code": "base",
-        "label": "Базовый",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "adTitle": "Букет «Мятный бриз» с эустомой и розами",
-    "priceFrom": true,
-    "categories": [
-      "authors"
-    ],
-    "composition": "Эустома, молюцелла, пионовидная роза, маттиола",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #9fb08a, #5e6f4a)",
-      "hover": "linear-gradient(135deg, #8ba076, #4d5e3c)"
     }
   },
   {
@@ -3807,50 +3718,6 @@ window.PALOMA_PRODUCTS = [
     }
   },
   {
-    "id": "n42",
-    "desc": "Летний авторский букет из подсолнухов с камышом, сетарией и ажурной амми.",
-    "name": "Солнечный день",
-    "slug": "solnechnyy-den",
-    "badge": null,
-    "image": "images/paloma/catalog/n42.jpg",
-    "pairs": "К капучино из PALOMA Coffee.",
-    "price": 4410,
-    "sizes": [
-      {
-        "code": "base",
-        "label": "Базовый",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "adTitle": "Букет «Солнечный день» с подсолнухами",
-    "priceFrom": true,
-    "categories": [
-      "authors"
-    ],
-    "composition": "Подсолнух, сетария, камыш, амми",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #f0c02c, #b3860c)",
-      "hover": "linear-gradient(135deg, #e0b01e, #9c7206)"
-    }
-  },
-  {
     "id": "n43",
     "desc": "Авторский букет с ниспадающей ветвью орхидеи фаленопсис, голубой гортензией и пионовидной розой.",
     "name": "Каскад",
@@ -3937,50 +3804,6 @@ window.PALOMA_PRODUCTS = [
     "placeholderGradient": {
       "main": "linear-gradient(135deg, #e2748a, #6f8f5c)",
       "hover": "linear-gradient(135deg, #cd6079, #5d7c4c)"
-    }
-  },
-  {
-    "id": "n48",
-    "desc": "Солнечный авторский букет: крупные подсолнухи с зеленью зонтика и лёгким паникумом.",
-    "name": "Авторский с подсолнухами",
-    "slug": "avtorskiy-podsolnuhi-zontik",
-    "badge": null,
-    "image": "images/paloma/catalog/avt-podsolnuhi-zontik.jpg",
-    "pairs": "К фильтру или лунго.",
-    "price": 6050,
-    "sizes": [
-      {
-        "code": "base",
-        "label": "Базовый",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "adTitle": "Авторский букет с подсолнухами",
-    "priceFrom": true,
-    "categories": [
-      "authors"
-    ],
-    "composition": "Подсолнух, паникум, зонтик",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #f0a828, #6f8f4a)",
-      "hover": "linear-gradient(135deg, #d8931c, #5d7b3c)"
     }
   },
   {
