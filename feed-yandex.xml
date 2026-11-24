@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-23 10:25">
+<yml_catalog date="2026-11-24 17:55">
   <shop>
     <name>PALOMA</name>
     <company>PALOMA — студия цветов и кофе, Новороссийск</company>
@@ -1139,32 +1139,6 @@
         <delivery>true</delivery>
         <pickup>true</pickup>
       </offer>
-      <offer id="acc52" available="true">
-        <url>https://paloma.website/buket/vaza-shinuazri-popugay/</url>
-        <price>11000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc52.jpg</picture>
-        <name>Ваза «Шинуазри» с попугаем</name>
-        <vendor>PALOMA</vendor>
-        <description>Высокая ваза в стиле шинуазри: синяя роспись по белому фарфору с попугаем и цветущими ветвями. Размеры 40 × 18 см, горлышко 8 × 8 см.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="acc53" available="true">
-        <url>https://paloma.website/buket/vaza-seletti-hybrid-adelma/</url>
-        <price>26000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc53.jpg</picture>
-        <name>Ваза SELETTI Hybrid</name>
-        <vendor>PALOMA</vendor>
-        <description>Ваза SELETTI Hybrid: две половины разных культур, соединённые золотой линией. Толстый фарфор. Размеры 14 × 32.5 см.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
       <offer id="acc54" available="true">
         <url>https://paloma.website/buket/vaza-sota-vysokaya/</url>
         <price>17000</price>
@@ -1174,32 +1148,6 @@
         <name>Ваза «Соты» высокая</name>
         <vendor>PALOMA</vendor>
         <description>Высокая ваза из янтарного стекла с гранёной огранкой «соты» и переходом в бордо. Размеры 45 × 14 см, горлышко 4.5 × 4.5 см.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="acc55" available="true">
-        <url>https://paloma.website/buket/vaza-seletti-seagirl/</url>
-        <price>10500</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc55.jpg</picture>
-        <name>Ваза SELETTI Toiletpaper «Seagirl»</name>
-        <vendor>PALOMA</vendor>
-        <description>Ваза SELETTI Toiletpaper «Seagirl» — стекло с золотым кантом и фирменным сюрреалистичным принтом. Размеры 10 × 8 × 14 см.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="acc57" available="true">
-        <url>https://paloma.website/buket/vaza-terrakota-drapirovka/</url>
-        <price>10000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/acc57.jpg</picture>
-        <name>Ваза «Терракота» с драпировкой</name>
-        <vendor>PALOMA</vendor>
-        <description>Скульптурная ваза цвета терракоты со струящимся рельефом, похожим на ткань. Размеры 19 × 18 × 32 см.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1499,19 +1447,6 @@
         <name>Ваза «Акварель»</name>
         <vendor>PALOMA</vendor>
         <description>Высокий цилиндр из кремового стекла с изумрудными и сиреневыми разводами.</description>
-        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
-        <delivery>true</delivery>
-        <pickup>true</pickup>
-      </offer>
-      <offer id="p1791622443933" available="true">
-        <url>https://paloma.website/buket/vaza-pesok-shirokaya/</url>
-        <price>6000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>7</categoryId>
-        <picture>https://paloma.website/images/paloma/catalog/vase-pesok-wide.jpg</picture>
-        <name>Ваза «Песок» широкая</name>
-        <vendor>PALOMA</vendor>
-        <description>Широкая ваза из стекла песочного оттенка с мелкими пузырьками воздуха.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>
@@ -1999,7 +1934,7 @@
       </offer>
       <offer id="p1793200000001" available="true">
         <url>https://paloma.website/buket/xrizantema-bigudi-mama/</url>
-        <price>3460</price>
+        <price>4230</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://paloma.website/images/paloma/catalog/mday-xrizantema-bigudi-1.jpg</picture>
@@ -2045,6 +1980,357 @@
         <name>Авторский ко Дню матери</name>
         <vendor>PALOMA</vendor>
         <description>Авторский букет ко Дню матери: пионовидная роза, хризантема, антуриум, львиный зев, тубероза, орнитогалум, голландская гортензия и шафердия. Собирает флорист в единственном экземпляре — точный состав и итоговую стоимость согласует менеджер.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny1" available="true">
+        <url>https://paloma.website/buket/ny-griby-belye-zoloto/</url>
+        <price>880</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-griby-belye-zoloto.jpg</picture>
+        <name>Украшение подвесное «Грибы белые с золотом»</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвесное украшение: белые грибы с обработкой золота. Цена за штуку.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny2" available="true">
+        <url>https://paloma.website/buket/ny-grib-bezhevyy/</url>
+        <price>1100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-grib-bezhevyy.jpg</picture>
+        <name>Украшение подвесное «Гриб» бежевый</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвесной гриб из пенопласта и текстиля, бежевый.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny3" available="true">
+        <url>https://paloma.website/buket/ny-nabor-griby-zelenye/</url>
+        <price>1200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-nabor-griby-zelenye.jpg</picture>
+        <name>Набор подвесных украшений «Грибы», 3 шт</name>
+        <vendor>PALOMA</vendor>
+        <description>Набор из трёх подвесных украшений «Гриб», стекло, зелёный цвет.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny4" available="true">
+        <url>https://paloma.website/buket/ny-flok-korichnevy-1/</url>
+        <price>370</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-flok-korichnevy-1.jpg</picture>
+        <name>Новогоднее украшение «Флок» коричневый</name>
+        <vendor>PALOMA</vendor>
+        <description>Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny5" available="true">
+        <url>https://paloma.website/buket/ny-flok-korichnevy-2/</url>
+        <price>370</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-flok-korichnevy-2.jpg</picture>
+        <name>Новогоднее украшение «Флок» коричневый, ромбы</name>
+        <vendor>PALOMA</vendor>
+        <description>Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, с ромбовидным узором.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny6" available="true">
+        <url>https://paloma.website/buket/ny-flok-korichnevy-3/</url>
+        <price>370</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-flok-korichnevy-3.jpg</picture>
+        <name>Новогоднее украшение «Флок» коричневый, волны</name>
+        <vendor>PALOMA</vendor>
+        <description>Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, с волнистым узором.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny7" available="true">
+        <url>https://paloma.website/buket/ny-shar-kletochki-korichnevy/</url>
+        <price>1100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-shar-kletochki-korichnevy.jpg</picture>
+        <name>Шар с бархатными клеточками Karlsbach, коричневый</name>
+        <vendor>PALOMA</vendor>
+        <description>Коричневый шар с бархатными клеточками, 10 см. Фирма Karlsbach.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny8" available="true">
+        <url>https://paloma.website/buket/ny-shar-kletochki-zeleny/</url>
+        <price>1100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-shar-kletochki-zeleny.jpg</picture>
+        <name>Шар с бархатными клеточками Karlsbach, зелёный</name>
+        <vendor>PALOMA</vendor>
+        <description>Зелёный шар с бархатными клеточками. Фирма Karlsbach.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny9" available="true">
+        <url>https://paloma.website/buket/ny-podves-medny-8x13/</url>
+        <price>1700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-podves-medny-8x13.jpg</picture>
+        <name>Подвес стеклянный светло-медный, 8×13 см</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвес 8×13 см из стекла, светло-медный оттенок.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny10" available="true">
+        <url>https://paloma.website/buket/ny-podves-zeleny-7x27/</url>
+        <price>3100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-podves-zeleny-7x27.jpg</picture>
+        <name>Подвес стеклянный тёмно-зелёный, 7×27 см</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвес из стекла 7×27 см, тёмно-зелёный.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny11" available="true">
+        <url>https://paloma.website/buket/ny-podves-zeleny-6x29/</url>
+        <price>3000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-podves-zeleny-6x29.jpg</picture>
+        <name>Подвес стеклянный тёмно-зелёный, 6×29 см</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвес из стекла 6×29 см, тёмно-зелёный.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny12" available="true">
+        <url>https://paloma.website/buket/ny-podves-karlsbach/</url>
+        <price>1400</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-podves-karlsbach.jpg</picture>
+        <name>Подвес Karlsbach бело-золотой</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвес фирмы Karlsbach, бело-золотой.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny13" available="true">
+        <url>https://paloma.website/buket/ny-shar-biser-zeleny/</url>
+        <price>600</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-shar-biser-zeleny.jpg</picture>
+        <name>Украшение подвесное «Шар с бисером» зелёный, 10 см</name>
+        <vendor>PALOMA</vendor>
+        <description>Украшение подвесное «шар с бисером», стекло, зелёный, 10 см.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny14" available="true">
+        <url>https://paloma.website/buket/ny-flok-korichnevy-4/</url>
+        <price>370</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-flok-korichnevy-4.jpg</picture>
+        <name>Новогоднее украшение «Флок» коричневый, стёганый</name>
+        <vendor>PALOMA</vendor>
+        <description>Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, стёганый.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny15" available="true">
+        <url>https://paloma.website/buket/ny-flok-korichnevy-5/</url>
+        <price>370</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-flok-korichnevy-5.jpg</picture>
+        <name>Новогоднее украшение «Флок» коричневый, открытый</name>
+        <vendor>PALOMA</vendor>
+        <description>Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, открытой формы.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny16" available="true">
+        <url>https://paloma.website/buket/ny-flok-korichnevy-6/</url>
+        <price>370</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-flok-korichnevy-6.jpg</picture>
+        <name>Новогоднее украшение «Флок» коричневый, луковица</name>
+        <vendor>PALOMA</vendor>
+        <description>Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, в форме луковицы.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny17" available="true">
+        <url>https://paloma.website/buket/ny-yula-9x15/</url>
+        <price>350</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-yula-9x15.jpg</picture>
+        <name>Украшение подвесное «Юла» тёмно-зелёная, 9,5×15 см</name>
+        <vendor>PALOMA</vendor>
+        <description>Украшение подвесное «юла» из бумаги, 9,5×15 см, тёмно-зелёный цвет.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny18" available="true">
+        <url>https://paloma.website/buket/ny-yula-20x30/</url>
+        <price>720</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-yula-20x30.jpg</picture>
+        <name>Украшение подвесное «Юла» тёмно-зелёная, 20×30 см</name>
+        <vendor>PALOMA</vendor>
+        <description>Украшение подвесное «юла» из бумаги, 20×30 см, тёмно-зелёный цвет.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny19" available="true">
+        <url>https://paloma.website/buket/ny-shishka-6x11/</url>
+        <price>2900</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-shishka-6x11.jpg</picture>
+        <name>Подвес ручной работы «Шишка», 6×11 см</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвес ручной работы из прозрачного стекла. Создан по авторским эскизам, эффектно смотрится в группах из нескольких подвесов. Лимитированная позиция.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny20" available="true">
+        <url>https://paloma.website/buket/ny-shishka-8x14/</url>
+        <price>3100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-shishka-8x14.jpg</picture>
+        <name>Подвес ручной работы «Шишка», 8×14 см</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвес ручной работы из прозрачного стекла. Создан по авторским эскизам, эффектно смотрится в группах из нескольких подвесов. Лимитированная позиция.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny21" available="true">
+        <url>https://paloma.website/buket/ny-podves-bordovy-figurny/</url>
+        <price>4100</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-podves-bordovy-figurny.jpg</picture>
+        <name>Подвес стеклянный фигурный, бордовый</name>
+        <vendor>PALOMA</vendor>
+        <description>Крупный фигурный подвес из стекла авторской формы. Благодаря выразительному объёму и насыщенному бордовому оттенку станет элегантным акцентом в оформлениях. Подходит для оформления елей, где требуется баланс между масштабом и плотностью декора, а также для интерьерных подвесных решений.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny22" available="true">
+        <url>https://paloma.website/buket/ny-podves-lukovitsa-krasny/</url>
+        <price>3200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-podves-lukovitsa-krasny.jpg</picture>
+        <name>Подвес ручной работы «Луковица», 10×13 см, красный</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвес из стекла в форме луковицы, созданный по авторским эскизам. Элегантная форма и фактура, недоступные для фабричного производства. Подходит для декора елей в классических и нестандартных цветовых решениях.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny23" available="true">
+        <url>https://paloma.website/buket/ny-podves-bordovy-40/</url>
+        <price>6300</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-podves-bordovy-40.jpg</picture>
+        <name>Подвес стеклянный, 40 см, бордовый</name>
+        <vendor>PALOMA</vendor>
+        <description>Крупный фигурный подвес из стекла — элегантное изделие для декора ели и пространства. Украшение с утончённым авторским силуэтом формирует визуальный акцент и задаёт направление всей композиции. Эффектно работает в потолочных инсталляциях, пространственных каскадах и выносных композициях на ветвях.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny24" available="true">
+        <url>https://paloma.website/buket/ny-sosulka-karlsbach/</url>
+        <price>800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-sosulka-karlsbach.jpg</picture>
+        <name>Сосулька прозрачная с серебряными блёстками Karlsbach</name>
+        <vendor>PALOMA</vendor>
+        <description>Прозрачная сосулька с серебряными блёстками. Фирма Karlsbach.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny25" available="true">
+        <url>https://paloma.website/buket/ny-cherepaha/</url>
+        <price>710</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-cherepaha.jpg</picture>
+        <name>Ёлочная игрушка «Черепаха», синяя</name>
+        <vendor>PALOMA</vendor>
+        <description>Ёлочная игрушка «Черепаха», стекло, 10×10×4 см, оттенок синий.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny26" available="true">
+        <url>https://paloma.website/buket/ny-grozd/</url>
+        <price>500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-grozd.jpg</picture>
+        <name>Украшение подвесное «Гроздь», прозрачная</name>
+        <vendor>PALOMA</vendor>
+        <description>Украшение подвесное «гроздь», пластик, 29 см, прозрачный.</description>
+        <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
+        <delivery>true</delivery>
+        <pickup>true</pickup>
+      </offer>
+      <offer id="ny27" available="true">
+        <url>https://paloma.website/buket/ny-vetka-kristally/</url>
+        <price>420</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>11</categoryId>
+        <picture>https://paloma.website/images/paloma/catalog/ny-vetka-kristally.jpg</picture>
+        <name>Подвес «Ветка из кристаллов» зелёного оттенка</name>
+        <vendor>PALOMA</vendor>
+        <description>Подвес в форме ветви с кристаллами — изящное акцентное украшение. Множество граней идеальных капель, выполненных из акрилового стекла, создали безупречную игру света. Изделие лёгкое, поэтому варианты его использования безграничны.</description>
         <sales_notes>Доставка по Новороссийску, Геленджику, Анапе. Фото букета до отправки.</sales_notes>
         <delivery>true</delivery>
         <pickup>true</pickup>

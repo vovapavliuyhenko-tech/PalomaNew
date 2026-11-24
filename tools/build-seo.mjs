@@ -260,8 +260,21 @@ function yml(list) {
 
 /* ── запуск ── */
 /* Сняты с сайта, даже если база ещё не обновилась (проданы / убраны владельцем) — как HIDDEN_IDS в products-live.js */
-const HIDDEN = new Set(["m10", "w2", "acc73", "acc18", "p1791622445922", "acc45", "acc71", "p1791622442625", "p1791622441952", "n4", "n7", "n6", "n2", "p1791800000001", "d1", "p1791800000005", "p1790858038885", "n5", "n29", "n30", "n42", "n48"]);
+const HIDDEN = new Set(["m10", "w2", "acc73", "acc18", "p1791622445922", "acc45", "acc71", "p1791622442625", "p1791622441952", "n4", "n7", "n6", "n2", "p1791800000001", "d1", "p1791800000005", "p1790858038885", "n5", "n29", "n30", "n42", "n48", "p1791622443933", "acc57", "acc55", "acc52", "acc53"]);
 const products = (await loadProducts()).filter((p) => p && p.slug && p.name && p.price > 0 && !HIDDEN.has(p.id));
+/* Новогодние игрушки заведены кодом 24.11.2026: база о них не знает. Подхватываем
+   из прежнего запасного файла, чтобы пересборка их не стёрла. Когда игрушки
+   заведут в панель, блок можно убрать. */
+try {
+  const prev = { window: {} };
+  vm.runInNewContext(read("paloma-products.js"), prev);
+  const haveNy = new Set(products.map((p) => p.id));
+  let addedNy = 0;
+  for (const p of prev.window.PALOMA_PRODUCTS || []) {
+    if (p && /^ny\d+$/.test(p.id) && !haveNy.has(p.id) && !HIDDEN.has(p.id)) { products.push(p); addedNy++; }
+  }
+  if (addedNy) console.log("новогодних из запасного файла:", addedNy);
+} catch (e) { console.log("новогодние из запасного файла не подхватились:", e.message); }
 const ptpl = read("product.html"), ctpl = read("catalog.html");
 
 fs.rmSync(path.join(ROOT, "buket"), { recursive: true, force: true });

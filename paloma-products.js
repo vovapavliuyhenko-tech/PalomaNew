@@ -1,4 +1,4 @@
-/* PALOMA — запасная копия каталога: снимок базы на 2026-11-23 (tools/build-seo.mjs при публикации).
+/* PALOMA — запасная копия каталога: снимок базы на 2026-11-24 (tools/build-seo.mjs при публикации).
    Сайт берёт каталог из базы (products-live.js); эта копия видна, только если сервер не ответил. */
 window.PALOMA_PRODUCTS = [
   {
@@ -3283,58 +3283,6 @@ window.PALOMA_PRODUCTS = [
     }
   },
   {
-    "id": "acc52",
-    "desc": "Высокая ваза в стиле шинуазри: синяя роспись по белому фарфору с попугаем и цветущими ветвями. Размеры 40 × 18 см, горлышко 8 × 8 см.",
-    "name": "Ваза «Шинуазри» с попугаем",
-    "slug": "vaza-shinuazri-popugay",
-    "badge": null,
-    "image": "images/paloma/catalog/acc52.jpg",
-    "pairs": "Под букеты PALOMA.",
-    "price": 11000,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Керамика",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #a8bed4, #4c6f96)",
-      "hover": "linear-gradient(135deg, #93aec8, #3a5c82)"
-    }
-  },
-  {
-    "id": "acc53",
-    "desc": "Ваза SELETTI Hybrid: две половины разных культур, соединённые золотой линией. Толстый фарфор. Размеры 14 × 32.5 см.",
-    "name": "Ваза SELETTI Hybrid",
-    "slug": "vaza-seletti-hybrid-adelma",
-    "badge": null,
-    "image": "images/paloma/catalog/acc53.jpg",
-    "pairs": "Под букеты PALOMA.",
-    "price": 26000,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Толстый фарфор",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #e6e2dc, #b04a3c)",
-      "hover": "linear-gradient(135deg, #d8d2c8, #8f3428)"
-    }
-  },
-  {
     "id": "acc54",
     "desc": "Высокая ваза из янтарного стекла с гранёной огранкой «соты» и переходом в бордо. Размеры 45 × 14 см, горлышко 4.5 × 4.5 см.",
     "name": "Ваза «Соты» высокая",
@@ -3358,58 +3306,6 @@ window.PALOMA_PRODUCTS = [
     "placeholderGradient": {
       "main": "linear-gradient(135deg, #d6a03c, #8f3a1c)",
       "hover": "linear-gradient(135deg, #c68c2a, #7a2c12)"
-    }
-  },
-  {
-    "id": "acc55",
-    "desc": "Ваза SELETTI Toiletpaper «Seagirl» — стекло с золотым кантом и фирменным сюрреалистичным принтом. Размеры 10 × 8 × 14 см.",
-    "name": "Ваза SELETTI Toiletpaper «Seagirl»",
-    "slug": "vaza-seletti-seagirl",
-    "badge": null,
-    "image": "images/paloma/catalog/acc55.jpg",
-    "pairs": "Под букеты PALOMA.",
-    "price": 10500,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Стекло",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #3f6f93, #1e3f5c)",
-      "hover": "linear-gradient(135deg, #57a0a8, #16324a)"
-    }
-  },
-  {
-    "id": "acc57",
-    "desc": "Скульптурная ваза цвета терракоты со струящимся рельефом, похожим на ткань. Размеры 19 × 18 × 32 см.",
-    "name": "Ваза «Терракота» с драпировкой",
-    "slug": "vaza-terrakota-drapirovka",
-    "badge": null,
-    "image": "images/paloma/catalog/acc57.jpg",
-    "pairs": "Под букеты PALOMA.",
-    "price": 10000,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [],
-    "categories": [
-      "vases"
-    ],
-    "composition": "Керамика",
-    "placeholderGradient": {
-      "main": "linear-gradient(135deg, #d99a68, #a8663a)",
-      "hover": "linear-gradient(135deg, #c88a58, #94542c)"
     }
   },
   {
@@ -4231,45 +4127,6 @@ window.PALOMA_PRODUCTS = [
       "vases"
     ],
     "composition": "Цветное стекло"
-  },
-  {
-    "id": "p1791622443933",
-    "desc": "Широкая ваза из стекла песочного оттенка с мелкими пузырьками воздуха.",
-    "name": "Ваза «Песок» широкая",
-    "slug": "vaza-pesok-shirokaya",
-    "badge": "Новинка",
-    "image": "images/paloma/catalog/vase-pesok-wide.jpg",
-    "price": 6000,
-    "sizes": [
-      {
-        "code": "one",
-        "label": "Один размер",
-        "priceDelta": 0
-      }
-    ],
-    "addons": [
-      {
-        "id": "card",
-        "label": "Открытка",
-        "price": 350
-      },
-      {
-        "id": "vase",
-        "label": "Ваза",
-        "price": 1200
-      },
-      {
-        "id": "coffee",
-        "label": "Кофе с собой",
-        "price": 320
-      }
-    ],
-    "photoSize": null,
-    "priceFrom": false,
-    "categories": [
-      "vases"
-    ],
-    "composition": "Стекло"
   },
   {
     "id": "p1791622444620",
@@ -5772,7 +5629,7 @@ window.PALOMA_PRODUCTS = [
     "composition": "Хризантема бигуди",
     "desc": "Моно-букет из бордовых хризантем бигуди в фирменной упаковке PALOMA с лентой. Пышные бархатные головки и глубокий винный оттенок — нежный и тёплый подарок для мамы. На фото — 7 шт.",
     "image": "images/paloma/catalog/mday-xrizantema-bigudi-1.jpg",
-    "price": 3460,
+    "price": 4230,
     "priceFrom": false,
     "photoSize": "S",
     "sizes": [
@@ -5898,5 +5755,1058 @@ window.PALOMA_PRODUCTS = [
         "priceDelta": 0
       }
     ]
+  },
+  {
+    "id": "ny1",
+    "desc": "Подвесное украшение: белые грибы с обработкой золота. Цена за штуку.",
+    "name": "Украшение подвесное «Грибы белые с золотом»",
+    "slug": "ny-griby-belye-zoloto",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-griby-belye-zoloto.jpg",
+    "price": 880,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Текстиль, золотое напыление"
+  },
+  {
+    "id": "ny2",
+    "desc": "Подвесной гриб из пенопласта и текстиля, бежевый.",
+    "name": "Украшение подвесное «Гриб» бежевый",
+    "slug": "ny-grib-bezhevyy",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-grib-bezhevyy.jpg",
+    "price": 1100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Пенопласт, текстиль"
+  },
+  {
+    "id": "ny3",
+    "desc": "Набор из трёх подвесных украшений «Гриб», стекло, зелёный цвет.",
+    "name": "Набор подвесных украшений «Грибы», 3 шт",
+    "slug": "ny-nabor-griby-zelenye",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-nabor-griby-zelenye.jpg",
+    "price": 1200,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny4",
+    "desc": "Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый.",
+    "name": "Новогоднее украшение «Флок» коричневый",
+    "slug": "ny-flok-korichnevy-1",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-flok-korichnevy-1.jpg",
+    "price": 370,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Флок"
+  },
+  {
+    "id": "ny5",
+    "desc": "Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, с ромбовидным узором.",
+    "name": "Новогоднее украшение «Флок» коричневый, ромбы",
+    "slug": "ny-flok-korichnevy-2",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-flok-korichnevy-2.jpg",
+    "price": 370,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Флок"
+  },
+  {
+    "id": "ny6",
+    "desc": "Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, с волнистым узором.",
+    "name": "Новогоднее украшение «Флок» коричневый, волны",
+    "slug": "ny-flok-korichnevy-3",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-flok-korichnevy-3.jpg",
+    "price": 370,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Флок"
+  },
+  {
+    "id": "ny7",
+    "desc": "Коричневый шар с бархатными клеточками, 10 см. Фирма Karlsbach.",
+    "name": "Шар с бархатными клеточками Karlsbach, коричневый",
+    "slug": "ny-shar-kletochki-korichnevy",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-shar-kletochki-korichnevy.jpg",
+    "price": 1100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло, флок"
+  },
+  {
+    "id": "ny8",
+    "desc": "Зелёный шар с бархатными клеточками. Фирма Karlsbach.",
+    "name": "Шар с бархатными клеточками Karlsbach, зелёный",
+    "slug": "ny-shar-kletochki-zeleny",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-shar-kletochki-zeleny.jpg",
+    "price": 1100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло, флок"
+  },
+  {
+    "id": "ny9",
+    "desc": "Подвес 8×13 см из стекла, светло-медный оттенок.",
+    "name": "Подвес стеклянный светло-медный, 8×13 см",
+    "slug": "ny-podves-medny-8x13",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-podves-medny-8x13.jpg",
+    "price": 1700,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny10",
+    "desc": "Подвес из стекла 7×27 см, тёмно-зелёный.",
+    "name": "Подвес стеклянный тёмно-зелёный, 7×27 см",
+    "slug": "ny-podves-zeleny-7x27",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-podves-zeleny-7x27.jpg",
+    "price": 3100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny11",
+    "desc": "Подвес из стекла 6×29 см, тёмно-зелёный.",
+    "name": "Подвес стеклянный тёмно-зелёный, 6×29 см",
+    "slug": "ny-podves-zeleny-6x29",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-podves-zeleny-6x29.jpg",
+    "price": 3000,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny12",
+    "desc": "Подвес фирмы Karlsbach, бело-золотой.",
+    "name": "Подвес Karlsbach бело-золотой",
+    "slug": "ny-podves-karlsbach",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-podves-karlsbach.jpg",
+    "price": 1400,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny13",
+    "desc": "Украшение подвесное «шар с бисером», стекло, зелёный, 10 см.",
+    "name": "Украшение подвесное «Шар с бисером» зелёный, 10 см",
+    "slug": "ny-shar-biser-zeleny",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-shar-biser-zeleny.jpg",
+    "price": 600,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny14",
+    "desc": "Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, стёганый.",
+    "name": "Новогоднее украшение «Флок» коричневый, стёганый",
+    "slug": "ny-flok-korichnevy-4",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-flok-korichnevy-4.jpg",
+    "price": 370,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Флок"
+  },
+  {
+    "id": "ny15",
+    "desc": "Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, открытой формы.",
+    "name": "Новогоднее украшение «Флок» коричневый, открытый",
+    "slug": "ny-flok-korichnevy-5",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-flok-korichnevy-5.jpg",
+    "price": 370,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Флок"
+  },
+  {
+    "id": "ny16",
+    "desc": "Новогоднее подвесное украшение с бархатным покрытием (флок), коричневый, в форме луковицы.",
+    "name": "Новогоднее украшение «Флок» коричневый, луковица",
+    "slug": "ny-flok-korichnevy-6",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-flok-korichnevy-6.jpg",
+    "price": 370,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Флок"
+  },
+  {
+    "id": "ny17",
+    "desc": "Украшение подвесное «юла» из бумаги, 9,5×15 см, тёмно-зелёный цвет.",
+    "name": "Украшение подвесное «Юла» тёмно-зелёная, 9,5×15 см",
+    "slug": "ny-yula-9x15",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-yula-9x15.jpg",
+    "price": 350,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Бумага"
+  },
+  {
+    "id": "ny18",
+    "desc": "Украшение подвесное «юла» из бумаги, 20×30 см, тёмно-зелёный цвет.",
+    "name": "Украшение подвесное «Юла» тёмно-зелёная, 20×30 см",
+    "slug": "ny-yula-20x30",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-yula-20x30.jpg",
+    "price": 720,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Бумага"
+  },
+  {
+    "id": "ny19",
+    "desc": "Подвес ручной работы из прозрачного стекла. Создан по авторским эскизам, эффектно смотрится в группах из нескольких подвесов. Лимитированная позиция.",
+    "name": "Подвес ручной работы «Шишка», 6×11 см",
+    "slug": "ny-shishka-6x11",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-shishka-6x11.jpg",
+    "price": 2900,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло прозрачное"
+  },
+  {
+    "id": "ny20",
+    "desc": "Подвес ручной работы из прозрачного стекла. Создан по авторским эскизам, эффектно смотрится в группах из нескольких подвесов. Лимитированная позиция.",
+    "name": "Подвес ручной работы «Шишка», 8×14 см",
+    "slug": "ny-shishka-8x14",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-shishka-8x14.jpg",
+    "price": 3100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло прозрачное"
+  },
+  {
+    "id": "ny21",
+    "desc": "Крупный фигурный подвес из стекла авторской формы. Благодаря выразительному объёму и насыщенному бордовому оттенку станет элегантным акцентом в оформлениях. Подходит для оформления елей, где требуется баланс между масштабом и плотностью декора, а также для интерьерных подвесных решений.",
+    "name": "Подвес стеклянный фигурный, бордовый",
+    "slug": "ny-podves-bordovy-figurny",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-podves-bordovy-figurny.jpg",
+    "price": 4100,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny22",
+    "desc": "Подвес из стекла в форме луковицы, созданный по авторским эскизам. Элегантная форма и фактура, недоступные для фабричного производства. Подходит для декора елей в классических и нестандартных цветовых решениях.",
+    "name": "Подвес ручной работы «Луковица», 10×13 см, красный",
+    "slug": "ny-podves-lukovitsa-krasny",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-podves-lukovitsa-krasny.jpg",
+    "price": 3200,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло красное"
+  },
+  {
+    "id": "ny23",
+    "desc": "Крупный фигурный подвес из стекла — элегантное изделие для декора ели и пространства. Украшение с утончённым авторским силуэтом формирует визуальный акцент и задаёт направление всей композиции. Эффектно работает в потолочных инсталляциях, пространственных каскадах и выносных композициях на ветвях.",
+    "name": "Подвес стеклянный, 40 см, бордовый",
+    "slug": "ny-podves-bordovy-40",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-podves-bordovy-40.jpg",
+    "price": 6300,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny24",
+    "desc": "Прозрачная сосулька с серебряными блёстками. Фирма Karlsbach.",
+    "name": "Сосулька прозрачная с серебряными блёстками Karlsbach",
+    "slug": "ny-sosulka-karlsbach",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-sosulka-karlsbach.jpg",
+    "price": 800,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny25",
+    "desc": "Ёлочная игрушка «Черепаха», стекло, 10×10×4 см, оттенок синий.",
+    "name": "Ёлочная игрушка «Черепаха», синяя",
+    "slug": "ny-cherepaha",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-cherepaha.jpg",
+    "price": 710,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Стекло"
+  },
+  {
+    "id": "ny26",
+    "desc": "Украшение подвесное «гроздь», пластик, 29 см, прозрачный.",
+    "name": "Украшение подвесное «Гроздь», прозрачная",
+    "slug": "ny-grozd",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-grozd.jpg",
+    "price": 500,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Пластик"
+  },
+  {
+    "id": "ny27",
+    "desc": "Подвес в форме ветви с кристаллами — изящное акцентное украшение. Множество граней идеальных капель, выполненных из акрилового стекла, создали безупречную игру света. Изделие лёгкое, поэтому варианты его использования безграничны.",
+    "name": "Подвес «Ветка из кристаллов» зелёного оттенка",
+    "slug": "ny-vetka-kristally",
+    "badge": "Новинка",
+    "image": "images/paloma/catalog/ny-vetka-kristally.jpg",
+    "price": 420,
+    "sizes": [
+      {
+        "code": "one",
+        "label": "Один размер",
+        "priceDelta": 0
+      }
+    ],
+    "addons": [
+      {
+        "id": "card",
+        "label": "Открытка",
+        "price": 350
+      },
+      {
+        "id": "vase",
+        "label": "Ваза",
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "label": "Кофе с собой",
+        "price": 320
+      }
+    ],
+    "photoSize": null,
+    "priceFrom": false,
+    "categories": [
+      "newyear"
+    ],
+    "composition": "Акриловое стекло"
   }
 ];

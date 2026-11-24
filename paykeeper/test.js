@@ -23,9 +23,9 @@ const cases = [
   ["несуществующий товар m999", { items: [{ id: "m999-M", name: "Фейк", price: 3000, qty: 1 }], delivery: 0 }, false],
   ["апселл — ваза 1500", { items: [{ id: "upsell-vase", name: "Ваза", price: 1500, qty: 1 }], delivery: 0 }, true],
   ["апселл — ваза за 10 ₽", { items: [{ id: "upsell-vase", name: "Ваза", price: 10, qty: 1 }], delivery: 0 }, false],
-  ["авторский букет по бюджету 4000 (мин. шкалы)", { items: [{ id: "n30-b4000", name: "Мятный бриз", price: 4000, qty: 1 }], delivery: 0 }, true],
-  ["авторский букет по бюджету 30000 (макс. шкалы)", { items: [{ id: "n30-b30000", name: "Мятный бриз", price: 30000, qty: 1 }], delivery: 0 }, true],
-  ["авторский бюджет ниже 3000 отклонён", { items: [{ id: "n30-b2000", name: "Мятный бриз", price: 2000, qty: 1 }], delivery: 0 }, false],
+  ["авторский букет по бюджету 4000 (мин. шкалы)", { items: [{ id: "n45-b4000", name: "Коралловое утро", price: 4000, qty: 1 }], delivery: 0 }, true],
+  ["авторский букет по бюджету 30000 (макс. шкалы)", { items: [{ id: "n45-b30000", name: "Коралловое утро", price: 30000, qty: 1 }], delivery: 0 }, true],
+  ["авторский бюджет ниже 3000 отклонён", { items: [{ id: "n45-b2000", name: "Коралловое утро", price: 2000, qty: 1 }], delivery: 0 }, false],
   ["доставка не из прайса (1 ₽)", { items: [{ id: "m1-M", name: "Белая гортензия", price: 3600, qty: 1 }], delivery: 1 }, false],
   ["отрицательное количество", { items: [{ id: "m1-M", name: "Белая гортензия", price: 3600, qty: -3 }], delivery: 0 }, false],
 ];
